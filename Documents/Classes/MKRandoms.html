@@ -1,0 +1,242 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>MKRandoms Class Reference</title>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+		<meta name="generator" content="appledoc 2.0b3" />
+	</head>
+	<body>
+		<article>
+			<div class="main-navigation navigation-top">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="header">
+				<div class="section-header">
+					<h1 class="title title-header">MKRandoms Class Reference</h1>
+				</div>		
+			</div>
+			<div id="container">	
+				
+				<div class="section section-specification"><table cellspacing="0"><tbody>
+					<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">MKRandoms.h</td>
+</tr>
+					</tbody></table></div>
+				
+				
+				
+				<div class="section section-overview">
+					<h2 class="subtitle subtitle-overview">Overview</h2>
+					
+<p> The <a href="MKRandoms.html">MKRandoms</a> object preforms methods that return random values. It can work with arrays or just integes to get random values. </p>
+
+				</div>
+				
+				
+				
+				
+				<div class="section section-tasks">
+					<h2 class="subtitle subtitle-tasks">Tasks</h2>
+					
+					<h3 class="subsubtitle task-title">Randoms with Arrays</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/randomFromArray:repeat:">- randomFromArray:repeat:</a></code>
+		<span class="tooltip"> Returns a random object from a given array. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/randomArrayWithArray:">- randomArrayWithArray:</a></code>
+		<span class="tooltip"> Returns an array resorted in a random order. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Randoms with Integers</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/randomNumberOutOf:">- randomNumberOutOf:</a></code>
+		<span class="tooltip"> Returns and random integer between 0 and a given number. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/randomArrayWithArray:" title="randomArrayWithArray:"></a>
+	<h3 class="subsubtitle method-title">randomArrayWithArray:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Returns an array resorted in a random order. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSArray *)randomArrayWithArray:(NSArray *)<em>anArray</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>anArray</em></dt>
+			<dd> The array to resort in a random order. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKRandoms.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/randomFromArray:repeat:" title="randomFromArray:repeat:"></a>
+	<h3 class="subsubtitle method-title">randomFromArray:repeat:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Returns a random object from a given array. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)randomFromArray:(NSArray *)<em>anArray</em> repeat:(BOOL)<em>repeat</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>anArray</em></dt>
+			<dd> Array of objects to select from. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>repeat</em></dt>
+			<dd> Set to <code>YES</code> if an object can be select more than one time, <code>NO</code> if it cannot. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKRandoms.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/randomNumberOutOf:" title="randomNumberOutOf:"></a>
+	<h3 class="subsubtitle method-title">randomNumberOutOf:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Returns and random integer between 0 and a given number. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (int)randomNumberOutOf:(int)<em>number</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>number</em></dt>
+			<dd> The highest return value. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKRandoms.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+				
+				
+			</div>
+			<div class="main-navigation navigation-bottom">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="footer">
+				<hr />
+				<div class="footer-copyright">
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-06-09)</span><br />
+					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
+				</div>
+			</div>
+		</article>
+	</body>
+</html>

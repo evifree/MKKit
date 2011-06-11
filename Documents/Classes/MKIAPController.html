@@ -1,0 +1,674 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>MKIAPController Class Reference</title>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+		<meta name="generator" content="appledoc 2.0b3" />
+	</head>
+	<body>
+		<article>
+			<div class="main-navigation navigation-top">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="header">
+				<div class="section-header">
+					<h1 class="title title-header">MKIAPController Class Reference</h1>
+				</div>		
+			</div>
+			<div id="container">	
+				
+				<div class="section section-specification"><table cellspacing="0"><tbody>
+					<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">SKPaymentTransactionObserver<br />SKProductsRequestDelegate<br />SKRequestDelegate</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">MKIAPController.h</td>
+</tr>
+					</tbody></table></div>
+				
+				
+				
+				<div class="section section-overview">
+					<h2 class="subtitle subtitle-overview">Overview</h2>
+					
+<p> The <a href="MKIAPController.html">MKIAPController</a> executes inApp Purchases for you. This class is used by the MKIAPViewController. It can be used by itself as well, if you want to create your own store front. </p>
+
+<p> <a href="MKIAPController.html">MKIAPController</a> works in two ways. You can create an instance of it, preform requests and then recive the responses through the delegate. Your other option is to use factory methods with code blocks to handle the response. <p class="warning"> <strong> Note </strong> If you are using the MKAIPViewController, inApp Purchases are built in. The only thing not done by the MKAIPViewController is restoring purchases. </p></p>
+
+				</div>
+				
+				
+				
+				
+				<div class="section section-tasks">
+					<h2 class="subtitle subtitle-tasks">Tasks</h2>
+					
+					<h3 class="subsubtitle task-title">Creating an Instance</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithDelegate:">- initWithDelegate:</a></code>
+		<span class="tooltip"> Returns an intialized instance of MKIAPController. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Product Requests</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/productsRequestWithIdentifiers:response:">+ productsRequestWithIdentifiers:response:</a></code>
+		<span class="tooltip"> Requests product information for the given set of identifiers and executes the response block when the request is returned. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/productsRequestWithIdentifiers:">- productsRequestWithIdentifiers:</a></code>
+		<span class="tooltip"> Requests product information for the given set of identifiers and notifies the <a href="#//api/name/delegate">delegate</a> when a response is given. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Purchases Requests</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/purchaseRequestWithIdentifiers:completion:">+ purchaseRequestWithIdentifiers:completion:</a></code>
+		<span class="tooltip"> Requests the purchase of a the products given in the set, and executes the completion block when the purchase is completed. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/purchaseRequestWithIdentifiers:">- purchaseRequestWithIdentifiers:</a></code>
+		<span class="tooltip"> Requests the purchase of a the products given in the set, and notifies the <a href="#//api/name/delegate">delegate</a> when the purchase is completed. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Restoring Requests</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/restorePurchase:">+ restorePurchase:</a></code>
+		<span class="tooltip"> Restores previouse purchases that were made on the account, and executes the completion block when the restore is finished. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/restorePurchases">- restorePurchases</a></code>
+		<span class="tooltip"> Restores previouse purchases that were made on the account, and notifies the <a href="#//api/name/delegate">delegate</a> when the restore is finished. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Delegate</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/delegate"> delegate</a></code>
+		<span class="tooltip"> The <a href="../Protocols/MKIAPDelegate.html">MKIAPDelegate</a></span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Code Blocks</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/productResponse"> productResponse</a></code>
+		<span class="tooltip"> The response the code block to perform when a responces is given. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/purchaseCompleteBlock"> purchaseCompleteBlock</a></code>
+		<span class="tooltip"> The completion the code block to perform when the purchase is completed. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/restoreCompleteBlock"> restoreCompleteBlock</a></code>
+		<span class="tooltip"> The completion block the code block to perform when the restore is complete </span>
+	</span>
+	
+</li>
+					</ul>
+					
+				</div>
+				
+				
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Class Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/productsRequestWithIdentifiers:response:" title="productsRequestWithIdentifiers:response:"></a>
+	<h3 class="subsubtitle method-title">productsRequestWithIdentifiers:response:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Requests product information for the given set of identifiers and executes the response block when the request is returned. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)productsRequestWithIdentifiers:(NSSet *)<em>identifiers</em> response:(MKProductResponseBlock)<em>response</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>identifiers</em></dt>
+			<dd> a NSSet of identifiers for the products you are requesting. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>response</em></dt>
+			<dd> the code block to perform when a responces is given. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		
+		<p> Requests product information for the given set of identifiers and executes the response block when the request is returned. </p>
+		
+		<p> The MKProductResponseBlock is in the this format : <code>^(SKProductsResponse *response, NSError *error)</code></p>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKIAPController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/purchaseRequestWithIdentifiers:completion:" title="purchaseRequestWithIdentifiers:completion:"></a>
+	<h3 class="subsubtitle method-title">purchaseRequestWithIdentifiers:completion:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Requests the purchase of a the products given in the set, and executes the completion block when the purchase is completed. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)purchaseRequestWithIdentifiers:(NSSet *)<em>identifiers</em> completion:(MKPurchaseCompletionBlock)<em>completion</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>identifiers</em></dt>
+			<dd> a NSSet of identifiers for the products you purchasing. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completion</em></dt>
+			<dd> the code block to perform when the purchase is completed. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		
+		<p> Requests the purchase of a the products given in the set, and executes the completion block when the purchase is completed. </p>
+		
+		<p> The MKPurchaseCompletionBlock is in this format : <code>^(SKPaymentTransaction *transaction, NSError *error)</code></p>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKIAPController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/restorePurchase:" title="restorePurchase:"></a>
+	<h3 class="subsubtitle method-title">restorePurchase:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Restores previouse purchases that were made on the account, and executes the completion block when the restore is finished. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)restorePurchase:(MKRestoreCompletionBlock)<em>completion</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completion</em></dt>
+			<dd> block the code block to perform when the restore is complete </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		
+		<p> Restores previouse purchases that were made on the account, and executes the completion block when the restore is finished. </p>
+		
+		<p> The MKRestoreCompletionBlock is in this format : <code>^(SKPaymentTransaction *transaction, NSError *error)</code></p>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKIAPController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/initWithDelegate:" title="initWithDelegate:"></a>
+	<h3 class="subsubtitle method-title">initWithDelegate:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Returns an intialized instance of MKIAPController. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithDelegate:(id&lt;MKIAPDelegate&gt;)<em>delegate</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>delegate</em></dt>
+			<dd> the instances <a href="#//api/name/delegate">delegate</a></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKIAPController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/productsRequestWithIdentifiers:" title="productsRequestWithIdentifiers:"></a>
+	<h3 class="subsubtitle method-title">productsRequestWithIdentifiers:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Requests product information for the given set of identifiers and notifies the <a href="#//api/name/delegate">delegate</a> when a response is given. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)productsRequestWithIdentifiers:(NSSet *)<em>identifiers</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>identifiers</em></dt>
+			<dd> a NSSet of identifiers for the products you are requesting. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKIAPController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/purchaseRequestWithIdentifiers:" title="purchaseRequestWithIdentifiers:"></a>
+	<h3 class="subsubtitle method-title">purchaseRequestWithIdentifiers:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Requests the purchase of a the products given in the set, and notifies the <a href="#//api/name/delegate">delegate</a> when the purchase is completed. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)purchaseRequestWithIdentifiers:(NSSet *)<em>identifiers</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>identifiers</em></dt>
+			<dd> a NSSet of identifiers for the products you purchasing. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKIAPController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/restorePurchases" title="restorePurchases"></a>
+	<h3 class="subsubtitle method-title">restorePurchases</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Restores previouse purchases that were made on the account, and notifies the <a href="#//api/name/delegate">delegate</a> when the restore is finished. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)restorePurchases</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKIAPController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Properties</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/delegate" title="delegate"></a>
+	<h3 class="subsubtitle method-title">delegate</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The <a href="../Protocols/MKIAPDelegate.html">MKIAPDelegate</a></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) id&lt;MKIAPDelegate&gt; delegate</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKIAPController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/productResponse" title="productResponse"></a>
+	<h3 class="subsubtitle method-title">productResponse</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The response the code block to perform when a responces is given. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) MKProductResponseBlock productResponse</code></div>
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		
+		<p> The response the code block to perform when a responces is given. </p>
+		
+		<p> The MKProductResponseBlock is in the this format : <code>^(SKProductsResponse *response, NSError *error)</code></p>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKIAPController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/purchaseCompleteBlock" title="purchaseCompleteBlock"></a>
+	<h3 class="subsubtitle method-title">purchaseCompleteBlock</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The completion the code block to perform when the purchase is completed. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) MKPurchaseCompletionBlock purchaseCompleteBlock</code></div>
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		
+		<p> The completion the code block to perform when the purchase is completed. </p>
+		
+		<p> The MKPurchaseCompletionBlock is in this format : <code>^(SKPaymentTransaction *transaction, NSError *error)</code></p>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKIAPController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/restoreCompleteBlock" title="restoreCompleteBlock"></a>
+	<h3 class="subsubtitle method-title">restoreCompleteBlock</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The completion block the code block to perform when the restore is complete </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) MKRestoreCompletionBlock restoreCompleteBlock</code></div>
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		
+		<p> The completion block the code block to perform when the restore is complete </p>
+		
+		<p> The MKRestoreCompletionBlock is in this format : <code>^(SKPaymentTransaction *transaction, NSError *error)</code></p>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKIAPController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+			</div>
+			<div class="main-navigation navigation-bottom">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="footer">
+				<hr />
+				<div class="footer-copyright">
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-06-09)</span><br />
+					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
+				</div>
+			</div>
+		</article>
+	</body>
+</html>

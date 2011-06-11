@@ -1,0 +1,404 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>MKPromptView Class Reference</title>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+		<meta name="generator" content="appledoc 2.0b3" />
+	</head>
+	<body>
+		<article>
+			<div class="main-navigation navigation-top">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="header">
+				<div class="section-header">
+					<h1 class="title title-header">MKPromptView Class Reference</h1>
+				</div>		
+			</div>
+			<div id="container">	
+				
+				<div class="section section-specification"><table cellspacing="0"><tbody>
+					<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value"><a href="MKView.html">MKView</a> : UIView</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">MKPromptView.h</td>
+</tr>
+					</tbody></table></div>
+				
+				
+				
+				<div class="section section-overview">
+					<h2 class="subtitle subtitle-overview">Overview</h2>
+					
+<p> MKPropmtView displays an information prompt on the top of the screen. There are three types of prompts that you can pick to display, depending on the importance of the message. <ul><li> <code>MKPromptTypeGreen</code>: a prompt with a green background. </li><li> <code>MKPromptTypeAmber</code>: a prompt with a yellow background. </li><li> <code>MKPromptTypeRed</code>: a prompt with a red backgrount. </li></ul></p>
+
+<p> <a href="MKPromptView.html">MKPromptView</a> will automaticaly adjust its height to fit the given message. </p>
+
+				</div>
+				
+				
+				
+				
+				<div class="section section-tasks">
+					<h2 class="subtitle subtitle-tasks">Tasks</h2>
+					
+					<h3 class="subsubtitle task-title">Creating</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithType:title:message:">- initWithType:title:message:</a></code>
+		<span class="tooltip"> Returns a new instance of MKPromptView. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/promptWithType:title:message:duration:">+ promptWithType:title:message:duration:</a></code>
+		<span class="tooltip"> Creates and displays an instance of MKPromptView. The view is displayed with the <code>MKViewAnimationTypeMoveInFromTop</code>. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Behavior Properties</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/type"> type</a></code>
+		<span class="tooltip"> The <a href="#//api/name/type">type</a> of prompt that is displayed </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/duration"> duration</a></code>
+		<span class="tooltip"> The Time in Seconds until the prompt is dismissed </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Drawing Methods</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/frameForMessage:">- frameForMessage:</a></code>
+		<span class="tooltip"> Returns the frame for the view that will fit the message text. This is an internal method and should not be called directly. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/frameForText:">- frameForText:</a></code>
+		<span class="tooltip"> Returns the frame for the UILabel that will fit the message text. This is an internal method and should not be called directly. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+				</div>
+				
+				
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Class Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/promptWithType:title:message:duration:" title="promptWithType:title:message:duration:"></a>
+	<h3 class="subsubtitle method-title">promptWithType:title:message:duration:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Creates and displays an instance of MKPromptView. The view is displayed with the <code>MKViewAnimationTypeMoveInFromTop</code>. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)promptWithType:(MKPromptType)<em>type</em> title:(NSString *)<em>title</em> message:(NSString *)<em>message</em> duration:(NSTimeInterval)<em>duration</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>type</em></dt>
+			<dd> the <a href="#//api/name/type">type</a> of prompt to be displayed. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>title</em></dt>
+			<dd> the title of the prompt </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>message</em></dt>
+			<dd> the message of the prompt </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>duration</em></dt>
+			<dd> the time in seconds until the prompt is removed </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKPromptView.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/frameForMessage:" title="frameForMessage:"></a>
+	<h3 class="subsubtitle method-title">frameForMessage:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Returns the frame for the view that will fit the message text. This is an internal method and should not be called directly. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (CGRect)frameForMessage:(NSString *)<em>message</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>message</em></dt>
+			<dd> The message of the prompt </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKPromptView.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/frameForText:" title="frameForText:"></a>
+	<h3 class="subsubtitle method-title">frameForText:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Returns the frame for the UILabel that will fit the message text. This is an internal method and should not be called directly. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (CGRect)frameForText:(NSString *)<em>message</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>message</em></dt>
+			<dd> The message of the prompt </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKPromptView.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/initWithType:title:message:" title="initWithType:title:message:"></a>
+	<h3 class="subsubtitle method-title">initWithType:title:message:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Returns a new instance of MKPromptView. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithType:(MKPromptType)<em>type</em> title:(NSString *)<em>title</em> message:(NSString *)<em>message</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>type</em></dt>
+			<dd> the <a href="#//api/name/type">type</a> of prompt to be displayed. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>title</em></dt>
+			<dd> the title of the prompt </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>message</em></dt>
+			<dd> the message of the prompt </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKPromptView.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Properties</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/duration" title="duration"></a>
+	<h3 class="subsubtitle method-title">duration</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The Time in Seconds until the prompt is dismissed </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) NSTimeInterval duration</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKPromptView.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/type" title="type"></a>
+	<h3 class="subsubtitle method-title">type</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The <a href="#//api/name/type">type</a> of prompt that is displayed </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) MKPromptType type</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKPromptView.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+			</div>
+			<div class="main-navigation navigation-bottom">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="footer">
+				<hr />
+				<div class="footer-copyright">
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-06-09)</span><br />
+					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
+				</div>
+			</div>
+		</article>
+	</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>MKClockDelegate Protocol Reference</title>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+		<meta name="generator" content="appledoc 2.0b3" />
+	</head>
+	<body>
+		<article>
+			<div class="main-navigation navigation-top">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="header">
+				<div class="section-header">
+					<h1 class="title title-header">MKClockDelegate Protocol Reference</h1>
+				</div>		
+			</div>
+			<div id="container">	
+				
+				<div class="section section-specification"><table cellspacing="0"><tbody>
+					<tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">MKClock.h</td>
+</tr>
+					</tbody></table></div>
+				
+				
+				
+				<div class="section section-overview">
+					<h2 class="subtitle subtitle-overview">Overview</h2>
+					
+<p> The <a href="MKClockDelegate.html">MKClockDelegate</a> protocol send information about an instance of MKClock. These methods can be used to monitor the clocks activity and get the clocks time. Class that use this must conform to the <a href="MKClockDelegate.html">MKClockDelegate</a> protocol. All of this delegates methods are optional. </p>
+
+				</div>
+				
+				
+				
+				
+				<div class="section section-tasks">
+					<h2 class="subtitle subtitle-tasks">Tasks</h2>
+					
+					<h3 class="subsubtitle task-title">Monitoring clock behaviors</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/clockDidStart:">- clockDidStart:</a></code>
+		<span class="tooltip"> Called when the clock starts. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/clockDidStop:">- clockDidStop:</a></code>
+		<span class="tooltip"> Called when the clock stops. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Geting the clocks current time</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/clock:didSetNewString:">- clock:didSetNewString:</a></code>
+		<span class="tooltip"> Called when the timer sets a new string. This method is called every time a clocks time changes. The new time is sent in the form of an NSString with this format <code>0:00</code>. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/clock:didSetNewString:" title="clock:didSetNewString:"></a>
+	<h3 class="subsubtitle method-title">clock:didSetNewString:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Called when the timer sets a new string. This method is called every time a clocks time changes. The new time is sent in the form of an NSString with this format <code>0:00</code>. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)clock:(MKClock *)<em>clock</em> didSetNewString:(NSString *)<em>theString</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>clock</em></dt>
+			<dd> The clock that set a new string. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>theString</em></dt>
+			<dd> The new string set by the clock. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKClock.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/clockDidStart:" title="clockDidStart:"></a>
+	<h3 class="subsubtitle method-title">clockDidStart:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Called when the clock starts. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)clockDidStart:(MKClock *)<em>clock</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>clock</em></dt>
+			<dd> The <a href="../Classes/MKClock.html">MKClock</a> the started. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKClock.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/clockDidStop:" title="clockDidStop:"></a>
+	<h3 class="subsubtitle method-title">clockDidStop:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Called when the clock stops. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)clockDidStop:(MKClock *)<em>clock</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>clock</em></dt>
+			<dd> The clock that stoped </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKClock.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+				
+				
+			</div>
+			<div class="main-navigation navigation-bottom">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="footer">
+				<hr />
+				<div class="footer-copyright">
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-06-09)</span><br />
+					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
+				</div>
+			</div>
+		</article>
+	</body>
+</html>

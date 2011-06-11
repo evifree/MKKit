@@ -1,0 +1,291 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>MKTableCellFeed Class Reference</title>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+		<meta name="generator" content="appledoc 2.0b3" />
+	</head>
+	<body>
+		<article>
+			<div class="main-navigation navigation-top">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="header">
+				<div class="section-header">
+					<h1 class="title title-header">MKTableCellFeed Class Reference</h1>
+				</div>		
+			</div>
+			<div id="container">	
+				
+				<div class="section section-specification"><table cellspacing="0"><tbody>
+					<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value"><a href="MKTableCell.html">MKTableCell</a> : UITableViewCell</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">MKTableCellFeed.h</td>
+</tr>
+					</tbody></table></div>
+				
+				
+				
+				<div class="section section-overview">
+					<h2 class="subtitle subtitle-overview">Overview</h2>
+					
+<p> The <a href="MKTableCellFeed.html">MKTableCellFeed</a> provieds a display designed to accept data from an RSS feed. This class can accept differnt kinds of feeds by setting <code>MKTableCellFeedType</code>. This can be set to one of two values. <ul><li> <code>MKTableCellFeedTypeDynamic</code>: Use this type for cell that adjust hieght to the content. </li><li> <code>MKTableCellFeedTypePlainText</code>: Use this type if the feeds content is given in plain text. </li><li> <code>MKTableCellFeedTypeHTML</code>: Use this type if the feeds content is given in HTML. </li></ul></p>
+
+<p> The following Macros are defined in this Class: <ul><li> <code>DYNAMIC_CELL_CONTENT_WIDTH_LANDSCAPE 480.0</code></li><li> <code>DYNAMIC_CELL_CONTENT_WIDTH_PORTRAIT 320.0</code></li><li> <code>DYNAMIC_CELL_CONTENT_MARGIN 10.0</code></li></ul> <p class="warning"> <strong> Note </strong> Default height for this cell is 130.0. </p></p>
+
+				</div>
+				
+				
+				
+				
+				<div class="section section-tasks">
+					<h2 class="subtitle subtitle-tasks">Tasks</h2>
+					
+					<h3 class="subsubtitle task-title">Cell Elements</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/contentText"> contentText</a></code>
+		<span class="tooltip"> A String that give the content for MKTableCellFeedTypeDynamic </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/theTextView"> theTextView</a></code>
+		<span class="tooltip"> A text view that displays the elememts content. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/theWebView"> theWebView</a></code>
+		<span class="tooltip"> A web view that displays the elements HTML content. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Feed Types</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/feedType"> feedType</a></code>
+		<span class="tooltip"> The type of feed to display in the cell. This can be set to one of three values. <ul><li> <code>MKTableCellFeedTypeDynamic</code>: Use this type for cell that adjust hieght to the content. </li><li> <code>MKTableCellFeedTypePlainText</code>: Use this type if the feeds content is given in plain text. </li><li> <code>MKTableCellFeedTypeHTML</code>: Use this type if the feeds content is given in HTML. </li></ul></span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Feed Data</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/feedUrl"> feedUrl</a></code>
+		<span class="tooltip"> The URL that the feed element links to. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Properties</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/contentText" title="contentText"></a>
+	<h3 class="subsubtitle method-title">contentText</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> A String that give the content for MKTableCellFeedTypeDynamic </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) NSString *contentText</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCellFeed.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/feedType" title="feedType"></a>
+	<h3 class="subsubtitle method-title">feedType</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The type of feed to display in the cell. This can be set to one of three values. <ul><li> <code>MKTableCellFeedTypeDynamic</code>: Use this type for cell that adjust hieght to the content. </li><li> <code>MKTableCellFeedTypePlainText</code>: Use this type if the feeds content is given in plain text. </li><li> <code>MKTableCellFeedTypeHTML</code>: Use this type if the feeds content is given in HTML. </li></ul></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) MKTableCellFeedType feedType</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCellFeed.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/feedUrl" title="feedUrl"></a>
+	<h3 class="subsubtitle method-title">feedUrl</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The URL that the feed element links to. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) NSString *feedUrl</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCellFeed.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/theTextView" title="theTextView"></a>
+	<h3 class="subsubtitle method-title">theTextView</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> A text view that displays the elememts content. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UITextView *theTextView</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCellFeed.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/theWebView" title="theWebView"></a>
+	<h3 class="subsubtitle method-title">theWebView</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> A web view that displays the elements HTML content. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UIWebView *theWebView</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCellFeed.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+			</div>
+			<div class="main-navigation navigation-bottom">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="footer">
+				<hr />
+				<div class="footer-copyright">
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-06-09)</span><br />
+					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
+				</div>
+			</div>
+		</article>
+	</body>
+</html>

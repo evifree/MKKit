@@ -1,0 +1,335 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>MKLoginViewController Class Reference</title>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+		<meta name="generator" content="appledoc 2.0b3" />
+	</head>
+	<body>
+		<article>
+			<div class="main-navigation navigation-top">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="header">
+				<div class="section-header">
+					<h1 class="title title-header">MKLoginViewController Class Reference</h1>
+				</div>		
+			</div>
+			<div id="container">	
+				
+				<div class="section section-specification"><table cellspacing="0"><tbody>
+					<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value"><a href="MKViewController.html">MKViewController</a> : UIViewController</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">MKLoginViewController.h</td>
+</tr>
+					</tbody></table></div>
+				
+				
+				
+				<div class="section section-overview">
+					<h2 class="subtitle subtitle-overview">Overview</h2>
+					
+<p> <a href="MKLoginViewController.html">MKLoginViewController</a> provides an interface for loging into an app using a four digit PIN. </p>
+
+<p> If no PIN is set, <a href="MKLoginViewController.html">MKLoginViewController</a> will allow a PIN to be set and store it for future use. The PIN is stored with NSUserDefaults, keys can be accessed by the following macros: <ul><li> <code>PIN_SET</code>: key for a BOOL value telling if a PIN has been set or not. </li><li> <code>PIN</code>: key for an integer value telling the PIN that is currently stored. </li></ul></p>
+
+<p> MKLoginViewContoller works with <a href="MKLoginSettingsViewController.html">MKLoginSettingsViewController</a> which provides interfaces to change the PIN and set challenge question to retrive the PIN. Challege questions and answers are stored in NSUserDefaults, keys can be accessed by the folling macros: <ul><li> <code>CHALLENGE_SET</code>: key for a BOOL value telling a challege question is set. </li><li> <code>CHALLENGE_QUESTION</code>: key for a NSString representing the challenge question. </li><li> <code>CHALLENGE_ANSWER</code>: key for a NSString representing the challenge answer. </li></ul></p>
+
+<p> <a href="MKLoginViewController.html">MKLoginViewController</a> calls the following delegate methods: <ul><li> <code>setPin:</code> called when a user sets a new PIN </li><li> <code>pinIsValidated:</code> called when the entered PIN is validated </li><li> <code>maxPinAtemptsMade</code> called when the maximum number of PIN atempts have been made </li></ul></p>
+
+<p> <p class="warning"> <strong> Note </strong> <a href="MKLoginViewController.html">MKLoginViewController</a> objects will look for resources in the MKLoginView-Resources bundle. Ensure this bundle is added to your project for proper function. </p></p>
+
+				</div>
+				
+				
+				
+				
+				<div class="section section-tasks">
+					<h2 class="subtitle subtitle-tasks">Tasks</h2>
+					
+					<h3 class="subsubtitle task-title">View Elements</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/headerView"> headerView</a></code>
+		<span class="tooltip"> The <a href="#//api/name/headerView">headerView</a> is placed directy above the PIN entry boxes. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/promptLabel"> promptLabel</a></code>
+		<span class="tooltip"> The lable displaying text above the PIN entry text feilds </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">PIN Properties</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pin"> pin</a></code>
+		<span class="tooltip"> The PIN that has been entered. This is a read only property </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pinIsSet"> pinIsSet</a></code>
+		<span class="tooltip"> This is a read only property, it is set to YES if a PIN is stored and NO if one is not. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Behaviors</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/secretEntry"> secretEntry</a></code>
+		<span class="tooltip"> Tells if the Login Controller should hide the values entered by the user. YES to hide the values NO to dispaly them. Default is NO. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/maxAtempts"> maxAtempts</a></code>
+		<span class="tooltip"> The Maximum number of times an incorrect <a href="#//api/name/pin">pin</a> can be entered. A value of 0 means infinite atempts. Default is zero. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Properties</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/headerView" title="headerView"></a>
+	<h3 class="subsubtitle method-title">headerView</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The <a href="#//api/name/headerView">headerView</a> is placed directy above the PIN entry boxes. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UIView *headerView</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKLoginViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/maxAtempts" title="maxAtempts"></a>
+	<h3 class="subsubtitle method-title">maxAtempts</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The Maximum number of times an incorrect <a href="#//api/name/pin">pin</a> can be entered. A value of 0 means infinite atempts. Default is zero. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) NSInteger maxAtempts</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKLoginViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/pin" title="pin"></a>
+	<h3 class="subsubtitle method-title">pin</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The PIN that has been entered. This is a read only property </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) NSInteger pin</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKLoginViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/pinIsSet" title="pinIsSet"></a>
+	<h3 class="subsubtitle method-title">pinIsSet</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> This is a read only property, it is set to YES if a PIN is stored and NO if one is not. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) BOOL pinIsSet</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKLoginViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/promptLabel" title="promptLabel"></a>
+	<h3 class="subsubtitle method-title">promptLabel</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The lable displaying text above the PIN entry text feilds </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UILabel *promptLabel</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKLoginViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/secretEntry" title="secretEntry"></a>
+	<h3 class="subsubtitle method-title">secretEntry</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Tells if the Login Controller should hide the values entered by the user. YES to hide the values NO to dispaly them. Default is NO. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL secretEntry</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKLoginViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+			</div>
+			<div class="main-navigation navigation-bottom">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="footer">
+				<hr />
+				<div class="footer-copyright">
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-06-09)</span><br />
+					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
+				</div>
+			</div>
+		</article>
+	</body>
+</html>

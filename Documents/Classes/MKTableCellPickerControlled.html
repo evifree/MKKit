@@ -1,0 +1,583 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>MKTableCellPickerControlled Class Reference</title>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+		<meta name="generator" content="appledoc 2.0b3" />
+	</head>
+	<body>
+		<article>
+			<div class="main-navigation navigation-top">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="header">
+				<div class="section-header">
+					<h1 class="title title-header">MKTableCellPickerControlled Class Reference</h1>
+				</div>		
+			</div>
+			<div id="container">	
+				
+				<div class="section section-specification"><table cellspacing="0"><tbody>
+					<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value"><a href="MKTableCell.html">MKTableCell</a> : UITableViewCell</td>
+</tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">UIPickerViewDataSource<br />UIPickerViewDelegate</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">MKTableCellPickerControlled.h</td>
+</tr>
+					</tbody></table></div>
+				
+				
+				
+				<div class="section section-overview">
+					<h2 class="subtitle subtitle-overview">Overview</h2>
+					
+<p> The MKTableCellPickerConrolled is a subclass of MKTableCell. This class creates a <a href="MKTableCell.html">MKTableCell</a> with two UILabels side by side. When the user touches a the cell a picker will appear on the screen. The picker appears the same way as a keyboard, sliding up from the bottom of the screen. A toolbar with a done button is placed on top of the picker for dismissing it. When the user changes the pickers selection the cell is update with the new selection. The only thing you need to do is set what kind of picker you want to display. You do this by setting <a href="#//api/name/pickerType">pickerType</a> property. </p>
+
+<p> Supported picker types: <ul><li> <code>MKTableCellPickerTypeDate</code>: Sets the picker type to an instance of UIDatePicker. </li><li> <code>MKTableCellPickerTypeStandard</code>: Set the picker type to an instance of UIPickerView. </li></ul></p>
+
+<p> If you use the <code>MKTableCellPickerTypeDate</code> you need to provide a pickerSubType. <ul><li> <code>MKTableCellDatePickerModeDate</code>: An UIDatePicker that allows the user to select a specific date. </li><li> <code>MKTableCellDatePickerModeTime</code>: An UIDatePicker that allows the user to select a specific time. </li><li> <code>MKTableCellDatePickerModeDateAndTime</code>: An UIDatePicker that allows the user to select a specific date and time. </li><li> <code>MKTableCellDatePickerModeCountdown</code>: An UIDatePicker that allows the user to select a specific length of time. </li></ul></p>
+
+<p> If you use the <code>MKTableCellPickerTypeStandard</code> you need to provide an NSArray containing the data to fill the picker with. You do this by setting the <a href="#//api/name/pickerArray">pickerArray</a> property. This picker array needs to contain NSString objects only to set the picker properly. </p>
+
+<p> This class works with the <a href="MKTableCellTextEntry.html">MKTableCellTextEntry</a> class by listening for and posting notifications. The two class make ensure that a keyboard and picker will not be <a href="#//api/name/displayed">displayed</a> at the same time. </p>
+
+<p> <a href="MKTableCellPickerControlled.html">MKTableCellPickerControlled</a> listens for the <code>PICKER_SHOULD_DISMISS_NOTIFICATION</code> to dismiss itself without the user touching the done button. </p>
+
+<p> <a href="MKTableCellPickerControlled.html">MKTableCellPickerControlled</a> sends a <code>PICKER_DID_SHOW_NOTIFICAITON</code> when the picker appears on the screen. <p class="warning"> <strong> Note </strong> When the a picker is <a href="#//api/name/displayed">displayed</a> it is added to the applications keyWindow. When using this class your UITableViewController subclass needs to post the <code>PICKER_SHOULD_DISMISS_NOTIFICATION</code> in its viewWillDisappear: method. This will dismiss the picker when the user navigates away from the view. If this is not done the picker will stay on the screen. </p></p>
+
+<p> Here is an example on how to post the <code>PICKER_SHOULD_DISMISS_NOTIFICATION</code>: <pre>- (void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];
+	[[NSNotificationCenter defaultCenter] postNotificationName:PICKER_SHOULD_DISMISS_NOTIFICATION object:self userInfo:nil];
+}</pre></p>
+
+				</div>
+				
+				
+				
+				
+				<div class="section section-tasks">
+					<h2 class="subtitle subtitle-tasks">Tasks</h2>
+					
+					<h3 class="subsubtitle task-title">Cell Elements</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pickerLabel"> pickerLabel</a></code>
+		<span class="tooltip"> The label that the displays the pickers selected value. @warning <strong> Note </strong> The text of this label is set by the picker. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Picker Types (Required)</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pickerType"> pickerType</a></code>
+		<span class="tooltip"> Sets the MKTableCellPickerType to be used by the cell. This can be set to one of two values: <ul><li> <code>MKTableCellPickerTypeDate</code>: Sets the picker type to an instance of UIDatePicker. </li><li> <code>MKTableCellPickerTypeStandard</code>: Sets the picker type to an instance of UIPickerView. </li></ul></span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pickerSubType"> pickerSubType</a></code>
+		<span class="tooltip"> Sets the mode of the date picker. Only used if <a href="#//api/name/pickerType">pickerType</a> is set to MKTableCellPickerTypeDate. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Picker Data</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pickerDate"> pickerDate</a></code>
+		<span class="tooltip"> The selected date when MKTableCellPickTypeDate is used. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pickerArray"> pickerArray</a></code>
+		<span class="tooltip"> An array of NSString objects to supply the picker with data. <p class="warning"> <strong> Note </strong> This is required when the <a href="#//api/name/pickerType">pickerType</a> is set to <code>MKTableCellPickerTypeStandard</code>. </p></span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Display Opptions</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pickerView"> pickerView</a></code>
+		<span class="tooltip"> An <a href="MKPickerView.html">MKPickerView</a> instance used to display the picker. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/owner"> owner</a></code>
+		<span class="tooltip"> The view controller that the picker drawn onto. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pickerFrame"> pickerFrame</a></code>
+		<span class="tooltip"> The frame that the picker will be drawn into. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/displayed"> displayed</a></code>
+		<span class="tooltip"> BOOL value that tells if the a picker is <a href="#//api/name/displayed">displayed</a> or not. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Instance Methods</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/changeDate:">- changeDate:</a></code>
+		<span class="tooltip"> Informs the delegate that an UIDatePicker has changed the selected date. This method should not be called directly. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/doneButtonTouched:">- doneButtonTouched:</a></code>
+		<span class="tooltip"> Informs the delegate the the picker with be dismissed and dismisses the picker. This method should not be called directly </span>
+	</span>
+	
+</li>
+					</ul>
+					
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/changeDate:" title="changeDate:"></a>
+	<h3 class="subsubtitle method-title">changeDate:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Informs the delegate that an UIDatePicker has changed the selected date. This method should not be called directly. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)changeDate:(UIDatePicker *)<em>sender</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sender</em></dt>
+			<dd> The UIDatePicker that changed its date. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCellPickerControlled.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/doneButtonTouched:" title="doneButtonTouched:"></a>
+	<h3 class="subsubtitle method-title">doneButtonTouched:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Informs the delegate the the picker with be dismissed and dismisses the picker. This method should not be called directly </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)doneButtonTouched:(id)<em>sender</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sender</em></dt>
+			<dd> The button that was touched. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCellPickerControlled.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Properties</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/displayed" title="displayed"></a>
+	<h3 class="subsubtitle method-title">displayed</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> BOOL value that tells if the a picker is <a href="#//api/name/displayed">displayed</a> or not. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (assign, readonly) BOOL displayed</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCellPickerControlled.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/owner" title="owner"></a>
+	<h3 class="subsubtitle method-title">owner</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The view controller that the picker drawn onto. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (assign) UIViewController *owner</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCellPickerControlled.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/pickerArray" title="pickerArray"></a>
+	<h3 class="subsubtitle method-title">pickerArray</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> An array of NSString objects to supply the picker with data. <p class="warning"> <strong> Note </strong> This is required when the <a href="#//api/name/pickerType">pickerType</a> is set to <code>MKTableCellPickerTypeStandard</code>. </p></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) NSArray *pickerArray</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCellPickerControlled.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/pickerDate" title="pickerDate"></a>
+	<h3 class="subsubtitle method-title">pickerDate</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The selected date when MKTableCellPickTypeDate is used. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain, readonly) NSDate *pickerDate</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCellPickerControlled.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/pickerFrame" title="pickerFrame"></a>
+	<h3 class="subsubtitle method-title">pickerFrame</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The frame that the picker will be drawn into. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (assign) CGRect pickerFrame</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCellPickerControlled.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/pickerLabel" title="pickerLabel"></a>
+	<h3 class="subsubtitle method-title">pickerLabel</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The label that the displays the pickers selected value. @warning <strong> Note </strong> The text of this label is set by the picker. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UILabel *pickerLabel</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCellPickerControlled.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/pickerSubType" title="pickerSubType"></a>
+	<h3 class="subsubtitle method-title">pickerSubType</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Sets the mode of the date picker. Only used if <a href="#//api/name/pickerType">pickerType</a> is set to MKTableCellPickerTypeDate. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (assign) MKTableCellDatePickerMode pickerSubType</code></div>
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		
+		<p> Sets the mode of the date picker. Only used if <a href="#//api/name/pickerType">pickerType</a> is set to MKTableCellPickerTypeDate. </p>
+		
+		<p> This can be set the one of the following values. <ul><li> <code>MKTableCellDatePickerModeDate</code>: An UIDatePicker that allows the user to select a specific date. </li><li> <code>MKTableCellDatePickerModeTime</code>: An UIDatePicker that allows the user to select a specific time. </li><li> <code>MKTableCellDatePickerModeDateAndTime</code>: An UIDatePicker that allows the user to select a specific date and time. </li><li> <code>MKTableCellDatePickerModeCountdown</code>: An UIDatePicker that allows the user to select a specific length of time. </li></ul></p>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCellPickerControlled.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/pickerType" title="pickerType"></a>
+	<h3 class="subsubtitle method-title">pickerType</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Sets the MKTableCellPickerType to be used by the cell. This can be set to one of two values: <ul><li> <code>MKTableCellPickerTypeDate</code>: Sets the picker type to an instance of UIDatePicker. </li><li> <code>MKTableCellPickerTypeStandard</code>: Sets the picker type to an instance of UIPickerView. </li></ul></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (assign) MKTableCellPickerType pickerType</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCellPickerControlled.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/pickerView" title="pickerView"></a>
+	<h3 class="subsubtitle method-title">pickerView</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> An <a href="MKPickerView.html">MKPickerView</a> instance used to display the picker. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) MKPickerView *pickerView</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCellPickerControlled.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+			</div>
+			<div class="main-navigation navigation-bottom">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="footer">
+				<hr />
+				<div class="footer-copyright">
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-06-09)</span><br />
+					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
+				</div>
+			</div>
+		</article>
+	</body>
+</html>

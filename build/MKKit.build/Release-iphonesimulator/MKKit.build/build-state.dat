@@ -1,0 +1,815 @@
+TMKKit
+v7
+r0
+t292101276.973952
+cCheck dependencies
+cCompileC build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKGameScoresCellView.o /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKGameScoresCellView.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKTableCell.o /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKTableCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cLibtool /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator/libMKKit.a normal i386
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk
+c000000004B2B86DD00000000000000EE
+t1261143773
+s238
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/AVFoundation.framework/AVFoundation
+c000000004ABDC9F50000000000010D50
+t1253951989
+s68944
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/AVFoundation.framework/Headers/AVFoundation.h
+c000000004ABDC9F400000000000000EB
+t1253951988
+s235
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/CoreData.framework/CoreData
+c000000004ABDC9B100000000001840D0
+t1253951921
+s1589456
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004ABDC853000000000026DAB0
+t1253951571
+s2546352
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.h
+c000000004ABDC85300000000000004FE
+t1253951571
+s1278
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004ABDC93F0000000000001355
+t1253951807
+s4949
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.h
+c000000004ABDCAC8000000000000007D
+t1253952200
+s125
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/QuartzCore.framework/QuartzCore
+c000000004ABDCB2000000000000E4510
+t1253952288
+s935184
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004ABDEE1D0000000000000788
+t1253961245
+s1928
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004ABDEEE20000000001670E70
+t1253961442
+s23531120
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/usr/include/CommonCrypto/CommonDigest.h
+c000000004748A1090000000000002500
+t1195942153
+s9472
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBConnectGlobal.m
+c0000000049A492D200000000000004DB
+t1235522258
+s1243
+i"FBConnect/FBConnectGlobal.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBDialog.m
+c0000000049B9A06800000000000051DB
+t1236901992
+s20955
+i"FBConnect/FBDialog.h"
+i"FBConnect/FBSession.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBFeedDialog.m
+c0000000049B4B3B60000000000000AF3
+t1236579254
+s2803
+i"FBConnect/FBFeedDialog.h"
+i"FBConnect/FBSession.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBLoginButton.m
+c0000000049B98B6000000000000010B2
+t1236896608
+s4274
+i"FBConnect/FBLoginButton.h"
+i"FBConnect/FBLoginDialog.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBLoginDialog.m
+c000000004B4656BD0000000000000FED
+t1262900925
+s4077
+i"FBConnect/FBLoginDialog.h"
+i"FBConnect/FBSession.h"
+i"FBConnect/FBRequest.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBPermissionDialog.m
+c0000000049B991D40000000000000C88
+t1236898260
+s3208
+i"FBConnect/FBPermissionDialog.h"
+i"FBConnect/FBSession.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBRequest.m
+c0000000049C1D7A40000000000002D19
+t1237440420
+s11545
+i"FBConnect/FBRequest.h"
+i"FBConnect/FBSession.h"
+i"FBXMLHandler.h"
+i<CommonCrypto/CommonDigest.h>
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBSession.m
+c000000004A84820E0000000000002030
+t1250198030
+s8240
+i"FBConnect/FBSession.h"
+i"FBConnect/FBRequest.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBXMLHandler.m
+c0000000049E55D680000000000001148
+t1239768424
+s4424
+i"FBXMLHandler.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKAlerts.h
+c000000004B7E11D900000000000002B8
+t1266553305
+s696
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKAlerts.m
+c000000004B80A0ED00000000000003D0
+t1266721005
+s976
+i"MKAlerts.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKAnimations.h
+c000000004B5FC27100000000000005F4
+t1264566897
+s1524
+i<Foundation/Foundation.h>
+i<CoreGraphics/CoreGraphics.h>
+i<QuartzCore/QuartzCore.h>
+i<UIKit/UIKit.h>
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKAnimations.m
+c000000004B5FC2710000000000000DD0
+t1264566897
+s3536
+i"MKAnimations.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKClock.h
+c000000004B75E06C00000000000005D9
+t1266016364
+s1497
+i<Foundation/Foundation.h>
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKClock.m
+c000000004B75E1E5000000000000074C
+t1266016741
+s1868
+i"MKClock.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKDiscriptionCell.h
+c000000004B6F23D00000000000000170
+t1265574864
+s368
+i<UIKit/UIKit.h>
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKDiscriptionCell.m
+c000000004B7334E900000000000005C9
+t1265841385
+s1481
+i"MKDiscriptionCell.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKErrorHandeling.h
+c000000004B7E2AAE000000000000019B
+t1266559662
+s411
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKErrorHandeling.m
+c000000004B564D090000000000000366
+t1263947017
+s870
+i"MKErrorHandeling.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKGameScoresCellView.h
+c000000004B765FF800000000000001C0
+t1266049016
+s448
+i<UIKit/UIKit.h>
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKGameScoresCellView.m
+c000000004B797BFA000000000000085B
+t1266252794
+s2139
+i"MKGameScoresCellView.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKMath.h
+c000000004B6F1161000000000000018A
+t1265570145
+s394
+i<Foundation/Foundation.h>
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKMath.m
+c000000004B6F116100000000000003FA
+t1265570145
+s1018
+i"MKMath.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKPickerControlledCell.h
+c000000004BA3EB02000000000000093F
+t1269033730
+s2367
+i<UIKit/UIKit.h>
+i"MKStrings.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKPickerControlledCell.m
+c000000004BA30A5C0000000000001117
+t1268976220
+s4375
+i"MKPickerControlledCell.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKRandoms.h
+c000000004B5472CF0000000000000167
+t1263825615
+s359
+i<Foundation/Foundation.h>
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKRandoms.m
+c000000004B5D4B260000000000000446
+t1264405286
+s1094
+i"MKRandoms.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKSounds.h
+c000000004B7B555B00000000000001AA
+t1266373979
+s426
+i<Foundation/Foundation.h>
+i<AVFoundation/AVFoundation.h>
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKSounds.m
+c000000004B7B555B0000000000000241
+t1266373979
+s577
+i"MKSounds.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKStrings.h
+c000000004B553B06000000000000022E
+t1263876870
+s558
+i<Foundation/Foundation.h>
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKStrings.m
+c000000004B553AF700000000000004DD
+t1263876855
+s1245
+i"MKStrings.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKSwitchCell.h
+c000000004B7575E00000000000000167
+t1265989088
+s359
+i<UIKit/UIKit.h>
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKSwitchCell.m
+c000000004B757DD000000000000004D5
+t1265991120
+s1237
+i"MKSwitchCell.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKTableCell.h
+c000000004BA5AD790000000000000F1D
+t1269149049
+s3869
+i<UIKit/UIKit.h>
+i"MKDiscriptionCell.h"
+i"MKTextEntryCell.h"
+i"MKPickerControlledCell.h"
+i"MKSwitchCell.h"
+i"MKGameScoresCellView.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKTableCell.m
+c000000004BB8E51B000000000000226A
+t1270408475
+s8810
+i"MKTableCell.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKTextEntryCell.h
+c000000004BA3AAED000000000000053D
+t1269017325
+s1341
+i<UIKit/UIKit.h>
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKTextEntryCell.m
+c000000004BA3AAED0000000000000963
+t1269017325
+s2403
+i"MKTextEntryCell.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBConnectGlobal.o
+t1266720930
+s7244
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBDialog.o
+t1266720932
+s69628
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBFeedDialog.o
+t1266720932
+s20632
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBLoginButton.o
+t1266720931
+s27496
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBLoginDialog.o
+t1266720932
+s24368
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBPermissionDialog.o
+t1266720932
+s21380
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBRequest.o
+t1266720931
+s43508
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBSession.o
+t1266720931
+s29672
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBXMLHandler.o
+t1266720931
+s18876
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKAlerts.o
+t1266721005
+s18184
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKAnimations.o
+t1266720929
+s16704
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKClock.o
+t1266720929
+s13712
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKDiscriptionCell.o
+t1266720930
+s21096
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKErrorHandeling.o
+t1266720929
+s16332
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKGameScoresCellView.o
+t1266720930
+s23484
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKKit.LinkFileList
+c000000004BA53D090000000000000111
+t1269120265
+s273
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKMath.o
+t1266720930
+s8000
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKPickerControlledCell.o
+t1269033731
+s50836
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKRandoms.o
+t1266720929
+s8968
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKSounds.o
+t1266720932
+s9372
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKStrings.o
+t1266720928
+s11056
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKSwitchCell.o
+t1265991121
+s22160
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKTableCell.o
+t1270408476
+s60228
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKTextEntryCell-395E22D46B9C6C5A.o
+t2
+s0
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKTextEntryCell.o
+t1269017326
+s26872
+
+N/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator/libMKKit.a
+t1270408476
+s84072
+
+N/Users/Jullie/Desktop/iPhone-Projects/fbconnect-iphone/src/FBConnect/FBConnectGlobal.h
+c0000000049B9A22C0000000000001DDA
+t1236902444
+s7642
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+
+N/Users/Jullie/Desktop/iPhone-Projects/fbconnect-iphone/src/FBConnect/FBDialog.h
+c0000000049B992CC0000000000000EE9
+t1236898508
+s3817
+i"FBConnect/FBConnectGlobal.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/fbconnect-iphone/src/FBConnect/FBFeedDialog.h
+c0000000049AE5242000000000000046E
+t1236161090
+s1134
+i"FBConnect/FBDialog.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/fbconnect-iphone/src/FBConnect/FBLoginButton.h
+c0000000049B5A23400000000000005A1
+t1236640308
+s1441
+i"FBConnect/FBSession.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/fbconnect-iphone/src/FBConnect/FBLoginDialog.h
+c0000000049B5705800000000000002F1
+t1236627544
+s753
+i"FBConnect/FBDialog.h"
+i"FBConnect/FBRequest.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/fbconnect-iphone/src/FBConnect/FBPermissionDialog.h
+c0000000049B47A84000000000000038C
+t1236564612
+s908
+i"FBConnect/FBLoginDialog.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/fbconnect-iphone/src/FBConnect/FBRequest.h
+c0000000049B5BF720000000000000F39
+t1236647794
+s3897
+i"FBConnect/FBConnectGlobal.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/fbconnect-iphone/src/FBConnect/FBSession.h
+c0000000049B99350000000000000144E
+t1236898640
+s5198
+i"FBConnect/FBConnectGlobal.h"
+
+N/Users/Jullie/Desktop/iPhone-Projects/fbconnect-iphone/src/FBXMLHandler.h
+c0000000049A66D6000000000000003C9
+t1235643744
+s969
+i"FBConnect/FBConnectGlobal.h"
+
+N/Users/Jullie/Desktop/iPhone-projects/fbconnect-iphone/src/FBConnect/FBConnectGlobal.h
+c0000000049B9A22C0000000000001DDA
+t1236902444
+s7642
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+
+N/Users/Jullie/Desktop/iPhone-projects/fbconnect-iphone/src/FBConnect/FBDialog.h
+c0000000049B992CC0000000000000EE9
+t1236898508
+s3817
+i"FBConnect/FBConnectGlobal.h"
+
+N/Users/Jullie/Desktop/iPhone-projects/fbconnect-iphone/src/FBConnect/FBLoginDialog.h
+c0000000049B5705800000000000002F1
+t1236627544
+s753
+i"FBConnect/FBDialog.h"
+i"FBConnect/FBRequest.h"
+
+N/Users/Jullie/Desktop/iPhone-projects/fbconnect-iphone/src/FBConnect/FBRequest.h
+c0000000049B5BF720000000000000F39
+t1236647794
+s3897
+i"FBConnect/FBConnectGlobal.h"
+
+N/Users/Jullie/Desktop/iPhone-projects/fbconnect-iphone/src/FBConnect/FBSession.h
+c0000000049B99350000000000000144E
+t1236898640
+s5198
+i"FBConnect/FBConnectGlobal.h"
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies292101276#292101276#0(0"0(0#1#0"4300885448#0"0#
+
+CCompileC build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBConnectGlobal.o /Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBConnectGlobal.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s288413730.628026
+e288413730.923236
+r1
+xCompileC
+xbuild/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBConnectGlobal.o
+x/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBConnectGlobal.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@93"Compile /Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBConnectGlobal.m288413730#288413730#0(0"0(0#0#85"/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBConnectGlobal.m4300903632#1797"    cd /Users/Jullie/Desktop/iPhone-Projects/MKKit    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-generated-files.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-own-target-headers.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-all-target-headers.hmap -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-project-headers.hmap -F/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator/include -I../../iPhone-projects/fbconnect-iphone/src -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources/i386 -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources -c /Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBConnectGlobal.m -o /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBConnectGlobal.o0#
+
+CCompileC build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBDialog.o /Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBDialog.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s288413731.614721
+e288413732.461405
+r1
+xCompileC
+xbuild/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBDialog.o
+x/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBDialog.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+o/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBDialog.m: In function '-[FBDialog initWithSession:]':
+o/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBDialog.m:322: warning: 'setFont:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIButton.h:105)
+lSLF07#2@86"Compile /Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBDialog.m288413731#288413732#0(407"/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBDialog.m: In function '-[FBDialog initWithSession:]':/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBDialog.m:322: warning: 'setFont:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIButton.h:105)1(22@189"'setFont:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIButton.h:105)288413731#124#283#0(6@78"/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBDialog.m258594792#322#0#322#0#33"'*' is deprecated (declared at *)0(0#0#78"/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBDialog.m4300903632#1783"    cd /Users/Jullie/Desktop/iPhone-Projects/MKKit    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-generated-files.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-own-target-headers.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-all-target-headers.hmap -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-project-headers.hmap -F/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator/include -I../../iPhone-projects/fbconnect-iphone/src -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources/i386 -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources -c /Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBDialog.m -o /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBDialog.o0#
+
+CCompileC build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBFeedDialog.o /Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBFeedDialog.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s288413732.461537
+e288413732.876548
+r1
+xCompileC
+xbuild/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBFeedDialog.o
+x/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBFeedDialog.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@90"Compile /Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBFeedDialog.m288413732#288413732#0(0"0(0#0#82"/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBFeedDialog.m4300903632#1791"    cd /Users/Jullie/Desktop/iPhone-Projects/MKKit    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-generated-files.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-own-target-headers.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-all-target-headers.hmap -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-project-headers.hmap -F/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator/include -I../../iPhone-projects/fbconnect-iphone/src -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources/i386 -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources -c /Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBFeedDialog.m -o /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBFeedDialog.o0#
+
+CCompileC build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBLoginButton.o /Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBLoginButton.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s288413731.534440
+e288413731.927233
+r1
+xCompileC
+xbuild/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBLoginButton.o
+x/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBLoginButton.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@91"Compile /Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBLoginButton.m288413731#288413731#0(0"0(0#0#83"/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBLoginButton.m4300903632#1793"    cd /Users/Jullie/Desktop/iPhone-Projects/MKKit    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-generated-files.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-own-target-headers.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-all-target-headers.hmap -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-project-headers.hmap -F/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator/include -I../../iPhone-projects/fbconnect-iphone/src -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources/i386 -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources -c /Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBLoginButton.m -o /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBLoginButton.o0#
+
+CCompileC build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBLoginDialog.o /Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBLoginDialog.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s288413731.927453
+e288413732.236748
+r1
+xCompileC
+xbuild/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBLoginDialog.o
+x/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBLoginDialog.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@91"Compile /Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBLoginDialog.m288413731#288413732#0(0"0(0#0#83"/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBLoginDialog.m4300903632#1793"    cd /Users/Jullie/Desktop/iPhone-Projects/MKKit    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-generated-files.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-own-target-headers.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-all-target-headers.hmap -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-project-headers.hmap -F/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator/include -I../../iPhone-projects/fbconnect-iphone/src -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources/i386 -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources -c /Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBLoginDialog.m -o /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBLoginDialog.o0#
+
+CCompileC build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBPermissionDialog.o /Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBPermissionDialog.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s288413732.236869
+e288413732.571808
+r1
+xCompileC
+xbuild/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBPermissionDialog.o
+x/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBPermissionDialog.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@96"Compile /Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBPermissionDialog.m288413732#288413732#0(0"0(0#0#88"/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBPermissionDialog.m4300903632#1803"    cd /Users/Jullie/Desktop/iPhone-Projects/MKKit    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-generated-files.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-own-target-headers.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-all-target-headers.hmap -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-project-headers.hmap -F/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator/include -I../../iPhone-projects/fbconnect-iphone/src -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources/i386 -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources -c /Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBPermissionDialog.m -o /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBPermissionDialog.o0#
+
+CCompileC build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBRequest.o /Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBRequest.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s288413730.923357
+e288413731.534320
+r1
+xCompileC
+xbuild/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBRequest.o
+x/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBRequest.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@87"Compile /Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBRequest.m288413730#288413731#0(0"0(0#0#79"/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBRequest.m4300903632#1785"    cd /Users/Jullie/Desktop/iPhone-Projects/MKKit    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-generated-files.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-own-target-headers.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-all-target-headers.hmap -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-project-headers.hmap -F/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator/include -I../../iPhone-projects/fbconnect-iphone/src -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources/i386 -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources -c /Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBRequest.m -o /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBRequest.o0#
+
+CCompileC build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBSession.o /Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBSession.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s288413730.629433
+e288413731.188505
+r1
+xCompileC
+xbuild/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBSession.o
+x/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBSession.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@87"Compile /Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBSession.m288413730#288413731#0(0"0(0#0#79"/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBSession.m4300903632#1785"    cd /Users/Jullie/Desktop/iPhone-Projects/MKKit    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-generated-files.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-own-target-headers.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-all-target-headers.hmap -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-project-headers.hmap -F/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator/include -I../../iPhone-projects/fbconnect-iphone/src -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources/i386 -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources -c /Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBSession.m -o /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBSession.o0#
+
+CCompileC build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBXMLHandler.o /Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBXMLHandler.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s288413731.188648
+e288413731.614575
+r1
+xCompileC
+xbuild/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBXMLHandler.o
+x/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBXMLHandler.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@90"Compile /Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBXMLHandler.m288413731#288413731#0(0"0(0#0#82"/Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBXMLHandler.m4300903632#1791"    cd /Users/Jullie/Desktop/iPhone-Projects/MKKit    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-generated-files.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-own-target-headers.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-all-target-headers.hmap -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-project-headers.hmap -F/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator/include -I../../iPhone-projects/fbconnect-iphone/src -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources/i386 -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources -c /Users/Jullie/Desktop/iPhone-Projects/MKKit/../fbconnect-iphone/src/FBXMLHandler.m -o /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/FBXMLHandler.o0#
+
+CCompileC build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKAlerts.o /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKAlerts.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s288413805.640151
+e288413805.925798
+r1
+xCompileC
+xbuild/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKAlerts.o
+x/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKAlerts.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@62"Compile /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKAlerts.m288413805#288413805#0(0"0(0#0#54"/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKAlerts.m4300903632#1759"    cd /Users/Jullie/Desktop/iPhone-Projects/MKKit    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-generated-files.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-own-target-headers.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-all-target-headers.hmap -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-project-headers.hmap -F/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator/include -I../../iPhone-projects/fbconnect-iphone/src -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources/i386 -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources -c /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKAlerts.m -o /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKAlerts.o0#
+
+CCompileC build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKAnimations.o /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKAnimations.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s288413728.623655
+e288413729.222216
+r1
+xCompileC
+xbuild/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKAnimations.o
+x/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKAnimations.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@66"Compile /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKAnimations.m288413728#288413729#0(0"0(0#0#58"/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKAnimations.m4300903632#1767"    cd /Users/Jullie/Desktop/iPhone-Projects/MKKit    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-generated-files.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-own-target-headers.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-all-target-headers.hmap -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-project-headers.hmap -F/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator/include -I../../iPhone-projects/fbconnect-iphone/src -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources/i386 -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources -c /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKAnimations.m -o /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKAnimations.o0#
+
+CCompileC build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKClock.o /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKClock.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s288413729.775904
+e288413729.997695
+r1
+xCompileC
+xbuild/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKClock.o
+x/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKClock.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@61"Compile /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKClock.m288413729#288413729#0(0"0(0#0#53"/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKClock.m4300903632#1757"    cd /Users/Jullie/Desktop/iPhone-Projects/MKKit    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-generated-files.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-own-target-headers.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-all-target-headers.hmap -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-project-headers.hmap -F/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator/include -I../../iPhone-projects/fbconnect-iphone/src -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources/i386 -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources -c /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKClock.m -o /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKClock.o0#
+
+CCompileC build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKDiscriptionCell.o /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKDiscriptionCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s288413729.948384
+e288413730.254447
+r1
+xCompileC
+xbuild/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKDiscriptionCell.o
+x/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKDiscriptionCell.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@71"Compile /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKDiscriptionCell.m288413729#288413730#0(0"0(0#0#63"/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKDiscriptionCell.m4300903632#1777"    cd /Users/Jullie/Desktop/iPhone-Projects/MKKit    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-generated-files.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-own-target-headers.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-all-target-headers.hmap -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-project-headers.hmap -F/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator/include -I../../iPhone-projects/fbconnect-iphone/src -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources/i386 -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources -c /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKDiscriptionCell.m -o /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKDiscriptionCell.o0#
+
+CCompileC build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKErrorHandeling.o /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKErrorHandeling.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s288413728.952692
+e288413729.586264
+r1
+xCompileC
+xbuild/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKErrorHandeling.o
+x/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKErrorHandeling.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@70"Compile /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKErrorHandeling.m288413728#288413729#0(0"0(0#0#62"/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKErrorHandeling.m4300903632#1775"    cd /Users/Jullie/Desktop/iPhone-Projects/MKKit    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-generated-files.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-own-target-headers.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-all-target-headers.hmap -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-project-headers.hmap -F/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator/include -I../../iPhone-projects/fbconnect-iphone/src -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources/i386 -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources -c /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKErrorHandeling.m -o /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKErrorHandeling.o0#
+
+CCompileC build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKGameScoresCellView.o /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKGameScoresCellView.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s288413730.254614
+e288413730.627909
+r1
+xCompileC
+xbuild/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKGameScoresCellView.o
+x/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKGameScoresCellView.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@74"Compile /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKGameScoresCellView.m288413730#288413730#0(0"0(0#0#66"/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKGameScoresCellView.m4300903632#1783"    cd /Users/Jullie/Desktop/iPhone-Projects/MKKit    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-generated-files.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-own-target-headers.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-all-target-headers.hmap -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-project-headers.hmap -F/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator/include -I../../iPhone-projects/fbconnect-iphone/src -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources/i386 -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources -c /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKGameScoresCellView.m -o /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKGameScoresCellView.o0#
+
+CCompileC build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKMath.o /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKMath.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s288413729.997819
+e288413730.176776
+r1
+xCompileC
+xbuild/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKMath.o
+x/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKMath.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@60"Compile /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKMath.m288413729#288413730#0(0"0(0#0#52"/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKMath.m4300903632#1755"    cd /Users/Jullie/Desktop/iPhone-Projects/MKKit    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-generated-files.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-own-target-headers.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-all-target-headers.hmap -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-project-headers.hmap -F/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator/include -I../../iPhone-projects/fbconnect-iphone/src -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources/i386 -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources -c /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKMath.m -o /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKMath.o0#
+
+CCompileC build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKPickerControlledCell.o /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKPickerControlledCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s290726531.150140
+e290726531.630822
+r1
+xCompileC
+xbuild/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKPickerControlledCell.o
+x/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKPickerControlledCell.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@76"Compile /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKPickerControlledCell.m290726531#290726531#0(0"0(0#0#68"/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKPickerControlledCell.m4300885448#1787"    cd /Users/Jullie/Desktop/iPhone-Projects/MKKit    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-generated-files.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-own-target-headers.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-all-target-headers.hmap -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-project-headers.hmap -F/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator/include -I../../iPhone-projects/fbconnect-iphone/src -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources/i386 -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources -c /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKPickerControlledCell.m -o /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKPickerControlledCell.o0#
+
+CCompileC build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKRandoms.o /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKRandoms.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s288413729.222332
+e288413729.775780
+r1
+xCompileC
+xbuild/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKRandoms.o
+x/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKRandoms.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@63"Compile /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKRandoms.m288413729#288413729#0(0"0(0#0#55"/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKRandoms.m4300903632#1761"    cd /Users/Jullie/Desktop/iPhone-Projects/MKKit    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-generated-files.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-own-target-headers.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-all-target-headers.hmap -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-project-headers.hmap -F/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator/include -I../../iPhone-projects/fbconnect-iphone/src -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources/i386 -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources -c /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKRandoms.m -o /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKRandoms.o0#
+
+CCompileC build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKSounds.o /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKSounds.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s288413732.571921
+e288413732.818255
+r1
+xCompileC
+xbuild/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKSounds.o
+x/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKSounds.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@62"Compile /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKSounds.m288413732#288413732#0(0"0(0#0#54"/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKSounds.m4300903632#1759"    cd /Users/Jullie/Desktop/iPhone-Projects/MKKit    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-generated-files.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-own-target-headers.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-all-target-headers.hmap -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-project-headers.hmap -F/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator/include -I../../iPhone-projects/fbconnect-iphone/src -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources/i386 -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources -c /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKSounds.m -o /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKSounds.o0#
+
+CCompileC build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKStrings.o /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKStrings.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s288413728.625088
+e288413728.952567
+r1
+xCompileC
+xbuild/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKStrings.o
+x/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKStrings.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@63"Compile /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKStrings.m288413728#288413728#0(0"0(0#0#55"/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKStrings.m4300903632#1761"    cd /Users/Jullie/Desktop/iPhone-Projects/MKKit    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-generated-files.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-own-target-headers.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-all-target-headers.hmap -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-project-headers.hmap -F/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator/include -I../../iPhone-projects/fbconnect-iphone/src -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources/i386 -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources -c /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKStrings.m -o /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKStrings.o0#
+
+CCompileC build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKSwitchCell.o /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKSwitchCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKTableCell.o /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKTableCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s292101276.358803
+e292101276.889114
+r1
+xCompileC
+xbuild/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKTableCell.o
+x/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKTableCell.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@65"Compile /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKTableCell.m292101276#292101276#0(0"0(0#0#57"/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKTableCell.m4300885448#1765"    cd /Users/Jullie/Desktop/iPhone-Projects/MKKit    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-generated-files.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-own-target-headers.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-all-target-headers.hmap -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-project-headers.hmap -F/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator/include -I../../iPhone-projects/fbconnect-iphone/src -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources/i386 -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources -c /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKTableCell.m -o /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKTableCell.o0#
+
+CCompileC build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKTextEntryCell-395E22D46B9C6C5A.o /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKTextEntryCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKTextEntryCell.o /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKTextEntryCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s290710125.632797
+e290710126.093730
+r1
+xCompileC
+xbuild/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKTextEntryCell.o
+x/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKTextEntryCell.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@69"Compile /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKTextEntryCell.m290710125#290710126#0(0"0(0#0#61"/Users/Jullie/Desktop/iPhone-Projects/MKKit/MKTextEntryCell.m4300885448#1773"    cd /Users/Jullie/Desktop/iPhone-Projects/MKKit    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-generated-files.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-own-target-headers.hmap -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-all-target-headers.hmap -iquote /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/MKKit-project-headers.hmap -F/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator/include -I../../iPhone-projects/fbconnect-iphone/src -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources/i386 -I/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/DerivedSources -c /Users/Jullie/Desktop/iPhone-Projects/MKKit/MKTextEntryCell.m -o /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKTextEntryCell.o0#
+
+CLibtool /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator/libMKKit.a normal i386
+s292101276.889370
+e292101276.973889
+r1
+xLibtool
+x/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator/libMKKit.a
+xnormal
+xi386
+o/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/libtool: -dynamic not specified the following flags are invalid: -ObjC 
+lSLF07#2@60"Libtool build/Release-iphonesimulator/libMKKit.a normal i386292101276#292101276#0(136"/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/libtool: -dynamic not specified the following flags are invalid: -ObjC 0(0#0#0"4300885448#845"    cd /Users/Jullie/Desktop/iPhone-Projects/MKKit    setenv MACOSX_DEPLOYMENT_TARGET 10.5    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/libtool -static -arch_only i386 -syslibroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -L/Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator -filelist /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/MKKit.build/Release-iphonesimulator/MKKit.build/Objects-normal/i386/MKKit.LinkFileList -ObjC -framework CoreGraphics -framework UIKit -framework QuartzCore -framework CoreData -framework AVFoundation -o /Users/Jullie/Desktop/iPhone-Projects/MKKit/build/Release-iphonesimulator/libMKKit.a0#
+

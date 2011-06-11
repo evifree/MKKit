@@ -1,0 +1,269 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>MKIAPDelegate Protocol Reference</title>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+		<meta name="generator" content="appledoc 2.0b3" />
+	</head>
+	<body>
+		<article>
+			<div class="main-navigation navigation-top">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="header">
+				<div class="section-header">
+					<h1 class="title title-header">MKIAPDelegate Protocol Reference</h1>
+				</div>		
+			</div>
+			<div id="container">	
+				
+				<div class="section section-specification"><table cellspacing="0"><tbody>
+					<tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">MKIAPController.h</td>
+</tr>
+					</tbody></table></div>
+				
+				
+				
+				<div class="section section-overview">
+					<h2 class="subtitle subtitle-overview">Overview</h2>
+					
+<p> The <a href="MKIAPDelegate.html">MKIAPDelegate</a> defines methods to recieve data from inApp Purchase requests. The delegate needs to be used only if you are using the instace methods of MKIAPController. The factory methods will not call methods on the delegate. </p>
+
+				</div>
+				
+				
+				
+				
+				<div class="section section-tasks">
+					<h2 class="subtitle subtitle-tasks">Tasks</h2>
+					
+					
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/didRecieveResponse:">- didRecieveResponse:</a></code>
+		<span class="tooltip"> Called when a response is recieved by the MKIAPController. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/didCompleteTransaction:">- didCompleteTransaction:</a></code>
+		<span class="tooltip"> Called when a transaction is completed by the MKIAPController. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/didRestorePurchases">- didRestorePurchases</a></code>
+		<span class="tooltip"> Called when purchase are restored. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/didError:">- didError:</a></code>
+		<span class="tooltip"> Called if there is an error during a request. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/didCompleteTransaction:" title="didCompleteTransaction:"></a>
+	<h3 class="subsubtitle method-title">didCompleteTransaction:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Called when a transaction is completed by the MKIAPController. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)didCompleteTransaction:(SKPaymentTransaction *)<em>transaction</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>transaction</em></dt>
+			<dd> the payment transaction that was completed. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKIAPController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/didError:" title="didError:"></a>
+	<h3 class="subsubtitle method-title">didError:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Called if there is an error during a request. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)didError:(NSError *)<em>error</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd> the error that occoured. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKIAPController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/didRecieveResponse:" title="didRecieveResponse:"></a>
+	<h3 class="subsubtitle method-title">didRecieveResponse:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Called when a response is recieved by the MKIAPController. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)didRecieveResponse:(SKProductsResponse *)<em>response</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>response</em></dt>
+			<dd> the response that was recieved </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKIAPController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/didRestorePurchases" title="didRestorePurchases"></a>
+	<h3 class="subsubtitle method-title">didRestorePurchases</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Called when purchase are restored. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)didRestorePurchases</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKIAPController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+				
+				
+			</div>
+			<div class="main-navigation navigation-bottom">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="footer">
+				<hr />
+				<div class="footer-copyright">
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-06-09)</span><br />
+					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
+				</div>
+			</div>
+		</article>
+	</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>MKViewDelegate Protocol Reference</title>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+		<meta name="generator" content="appledoc 2.0b3" />
+	</head>
+	<body>
+		<article>
+			<div class="main-navigation navigation-top">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="header">
+				<div class="section-header">
+					<h1 class="title title-header">MKViewDelegate Protocol Reference</h1>
+				</div>		
+			</div>
+			<div id="container">	
+				
+				<div class="section section-specification"><table cellspacing="0"><tbody>
+					<tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">MKViewDelegate.h</td>
+</tr>
+					</tbody></table></div>
+				
+				
+				
+				<div class="section section-overview">
+					<h2 class="subtitle subtitle-overview">Overview</h2>
+					
+<p> The <a href="MKViewDelegate.html">MKViewDelegate</a> protocol provides delegate methods for <a href="../Classes/MKView.html">MKView</a> and its subclasses </p>
+
+				</div>
+				
+				
+				
+				
+				<div class="section section-tasks">
+					<h2 class="subtitle subtitle-tasks">Tasks</h2>
+					
+					<h3 class="subsubtitle task-title">Add/Remove methods</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/shouldRemoveView:">- shouldRemoveView:</a></code>
+		<span class="tooltip"> Some <a href="../Classes/MKView.html">MKView</a> objects will automatically remove themselfs after a certain action. This method can be used to set if the view should be removed or not. If this method is not used the <a href="../Classes/MKView.html">MKView</a> object follows its default behaivor. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/MKViewDidAppear:">- MKViewDidAppear:</a></code>
+		<span class="tooltip"> Called after a view is added to the screen </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">MKPopOverView Methods</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/popOverView:selectedCellAtIndex:">- popOverView:selectedCellAtIndex:</a></code>
+		<span class="tooltip"> Called when a cell of the popover view is selected. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/MKViewDidAppear:" title="MKViewDidAppear:"></a>
+	<h3 class="subsubtitle method-title">MKViewDidAppear:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Called after a view is added to the screen </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)MKViewDidAppear:(MKView *)<em>view</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>view</em></dt>
+			<dd> the <a href="../Classes/MKView.html">MKView</a> that was added. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKViewDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/popOverView:selectedCellAtIndex:" title="popOverView:selectedCellAtIndex:"></a>
+	<h3 class="subsubtitle method-title">popOverView:selectedCellAtIndex:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Called when a cell of the popover view is selected. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)popOverView:(MKView *)<em>view</em> selectedCellAtIndex:(NSInteger)<em>index</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>view</em></dt>
+			<dd> the MKKView that recived the selection. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>index</em></dt>
+			<dd> the index of the selected cell. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKViewDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/shouldRemoveView:" title="shouldRemoveView:"></a>
+	<h3 class="subsubtitle method-title">shouldRemoveView:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Some <a href="../Classes/MKView.html">MKView</a> objects will automatically remove themselfs after a certain action. This method can be used to set if the view should be removed or not. If this method is not used the <a href="../Classes/MKView.html">MKView</a> object follows its default behaivor. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (BOOL)shouldRemoveView:(MKView *)<em>view</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>view</em></dt>
+			<dd> the <a href="../Classes/MKView.html">MKView</a> that is asking to be removed. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKViewDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+				
+				
+			</div>
+			<div class="main-navigation navigation-bottom">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="footer">
+				<hr />
+				<div class="footer-copyright">
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-06-09)</span><br />
+					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
+				</div>
+			</div>
+		</article>
+	</body>
+</html>

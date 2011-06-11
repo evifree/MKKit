@@ -1,0 +1,452 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>MKCoreData Class Reference</title>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+		<meta name="generator" content="appledoc 2.0b3" />
+	</head>
+	<body>
+		<article>
+			<div class="main-navigation navigation-top">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="header">
+				<div class="section-header">
+					<h1 class="title title-header">MKCoreData Class Reference</h1>
+				</div>		
+			</div>
+			<div id="container">	
+				
+				<div class="section section-specification"><table cellspacing="0"><tbody>
+					<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">MKCoreData.h</td>
+</tr>
+					</tbody></table></div>
+				
+				
+				
+				<div class="section section-overview">
+					<h2 class="subtitle subtitle-overview">Overview</h2>
+					
+<p> The <a href="MKCoreData.html">MKCoreData</a> class is a singleton instance used to work with Core Data thoughout an application. A NSManagedObject context needs to set before this object can preform any methods. You do this by calling <a href="#//api/name/sharedDataWithContext:">sharedDataWithContext:</a> <pre>[[MKCoreData sharedData] sharedDataWithContext:myContext];</pre></p>
+
+				</div>
+				
+				
+				
+				
+				<div class="section section-tasks">
+					<h2 class="subtitle subtitle-tasks">Tasks</h2>
+					
+					<h3 class="subsubtitle task-title">Creating</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sharedData">+ sharedData</a></code>
+		<span class="tooltip"> Returns the shared instance MKCoreData. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Removing</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/removeSharedData">- removeSharedData</a></code>
+		<span class="tooltip"> Releases the singleton instance from memory. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Context</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sharedDataWithContext:">+ sharedDataWithContext:</a></code>
+		<span class="tooltip"> Creates the singleton object on sets the default managed object context. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getContext">- getContext</a></code>
+		<span class="tooltip"> Returns the managed object context that was set by sharedDataWithContext:. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Getting Data Sets</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/fetchedResultsForEntity:sortedBy:accending:">- fetchedResultsForEntity:sortedBy:accending:</a></code>
+		<span class="tooltip"> Returns a mutable array for the given entity. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/fetchResultsForEntity:sortedBy:accending:result:">- fetchResultsForEntity:sortedBy:accending:result:</a></code>
+		<span class="tooltip"> Preforms a fech for the given entity. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Code Blocks</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/fechCompletionBlock"> fechCompletionBlock</a></code>
+		<span class="tooltip"> the code to be preformed when a fech is complete. You should not set this property directly. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+				</div>
+				
+				
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Class Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/sharedData" title="sharedData"></a>
+	<h3 class="subsubtitle method-title">sharedData</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Returns the shared instance MKCoreData. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (MKCoreData *)sharedData</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection arguments-section exceptions">
+		<h4 class="method-subtitle exception-title">Exceptions</h4>
+		
+		<dl class="argument-def exception-def">
+			<dt><em>context=nil</em></dt>
+			<dd> Missing Context rasied expetion if no context has been set. Set the context by calling the sharedDataWithContext class method. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKCoreData.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/sharedDataWithContext:" title="sharedDataWithContext:"></a>
+	<h3 class="subsubtitle method-title">sharedDataWithContext:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Creates the singleton object on sets the default managed object context. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)sharedDataWithContext:(NSManagedObjectContext *)<em>context</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>context</em></dt>
+			<dd> An instance if NSManagedObjectContext. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKCoreData.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/fetchResultsForEntity:sortedBy:accending:result:" title="fetchResultsForEntity:sortedBy:accending:result:"></a>
+	<h3 class="subsubtitle method-title">fetchResultsForEntity:sortedBy:accending:result:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Preforms a fech for the given entity. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)fetchResultsForEntity:(NSString *)<em>entity</em> sortedBy:(NSString *)<em>attribute</em> accending:(BOOL)<em>accending</em> result:(MKFechCompletionBlock)<em>result</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>entity</em></dt>
+			<dd> The name of the entity. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>accending</em></dt>
+			<dd> Tells how to sort the array. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sortedBy</em></dt>
+			<dd> The attribute to sort the array by. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>code</em></dt>
+			<dd> block to preform when the fech is complete </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKCoreData.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/fetchedResultsForEntity:sortedBy:accending:" title="fetchedResultsForEntity:sortedBy:accending:"></a>
+	<h3 class="subsubtitle method-title">fetchedResultsForEntity:sortedBy:accending:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Returns a mutable array for the given entity. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSMutableArray *)fetchedResultsForEntity:(NSString *)<em>entity</em> sortedBy:(NSString *)<em>attribute</em> accending:(BOOL)<em>accendeing</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>entity</em></dt>
+			<dd> The name of the entity. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sortedBy</em></dt>
+			<dd> The attribute to sort the array by. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>accending</em></dt>
+			<dd> Tells how to sort the array. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKCoreData.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/getContext" title="getContext"></a>
+	<h3 class="subsubtitle method-title">getContext</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Returns the managed object context that was set by sharedDataWithContext:. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSManagedObjectContext *)getContext</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKCoreData.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/removeSharedData" title="removeSharedData"></a>
+	<h3 class="subsubtitle method-title">removeSharedData</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Releases the singleton instance from memory. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)removeSharedData</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKCoreData.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Properties</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/fechCompletionBlock" title="fechCompletionBlock"></a>
+	<h3 class="subsubtitle method-title">fechCompletionBlock</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> the code to be preformed when a fech is complete. You should not set this property directly. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) MKFechCompletionBlock fechCompletionBlock</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKCoreData.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+			</div>
+			<div class="main-navigation navigation-bottom">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="footer">
+				<hr />
+				<div class="footer-copyright">
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-06-09)</span><br />
+					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
+				</div>
+			</div>
+		</article>
+	</body>
+</html>

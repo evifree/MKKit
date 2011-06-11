@@ -1,0 +1,289 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>MKInputPrompt Class Reference</title>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+		<meta name="generator" content="appledoc 2.0b3" />
+	</head>
+	<body>
+		<article>
+			<div class="main-navigation navigation-top">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="header">
+				<div class="section-header">
+					<h1 class="title title-header">MKInputPrompt Class Reference</h1>
+				</div>		
+			</div>
+			<div id="container">	
+				
+				<div class="section section-specification"><table cellspacing="0"><tbody>
+					<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value"><a href="MKPromptView.html">MKPromptView</a> : <a href="MKView.html">MKView</a> : UIView</td>
+</tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">UITextFieldDelegate</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">MKInputPrompt.h</td>
+</tr>
+					</tbody></table></div>
+				
+				
+				
+				<div class="section section-overview">
+					<h2 class="subtitle subtitle-overview">Overview</h2>
+					
+<p> The <a href="MKInputPrompt.html">MKInputPrompt</a> class provides a pop-over text input prompt. The input prompt includes space for a message to the user. <a href="MKInputPrompt.html">MKInputPrompt</a> will automatically adjust it&apos;s hieght to fit the entire message. </p>
+
+				</div>
+				
+				
+				
+				
+				<div class="section section-tasks">
+					<h2 class="subtitle subtitle-tasks">Tasks</h2>
+					
+					<h3 class="subsubtitle task-title">Creating</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithMessage:">- initWithMessage:</a></code>
+		<span class="tooltip"> Returns and initalized instance of MKInputPrompt. When this method is use it is your responsiblity to display/remove the prompt, and handel the inputed text. For automatic display and input handeling use showWithMessage:onDone:. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/showWithMessage:onDone:">+ showWithMessage:onDone:</a></code>
+		<span class="tooltip"> Creates and displays an instance of <a href="MKInputPrompt.html">MKInputPrompt</a> with an onDone code block. When using this method the view is displayed using <code>MKViewAnimationTypeMoveInFromTop</code>. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Elements</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/textField"> textField</a></code>
+		<span class="tooltip"> The text field on the prompt. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Code Blocks</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/onDoneBlock"> onDoneBlock</a></code>
+		<span class="tooltip"> The completion code block. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+				</div>
+				
+				
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Class Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/showWithMessage:onDone:" title="showWithMessage:onDone:"></a>
+	<h3 class="subsubtitle method-title">showWithMessage:onDone:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Creates and displays an instance of <a href="MKInputPrompt.html">MKInputPrompt</a> with an onDone code block. When using this method the view is displayed using <code>MKViewAnimationTypeMoveInFromTop</code>. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)showWithMessage:(NSString *)<em>message</em> onDone:(MKTextFieldIsDoneBlock)<em>completionBlock</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>message</em></dt>
+			<dd> the message the message to display to the user. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionBlock</em></dt>
+			<dd> the block of code to preform when the Done button is touched. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKInputPrompt.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/initWithMessage:" title="initWithMessage:"></a>
+	<h3 class="subsubtitle method-title">initWithMessage:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Returns and initalized instance of MKInputPrompt. When this method is use it is your responsiblity to display/remove the prompt, and handel the inputed text. For automatic display and input handeling use showWithMessage:onDone:. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithMessage:(NSString *)<em>message</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>message</em></dt>
+			<dd> the message the message to display to the user. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKInputPrompt.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Properties</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/onDoneBlock" title="onDoneBlock"></a>
+	<h3 class="subsubtitle method-title">onDoneBlock</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The completion code block. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) MKTextFieldIsDoneBlock onDoneBlock</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKInputPrompt.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/textField" title="textField"></a>
+	<h3 class="subsubtitle method-title">textField</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The text field on the prompt. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UITextField *textField</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKInputPrompt.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+			</div>
+			<div class="main-navigation navigation-bottom">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="footer">
+				<hr />
+				<div class="footer-copyright">
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-06-09)</span><br />
+					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
+				</div>
+			</div>
+		</article>
+	</body>
+</html>

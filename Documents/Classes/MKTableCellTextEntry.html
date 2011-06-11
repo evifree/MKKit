@@ -1,0 +1,247 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>MKTableCellTextEntry Class Reference</title>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+		<meta name="generator" content="appledoc 2.0b3" />
+	</head>
+	<body>
+		<article>
+			<div class="main-navigation navigation-top">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="header">
+				<div class="section-header">
+					<h1 class="title title-header">MKTableCellTextEntry Class Reference</h1>
+				</div>		
+			</div>
+			<div id="container">	
+				
+				<div class="section section-specification"><table cellspacing="0"><tbody>
+					<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value"><a href="MKTableCell.html">MKTableCell</a> : UITableViewCell</td>
+</tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">UITextFieldDelegate</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">MKTableCellTextEntry.h</td>
+</tr>
+					</tbody></table></div>
+				
+				
+				
+				<div class="section section-overview">
+					<h2 class="subtitle subtitle-overview">Overview</h2>
+					
+<p> The <a href="MKTableCellTextEntry.html">MKTableCellTextEntry</a> is a subclass of MKTableCell. It returns a table cell with a that can be used for text entry. The keyboard will appear when the user taps anywhere on the cell. It is set by default dismiss the keyboard when the Done button is touched. </p>
+
+<p> The MKTableCellTextEnty and <a href="MKTableCellPickerControlled.html">MKTableCellPickerControlled</a> class work together to ensure that a picker does not display ontop of a keyboard and vice versa. </p>
+
+<p> This class listens for the <code>PICKER_DID_SHOW_NOTIFICATION</code> and tells the text field to resign the frist responder when it is recivied. </p>
+
+<p> This class sends a <code>PICKER_SHOULD_DISMISS_NOTIFICATION</code> when the text field becomes the first responder. </p>
+
+<p> You do not need to set up validation of the <a href="MKTextField.html">MKTextField</a> of this feild. Validation is already built in to this class set the validationType property to the desired type. </p>
+
+				</div>
+				
+				
+				
+				
+				<div class="section section-tasks">
+					<h2 class="subtitle subtitle-tasks">Tasks</h2>
+					
+					<h3 class="subsubtitle task-title">Creating</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithType:reuseIdentifier:">- initWithType:reuseIdentifier:</a></code>
+		<span class="tooltip"> Returns an initalized instance of MKTableCellTextEntry. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Cell Elements</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/theTextField"> theTextField</a></code>
+		<span class="tooltip"> A reference to the <a href="MKTextField.html">MKTextField</a></span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/textEntryType"> textEntryType</a></code>
+		<span class="tooltip"> The type of Text Entry Cell </span>
+	</span>
+	
+</li>
+					</ul>
+					
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/initWithType:reuseIdentifier:" title="initWithType:reuseIdentifier:"></a>
+	<h3 class="subsubtitle method-title">initWithType:reuseIdentifier:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Returns an initalized instance of MKTableCellTextEntry. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithType:(MKTextEntryCellType)<em>cellType</em> reuseIdentifier:(NSString *)<em>reuseIdentifier</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>cellType</em></dt>
+			<dd> the type of cell that will be initalized </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>resuseIdentifier</em></dt>
+			<dd> the resuse identifier for the cell </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		
+		<p> Returns an initalized instance of MKTableCellTextEntry. </p>
+		
+		<p> <a href="MKTableCellTextEntry.html">MKTableCellTextEntry</a> has two built in types: <ul><li> <code>MKTextEntryCellTypeStandard</code>: a cell with a lable on the left and a text field on the right </li><li> <code>MKTextEntryCellTypeFull</code>: a cell with a text field and a pen icon </li></ul></p>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCellTextEntry.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Properties</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/textEntryType" title="textEntryType"></a>
+	<h3 class="subsubtitle method-title">textEntryType</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The type of Text Entry Cell </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) MKTextEntryCellType textEntryType</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCellTextEntry.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/theTextField" title="theTextField"></a>
+	<h3 class="subsubtitle method-title">theTextField</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> A reference to the <a href="MKTextField.html">MKTextField</a></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) MKTextField *theTextField</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCellTextEntry.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+			</div>
+			<div class="main-navigation navigation-bottom">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="footer">
+				<hr />
+				<div class="footer-copyright">
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-06-09)</span><br />
+					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
+				</div>
+			</div>
+		</article>
+	</body>
+</html>

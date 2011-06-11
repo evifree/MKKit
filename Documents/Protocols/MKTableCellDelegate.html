@@ -1,0 +1,426 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>MKTableCellDelegate Protocol Reference</title>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+		<meta name="generator" content="appledoc 2.0b3" />
+	</head>
+	<body>
+		<article>
+			<div class="main-navigation navigation-top">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="header">
+				<div class="section-header">
+					<h1 class="title title-header">MKTableCellDelegate Protocol Reference</h1>
+				</div>		
+			</div>
+			<div id="container">	
+				
+				<div class="section section-specification"><table cellspacing="0"><tbody>
+					<tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">MKTableCellDelegate.h</td>
+</tr>
+					</tbody></table></div>
+				
+				
+				
+				<div class="section section-overview">
+					<h2 class="subtitle subtitle-overview">Overview</h2>
+					
+<p> The <a href="MKTableCellDelegate.html">MKTableCellDelegate</a> is designed to work with an NSDictonary object. It uses the key property of <a href="../Classes/MKTableCell.html">MKTableCell</a> to identify input changes and notify the delegate of them. This allows you to quickly process large sets of data input from the user. </p>
+
+<p> Here is an example of how it works: <pre>- (void)valueDidChange:(id)value forKey:(NSString *)aKey {
+	[myDictionary setObject:value forKey:aKey];
+}</pre></p>
+
+				</div>
+				
+				
+				
+				
+				<div class="section section-tasks">
+					<h2 class="subtitle subtitle-tasks">Tasks</h2>
+					
+					<h3 class="subsubtitle task-title">Input Changes</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/valueDidChange:forKey:">- valueDidChange:forKey:</a></code>
+		<span class="tooltip"> Called when a the Value of a controled object is changed. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Responding to Events</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/didSelectCell:forKey:">- didSelectCell:forKey:</a></code>
+		<span class="tooltip"> Called when the cell is selected. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/didTapAccessoryForKey:">- didTapAccessoryForKey:</a></code>
+		<span class="tooltip"> Called when the cells Accessory View is touched. <p class="warning"> Note * This method is called when using one of the MKTableCellAccessoryType constances. If your using one of the UITableCellView accessory use those methods to process touches. </p></span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">MKTableCellTextEntry Methods</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/textFieldIsFirstResponder:">- textFieldIsFirstResponder:</a></code>
+		<span class="tooltip"> Called when a the <a href="../Classes/MKTextField.html">MKTextField</a> object of becomes the first responder. @warning Note * This method is only called by the <a href="../Classes/MKTableCellTextEntry.html">MKTableCellTextEntry</a> class. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/didAddPicker:forKey:">- didAddPicker:forKey:</a></code>
+		<span class="tooltip"> Called after a picker has been added to the applications keyWindow. <p class="warning"> Note * This medthod is only called by the <a href="../Classes/MKTableCellPickerControlled.html">MKTableCellPickerControlled</a> class. </p></span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">MKTableCellPickerConrolled Methods</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/willRemovePicker:forKey:">- willRemovePicker:forKey:</a></code>
+		<span class="tooltip"> Called before a picker will be removed from the applications keyWindow. <p class="warning"> Note * This medthod is only called by the <a href="../Classes/MKTableCellPickerControlled.html">MKTableCellPickerControlled</a> class. </p></span>
+	</span>
+	
+</li>
+					</ul>
+					
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/didAddPicker:forKey:" title="didAddPicker:forKey:"></a>
+	<h3 class="subsubtitle method-title">didAddPicker:forKey:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Called after a picker has been added to the applications keyWindow. <p class="warning"> Note * This medthod is only called by the <a href="../Classes/MKTableCellPickerControlled.html">MKTableCellPickerControlled</a> class. </p></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)didAddPicker:(UIView *)<em>thePicker</em> forKey:(NSString *)<em>aKey</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>thePicker</em></dt>
+			<dd> The view that holds the specified picker. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aKey</em></dt>
+			<dd> A unique NSString that identifies the cell. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCellDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/didSelectCell:forKey:" title="didSelectCell:forKey:"></a>
+	<h3 class="subsubtitle method-title">didSelectCell:forKey:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Called when the cell is selected. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)didSelectCell:(MKTableCell *)<em>cell</em> forKey:(NSString *)<em>aKey</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>cell</em></dt>
+			<dd> the cell that was touched </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aKey</em></dt>
+			<dd> the key of the cell that was touched </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCellDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/didTapAccessoryForKey:" title="didTapAccessoryForKey:"></a>
+	<h3 class="subsubtitle method-title">didTapAccessoryForKey:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Called when the cells Accessory View is touched. <p class="warning"> Note * This method is called when using one of the MKTableCellAccessoryType constances. If your using one of the UITableCellView accessory use those methods to process touches. </p></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)didTapAccessoryForKey:(NSString *)<em>aKey</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aKey</em></dt>
+			<dd> A unique NSString that identifies the cell. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCellDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/textFieldIsFirstResponder:" title="textFieldIsFirstResponder:"></a>
+	<h3 class="subsubtitle method-title">textFieldIsFirstResponder:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Called when a the <a href="../Classes/MKTextField.html">MKTextField</a> object of becomes the first responder. @warning Note * This method is only called by the <a href="../Classes/MKTableCellTextEntry.html">MKTableCellTextEntry</a> class. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)textFieldIsFirstResponder:(UITextField *)<em>textField</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>textField</em></dt>
+			<dd> The text field that has become the first responder. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCellDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/valueDidChange:forKey:" title="valueDidChange:forKey:"></a>
+	<h3 class="subsubtitle method-title">valueDidChange:forKey:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Called when a the Value of a controled object is changed. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)valueDidChange:(id)<em>value</em> forKey:(NSString *)<em>aKey</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>value</em></dt>
+			<dd> An object represnting the new value of the control objcet. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aKey</em></dt>
+			<dd> A unique NSString that identifies the cell. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		
+		<p> Called when a the Value of a controled object is changed. </p>
+		
+		<p> All of the sublcasses that use any type of user input contols call this method whenever the input value is changed. It is imporant that the key property of <a href="../Classes/MKTableCell.html">MKTableCell</a> is set for this method to work propery. <p class="warning"> Note * If a contol gives an integer or bool for its value, the value is converted into an NSNumber object before this method is called. </p></p>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCellDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/willRemovePicker:forKey:" title="willRemovePicker:forKey:"></a>
+	<h3 class="subsubtitle method-title">willRemovePicker:forKey:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Called before a picker will be removed from the applications keyWindow. <p class="warning"> Note * This medthod is only called by the <a href="../Classes/MKTableCellPickerControlled.html">MKTableCellPickerControlled</a> class. </p></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)willRemovePicker:(UIView *)<em>thePicker</em> forKey:(NSString *)<em>aKey</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>thePicker</em></dt>
+			<dd> The view that holds the specified picker. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aKey</em></dt>
+			<dd> A unique NSString that identifies the cell. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCellDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+				
+				
+			</div>
+			<div class="main-navigation navigation-bottom">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="footer">
+				<hr />
+				<div class="footer-copyright">
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-06-09)</span><br />
+					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
+				</div>
+			</div>
+		</article>
+	</body>
+</html>

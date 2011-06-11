@@ -1,0 +1,556 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>MKTextField Class Reference</title>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+		<meta name="generator" content="appledoc 2.0b3" />
+	</head>
+	<body>
+		<article>
+			<div class="main-navigation navigation-top">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="header">
+				<div class="section-header">
+					<h1 class="title title-header">MKTextField Class Reference</h1>
+				</div>		
+			</div>
+			<div id="container">	
+				
+				<div class="section section-specification"><table cellspacing="0"><tbody>
+					<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">UITextField</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">MKTextField.h</td>
+</tr>
+					</tbody></table></div>
+				
+				
+				
+				<div class="section section-overview">
+					<h2 class="subtitle subtitle-overview">Overview</h2>
+					
+<p> The <a href="MKTextField.html">MKTextField</a> class is a subclass of UITextField. This class adds validation control to a text field. <a href="MKTextField.html">MKTextField</a> implemnts the <a href="../Protocols/MKInputValidation.html">MKInputValidation</a> protocol. This class can automatically preform imput validations and notifiy the user of any errors. </p>
+
+<p> Here is an example of a text field will check to see if text has been entered into it after resignFirstResponder: is called. <pre>MKTextField *textField = [[MKTextField alloc] initWithFrame:myFrame];
+textField.automaticalyValidate = YES;
+textField.validationType = MKValidateHasLength;
+textField.displayWarningIcon = YES;
+textField.animated = YES;</pre></p>
+
+				</div>
+				
+				
+				
+				
+				<div class="section section-tasks">
+					<h2 class="subtitle subtitle-tasks">Tasks</h2>
+					
+					<h3 class="subsubtitle task-title">Validation Controls</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/validate">- validate</a></code>
+		<span class="tooltip"> Validates the input imediately. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/validateWithType:">- validateWithType:</a></code>
+		<span class="tooltip"> Validates the input with the specified type. Only call this method if need to <a href="#//api/name/validate">validate</a> for type other than what was defined with a MKValidationType. Otherwise use validate. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/clearError">- clearError</a></code>
+		<span class="tooltip"> Clears the validation <a href="#//api/name/error">error</a> after the user has recived the message. You should not need to call this method directly. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Validation Behaviors</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/automaticalyValidate"> automaticalyValidate</a></code>
+		<span class="tooltip"> Set to YES to <a href="#//api/name/validate">validate</a> the text field when editing is completed. Default value is NO. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/validationType"> validationType</a></code>
+		<span class="tooltip"> MKValidationType telling what kind of validation to perform. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Validation Result</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/validated"> validated</a></code>
+		<span class="tooltip"> A BOOL telling if the input has been validated. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/error"> error</a></code>
+		<span class="tooltip"> An NSError generated if validation fails. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Error Notification Behaivor</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/displayWarningIcon"> displayWarningIcon</a></code>
+		<span class="tooltip"> Set to YES to display the warning icon automatically when a feild is not validated. Set to NO to handel the validation yourself. Default is NO </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/animated"> animated</a></code>
+		<span class="tooltip"> Set to YES to animate the appearance of the warning icon. Default value is NO. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Text Input Opptions</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/useInputAccessoryView"> useInputAccessoryView</a></code>
+		<span class="tooltip"> Set to YES to use <a href="MKInputAccessoryView.html">MKInputAccessoryView</a> as the accessory for the keyboard. Default is NO. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Validatior</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/validator"> validator</a></code>
+		<span class="tooltip"> The default validator. <p class="warning"> Note * <a href="MKTextField.html">MKTextField</a> automically assigns a <a href="#//api/name/validator">validator</a> to process the validation of the text that is entered. If you want to use your own <a href="#//api/name/validator">validator</a> it must conform to the <a href="../Protocols/MKInputValidation.html">MKInputValidation</a> protocol. </p></span>
+	</span>
+	
+</li>
+					</ul>
+					
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/clearError" title="clearError"></a>
+	<h3 class="subsubtitle method-title">clearError</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Clears the validation <a href="#//api/name/error">error</a> after the user has recived the message. You should not need to call this method directly. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)clearError</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTextField.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/validate" title="validate"></a>
+	<h3 class="subsubtitle method-title">validate</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Validates the input imediately. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)validate</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTextField.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/validateWithType:" title="validateWithType:"></a>
+	<h3 class="subsubtitle method-title">validateWithType:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Validates the input with the specified type. Only call this method if need to <a href="#//api/name/validate">validate</a> for type other than what was defined with a MKValidationType. Otherwise use validate. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)validateWithType:(MKValidationType)<em>type</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>type</em></dt>
+			<dd> The MKValidationType to use. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTextField.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Properties</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/animated" title="animated"></a>
+	<h3 class="subsubtitle method-title">animated</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Set to YES to animate the appearance of the warning icon. Default value is NO. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL animated</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTextField.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/automaticalyValidate" title="automaticalyValidate"></a>
+	<h3 class="subsubtitle method-title">automaticalyValidate</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Set to YES to <a href="#//api/name/validate">validate</a> the text field when editing is completed. Default value is NO. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL automaticalyValidate</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTextField.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/displayWarningIcon" title="displayWarningIcon"></a>
+	<h3 class="subsubtitle method-title">displayWarningIcon</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Set to YES to display the warning icon automatically when a feild is not validated. Set to NO to handel the validation yourself. Default is NO </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL displayWarningIcon</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTextField.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/error" title="error"></a>
+	<h3 class="subsubtitle method-title">error</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> An NSError generated if validation fails. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain, readonly) NSError *error</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTextField.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/useInputAccessoryView" title="useInputAccessoryView"></a>
+	<h3 class="subsubtitle method-title">useInputAccessoryView</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Set to YES to use <a href="MKInputAccessoryView.html">MKInputAccessoryView</a> as the accessory for the keyboard. Default is NO. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL useInputAccessoryView</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTextField.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/validated" title="validated"></a>
+	<h3 class="subsubtitle method-title">validated</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> A BOOL telling if the input has been validated. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) BOOL validated</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTextField.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/validationType" title="validationType"></a>
+	<h3 class="subsubtitle method-title">validationType</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> MKValidationType telling what kind of validation to perform. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) MKValidationType validationType</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTextField.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/validator" title="validator"></a>
+	<h3 class="subsubtitle method-title">validator</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The default validator. <p class="warning"> Note * <a href="MKTextField.html">MKTextField</a> automically assigns a <a href="#//api/name/validator">validator</a> to process the validation of the text that is entered. If you want to use your own <a href="#//api/name/validator">validator</a> it must conform to the <a href="../Protocols/MKInputValidation.html">MKInputValidation</a> protocol. </p></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) id&lt;MKInputValidation&gt; validator</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTextField.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+			</div>
+			<div class="main-navigation navigation-bottom">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="footer">
+				<hr />
+				<div class="footer-copyright">
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-06-09)</span><br />
+					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
+				</div>
+			</div>
+		</article>
+	</body>
+</html>
