@@ -40,6 +40,11 @@
                                                         if (error == nil) {
                                                             [self onProductsResponse:response.products];
                                                         }
+                                                        else {
+                                                            MKErrorHandeling *handel = [[MKErrorHandeling alloc] init];
+                                                            [handel applicationDidError:error];
+                                                            [handel release];
+                                                        }
                                                     }];
     
     [mIdentifiers release];
@@ -134,6 +139,7 @@
         cell = (MKTableCell *)[tableView dequeueReusableCellWithIdentifier:PurchaseCell];
         if (cell == nil) {
             cell = [[[MKTableCellIAP alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:PurchaseCell] autorelease];
+            cell.delegate = self;
             ((MKTableCellIAP *)cell).observer = mObserver;
         }
         cell.theLabel.text = product.localizedTitle;
@@ -157,6 +163,19 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+}
+
+#pragma mark - MKTableCell
+
+- (void)didTapAccessoryForKey:(NSString *)aKey {
+    for (SKProduct *product in mItems) {
+        if ([product.productIdentifier isEqualToString:aKey]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:product.localizedTitle message:product.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+            return;
+        }
+    }
 }
 
 #pragma mark Memory Management

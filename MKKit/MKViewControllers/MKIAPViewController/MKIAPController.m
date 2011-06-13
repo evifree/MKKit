@@ -79,8 +79,6 @@
 + (void)productsRequestWithIdentifiers:(NSSet *)identifiers response:(MKProductResponseBlock)response {
     [self release];
     
-    NSLog(@"Request");
-    
     self = [[MKIAPController alloc] initWithIdentifiers:identifiers response:response];
 }
 
@@ -96,8 +94,6 @@
 
 + (void)purchaseRequestWithIdentifiers:(NSSet *)identifiers completion:(MKPurchaseCompletionBlock)completion {
     [self release];
-    
-    NSLog(@"Request");
     
     self = [[MKIAPController alloc] initWithIdentifiers:identifiers completion:completion];
 }
@@ -115,8 +111,6 @@
 + (void)restorePurchase:(MKRestoreCompletionBlock)completion {
     [self release];
     
-    NSLog(@"Restore");
-    
     self = [[MKIAPController alloc] initWithCompletion:completion];
 }
 
@@ -129,14 +123,12 @@
 #pragma mark SKProductsRequest
 
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
-    NSLog(@"Response");
     if (!mIsPurchaseRequest) {
         self.productResponse(response, nil);
         
         if ([mDelegate respondsToSelector:@selector(didRecieveResponse:)]) {
             [mDelegate didRecieveResponse:response];
         }
-        NSLog(@"%i", [self retainCount]);
         [self autorelease];
     }
     
@@ -184,8 +176,6 @@
 - (void)paymentQueue:(SKPaymentQueue *)queue restoreCompletedTransactionsFailedWithError:(NSError *)error {
 	self.restoreCompleteBlock(nil, error);
     
-    NSLog(@"Restore");
-    
     if ([mDelegate respondsToSelector:@selector(didError:)]) {
         [mDelegate didError:error];
     }
@@ -215,8 +205,6 @@
 - (void)restoreTransaction:(SKPaymentTransaction *)transaction {
     //[self recordTransaction:transaction];
     //[self provideContent:transaction.originalTransaction.payment.productIdentifier];
-	
-    NSLog(@"Restore complete");
     
     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
     
@@ -250,7 +238,6 @@
 #pragma mark - Memory Managment
 
 - (void)dealloc {
-    NSLog(@"dealloc");
     [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
     
     [super dealloc];
