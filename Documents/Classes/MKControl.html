@@ -46,13 +46,49 @@
 				<div class="section section-tasks">
 					<h2 class="subtitle subtitle-tasks">Tasks</h2>
 					
+					<h3 class="subsubtitle task-title">Responding to actions</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/completedAction:">- completedAction:</a></code>
+		<span class="tooltip"> Sets a code block to complete after an <a href="#//api/name/action">action</a> is completed. </span>
+	</span>
+	
+</li>
+					</ul>
 					
-<h3 class="subsubtitle task-title">Delegate</h3>
+					<h3 class="subsubtitle task-title">Control States</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/working"> working</a></code>
+		<span class="tooltip"> tells if the controll is in <a href="#//api/name/working">working</a> state. Default is <code>NO</code>. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Delegate</h3>
+
 					<ul class="task-list">
 						<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/delegate"> delegate</a></code>
 		<span class="tooltip"> <a href="#//api/name/delegate">delegate</a> the controls <a href="#//api/name/delegate">delegate</a></span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Code Blocks</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/action"> action</a></code>
+		<span class="tooltip"> the <a href="#//api/name/action">action</a> completion block </span>
 	</span>
 	
 </li>
@@ -66,10 +102,100 @@
 				
 				
 				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/completedAction:" title="completedAction:"></a>
+	<h3 class="subsubtitle method-title">completedAction:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Sets a code block to complete after an <a href="#//api/name/action">action</a> is completed. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)completedAction:(MKActionBlock)<em>actionBlock</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>actionBlock</em></dt>
+			<dd> the code block. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		
+		<p> Sets a code block to complete after an <a href="#//api/name/action">action</a> is completed. </p>
+		
+		<p> The <a href="#//api/name/action">action</a> block is in this format <code>^(MKAction action)</code>. MKAction is the <a href="#//api/name/action">action</a> that was completed. </p>
+		
+		<p> The <a href="#//api/name/action">action</a> will be on of the following types: <ul><li> <code>MKActionTouchDown</code>: a touch down action. </li><li> <code>MKActionTouchUp</code>: a touch up action. </li></ul></p>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKControl.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
 				
 				
 				<div class="section section-methods">
 					<h2 class="subtitle subtitle-methods">Properties</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/action" title="action"></a>
+	<h3 class="subsubtitle method-title">action</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> the <a href="#//api/name/action">action</a> completion block </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) MKActionBlock action</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKControl.h</code><br />
+	</div>				
+	
+	
+</div>
 					
 					<div class="section-method">
 	<a name="//api/name/delegate" title="delegate"></a>
@@ -103,6 +229,38 @@
 	
 </div>
 					
+					<div class="section-method">
+	<a name="//api/name/working" title="working"></a>
+	<h3 class="subsubtitle method-title">working</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> tells if the controll is in <a href="#//api/name/working">working</a> state. Default is <code>NO</code>. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL working</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKControl.h</code><br />
+	</div>				
+	
+	
+</div>
+					
 				</div>
 				
 				
@@ -116,7 +274,7 @@
 			<div id="footer">
 				<hr />
 				<div class="footer-copyright">
-					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-06-09)</span><br />
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-06-19)</span><br />
 					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
 				</div>
 			</div>

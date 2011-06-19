@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>MKWebViewController Class Reference</title>
+		<title>MKTableCellBadge Class Reference</title>
 		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
 		<meta name="generator" content="appledoc 2.0b3" />
@@ -16,7 +16,7 @@
 			</div>
 			<div id="header">
 				<div class="section-header">
-					<h1 class="title title-header">MKWebViewController Class Reference</h1>
+					<h1 class="title title-header">MKTableCellBadge Class Reference</h1>
 				</div>		
 			</div>
 			<div id="container">	
@@ -24,10 +24,10 @@
 				<div class="section section-specification"><table cellspacing="0"><tbody>
 					<tr>
 	<td class="specification-title">Inherits from</td>
-	<td class="specification-value"><a href="MKViewController.html">MKViewController</a> : UIViewController</td>
+	<td class="specification-value"><a href="MKTableCell.html">MKTableCell</a> : UITableViewCell</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">MKWebViewController.h</td>
+	<td class="specification-value">MKTableCellBadge.h</td>
 </tr>
 					</tbody></table></div>
 				
@@ -36,9 +36,9 @@
 				<div class="section section-overview">
 					<h2 class="subtitle subtitle-overview">Overview</h2>
 					
-<p> <a href="MKWebViewController.html">MKWebViewController</a> creates a view controller with a built in UIWebView. </p>
+<p> <a href="MKTableCellBadge.html">MKTableCellBadge</a> class creates a table cell with Lable and a badge on the right side of the cell. Badges are round rects that can be colored and text placed in them. </p>
 
-<p> <a href="MKWebViewController.html">MKWebViewController</a> calls the following delegate methods: <ul><li> <code>viewControllerIsDone:</code> called when the done button is tapped. </li><li> <code>viewControllerAction:</code> called when the action button is tapped. </li></ul></p>
+<p> Badges will automatically size themselfs to fit the text. </p>
 
 				</div>
 				
@@ -49,12 +49,18 @@
 					<h2 class="subtitle subtitle-tasks">Tasks</h2>
 					
 					
-<h3 class="subsubtitle task-title">Initalizer</h3>
+<h3 class="subsubtitle task-title">Elements</h3>
 					<ul class="task-list">
 						<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithURLString:">- initWithURLString:</a></code>
-		<span class="tooltip"> Returns an initalized instance of MKWebViewController. </span>
+		<code><a href="#//api/name/badgeText"> badgeText</a></code>
+		<span class="tooltip"> The text that will be displayed on the badge </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/badgeColor"> badgeColor</a></code>
+		<span class="tooltip"> The color of the badge </span>
 	</span>
 	
 </li>
@@ -68,32 +74,24 @@
 				
 				
 				
+				
+				
 				<div class="section section-methods">
-					<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+					<h2 class="subtitle subtitle-methods">Properties</h2>
 					
 					<div class="section-method">
-	<a name="//api/name/initWithURLString:" title="initWithURLString:"></a>
-	<h3 class="subsubtitle method-title">initWithURLString:</h3>
+	<a name="//api/name/badgeColor" title="badgeColor"></a>
+	<h3 class="subsubtitle method-title">badgeColor</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p> Returns an initalized instance of MKWebViewController. </p>
+		<p> The color of the badge </p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (id)initWithURLString:(NSString *)<em>url</em></code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UIColor *badgeColor</code></div>
 	
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>url</em></dt>
-			<dd> the URL that should be displayed. Pass the complete url as a NSString object. The view controller will convert it to a usable URL. </dd>
-		</dl>
-		
-	</div>
 	
 	
 	
@@ -107,15 +105,45 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">MKWebViewController.h</code><br />
+		<code class="declared-in-ref">MKTableCellBadge.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/badgeText" title="badgeText"></a>
+	<h3 class="subsubtitle method-title">badgeText</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The text that will be displayed on the badge </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *badgeText</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCellBadge.h</code><br />
 	</div>				
 	
 	
 </div>
 					
 				</div>
-				
-				
 				
 				
 			</div>
