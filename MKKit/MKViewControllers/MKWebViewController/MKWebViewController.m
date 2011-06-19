@@ -121,12 +121,29 @@
         [self addSubview:topBar];
         [topBar release];
         
+        MKBarButtonItem *backItem = [[MKBarButtonItem alloc] initWithType:MKBarButtonItemBackArrow];
+        [backItem completedAction: ^ (MKAction action) {
+            if (action == MKActionTouchUp) {
+                [self back:backItem];
+            }
+        }];
+        
+        MKBarButtonItem *forwardItem = [[MKBarButtonItem alloc] initWithType:MKBarButtonItemForwardArrow];
+        [forwardItem completedAction: ^ (MKAction action) {
+            if (action == MKActionTouchUp) {
+                [self forward:forwardItem];
+            }
+        }];
+        
         //Bottom Bar
         UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self.controller action:@selector(done:)];
-        UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:MK_WEB_VIEW_BACK_ARROW] style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
-        UIBarButtonItem *forward = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:MK_WEB_VIEW_FORWARD_ARROW] style:UIBarButtonItemStylePlain target:self action:@selector(forward:)];
+        UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithCustomView:backItem];
+        UIBarButtonItem *forward = [[UIBarButtonItem alloc] initWithCustomView:forwardItem];
         UIBarButtonItem *reload = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(reload:)];
         UIBarButtonItem *action = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self.controller action:@selector(action:)];
+        
+        [backItem release];
+        [forwardItem release];
         
         NSArray *items = [NSArray arrayWithObjects:back, space, forward, space, reload, space, action, space, done, nil];
         
@@ -204,17 +221,9 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.alpha = 1.0;
+        self.opaque = NO;
+        self.backgroundColor = CLEAR;
         self.autoresizesSubviews = YES;
-        
-        UIImage *loadingBar = [UIImage imageNamed:MK_WEB_VIEW_LOADING_BAR];
-        UIImageView *barView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.frame.size.width, 25.0)];
-        barView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        barView.image = loadingBar;
-        
-        [self addSubview:barView];
-        
-        [loadingBar release];
-        [barView release];
         
         mActivityView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(8.0, 2.5, 20.0, 20.0)];
         mActivityView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
@@ -232,6 +241,55 @@
         
     }
     return self;
+}
+
+#pragma mark - Drawing
+
+- (void)drawRect:(CGRect)rect {
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetAllowsAntialiasing(context, YES);
+    
+    CGFloat outerMargin = 2.0;
+    CGRect viewRect = CGRectInset(self.bounds, outerMargin, outerMargin);
+    CGMutablePathRef outerPath = createRoundedRectForRect(viewRect, 6.0);
+    
+    CGColorRef innerBottom = MK_COLOR_HSB(345.0, 1.0, 99.0, 1.0).CGColor;
+    CGColorRef innerTop = MK_COLOR_HSB(345.0, 0.0, 82.0, 1.0).CGColor;
+    CGColorRef lineColor = GRAY.CGColor;
+    
+    CGContextSaveGState(context);
+	CGContextSetFillColorWithColor(context, innerBottom);
+	CGContextSetShadowWithColor(context, CGSizeMake(0, 2), 3.0, innerTop);
+	CGContextAddPath(context, outerPath);
+	CGContextFillPath(context);
+	CGContextRestoreGState(context);
+    
+    CGContextSaveGState(context);
+    CGContextSetFillColorWithColor(context, innerBottom);
+    CGContextAddPath(context, outerPath);
+    CGContextFillPath(context);
+    CGContextRestoreGState(context);
+    
+    CGContextSaveGState(context);
+    CGContextSetLineWidth(context, 2.0);
+    CGContextSetStrokeColorWithColor(context, lineColor);
+    CGContextAddPath(context, outerPath);
+    CGContextStrokePath(context);
+    CGContextRestoreGState(context);
+    
+    CGContextSaveGState(context);
+    CGContextAddPath(context, outerPath);
+    CGContextClip(context);
+    drawGlossAndLinearGradient(context, viewRect, innerTop, innerBottom);
+    CGContextRestoreGState(context);
+    
+    CFRelease(outerPath);
+}
+
+#pragma mark - Memory Managment
+
+- (void)dealloc {
+    [super dealloc];
 }
 
 @end

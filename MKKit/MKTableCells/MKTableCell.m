@@ -23,7 +23,7 @@
 #pragma mark StartUp
 
 - (id)initWithType:(MKTableCellType)cellType reuseIdentifier:(NSString *)reuseIdentifier {
-	self.type = cellType;
+    self.type = cellType;
 	
 	[self.detailTextLabel removeFromSuperview];
 	[self.textLabel removeFromSuperview];
@@ -106,7 +106,7 @@
 		
 		if (type == MKTableCellTypeAction) {
 			CGRect iconRect = CGRectMake(10.0, 7.0, 30.0, 30.0);
-			CGRect labelRect = CGRectMake(58.0, 11.0, 203.0, 21.0);
+			CGRect labelRect = CGRectMake(58.0, 11.0, 183.0, 21.0);
 			
 			mTheLabel.frame = labelRect;
 			mTheLabel.textAlignment = UITextAlignmentLeft;
@@ -138,7 +138,7 @@
 		[self.contentView setAutoresizesSubviews:YES];
 		[self setSelectionStyle:UITableViewCellSelectionStyleNone];
 		
-		mTheLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin;
+		mTheLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
 		[mTheLabel release];
 	}
 	return self;

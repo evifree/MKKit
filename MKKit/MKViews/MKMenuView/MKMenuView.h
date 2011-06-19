@@ -42,6 +42,8 @@
  Instances of MKMenuItem will be placed in the order that are given.
  
  @param items an array of MKMenuItems to be placed onto the menu.
+ 
+ @exception itemsCount raises an exception if more than twelve items are given.
 */
 - (id)initWithItems:(NSArray *)items;
 

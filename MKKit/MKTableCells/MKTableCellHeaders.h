@@ -7,6 +7,7 @@
 //
 
 #import "MKTableCell.h"
+#import "MKTableCellTypes/MKTableCellBadge.h"
 #import "MKTableCellTypes/MKTableCellCheckBox.h"
 #import "MKTableCellTypes/MKTableCellFeed.h"
 #import "MKTableCellTypes/MKTableCellLoading.h"

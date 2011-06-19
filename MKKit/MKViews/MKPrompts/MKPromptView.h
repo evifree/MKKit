@@ -7,9 +7,7 @@
 //
 
 #import <MKKit/MKKit/MKViews/MKView.h>
-
-#define MK_PROMPT_VIEW_SHINE            @"MKPromptView-Resources.bundle/PromptShine.png"
-#define MK_PROMPT_VIEW_WARING_ICON      @"MKPromptView-Resources.bundle/WarningMarker.png"
+#import <MKKit/MKKit/MKGraphics/MKGraphics.h>
 
 typedef enum {
     MKPromptTypeGreen,
@@ -57,7 +55,7 @@ typedef enum {
  
  @param message the message of the prompt
  
- @param duration the time in seconds until the prompt is removed
+ @param duration the time in seconds until the prompt is removed. Set to zero to disable.
 */
 + (void)promptWithType:(MKPromptType)type title:(NSString *)title message:(NSString *)message duration:(NSTimeInterval)duration;
 
@@ -68,7 +66,7 @@ typedef enum {
 /** The type of prompt that is displayed */
 @property (nonatomic, assign) MKPromptType type;
 
-/** The Time in Seconds until the prompt is dismissed */
+/** The Time in Seconds until the prompt is dismissed. Set to zero to disable. */
 @property (nonatomic, assign) NSTimeInterval duration;
 
 ///---------------------------------------------------------------------------------------

@@ -22,28 +22,10 @@
 - (id)initWithType:(MKPromptType)type title:(NSString *)title message:(NSString *)message {
     self = [super initWithFrame:[self frameForMessage:message]];
     if (self) {
+        self.opaque = YES;
+        self.backgroundColor = [UIColor clearColor];
+        
         mType = type;
-        if (type == MKPromptTypeGreen) {
-            self.backgroundColor = [UIColor greenColor];
-        }
-        if (type == MKPromptTypeAmber) {
-            self.backgroundColor = [UIColor yellowColor];
-        }
-        if (type == MKPromptTypeRed) {
-            self.backgroundColor = [UIColor redColor];
-        }
-        
-        UIImageView *shine = [[UIImageView alloc] initWithFrame:self.bounds];
-        shine.image = [UIImage imageNamed:MK_PROMPT_VIEW_SHINE];
-        
-        [self addSubview:shine];
-        [shine release];
-        
-        UIImageView *icon = [[UIImageView alloc] initWithFrame:CGRectMake(8.0, 8.0, 50.0, 50.0)];
-        icon.image = [UIImage imageNamed:MK_PROMPT_VIEW_WARING_ICON];
-        
-        [self addSubview:icon];
-        [icon release];
         
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(77.0, 8.8, 231.0, 21.0)];
         titleLabel.backgroundColor = [UIColor clearColor];
@@ -82,10 +64,69 @@
     [view release];
 }
 
+#pragma mark - Drawing 
+
+- (void)drawRect:(CGRect)rect {
+    CGColorRef startColor;
+    CGColorRef endColor;
+    CGColorRef textColor;
+    CGColorRef indentColor;
+    
+    if (mType == MKPromptTypeRed) {
+        startColor = MK_COLOR_HSB(360.0, 98.0, 65.0, 1.0).CGColor;
+        endColor = MK_COLOR_HSB(360.0, 100.0, 65.0, 1.0).CGColor;
+        textColor = MK_COLOR_HSB(360.0, 100.0, 45.0, 1.0).CGColor;
+        indentColor = MK_COLOR_HSB(360.0, 50.0, 97.0, 1.0).CGColor;
+    }
+    if (mType == MKPromptTypeGreen) {
+        startColor = MK_COLOR_HSB(110.0, 92.0, 65.0, 1.0).CGColor;
+        endColor = MK_COLOR_HSB(110.0, 95.0, 65.0, 1.0).CGColor;
+        textColor = MK_COLOR_HSB(110.0, 95.0, 45.0, 1.0).CGColor;
+        indentColor = MK_COLOR_HSB(110.0, 43.0, 97.0, 1.0).CGColor;
+    }
+    if (mType == MKPromptTypeAmber) {
+        startColor = MK_COLOR_HSB(65.0, 77.0, 78.0, 1.0).CGColor;
+        endColor = MK_COLOR_HSB(63.0, 79.0, 78.0, 1.0).CGColor;
+        textColor = MK_COLOR_HSB(63.0, 91.0, 58.0, 1.0).CGColor;
+        indentColor = MK_COLOR_HSB(63.0, 9.0, 98.0, 1.0).CGColor;
+    }
+    
+    CGColorRef shadowColor = MK_COLOR_RGB(51.0, 51.0, 51.0, 0.5).CGColor;
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetAllowsAntialiasing(context, YES);
+    
+    CGFloat x = CGRectGetMinX(rect);
+    CGFloat y = CGRectGetMinY(rect);
+    CGFloat width = CGRectGetWidth(rect);
+    CGFloat height = (CGRectGetHeight(rect) - 3.0);
+    
+    CGRect viewRect = CGRectMake(x, y, width, height);
+    CGRect iconRect = CGRectMake(28.0, -10.0, 25.0, 25.0);
+    
+    CGContextSaveGState(context);
+    CGContextSetShadowWithColor(context, CGSizeMake(0, 2), 3.0, shadowColor);
+    CGContextSetFillColorWithColor(context, startColor);
+    CGContextFillRect(context, viewRect);
+    CGContextRestoreGState(context);
+    
+    drawGlossAndLinearGradient(context, viewRect, startColor, endColor);
+    
+    CGContextSetStrokeColorWithColor(context, endColor);
+    CGContextSetLineWidth(context, 1.0);    
+    CGContextStrokeRect(context, rectFor1pxStroke(viewRect));
+    
+    NSString *text = [NSString stringWithFormat:@"!"];
+    
+    drawText(context, iconRect, (CFStringRef)text, textColor, indentColor, 70.0);
+}
+
 #pragma mark - Accessor Methods
 
 - (void)setDuration:(NSTimeInterval)duration {
-    [self performSelector:@selector(removeView) withObject:nil afterDelay:duration];
+    if (duration != 0) {
+        [self performSelector:@selector(removeView) withObject:nil afterDelay:duration];
+    }
 }
 
 #pragma mark - Size Methods

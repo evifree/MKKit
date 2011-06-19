@@ -52,12 +52,17 @@ maxAtempts=mMaxAtempts;
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0, 140.0, 320.0, 106.0)];
     view.backgroundColor = [UIColor grayColor];
     
-    UIButton *help = [UIButton buttonWithType:UIButtonTypeCustom];
-    [help setImage:[UIImage imageNamed:MK_LOGIN_VIEW_HELP_BUTTON] forState:UIControlStateNormal];
-    [help addTarget:self action:@selector(onHelpButton:) forControlEvents:UIControlEventTouchUpInside];
+    MKButton *help = [[MKButton alloc] initWithType:MKButtonTypeHelp];
     help.frame = CGRectMake(295.0, 10.0, 20.0, 21.0);
     
+    [help completedAction: ^ (MKAction action) {
+        if (action == MKActionTouchUp) {
+            [self onHelpButton:help];
+        }
+    }];
+    
     [view addSubview:help];
+    [help release];
     
     mPromptLabel = [[UILabel alloc] initWithFrame:CGRectMake(25.0, 8.0, 275.0, 21.0)];
     mPromptLabel.textColor = [UIColor whiteColor];
@@ -181,7 +186,12 @@ maxAtempts=mMaxAtempts;
         NSString *promptString = [NSString stringWithFormat:@"What is your %@", question];
     
         [MKInputPrompt showWithMessage:promptString 
-                                onDone: ^ (NSString *text) { [self onChallengeAnswer:text]; [mBoxOne becomeFirstResponder]; }];
+                                onDone: ^ (NSString *text) { 
+                                    if ([text length] != 0) {
+                                        [self onChallengeAnswer:text]; 
+                                        [mBoxOne becomeFirstResponder]; 
+                                    }
+                                }];
     }
     else {
         [MKPromptView promptWithType:MKPromptTypeRed title:@"No Challenge Question" message:@"Your PIN cannot be retrived because no challenge question has been set." duration:3.5];

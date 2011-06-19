@@ -1,7 +1,0 @@
-//
-// Prefix header for all source files of the 'MKWebView-Resources' target in the 'MKWebView-Resources' project
-//
-
-#ifdef __OBJC__
-    #import <Cocoa/Cocoa.h>
-#endif

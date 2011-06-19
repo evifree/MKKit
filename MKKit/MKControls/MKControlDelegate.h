@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum {
+    MKActionTouchDown,
+    MKActionTouchUp,
+} MKAction;
+
 /**-------------------------------------------------------------------------------------------
  The MKControlDelegate protocol sends genaric messages from MKControl subclasses.
 --------------------------------------------------------------------------------------------*/
@@ -20,10 +25,20 @@
 /// @name Completion Methods
 ///-------------------------------------------------------------------------------------------
 
-/** Called whenever and action has been completed.
+/** Called whenever an action has been completed.
  
  @param sender The MKControl subclass that has completed an action.
+ 
+ @warning *Warning* This method is scheduled for depreciation. Use didCompleteAction:sender: 
+ instead.
 */
 - (void)didCompleteAction:(id)sender;
+
+/** Called whenever an action has been completed.
+ 
+ @param action The MKAction that was completed.
+ @param sender The control that completed the action.
+*/
+- (void)didCompleteAction:(MKAction)action sender:(id)sender;
 
 @end

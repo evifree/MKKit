@@ -9,28 +9,26 @@
 #import "MKControl.h"
 
 typedef enum {
+    MKButtonTypeIAP,
     MKButtonTypeDarkBlue,
     MKButtonTypeGreen,
+    MKButtonTypeHelp,
 } MKButtonType;
 
-#define MK_DARK_BLUE_BUTTON_IMAGE                  @"MKControl-Resources.bundle/BlueButton.png"
-#define MK_GREEN_BUTTON_IMAGE                      @"MKControl-Resources.bundle/GreenButton.png"
-
 /**-----------------------------------------------------------------------------
- MKButton provides specalty buttons for various use. There are currently three
+ MKButton provides specalty buttons for various use. There are currently four
  types of buttons:
  
- * `MKButtonTypeDarkBlue` : a dark blue button similar to UIBarButtons
- * `MKButtonTypeGreen` : a brighter green button
  * `MKButtonTypeIAP` : a InApp Purchase button, mimics the purchase buttons from the
  appStore
- 
- @warning *Note* MKButton objects will look for resources in the MKControl-Resources 
- bundle. Ensure this bundle is added to your project for proper function.
+ * `MKButtonTypeDarkBlue` : a dark blue button similar to UIBarButtons
+ * `MKButtonTypeGreen` : a brighter green button
+ * `MKButtonTypeHelp` : a small round button with a question mark
 ------------------------------------------------------------------------------*/
 
 @interface MKButton : MKControl {
     MKButtonType mType;
+    NSString *mButtonText;
     
     UILabel *mButtonLabel;
     UIImageView *mButtonView;
@@ -40,22 +38,47 @@ typedef enum {
 /// @name Creating
 ///------------------------------------------------------
 
-/**
+/** 
  Returns and instance of MKButton
  
  @param type the type of button to use
- 
  @param title the text of the button
  
- There are currently three
- types of buttons:
+ There are currently four types of buttons:
  
  * `MKButtonTypeDarkBlue` : a dark blue button similar to UIBarButtons
  * `MKButtonTypeGreen` : a brighter green button
  * `MKButtonTypeIAP` : a InApp Purchase button, mimics the purchase buttons from the
  appStore
+ * `MKButtonTypeHelp` : a small round button with a question mark
+*/
+- (id)initWithType:(MKButtonType)type;
+
+/**
+ Returns and instance of MKButton
+ 
+ @param type the type of button to use
+ @param title the text of the button
+ 
+ There are currently four types of buttons:
+ 
+ * `MKButtonTypeDarkBlue` : a dark blue button similar to UIBarButtons
+ * `MKButtonTypeGreen` : a brighter green button
+ * `MKButtonTypeIAP` : a InApp Purchase button, mimics the purchase buttons from the
+ appStore
+ * `MKButtonTypeHelp` : a small round button with a question mark
+ 
+ @exception UnsuableType rasied if MKButtonTypeHelp is passed to this method.
  */
 - (id)initWithType:(MKButtonType)type title:(NSString *)title;
+
+
+///---------------------------------------------------------
+/// @name Elements
+///---------------------------------------------------------
+
+/** the text to display on the button */
+@property (nonatomic, copy) NSString *buttonText;
 
 ///---------------------------------------------------------
 /// @name Behaviors

@@ -14,6 +14,9 @@
 
 @end
 
+CGImageRef CreateGradientImage(int pixelsWide, int pixelsHigh);
+CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh);
+
 @implementation MKReflectedImageView
 
 @synthesize image=mImage;
