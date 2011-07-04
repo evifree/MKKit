@@ -16,12 +16,14 @@
 #pragma mark Start Up
 
 - (id)initWithPath:(NSString *)path {
-	NSError *error;
-	
-	NSURL *soundURL = [NSURL fileURLWithPath:path];
-	sound = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:&error];
-	[sound prepareToPlay];
-	
+    self = [super init];
+    if (self) {
+        NSError *error;
+        
+        NSURL *soundURL = [NSURL fileURLWithPath:path];
+        sound = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:&error];
+        [sound prepareToPlay];
+    }
 	return self;
 }
 

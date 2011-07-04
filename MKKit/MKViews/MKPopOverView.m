@@ -19,7 +19,8 @@
 #pragma mark Initalization
 
 - (id)initWithFrame:(CGRect)frame {
-	if (self == [super initWithFrame:frame]) {
+    self = [super initWithFrame:frame];
+	if (self) {
 		self.backgroundColor = [UIColor clearColor];
 		self.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 		self.autoresizesSubviews = YES;
@@ -159,8 +160,9 @@
 #pragma mark Memory Managment
 
 - (void)dealloc {
+    [_tableArray release];
+    
 	[super dealloc];
-
 }
 
 @end

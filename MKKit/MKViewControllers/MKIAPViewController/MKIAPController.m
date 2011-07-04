@@ -18,9 +18,6 @@
 - (void)restoreTransaction:(SKPaymentTransaction *)transaction;
 - (void)failedTransaction:(SKPaymentTransaction *)transaction;
 
-//- (void)recordTransaction:(SKPaymentTransaction *)transaction;
-//- (void)provideContent:(NSString *)productIdentifier;
-
 @end
 
 @implementation MKIAPController
@@ -79,7 +76,7 @@
 + (void)productsRequestWithIdentifiers:(NSSet *)identifiers response:(MKProductResponseBlock)response {
     [self release];
     
-    self = [[MKIAPController alloc] initWithIdentifiers:identifiers response:response];
+    [[self alloc] initWithIdentifiers:identifiers response:response];
 }
 
 - (void)productsRequestWithIdentifiers:(NSSet *)identifiers {
@@ -95,7 +92,7 @@
 + (void)purchaseRequestWithIdentifiers:(NSSet *)identifiers completion:(MKPurchaseCompletionBlock)completion {
     [self release];
     
-    self = [[MKIAPController alloc] initWithIdentifiers:identifiers completion:completion];
+    [[self alloc] initWithIdentifiers:identifiers completion:completion];
 }
 
 - (void)purchaseRequestWithIdentifiers:(NSSet *)identifiers {
@@ -111,7 +108,7 @@
 + (void)restorePurchase:(MKRestoreCompletionBlock)completion {
     [self release];
     
-    self = [[MKIAPController alloc] initWithCompletion:completion];
+    [[self alloc] initWithCompletion:completion];
 }
 
 - (void)restorePurchases {
@@ -145,9 +142,15 @@
 #pragma mark SKRequest
 
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error {
-    self.productResponse(nil, error);
-    self.restoreCompleteBlock(NO, error);
-    self.purchaseCompleteBlock(nil, error);
+    if (self.productResponse) {
+        self.productResponse(nil, error);
+    }
+    if (self.restoreCompleteBlock) {
+        self.restoreCompleteBlock(NO, error);
+    }
+    if (self.purchaseCompleteBlock) {
+        self.purchaseCompleteBlock(nil, error);
+    }
     
     if ([mDelegate respondsToSelector:@selector(didError:)]) {
         [mDelegate didError:error];
@@ -188,9 +191,6 @@
 #pragma mark Transaction Observer
 
 - (void)completeTransaction:(SKPaymentTransaction *)transaction {
-    //[self recordTransaction:transaction];
-    //[self provideContent:transaction.payment.productIdentifier];
-	
     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
     
     if (self.purchaseCompleteBlock) {
@@ -203,9 +203,6 @@
 }
 
 - (void)restoreTransaction:(SKPaymentTransaction *)transaction {
-    //[self recordTransaction:transaction];
-    //[self provideContent:transaction.originalTransaction.payment.productIdentifier];
-    
     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
     
     self.restoreCompleteBlock(transaction, nil);
@@ -224,16 +221,6 @@
     
     self.purchaseCompleteBlock(transaction, transaction.error);
 }
-
-/*
-- (void)recordTransaction:(SKPaymentTransaction *)transaction {
-    
-}
-
-- (void)provideContent:(NSString *)productIdentifier {
-    NSLog(@"provide content");
-}
-*/
 
 #pragma mark - Memory Managment
 

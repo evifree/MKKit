@@ -35,14 +35,15 @@
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    if (self == [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-		CGRect labelFrame = CGRectMake(10.0, 11.0, 100.0, 21.0);
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+		//CGRect labelFrame = CGRectMake(10.0, 11.0, 100.0, 21.0);
 				
-		mTheLabel = [[UILabel alloc] initWithFrame:labelFrame];
-		mTheLabel.textAlignment = UITextAlignmentLeft;
-		mTheLabel.adjustsFontSizeToFitWidth = YES;
-		mTheLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
-		mTheLabel.backgroundColor = [UIColor clearColor];
+		//mTheLabel = [[UILabel alloc] initWithFrame:labelFrame];
+		//mTheLabel.textAlignment = UITextAlignmentLeft;
+		//mTheLabel.adjustsFontSizeToFitWidth = YES;
+		//mTheLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
+		//mTheLabel.backgroundColor = [UIColor clearColor];
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////////
 		///                 MKTableCellTypeLabel                                                      ///
@@ -50,10 +51,13 @@
 		if (type == MKTableCellTypeLabel) {
 			CGRect labelRect = CGRectMake(10.0, 11.0, 230.0, 21.0);
 			
-			mTheLabel.frame = labelRect;
+			mTheLabel = [[UILabel alloc] initWithFrame:labelRect];
 			mTheLabel.font = [UIFont fontWithName:@"Verdana-Bold" size:16.0];
 			mTheLabel.textAlignment = UITextAlignmentLeft;
 			mTheLabel.adjustsFontSizeToFitWidth = NO;
+            
+            [self.contentView addSubview:mTheLabel];
+            [mTheLabel release];
 		}
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////////
@@ -63,9 +67,12 @@
 			CGRect smallFrame = CGRectMake(207.0, 9.0, 83.0, 21.0);
 			CGRect labelRect = CGRectMake(10.0, 11.0, 190.0, 21.0);
 			
-			mTheLabel.frame = labelRect;
+			mTheLabel = [[UILabel alloc] initWithFrame:labelRect];
 			mTheLabel.textAlignment = UITextAlignmentLeft;
 			
+            [self.contentView addSubview:mTheLabel];
+            [mTheLabel release];
+            
 			_smallLabel = [[UILabel alloc] initWithFrame:smallFrame];
 			_smallLabel.textAlignment = UITextAlignmentRight;
 			_smallLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
@@ -84,8 +91,11 @@
 			CGRect labelRect = CGRectMake(18.0, 11.0, 90.0, 21.0);
 			CGRect smallFrame = CGRectMake(162.0, 11.0, 98.0, 21.0);
 			
-			mTheLabel.frame = labelRect;
+			mTheLabel = [[UILabel alloc] initWithFrame:labelRect];
 			mTheLabel.textAlignment = UITextAlignmentLeft;
+            
+            [self.contentView addSubview:mTheLabel];
+            [mTheLabel release];
 			
 			_smallLabel = [[UILabel alloc] initWithFrame:smallFrame];
 			_smallLabel.textAlignment = UITextAlignmentRight;
@@ -108,16 +118,18 @@
 			CGRect iconRect = CGRectMake(10.0, 7.0, 30.0, 30.0);
 			CGRect labelRect = CGRectMake(58.0, 11.0, 183.0, 21.0);
 			
-			mTheLabel.frame = labelRect;
+			mTheLabel = [[UILabel alloc] initWithFrame:labelRect];
 			mTheLabel.textAlignment = UITextAlignmentLeft;
 			mTheLabel.adjustsFontSizeToFitWidth = YES;
 			mTheLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
 			mTheLabel.backgroundColor = [UIColor clearColor];
 			
+            [self.contentView addSubview:mTheLabel];
+            [mTheLabel release];
+
+            
 			mTheImageView = [[[UIImageView alloc] initWithFrame:iconRect] retain];
-			
 			[self.contentView addSubview:mTheImageView];
-			
 			[mTheImageView release];
 		}
 		
@@ -127,19 +139,22 @@
 			[self.contentView addSubview:mTheImageView];
 			[mTheImageView release];
 			
-			mTheLabel.frame = CGRectMake(0.0, 0.0, 300.0, 44.0);
+			mTheLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 300.0, 44.0)];
 			mTheLabel.textAlignment = UITextAlignmentCenter;
 			mTheLabel.backgroundColor = [UIColor clearColor];
 			mTheLabel.adjustsFontSizeToFitWidth = YES;
 			mTheLabel.font = [UIFont boldSystemFontOfSize:17.0];
+            
+            [self.contentView addSubview:mTheLabel];
+            [mTheLabel release];
 		}
 		
-		[self.contentView addSubview:mTheLabel];
+		//[self.contentView addSubview:mTheLabel];
 		[self.contentView setAutoresizesSubviews:YES];
 		[self setSelectionStyle:UITableViewCellSelectionStyleNone];
 		
-		mTheLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
-		[mTheLabel release];
+		//mTheLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
+		//[mTheLabel release];
 	}
 	return self;
 }

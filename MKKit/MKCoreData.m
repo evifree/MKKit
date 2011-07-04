@@ -41,7 +41,8 @@ static MKCoreData *sharedData = nil;
 }	
 
 - (id)initWithContext:(NSManagedObjectContext *)context {
-	if (self == [super init]) {
+	self = [super init];
+    if (self) {
 		managedObjectContext = context;
 	}
 	return self;

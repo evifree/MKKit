@@ -27,6 +27,8 @@
         else {
             mURLRequest = [[NSURLRequest alloc] initWithURL:aUrl];
         }
+        
+        self.view.autoresizesSubviews = YES;
     }
     return self;
 }
@@ -150,6 +152,7 @@
         [forward release];
         [back release];
         [reload release];
+        [action release];
         [space release];
         [done release];
         
@@ -195,9 +198,9 @@
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    MKErrorHandeling *errorHandeler = [[MKErrorHandeling alloc] init];
-    [errorHandeler applicationDidError:error];
-    [errorHandeler release];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+    [alert release];
 }
 
 #pragma mark - Memory Managment
@@ -260,6 +263,13 @@
     CGContextSaveGState(context);
 	CGContextSetFillColorWithColor(context, innerBottom);
 	CGContextSetShadowWithColor(context, CGSizeMake(0, 2), 3.0, innerTop);
+	CGContextAddPath(context, outerPath);
+	CGContextFillPath(context);
+	CGContextRestoreGState(context);
+    
+    CGContextSaveGState(context);
+	CGContextSetFillColorWithColor(context, innerBottom);
+	CGContextSetShadowWithColor(context, CGSizeMake(0, -2), 3.0, BLACK.CGColor);
 	CGContextAddPath(context, outerPath);
 	CGContextFillPath(context);
 	CGContextRestoreGState(context);

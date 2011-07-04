@@ -9,29 +9,27 @@
 #import "MKControl.h"
 
 typedef enum {
-    MKButtonTypeIAP,
-    MKButtonTypeDarkBlue,
-    MKButtonTypeGreen,
     MKButtonTypeHelp,
+    MKButtonTypeIAP,
+    MKButtonTypeRoundedRect,
 } MKButtonType;
 
 /**-----------------------------------------------------------------------------
  MKButton provides specalty buttons for various use. There are currently four
  types of buttons:
  
- * `MKButtonTypeIAP` : a InApp Purchase button, mimics the purchase buttons from the
- appStore
- * `MKButtonTypeDarkBlue` : a dark blue button similar to UIBarButtons
- * `MKButtonTypeGreen` : a brighter green button
  * `MKButtonTypeHelp` : a small round button with a question mark
+ * `MKButtonTypeIAP` : a InApp Purchase button, mimics the purchase buttons from the
+ * `MKButtonTypeRoundedRect : a rounded rect button that can be assigned a color
+ appStore
 ------------------------------------------------------------------------------*/
 
 @interface MKButton : MKControl {
     MKButtonType mType;
     NSString *mButtonText;
-    
+
+@private
     UILabel *mButtonLabel;
-    UIImageView *mButtonView;
 }
 
 ///------------------------------------------------------
@@ -42,15 +40,8 @@ typedef enum {
  Returns and instance of MKButton
  
  @param type the type of button to use
+ 
  @param title the text of the button
- 
- There are currently four types of buttons:
- 
- * `MKButtonTypeDarkBlue` : a dark blue button similar to UIBarButtons
- * `MKButtonTypeGreen` : a brighter green button
- * `MKButtonTypeIAP` : a InApp Purchase button, mimics the purchase buttons from the
- appStore
- * `MKButtonTypeHelp` : a small round button with a question mark
 */
 - (id)initWithType:(MKButtonType)type;
 
@@ -58,15 +49,8 @@ typedef enum {
  Returns and instance of MKButton
  
  @param type the type of button to use
+ 
  @param title the text of the button
- 
- There are currently four types of buttons:
- 
- * `MKButtonTypeDarkBlue` : a dark blue button similar to UIBarButtons
- * `MKButtonTypeGreen` : a brighter green button
- * `MKButtonTypeIAP` : a InApp Purchase button, mimics the purchase buttons from the
- appStore
- * `MKButtonTypeHelp` : a small round button with a question mark
  
  @exception UnsuableType rasied if MKButtonTypeHelp is passed to this method.
  */
@@ -87,4 +71,10 @@ typedef enum {
 /** type the Button Type */
 @property (nonatomic, assign) MKButtonType type;
 
+/** the tint color of a MKButtonTypeRoundedRect */ 
+@property (nonatomic, retain) UIColor *tintColor;
+
+/** the size of the font on the button */
+@property (nonatomic, assign) CGFloat fontSize;
+           
 @end

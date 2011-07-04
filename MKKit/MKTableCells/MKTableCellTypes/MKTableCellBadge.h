@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 
 #import <MKKit/MKKit/MKTableCells/MKTableCell.h>
+#import <MKKit/MKKit/MKViews/MKViewHeader.h>
+#import <MKKit/MKKit/MKGraphics/MKGraphics.h>
+
+@class MKBadgeCellView;
 
 /**---------------------------------------------------------------------------------
  MKTableCellBadge class creates a table cell with Lable and a badge on the right side
@@ -18,11 +22,8 @@
 ----------------------------------------------------------------------------------*/
 
 @interface MKTableCellBadge : MKTableCell {
-    NSString *mBadgeText;
-    UIColor *mBadgeColor;
-    
 @private
-    UILabel *mBadgeLabel;
+    MKBadgeCellView *mCellView;
 }
 
 ///----------------------------------------------------
@@ -30,9 +31,26 @@
 ///----------------------------------------------------
 
 /** The text that will be displayed on the badge */
-@property (nonatomic, copy) NSString *badgeText;
+@property (nonatomic, assign) NSString *badgeText;
 
 /** The color of the badge */
+@property (nonatomic, assign) UIColor *badgeColor;
+
+@end
+
+
+
+@interface MKBadgeCellView : MKView {
+    UILabel *mLabel;
+    
+@private
+    UILabel *mBadgeLabel;
+}
+
+@property (nonatomic, retain) UILabel *label;
+
+@property (nonatomic, copy) NSString *badgeText;
+
 @property (nonatomic, retain) UIColor *badgeColor;
 
 @end

@@ -44,6 +44,18 @@
 */
 + (void)showWithMessage:(NSString *)message duration:(NSTimeInterval)duration;
 
+/**
+ Creates and displays an instance of MKNoticeView. The view is displayed using
+ `MKViewAnimationTypeFadeIn`.
+ 
+ @param message the message displayed to the user
+ 
+ @param controller the view controller that the MKNoticeView will be displayed on
+ 
+ @param duration length of time the messege will stay on screen
+*/
++ (void)showWithMessage:(NSString *)message onViewController:(UIViewController *)controller duration:(NSTimeInterval)duration;
+
 ///---------------------------------------------
 /// @name Behaviors
 ///---------------------------------------------

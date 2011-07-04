@@ -30,6 +30,8 @@
 		_glow = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 64.0, 50.0)];
 		_glow.image = glowImage;
 		_glow.alpha = 0.0;
+        
+        [glowImage release];
 		
 		[self addSubview:_glow];
 		[self addSubview:_icon];

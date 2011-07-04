@@ -36,7 +36,9 @@
 				<div class="section section-overview">
 					<h2 class="subtitle subtitle-overview">Overview</h2>
 					
-<p> The <a href="MKView.html">MKView</a> class is a super class for specialty views. <a href="MKView.html">MKView</a> adopts the <a href="../Protocols/MKViewDelegate.html">MKViewDelegate</a> protocol. When the <a href="#//api/name/showWithAnimationType:">showWithAnimationType:</a> method is used, views are add to the application&apos;s keyWindow. <p class="warning"> <strong> Note </strong> When the showWithAnitmationType: method is used, views are added to the application&apos;s key window. Some subclass of <a href="MKView.html">MKView</a> handel removing themselfs. You should check the documentation of the given class for removal options. </p></p>
+<p> The <a href="MKView.html">MKView</a> class is a super class for specialty views. <a href="MKView.html">MKView</a> adopts the <a href="../Protocols/MKViewDelegate.html">MKViewDelegate</a> protocol. When the <a href="#//api/name/showWithAnimationType:">showWithAnimationType:</a> method is used, views are add to the application&apos;s keyWindow. </p>
+
+<p> The folling <code>MKViewAnimationType</code> (s) are avialible: <ul><li> <code>MKViewAnimationTypeNone</code>: No animations are preformed. View will just appear on the screen. </li><li> <code>MKViewAnimationTypeFadeIn</code>: The View will Fade onto the screen. </li><li> <code>MKViewAnimationTypeMoveInFromTop</code>: The View will slide onto the screen from the top. </li><li> <code>MKViewAnimationTypeAppearAboveToolbar</code>: The View will above so it is placed just above a toolbar. </li></ul> <p class="warning"> <strong> Note </strong> When the showWithAnitmationType: method is used, views are added to the application&apos;s key window. Some subclass of <a href="MKView.html">MKView</a> handel removing themselfs. You should check the documentation of the given class for removal options. </p></p>
 
 				</div>
 				
@@ -53,6 +55,12 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/showWithAnimationType:">- showWithAnimationType:</a></code>
 		<span class="tooltip"> Displayes the View on the applications key window. View can be animated onto the screen using a MKViewAnimationType. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/showOnViewController:animationType:">- showOnViewController:animationType:</a></code>
+		<span class="tooltip"> Displays the View on the specified view Controller. Views can be animated onto the screen using a MKViewAnimationType. </span>
 	</span>
 	
 </li><li>
@@ -132,6 +140,53 @@
 </div>
 					
 					<div class="section-method">
+	<a name="//api/name/showOnViewController:animationType:" title="showOnViewController:animationType:"></a>
+	<h3 class="subsubtitle method-title">showOnViewController:animationType:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Displays the View on the specified view Controller. Views can be animated onto the screen using a MKViewAnimationType. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)showOnViewController:(UIViewController *)<em>controller</em> animationType:(MKViewAnimationType)<em>type</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>controller</em></dt>
+			<dd> the view <a href="#//api/name/controller">controller</a> to display the view on </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>type</em></dt>
+			<dd> the type of animation used to display the view. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKView.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
 	<a name="//api/name/showWithAnimationType:" title="showWithAnimationType:"></a>
 	<h3 class="subsubtitle method-title">showWithAnimationType:</h3>
 	
@@ -158,15 +213,6 @@
 	
 	
 	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		
-		<p> Displayes the View on the applications key window. View can be animated onto the screen using a MKViewAnimationType. </p>
-		
-		<p> The folling <code>MKViewAnimationType</code> (s) are avialible: <ul><li> <code>MKViewAnimationTypeNone</code>: No animations are preformed. View will just appear on the screen. </li><li> <code>MKViewAnimationTypeFadeIn</code>: The View will Fade onto the screen. </li><li> <code>MKViewAnimationTypeMoveInFromTop</code>: The View will slide onto the screen from the top. </li><li> <code>MKViewAnimationTypeAppearAboveToolbar</code>: The View will above so it is placed just above a toolbar. </li></ul></p>
-		
-	</div>
 	
 	
 	
@@ -266,7 +312,7 @@
 			<div id="footer">
 				<hr />
 				<div class="footer-copyright">
-					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-06-09)</span><br />
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-07-03)</span><br />
 					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
 				</div>
 			</div>

@@ -48,6 +48,8 @@ CGRect rectFor1pxStroke(CGRect rect) {
     return CGRectMake(rect.origin.x + 0.5, rect.origin.y + 0.5, rect.size.width - 1, rect.size.height - 1);
 }
 
+#pragma mark - Paths
+
 CGMutablePathRef createRoundedRectForRect(CGRect rect, CGFloat radius) {
     CGMutablePathRef path = CGPathCreateMutable();
     
@@ -63,6 +65,25 @@ CGMutablePathRef createRoundedRectForRect(CGRect rect, CGFloat radius) {
     return path;      
 }
 
+CGMutablePathRef createCircularPathForRect(CGRect rect) {
+    CGMutablePathRef path = CGPathCreateMutable();
+    
+    CGPathAddEllipseInRect(path, NULL, rect);
+    CGPathCloseSubpath(path);
+    
+    return path;
+}
+
+
+void drawOutlinePath(CGContextRef context, CGPathRef path, CGFloat width, CGColorRef color) {
+    CGContextSaveGState(context);
+    CGContextSetLineWidth(context, width);
+    CGContextSetStrokeColorWithColor(context, color);
+    CGContextAddPath(context, path);
+    CGContextStrokePath(context);
+    CGContextRestoreGState(context);
+}
+
 #pragma mark - Text
 
 void drawText(CGContextRef context, CGRect rect, CFStringRef text, CGColorRef color, CGColorRef shadowColor, CGFloat size) {
@@ -71,4 +92,39 @@ void drawText(CGContextRef context, CGRect rect, CFStringRef text, CGColorRef co
     CGContextSetShadowWithColor(context, CGSizeMake(0, 1), 1.0, shadowColor);
     [(NSString *)text drawInRect:rect withFont:[UIFont fontWithName:VERDANA_BOLD_FONT size:size]];
     CGContextRestoreGState(context);
+}
+
+#pragma mark - Gloss
+
+void drawCurvedGloss(CGContextRef context, CGRect rect, CGFloat radius) {
+    
+    CGColorRef glossStart = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.6].CGColor;
+    CGColorRef glossEnd = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.1].CGColor;
+    
+    CGMutablePathRef glossPath = CGPathCreateMutable();
+    
+    CGContextSaveGState(context);
+    CGPathMoveToPoint(glossPath, NULL, CGRectGetMidX(rect), CGRectGetMinY(rect)-radius+rect.size.height/2);
+    CGPathAddArc(glossPath, NULL, CGRectGetMidX(rect), CGRectGetMinY(rect)-radius+rect.size.height/2, radius, 0.75f*M_PI, 0.25f*M_PI, YES); 
+    CGPathCloseSubpath(glossPath);
+    CGContextAddPath(context, glossPath);
+    CGContextClip(context);
+    CGContextAddPath(context, createRoundedRectForRect(rect, 6.0f));
+    CGContextClip(context);
+    
+    CGRect half = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height/2);    
+
+    drawLinearGradient(context, half, glossStart, glossEnd);
+    CGContextRestoreGState(context);
+    
+    CFRelease(glossPath);
+}
+
+void drawLinearGloss(CGContextRef context, CGRect rect) {
+    UIColor *gloss1color = MK_COLOR_RGB(255.0, 255.0, 255.0, 0.35);
+    UIColor *gloss2color = MK_COLOR_RGB(255.0, 255.0, 255.0, 0.1);
+    
+    CGRect topHalf = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, (rect.size.height / 2.0));
+    
+    drawLinearGradient(context, topHalf, gloss1color.CGColor, gloss2color.CGColor);
 }

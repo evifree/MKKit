@@ -39,9 +39,6 @@
     [super viewDidLoad];
 
     self.title = @"PIN Settings";
-    //self.view.backgroundColor = LIGHT_GRAY;
-    //self.tableView.separatorColor = GRAY;
-    //self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLineEtched;
 }
 
 - (void)viewDidUnload {
@@ -109,30 +106,6 @@
 	}
 	return title;
 }
-
-/*
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UILabel *view = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 41.0)] autorelease];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 0.0, 280.0, 41.0)];
-    label.backgroundColor = CLEAR;
-    label.font = VERDANA_BOLD(18.0);
-    label.textColor = WHITE;
-    label.shadowColor = BLACK;
-    label.shadowOffset = CGSizeMake(0.0, 1.0);
-    
-    if (section == 0) {
-        label.text = @"Change Pin";
-    }
-    if (section == 1) {
-        label.text = @"Challenge Question";
-    }
-    
-    [view addSubview:label];
-    [label release];
-    
-    return view;
-}
-*/
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 41.0;

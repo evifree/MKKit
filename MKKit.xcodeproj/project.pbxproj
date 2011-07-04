@@ -101,15 +101,12 @@
 		AA6330DF1344163F00886CE3 /* MKViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6330DE1344163F00886CE3 /* MKViewControllerDelegate.h */; };
 		AA6330E21344230B00886CE3 /* MKWebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6330E01344230B00886CE3 /* MKWebViewController.h */; };
 		AA6330E31344230B00886CE3 /* MKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6330E11344230B00886CE3 /* MKWebViewController.m */; };
-		AA6DF369138DD8C50091B912 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA5A1AC1345589C00D2C23F /* CoreFoundation.framework */; };
-		AA6DF384138DDF410091B912 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA5A1AC1345589C00D2C23F /* CoreFoundation.framework */; };
 		AA6DF398138DE06B0091B912 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA5A1AC1345589C00D2C23F /* CoreFoundation.framework */; };
 		AA6DF39E138DE06C0091B912 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6DF39C138DE06C0091B912 /* InfoPlist.strings */; };
 		AA6DF3A3138DE0820091B912 /* GlobeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA6DF33B138DCFAC0091B912 /* GlobeIcon.png */; };
 		AA6DF3A4138DE0860091B912 /* GlobeIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA6DF33C138DCFAC0091B912 /* GlobeIcon@2x.png */; };
 		AA6DF3A5138DE08C0091B912 /* Pen.png in Resources */ = {isa = PBXBuildFile; fileRef = AA6DF33D138DCFAC0091B912 /* Pen.png */; };
 		AA6DF3A6138DE0930091B912 /* Pen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA6DF35C138DD3A90091B912 /* Pen@2x.png */; };
-		AA6DF3AE138DE1760091B912 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA5A1AC1345589C00D2C23F /* CoreFoundation.framework */; };
 		AA6DF3C4138DE3940091B912 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA5A1AC1345589C00D2C23F /* CoreFoundation.framework */; };
 		AA6DF3CA138DE3940091B912 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6DF3C8138DE3940091B912 /* InfoPlist.strings */; };
 		AA6DF3D0138DE3C60091B912 /* WarningIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA6DF3CF138DE3C60091B912 /* WarningIcon@2x.png */; };
@@ -122,10 +119,6 @@
 		AA6DF3F5138E025B0091B912 /* MKPromptView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6DF3F1138E025B0091B912 /* MKPromptView.m */; };
 		AA6DF3F9138E04D80091B912 /* MKMenuView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6DF3F7138E04D80091B912 /* MKMenuView.h */; };
 		AA6DF3FA138E04D80091B912 /* MKMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6DF3F8138E04D80091B912 /* MKMenuView.m */; };
-		AA6DF400138E06040091B912 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA5A1AC1345589C00D2C23F /* CoreFoundation.framework */; };
-		AA6DF406138E06040091B912 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6DF404138E06040091B912 /* InfoPlist.strings */; };
-		AA6DF40E138E06900091B912 /* MenuBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = AA6DF40C138E06900091B912 /* MenuBackground.png */; };
-		AA6DF40F138E06900091B912 /* MenuBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA6DF40D138E06900091B912 /* MenuBackground@2x.png */; };
 		AA6DF412138E07480091B912 /* MKMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6DF410138E07480091B912 /* MKMenuItem.h */; };
 		AA6DF413138E07480091B912 /* MKMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6DF411138E07480091B912 /* MKMenuItem.m */; };
 		AA778BE413A8617E00AFF686 /* MKGraphics.h in Headers */ = {isa = PBXBuildFile; fileRef = AA778BE213A8617E00AFF686 /* MKGraphics.h */; };
@@ -152,12 +145,6 @@
 		AABF4D9513921E1A001B547A /* MKTableCellIAP.m in Sources */ = {isa = PBXBuildFile; fileRef = AABF4D9313921E1A001B547A /* MKTableCellIAP.m */; };
 		AABF4D98139220FF001B547A /* GreenButton.png in Resources */ = {isa = PBXBuildFile; fileRef = AABF4D96139220FF001B547A /* GreenButton.png */; };
 		AABF4D99139220FF001B547A /* GreenButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AABF4D97139220FF001B547A /* GreenButton@2x.png */; };
-		AAE4C2F7138F65CE0022F4FC /* CopyButton.png in Resources */ = {isa = PBXBuildFile; fileRef = AAE4C2F5138F65CE0022F4FC /* CopyButton.png */; };
-		AAE4C2F8138F65CE0022F4FC /* CopyButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAE4C2F6138F65CE0022F4FC /* CopyButton@2x.png */; };
-		AAE4C2FB138F69D90022F4FC /* PasteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = AAE4C2F9138F69D90022F4FC /* PasteButton.png */; };
-		AAE4C2FC138F69D90022F4FC /* PasteButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAE4C2FA138F69D90022F4FC /* PasteButton@2x.png */; };
-		AAEDEA73138FDAB1007EA362 /* CloseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = AAEDEA71138FDAB1007EA362 /* CloseButton.png */; };
-		AAEDEA74138FDAB1007EA362 /* CloseButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAEDEA72138FDAB1007EA362 /* CloseButton@2x.png */; };
 		AAEDEA771390A732007EA362 /* MKNoticeView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAEDEA751390A730007EA362 /* MKNoticeView.h */; };
 		AAEDEA781390A732007EA362 /* MKNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEDEA761390A731007EA362 /* MKNoticeView.m */; };
 		AAEFE115121873BA008143E4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAEFE114121873BA008143E4 /* CoreLocation.framework */; };
@@ -244,9 +231,6 @@
 		AA10A9D81385BCCB0091DCEC /* MKLoginSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKLoginSettingsViewController.m; sourceTree = "<group>"; };
 		AA1B84E513AD9E7600B8CF6D /* MKBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBarButtonItem.h; sourceTree = "<group>"; };
 		AA1B84E613AD9E7700B8CF6D /* MKBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBarButtonItem.m; sourceTree = "<group>"; };
-		AA1B84EC13ADBF6D00B8CF6D /* MKWebView-Resources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "MKWebView-Resources.bundle"; path = "/Users/Jullie/Desktop/iPhone-Projects/Build/Debug-iphoneos/MKWebView-Resources.bundle"; sourceTree = "<absolute>"; };
-		AA1B84ED13ADBF6D00B8CF6D /* MKLoginView-Resources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "MKLoginView-Resources.bundle"; path = "/Users/Jullie/Desktop/iPhone-Projects/Build/Debug-iphoneos/MKLoginView-Resources.bundle"; sourceTree = "<absolute>"; };
-		AA1B84EE13ADBF6D00B8CF6D /* MKPromptView-Resources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "MKPromptView-Resources.bundle"; path = "/Users/Jullie/Desktop/iPhone-Projects/Build/Debug-iphoneos/MKPromptView-Resources.bundle"; sourceTree = "<absolute>"; };
 		AA1D506813919384009DD3B6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		AA24B49112DEC3000076A44B /* MKWarningIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKWarningIcon.h; sourceTree = "<group>"; };
 		AA24B49212DEC3000076A44B /* MKWarningIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKWarningIcon.m; sourceTree = "<group>"; };
@@ -281,12 +265,6 @@
 		AA6DF3F1138E025B0091B912 /* MKPromptView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPromptView.m; sourceTree = "<group>"; };
 		AA6DF3F7138E04D80091B912 /* MKMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMenuView.h; sourceTree = "<group>"; };
 		AA6DF3F8138E04D80091B912 /* MKMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMenuView.m; sourceTree = "<group>"; };
-		AA6DF3FF138E06040091B912 /* MKMenuView-Resources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MKMenuView-Resources.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA6DF403138E06040091B912 /* MKMenuView-Resources-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MKMenuView-Resources-Info.plist"; sourceTree = "<group>"; };
-		AA6DF405138E06040091B912 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		AA6DF407138E06040091B912 /* MKMenuView-Resources-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MKMenuView-Resources-Prefix.pch"; sourceTree = "<group>"; };
-		AA6DF40C138E06900091B912 /* MenuBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBackground.png; sourceTree = "<group>"; };
-		AA6DF40D138E06900091B912 /* MenuBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuBackground@2x.png"; sourceTree = "<group>"; };
 		AA6DF410138E07480091B912 /* MKMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMenuItem.h; sourceTree = "<group>"; };
 		AA6DF411138E07480091B912 /* MKMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMenuItem.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* MKKit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKKit_Prefix.pch; sourceTree = SOURCE_ROOT; };
@@ -320,34 +298,12 @@
 		AABF4D96139220FF001B547A /* GreenButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenButton.png; sourceTree = "<group>"; };
 		AABF4D97139220FF001B547A /* GreenButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GreenButton@2x.png"; sourceTree = "<group>"; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		AAE4C2F5138F65CE0022F4FC /* CopyButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CopyButton.png; sourceTree = "<group>"; };
-		AAE4C2F6138F65CE0022F4FC /* CopyButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CopyButton@2x.png"; sourceTree = "<group>"; };
-		AAE4C2F9138F69D90022F4FC /* PasteButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PasteButton.png; sourceTree = "<group>"; };
-		AAE4C2FA138F69D90022F4FC /* PasteButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PasteButton@2x.png"; sourceTree = "<group>"; };
-		AAEDEA71138FDAB1007EA362 /* CloseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseButton.png; sourceTree = "<group>"; };
-		AAEDEA72138FDAB1007EA362 /* CloseButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CloseButton@2x.png"; sourceTree = "<group>"; };
 		AAEDEA751390A730007EA362 /* MKNoticeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKNoticeView.h; sourceTree = "<group>"; };
 		AAEDEA761390A731007EA362 /* MKNoticeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKNoticeView.m; sourceTree = "<group>"; };
 		AAEFE114121873BA008143E4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		AA6DF365138DD8C40091B912 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AA6DF369138DD8C50091B912 /* CoreFoundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AA6DF380138DDF410091B912 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AA6DF384138DDF410091B912 /* CoreFoundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		AA6DF394138DE06B0091B912 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -356,27 +312,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AA6DF3AA138DE1760091B912 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AA6DF3AE138DE1760091B912 /* CoreFoundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		AA6DF3C0138DE3940091B912 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				AA6DF3C4138DE3940091B912 /* CoreFoundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AA6DF3FC138E06040091B912 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AA6DF400138E06040091B912 /* CoreFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,7 +352,6 @@
 				AA7EFCEE10FFE8E900B4C1BC /* libMKKit.a */,
 				AA6DF397138DE06B0091B912 /* MKTableCell-Resources.bundle */,
 				AA6DF3C3138DE3940091B912 /* MKValidator-Resources.bundle */,
-				AA6DF3FF138E06040091B912 /* MKMenuView-Resources.bundle */,
 				AAA97EF713916A50009EBCDE /* MKControl-Resources.bundle */,
 			);
 			name = Products;
@@ -629,7 +568,6 @@
 			isa = PBXGroup;
 			children = (
 				AAA97EF913916A50009EBCDE /* MKControl-Resources */,
-				AA6DF401138E06040091B912 /* MKMenuView-Resources */,
 				AA6DF399138DE06B0091B912 /* MKTableCell-Resources */,
 				AA6DF3C5138DE3940091B912 /* MKValidator-Resources */,
 			);
@@ -726,41 +664,6 @@
 			);
 			path = MKMenuView;
 			sourceTree = "<group>";
-		};
-		AA6DF401138E06040091B912 /* MKMenuView-Resources */ = {
-			isa = PBXGroup;
-			children = (
-				AA6DF40B138E06900091B912 /* MKMenuView */,
-				AA6DF402138E06040091B912 /* Supporting Files */,
-			);
-			path = "MKMenuView-Resources";
-			sourceTree = "<group>";
-		};
-		AA6DF402138E06040091B912 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				AA6DF403138E06040091B912 /* MKMenuView-Resources-Info.plist */,
-				AA6DF404138E06040091B912 /* InfoPlist.strings */,
-				AA6DF407138E06040091B912 /* MKMenuView-Resources-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		AA6DF40B138E06900091B912 /* MKMenuView */ = {
-			isa = PBXGroup;
-			children = (
-				AAEDEA71138FDAB1007EA362 /* CloseButton.png */,
-				AAEDEA72138FDAB1007EA362 /* CloseButton@2x.png */,
-				AAE4C2F5138F65CE0022F4FC /* CopyButton.png */,
-				AAE4C2F6138F65CE0022F4FC /* CopyButton@2x.png */,
-				AA6DF40C138E06900091B912 /* MenuBackground.png */,
-				AA6DF40D138E06900091B912 /* MenuBackground@2x.png */,
-				AAE4C2F9138F69D90022F4FC /* PasteButton.png */,
-				AAE4C2FA138F69D90022F4FC /* PasteButton@2x.png */,
-			);
-			name = MKMenuView;
-			path = MKKit/Images/MKMenuView;
-			sourceTree = SOURCE_ROOT;
 		};
 		AA778BE113A8616500AFF686 /* MKGraphics */ = {
 			isa = PBXGroup;
@@ -905,40 +808,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		AA6DF367138DD8C40091B912 /* MKWebView-Resources */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AA6DF371138DD8C50091B912 /* Build configuration list for PBXNativeTarget "MKWebView-Resources" */;
-			buildPhases = (
-				AA6DF364138DD8C40091B912 /* Sources */,
-				AA6DF365138DD8C40091B912 /* Frameworks */,
-				AA6DF366138DD8C40091B912 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "MKWebView-Resources";
-			productName = "MKWebView-Resources";
-			productReference = AA1B84EC13ADBF6D00B8CF6D /* MKWebView-Resources.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
-		AA6DF382138DDF410091B912 /* MKLoginView-Resources */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AA6DF38C138DDF410091B912 /* Build configuration list for PBXNativeTarget "MKLoginView-Resources" */;
-			buildPhases = (
-				AA6DF37F138DDF410091B912 /* Sources */,
-				AA6DF380138DDF410091B912 /* Frameworks */,
-				AA6DF381138DDF410091B912 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "MKLoginView-Resources";
-			productName = "MKLoginView-Resources";
-			productReference = AA1B84ED13ADBF6D00B8CF6D /* MKLoginView-Resources.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
 		AA6DF396138DE06B0091B912 /* MKTableCell-Resources */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA6DF3A0138DE06C0091B912 /* Build configuration list for PBXNativeTarget "MKTableCell-Resources" */;
@@ -956,23 +825,6 @@
 			productReference = AA6DF397138DE06B0091B912 /* MKTableCell-Resources.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
-		AA6DF3AC138DE1760091B912 /* MKPromptView-Resources */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AA6DF3B6138DE1760091B912 /* Build configuration list for PBXNativeTarget "MKPromptView-Resources" */;
-			buildPhases = (
-				AA6DF3A9138DE1760091B912 /* Sources */,
-				AA6DF3AA138DE1760091B912 /* Frameworks */,
-				AA6DF3AB138DE1760091B912 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "MKPromptView-Resources";
-			productName = "MKPromptView-Resources";
-			productReference = AA1B84EE13ADBF6D00B8CF6D /* MKPromptView-Resources.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
 		AA6DF3C2138DE3940091B912 /* MKValidator-Resources */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA6DF3CC138DE3940091B912 /* Build configuration list for PBXNativeTarget "MKValidator-Resources" */;
@@ -988,23 +840,6 @@
 			name = "MKValidator-Resources";
 			productName = "MKValidator-Resources";
 			productReference = AA6DF3C3138DE3940091B912 /* MKValidator-Resources.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
-		AA6DF3FE138E06040091B912 /* MKMenuView-Resources */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AA6DF408138E06040091B912 /* Build configuration list for PBXNativeTarget "MKMenuView-Resources" */;
-			buildPhases = (
-				AA6DF3FB138E06040091B912 /* Sources */,
-				AA6DF3FC138E06040091B912 /* Frameworks */,
-				AA6DF3FD138E06040091B912 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "MKMenuView-Resources";
-			productName = "MKMenuView-Resources";
-			productReference = AA6DF3FF138E06040091B912 /* MKMenuView-Resources.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		AA7EFCED10FFE8E900B4C1BC /* MKKit */ = {
@@ -1066,32 +901,14 @@
 			projectRoot = "";
 			targets = (
 				AA7EFCED10FFE8E900B4C1BC /* MKKit */,
-				AA6DF367138DD8C40091B912 /* MKWebView-Resources */,
-				AA6DF382138DDF410091B912 /* MKLoginView-Resources */,
 				AA6DF396138DE06B0091B912 /* MKTableCell-Resources */,
-				AA6DF3AC138DE1760091B912 /* MKPromptView-Resources */,
 				AA6DF3C2138DE3940091B912 /* MKValidator-Resources */,
-				AA6DF3FE138E06040091B912 /* MKMenuView-Resources */,
 				AAA97EF613916A4F009EBCDE /* MKControl-Resources */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		AA6DF366138DD8C40091B912 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AA6DF381138DDF410091B912 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		AA6DF395138DE06B0091B912 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1106,13 +923,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AA6DF3AB138DE1760091B912 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		AA6DF3C1138DE3940091B912 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1120,22 +930,6 @@
 				AA6DF3CA138DE3940091B912 /* InfoPlist.strings in Resources */,
 				AA6DF3D1138DE3C60091B912 /* WarningIcon@2x.png in Resources */,
 				AA6DF3D3138DE3D00091B912 /* WarningIcon.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AA6DF3FD138E06040091B912 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AA6DF406138E06040091B912 /* InfoPlist.strings in Resources */,
-				AA6DF40E138E06900091B912 /* MenuBackground.png in Resources */,
-				AA6DF40F138E06900091B912 /* MenuBackground@2x.png in Resources */,
-				AAE4C2F7138F65CE0022F4FC /* CopyButton.png in Resources */,
-				AAE4C2F8138F65CE0022F4FC /* CopyButton@2x.png in Resources */,
-				AAE4C2FB138F69D90022F4FC /* PasteButton.png in Resources */,
-				AAE4C2FC138F69D90022F4FC /* PasteButton@2x.png in Resources */,
-				AAEDEA73138FDAB1007EA362 /* CloseButton.png in Resources */,
-				AAEDEA74138FDAB1007EA362 /* CloseButton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1154,20 +948,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		AA6DF364138DD8C40091B912 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AA6DF37F138DDF410091B912 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		AA6DF393138DE06B0091B912 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1175,21 +955,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AA6DF3A9138DE1760091B912 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		AA6DF3BF138DE3940091B912 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AA6DF3FB138E06040091B912 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1279,14 +1045,6 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		AA6DF404138E06040091B912 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AA6DF405138E06040091B912 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		AAA97EFC13916A50009EBCDE /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1326,102 +1084,6 @@
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
-			};
-			name = Release;
-		};
-		AA6DF372138DD8C50091B912 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MKWebView-Resources/MKWebView-Resources-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				INFOPLIST_FILE = "MKWebView-Resources/MKWebView-Resources-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		AA6DF373138DD8C50091B912 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MKWebView-Resources/MKWebView-Resources-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				INFOPLIST_FILE = "MKWebView-Resources/MKWebView-Resources-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		AA6DF38D138DDF410091B912 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MKLoginView-Resources/MKLoginView-Resources-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				INFOPLIST_FILE = "MKLoginView-Resources/MKLoginView-Resources-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		AA6DF38E138DDF410091B912 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MKLoginView-Resources/MKLoginView-Resources-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				INFOPLIST_FILE = "MKLoginView-Resources/MKLoginView-Resources-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
@@ -1473,54 +1135,6 @@
 			};
 			name = Release;
 		};
-		AA6DF3B7138DE1760091B912 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MKPromptView-Resources/MKPromptView-Resources-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				INFOPLIST_FILE = "MKPromptView-Resources/MKPromptView-Resources-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		AA6DF3B8138DE1760091B912 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MKPromptView-Resources/MKPromptView-Resources-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				INFOPLIST_FILE = "MKPromptView-Resources/MKPromptView-Resources-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
 		AA6DF3CD138DE3940091B912 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1560,54 +1174,6 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				INFOPLIST_FILE = "MKValidator-Resources/MKValidator-Resources-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		AA6DF409138E06040091B912 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MKMenuView-Resources/MKMenuView-Resources-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				INFOPLIST_FILE = "MKMenuView-Resources/MKMenuView-Resources-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		AA6DF40A138E06040091B912 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MKMenuView-Resources/MKMenuView-Resources-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				INFOPLIST_FILE = "MKMenuView-Resources/MKMenuView-Resources-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1709,24 +1275,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		AA6DF371138DD8C50091B912 /* Build configuration list for PBXNativeTarget "MKWebView-Resources" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AA6DF372138DD8C50091B912 /* Debug */,
-				AA6DF373138DD8C50091B912 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		AA6DF38C138DDF410091B912 /* Build configuration list for PBXNativeTarget "MKLoginView-Resources" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AA6DF38D138DDF410091B912 /* Debug */,
-				AA6DF38E138DDF410091B912 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
 		AA6DF3A0138DE06C0091B912 /* Build configuration list for PBXNativeTarget "MKTableCell-Resources" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1736,29 +1284,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		AA6DF3B6138DE1760091B912 /* Build configuration list for PBXNativeTarget "MKPromptView-Resources" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AA6DF3B7138DE1760091B912 /* Debug */,
-				AA6DF3B8138DE1760091B912 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
 		AA6DF3CC138DE3940091B912 /* Build configuration list for PBXNativeTarget "MKValidator-Resources" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AA6DF3CD138DE3940091B912 /* Debug */,
 				AA6DF3CE138DE3940091B912 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		AA6DF408138E06040091B912 /* Build configuration list for PBXNativeTarget "MKMenuView-Resources" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AA6DF409138E06040091B912 /* Debug */,
-				AA6DF40A138E06040091B912 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

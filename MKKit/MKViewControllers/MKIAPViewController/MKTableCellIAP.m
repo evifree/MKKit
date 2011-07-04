@@ -43,6 +43,7 @@
     mButton = [[MKButton alloc] initWithType:MKButtonTypeIAP title:price];
     mButton.frame = CGRectMake((270.0 - mButton.frame.size.width), 7.0, mButton.frame.size.width, 30.0);
     
+    
     [mButton completedAction: ^ (MKAction action) {
         if (action == MKActionTouchUp) {
             [self completPurchase];

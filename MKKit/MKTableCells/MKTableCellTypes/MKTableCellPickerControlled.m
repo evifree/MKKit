@@ -27,7 +27,8 @@ pickerArray=_pickerArray;
 @synthesize displayed=_displayed;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-	if (self == [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+	if (self) {
 		CGRect labelFrame = CGRectMake(10.0, 11.0, 100.0, 21.0);
 		CGRect pickerLabelFrame = CGRectMake(118.3, 9.0, 150.0, 23.0);
 		

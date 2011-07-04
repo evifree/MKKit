@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 6/18/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Matt King. All rights reserved.
 //
 
 #import "MKBarButtonItem.h"
@@ -54,7 +54,7 @@
         CGPathCloseSubpath(path);
         
         CGContextSaveGState(context);
-        CGContextSetShadowWithColor(context, CGSizeMake(0, -1), 2.0, shadowColor);
+        CGContextSetShadowWithColor(context, CGSizeMake(0, -1), 1.0, shadowColor);
         CGContextSetFillColorWithColor(context, inner);
         CGContextAddPath(context, path);
         CGContextFillPath(context);

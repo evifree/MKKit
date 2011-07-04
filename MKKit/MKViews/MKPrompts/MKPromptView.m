@@ -48,9 +48,13 @@
         messageLabel.numberOfLines = 0;
         messageLabel.font = [UIFont boldSystemFontOfSize:14.0];
         messageLabel.text = message;
+        messageLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
         
         [self addSubview:messageLabel];
         [messageLabel release];
+        
+        self.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+        self.autoresizesSubviews = YES;
     }
     return self;
 }

@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 6/18/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Matt King. All rights reserved.
 //
 
 #import "MKControl.h"

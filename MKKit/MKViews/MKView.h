@@ -19,11 +19,20 @@ typedef enum {
     MKViewAnimationTypeAppearAboveToolbar,
 } MKViewAnimationType;
 
+static NSString *MKViewShouldRemoveNotification = @"MKViewShouldRemoveNotification";
+
 @protocol MKViewDelegate;
 
 /**-------------------------------------------------------------------------------------------------------
  The MKView class is a super class for specialty views. MKView adopts the MKViewDelegate protocol. When the 
  showWithAnimationType: method is used, views are add to the application's keyWindow. 
+ 
+ The folling `MKViewAnimationType`(s) are avialible:
+ 
+ * `MKViewAnimationTypeNone` : No animations are preformed. View will just appear on the screen.
+ * `MKViewAnimationTypeFadeIn` : The View will Fade onto the screen.
+ * `MKViewAnimationTypeMoveInFromTop` : The View will slide onto the screen from the top.
+ * `MKViewAnimationTypeAppearAboveToolbar ` : The View will above so it is placed just above a toolbar.
  
  @warning *Note* When the showWithAnitmationType: method is used, views are added to the application's 
  key window. Some subclass of MKView handel removing themselfs. You should check the documentation of the
@@ -47,16 +56,16 @@ typedef enum {
 /** Displayes the View on the applications key window. View can be animated onto the screen using a MKViewAnimationType.
  
  @param type the type of animations used to display the view.
- 
- The folling `MKViewAnimationType`(s) are avialible:
- 
- * `MKViewAnimationTypeNone` : No animations are preformed. View will just appear on the screen.
- * `MKViewAnimationTypeFadeIn` : The View will Fade onto the screen.
- * `MKViewAnimationTypeMoveInFromTop` : The View will slide onto the screen from the top.
- * `MKViewAnimationTypeAppearAboveToolbar ` : The View will above so it is placed just above a toolbar.
- 
 */
 - (void)showWithAnimationType:(MKViewAnimationType)type;
+
+/** Displays the View on the specified view Controller. Views can be animated onto the screen using a MKViewAnimationType.
+ 
+ @param controller the view controller to display the view on
+ 
+ @param type the type of animation used to display the view.
+*/
+- (void)showOnViewController:(UIViewController *)controller animationType:(MKViewAnimationType)type;
 
 /** Removes the view from the Screen. The view is removed by reversing the MKViewAnimationType that was used to 
  display it.

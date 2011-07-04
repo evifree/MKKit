@@ -10,13 +10,15 @@
 
 @implementation MKTableCellBadge
 
-@synthesize badgeText=mBadgeText, badgeColor=mBadgeColor;
-
-CGFloat maxWidth = 30.0;
+@synthesize badgeText, badgeColor;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.contentView.autoresizesSubviews = YES;
+        
+        mCellView = [[MKBadgeCellView alloc] initWithFrame:self.contentView.frame];
+        
         CGRect labelRect = CGRectMake(10.0, 10.0, 170.0, 21.0);
 		
 		mTheLabel = [[UILabel alloc] initWithFrame:labelRect];
@@ -25,50 +27,90 @@ CGFloat maxWidth = 30.0;
 		mTheLabel.minimumFontSize = 10.0;
         mTheLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
 		
-		[self.contentView addSubview:mTheLabel];
-        self.contentView.autoresizesSubviews = YES;
-		[mTheLabel release];
-        
-        mBadgeColor = [GRAY retain];
+		[mCellView addSubview:mTheLabel];
+        [mTheLabel release];
+
+        [self.contentView addSubview:mCellView];
+        [mCellView release];
     }
     return self;
 }
+ 
+#pragma mark - Accessor Methods
+
+- (void)setBadgeText:(NSString *)text {
+    mCellView.badgeText = text;
+}
+
+- (void)setBadgeColor:(UIColor *)color {
+    mCellView.badgeColor = color;
+}
+ 
+#pragma mark - Memory Managment
+
+- (void)dealloc {
+    [super dealloc];
+}
+
+@end
+
+@implementation MKBadgeCellView
+
+@synthesize label=mLabel, badgeText, badgeColor;
+
+CGFloat maxWidth = 30.0;
+CGColorRef mBadgeColor = nil;
+
+#pragma mark - Ininializer
+
+- (id)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.backgroundColor = CLEAR;
+        self.alpha = 1.0;
+        self.opaque = NO;
+        
+        self.autoresizesSubviews = YES;
+        self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    
+        mBadgeColor = GRAY.CGColor;
+    }
+    return self;
+}
+
+#pragma mark - Drawing
 
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetAllowsAntialiasing(context, YES);
     
-    CGRect rrect = CGRectMake((290.0 - maxWidth), 10.0, maxWidth, 22.0);
+    CGRect rrect = CGRectMake((280.0 - maxWidth), 10.0, maxWidth, 22.0);
     
-	CGFloat radius = 10.0;
-    CGFloat minx = CGRectGetMinX(rrect), midx = CGRectGetMidX(rrect), maxx = CGRectGetMaxX(rrect);
-	CGFloat miny = CGRectGetMinY(rrect), midy = CGRectGetMidY(rrect), maxy = CGRectGetMaxY(rrect);
-	
-	CGContextMoveToPoint(context, minx, midy);
-	CGContextAddArcToPoint(context, minx, miny, midx, miny, radius);
-	CGContextAddArcToPoint(context, maxx, miny, maxx, midy, radius);
-	CGContextAddArcToPoint(context, maxx, maxy, midx, maxy, radius);
-	CGContextAddArcToPoint(context, minx, maxy, minx, midy, radius);
-	CGContextClosePath(context);
-
-    CGContextSetFillColorWithColor(context, mBadgeColor.CGColor);
+    CGMutablePathRef roundRectPath = createRoundedRectForRect(rrect, 10.0);
+    
+    CGContextSaveGState(context);
+    CGContextSetFillColorWithColor(context, mBadgeColor);
+    CGContextAddPath(context, roundRectPath);
     CGContextFillPath(context);
+    CGContextRestoreGState(context);
     
-    CGContextStrokePath(context);
+    CFRelease(roundRectPath);
+    
+    if (mBadgeLabel) {
+        [mBadgeLabel drawTextInRect:rrect];
+    }
 }
 
 #pragma mark - Accessor Methods
 
-- (void)setBadgeText:(NSString *)badgeText {
-    mBadgeText = [badgeText copy];
-    
-    CGSize max = [badgeText sizeWithFont:SYSTEM_BOLD(12)];
+- (void)setBadgeText:(NSString *)text {
+    CGSize max = [text sizeWithFont:SYSTEM_BOLD(12)];
     
     if (max.width > maxWidth) {
         maxWidth = (max.width + 20.0);
     }
     
-    CGRect rect = CGRectMake((290.0 - maxWidth), 10.0, maxWidth, 22.0);
+    CGRect rect = CGRectMake((280.0 - maxWidth), 10.0, maxWidth, 22.0);
     
     if (!mBadgeLabel) {
         mBadgeLabel = [[UILabel alloc] initWithFrame:rect];
@@ -77,31 +119,28 @@ CGFloat maxWidth = 30.0;
         mBadgeLabel.textAlignment = UITextAlignmentCenter;
         mBadgeLabel.textColor = WHITE;
         mBadgeLabel.shadowColor = BLACK;
-        mBadgeLabel.shadowOffset = CGSizeMake(0.0, 1.0);
-        mBadgeLabel.text = mBadgeText;
-        mBadgeLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
-        
-        [self.contentView addSubview:mBadgeLabel];
-        [mBadgeLabel release];
+        mBadgeLabel.shadowOffset = CGSizeMake(0.0, -1.0);
+        mBadgeLabel.text = text;
+        mBadgeLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin;
     }
     else {
         mBadgeLabel.frame = rect;
-        mBadgeLabel.text = mBadgeText;
+        mBadgeLabel.text = text;
     }
     
-    [self.contentView setNeedsLayout];
-    [mBadgeText release];
+    [self setNeedsDisplay];
 }
 
-- (void)setBadgeColor:(UIColor *)badgeColor {
-    mBadgeColor = [badgeColor retain];
-    [self.contentView setNeedsLayout];
+- (void)setBadgeColor:(UIColor *)color {
+    mBadgeColor = color.CGColor;
+    [self setNeedsDisplay];
 }
 
-#pragma mark - Memory Managment
+#pragma - Memory Managment
 
 - (void)dealloc {
-    [mBadgeColor release];
+    [mBadgeLabel release];
+    
     [super dealloc];
 }
 

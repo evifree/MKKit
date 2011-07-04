@@ -146,6 +146,8 @@
         cell.key = product.productIdentifier;
         ((MKTableCellIAP *)cell).IAPIdentifier = product.productIdentifier;
         ((MKTableCellIAP *)cell).price = [string localCurencyFromNumber:product.price];
+        
+        [string release];
     }
     
     return cell;

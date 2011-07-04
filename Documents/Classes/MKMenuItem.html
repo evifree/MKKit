@@ -36,7 +36,9 @@
 				<div class="section section-overview">
 					<h2 class="subtitle subtitle-overview">Overview</h2>
 					
-<p> <a href="MKMenuItem.html">MKMenuItem</a> is a special control that works with MKMenuView. MKMenuItems are designed to be placed on an instance of MKMenuView. They are given to an <a href="MKMenuView.html">MKMenuView</a> by creating an array of instances and passing to the menu with through the initWithItems: method. <p class="warning"> <strong> Note </strong> <a href="MKMenuItem.html">MKMenuItem</a> objects will look for resources in the MKMenuView-Resources bundle. Ensure this bundle is added to your project for proper function. </p></p>
+<p> <a href="MKMenuItem.html">MKMenuItem</a> is a special control that works with MKMenuView. MKMenuItems are designed to be placed on an instance of MKMenuView. They are given to an <a href="MKMenuView.html">MKMenuView</a> by creating an array of instances and passing to the menu with through the initWithItems: method. </p>
+
+<p> There are four built-in types of MKMenuItems: <ul><li> <code>MKMenuItemTypeCancel</code>: A round cancel button. </li><li> <code>MKMenuItemTypeCopy</code>: A round copy button. </li><li> <code>MKMenuItemTypeDelete</code>: A round delete button, colored red. </li><li> <code>MKMenuItemTypeCustomImage</code>: A round button with image drawn onto it. </li></ul> <p class="warning"> <strong> Note </strong> If you want to have your own image added to a button use the <a href="#//api/name/initWithImage:title:target:selector:">initWithImage:title:target:selector:</a> method insteade of initWithType:title:Target:selector:. </p></p>
 
 				</div>
 				
@@ -52,13 +54,19 @@
 						<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/initWithType:title:target:selector:">- initWithType:title:target:selector:</a></code>
-		<span class="tooltip"> Returns an intalized instance of a predefined menu item. The avialible menu items are: <ul><li> <code>MKMenuItemTypeCancel</code>: A round cancel button. </li><li> <code>MKMenuItemTypeCopy</code>: A round copy button. </li></ul></span>
+		<span class="tooltip"> Returns an intalized instance of a predefined menu item. </span>
 	</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/initWithCustomView:target:selector:">- initWithCustomView:target:selector:</a></code>
 		<span class="tooltip"> Returns an intalized instance with a custom view. The view is expected to be 60.0x80.0, It will be resized to meet this if needed. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithImage:title:target:selector:">- initWithImage:title:target:selector:</a></code>
+		<span class="tooltip"> Returns an intalized intance of the standard black button with an image on it. The image needs to be a 40x40, and only black and transpent in color. The <a href="MKMenuItem.html">MKMenuItem</a> class will handle the coloring of the image. </span>
 	</span>
 	
 </li>
@@ -140,13 +148,75 @@
 </div>
 					
 					<div class="section-method">
+	<a name="//api/name/initWithImage:title:target:selector:" title="initWithImage:title:target:selector:"></a>
+	<h3 class="subsubtitle method-title">initWithImage:title:target:selector:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Returns an intalized intance of the standard black button with an image on it. The image needs to be a 40x40, and only black and transpent in color. The <a href="MKMenuItem.html">MKMenuItem</a> class will handle the coloring of the image. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithImage:(UIImage *)<em>image</em> title:(NSString *)<em>name</em> target:(id)<em>target</em> selector:(SEL)<em>selector</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>image</em></dt>
+			<dd> the image to be displayed on the icon. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd> the text that will be displayed directly under the button. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>target</em></dt>
+			<dd> the object that will handle actions sent by the item. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>selector</em></dt>
+			<dd> the selector to preform when the item is touched. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p> <a href="MKMenuItem.html">MKMenuItem</a> instance. </p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKMenuItem.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
 	<a name="//api/name/initWithType:title:target:selector:" title="initWithType:title:target:selector:"></a>
 	<h3 class="subsubtitle method-title">initWithType:title:target:selector:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p> Returns an intalized instance of a predefined menu item. The avialible menu items are: <ul><li> <code>MKMenuItemTypeCancel</code>: A round cancel button. </li><li> <code>MKMenuItemTypeCopy</code>: A round copy button. </li></ul></p>
+		<p> Returns an intalized instance of a predefined menu item. </p>
 	</div>		
 	
 	
@@ -248,7 +318,7 @@
 			<div id="footer">
 				<hr />
 				<div class="footer-copyright">
-					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-06-09)</span><br />
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-07-03)</span><br />
 					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
 				</div>
 			</div>

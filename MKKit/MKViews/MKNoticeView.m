@@ -16,7 +16,7 @@
 #pragma mark - Intalizer
 
 - (id)initWithMessage:(NSString *)message {
-    self = [super initWithFrame:CGRectMake(CENTER_VIEW_HORIZONALLY(200.0), 360.0, 200.0, 31.0)];
+    self = [super initWithFrame:CGRectMake(CENTER_VIEW_HORIZONTALLY(320.0, 200.0), 360.0, 200.0, 31.0)];
     if (self) {
         self.backgroundColor = BLACK;
         
@@ -29,6 +29,9 @@
         
         [self addSubview:label];
         [label release];
+        
+        self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+        self.autoresizesSubviews = YES;
     }
     return self;
 }
@@ -42,6 +45,16 @@
     view.duration = duration;
     view.alpha = 0.0;
     [view showWithAnimationType:MKViewAnimationTypeFadeIn];
+    [view release];
+}
+
++ (void)showWithMessage:(NSString *)message onViewController:(UIViewController *)controller duration:(NSTimeInterval)duration {
+    [self release];
+    
+    MKNoticeView *view = [[MKNoticeView alloc] initWithMessage:message];
+    view.duration = duration;
+    view.alpha = 0.0;
+    [view showOnViewController:controller animationType:MKViewAnimationTypeFadeIn];
     [view release];
 }
 

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>MKReflectedImageView Class Reference</title>
+		<title>MKBarButtonItem Class Reference</title>
 		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
 		<meta name="generator" content="appledoc 2.0b3" />
@@ -16,7 +16,7 @@
 			</div>
 			<div id="header">
 				<div class="section-header">
-					<h1 class="title title-header">MKReflectedImageView Class Reference</h1>
+					<h1 class="title title-header">MKBarButtonItem Class Reference</h1>
 				</div>		
 			</div>
 			<div id="container">	
@@ -24,10 +24,10 @@
 				<div class="section section-specification"><table cellspacing="0"><tbody>
 					<tr>
 	<td class="specification-title">Inherits from</td>
-	<td class="specification-value"><a href="MKView.html">MKView</a> : UIView</td>
+	<td class="specification-value"><a href="MKControl.html">MKControl</a> : UIControl</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">MKReflectedImageView.h</td>
+	<td class="specification-value">MKBarButtonItem.h</td>
 </tr>
 					</tbody></table></div>
 				
@@ -36,7 +36,7 @@
 				<div class="section section-overview">
 					<h2 class="subtitle subtitle-overview">Overview</h2>
 					
-<p> The MKReflecedImageView class displays an <a href="#//api/name/image">image</a> and creates a reflection of that <a href="#//api/name/image">image</a> underneath it. <p class="warning"> The frame for this view is calcuated by using the demtions of the provided image. Please use correct <a href="#//api/name/image">image</a> sizes. The view will be the same width of the image, and height is 25% larger plus 2 pixs. For example if your imgae is 100px high the height of the view will be 127px (100*.25 + 2). </p></p>
+<p> <a href="MKBarButtonItem.html">MKBarButtonItem</a> creates buttons for use on a tab bar. The button that will be displayed depends on the MKBarButtonItemType that is set. Currently There are two types: <ul><li> <code>MKBarButtonItemBackArrow</code> a triangle pointing to the left. </li><li> <code>MKBarButtonItemForwardArrow</code> a triangle pointing to the right. </li></ul></p>
 
 				</div>
 				
@@ -46,25 +46,19 @@
 				<div class="section section-tasks">
 					<h2 class="subtitle subtitle-tasks">Tasks</h2>
 					
-					<h3 class="subsubtitle task-title">Creating</h3>
-
+					
+<h3 class="subsubtitle task-title">Creating</h3>
 					<ul class="task-list">
 						<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithImage:drawAt:">- initWithImage:drawAt:</a></code>
-		<span class="tooltip"> Returns an initalized instance of MKReflecedImageView. </span>
+		<code><a href="#//api/name/initWithType:">- initWithType:</a></code>
+		<span class="tooltip"> Returns an intialized instance of <a href="MKBarButtonItem.html">MKBarButtonItem</a> and sets the MKBarButtonItemType. </span>
 	</span>
 	
-</li>
-					</ul>
-					
-					<h3 class="subsubtitle task-title">Elements</h3>
-
-					<ul class="task-list">
-						<li>
+</li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/image"> image</a></code>
-		<span class="tooltip"> The <a href="#//api/name/image">image</a> of the view </span>
+		<code><a href="#//api/name/type"> type</a></code>
+		<span class="tooltip"> The <a href="#//api/name/type">type</a> of button that is assigned </span>
 	</span>
 	
 </li>
@@ -82,31 +76,39 @@
 					<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 					
 					<div class="section-method">
-	<a name="//api/name/initWithImage:drawAt:" title="initWithImage:drawAt:"></a>
-	<h3 class="subsubtitle method-title">initWithImage:drawAt:</h3>
+	<a name="//api/name/initWithType:" title="initWithType:"></a>
+	<h3 class="subsubtitle method-title">initWithType:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p> Returns an initalized instance of MKReflecedImageView. </p>
+		<p> Returns an intialized instance of <a href="MKBarButtonItem.html">MKBarButtonItem</a> and sets the MKBarButtonItemType. </p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (id)initWithImage:(UIImage *)<em>image</em> drawAt:(CGPoint)<em>point</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithType:(MKBarButtonItemType)<em>type</em></code></div>
 	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>image</em></dt>
-			<dd> the <a href="#//api/name/image">image</a> that will be displayed and reflected. </dd>
+			<dt><em>type</em></dt>
+			<dd> the <a href="#//api/name/type">type</a> of button to be displayed </dd>
 		</dl>
 		
-		<dl class="argument-def parameter-def">
-			<dt><em>point</em></dt>
-			<dd> the origin of the view. This is the top right corner. </dd>
-		</dl>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		
+		<p> Returns an intialized instance of <a href="MKBarButtonItem.html">MKBarButtonItem</a> and sets the MKBarButtonItemType. </p>
+		
+		<p> Currently There are two types: <ul><li> <code>MKBarButtonItemBackArrow</code> a triangle pointing to the left. </li><li> <code>MKBarButtonItemForwardArrow</code> a triangle pointing to the right. </li></ul></p>
 		
 	</div>
 	
@@ -116,13 +118,9 @@
 	
 	
 	
-	
-	
-	
-	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">MKReflectedImageView.h</code><br />
+		<code class="declared-in-ref">MKBarButtonItem.h</code><br />
 	</div>				
 	
 	
@@ -136,17 +134,17 @@
 					<h2 class="subtitle subtitle-methods">Properties</h2>
 					
 					<div class="section-method">
-	<a name="//api/name/image" title="image"></a>
-	<h3 class="subsubtitle method-title">image</h3>
+	<a name="//api/name/type" title="type"></a>
+	<h3 class="subsubtitle method-title">type</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p> The <a href="#//api/name/image">image</a> of the view </p>
+		<p> The <a href="#//api/name/type">type</a> of button that is assigned </p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain, readonly) UIImage *image</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) MKBarButtonItemType type</code></div>
 	
 	
 	
@@ -161,7 +159,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">MKReflectedImageView.h</code><br />
+		<code class="declared-in-ref">MKBarButtonItem.h</code><br />
 	</div>				
 	
 	
