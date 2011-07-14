@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 3/19/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010 Matt King. All rights reserved.
 //
 
 #import "MKTableCell.h"
@@ -17,34 +17,15 @@
 @implementation MKTableCell
 
 @synthesize delegate, type, theLabel=mTheLabel, smallLabel=_smallLabel, theImageView=mTheImageView, key,
-			accessoryViewType, validationType=_validationType, validating=_validating, validator, icon=mIcon;
+			accessoryViewType, validationType=_validationType, validating=_validating, validator, icon=mIcon,
+            iconMask=mIconMask, validatorTestStringLength=mValidatorTestStringLength, accessoryIcon=mAccessoryIcon;
 
-#pragma mark --
-#pragma mark StartUp
+#pragma mark - Initalizer
 
 - (id)initWithType:(MKTableCellType)cellType reuseIdentifier:(NSString *)reuseIdentifier {
-    self.type = cellType;
-	
-	[self.detailTextLabel removeFromSuperview];
-	[self.textLabel removeFromSuperview];
-	[self.imageView removeFromSuperview];
-	
-	self = [self initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
-	
-	return self;
-}
-
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
     if (self) {
-		//CGRect labelFrame = CGRectMake(10.0, 11.0, 100.0, 21.0);
-				
-		//mTheLabel = [[UILabel alloc] initWithFrame:labelFrame];
-		//mTheLabel.textAlignment = UITextAlignmentLeft;
-		//mTheLabel.adjustsFontSizeToFitWidth = YES;
-		//mTheLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
-		//mTheLabel.backgroundColor = [UIColor clearColor];
-		
+        self.type = cellType;
 		/////////////////////////////////////////////////////////////////////////////////////////////////
 		///                 MKTableCellTypeLabel                                                      ///
 		
@@ -115,7 +96,6 @@
 		}
 		
 		if (type == MKTableCellTypeAction) {
-			CGRect iconRect = CGRectMake(10.0, 7.0, 30.0, 30.0);
 			CGRect labelRect = CGRectMake(58.0, 11.0, 183.0, 21.0);
 			
 			mTheLabel = [[UILabel alloc] initWithFrame:labelRect];
@@ -126,11 +106,6 @@
 			
             [self.contentView addSubview:mTheLabel];
             [mTheLabel release];
-
-            
-			mTheImageView = [[[UIImageView alloc] initWithFrame:iconRect] retain];
-			[self.contentView addSubview:mTheImageView];
-			[mTheImageView release];
 		}
 		
 		if (type == MKTableCellTypeButton) {
@@ -149,13 +124,9 @@
             [mTheLabel release];
 		}
 		
-		//[self.contentView addSubview:mTheLabel];
 		[self.contentView setAutoresizesSubviews:YES];
 		[self setSelectionStyle:UITableViewCellSelectionStyleNone];
-		
-		//mTheLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
-		//[mTheLabel release];
-	}
+    }
 	return self;
 }
 	
@@ -172,11 +143,11 @@
 		self.accessoryView = button;
 	}
 	if (aType == MKTableCellAccessoryWarningIcon) {
-		UIImageView *iconImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:MK_TABLE_CELL_WARNING_ICON]];
-		iconImage.frame = CGRectMake(0.0, 0.0, 30.0, 30.0);
-		self.accessoryView = iconImage;
+        MKAccessoryView *iconImage = [[MKAccessoryView alloc] initWithType:MKTableCellAccessoryWarningIcon];
+        self.accessoryView = iconImage;
 		[iconImage release];
 	}
+    /*
     if (aType == MKTableCellAccessoryGlobe) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         [button setImage:[UIImage imageNamed:MK_TABLE_CELL_GLOBE_ICON] forState:UIControlStateNormal];
@@ -184,6 +155,7 @@
         button.frame = CGRectMake(0.0, 0.0, 30.0, 30.0);
 		self.accessoryView = button;
     }
+    */
     if (aType == MKTableCellAccessoryActivity) {
         UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0, 0.0, 20.0, 20.0)];
         activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
@@ -192,6 +164,17 @@
         self.accessoryView = activityIndicator;
         [activityIndicator release];
     }
+}
+
+- (void)setAccessoryIcon:(UIImage *)icon {
+    MKAccessoryView *iconView = [[MKAccessoryView alloc] initWithImage:icon];
+    [iconView completedAction: ^ (MKAction action) {
+        if (action == MKActionTouchDown) {
+            [self accessoryButton:iconView];
+        }
+    }];
+    self.accessoryView = iconView;
+    [iconView release];
 }
 
 - (void)setValidationType:(MKValidationType)valType {
@@ -204,14 +187,30 @@
 	else {
 		_validating = YES;
 		validator = [[MKValidator alloc] init];
-		[validator retain];
+		//[validator retain];
 	}
+}
+
+- (void)setValidatorTestStringLength:(NSInteger)length {
+    mValidatorTestStringLength = length;
+    
+    if (_validating) {
+        ((MKValidator *)validator).stringLength = length;
+    }
 }
 
 - (void)setIcon:(UIImage *)anImage {
 	mIcon = [anImage retain];
-	self.theImageView.image = mIcon;
-	[mIcon release];
+
+    CGRect iconRect = CGRectMake(10.0, 7.0, 30.0, 30.0);
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:iconRect];
+    imageView.image = mIcon;
+    
+    [self.contentView addSubview:imageView];
+    [imageView release];
+    
+    [mIcon release];
 }
 
 #pragma mark -
@@ -248,6 +247,10 @@
 #pragma mark Memory Management
 
 - (void)dealloc {
+    if (_validating) {
+        [validator release];
+    }
+    
     [super dealloc];
 	
 }

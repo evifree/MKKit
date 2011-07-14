@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 10/20/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010 Matt King. All rights reserved.
 //
 
 #import "MKTableCellStats.h"
@@ -15,7 +15,8 @@
 #pragma mark Initalizer
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
+    self = [super initWithType:MKTableCellTypeNone reuseIdentifier:reuseIdentifier];
+    if (self) {
 		CGRect labelRect = CGRectMake(10.0, 11.0, 150.0, 21.0);
 		CGRect smallFrame = CGRectMake(170.0, 11.0, 100.0, 21.0);
 		

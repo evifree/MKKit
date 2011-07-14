@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 11/1/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010 Matt King. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -38,8 +38,10 @@ typedef enum {
 
 @interface MKTableCellTextEntry : MKTableCell <UITextFieldDelegate> {
     MKTextEntryCellType mTextEntryType;
-    
 	MKTextField *mTheTextField;
+    
+@private
+    NSError *mValidationError;
 }
 
 ///---------------------------------------------------------------------------------
@@ -67,7 +69,15 @@ typedef enum {
 /** A reference to the MKTextField */
 @property (nonatomic, retain) MKTextField *theTextField;
 
-/** The type of Text Entry Cell*/
+/** The type of Text Entry Cell */
 @property (nonatomic, assign) MKTextEntryCellType textEntryType;
+
+@end
+
+@interface MKTextCellView : MKView {
+    MKTextEntryCellType mType;
+}
+
+- (id)initWithType:(MKTextEntryCellType)type;
 
 @end

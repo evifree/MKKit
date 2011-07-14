@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 7/25/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010 Matt King. All rights reserved.
 //
 
 #import "MKTabViewController.h"
@@ -17,14 +17,16 @@
 #pragma mark Initalizers
 
 - (id)initWithRootViewController:(UIViewController *)rootViewController {
-	if (self == [super init]) {
+    self = [super init];
+	if (self) {
 		mainViewController = (UIViewController *)[rootViewController retain];
 	}
 	return self;
 }
 
 - (id)initWithViewControllers:(NSArray *)controllers {
-	if (self == [super init]) {
+    self = [super init];
+	if (self) {
 		viewControllers = [controllers copy];
 	}
 	return self;

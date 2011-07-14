@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 5/25/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Matt King. All rights reserved.
 //
 
 #import "MKMenuItem.h"
@@ -127,6 +127,7 @@ CGMutablePathRef createPathForPaperSheet(CGRect rect);
         CGFloat imageMargin = 10.0;
         CGRect imageRect = CGRectInset(innerRect, imageMargin, imageMargin);
         drawImageButton(context, imageRect, mImage.CGImage);
+        [mImage release];
     }
     
     CGContextSaveGState(context);

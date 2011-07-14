@@ -48,6 +48,7 @@ CGFloat lProgress = 0.0;
             [activityIndicator startAnimating];
             
             [self addSubview:activityIndicator];
+            [activityIndicator release];
         }
     }
     return self;

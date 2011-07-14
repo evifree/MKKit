@@ -3,24 +3,23 @@
 //  MKKit
 //
 //  Created by Matthew King on 3/19/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010 Matt King. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+
 #import <MKKit/MKKit/MKControls/MKContolHeaders.h>
-//#import <MKKit/MKKit/MKControls/MKCheckBox.h>
-#import <MKKit/MKKit/MKControls/MKTextField.h>
 #import <MKKit/MKKit/MKErrorContol/MKInputValidation.h>
 #import <MKKit/MKKit/MKErrorContol/MKValidator.h>
+#import <MKKit/MKKit/MKViews/MKViewHeader.h>
+
 #import <MKKit/MKKit/MKDeffinitions.h>
 #import <MKKit/MKKit/MKMacros.h>
 #import <MKKit/MKKit/MKStrings.h>
 
+#import "MKTableElements/MKMaskIconView.h"
+#import "MKTableElements/MKAccessoryView.h"
 #import "MKTableCellDelegate.h"
-
-#define MK_TABLE_CELL_GLOBE_ICON        @"MKTableCell-Resources.bundle/GlobeIcon.png"
-#define MK_TABLE_CELL_PEN_ICON          @"MKTableCell-Resources.bundle/Pen.png"
-#define MK_TABLE_CELL_WARNING_ICON      @"MKTableCell-Resources.bundle/WarningIcon.png"
 
 typedef enum {
 	MKTableCellTypeNone,
@@ -32,11 +31,11 @@ typedef enum {
 } MKTableCellType;
 
 typedef enum {
-	MKTableCellAccessoryNone,
-    MKTableCellAccessoryActivity,
-    MKTableCellAccessoryGlobe,
-	MKTableCellAccessoryInfoButton,
-	MKTableCellAccessoryWarningIcon,
+	MKTableCellAccessoryNone = 0,
+    MKTableCellAccessoryActivity = 1,
+    //MKTableCellAccessoryGlobe = 2,
+	MKTableCellAccessoryInfoButton = 3,
+	MKTableCellAccessoryWarningIcon = 4,
 } MKTableCellAccessoryViewType;
 
 @protocol MKTableCellDelegate;
@@ -62,7 +61,6 @@ typedef enum {
  
  * `MKTableCellAccessoryNone` : No accessory.
  * `MKTableCellAccessoryActivity` : Displays an activity indicator as the cells accessory.
- * `MKTableCellAccessoryGlobe ` : Displays an icon of a Globe as the cells accessory.
  * `MKTableCellAccessoryInfoButton` : Displays an info button as the cells accessory.
  * `MKTableCellAccessoryWarningIcon` : Dispalays a warning icon as the cell accessory. 
  
@@ -75,17 +73,23 @@ typedef enum {
 
 @interface MKTableCell : UITableViewCell {
 	id delegate;
-	id validator;
+    id validator;
+    
 	MKTableCellType type;
+    
 	MKTableCellAccessoryViewType accessoryViewType;
-	MKValidationType _validationType;
+    UIImage *mAccessoryIcon;
+	
+    MKValidationType _validationType;
 	BOOL _validating;
+    NSInteger mValidatorTestStringLength;
 	
 	UILabel *mTheLabel;
 	UILabel *_smallLabel;
 	UILabel *_dateLabel;
 	UIImageView *mTheImageView;
 	UIImage *mIcon;
+    UIImage *mIconMask;
 }
 
 ///---------------------------------------------------------------------------------------
@@ -109,8 +113,15 @@ typedef enum {
 /** A reference the MKTableCellType set with the initalizer. */
 @property (assign) MKTableCellType type;
 
+///---------------------------------------------------------------------------------------
+/// @name Accessories
+///---------------------------------------------------------------------------------------
+
 /** Sets MKTableCellAccessoryType for the cell. */
 @property (nonatomic, assign) MKTableCellAccessoryViewType accessoryViewType;
+
+/** Sets an image as the cells accessory */
+@property (nonatomic, retain) UIImage *accessoryIcon;
 
 ///---------------------------------------------------------------------------------------
 /// @name Referencing
@@ -135,6 +146,9 @@ typedef enum {
 /** The image displayed on cell that suport image views */
 @property (nonatomic, retain) UIImage *icon;
 
+/** An imaged to be masked. The masking is completed by the MKMaskIconView */
+@property (nonatomic, retain) UIImage *iconMask;
+
 ///---------------------------------------------------------------------------------------
 /// @name Input Validation
 ///---------------------------------------------------------------------------------------
@@ -145,6 +159,9 @@ typedef enum {
  @see MKInputValidation 
 */
 @property (nonatomic, assign) MKValidationType validationType;
+
+/** the lenght to compare to if using MKValidateIsaSetLenght */
+@property (nonatomic, assign) NSInteger validatorTestStringLength;
 
 /** YES is the cell validates user input, NO if it does not.*/
 @property (nonatomic, assign, readonly) BOOL validating;

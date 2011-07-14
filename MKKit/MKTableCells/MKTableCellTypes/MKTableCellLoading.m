@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 5/28/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Matt King. All rights reserved.
 //
 
 #import "MKTableCellLoading.h"
@@ -14,7 +14,7 @@
 @synthesize activityIndicator=mActivityIndicator;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    self = [super initWithType:MKTableCellTypeNone reuseIdentifier:reuseIdentifier];
     if (self) {
         mTheLabel = [[UILabel alloc] initWithFrame:CGRectMake(109.0, 11.0, 82.0, 21.0)];
         mTheLabel.backgroundColor = CLEAR;

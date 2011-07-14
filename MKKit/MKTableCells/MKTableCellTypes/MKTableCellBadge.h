@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 6/12/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Matt King. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -13,6 +13,7 @@
 #import <MKKit/MKKit/MKGraphics/MKGraphics.h>
 
 @class MKBadgeCellView;
+@class MKTableCell;
 
 /**---------------------------------------------------------------------------------
  MKTableCellBadge class creates a table cell with Lable and a badge on the right side
@@ -45,6 +46,8 @@
     
 @private
     UILabel *mBadgeLabel;
+    CGFloat maxWidth;
+    CGColorRef mBadgeColor;
 }
 
 @property (nonatomic, retain) UILabel *label;

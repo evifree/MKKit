@@ -40,7 +40,7 @@
 
 <p> When a <a href="MKTableCell.html">MKTableCell</a> is created it intializes an UITableViewCell with a style of UITableViewCellStyleDefault. It than removes the elements of that cell and replaces them its own. If you use the UTableCellView intializer instead, be sure to set the style UITableViewCellStyleDefault to keep unneeded subviews from being part of the cell. </p>
 
-<p> <a href="MKTableCell.html">MKTableCell</a> objects have some addtional accessoy types built in: <ul><li> <code>MKTableCellAccessoryNone</code>: No accessory. </li><li> <code>MKTableCellAccessoryActivity</code>: Displays an activity indicator as the cells accessory. </li><li> <code>MKTableCellAccessoryGlobe</code>: Displays an <a href="#//api/name/icon">icon</a> of a Globe as the cells accessory. </li><li> <code>MKTableCellAccessoryInfoButton</code>: Displays an info button as the cells accessory. </li><li> <code>MKTableCellAccessoryWarningIcon</code>: Dispalays a warning <a href="#//api/name/icon">icon</a> as the cell accessory. </li></ul></p>
+<p> <a href="MKTableCell.html">MKTableCell</a> objects have some addtional accessoy types built in: <ul><li> <code>MKTableCellAccessoryNone</code>: No accessory. </li><li> <code>MKTableCellAccessoryActivity</code>: Displays an activity indicator as the cells accessory. </li><li> <code>MKTableCellAccessoryInfoButton</code>: Displays an info button as the cells accessory. </li><li> <code>MKTableCellAccessoryWarningIcon</code>: Dispalays a warning <a href="#//api/name/icon">icon</a> as the cell accessory. </li></ul></p>
 
 <p> The <a href="../Protocols/MKTableCellDelegate.html">MKTableCellDelegate</a> Protocol is adopted by MKTableCell. <p class="warning"> <strong> Note </strong> <a href="MKTableCell.html">MKTableCell</a> objects will look for resources in the MKTableCell-Resources bundle. Ensure this bundle is added to your project for proper function. </p></p>
 
@@ -73,10 +73,22 @@
 		<span class="tooltip"> A reference the MKTableCellType set with the initalizer. </span>
 	</span>
 	
-</li><li>
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Accessories</h3>
+
+					<ul class="task-list">
+						<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/accessoryViewType"> accessoryViewType</a></code>
 		<span class="tooltip"> Sets MKTableCellAccessoryType for the cell. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/accessoryIcon"> accessoryIcon</a></code>
+		<span class="tooltip"> Sets an image as the cells accessory </span>
 	</span>
 	
 </li>
@@ -121,6 +133,12 @@
 		<span class="tooltip"> The image displayed on cell that suport image views </span>
 	</span>
 	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/iconMask"> iconMask</a></code>
+		<span class="tooltip"> An imaged to be masked. The masking is completed by the <a href="MKMaskIconView.html">MKMaskIconView</a></span>
+	</span>
+	
 </li>
 					</ul>
 					
@@ -131,6 +149,12 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/validationType"> validationType</a></code>
 		<span class="tooltip"> Sets the validation <a href="#//api/name/type">type</a> to preform. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/validatorTestStringLength"> validatorTestStringLength</a></code>
+		<span class="tooltip"> the lenght to compare to if using MKValidateIsaSetLenght </span>
 	</span>
 	
 </li><li>
@@ -279,6 +303,38 @@
 					<h2 class="subtitle subtitle-methods">Properties</h2>
 					
 					<div class="section-method">
+	<a name="//api/name/accessoryIcon" title="accessoryIcon"></a>
+	<h3 class="subsubtitle method-title">accessoryIcon</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Sets an image as the cells accessory </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UIImage *accessoryIcon</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCell.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
 	<a name="//api/name/accessoryViewType" title="accessoryViewType"></a>
 	<h3 class="subsubtitle method-title">accessoryViewType</h3>
 	
@@ -363,6 +419,38 @@
 	
 	
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UIImage *icon</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCell.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/iconMask" title="iconMask"></a>
+	<h3 class="subsubtitle method-title">iconMask</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> An imaged to be masked. The masking is completed by the <a href="MKMaskIconView.html">MKMaskIconView</a></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UIImage *iconMask</code></div>
 	
 	
 	
@@ -659,6 +747,38 @@
 	
 </div>
 					
+					<div class="section-method">
+	<a name="//api/name/validatorTestStringLength" title="validatorTestStringLength"></a>
+	<h3 class="subsubtitle method-title">validatorTestStringLength</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> the lenght to compare to if using MKValidateIsaSetLenght </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) NSInteger validatorTestStringLength</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCell.h</code><br />
+	</div>				
+	
+	
+</div>
+					
 				</div>
 				
 				
@@ -672,7 +792,7 @@
 			<div id="footer">
 				<hr />
 				<div class="footer-copyright">
-					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-07-03)</span><br />
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-07-14)</span><br />
 					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
 				</div>
 			</div>

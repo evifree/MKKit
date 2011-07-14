@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 10/9/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010 Matt King. All rights reserved.
 //
 
 #import <MKKit/MKKit/MKDeffinitions.h>
@@ -19,7 +19,7 @@ typedef enum {
     MKViewAnimationTypeAppearAboveToolbar,
 } MKViewAnimationType;
 
-static NSString *MKViewShouldRemoveNotification = @"MKViewShouldRemoveNotification";
+#define MK_VIEW_SHOULD_REMOVE_NOTIFICATION      @"MKViewShouldRemoveNotification"
 
 @protocol MKViewDelegate;
 

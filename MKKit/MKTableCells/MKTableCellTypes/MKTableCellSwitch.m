@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 11/1/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010 Matt King. All rights reserved.
 //
 
 #import "MKTableCellSwitch.h"
@@ -22,7 +22,8 @@
 #pragma mark Initalizer
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
+    self = [super initWithType:MKTableCellTypeNone reuseIdentifier:reuseIdentifier];
+    if (self) {
         CGRect switchFrame = CGRectMake(198.3, 10.0, 172.0, 21.0);
 		CGRect labelFrame = CGRectMake(10.0, 11.0, 200.0, 21.0);
 		

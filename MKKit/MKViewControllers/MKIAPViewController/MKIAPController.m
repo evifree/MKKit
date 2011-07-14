@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 5/28/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Matt King. All rights reserved.
 //
 
 #import "MKIAPController.h"
@@ -205,8 +205,10 @@
 - (void)restoreTransaction:(SKPaymentTransaction *)transaction {
     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
     
-    self.restoreCompleteBlock(transaction, nil);
-    
+    if (restoreCompleteBlock) {
+        self.restoreCompleteBlock(transaction, nil);
+    }
+        
     if ([mDelegate respondsToSelector:@selector(didCompleteTransaction:)]) {
         [mDelegate didCompleteTransaction:transaction];
     }

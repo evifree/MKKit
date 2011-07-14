@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 6/12/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Matt King. All rights reserved.
 //
 
 #import "MKTableCellBadge.h"
@@ -13,7 +13,7 @@
 @synthesize badgeText, badgeColor;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+    self = [super initWithType:MKTableCellTypeNone reuseIdentifier:reuseIdentifier];
     if (self) {
         self.contentView.autoresizesSubviews = YES;
         
@@ -58,9 +58,6 @@
 
 @synthesize label=mLabel, badgeText, badgeColor;
 
-CGFloat maxWidth = 30.0;
-CGColorRef mBadgeColor = nil;
-
 #pragma mark - Ininializer
 
 - (id)initWithFrame:(CGRect)frame {
@@ -72,7 +69,8 @@ CGColorRef mBadgeColor = nil;
         
         self.autoresizesSubviews = YES;
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    
+        
+        maxWidth = 30.0;
         mBadgeColor = GRAY.CGColor;
     }
     return self;

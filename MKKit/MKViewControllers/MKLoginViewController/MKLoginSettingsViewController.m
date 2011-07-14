@@ -120,7 +120,7 @@
     if (indexPath.section == 0) {
         cell = (MKTableCellTextEntry *)[tableView dequeueReusableCellWithIdentifier:TextIdentifier];
         if (cell == nil) {
-            cell = [[[MKTableCellTextEntry alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TextIdentifier] autorelease];
+            cell = [[[MKTableCellTextEntry alloc] initWithType:MKTextEntryCellTypeStandard reuseIdentifier:TextIdentifier] autorelease];
             ((MKTableCellTextEntry *)cell).theTextField.keyboardType = UIKeyboardTypeNumberPad;
             ((MKTableCellTextEntry *)cell).theTextField.keyboardAppearance =UIKeyboardAppearanceDefault;
             ((MKTableCellTextEntry *)cell).theTextField.useInputAccessoryView = YES;
@@ -130,14 +130,23 @@
         if (indexPath.row == 0) {
             cell.key = CURRENT_PIN;
             ((MKTableCellTextEntry *)cell).theTextField.placeholder = @"Current PIN";
+            cell.theLabel.text = @"Current PIN:";
+            cell.validationType = MKValidateIsaSetLength;
+            cell.validatorTestStringLength = 4;
         }
         if (indexPath.row == 1) {
             cell.key = NEW_PIN;
             ((MKTableCellTextEntry *)cell).theTextField.placeholder = @"New PIN";
+            cell.theLabel.text = @"New PIN:";
+            cell.validationType = MKValidateIsaSetLength;
+            cell.validatorTestStringLength = 4;
         }
         if (indexPath.row == 2) {
             cell.key = CONFIRM_PIN;
             ((MKTableCellTextEntry *)cell).theTextField.placeholder = @"Confirm PIN";
+            cell.theLabel.text = @"Confirm PIN:";
+            cell.validationType = MKValidateIsaSetLength;
+            cell.validatorTestStringLength = 4;
         }
     }
     
@@ -156,13 +165,15 @@
         if (indexPath.row == 1) {
             cell = (MKTableCellTextEntry *)[tableView dequeueReusableCellWithIdentifier:TextIdentifier];
             if (cell == nil) {
-                cell = [[[MKTableCellTextEntry alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TextIdentifier] autorelease];
+                cell = [[[MKTableCellTextEntry alloc] initWithType:MKTextEntryCellTypeStandard reuseIdentifier:TextIdentifier] autorelease];
                 cell.delegate = self;
             }
             cell.key = CHALLENGE_ANSWER;
             cell.validationType = MKValidateHasLength;
+            cell.theLabel.text = @"Answer:";
             
             ((MKTableCellTextEntry *)cell).theTextField.placeholder = @"Answer";
+            
         }
     }
     
@@ -173,14 +184,7 @@
 #pragma mark Table View
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    
 }
 
 #pragma mark MKTableCell

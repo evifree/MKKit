@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 11/11/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010 Matt King. All rights reserved.
 //
 
 #import "MKTableCellPickerControlled.h"
@@ -27,7 +27,7 @@ pickerArray=_pickerArray;
 @synthesize displayed=_displayed;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    self = [super initWithType:MKTableCellTypeNone reuseIdentifier:reuseIdentifier];
 	if (self) {
 		CGRect labelFrame = CGRectMake(10.0, 11.0, 100.0, 21.0);
 		CGRect pickerLabelFrame = CGRectMake(118.3, 9.0, 150.0, 23.0);

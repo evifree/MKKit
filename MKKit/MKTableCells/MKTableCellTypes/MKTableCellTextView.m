@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 11/6/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010 Matt King. All rights reserved.
 //
 
 #import "MKTableCellTextView.h"
@@ -17,7 +17,8 @@
 #pragma mark Initalize
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
+    self = [super initWithType:MKTableCellTypeNone reuseIdentifier:reuseIdentifier];
+    if (self) {
         CGRect textViewFrame = CGRectMake(5.0, 6.0, 285.0, 73.0);
 		
 		_theTextView = [[UITextView alloc] initWithFrame:textViewFrame];

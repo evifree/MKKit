@@ -93,6 +93,8 @@
 		AA2CE708138200680088C9B2 /* MKReflectedImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA2CE706138200680088C9B2 /* MKReflectedImageView.h */; };
 		AA2CE709138200680088C9B2 /* MKReflectedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2CE707138200680088C9B2 /* MKReflectedImageView.m */; };
 		AA2FBE4513444550002441C2 /* MKMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = AA2FBE4413444550002441C2 /* MKMacros.h */; };
+		AA33055F13C3F082006B2D11 /* MKMaskIconView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA33055D13C3F082006B2D11 /* MKMaskIconView.h */; };
+		AA33056013C3F082006B2D11 /* MKMaskIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA33055E13C3F082006B2D11 /* MKMaskIconView.m */; };
 		AA40E8F913A5C64B00643C6C /* MKTableCellBadge.h in Headers */ = {isa = PBXBuildFile; fileRef = AA40E8F713A5C64B00643C6C /* MKTableCellBadge.h */; };
 		AA40E8FA13A5C64B00643C6C /* MKTableCellBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = AA40E8F813A5C64B00643C6C /* MKTableCellBadge.m */; };
 		AA56A535128EDF0300E5DD5C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA56A534128EDF0300E5DD5C /* MessageUI.framework */; };
@@ -102,17 +104,7 @@
 		AA6330E21344230B00886CE3 /* MKWebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6330E01344230B00886CE3 /* MKWebViewController.h */; };
 		AA6330E31344230B00886CE3 /* MKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6330E11344230B00886CE3 /* MKWebViewController.m */; };
 		AA6DF398138DE06B0091B912 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA5A1AC1345589C00D2C23F /* CoreFoundation.framework */; };
-		AA6DF39E138DE06C0091B912 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6DF39C138DE06C0091B912 /* InfoPlist.strings */; };
-		AA6DF3A3138DE0820091B912 /* GlobeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA6DF33B138DCFAC0091B912 /* GlobeIcon.png */; };
-		AA6DF3A4138DE0860091B912 /* GlobeIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA6DF33C138DCFAC0091B912 /* GlobeIcon@2x.png */; };
-		AA6DF3A5138DE08C0091B912 /* Pen.png in Resources */ = {isa = PBXBuildFile; fileRef = AA6DF33D138DCFAC0091B912 /* Pen.png */; };
-		AA6DF3A6138DE0930091B912 /* Pen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA6DF35C138DD3A90091B912 /* Pen@2x.png */; };
 		AA6DF3C4138DE3940091B912 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA5A1AC1345589C00D2C23F /* CoreFoundation.framework */; };
-		AA6DF3CA138DE3940091B912 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6DF3C8138DE3940091B912 /* InfoPlist.strings */; };
-		AA6DF3D0138DE3C60091B912 /* WarningIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA6DF3CF138DE3C60091B912 /* WarningIcon@2x.png */; };
-		AA6DF3D1138DE3C60091B912 /* WarningIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA6DF3CF138DE3C60091B912 /* WarningIcon@2x.png */; };
-		AA6DF3D2138DE3CF0091B912 /* WarningIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA6DF33F138DCFAC0091B912 /* WarningIcon.png */; };
-		AA6DF3D3138DE3D00091B912 /* WarningIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA6DF33F138DCFAC0091B912 /* WarningIcon.png */; };
 		AA6DF3F2138E025B0091B912 /* MKInputPrompt.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6DF3EE138E025B0091B912 /* MKInputPrompt.h */; };
 		AA6DF3F3138E025B0091B912 /* MKInputPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6DF3EF138E025B0091B912 /* MKInputPrompt.m */; };
 		AA6DF3F4138E025B0091B912 /* MKPromptView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6DF3F0138E025B0091B912 /* MKPromptView.h */; };
@@ -131,10 +123,8 @@
 		AAA97EEE13915840009EBCDE /* MKTableCellLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA97EEC13915840009EBCDE /* MKTableCellLoading.m */; };
 		AAA97EF11391659A009EBCDE /* MKButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AAA97EEF1391659A009EBCDE /* MKButton.h */; };
 		AAA97EF21391659A009EBCDE /* MKButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA97EF01391659A009EBCDE /* MKButton.m */; };
-		AAA97EF813916A50009EBCDE /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA5A1AC1345589C00D2C23F /* CoreFoundation.framework */; };
-		AAA97EFE13916A50009EBCDE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AAA97EFC13916A50009EBCDE /* InfoPlist.strings */; };
-		AAA97F0613916B3F009EBCDE /* BlueButton.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA97F0413916B3F009EBCDE /* BlueButton.png */; };
-		AAA97F0713916B3F009EBCDE /* BlueButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA97F0513916B3F009EBCDE /* BlueButton@2x.png */; };
+		AAB6626213C9506D008686AD /* MKAccessoryView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB6626013C9506D008686AD /* MKAccessoryView.h */; };
+		AAB6626313C9506D008686AD /* MKAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB6626113C9506D008686AD /* MKAccessoryView.m */; };
 		AABE3D581376CFE500ECC539 /* MKLoginViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AABE3D551376CFE500ECC539 /* MKLoginViewController.h */; };
 		AABE3D591376CFE500ECC539 /* MKLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE3D561376CFE500ECC539 /* MKLoginViewController.m */; };
 		AABF4D8C13921A24001B547A /* MKIAPViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AABF4D8A13921A24001B547A /* MKIAPViewController.h */; };
@@ -143,8 +133,6 @@
 		AABF4D9113921DA0001B547A /* MKIAPController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABF4D8F13921DA0001B547A /* MKIAPController.m */; };
 		AABF4D9413921E1A001B547A /* MKTableCellIAP.h in Headers */ = {isa = PBXBuildFile; fileRef = AABF4D9213921E1A001B547A /* MKTableCellIAP.h */; };
 		AABF4D9513921E1A001B547A /* MKTableCellIAP.m in Sources */ = {isa = PBXBuildFile; fileRef = AABF4D9313921E1A001B547A /* MKTableCellIAP.m */; };
-		AABF4D98139220FF001B547A /* GreenButton.png in Resources */ = {isa = PBXBuildFile; fileRef = AABF4D96139220FF001B547A /* GreenButton.png */; };
-		AABF4D99139220FF001B547A /* GreenButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AABF4D97139220FF001B547A /* GreenButton@2x.png */; };
 		AAEDEA771390A732007EA362 /* MKNoticeView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAEDEA751390A730007EA362 /* MKNoticeView.h */; };
 		AAEDEA781390A732007EA362 /* MKNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEDEA761390A731007EA362 /* MKNoticeView.m */; };
 		AAEFE115121873BA008143E4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAEFE114121873BA008143E4 /* CoreLocation.framework */; };
@@ -237,6 +225,8 @@
 		AA2CE706138200680088C9B2 /* MKReflectedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKReflectedImageView.h; sourceTree = "<group>"; };
 		AA2CE707138200680088C9B2 /* MKReflectedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKReflectedImageView.m; sourceTree = "<group>"; };
 		AA2FBE4413444550002441C2 /* MKMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMacros.h; sourceTree = "<group>"; };
+		AA33055D13C3F082006B2D11 /* MKMaskIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMaskIconView.h; sourceTree = "<group>"; };
+		AA33055E13C3F082006B2D11 /* MKMaskIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMaskIconView.m; sourceTree = "<group>"; };
 		AA40E8F713A5C64B00643C6C /* MKTableCellBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTableCellBadge.h; sourceTree = "<group>"; };
 		AA40E8F813A5C64B00643C6C /* MKTableCellBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTableCellBadge.m; sourceTree = "<group>"; };
 		AA56A534128EDF0300E5DD5C /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -245,20 +235,8 @@
 		AA6330DE1344163F00886CE3 /* MKViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKViewControllerDelegate.h; sourceTree = "<group>"; };
 		AA6330E01344230B00886CE3 /* MKWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKWebViewController.h; sourceTree = "<group>"; };
 		AA6330E11344230B00886CE3 /* MKWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKWebViewController.m; sourceTree = "<group>"; };
-		AA6DF33B138DCFAC0091B912 /* GlobeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GlobeIcon.png; sourceTree = "<group>"; };
-		AA6DF33C138DCFAC0091B912 /* GlobeIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GlobeIcon@2x.png"; sourceTree = "<group>"; };
-		AA6DF33D138DCFAC0091B912 /* Pen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pen.png; sourceTree = "<group>"; };
-		AA6DF33F138DCFAC0091B912 /* WarningIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WarningIcon.png; sourceTree = "<group>"; };
-		AA6DF35C138DD3A90091B912 /* Pen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pen@2x.png"; sourceTree = "<group>"; };
 		AA6DF397138DE06B0091B912 /* MKTableCell-Resources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MKTableCell-Resources.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA6DF39B138DE06C0091B912 /* MKTableCell-Resources-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MKTableCell-Resources-Info.plist"; sourceTree = "<group>"; };
-		AA6DF39D138DE06C0091B912 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		AA6DF39F138DE06C0091B912 /* MKTableCell-Resources-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MKTableCell-Resources-Prefix.pch"; sourceTree = "<group>"; };
 		AA6DF3C3138DE3940091B912 /* MKValidator-Resources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MKValidator-Resources.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA6DF3C7138DE3940091B912 /* MKValidator-Resources-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MKValidator-Resources-Info.plist"; sourceTree = "<group>"; };
-		AA6DF3C9138DE3940091B912 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		AA6DF3CB138DE3940091B912 /* MKValidator-Resources-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MKValidator-Resources-Prefix.pch"; sourceTree = "<group>"; };
-		AA6DF3CF138DE3C60091B912 /* WarningIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WarningIcon@2x.png"; sourceTree = "<group>"; };
 		AA6DF3EE138E025B0091B912 /* MKInputPrompt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKInputPrompt.h; sourceTree = "<group>"; };
 		AA6DF3EF138E025B0091B912 /* MKInputPrompt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKInputPrompt.m; sourceTree = "<group>"; };
 		AA6DF3F0138E025B0091B912 /* MKPromptView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPromptView.h; sourceTree = "<group>"; };
@@ -281,12 +259,8 @@
 		AAA97EEC13915840009EBCDE /* MKTableCellLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTableCellLoading.m; sourceTree = "<group>"; };
 		AAA97EEF1391659A009EBCDE /* MKButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKButton.h; sourceTree = "<group>"; };
 		AAA97EF01391659A009EBCDE /* MKButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKButton.m; sourceTree = "<group>"; };
-		AAA97EF713916A50009EBCDE /* MKControl-Resources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MKControl-Resources.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AAA97EFB13916A50009EBCDE /* MKControl-Resources-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MKControl-Resources-Info.plist"; sourceTree = "<group>"; };
-		AAA97EFD13916A50009EBCDE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		AAA97EFF13916A50009EBCDE /* MKControl-Resources-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MKControl-Resources-Prefix.pch"; sourceTree = "<group>"; };
-		AAA97F0413916B3F009EBCDE /* BlueButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueButton.png; sourceTree = "<group>"; };
-		AAA97F0513916B3F009EBCDE /* BlueButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueButton@2x.png"; sourceTree = "<group>"; };
+		AAB6626013C9506D008686AD /* MKAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKAccessoryView.h; sourceTree = "<group>"; };
+		AAB6626113C9506D008686AD /* MKAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKAccessoryView.m; sourceTree = "<group>"; };
 		AABE3D551376CFE500ECC539 /* MKLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKLoginViewController.h; sourceTree = "<group>"; };
 		AABE3D561376CFE500ECC539 /* MKLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKLoginViewController.m; sourceTree = "<group>"; };
 		AABF4D8A13921A24001B547A /* MKIAPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKIAPViewController.h; sourceTree = "<group>"; };
@@ -295,8 +269,6 @@
 		AABF4D8F13921DA0001B547A /* MKIAPController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKIAPController.m; sourceTree = "<group>"; };
 		AABF4D9213921E1A001B547A /* MKTableCellIAP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTableCellIAP.h; sourceTree = "<group>"; };
 		AABF4D9313921E1A001B547A /* MKTableCellIAP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTableCellIAP.m; sourceTree = "<group>"; };
-		AABF4D96139220FF001B547A /* GreenButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenButton.png; sourceTree = "<group>"; };
-		AABF4D97139220FF001B547A /* GreenButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GreenButton@2x.png"; sourceTree = "<group>"; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AAEDEA751390A730007EA362 /* MKNoticeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKNoticeView.h; sourceTree = "<group>"; };
 		AAEDEA761390A731007EA362 /* MKNoticeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKNoticeView.m; sourceTree = "<group>"; };
@@ -335,14 +307,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AAA97EF413916A4F009EBCDE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AAA97EF813916A50009EBCDE /* CoreFoundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -352,7 +316,6 @@
 				AA7EFCEE10FFE8E900B4C1BC /* libMKKit.a */,
 				AA6DF397138DE06B0091B912 /* MKTableCell-Resources.bundle */,
 				AA6DF3C3138DE3940091B912 /* MKValidator-Resources.bundle */,
-				AAA97EF713916A50009EBCDE /* MKControl-Resources.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -436,6 +399,7 @@
 				AA02DDF212DAE2B7003B3560 /* MKTableCellDelegate.h */,
 				AA02DDF012DAE2B7003B3560 /* MKTableCell.h */,
 				AA02DDF112DAE2B7003B3560 /* MKTableCell.m */,
+				AA33055C13C3EC2F006B2D11 /* MKTableElements */,
 				AA02DDF312DAE2B7003B3560 /* MKTableCellTypes */,
 			);
 			path = MKTableCells;
@@ -567,11 +531,19 @@
 		AA1F0FD2128B7C4F003EB755 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				AAA97EF913916A50009EBCDE /* MKControl-Resources */,
-				AA6DF399138DE06B0091B912 /* MKTableCell-Resources */,
-				AA6DF3C5138DE3940091B912 /* MKValidator-Resources */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		AA33055C13C3EC2F006B2D11 /* MKTableElements */ = {
+			isa = PBXGroup;
+			children = (
+				AA33055D13C3F082006B2D11 /* MKMaskIconView.h */,
+				AA33055E13C3F082006B2D11 /* MKMaskIconView.m */,
+				AAB6626013C9506D008686AD /* MKAccessoryView.h */,
+				AAB6626113C9506D008686AD /* MKAccessoryView.m */,
+			);
+			path = MKTableElements;
 			sourceTree = "<group>";
 		};
 		AA6330D81344155700886CE3 /* MKWebViewController */ = {
@@ -581,66 +553,6 @@
 				AA6330E11344230B00886CE3 /* MKWebViewController.m */,
 			);
 			path = MKWebViewController;
-			sourceTree = "<group>";
-		};
-		AA6DF33A138DCFAC0091B912 /* MKTableCell */ = {
-			isa = PBXGroup;
-			children = (
-				AA6DF33B138DCFAC0091B912 /* GlobeIcon.png */,
-				AA6DF33C138DCFAC0091B912 /* GlobeIcon@2x.png */,
-				AA6DF33D138DCFAC0091B912 /* Pen.png */,
-				AA6DF35C138DD3A90091B912 /* Pen@2x.png */,
-			);
-			name = MKTableCell;
-			path = ../MKKit/Images/MKTableCell;
-			sourceTree = "<group>";
-		};
-		AA6DF33E138DCFAC0091B912 /* MKValidator */ = {
-			isa = PBXGroup;
-			children = (
-				AA6DF33F138DCFAC0091B912 /* WarningIcon.png */,
-				AA6DF3CF138DE3C60091B912 /* WarningIcon@2x.png */,
-			);
-			name = MKValidator;
-			path = ../MKKit/Images/MKValidator;
-			sourceTree = "<group>";
-		};
-		AA6DF399138DE06B0091B912 /* MKTableCell-Resources */ = {
-			isa = PBXGroup;
-			children = (
-				AA6DF33A138DCFAC0091B912 /* MKTableCell */,
-				AA6DF39A138DE06C0091B912 /* Supporting Files */,
-			);
-			path = "MKTableCell-Resources";
-			sourceTree = "<group>";
-		};
-		AA6DF39A138DE06C0091B912 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				AA6DF39B138DE06C0091B912 /* MKTableCell-Resources-Info.plist */,
-				AA6DF39C138DE06C0091B912 /* InfoPlist.strings */,
-				AA6DF39F138DE06C0091B912 /* MKTableCell-Resources-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		AA6DF3C5138DE3940091B912 /* MKValidator-Resources */ = {
-			isa = PBXGroup;
-			children = (
-				AA6DF33E138DCFAC0091B912 /* MKValidator */,
-				AA6DF3C6138DE3940091B912 /* Supporting Files */,
-			);
-			path = "MKValidator-Resources";
-			sourceTree = "<group>";
-		};
-		AA6DF3C6138DE3940091B912 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				AA6DF3C7138DE3940091B912 /* MKValidator-Resources-Info.plist */,
-				AA6DF3C8138DE3940091B912 /* InfoPlist.strings */,
-				AA6DF3CB138DE3940091B912 /* MKValidator-Resources-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		AA6DF3ED138E02590091B912 /* MKPrompts */ = {
@@ -673,37 +585,6 @@
 			);
 			path = MKGraphics;
 			sourceTree = "<group>";
-		};
-		AAA97EF913916A50009EBCDE /* MKControl-Resources */ = {
-			isa = PBXGroup;
-			children = (
-				AAA97F0313916B3F009EBCDE /* MKContols */,
-				AAA97EFA13916A50009EBCDE /* Supporting Files */,
-			);
-			path = "MKControl-Resources";
-			sourceTree = "<group>";
-		};
-		AAA97EFA13916A50009EBCDE /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				AAA97EFB13916A50009EBCDE /* MKControl-Resources-Info.plist */,
-				AAA97EFC13916A50009EBCDE /* InfoPlist.strings */,
-				AAA97EFF13916A50009EBCDE /* MKControl-Resources-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		AAA97F0313916B3F009EBCDE /* MKContols */ = {
-			isa = PBXGroup;
-			children = (
-				AAA97F0413916B3F009EBCDE /* BlueButton.png */,
-				AAA97F0513916B3F009EBCDE /* BlueButton@2x.png */,
-				AABF4D96139220FF001B547A /* GreenButton.png */,
-				AABF4D97139220FF001B547A /* GreenButton@2x.png */,
-			);
-			name = MKContols;
-			path = MKKit/Images/MKContols;
-			sourceTree = SOURCE_ROOT;
 		};
 		AABE3D541376CFB800ECC539 /* MKLoginViewController */ = {
 			isa = PBXGroup;
@@ -802,6 +683,8 @@
 				AA40E8F913A5C64B00643C6C /* MKTableCellBadge.h in Headers */,
 				AA778BE413A8617E00AFF686 /* MKGraphics.h in Headers */,
 				AA1B84E713AD9E7700B8CF6D /* MKBarButtonItem.h in Headers */,
+				AA33055F13C3F082006B2D11 /* MKMaskIconView.h in Headers */,
+				AAB6626213C9506D008686AD /* MKAccessoryView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -859,23 +742,6 @@
 			productReference = AA7EFCEE10FFE8E900B4C1BC /* libMKKit.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		AAA97EF613916A4F009EBCDE /* MKControl-Resources */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AAA97F0013916A50009EBCDE /* Build configuration list for PBXNativeTarget "MKControl-Resources" */;
-			buildPhases = (
-				AAA97EF313916A4F009EBCDE /* Sources */,
-				AAA97EF413916A4F009EBCDE /* Frameworks */,
-				AAA97EF513916A4F009EBCDE /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "MKControl-Resources";
-			productName = "MKControl-Resources";
-			productReference = AAA97EF713916A50009EBCDE /* MKControl-Resources.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -903,7 +769,6 @@
 				AA7EFCED10FFE8E900B4C1BC /* MKKit */,
 				AA6DF396138DE06B0091B912 /* MKTableCell-Resources */,
 				AA6DF3C2138DE3940091B912 /* MKValidator-Resources */,
-				AAA97EF613916A4F009EBCDE /* MKControl-Resources */,
 			);
 		};
 /* End PBXProject section */
@@ -913,13 +778,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA6DF39E138DE06C0091B912 /* InfoPlist.strings in Resources */,
-				AA6DF3A3138DE0820091B912 /* GlobeIcon.png in Resources */,
-				AA6DF3A4138DE0860091B912 /* GlobeIcon@2x.png in Resources */,
-				AA6DF3A5138DE08C0091B912 /* Pen.png in Resources */,
-				AA6DF3A6138DE0930091B912 /* Pen@2x.png in Resources */,
-				AA6DF3D0138DE3C60091B912 /* WarningIcon@2x.png in Resources */,
-				AA6DF3D2138DE3CF0091B912 /* WarningIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -927,21 +785,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA6DF3CA138DE3940091B912 /* InfoPlist.strings in Resources */,
-				AA6DF3D1138DE3C60091B912 /* WarningIcon@2x.png in Resources */,
-				AA6DF3D3138DE3D00091B912 /* WarningIcon.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AAA97EF513916A4F009EBCDE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AAA97EFE13916A50009EBCDE /* InfoPlist.strings in Resources */,
-				AAA97F0613916B3F009EBCDE /* BlueButton.png in Resources */,
-				AAA97F0713916B3F009EBCDE /* BlueButton@2x.png in Resources */,
-				AABF4D98139220FF001B547A /* GreenButton.png in Resources */,
-				AABF4D99139220FF001B547A /* GreenButton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1016,44 +859,12 @@
 				AA40E8FA13A5C64B00643C6C /* MKTableCellBadge.m in Sources */,
 				AA778BE513A8617E00AFF686 /* MKGraphics.m in Sources */,
 				AA1B84E813AD9E7700B8CF6D /* MKBarButtonItem.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AAA97EF313916A4F009EBCDE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				AA33056013C3F082006B2D11 /* MKMaskIconView.m in Sources */,
+				AAB6626313C9506D008686AD /* MKAccessoryView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		AA6DF39C138DE06C0091B912 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AA6DF39D138DE06C0091B912 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		AA6DF3C8138DE3940091B912 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AA6DF3C9138DE3940091B912 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		AAA97EFC13916A50009EBCDE /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AAA97EFD13916A50009EBCDE /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1DEB922308733DC00010E9CD /* Debug */ = {
@@ -1215,54 +1026,6 @@
 			};
 			name = Release;
 		};
-		AAA97F0113916A50009EBCDE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MKControl-Resources/MKControl-Resources-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				INFOPLIST_FILE = "MKControl-Resources/MKControl-Resources-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		AAA97F0213916A50009EBCDE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MKControl-Resources/MKControl-Resources-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				INFOPLIST_FILE = "MKControl-Resources/MKControl-Resources-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1298,15 +1061,6 @@
 			buildConfigurations = (
 				AA7EFCEF10FFE8E900B4C1BC /* Debug */,
 				AA7EFCF010FFE8E900B4C1BC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		AAA97F0013916A50009EBCDE /* Build configuration list for PBXNativeTarget "MKControl-Resources" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AAA97F0113916A50009EBCDE /* Debug */,
-				AAA97F0213916A50009EBCDE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
