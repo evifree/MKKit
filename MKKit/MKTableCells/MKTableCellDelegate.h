@@ -110,6 +110,18 @@
 */
 - (void)willRemovePicker:(UIView *)thePicker forKey:(NSString *)aKey;
 
+///---------------------------------------------------------------------------------------
+/// @name Validation Methods
+///---------------------------------------------------------------------------------------
+
+/**
+ Called when a cell validates its input.
+ 
+ @param error the validation error
+ 
+ @param aKey a unique NSString that identifies the cell.
+*/
+- (void)cellDidValidate:(NSError *)error forKey:(NSString *)aKey;
 
 @end
 

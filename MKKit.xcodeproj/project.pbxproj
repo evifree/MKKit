@@ -123,8 +123,6 @@
 		AAA97EEE13915840009EBCDE /* MKTableCellLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA97EEC13915840009EBCDE /* MKTableCellLoading.m */; };
 		AAA97EF11391659A009EBCDE /* MKButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AAA97EEF1391659A009EBCDE /* MKButton.h */; };
 		AAA97EF21391659A009EBCDE /* MKButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA97EF01391659A009EBCDE /* MKButton.m */; };
-		AAB6626213C9506D008686AD /* MKAccessoryView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB6626013C9506D008686AD /* MKAccessoryView.h */; };
-		AAB6626313C9506D008686AD /* MKAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB6626113C9506D008686AD /* MKAccessoryView.m */; };
 		AABE3D581376CFE500ECC539 /* MKLoginViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AABE3D551376CFE500ECC539 /* MKLoginViewController.h */; };
 		AABE3D591376CFE500ECC539 /* MKLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE3D561376CFE500ECC539 /* MKLoginViewController.m */; };
 		AABF4D8C13921A24001B547A /* MKIAPViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AABF4D8A13921A24001B547A /* MKIAPViewController.h */; };
@@ -259,8 +257,6 @@
 		AAA97EEC13915840009EBCDE /* MKTableCellLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTableCellLoading.m; sourceTree = "<group>"; };
 		AAA97EEF1391659A009EBCDE /* MKButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKButton.h; sourceTree = "<group>"; };
 		AAA97EF01391659A009EBCDE /* MKButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKButton.m; sourceTree = "<group>"; };
-		AAB6626013C9506D008686AD /* MKAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKAccessoryView.h; sourceTree = "<group>"; };
-		AAB6626113C9506D008686AD /* MKAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKAccessoryView.m; sourceTree = "<group>"; };
 		AABE3D551376CFE500ECC539 /* MKLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKLoginViewController.h; sourceTree = "<group>"; };
 		AABE3D561376CFE500ECC539 /* MKLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKLoginViewController.m; sourceTree = "<group>"; };
 		AABF4D8A13921A24001B547A /* MKIAPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKIAPViewController.h; sourceTree = "<group>"; };
@@ -540,8 +536,6 @@
 			children = (
 				AA33055D13C3F082006B2D11 /* MKMaskIconView.h */,
 				AA33055E13C3F082006B2D11 /* MKMaskIconView.m */,
-				AAB6626013C9506D008686AD /* MKAccessoryView.h */,
-				AAB6626113C9506D008686AD /* MKAccessoryView.m */,
 			);
 			path = MKTableElements;
 			sourceTree = "<group>";
@@ -684,7 +678,6 @@
 				AA778BE413A8617E00AFF686 /* MKGraphics.h in Headers */,
 				AA1B84E713AD9E7700B8CF6D /* MKBarButtonItem.h in Headers */,
 				AA33055F13C3F082006B2D11 /* MKMaskIconView.h in Headers */,
-				AAB6626213C9506D008686AD /* MKAccessoryView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -860,7 +853,6 @@
 				AA778BE513A8617E00AFF686 /* MKGraphics.m in Sources */,
 				AA1B84E813AD9E7700B8CF6D /* MKBarButtonItem.m in Sources */,
 				AA33056013C3F082006B2D11 /* MKMaskIconView.m in Sources */,
-				AAB6626313C9506D008686AD /* MKAccessoryView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

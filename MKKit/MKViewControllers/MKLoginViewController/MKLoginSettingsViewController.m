@@ -14,6 +14,8 @@
 
 @implementation MKLoginSettingsViewController
 
+BOOL validationError = NO;
+
 - (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     if (self) {
@@ -57,6 +59,8 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:PICKER_SHOULD_DISMISS_NOTIFICATION object:nil];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -200,16 +204,16 @@
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:CHALLENGE_SET];
     }
     
-    if ([aKey isEqualToString:CONFIRM_PIN]) {
+    if ([aKey isEqualToString:CONFIRM_PIN] && [value length] == 4) {
         if ([[NSUserDefaults standardUserDefaults] integerForKey:PIN] == [[[NSUserDefaults standardUserDefaults] objectForKey:CURRENT_PIN] integerValue]) {
             if ([[[NSUserDefaults standardUserDefaults] objectForKey:NEW_PIN] isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:CONFIRM_PIN]]) {
-                [[NSUserDefaults standardUserDefaults] setInteger:[text integerValue] forKey:PIN];
                 
                 [MKPromptView promptWithType:MKPromptTypeGreen title:@"New PIN" message:@"Your PIN has been changed." duration:3.0];
+                [[NSUserDefaults standardUserDefaults] setInteger:[text integerValue] forKey:PIN];
             }
         }
     }
-    
+        
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

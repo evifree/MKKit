@@ -131,7 +131,6 @@
 		[mValidationError retain];
 		
         MKAccessoryView *icon = [[MKAccessoryView alloc] initWithType:MKTableCellAccessoryWarningIcon];
-        //icon.tag = 1;
         [icon completedAction: ^ (MKAction action) {
             if (action == MKActionTouchDown) {
                 [self warningIcon:icon];
@@ -140,7 +139,11 @@
         
         self.accessoryView = icon;
         [icon release];
-	}
+    }
+    
+    if ([delegate respondsToSelector:@selector(cellDidValidate:forKey:)]) {
+        [delegate cellDidValidate:mValidationError forKey:self.key];
+    }
 }
 
 #pragma mark -

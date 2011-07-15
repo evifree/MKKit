@@ -59,7 +59,9 @@
 
 /**
  Called when the maximum PIN Atempts have been made.
+ 
+ Return YES to clear PIN from memory.
 */
-- (void)maxPinAtemptsMade;
+- (BOOL)maxPinAttemptsMade;
 
 @end

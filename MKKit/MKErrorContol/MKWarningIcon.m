@@ -16,8 +16,6 @@
 
 @synthesize error=_error;
 
-//static UIImageView *warningIcon = nil;
-
 #pragma mark Initalizer
 
 - (id)initWithTextField:(MKTextField *)textField {
@@ -41,9 +39,7 @@
         
         [self addSubview:label];
         [label release];
-		//warningIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:MK_WARNING_ICON]];
-		//[self addSubview:warningIcon];
-	}
+    }
 	return self;
 }
 
@@ -68,8 +64,6 @@
         [self addSubview:label];
         [label release];
 
-		//warningIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:MK_WARNING_ICON]];
-		//[self addSubview:warningIcon];		
 	}
 	return self;
 }
@@ -131,7 +125,6 @@
 - (void)dealloc {
 	[_textField release];
 	[_error release];
-	//[warningIcon release];
 	
 	[super dealloc];
 }

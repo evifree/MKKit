@@ -18,7 +18,6 @@
 #import <MKKit/MKKit/MKStrings.h>
 
 #import "MKTableElements/MKMaskIconView.h"
-#import "MKTableElements/MKAccessoryView.h"
 #import "MKTableCellDelegate.h"
 
 typedef enum {
@@ -31,11 +30,10 @@ typedef enum {
 } MKTableCellType;
 
 typedef enum {
-	MKTableCellAccessoryNone = 0,
-    MKTableCellAccessoryActivity = 1,
-    //MKTableCellAccessoryGlobe = 2,
-	MKTableCellAccessoryInfoButton = 3,
-	MKTableCellAccessoryWarningIcon = 4,
+	MKTableCellAccessoryNone,
+    MKTableCellAccessoryActivity,
+	MKTableCellAccessoryInfoButton,
+	MKTableCellAccessoryWarningIcon,
 } MKTableCellAccessoryViewType;
 
 @protocol MKTableCellDelegate;
@@ -65,10 +63,6 @@ typedef enum {
  * `MKTableCellAccessoryWarningIcon` : Dispalays a warning icon as the cell accessory. 
  
  The MKTableCellDelegate Protocol is adopted by MKTableCell.
- 
- @warning *Note* MKTableCell objects will look for resources in the 
- MKTableCell-Resources bundle. Ensure this bundle is added to your project for 
- proper function.
 ----------------------------------------------------------------------------------------*/
 
 @interface MKTableCell : UITableViewCell {
@@ -202,3 +196,14 @@ typedef enum {
 @property (assign) id<MKInputValidation> validator;
 
 @end
+
+@interface MKAccessoryView : MKControl {
+    MKTableCellAccessoryViewType mType;
+}
+
+- (id)initWithType:(MKTableCellAccessoryViewType)type;
+
+- (id)initWithImage:(UIImage *)image;
+
+@end
+

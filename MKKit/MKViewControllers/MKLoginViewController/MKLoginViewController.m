@@ -214,6 +214,11 @@ maxAtempts=mMaxAtempts;
         [MKPromptView promptWithType:MKPromptTypeRed title:@"Incorrect" message:promptString duration:5.0];
     }
     
+    mBoxOne.text = @"";
+    mBoxTwo.text = @"";
+    mBoxThree.text = @"";
+    mBoxFour.text = @"";
+    
     [mBoxOne becomeFirstResponder];
 }
 
@@ -231,6 +236,13 @@ maxAtempts=mMaxAtempts;
             else {
                 [mDelegate pinIsValidated:NO];
                 [self testAtempts];
+                
+                mBoxOne.text = @"";
+                mBoxTwo.text = @"";
+                mBoxThree.text = @"";
+                mBoxFour.text = @"";
+                
+                [mBoxOne becomeFirstResponder];
             }
         }
     }
@@ -254,10 +266,11 @@ maxAtempts=mMaxAtempts;
     mAtempts += 1;
     
     if (mAtempts == mMaxAtempts && mMaxAtempts != 0) {
-        if ([mDelegate respondsToSelector:@selector(maxPinAtemptsMade)]) {
-            [mDelegate maxPinAtemptsMade];
+        if ([mDelegate respondsToSelector:@selector(maxPinAttemptsMade)]) {
+            if ([mDelegate maxPinAttemptsMade]) {
+                [self performSelector:@selector(reset) withObject:nil afterDelay:0.5];
+            }
         }
-        [self performSelector:@selector(reset) withObject:nil afterDelay:0.5];
     }
     else {
         [MKPromptView promptWithType:MKPromptTypeRed title:@"Incorrect PIN" message:@"The PIN you entered is incorrect. Please check it and try again. Tap the help button for addional assistance." duration:3.0];
