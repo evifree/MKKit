@@ -26,10 +26,8 @@
     self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
     if (self) {
         self.type = cellType;
-		/////////////////////////////////////////////////////////////////////////////////////////////////
-		///                 MKTableCellTypeLabel                                                      ///
-		
-		if (type == MKTableCellTypeLabel) {
+        
+        if (type == MKTableCellTypeLabel) {
 			CGRect labelRect = CGRectMake(10.0, 11.0, 230.0, 21.0);
 			
 			mTheLabel = [[UILabel alloc] initWithFrame:labelRect];
@@ -40,9 +38,6 @@
             [self.contentView addSubview:mTheLabel];
             [mTheLabel release];
 		}
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////
-		///                 MKTableCellTypeDescription                                                ///
 		
 		if (type == MKTableCellTypeDescription) {
 			CGRect smallFrame = CGRectMake(207.0, 9.0, 83.0, 21.0);
@@ -63,10 +58,7 @@
 			[self.contentView addSubview:_smallLabel];
 			[_smallLabel release];
 		}
-				
-		/////////////////////////////////////////////////////////////////////////////////////////////////
-		///                 MKTableCellTypeScore                                                      ///
-		
+                    
 		if (type == MKTableCellTypeScore) {
 			CGRect iconRect = CGRectMake(10.0, 7.0, 30.0, 30.0);
 			CGRect labelRect = CGRectMake(18.0, 11.0, 90.0, 21.0);
@@ -178,7 +170,6 @@
 	else {
 		_validating = YES;
 		validator = [[MKValidator alloc] init];
-		//[validator retain];
 	}
 }
 

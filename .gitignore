@@ -1,7 +1,7 @@
 # These files are ignored by git
 
 # System
-.DS_Store
+*.DS_Store
 
 # Xcode
 *.pbxuser
