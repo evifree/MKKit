@@ -30,14 +30,14 @@
 		[self.contentView addSubview:mTheLabel];
 		[mTheLabel release];
 		
-		_smallLabel = [[UILabel alloc] initWithFrame:smallFrame];
-		_smallLabel.textAlignment = UITextAlignmentRight;
-		_smallLabel.adjustsFontSizeToFitWidth = YES;
-		_smallLabel.font = [UIFont fontWithName:@"Verdana-Bold" size:16.0];
-		_smallLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
+		mSmallLabel = [[UILabel alloc] initWithFrame:smallFrame];
+		mSmallLabel.textAlignment = UITextAlignmentRight;
+		mSmallLabel.adjustsFontSizeToFitWidth = YES;
+		mSmallLabel.font = [UIFont fontWithName:@"Verdana-Bold" size:16.0];
+		mSmallLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
 		
-		[self.contentView addSubview:_smallLabel];
-		[_smallLabel release];
+		[self.contentView addSubview:mSmallLabel];
+		[mSmallLabel release];
     }
     return self;
 }

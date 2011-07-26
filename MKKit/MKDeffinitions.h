@@ -6,13 +6,6 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-//  Notifications
-
-#define PICKER_DID_SHOW_NOTIFICATION                @"pickerDidShowNotification"
-#define PICKER_SHOULD_DISMISS_NOTIFICATION          @"tableViewWillDisappearNotification"
-#define TEXT_FIELD_SHOULD_VALIDATE_NOTIFICATION     @"textFieldShouldValidateNotificaiton"
-#define VALIDATOR_DID_SEND_AN_ERROR                 @"validatorDidSendAnError"
-
 //  Fonts
 
 #define COURIER_BOLD_FONT                           @"Courier-Bold"

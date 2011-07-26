@@ -27,35 +27,13 @@
 - (id)initWithType:(MKTextEntryCellType)cellType reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithType:MKTableCellTypeNone reuseIdentifier:reuseIdentifier];
     if (self) {
-        CGRect textFrame = CGRectZero;
         mTextEntryType = cellType;
         
-        MKTextCellView *view = [[MKTextCellView alloc] initWithType:cellType];
-        view.frame = self.contentView.frame;
+        mCellView = [[MKView alloc] initWithCell:self];
         
-        if (cellType == MKTextEntryCellTypeFull) {
-            textFrame = CGRectMake(58.0, 11.0, 173.0, 21.0);
-            
-            mTheLabel.hidden = YES;
-            [mTheLabel removeFromSuperview];
-        }
-        
-        if  (cellType == MKTextEntryCellTypeStandard) {
-            CGRect labelFrame = CGRectMake(10.0, 11.0, 100.0, 21.0);
-            textFrame = CGRectMake(115.0, 11.0, 160.0, 21.0);
-            
-            mTheLabel = [[UILabel alloc] initWithFrame:labelFrame];
-            mTheLabel.textAlignment = UITextAlignmentLeft;
-            mTheLabel.adjustsFontSizeToFitWidth = YES;
-            mTheLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
-            mTheLabel.backgroundColor = [UIColor clearColor];
-            
-            [view addSubview:mTheLabel];
-            [mTheLabel release];
-        }
-        
-        mTheTextField = [[MKTextField alloc] initWithFrame:textFrame];
+        mTheTextField = [[MKTextField alloc] initWithFrame:CGRectZero];
 		mTheTextField.textAlignment = UITextAlignmentCenter;
+        mTheTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
 		mTheTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
 		mTheTextField.delegate = self;
 		mTheTextField.returnKeyType = UIReturnKeyDone;
@@ -64,23 +42,34 @@
 		
 		[mTheTextField addTarget:self action:@selector(textChanged:) forControlEvents:UIControlEventEditingChanged];
         
-		[view addSubview:mTheTextField];
+        if (cellType == MKTextEntryCellTypeFull) {
+            [mCellView addPrimaryElement:mTheTextField];
+            
+            mTheLabel.hidden = YES;
+            [mTheLabel removeFromSuperview];
+        }
+        
+        if  (cellType == MKTextEntryCellTypeStandard) {
+            mTheLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+            mTheLabel.textAlignment = UITextAlignmentLeft;
+            mTheLabel.adjustsFontSizeToFitWidth = YES;
+            mTheLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
+            mTheLabel.backgroundColor = [UIColor clearColor];
+            
+            [mCellView addPrimaryElement:mTheLabel];
+            [mCellView addSecondaryElement:mTheTextField];
+            
+            [mTheLabel release];
+        }
+        
 		[mTheTextField release];
         
-        [self.contentView addSubview:view];
-        [view release];
+        [self.contentView addSubview:mCellView];
+        [mCellView release];
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pickerPosted) name:PICKER_DID_SHOW_NOTIFICATION object:nil]; 
     }
     return self;
-}
-
-#pragma mark - Accessor Methods
-
-- (void)setIconMask:(UIImage *)iconMask {
-    MKMaskIconView *iconView = [[MKMaskIconView alloc] initWithImage:iconMask];
-    [self.contentView addSubview:iconView];
-    [iconView release];
 }
  
 #pragma mark -
@@ -130,7 +119,7 @@
 	if (mValidationError) {
 		[mValidationError retain];
 		
-        MKAccessoryView *icon = [[MKAccessoryView alloc] initWithType:MKTableCellAccessoryWarningIcon];
+        MKControl *icon = [[MKControl alloc] initWithType:MKTableCellAccessoryWarningIcon];
         [icon completedAction: ^ (MKAction action) {
             if (action == MKActionTouchDown) {
                 [self warningIcon:icon];
@@ -172,7 +161,7 @@
 	if ([delegate respondsToSelector:@selector(valueDidChange:forKey:)]) {
 		[delegate valueDidChange:textField.text forKey:self.key];
 	}
-	if (_validating) {
+	if (mValidating) {
 		[self validateWithType:self.validationType];
 	}
 }
@@ -185,7 +174,6 @@
 	
 	if (mValidationError) {
 		self.accessoryView = UITableViewCellAccessoryNone;
-        //[[self.contentView viewWithTag:1] removeFromSuperview];
 		mValidationError = nil;
 		[mValidationError release];
 	}
@@ -217,23 +205,5 @@
     [super dealloc];
 }
 
-
-@end
-
-@implementation MKTextCellView
-
-- (id)initWithType:(MKTextEntryCellType)type {
-    self = [super initWithFrame:CGRectZero];
-    if (self) {
-        self.backgroundColor = CLEAR;
-        self.opaque = NO;
-        self.alpha = 1.0;
-    }
-    return self;
-}
-
-- (void)dealloc {
-    [super dealloc];
-}
 
 @end

@@ -24,7 +24,7 @@
 
 @interface MKTableCellBadge : MKTableCell {
 @private
-    MKBadgeCellView *mCellView;
+    MKBadgeCellView *mBadgeCellView;
 }
 
 ///----------------------------------------------------

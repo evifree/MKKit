@@ -18,37 +18,39 @@
 
 @implementation MKTableCellPickerControlled
 
-@synthesize pickerLabel=_pickerLabel, pickerDate=_pickerDate, 
+@synthesize pickerLabel=mPickerLabel, pickerDate=mPickerDate, 
 pickerView=_pickerView, owner=_owner;
 
 @synthesize pickerFrame=_pickerFrame, pickerType, pickerSubType, 
 pickerArray=_pickerArray;
 
-@synthesize displayed=_displayed;
+@synthesize displayed=mDisplayed;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithType:MKTableCellTypeNone reuseIdentifier:reuseIdentifier];
 	if (self) {
-		CGRect labelFrame = CGRectMake(10.0, 11.0, 100.0, 21.0);
-		CGRect pickerLabelFrame = CGRectMake(118.3, 9.0, 150.0, 23.0);
+        mCellView = [[MKView alloc] initWithCell:self];
+        [self.contentView addSubview:mCellView];
+        [mCellView release];
 		
-		mTheLabel = [[UILabel alloc] initWithFrame:labelFrame];
+		mTheLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 		mTheLabel.adjustsFontSizeToFitWidth = YES;
 		mTheLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
 		mTheLabel.backgroundColor = [UIColor clearColor];
-		[self.contentView addSubview:mTheLabel];
+		
+        [mCellView addPrimaryElement:mTheLabel];
 		[mTheLabel release];
 		
-		_pickerLabel = [[UILabel alloc] initWithFrame:pickerLabelFrame];
-        _pickerLabel.backgroundColor = [UIColor clearColor];
-		_pickerLabel.textAlignment = UITextAlignmentLeft;
-		_pickerLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
-		_pickerLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin;
+		mPickerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        mPickerLabel.backgroundColor = [UIColor clearColor];
+		mPickerLabel.textAlignment = UITextAlignmentLeft;
+		mPickerLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
+		mPickerLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin;
 		
-		[self.contentView addSubview:_pickerLabel];
-		[_pickerLabel release];
+        [mCellView addSecondaryElement:mPickerLabel];
+        [mPickerLabel release];
 		
-		_displayed = NO;
+		mDisplayed = NO;
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doneButtonTouched:) name:PICKER_SHOULD_DISMISS_NOTIFICATION object:nil];
     }
@@ -67,7 +69,7 @@ pickerArray=_pickerArray;
     [super setSelected:selected animated:animated];
     
 	if (selected) {
-		if (!_displayed) {
+		if (!mDisplayed) {
 			[self showPickerInRect:_pickerFrame];
 		}
 	}
@@ -83,8 +85,6 @@ pickerArray=_pickerArray;
 	_pickerView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
 	
     [[[UIApplication sharedApplication] keyWindow] addSubview:_pickerView];
-    
-	//[_owner.view addSubview:_pickerView];
 		
 	[UIView animateWithDuration:0.25
 					 animations: ^ { _pickerView.frame = pickerRec; }];
@@ -93,7 +93,7 @@ pickerArray=_pickerArray;
 		[delegate didAddPicker:_pickerView forKey:self.key];
 	}
 	
-	_displayed = YES;
+	mDisplayed = YES;
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:PICKER_DID_SHOW_NOTIFICATION object:self userInfo:nil];
 }
@@ -102,8 +102,8 @@ pickerArray=_pickerArray;
 	MKStrings *string = [[MKStrings alloc] init];
 	
 	if (pickerType == MKTableCellPickerTypeDate) {
-		_pickerDate = [sender.date retain];
-		[_pickerDate release];
+		mPickerDate = [sender.date retain];
+		[mPickerDate release];
 		
 		if ([delegate respondsToSelector:@selector(valueDidChange:forKey:)]) {
 			[delegate valueDidChange:sender.date forKey:self.key];
@@ -124,7 +124,7 @@ pickerArray=_pickerArray;
 }
 
 - (void)doneButtonTouched:(id)sender {
-	if (_displayed) {
+	if (mDisplayed) {
 		if ([delegate respondsToSelector:@selector(willRemovePicker:forKey:)]) {
 			[delegate willRemovePicker:_pickerView forKey:self.key];
 		}
@@ -134,7 +134,7 @@ pickerArray=_pickerArray;
 						 animations: ^ { _pickerView.frame = newFrame; }
 						 completion: ^ (BOOL finished) { [_pickerView removeFromSuperview]; [_pickerView release]; }];
 	
-		_displayed = NO;
+		mDisplayed = NO;
 	}
 }
 

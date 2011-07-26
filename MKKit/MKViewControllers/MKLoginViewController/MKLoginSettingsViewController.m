@@ -14,8 +14,6 @@
 
 @implementation MKLoginSettingsViewController
 
-BOOL validationError = NO;
-
 - (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     if (self) {
@@ -176,8 +174,7 @@ BOOL validationError = NO;
             cell.validationType = MKValidateHasLength;
             cell.theLabel.text = @"Answer:";
             
-            ((MKTableCellTextEntry *)cell).theTextField.placeholder = @"Answer";
-            
+            ((MKTableCellTextEntry *)cell).theTextField.placeholder = @"Answer";            
         }
     }
     
@@ -197,11 +194,19 @@ BOOL validationError = NO;
     NSString *text = (NSString *)value;
     [[NSUserDefaults standardUserDefaults] setObject:value forKey:aKey];
     
+    if ([aKey isEqualToString:CHALLENGE_QUESTION]) {
+         [[NSUserDefaults standardUserDefaults] setObject:value forKey:aKey];
+    }
+    
     if ([aKey isEqualToString:CHALLENGE_ANSWER] && [text length] > 0) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:CHALLENGE_SET];
+        [[NSUserDefaults standardUserDefaults] setObject:text forKey:CHALLENGE_ANSWER];
     }
-    else {
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:CHALLENGE_SET];
+    
+    if ([aKey isEqualToString:CURRENT_PIN] && [text length] == 4) {
+        if ([text integerValue] != [[NSUserDefaults standardUserDefaults] integerForKey:PIN]) {
+            [MKPromptView promptWithType:MKPromptTypeAmber title:@"PIN Mismatch" message:@"The PIN you entered does not match the PIN on file." duration:3.5];
+        }
     }
     
     if ([aKey isEqualToString:CONFIRM_PIN] && [value length] == 4) {
@@ -210,6 +215,9 @@ BOOL validationError = NO;
                 
                 [MKPromptView promptWithType:MKPromptTypeGreen title:@"New PIN" message:@"Your PIN has been changed." duration:3.0];
                 [[NSUserDefaults standardUserDefaults] setInteger:[text integerValue] forKey:PIN];
+            }
+            else {
+                [MKPromptView promptWithType:MKPromptTypeAmber title:@"PIN Mismatch" message:@"Your new PIN and PIN Confimation do not match." duration:3.5];
             }
         }
     }

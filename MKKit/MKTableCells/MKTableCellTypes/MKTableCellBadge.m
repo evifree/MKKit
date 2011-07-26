@@ -17,7 +17,7 @@
     if (self) {
         self.contentView.autoresizesSubviews = YES;
         
-        mCellView = [[MKBadgeCellView alloc] initWithFrame:self.contentView.frame];
+        mBadgeCellView = [[MKBadgeCellView alloc] initWithFrame:self.contentView.frame];
         
         CGRect labelRect = CGRectMake(10.0, 10.0, 170.0, 21.0);
 		
@@ -27,11 +27,11 @@
 		mTheLabel.minimumFontSize = 10.0;
         mTheLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
 		
-		[mCellView addSubview:mTheLabel];
+		[mBadgeCellView addSubview:mTheLabel];
         [mTheLabel release];
 
-        [self.contentView addSubview:mCellView];
-        [mCellView release];
+        [self.contentView addSubview:mBadgeCellView];
+        [mBadgeCellView release];
     }
     return self;
 }
@@ -39,11 +39,11 @@
 #pragma mark - Accessor Methods
 
 - (void)setBadgeText:(NSString *)text {
-    mCellView.badgeText = text;
+    mBadgeCellView.badgeText = text;
 }
 
 - (void)setBadgeColor:(UIColor *)color {
-    mCellView.badgeColor = color;
+    mBadgeCellView.badgeColor = color;
 }
  
 #pragma mark - Memory Managment

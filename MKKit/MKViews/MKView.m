@@ -14,7 +14,7 @@
 
 @implementation MKView
 
-@synthesize controller=mController, delegate=mDelegate;
+@synthesize x, y, width, height, controller=mController, delegate=mDelegate;
 
 #pragma mark - Initalizer
 
@@ -26,9 +26,34 @@
         
         mShouldRemoveView = YES;
         
+        self.x = frame.origin.x;
+        self.y = frame.origin.y;
+        self.width = frame.size.width;
+        self.height = frame.size.height;
+        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeView) name:MK_VIEW_SHOULD_REMOVE_NOTIFICATION object:nil];
     }
     return self;
+}
+
+#pragma mark - Accessor methods
+
+#pragma mark Setters
+
+- (void)setX:(CGFloat)point {
+    self.frame = CGRectMake(point, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
+}
+
+- (void)setY:(CGFloat)point {
+    self.frame = CGRectMake(self.frame.origin.x, point, self.frame.size.width, self.frame.size.height);
+}
+
+- (void)setWidth:(CGFloat)lWidth {
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, lWidth, self.frame.size.height);
+}
+
+- (void)setHeight:(CGFloat)lHeight {
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, lHeight);
 }
 
 #pragma mark - Showing the View
@@ -75,16 +100,16 @@
 - (void)showOnViewController:(UIViewController *)controller animationType:(MKViewAnimationType)type {
     [controller.view addSubview:self];
     
-    CGFloat height = 460.0;
-    CGFloat width = 320.0; 
+    CGFloat lheight = 460.0;
+    CGFloat lwidth = 320.0; 
     
     if (controller.interfaceOrientation == UIInterfaceOrientationPortrait || controller.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
-        height = 460.0;
-        width = 320.0;
+        lheight = 460.0;
+        lwidth = 320.0;
     }
     if (controller.interfaceOrientation == UIInterfaceOrientationLandscapeRight || controller.interfaceOrientation == UIInterfaceOrientationLandscapeLeft) {
-        height = 300.0;
-        width = 480.0;
+        lheight = 300.0;
+        lwidth = 480.0;
     }
 
     if (type == MKViewAnimationTypeNone) {
@@ -92,8 +117,7 @@
     }
     
     if (type == MKViewAnimationTypeFadeIn) {
-        //self.center = controller.view.center;
-        self.frame = CGRectMake(CENTER_VIEW_HORIZONTALLY(width, self.frame.size.width), ((height / 2.0) - (self.frame.size.height / 2.0)), self.frame.size.width, self.frame.size.height);
+        self.frame = CGRectMake(CENTER_VIEW_HORIZONTALLY(width, self.frame.size.width), ((lheight / 2.0) - (self.frame.size.height / 2.0)), self.frame.size.width, self.frame.size.height);
         
         [UIView animateWithDuration:0.25 
                          animations: ^ { self.alpha = 1.0; }];
@@ -102,7 +126,7 @@
     if (type == MKViewAnimationTypeMoveInFromTop) {
         CGRect moveTo = self.frame;
         
-        self.frame = CGRectMake(self.frame.origin.x, (0.0 - self.frame.size.height), width, self.frame.size.height);
+        self.frame = CGRectMake(self.frame.origin.x, (0.0 - self.frame.size.height), lwidth, self.frame.size.height);
         
         self.alpha = 1.0;
         
@@ -112,7 +136,7 @@
     
 
     if (type == MKViewAnimationTypeAppearAboveToolbar) {
-        self.frame = CGRectMake(CENTER_VIEW_HORIZONTALLY(width, self.frame.size.width), (height - self.frame.size.height - TOOLBAR_HEIGHT -20.0), self.frame.size.width, self.frame.size.height);
+        self.frame = CGRectMake(CENTER_VIEW_HORIZONTALLY(lwidth, self.frame.size.width), (lheight - self.frame.size.height - TOOLBAR_HEIGHT -20.0), self.frame.size.width, self.frame.size.height);
         
         [UIView animateWithDuration:0.25
                          animations: ^ { self.alpha = 1.0; }];

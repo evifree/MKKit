@@ -72,6 +72,22 @@ typedef enum {
 */
 - (void)removeView;
 
+///----------------------------------------------------
+/// @name Location
+///----------------------------------------------------
+
+/** The x orign of the view */
+@property (nonatomic, assign) CGFloat x;
+
+/** The y origin of the view */
+@property (nonatomic, assign) CGFloat y;
+
+/** The width of the view */
+@property (nonatomic, assign) CGFloat width;
+
+/** The height of the view */
+@property (nonatomic, assign) CGFloat height;
+
 ///-----------------------------------------------------
 /// @name Ownership
 ///-----------------------------------------------------

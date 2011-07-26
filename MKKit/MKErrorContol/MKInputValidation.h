@@ -53,7 +53,9 @@ typedef enum {
 /** Retuns Yes if the text is the same length as the setLength property
  
  @param text The text to be evaluated
+
  @warning when this method is used the stringLength property cannot be equal to zero.
+ 
  @exception setLength an exeception is rasied if setLength is equal to zero.
 */
 - (BOOL)inputIsaSetLength:(NSString *)text;

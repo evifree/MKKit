@@ -11,6 +11,8 @@
 #import <MKKit/MKKit/MKTableCells/MKTableCell.h>
 #import <MKKit/MKKit/MKControls/MKTextField.h>
 
+#import "MKTableCellPickerControlled.h"
+
 typedef enum {
     MKTextEntryCellTypeStandard,
     MKTextEntryCellTypeFull,
@@ -71,13 +73,5 @@ typedef enum {
 
 /** The type of Text Entry Cell */
 @property (nonatomic, assign) MKTextEntryCellType textEntryType;
-
-@end
-
-@interface MKTextCellView : MKView {
-    MKTextEntryCellType mType;
-}
-
-- (id)initWithType:(MKTextEntryCellType)type;
 
 @end

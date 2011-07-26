@@ -26,7 +26,6 @@ typedef enum {
 	MKTableCellTypeLabel,
 	MKTableCellTypeScore,
 	MKTableCellTypeAction,
-	MKTableCellTypeButton,
 } MKTableCellType;
 
 typedef enum {
@@ -48,7 +47,6 @@ typedef enum {
  * `MKTableCellTypeLabel` : A cell with label centered on it.
  * `MKTableCellTypeScore` : A cell with a 30x30 image view and two labels side by side.
  * `MKTableCellTypeAction` : A cell with a 30x30 image view, one label, and a discloser arrow.
- * `MKTableCellTypeButton` : A cell with an image over the whole cell and a Label centered on the cell.
  
  When a MKTableCell is created it intializes an UITableViewCell with a style of UITableViewCellStyleDefault. 
  It than removes the elements of that cell and replaces them its own. If you use the UTableCellView 
@@ -70,20 +68,16 @@ typedef enum {
     id validator;
     
 	MKTableCellType type;
-    
 	MKTableCellAccessoryViewType accessoryViewType;
-    UIImage *mAccessoryIcon;
 	
-    MKValidationType _validationType;
-	BOOL _validating;
+    MKValidationType mValidationType;
     NSInteger mValidatorTestStringLength;
-	
+	BOOL mValidating;
+    
 	UILabel *mTheLabel;
-	UILabel *_smallLabel;
-	UILabel *_dateLabel;
-	UIImageView *mTheImageView;
-	UIImage *mIcon;
-    UIImage *mIconMask;
+	UILabel *mSmallLabel;
+    
+    MKView *mCellView;
 }
 
 ///---------------------------------------------------------------------------------------
@@ -133,9 +127,6 @@ typedef enum {
 
 /** A reference to the secondary label of all MKTableCell Subclasses that have two labels. */
 @property (nonatomic, retain) UILabel *smallLabel;
-
-/** An image view that for cells that support images */
-@property (nonatomic, retain) UIImageView *theImageView;
 
 /** The image displayed on cell that suport image views */
 @property (nonatomic, retain) UIImage *icon;
@@ -197,13 +188,100 @@ typedef enum {
 
 @end
 
-@interface MKAccessoryView : MKControl {
-    MKTableCellAccessoryViewType mType;
-}
+/**--------------------------------------------------------------------------
+ This catagory of MKControl provides the control for table cell accessories.
+---------------------------------------------------------------------------*/
 
+@interface MKControl (MKTableCell)
+
+/**
+ Retuns an istance for the specified type.
+ 
+ @param type the type of accessory to create
+ 
+ @return MKControl instance
+*/
 - (id)initWithType:(MKTableCellAccessoryViewType)type;
 
+/**
+ Returns an instance that displays the specified image.
+ 
+ @param image the image to display as the cells accessory
+ 
+ @return MKControl instance
+*/
 - (id)initWithImage:(UIImage *)image;
+
+@end
+
+static const CGFloat kCellIconRectX                 = 10.0;
+static const CGFloat kCellIconRectY                 = 7.0;
+static const CGFloat kCellIconRectWidth             = 30.0;
+static const CGFloat kCellIconRectHeight            = 30.0;
+static const CGFloat kCellPrimaryElementX           = 7.0;
+static const CGFloat kCellPrimaryElementY           = 7.0;
+static const CGFloat kCellPrimaryElementyWidth      = 294.0;
+static const CGFloat kCellPrimaryElementHeight      = 30.0;
+static const CGFloat kCellSecondaryElementX         = 115.0;
+static const CGFloat kCellSecondaryElementY         = 7.0;
+static const CGFloat kCellSecondaryElementWidth     = 191.0;
+static const CGFloat kCellSecondaryElementHeight    = 30.0;
+
+/**--------------------------------------------------------------------------
+ This catagory of MKView provides a standard layout for MKTableCell objects.
+---------------------------------------------------------------------------*/
+
+@interface MKView (MKTableCell)
+
+///-----------------------------------
+/// @name Creating
+///-----------------------------------
+
+/**
+ Creates an instace of MKView for the given table cell.
+ 
+ @param cell the cell the view will be placed on.
+ 
+ @return MKView instance
+*/
+- (id)initWithCell:(MKTableCell *)cell;
+
+///-----------------------------------
+/// @name Layout Control
+///-----------------------------------
+
+/**
+ Adjusts the elements of the cell to fit.
+*/
+- (void)layoutCell;
+
+///-----------------------------------
+/// @name Adding Elements
+///-----------------------------------
+
+/**
+ Adds a Primary Element to the cell. The primary element 
+ appears on the left side of the cell.
+ 
+ @param element the view that will be added to the cell.
+*/
+- (void)addPrimaryElement:(UIView *)element;
+
+/**
+ Adds a Secondary Element to the cell. The secondary element 
+ appears on the right side of the cell.
+ 
+ @param element the view that will be added to the cell.
+ */
+- (void)addSecondaryElement:(UIView *)element;
+
+/**
+ Adds a Icon Element to the cell. The icon element 
+ appears on the left side of the cell.
+ 
+ @param element the view that will be added to the cell.
+ */
+- (void)addIconElement:(UIView *)element;
 
 @end
 
