@@ -11,6 +11,8 @@
 @interface MKTableCell ()
 
 - (void)accessoryButton:(id)sender;
+- (void)onSwipe:(UISwipeGestureRecognizer *)sender;
+- (void)onLongPress:(UILongPressGestureRecognizer *)sender;
 
 @end
 
@@ -18,7 +20,8 @@
 
 @synthesize delegate, type, theLabel=mTheLabel, smallLabel=mSmallLabel, key, accessoryViewType, 
             validationType=mValidationType, validating=mValidating, validator, icon,
-            iconMask, validatorTestStringLength=mValidatorTestStringLength, accessoryIcon;
+            iconMask, validatorTestStringLength=mValidatorTestStringLength, accessoryIcon, 
+            recognizeLeftToRightSwipe, recognizeRightToLeftSwipe, recognizeLongPress, indexPath;
 
 #pragma mark - Initalizer
 
@@ -26,6 +29,7 @@
     self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
     if (self) {
         self.type = cellType;
+        [self.textLabel removeFromSuperview];
         
         if (type != MKTableCellTypeNone) {
             mCellView = [[MKView alloc] initWithCell:self];
@@ -47,6 +51,7 @@
 		if (type == MKTableCellTypeDescription) {
             mTheLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 			mTheLabel.textAlignment = UITextAlignmentLeft;
+            mTheLabel.backgroundColor = RED;
 			
             [mCellView addPrimaryElement:mTheLabel];
             [mTheLabel release];
@@ -56,6 +61,7 @@
 			mSmallLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
 			mSmallLabel.adjustsFontSizeToFitWidth = YES;
 			mSmallLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
+            mSmallLabel.backgroundColor = GRAY;
 			
 			[mCellView addSecondaryElement:mSmallLabel];
 			[mSmallLabel release];
@@ -97,8 +103,7 @@
 	return self;
 }
 	
-#pragma mark -
-#pragma mark Accessor Methods
+#pragma mark - Accessor Methods
 
 - (void)setAccessoryViewType:(MKTableCellAccessoryViewType)aType {
 	if (aType == MKTableCellAccessoryNone) {
@@ -170,8 +175,56 @@
     [iconView release];
 }
 
-#pragma mark -
-#pragma mark Cell behavior
+#pragma mark Gestures
+
+- (void)setRecognizeRightToLeftSwipe:(BOOL)recognize {
+    if (recognize) {
+        mRightToLeftSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipe:)];
+        mRightToLeftSwipe.direction = UISwipeGestureRecognizerDirectionLeft;
+        
+        [self addGestureRecognizer:mRightToLeftSwipe];
+        [mRightToLeftSwipe release];
+    }
+    else {
+        if (mRightToLeftSwipe) {
+            [self removeGestureRecognizer:mRightToLeftSwipe];
+            mRightToLeftSwipe = nil;
+        }
+    }
+}
+
+- (void)setRecognizeLeftToRightSwipe:(BOOL)recognize {
+    if (recognize) {
+        mLeftToRightSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipe:)];
+        mLeftToRightSwipe.direction = UISwipeGestureRecognizerDirectionRight;
+        
+        [self addGestureRecognizer:mLeftToRightSwipe];
+        [mLeftToRightSwipe release];
+    }
+    else {
+        if (mLeftToRightSwipe) {
+            [self removeGestureRecognizer:mLeftToRightSwipe];
+            mLeftToRightSwipe = nil;
+        }
+    }
+}
+
+- (void)setRecognizeLongPress:(BOOL)recognize {
+    if (recognize) {
+        mLongPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(onLongPress:)];
+        
+        [self addGestureRecognizer:mLongPress];
+        [mLongPress release];
+    }
+    else {
+        if (mLongPress) {
+            [self removeGestureRecognizer:mLongPress];
+            mLongPress = nil;
+        }
+    }
+}
+
+#pragma mark - Cell behavior
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -184,15 +237,17 @@
 	
 }
 
-#pragma mark -
-#pragma mark Validation Methods
+- (void)willTransitionToState:(UITableViewCellStateMask)state {
+    [super willTransitionToState:state];
+}
+
+#pragma mark - Validation Methods
 
 - (void)validateWithType:(MKValidationType)aType {
 	//Impelmented by suclasses
 }
 
-#pragma mark -
-#pragma mark Actions
+#pragma mark - Actions
 
 - (void)accessoryButton:(id)sender {
 	if ([self.delegate respondsToSelector:@selector(didTapAccessoryForKey:)]) {
@@ -200,8 +255,28 @@
 	}
 }
 
-#pragma mark -
-#pragma mark Memory Management
+#pragma mark - Gesture Actions
+
+- (void)onSwipe:(UISwipeGestureRecognizer *)sender {
+    if (sender.direction == UISwipeGestureRecognizerDirectionLeft) {
+        if ([delegate respondsToSelector:@selector(didSwipeRightToLeftForKey:indexPath:)]) {
+            [delegate didSwipeRightToLeftForKey:self.key indexPath:self.indexPath];
+        }
+    }
+    if (sender.direction == UISwipeGestureRecognizerDirectionRight) {
+        if ([delegate respondsToSelector:@selector(didSwipeLeftToRightForKey:indexPath:)]) {
+            [delegate didSwipeLeftToRightForKey:self.key indexPath:self.indexPath];
+        }
+    }
+}
+
+- (void)onLongPress:(UILongPressGestureRecognizer *)sender {
+    if ([delegate respondsToSelector:@selector(didLongPressForKey:indexPath:)]) {
+        [delegate didLongPressForKey:self.key indexPath:self.indexPath];
+    }
+}
+
+#pragma mark - Memory Management
 
 - (void)dealloc {
     if (mValidating) {
@@ -316,6 +391,8 @@ void drawWarningIcon(CGContextRef context, CGRect rect) {
 
 @implementation MKView (MKTableCell)
 
+#pragma mark - Initalizer
+
 - (id)initWithCell:(MKTableCell *)cell {
     self = [super initWithFrame:cell.contentView.frame];
     if (self) {
@@ -325,9 +402,12 @@ void drawWarningIcon(CGContextRef context, CGRect rect) {
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
         
         mShouldRemoveView = NO;
+        
     }
     return self;
 }
+
+#pragma mark - Layout
 
 - (void)layoutCell {
     UIView *primaryElement = [self viewWithTag:1];
@@ -355,6 +435,8 @@ void drawWarningIcon(CGContextRef context, CGRect rect) {
     }
 }
 
+#pragma mark - Adding Elements
+
 - (void)addPrimaryElement:(UIView *)element {
     element.tag = 1;
     element.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
@@ -377,6 +459,12 @@ void drawWarningIcon(CGContextRef context, CGRect rect) {
     
     [self addSubview:element];
     [self layoutCell];
+}
+ 
+#pragma mark - Memory Management
+
+- (void)dealloc {
+    [super dealloc];
 }
 
 @end

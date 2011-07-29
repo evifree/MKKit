@@ -19,7 +19,7 @@
 
 @synthesize checkBox=_checkBox;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+- (id)initWithType:(MKTableCellType)cellType reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithType:MKTableCellTypeNone reuseIdentifier:reuseIdentifier];
     if (self) {
         CGRect checkBoxRect = CGRectMake(10.0, 7.0, 30.0, 30.0);

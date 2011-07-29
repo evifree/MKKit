@@ -35,7 +35,6 @@ typedef enum {
     NSString *mIAPIdentifier;
     
 @private
-    //MKButtonState mButtonState;
     MKButton *mButton;
 }
 

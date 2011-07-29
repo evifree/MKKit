@@ -128,7 +128,7 @@
     if (!mProductsSet) {
         cell = (MKTableCell *)[tableView dequeueReusableCellWithIdentifier:LoadingCell];
         if (cell == nil) {
-            cell = [[[MKTableCellLoading alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:LoadingCell] autorelease];
+            cell = [[[MKTableCellLoading alloc] initWithType:MKTableCellTypeNone reuseIdentifier:LoadingCell] autorelease];
         }
     }
     
@@ -138,7 +138,7 @@
         
         cell = (MKTableCell *)[tableView dequeueReusableCellWithIdentifier:PurchaseCell];
         if (cell == nil) {
-            cell = [[[MKTableCellIAP alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:PurchaseCell] autorelease];
+            cell = [[[MKTableCellIAP alloc] initWithType:MKTableCellTypeNone reuseIdentifier:PurchaseCell] autorelease];
             cell.delegate = self;
             ((MKTableCellIAP *)cell).observer = mObserver;
         }

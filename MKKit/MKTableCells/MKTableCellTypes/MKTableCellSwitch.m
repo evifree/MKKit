@@ -21,7 +21,7 @@
 #pragma mark -
 #pragma mark Initalizer
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+- (id)initWithType:(MKTableCellType)cellType reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithType:MKTableCellTypeNone reuseIdentifier:reuseIdentifier];
     if (self) {
         CGRect switchFrame = CGRectMake(198.3, 10.0, 172.0, 21.0);

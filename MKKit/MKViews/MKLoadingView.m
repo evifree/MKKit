@@ -50,6 +50,8 @@ CGFloat lProgress = 0.0;
             [self addSubview:activityIndicator];
             [activityIndicator release];
         }
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeView) name:MK_LOADING_VIEW_SHOULD_REMOVE_NOTIFICATION object:nil];
     }
     return self;
 }
@@ -117,6 +119,8 @@ void drawProgressBar(CGContextRef context, CGRect rect) {
 } 
  
 - (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MK_LOADING_VIEW_SHOULD_REMOVE_NOTIFICATION object:nil];
+    
     [super dealloc];
 }
 

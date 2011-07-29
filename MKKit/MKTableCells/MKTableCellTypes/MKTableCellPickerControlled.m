@@ -26,7 +26,7 @@ pickerArray=_pickerArray;
 
 @synthesize displayed=mDisplayed;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+- (id)initWithType:(MKTableCellType)cellType reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithType:MKTableCellTypeNone reuseIdentifier:reuseIdentifier];
 	if (self) {
         mCellView = [[MKView alloc] initWithCell:self];
@@ -43,7 +43,7 @@ pickerArray=_pickerArray;
 		
 		mPickerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         mPickerLabel.backgroundColor = [UIColor clearColor];
-		mPickerLabel.textAlignment = UITextAlignmentLeft;
+		mPickerLabel.textAlignment = UITextAlignmentCenter;
 		mPickerLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
 		mPickerLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin;
 		
@@ -85,6 +85,7 @@ pickerArray=_pickerArray;
 	_pickerView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
 	
     [[[UIApplication sharedApplication] keyWindow] addSubview:_pickerView];
+    [_owner.view addSubview:_pickerView];
 		
 	[UIView animateWithDuration:0.25
 					 animations: ^ { _pickerView.frame = pickerRec; }];

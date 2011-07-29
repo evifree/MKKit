@@ -13,7 +13,7 @@
 
 @synthesize activityIndicator=mActivityIndicator;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+- (id)initWithType:(MKTableCellType)cellType reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithType:MKTableCellTypeNone reuseIdentifier:reuseIdentifier];
     if (self) {
         mTheLabel = [[UILabel alloc] initWithFrame:CGRectMake(109.0, 11.0, 82.0, 21.0)];

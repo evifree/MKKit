@@ -27,7 +27,7 @@
 		AA02DE4512DAE2B7003B3560 /* MKSounds.m in Sources */ = {isa = PBXBuildFile; fileRef = AA02DDEC12DAE2B7003B3560 /* MKSounds.m */; };
 		AA02DE4612DAE2B7003B3560 /* MKStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = AA02DDED12DAE2B7003B3560 /* MKStrings.h */; };
 		AA02DE4712DAE2B7003B3560 /* MKStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = AA02DDEE12DAE2B7003B3560 /* MKStrings.m */; };
-		AA02DE4812DAE2B7003B3560 /* MKTableCell.h in Headers */ = {isa = PBXBuildFile; fileRef = AA02DDF012DAE2B7003B3560 /* MKTableCell.h */; };
+		AA02DE4812DAE2B7003B3560 /* MKTableCell.h in Headers */ = {isa = PBXBuildFile; fileRef = AA02DDF012DAE2B7003B3560 /* MKTableCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA02DE4912DAE2B7003B3560 /* MKTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA02DDF112DAE2B7003B3560 /* MKTableCell.m */; };
 		AA02DE4A12DAE2B7003B3560 /* MKTableCellDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA02DDF212DAE2B7003B3560 /* MKTableCellDelegate.h */; };
 		AA02DE5912DAE2B7003B3560 /* MKTableCellCheckBox.h in Headers */ = {isa = PBXBuildFile; fileRef = AA02DE0212DAE2B7003B3560 /* MKTableCellCheckBox.h */; };
@@ -54,7 +54,7 @@
 		AA02DE7A12DAE2B7003B3560 /* MKLoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA02DE2712DAE2B7003B3560 /* MKLoadingView.h */; };
 		AA02DE7B12DAE2B7003B3560 /* MKLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA02DE2812DAE2B7003B3560 /* MKLoadingView.m */; };
 		AA02DF6E12DAEA54003B3560 /* MKViewHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = AA02DF6C12DAEA54003B3560 /* MKViewHeader.h */; };
-		AA02DF9912DAEC19003B3560 /* MKTableCellHeaders.h in Headers */ = {isa = PBXBuildFile; fileRef = AA02DF9712DAEC19003B3560 /* MKTableCellHeaders.h */; };
+		AA02DF9912DAEC19003B3560 /* MKTableCellHeaders.h in Headers */ = {isa = PBXBuildFile; fileRef = AA02DF9712DAEC19003B3560 /* MKTableCellHeaders.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA02DFF212DAF0AD003B3560 /* MKKit.h in Headers */ = {isa = PBXBuildFile; fileRef = AA02DFF112DAF0AD003B3560 /* MKKit.h */; };
 		AA02E12112DAFAFA003B3560 /* MKCheckBox.h in Headers */ = {isa = PBXBuildFile; fileRef = AA02E11912DAFAFA003B3560 /* MKCheckBox.h */; };
 		AA02E12212DAFAFA003B3560 /* MKCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = AA02E11A12DAFAFA003B3560 /* MKCheckBox.m */; };
@@ -93,7 +93,7 @@
 		AA2CE708138200680088C9B2 /* MKReflectedImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA2CE706138200680088C9B2 /* MKReflectedImageView.h */; };
 		AA2CE709138200680088C9B2 /* MKReflectedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2CE707138200680088C9B2 /* MKReflectedImageView.m */; };
 		AA2FBE4513444550002441C2 /* MKMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = AA2FBE4413444550002441C2 /* MKMacros.h */; };
-		AA33055F13C3F082006B2D11 /* MKMaskIconView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA33055D13C3F082006B2D11 /* MKMaskIconView.h */; };
+		AA33055F13C3F082006B2D11 /* MKMaskIconView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA33055D13C3F082006B2D11 /* MKMaskIconView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA33056013C3F082006B2D11 /* MKMaskIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA33055E13C3F082006B2D11 /* MKMaskIconView.m */; };
 		AA40E8F913A5C64B00643C6C /* MKTableCellBadge.h in Headers */ = {isa = PBXBuildFile; fileRef = AA40E8F713A5C64B00643C6C /* MKTableCellBadge.h */; };
 		AA40E8FA13A5C64B00643C6C /* MKTableCellBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = AA40E8F813A5C64B00643C6C /* MKTableCellBadge.m */; };
@@ -103,8 +103,6 @@
 		AA6330DF1344163F00886CE3 /* MKViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6330DE1344163F00886CE3 /* MKViewControllerDelegate.h */; };
 		AA6330E21344230B00886CE3 /* MKWebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6330E01344230B00886CE3 /* MKWebViewController.h */; };
 		AA6330E31344230B00886CE3 /* MKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6330E11344230B00886CE3 /* MKWebViewController.m */; };
-		AA6DF398138DE06B0091B912 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA5A1AC1345589C00D2C23F /* CoreFoundation.framework */; };
-		AA6DF3C4138DE3940091B912 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA5A1AC1345589C00D2C23F /* CoreFoundation.framework */; };
 		AA6DF3F2138E025B0091B912 /* MKInputPrompt.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6DF3EE138E025B0091B912 /* MKInputPrompt.h */; };
 		AA6DF3F3138E025B0091B912 /* MKInputPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6DF3EF138E025B0091B912 /* MKInputPrompt.m */; };
 		AA6DF3F4138E025B0091B912 /* MKPromptView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6DF3F0138E025B0091B912 /* MKPromptView.h */; };
@@ -233,8 +231,6 @@
 		AA6330DE1344163F00886CE3 /* MKViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKViewControllerDelegate.h; sourceTree = "<group>"; };
 		AA6330E01344230B00886CE3 /* MKWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKWebViewController.h; sourceTree = "<group>"; };
 		AA6330E11344230B00886CE3 /* MKWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKWebViewController.m; sourceTree = "<group>"; };
-		AA6DF397138DE06B0091B912 /* MKTableCell-Resources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MKTableCell-Resources.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA6DF3C3138DE3940091B912 /* MKValidator-Resources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MKValidator-Resources.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA6DF3EE138E025B0091B912 /* MKInputPrompt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKInputPrompt.h; sourceTree = "<group>"; };
 		AA6DF3EF138E025B0091B912 /* MKInputPrompt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKInputPrompt.m; sourceTree = "<group>"; };
 		AA6DF3F0138E025B0091B912 /* MKPromptView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPromptView.h; sourceTree = "<group>"; };
@@ -272,22 +268,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		AA6DF394138DE06B0091B912 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AA6DF398138DE06B0091B912 /* CoreFoundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AA6DF3C0138DE3940091B912 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AA6DF3C4138DE3940091B912 /* CoreFoundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		AA7EFCEC10FFE8E900B4C1BC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -310,8 +290,6 @@
 			isa = PBXGroup;
 			children = (
 				AA7EFCEE10FFE8E900B4C1BC /* libMKKit.a */,
-				AA6DF397138DE06B0091B912 /* MKTableCell-Resources.bundle */,
-				AA6DF3C3138DE3940091B912 /* MKValidator-Resources.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -684,40 +662,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		AA6DF396138DE06B0091B912 /* MKTableCell-Resources */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AA6DF3A0138DE06C0091B912 /* Build configuration list for PBXNativeTarget "MKTableCell-Resources" */;
-			buildPhases = (
-				AA6DF393138DE06B0091B912 /* Sources */,
-				AA6DF394138DE06B0091B912 /* Frameworks */,
-				AA6DF395138DE06B0091B912 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "MKTableCell-Resources";
-			productName = "MKTableCell-Resources";
-			productReference = AA6DF397138DE06B0091B912 /* MKTableCell-Resources.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
-		AA6DF3C2138DE3940091B912 /* MKValidator-Resources */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AA6DF3CC138DE3940091B912 /* Build configuration list for PBXNativeTarget "MKValidator-Resources" */;
-			buildPhases = (
-				AA6DF3BF138DE3940091B912 /* Sources */,
-				AA6DF3C0138DE3940091B912 /* Frameworks */,
-				AA6DF3C1138DE3940091B912 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "MKValidator-Resources";
-			productName = "MKValidator-Resources";
-			productReference = AA6DF3C3138DE3940091B912 /* MKValidator-Resources.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
 		AA7EFCED10FFE8E900B4C1BC /* MKKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA7EFCF110FFE90700B4C1BC /* Build configuration list for PBXNativeTarget "MKKit" */;
@@ -760,44 +704,11 @@
 			projectRoot = "";
 			targets = (
 				AA7EFCED10FFE8E900B4C1BC /* MKKit */,
-				AA6DF396138DE06B0091B912 /* MKTableCell-Resources */,
-				AA6DF3C2138DE3940091B912 /* MKValidator-Resources */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		AA6DF395138DE06B0091B912 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AA6DF3C1138DE3940091B912 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		AA6DF393138DE06B0091B912 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AA6DF3BF138DE3940091B912 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		AA7EFCEB10FFE8E900B4C1BC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -890,102 +801,6 @@
 			};
 			name = Release;
 		};
-		AA6DF3A1138DE06C0091B912 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MKTableCell-Resources/MKTableCell-Resources-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				INFOPLIST_FILE = "MKTableCell-Resources/MKTableCell-Resources-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		AA6DF3A2138DE06C0091B912 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MKTableCell-Resources/MKTableCell-Resources-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				INFOPLIST_FILE = "MKTableCell-Resources/MKTableCell-Resources-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		AA6DF3CD138DE3940091B912 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MKValidator-Resources/MKValidator-Resources-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				INFOPLIST_FILE = "MKValidator-Resources/MKValidator-Resources-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		AA6DF3CE138DE3940091B912 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MKValidator-Resources/MKValidator-Resources-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				INFOPLIST_FILE = "MKValidator-Resources/MKValidator-Resources-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
 		AA7EFCEF10FFE8E900B4C1BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1026,24 +841,6 @@
 			buildConfigurations = (
 				1DEB922308733DC00010E9CD /* Debug */,
 				1DEB922408733DC00010E9CD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		AA6DF3A0138DE06C0091B912 /* Build configuration list for PBXNativeTarget "MKTableCell-Resources" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AA6DF3A1138DE06C0091B912 /* Debug */,
-				AA6DF3A2138DE06C0091B912 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		AA6DF3CC138DE3940091B912 /* Build configuration list for PBXNativeTarget "MKValidator-Resources" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AA6DF3CD138DE3940091B912 /* Debug */,
-				AA6DF3CE138DE3940091B912 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

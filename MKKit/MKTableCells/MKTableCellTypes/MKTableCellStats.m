@@ -14,7 +14,7 @@
 #pragma mark -
 #pragma mark Initalizer
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+- (id)initWithType:(MKTableCellType)cellType reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithType:MKTableCellTypeNone reuseIdentifier:reuseIdentifier];
     if (self) {
 		CGRect labelRect = CGRectMake(10.0, 11.0, 150.0, 21.0);

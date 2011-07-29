@@ -16,7 +16,7 @@
 #pragma mark -
 #pragma mark Initalize
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+- (id)initWithType:(MKTableCellType)cellType reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithType:MKTableCellTypeNone reuseIdentifier:reuseIdentifier];
     if (self) {
         CGRect textViewFrame = CGRectMake(5.0, 6.0, 285.0, 73.0);

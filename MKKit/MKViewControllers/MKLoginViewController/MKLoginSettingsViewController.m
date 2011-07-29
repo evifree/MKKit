@@ -156,7 +156,7 @@
         if (indexPath.row == 0) {
             cell = (MKTableCellPickerControlled *)[tableView dequeueReusableCellWithIdentifier:PickerIdentifier];
             if (cell == nil) {
-                cell = [[[MKTableCellPickerControlled alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:PickerIdentifier] autorelease];
+                cell = [[[MKTableCellPickerControlled alloc] initWithType:MKTableCellTypeNone reuseIdentifier:PickerIdentifier] autorelease];
                 cell.delegate = self;
                 ((MKTableCellPickerControlled *)cell).pickerType = MKTableCellPickerTypeStandard;
                 ((MKTableCellPickerControlled *)cell).pickerArray = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Questions" ofType:@"plist"]];

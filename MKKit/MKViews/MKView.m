@@ -117,7 +117,7 @@
     }
     
     if (type == MKViewAnimationTypeFadeIn) {
-        self.frame = CGRectMake(CENTER_VIEW_HORIZONTALLY(width, self.frame.size.width), ((lheight / 2.0) - (self.frame.size.height / 2.0)), self.frame.size.width, self.frame.size.height);
+        self.frame = CGRectMake(CENTER_VIEW_HORIZONTALLY(lwidth, self.frame.size.width), ((lheight / 2.0) - (self.frame.size.height / 2.0)), self.frame.size.width, self.frame.size.height);
         
         [UIView animateWithDuration:0.25 
                          animations: ^ { self.alpha = 1.0; }];

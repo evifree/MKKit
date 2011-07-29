@@ -103,6 +103,12 @@
 		<span class="tooltip"> A unique NSString that identifies the cell. This is used in most <a href="../Protocols/MKTableCellDelegate.html">MKTableCellDelegate</a> methods. </span>
 	</span>
 	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/indexPath"> indexPath</a></code>
+		<span class="tooltip"> The NSIndexPath of the cell. Property must be set to return a value. </span>
+	</span>
+	
 </li>
 					</ul>
 					
@@ -167,6 +173,30 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/validateWithType:">- validateWithType:</a></code>
 		<span class="tooltip"> Tells the <a href="#//api/name/validator">validator</a> to valiate the input using the specified type. If you set a <a href="#//api/name/validationType">validationType</a> other than <code>MKValidationNone</code> you will not need to call this method directly. <p class="warning"> <strong> Note </strong> The default implentation of this method does nothing. Subclasses need to overide it to run a validation. </p></span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Gesture Recognition</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/recognizeLeftToRightSwipe"> recognizeLeftToRightSwipe</a></code>
+		<span class="tooltip"> Set YES to allow the cell to recognize left to right swipes </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/recognizeRightToLeftSwipe"> recognizeRightToLeftSwipe</a></code>
+		<span class="tooltip"> Set YES to allow the cell to recgnize right to left swipes </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/recognizeLongPress"> recognizeLongPress</a></code>
+		<span class="tooltip"> Set Yes to allow the cell to recognize long presses </span>
 	</span>
 	
 </li>
@@ -466,6 +496,38 @@
 </div>
 					
 					<div class="section-method">
+	<a name="//api/name/indexPath" title="indexPath"></a>
+	<h3 class="subsubtitle method-title">indexPath</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The NSIndexPath of the cell. Property must be set to return a value. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) NSIndexPath *indexPath</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCell.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
 	<a name="//api/name/key" title="key"></a>
 	<h3 class="subsubtitle method-title">key</h3>
 	
@@ -476,7 +538,103 @@
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>@property (assign) NSString *key</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) NSString *key</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCell.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/recognizeLeftToRightSwipe" title="recognizeLeftToRightSwipe"></a>
+	<h3 class="subsubtitle method-title">recognizeLeftToRightSwipe</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Set YES to allow the cell to recognize left to right swipes </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL recognizeLeftToRightSwipe</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCell.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/recognizeLongPress" title="recognizeLongPress"></a>
+	<h3 class="subsubtitle method-title">recognizeLongPress</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Set Yes to allow the cell to recognize long presses </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL recognizeLongPress</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCell.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/recognizeRightToLeftSwipe" title="recognizeRightToLeftSwipe"></a>
+	<h3 class="subsubtitle method-title">recognizeRightToLeftSwipe</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Set YES to allow the cell to recgnize right to left swipes </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL recognizeRightToLeftSwipe</code></div>
 	
 	
 	
@@ -754,7 +912,7 @@
 			<div id="footer">
 				<hr />
 				<div class="footer-copyright">
-					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-07-26)</span><br />
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-07-29)</span><br />
 					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
 				</div>
 			</div>

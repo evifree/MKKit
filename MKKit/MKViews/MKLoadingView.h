@@ -15,6 +15,8 @@ typedef enum {
     MKLoadingViewTypeProgressBar,
 } MKLoadingViewType;
 
+#define MK_LOADING_VIEW_SHOULD_REMOVE_NOTIFICATION      @"MKLoadingViewShouldRemoveNotification"
+
 /**------------------------------------------------------------------------
  MKLoadingView Provides a small view that informs the user of a process taking
  place. There are two types of loading views that can be displayed.

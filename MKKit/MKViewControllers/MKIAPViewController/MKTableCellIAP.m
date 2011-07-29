@@ -20,7 +20,7 @@
 
 #pragma mark - Initalizer
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+- (id)initWithType:(MKTableCellType)cellType reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithType:MKTableCellTypeNone reuseIdentifier:reuseIdentifier];
     if (self) {
         mTheLabel = [[UILabel alloc] initWithFrame:CGRectMake(14.0, 7.0, 150.0, 25.0)];

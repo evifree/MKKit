@@ -44,9 +44,10 @@ typedef enum {
     
     UIViewController *mController;
     
+    BOOL mShouldRemoveView;
+    
 @private
     MKViewAnimationType mAnimationType;
-    BOOL mShouldRemoveView;
 }
 
 ///------------------------------------------------------

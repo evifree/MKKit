@@ -176,7 +176,7 @@ typedef enum {
  class. You should not initalize this class directly.
 --------------------------------------------------------------------------------------------------*/
 
-@interface MKPickerView : UIView {
+@interface MKPickerView : MKView {
 	
 }
 

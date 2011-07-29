@@ -19,11 +19,10 @@
 
 @synthesize segmentedControl=_segmentedContorl, segmentItems=_segmentItems;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+- (id)initWithType:(MKTableCellType)type reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithType:MKTableCellTypeNone reuseIdentifier:reuseIdentifier];
     if (self) {
 		_segmentedContorl = [[UISegmentedControl alloc] initWithFrame:self.contentView.frame];
-		//_segmentedContorl.frame = self.contentView.frame;
 		_segmentedContorl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
 		[_segmentedContorl addTarget:self action:@selector(segmentChanged:) forControlEvents:UIControlEventValueChanged];
 		

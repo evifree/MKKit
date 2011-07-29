@@ -78,6 +78,11 @@ typedef enum {
 	UILabel *mSmallLabel;
     
     MKView *mCellView;
+
+@private
+    UISwipeGestureRecognizer *mRightToLeftSwipe;
+    UISwipeGestureRecognizer *mLeftToRightSwipe;
+    UILongPressGestureRecognizer *mLongPress;
 }
 
 ///---------------------------------------------------------------------------------------
@@ -116,7 +121,10 @@ typedef enum {
 ///---------------------------------------------------------------------------------------
 
 /** A unique NSString that identifies the cell. This is used in most MKTableCellDelegate methods. */
-@property (assign) NSString *key;
+@property (nonatomic, assign) NSString *key;
+
+/** The NSIndexPath of the cell. Property must be set to return a value. */
+@property (nonatomic, assign) NSIndexPath *indexPath;
 
 ///---------------------------------------------------------------------------------------
 /// @name Cell Elements
@@ -164,6 +172,19 @@ typedef enum {
  @see MKInputValidation
 */
 - (void)validateWithType:(MKValidationType)aType;
+
+///---------------------------------------------------------------------------------------
+/// @name Gesture Recognition
+///---------------------------------------------------------------------------------------
+
+/** Set YES to allow the cell to recognize left to right swipes */
+@property (nonatomic, assign) BOOL recognizeLeftToRightSwipe;
+
+/** Set YES to allow the cell to recgnize right to left swipes */
+@property (nonatomic, assign) BOOL recognizeRightToLeftSwipe;
+
+/** Set Yes to allow the cell to recognize long presses */
+@property (nonatomic, assign) BOOL recognizeLongPress;
 
 ///---------------------------------------------------------------------------------------
 /// @name Adopted Protocols
