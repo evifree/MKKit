@@ -19,6 +19,8 @@
 
 @implementation MKMenuView
 
+void drawColoredPattern (void *info, CGContextRef context);
+
 static float kItemWidth     = 60.0;  
 static float kItemHeight    = 80.0;
 static float kVertPadding   = 10.0;
@@ -31,27 +33,81 @@ static float kHorzPadding   = 20.0;
 - (id)initWithItems:(NSArray *)items {
     self = [super initWithFrame:[self frameForItems:[items count]]];
     if (self) {
-        if ([items count] > 12) {
-            NSException *exception = [NSException exceptionWithName:@"To Many Items" reason:@"MKMenuView may not have more than 12 items" userInfo:nil];
+        if ([items count] > 6) {
+            NSException *exception = [NSException exceptionWithName:@"To Many Items" reason:@"MKMenuView may not have more than 6 items" userInfo:nil];
             [exception raise];
             
             return nil;
         }
         
+        self.backgroundColor = CLEAR;
+        self.opaque = NO;
         self.alpha = 0.0;
         mItems = [items copy];
         
-        UIImageView *menu = [[UIImageView alloc] initWithFrame:[self frameForItems:[items count]]];
-        menu.image = [UIImage imageNamed:MK_MENU_VIEW_BACKGROUND_IMAGE];
-        
-        [self addSubview:menu];
-        [menu release];
+        self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin;
         
         [self placeItems];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shouldRemove:) name:MK_MENU_VIEW_SHOULD_REMOVE_NOTIFICATION object:nil];
     }
     return self;
+}
+
+#pragma mark - Drawing
+
+- (void)drawRect:(CGRect)rect {
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetAllowsAntialiasing(context, YES);
+    
+    CGFloat outerMargin = 2.0;
+    CGRect outerRect = CGRectInset(self.bounds, outerMargin, outerMargin);
+    CGMutablePathRef outerPath = createRoundedRectForRect(outerRect, 20);
+    
+    CGColorRef fillColor = [UIColor colorWithHue:0 saturation:0 brightness:0.15 alpha:1.0].CGColor;
+    CGColorRef outlineColor = GRAY.CGColor;
+    
+    CGContextSaveGState(context);
+    CGContextSetFillColorWithColor(context, fillColor);
+    CGContextAddPath(context, outerPath);
+    CGContextFillPath(context);
+    CGContextRestoreGState(context);
+    
+    static const CGPatternCallbacks callbacks = { 0, &drawColoredPattern, NULL };
+    
+    CGContextSaveGState(context);
+    CGColorSpaceRef patternSpace = CGColorSpaceCreatePattern(NULL);
+    CGContextSetFillColorSpace(context, patternSpace);
+    CGColorSpaceRelease(patternSpace);
+    
+    CGPatternRef pattern = CGPatternCreate(NULL, outerRect, CGAffineTransformIdentity, 24, 24, kCGPatternTilingConstantSpacing, true, &callbacks);
+    
+    CGFloat alpha = 1.0;
+    CGContextSetFillPattern(context, pattern, &alpha);
+    CGPatternRelease(pattern);
+    CGContextAddPath(context, outerPath);
+    CGContextClip(context);
+    CGContextFillRect(context, outerRect);
+    CGContextRestoreGState(context);
+    
+    drawOutlinePath(context, outerPath, 3.0, outlineColor); 
+    
+    CGPathRelease(outerPath);
+}
+
+void drawColoredPattern (void *info, CGContextRef context) {
+    
+    CGColorRef dotColor = [UIColor colorWithHue:0 saturation:0 brightness:0.07 alpha:1.0].CGColor;
+    CGColorRef shadowColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.1].CGColor;
+    
+    CGContextSetFillColorWithColor(context, dotColor);
+    CGContextSetShadowWithColor(context, CGSizeMake(0, 1), 1, shadowColor);
+    
+    CGContextAddArc(context, 3, 3, 4, 0, MK_D2R(360), 0);
+    CGContextFillPath(context);
+    
+    CGContextAddArc(context, 16, 16, 4, 0, MK_D2R(360), 0);
+    CGContextFillPath(context);
 }
 
 #pragma mark - Configuration

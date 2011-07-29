@@ -7,6 +7,7 @@
 //
 
 #import <MKKit/MKKit/MKViewControllers/MKViewController.h>
+#import <MKKit/MKKit/MKControls/MKContolHeaders.h>
 
 #define PIN_SET                                     @"comboSet"
 #define PIN                                         @"combo"
@@ -14,8 +15,6 @@
 #define CHALLENGE_SET                               @"challengeSet"
 #define CHALLENGE_QUESTION                          @"challengeQuestion"
 #define CHALLENGE_ANSWER                            @"challengeAnswer"
-
-#define MK_LOGIN_VIEW_HELP_BUTTON                   @"MKLoginView-Resources.bundle/HelpIcon.png"
 
 /**-----------------------------------------------------------------------------
  MKLoginViewController provides an interface for loging into an app using a four
@@ -44,10 +43,6 @@
  * `maxPinAtemptsMade` called when the maximum number of PIN atempts have been made
  
  @see MKViewControllerDelegate
- 
- @warning *Note* MKLoginViewController objects will look for resources in the 
- MKLoginView-Resources bundle. Ensure this bundle is added to your project for 
- proper function.
 ------------------------------------------------------------------------------*/
 
 @interface MKLoginViewController : MKViewController {

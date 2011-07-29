@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 11/11/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010 Matt King. All rights reserved.
 //
 
 #import "MKTableCellSegmented.h"
@@ -19,11 +19,10 @@
 
 @synthesize segmentedControl=_segmentedContorl, segmentItems=_segmentItems;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+- (id)initWithType:(MKTableCellType)type reuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithType:MKTableCellTypeNone reuseIdentifier:reuseIdentifier];
     if (self) {
 		_segmentedContorl = [[UISegmentedControl alloc] initWithFrame:self.contentView.frame];
-		//_segmentedContorl.frame = self.contentView.frame;
 		_segmentedContorl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
 		[_segmentedContorl addTarget:self action:@selector(segmentChanged:) forControlEvents:UIControlEventValueChanged];
 		

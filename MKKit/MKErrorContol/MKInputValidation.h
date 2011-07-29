@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 1/10/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Matt King. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -12,6 +12,7 @@
 typedef enum {
 	MKValidationNone,
 	MKValidateIsaNumber,
+    MKValidateIsaSetLength,
 	MKValidateHasLength,
 } MKValidationType;
 
@@ -24,12 +25,20 @@ typedef enum {
  
  * `MKValidationNone` : No valition type set.
  * `MKValidateIsaNumber` : Calls the inputIsaNumber: method.
+ * `MKValidateIsaSetLength` : Calls the inputIsaSetLength: method.
  * `MKValidateHasLength` : Calls the inputHasLength: method.
 ----------------------------------------------------------------------------------------*/
 
 @protocol MKInputValidation <NSObject>
 
 @optional
+
+///--------------------------------------------------------------------------------------
+/// @name Properties
+///--------------------------------------------------------------------------------------
+
+/** the length to compare against when using MKValidateIsaSetLength */
+@property (nonatomic, assign) NSInteger stringLength;
 
 ///---------------------------------------------------------------------------------------
 /// @name Text Input Validation Methods
@@ -40,6 +49,16 @@ typedef enum {
  @param text The text to be evaluated 
 */
 - (BOOL)inputIsaNumber:(NSString *)text;
+
+/** Retuns Yes if the text is the same length as the setLength property
+ 
+ @param text The text to be evaluated
+
+ @warning when this method is used the stringLength property cannot be equal to zero.
+ 
+ @exception setLength an exeception is rasied if setLength is equal to zero.
+*/
+- (BOOL)inputIsaSetLength:(NSString *)text;
 
 /** Returns YES if text has a length greater than 0.
  

@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 10/3/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010 Matt King. All rights reserved.
 //
 
 #import "MKCheckBox.h"
@@ -17,7 +17,8 @@
 #pragma mark Initailization
 
 - (id)initWithFrame:(CGRect)aRect {
-	if (self == [super initWithFrame:aRect]) {
+    self = [super initWithFrame:aRect];
+	if (self) {
 		NSString *path = [[NSBundle mainBundle] pathForResource:@"checkBox" ofType:@"png"];
 		
 		UIImage *box = [[UIImage alloc] initWithContentsOfFile:path];

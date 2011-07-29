@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 11/1/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010 Matt King. All rights reserved.
 //
 
 #import "MKTableCellTextEntry.h"
@@ -21,101 +21,61 @@
 
 @synthesize theTextField=mTheTextField, textEntryType=mTextEntryType;
 
-static NSError *error = nil;
-
 #pragma mark -
 #pragma mark Initalizer
 
-- (id)initWithType:(MKTextEntryCellType)cellType reuseIdentifier:(NSString *)reuseIdentifier    {
-    self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+- (id)initWithType:(MKTextEntryCellType)cellType reuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithType:MKTableCellTypeNone reuseIdentifier:reuseIdentifier];
     if (self) {
-        CGRect textFrame = CGRectZero;
         mTextEntryType = cellType;
         
+        mCellView = [[MKView alloc] initWithCell:self];
+        
+        mTheTextField = [[MKTextField alloc] initWithFrame:CGRectZero];
+		mTheTextField.textAlignment = UITextAlignmentCenter;
+        mTheTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+		mTheTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+		mTheTextField.delegate = self;
+		mTheTextField.returnKeyType = UIReturnKeyDone;
+		mTheTextField.keyboardAppearance = UIKeyboardAppearanceAlert;
+		mTheTextField.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
+		
+		[mTheTextField addTarget:self action:@selector(textChanged:) forControlEvents:UIControlEventEditingChanged];
+        
         if (cellType == MKTextEntryCellTypeFull) {
-            CGRect iconRect = CGRectMake(10.0, 7.0, 30.0, 30.0);
-            textFrame = CGRectMake(58.0, 11.0, 203.0, 21.0);
-            
-            mTheImageView = [[[UIImageView alloc] initWithFrame:iconRect] retain];
-            mTheImageView.image = [UIImage imageNamed:MK_TABLE_CELL_PEN_ICON];
-            mTheImageView.alpha = 0.50;
-            [self.contentView addSubview:mTheImageView];
-            [mTheImageView release];
+            [mCellView addPrimaryElement:mTheTextField];
             
             mTheLabel.hidden = YES;
             [mTheLabel removeFromSuperview];
         }
         
         if  (cellType == MKTextEntryCellTypeStandard) {
-            CGRect labelFrame = CGRectMake(10.0, 11.0, 100.0, 21.0);
-            textFrame = CGRectMake(115.0, 11.0, 190.0, 21.0);
-            
-            mTheLabel = [[UILabel alloc] initWithFrame:labelFrame];
+            mTheLabel = [[UILabel alloc] initWithFrame:CGRectZero];
             mTheLabel.textAlignment = UITextAlignmentLeft;
             mTheLabel.adjustsFontSizeToFitWidth = YES;
             mTheLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
             mTheLabel.backgroundColor = [UIColor clearColor];
             
-            [self.contentView addSubview:mTheLabel];
+            [mCellView addPrimaryElement:mTheLabel];
+            [mCellView addSecondaryElement:mTheTextField];
+            
             [mTheLabel release];
         }
         
-        mTheTextField = [[MKTextField alloc] initWithFrame:textFrame];
-		mTheTextField.textAlignment = UITextAlignmentCenter;
-		mTheTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-		mTheTextField.delegate = self;
-		mTheTextField.returnKeyType = UIReturnKeyDone;
-		mTheTextField.keyboardAppearance = UIKeyboardAppearanceAlert;
-		mTheTextField.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
-		
-		[mTheTextField addTarget:self action:@selector(textChanged:) forControlEvents:UIControlEventEditingChanged];
-        
-		[self.contentView addSubview:mTheTextField];
 		[mTheTextField release];
+        
+        [self.contentView addSubview:mCellView];
+        [mCellView release];
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pickerPosted) name:PICKER_DID_SHOW_NOTIFICATION object:nil]; 
     }
     return self;
 }
-
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
-		CGRect iconRect = CGRectMake(10.0, 7.0, 30.0, 30.0);
-        CGRect textFrame = CGRectMake(58.0, 11.0, 203.0, 21.0);
-        
-        mTheImageView = [[[UIImageView alloc] initWithFrame:iconRect] retain];
-        mTheImageView.image = [UIImage imageNamed:MK_TABLE_CELL_PEN_ICON];
-        mTheImageView.alpha = 0.50;
-        [self.contentView addSubview:mTheImageView];
-        [mTheImageView release];
-        
-        mTheLabel.hidden = YES;
-        [mTheLabel removeFromSuperview];
-		
-		mTheTextField = [[MKTextField alloc] initWithFrame:textFrame];
-		mTheTextField.textAlignment = UITextAlignmentCenter;
-		mTheTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-		mTheTextField.delegate = self;
-		mTheTextField.returnKeyType = UIReturnKeyDone;
-		mTheTextField.keyboardAppearance = UIKeyboardAppearanceAlert;
-		mTheTextField.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
-		
-		[mTheTextField addTarget:self action:@selector(textChanged:) forControlEvents:UIControlEventEditingChanged];
-							
-		[self.contentView addSubview:mTheTextField];
-		[mTheTextField release];
-		
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pickerPosted) name:PICKER_DID_SHOW_NOTIFICATION object:nil]; 
-	}
-
-    return self;
-}
-
+ 
 #pragma mark -
 #pragma mark Cell Behavior
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-
     [super setSelected:selected animated:animated];
 
 	if (selected) {
@@ -127,7 +87,7 @@ static NSError *error = nil;
 	}
 	if (!selected) {
 		[self.theTextField resignFirstResponder];
-	}	
+    }	
 }
 
 #pragma mark -
@@ -137,30 +97,42 @@ static NSError *error = nil;
 	if (aType == MKValidateIsaNumber) {
 		if ([validator respondsToSelector:@selector(inputIsaNumber:)]) {
 			if (![validator inputIsaNumber:self.theTextField.text]) {
-				error = [NSError errorWithDomain:ERROR_DESCRIPTION_701 code:ERROR_CODE_701 userInfo:nil];
+				mValidationError = [NSError errorWithDomain:ERROR_DESCRIPTION_701 code:ERROR_CODE_701 userInfo:nil];
 			}
 		}
 	}
+    if (aType == MKValidateIsaSetLength) {
+        if ([validator respondsToSelector:@selector(inputIsaSetLength:)]) {
+            if (![validator inputIsaSetLength:self.theTextField.text]) {
+                mValidationError = [NSError errorWithDomain:ERROR_DESCRIPTION_703(mValidatorTestStringLength) code:ERROR_CODE_703 userInfo:nil];
+            }
+        }
+    }
 	if (aType == MKValidateHasLength) {
 		if ([validator respondsToSelector:@selector(inputHasLength:)]) {
 			if (![validator inputHasLength:self.theTextField.text]) {
-				error = [NSError errorWithDomain:ERROR_DESCRIPTION_702 code:ERROR_CODE_702 userInfo:nil];
+				mValidationError = [NSError errorWithDomain:ERROR_DESCRIPTION_702 code:ERROR_CODE_702 userInfo:nil];
 			}
 		}
 	}
 	
-	if (error) {
-		[error retain];
+	if (mValidationError) {
+		[mValidationError retain];
 		
-		UIButton *icon = [UIButton buttonWithType:UIButtonTypeCustom];
-		icon.frame = CGRectMake((self.contentView.frame.size.width - 35.0), 8.0, 25.0, 25.0);
-		[icon setImage:[UIImage imageNamed:@"WarningIcon.png"] forState:UIControlStateNormal];
-		[icon addTarget:self action:@selector(warningIcon:) forControlEvents:UIControlEventTouchUpInside];
-		icon.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin;
-		
-		icon.tag = 1;
-		[self.contentView addSubview:icon];
-	}
+        MKControl *icon = [[MKControl alloc] initWithType:MKTableCellAccessoryWarningIcon];
+        [icon completedAction: ^ (MKAction action) {
+            if (action == MKActionTouchDown) {
+                [self warningIcon:icon];
+            }
+        }];
+        
+        self.accessoryView = icon;
+        [icon release];
+    }
+    
+    if ([delegate respondsToSelector:@selector(cellDidValidate:forKey:)]) {
+        [delegate cellDidValidate:mValidationError forKey:self.key];
+    }
 }
 
 #pragma mark -
@@ -173,9 +145,9 @@ static NSError *error = nil;
 }
 
 - (void)warningIcon:(id)sender {
-	if (error) {
+	if (mValidationError) {
 		MKErrorHandeling *handeler = [[MKErrorHandeling alloc] init];
-		[handeler applicationDidError:error];
+		[handeler applicationDidError:mValidationError];
 		[handeler release];
 	}
 }
@@ -189,7 +161,7 @@ static NSError *error = nil;
 	if ([delegate respondsToSelector:@selector(valueDidChange:forKey:)]) {
 		[delegate valueDidChange:textField.text forKey:self.key];
 	}
-	if (_validating) {
+	if (mValidating) {
 		[self validateWithType:self.validationType];
 	}
 }
@@ -200,10 +172,10 @@ static NSError *error = nil;
 		[delegate textFieldIsFirstResponder:textField];
 	}
 	
-	if (error) {
-		[[self.contentView viewWithTag:1] removeFromSuperview];
-		error = nil;
-		[error release];
+	if (mValidationError) {
+		self.accessoryView = UITableViewCellAccessoryNone;
+		mValidationError = nil;
+		[mValidationError release];
 	}
 }
 
@@ -223,9 +195,14 @@ static NSError *error = nil;
 #pragma mark Memory Managment
 
 - (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:PICKER_DID_SHOW_NOTIFICATION object:nil];
+    
+    if (mValidationError) {
+        mValidationError = nil;
+        [mValidationError release];
+    }
+    
     [super dealloc];
-	
-	[[NSNotificationCenter defaultCenter] removeObserver:self name:PICKER_DID_SHOW_NOTIFICATION object:nil];
 }
 
 

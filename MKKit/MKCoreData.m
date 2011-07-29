@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 5/12/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010 Matt King. All rights reserved.
 //
 
 #import "MKCoreData.h"
@@ -26,22 +26,37 @@ static MKCoreData *sharedData = nil;
 #pragma mark Set Up
 
 + (MKCoreData *)sharedData {
-    if (!managedObjectContext) {
-        NSException *exception = [NSException exceptionWithName:@"No context set" reason:@"Context needs to be set first using +[MKCoreData sharedDataWithContext:]" userInfo:nil];
-        [exception raise];
+    @synchronized(self) {
+        if (!managedObjectContext) {
+            NSException *exception = [NSException exceptionWithName:@"No context set" reason:@"Context needs to be set first using +[MKCoreData sharedDataWithContext:]" userInfo:nil];
+            [exception raise];
+        } 
     }
     
 	return sharedData;
 }
 
 + (void)sharedDataWithContext:(NSManagedObjectContext *)context {
-	if (!sharedData) {
-		sharedData = [[self alloc] initWithContext:context];
-	}
-}	
+    @synchronized(self) {
+        if (!sharedData) {
+            sharedData = [[self alloc] initWithContext:context];
+        }   
+    }
+}
+
++ (id)allocWithZone:(NSZone *)zone {
+    @synchronized(self) {
+        if (sharedData == nil) {
+            sharedData = [super allocWithZone:zone];
+            return sharedData;
+        }
+    }
+    return nil;
+}
 
 - (id)initWithContext:(NSManagedObjectContext *)context {
-	if (self == [super init]) {
+	self = [super init];
+    if (self) {
 		managedObjectContext = context;
 	}
 	return self;

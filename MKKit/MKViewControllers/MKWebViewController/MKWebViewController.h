@@ -7,12 +7,9 @@
 //
 
 #import <MKKit/MKKit/MKViewControllers/MKViewController.h>
+#import <MKKit/MKKit/MKControls/MKContolHeaders.h>
 #import <MKKit/MKKit/MKViews/MKView.h>
 #import <MKKit/MKKit/MKMacros.h>
-
-#define MK_WEB_VIEW_BACK_ARROW          @"MKWebView-Resources.bundle/BackArrow.png"
-#define MK_WEB_VIEW_FORWARD_ARROW       @"MKWebView-Resources.bundle/ForwardArrow.png"
-#define MK_WEB_VIEW_LOADING_BAR         @"MKWebView-Resources.bundle/LoadingBar.png"
 
 /**------------------------------------------------------------------------------------------
  MKWebViewController creates a view controller with a built in UIWebView. 
@@ -21,10 +18,6 @@
  
  * `viewControllerIsDone:` called when the done button is tapped.
  * `viewControllerAction:` called when the action button is tapped.
- 
- @warning *Note* MKWebViewController objects will look for resources in the 
- MKWebView-Resources bundle. Ensure this bundle is added to your project for 
- proper function.
 -------------------------------------------------------------------------------------------*/
 
 @interface MKWebViewController : MKViewController {

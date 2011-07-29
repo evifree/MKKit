@@ -40,6 +40,11 @@
                                                         if (error == nil) {
                                                             [self onProductsResponse:response.products];
                                                         }
+                                                        else {
+                                                            MKErrorHandeling *handel = [[MKErrorHandeling alloc] init];
+                                                            [handel applicationDidError:error];
+                                                            [handel release];
+                                                        }
                                                     }];
     
     [mIdentifiers release];
@@ -123,7 +128,7 @@
     if (!mProductsSet) {
         cell = (MKTableCell *)[tableView dequeueReusableCellWithIdentifier:LoadingCell];
         if (cell == nil) {
-            cell = [[[MKTableCellLoading alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:LoadingCell] autorelease];
+            cell = [[[MKTableCellLoading alloc] initWithType:MKTableCellTypeNone reuseIdentifier:LoadingCell] autorelease];
         }
     }
     
@@ -133,13 +138,16 @@
         
         cell = (MKTableCell *)[tableView dequeueReusableCellWithIdentifier:PurchaseCell];
         if (cell == nil) {
-            cell = [[[MKTableCellIAP alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:PurchaseCell] autorelease];
+            cell = [[[MKTableCellIAP alloc] initWithType:MKTableCellTypeNone reuseIdentifier:PurchaseCell] autorelease];
+            cell.delegate = self;
             ((MKTableCellIAP *)cell).observer = mObserver;
         }
         cell.theLabel.text = product.localizedTitle;
         cell.key = product.productIdentifier;
         ((MKTableCellIAP *)cell).IAPIdentifier = product.productIdentifier;
         ((MKTableCellIAP *)cell).price = [string localCurencyFromNumber:product.price];
+        
+        [string release];
     }
     
     return cell;
@@ -157,6 +165,19 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+}
+
+#pragma mark - MKTableCell
+
+- (void)didTapAccessoryForKey:(NSString *)aKey {
+    for (SKProduct *product in mItems) {
+        if ([product.productIdentifier isEqualToString:aKey]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:product.localizedTitle message:product.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+            return;
+        }
+    }
 }
 
 #pragma mark Memory Management

@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 5/12/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010 Matt King. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -66,7 +66,9 @@ typedef void (^MKFechCompletionBlock)(NSMutableArray *results, NSError *error);
 /** Returns a mutable array for the given entity.
  
  @param entity The name of the entity.
+ 
  @param sortedBy The attribute to sort the array by.
+ 
  @param accending Tells how to sort the array.
 */
 - (NSMutableArray *)fetchedResultsForEntity:(NSString *)entity sortedBy:(NSString *)attribute accending:(BOOL)accendeing;
@@ -74,8 +76,11 @@ typedef void (^MKFechCompletionBlock)(NSMutableArray *results, NSError *error);
 /** Preforms a fech for the given entity.
  
  @param entity The name of the entity.
+ 
  @param sortedBy The attribute to sort the array by.
+ 
  @param accending Tells how to sort the array.
+ 
  @param result Code block to preform when the fech is complete
 */
 - (void)fetchResultsForEntity:(NSString *)entity sortedBy:(NSString *)attribute accending:(BOOL)accending result:(MKFechCompletionBlock)result;

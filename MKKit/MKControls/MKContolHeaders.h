@@ -8,6 +8,7 @@
 
 #import "MKControl.h"
 
+#import "MKBarButtonItem.h"
 #import "MKButton.h"
 #import "MKCheckBox.h"
 #import "MKSlider.h"

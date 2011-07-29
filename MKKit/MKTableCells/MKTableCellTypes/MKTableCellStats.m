@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 10/20/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010 Matt King. All rights reserved.
 //
 
 #import "MKTableCellStats.h"
@@ -14,8 +14,9 @@
 #pragma mark -
 #pragma mark Initalizer
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
+- (id)initWithType:(MKTableCellType)cellType reuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithType:MKTableCellTypeNone reuseIdentifier:reuseIdentifier];
+    if (self) {
 		CGRect labelRect = CGRectMake(10.0, 11.0, 150.0, 21.0);
 		CGRect smallFrame = CGRectMake(170.0, 11.0, 100.0, 21.0);
 		
@@ -29,14 +30,14 @@
 		[self.contentView addSubview:mTheLabel];
 		[mTheLabel release];
 		
-		_smallLabel = [[UILabel alloc] initWithFrame:smallFrame];
-		_smallLabel.textAlignment = UITextAlignmentRight;
-		_smallLabel.adjustsFontSizeToFitWidth = YES;
-		_smallLabel.font = [UIFont fontWithName:@"Verdana-Bold" size:16.0];
-		_smallLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
+		mSmallLabel = [[UILabel alloc] initWithFrame:smallFrame];
+		mSmallLabel.textAlignment = UITextAlignmentRight;
+		mSmallLabel.adjustsFontSizeToFitWidth = YES;
+		mSmallLabel.font = [UIFont fontWithName:@"Verdana-Bold" size:16.0];
+		mSmallLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
 		
-		[self.contentView addSubview:_smallLabel];
-		[_smallLabel release];
+		[self.contentView addSubview:mSmallLabel];
+		[mSmallLabel release];
     }
     return self;
 }

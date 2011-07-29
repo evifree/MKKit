@@ -24,6 +24,7 @@
 /** Returns a random object from a given array.
  
  @param anArray Array of objects to select from.
+ 
  @param repeat Set to `YES` if an object can be select more than one time, `NO` if it cannot.
 */
 - (id)randomFromArray:(NSArray *)anArray repeat:(BOOL)repeat;

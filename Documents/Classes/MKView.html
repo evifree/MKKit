@@ -36,7 +36,9 @@
 				<div class="section section-overview">
 					<h2 class="subtitle subtitle-overview">Overview</h2>
 					
-<p> The <a href="MKView.html">MKView</a> class is a super class for specialty views. <a href="MKView.html">MKView</a> adopts the <a href="../Protocols/MKViewDelegate.html">MKViewDelegate</a> protocol. When the <a href="#//api/name/showWithAnimationType:">showWithAnimationType:</a> method is used, views are add to the application&apos;s keyWindow. <p class="warning"> <strong> Note </strong> When the showWithAnitmationType: method is used, views are added to the application&apos;s key window. Some subclass of <a href="MKView.html">MKView</a> handel removing themselfs. You should check the documentation of the given class for removal options. </p></p>
+<p> The <a href="MKView.html">MKView</a> class is a super class for specialty views. <a href="MKView.html">MKView</a> adopts the <a href="../Protocols/MKViewDelegate.html">MKViewDelegate</a> protocol. When the <a href="#//api/name/showWithAnimationType:">showWithAnimationType:</a> method is used, views are add to the application&apos;s keyWindow. </p>
+
+<p> The folling <code>MKViewAnimationType</code> (s) are avialible: <ul><li> <code>MKViewAnimationTypeNone</code>: No animations are preformed. View will just appear on the screen. </li><li> <code>MKViewAnimationTypeFadeIn</code>: The View will Fade onto the screen. </li><li> <code>MKViewAnimationTypeMoveInFromTop</code>: The View will slide onto the screen from the top. </li><li> <code>MKViewAnimationTypeAppearAboveToolbar</code>: The View will above so it is placed just above a toolbar. </li></ul> <p class="warning"> <strong> Note </strong> When the showWithAnitmationType: method is used, views are added to the application&apos;s key window. Some subclass of <a href="MKView.html">MKView</a> handel removing themselfs. You should check the documentation of the given class for removal options. </p></p>
 
 				</div>
 				
@@ -57,8 +59,44 @@
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/showOnViewController:animationType:">- showOnViewController:animationType:</a></code>
+		<span class="tooltip"> Displays the View on the specified view Controller. Views can be animated onto the screen using a MKViewAnimationType. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/removeView">- removeView</a></code>
 		<span class="tooltip"> Removes the view from the Screen. The view is removed by reversing the MKViewAnimationType that was used to display it. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Location</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/x"> x</a></code>
+		<span class="tooltip"> The <a href="#//api/name/x">x</a> orign of the view </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/y"> y</a></code>
+		<span class="tooltip"> The <a href="#//api/name/y">y</a> origin of the view </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/width"> width</a></code>
+		<span class="tooltip"> The <a href="#//api/name/width">width</a> of the view </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/height"> height</a></code>
+		<span class="tooltip"> The <a href="#//api/name/height">height</a> of the view </span>
 	</span>
 	
 </li>
@@ -88,6 +126,42 @@
 </li>
 					</ul>
 					
+					<h3 class="subsubtitle task-title">MKTableCell Methods</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithCell:">- initWithCell:</a></code>
+		<span class="tooltip"> Creates an instace of <a href="MKView.html">MKView</a> for the given table cell. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/layoutCell">- layoutCell</a></code>
+		<span class="tooltip"> Adjusts the elements of the cell to fit. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addPrimaryElement:">- addPrimaryElement:</a></code>
+		<span class="tooltip"> Adds a Primary Element to the cell. The primary element appears on the left side of the cell. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addSecondaryElement:">- addSecondaryElement:</a></code>
+		<span class="tooltip"> Adds a Secondary Element to the cell. The secondary element appears on the right side of the cell. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addIconElement:">- addIconElement:</a></code>
+		<span class="tooltip"> Adds a Icon Element to the cell. The icon element appears on the left side of the cell. </span>
+	</span>
+	
+</li>
+					</ul>
+					
 				</div>
 				
 				
@@ -98,6 +172,211 @@
 				
 				<div class="section section-methods">
 					<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/addIconElement:" title="addIconElement:"></a>
+	<h3 class="subsubtitle method-title">addIconElement:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Adds a Icon Element to the cell. The icon element appears on the left side of the cell. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)addIconElement:(UIView *)<em>element</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>element</em></dt>
+			<dd> the view that will be added to the cell. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCell.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/addPrimaryElement:" title="addPrimaryElement:"></a>
+	<h3 class="subsubtitle method-title">addPrimaryElement:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Adds a Primary Element to the cell. The primary element appears on the left side of the cell. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)addPrimaryElement:(UIView *)<em>element</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>element</em></dt>
+			<dd> the view that will be added to the cell. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCell.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/addSecondaryElement:" title="addSecondaryElement:"></a>
+	<h3 class="subsubtitle method-title">addSecondaryElement:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Adds a Secondary Element to the cell. The secondary element appears on the right side of the cell. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)addSecondaryElement:(UIView *)<em>element</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>element</em></dt>
+			<dd> the view that will be added to the cell. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCell.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/initWithCell:" title="initWithCell:"></a>
+	<h3 class="subsubtitle method-title">initWithCell:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Creates an instace of <a href="MKView.html">MKView</a> for the given table cell. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithCell:(MKTableCell *)<em>cell</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>cell</em></dt>
+			<dd> the cell the view will be placed on. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p> <a href="MKView.html">MKView</a> instance </p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCell.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/layoutCell" title="layoutCell"></a>
+	<h3 class="subsubtitle method-title">layoutCell</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Adjusts the elements of the cell to fit. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)layoutCell</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCell.h</code><br />
+	</div>				
+	
+	
+</div>
 					
 					<div class="section-method">
 	<a name="//api/name/removeView" title="removeView"></a>
@@ -112,6 +391,53 @@
 	
 	<div class="method-subsection method-declaration"><code>- (void)removeView</code></div>
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKView.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/showOnViewController:animationType:" title="showOnViewController:animationType:"></a>
+	<h3 class="subsubtitle method-title">showOnViewController:animationType:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Displays the View on the specified view Controller. Views can be animated onto the screen using a MKViewAnimationType. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)showOnViewController:(UIViewController *)<em>controller</em> animationType:(MKViewAnimationType)<em>type</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>controller</em></dt>
+			<dd> the view <a href="#//api/name/controller">controller</a> to display the view on </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>type</em></dt>
+			<dd> the type of animation used to display the view. </dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -158,15 +484,6 @@
 	
 	
 	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		
-		<p> Displayes the View on the applications key window. View can be animated onto the screen using a MKViewAnimationType. </p>
-		
-		<p> The folling <code>MKViewAnimationType</code> (s) are avialible: <ul><li> <code>MKViewAnimationTypeNone</code>: No animations are preformed. View will just appear on the screen. </li><li> <code>MKViewAnimationTypeFadeIn</code>: The View will Fade onto the screen. </li><li> <code>MKViewAnimationTypeMoveInFromTop</code>: The View will slide onto the screen from the top. </li><li> <code>MKViewAnimationTypeAppearAboveToolbar</code>: The View will above so it is placed just above a toolbar. </li></ul></p>
-		
-	</div>
 	
 	
 	
@@ -253,6 +570,134 @@
 	
 </div>
 					
+					<div class="section-method">
+	<a name="//api/name/height" title="height"></a>
+	<h3 class="subsubtitle method-title">height</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The <a href="#//api/name/height">height</a> of the view </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) CGFloat height</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKView.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/width" title="width"></a>
+	<h3 class="subsubtitle method-title">width</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The <a href="#//api/name/width">width</a> of the view </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) CGFloat width</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKView.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/x" title="x"></a>
+	<h3 class="subsubtitle method-title">x</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The <a href="#//api/name/x">x</a> orign of the view </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) CGFloat x</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKView.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/y" title="y"></a>
+	<h3 class="subsubtitle method-title">y</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The <a href="#//api/name/y">y</a> origin of the view </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) CGFloat y</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKView.h</code><br />
+	</div>				
+	
+	
+</div>
+					
 				</div>
 				
 				
@@ -266,7 +711,7 @@
 			<div id="footer">
 				<hr />
 				<div class="footer-copyright">
-					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-06-09)</span><br />
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-07-29)</span><br />
 					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
 				</div>
 			</div>

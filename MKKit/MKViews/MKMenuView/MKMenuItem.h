@@ -8,12 +8,11 @@
 
 #import <MKKit/MKKit/MKControls/MKControl.h>
 
-#define MK_MENU_VIEW_CANCEL_BUTTON             @"MKMenuView-Resources.bundle/CloseButton.png"
-#define MK_MENU_VIEW_COPY_BUTTON               @"MKMenuView-Resources.bundle/CopyButton.png"
-
 typedef enum {
     MKMenuItemTypeCancel,
     MKMenuItemTypeCopy,
+    MKMenuItemTypeDelete,
+    MKMenuItemTypeCustomImage,
 } MKMenuItemType;
 
 /**-------------------------------------------------------------------------------------------
@@ -21,14 +20,22 @@ typedef enum {
  on an instance of MKMenuView. They are given to an MKMenuView by creating an array of instances
  and passing to the menu with through the initWithItems: method.
  
- @warning *Note* MKMenuItem objects will look for resources in the MKMenuView-Resources bundle. 
- Ensure this bundle is added to your project for proper function.
+ There are four built-in types of MKMenuItems:
+ 
+ * `MKMenuItemTypeCancel` : A round cancel button.
+ * `MKMenuItemTypeCopy` : A round copy button.
+ * `MKMenuItemTypeDelete` : A round delete button, colored red.
+ * `MKMenuItemTypeCustomImage` : A round button with image drawn onto it.
+ 
+ @warning *Note* If you want to have your own image added to a button use the initWithImage:title:target:selector:
+ method insteade of initWithType:title:Target:selector:.
 --------------------------------------------------------------------------------------------*/
 
 @interface MKMenuItem : MKControl {
     MKMenuItemType mType;
 
 @private
+    UIImage *mImage;
     SEL mSelector;
     id mTarget;
 }
@@ -38,10 +45,7 @@ typedef enum {
 ///--------------------------------------------------
 
 /**
- Returns an intalized instance of a predefined menu item. The avialible menu items are:
- 
- * `MKMenuItemTypeCancel` : A round cancel button.
- * `MKMenuItemTypeCopy` : A round copy button.
+ Returns an intalized instance of a predefined menu item.
  
  @param type the type of item to use.
  
@@ -64,6 +68,22 @@ typedef enum {
  @param selector the selector to preform when the item is touched.
  */
 - (id)initWithCustomView:(UIView *)view target:(id)target selector:(SEL)selector;
+
+/**
+ Returns an intalized intance of the standard black button with an image on it. The image needs to be a 40x40,
+ and only black and transpent in color. The MKMenuItem class will handle the coloring of the image.
+ 
+ @param image the image to be displayed on the icon.
+ 
+ @param name the text that will be displayed directly under the button.
+ 
+ @param target the object that will handle actions sent by the item.
+ 
+ @param selector the selector to preform when the item is touched.
+ 
+ @return MKMenuItem instance.
+*/
+- (id)initWithImage:(UIImage *)image title:(NSString *)name target:(id)target selector:(SEL)selector;
 
 ///-----------------------------------------------------
 /// @name Elements

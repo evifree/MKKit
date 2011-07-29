@@ -30,12 +30,6 @@
     if (self) {
         self.backgroundColor = [UIColor grayColor];
         
-        UIImageView *shine = [[UIImageView alloc] initWithFrame:self.bounds];
-        shine.image = [UIImage imageNamed:MK_PROMPT_VIEW_SHINE];
-        
-        [self addSubview:shine];
-        [shine release];
-        
         UILabel *messageLabel = [[UILabel alloc] initWithFrame:[self frameForText:message]];
         messageLabel.backgroundColor = [UIColor clearColor];
         messageLabel.textColor = [UIColor whiteColor];
@@ -52,7 +46,7 @@
         mTextField.keyboardType = UIKeyboardTypeDefault;
         mTextField.returnKeyType = UIReturnKeyDone;
         mTextField.borderStyle = UITextBorderStyleRoundedRect;
-        mTextField.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+        mTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
         
         [mTextField becomeFirstResponder];
         [self addSubview:mTextField];
@@ -79,6 +73,36 @@
     
     [self removeView];
     self.onDoneBlock(mTextField.text);
+}
+
+#pragma mark - Drawing
+
+- (void)drawRect:(CGRect)rect {
+    CGColorRef lightColor = MK_COLOR_HSB(354.0, 2.0, 50.0, 1.0).CGColor;
+    CGColorRef darkColor = MK_COLOR_HSB(354.0, 2.0, 45.0, 1.0).CGColor;
+    CGColorRef shadowColor = MK_COLOR_RGB(51.0, 51.0, 51.0, 0.2).CGColor;
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetAllowsAntialiasing(context, YES);
+    
+    CGFloat x = CGRectGetMinX(rect);
+    CGFloat y = CGRectGetMinY(rect);
+    CGFloat width = CGRectGetWidth(rect);
+    CGFloat height = (CGRectGetHeight(rect) - 3.0);
+    
+    CGRect viewRect = CGRectMake(x, y, width, height);
+    
+    CGContextSaveGState(context);
+    CGContextSetShadowWithColor(context, CGSizeMake(0, 2), 3.0, shadowColor);
+    CGContextSetFillColorWithColor(context, lightColor);
+    CGContextFillRect(context, viewRect);
+    CGContextRestoreGState(context);
+    
+    drawGlossAndLinearGradient(context, viewRect, lightColor, darkColor);
+    
+    CGContextSetStrokeColorWithColor(context, darkColor);
+    CGContextSetLineWidth(context, 1.0);    
+    CGContextStrokeRect(context, rectFor1pxStroke(viewRect));
 }
 
 #pragma mark - Sizing

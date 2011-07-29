@@ -7,23 +7,20 @@
 //
 
 #import <MKKit/MKKit/MKViews/MKView.h>
+#import <MKKit/MKKit/MKMacros.h>
+#import <MKKit/MKKit/MKGraphics/MKGraphics.h>
 
 #import "MKMenuItem.h"
-
-#define MK_MENU_VIEW_BACKGROUND_IMAGE               @"MKMenuView-Resources.bundle/MenuBackground.png"
 
 #define MK_MENU_VIEW_SHOULD_REMOVE_NOTIFICATION     @"MKMenuViewShouldRemoveNotification"
 
 /**-------------------------------------------------------------------------------------------------
  The MKMenuView object displays a popup holding MKMenuItem control objects. The view's frame will be
- automatically set using the number of MKMenuItems passed to it. MKMenuView can hold up to 12 different
+ automatically set using the number of MKMenuItems passed to it. MKMenuView can hold up to 6 different
  icons.
  
  MKMenuView listens for the `MK_MENU_VIEW_SHOULD_REMOVE_NOTIFICATION` to remove itself. If you use the
  showWithAnimationType: method to display the view, you should post this notification to remove it.
- 
- @warning *Note* MKMenuView objects will look for resources in the MKMenuView-Resources bundle. 
- Ensure this bundle is added to your project for proper function.
 --------------------------------------------------------------------------------------------------*/
 
 @interface MKMenuView : MKView {
@@ -42,6 +39,8 @@
  Instances of MKMenuItem will be placed in the order that are given.
  
  @param items an array of MKMenuItems to be placed onto the menu.
+ 
+ @exception itemsCount raises an exception if more than 6 items are given.
 */
 - (id)initWithItems:(NSArray *)items;
 

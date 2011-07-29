@@ -10,6 +10,9 @@
 
 #import <MKKit/MKKit/MKTableCells/MKTableCell.h>
 
+#define PICKER_DID_SHOW_NOTIFICATION                @"pickerDidShowNotification"
+#define PICKER_SHOULD_DISMISS_NOTIFICATION          @"tableViewWillDisappearNotification"
+
 typedef enum {
 	MKTableCellPickerTypeDate,
 	MKTableCellPickerTypeStandard,
@@ -70,8 +73,8 @@ typedef enum {
 */
 
 @interface MKTableCellPickerControlled : MKTableCell <UIPickerViewDelegate, UIPickerViewDataSource> {
-	UILabel *_pickerLabel;
-	NSDate *_pickerDate;
+	UILabel *mPickerLabel;
+	NSDate *mPickerDate;
 	MKPickerView *_pickerView;
 
 	CGRect _pickerFrame;
@@ -80,7 +83,7 @@ typedef enum {
 	MKTableCellDatePickerMode pickerSubType;
 	NSArray *_pickerArray;
 	
-	BOOL _displayed;
+	BOOL mDisplayed;
 }
 
 ///-------------------------------------------------------------------------------------------
@@ -173,7 +176,7 @@ typedef enum {
  class. You should not initalize this class directly.
 --------------------------------------------------------------------------------------------------*/
 
-@interface MKPickerView : UIView {
+@interface MKPickerView : MKView {
 	
 }
 

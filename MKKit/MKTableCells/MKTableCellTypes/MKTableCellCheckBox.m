@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 11/11/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010 Matt King. All rights reserved.
 //
 
 #import "MKTableCellCheckBox.h"
@@ -19,9 +19,8 @@
 
 @synthesize checkBox=_checkBox;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+- (id)initWithType:(MKTableCellType)cellType reuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithType:MKTableCellTypeNone reuseIdentifier:reuseIdentifier];
     if (self) {
         CGRect checkBoxRect = CGRectMake(10.0, 7.0, 30.0, 30.0);
 		CGRect labelRect = CGRectMake(58.0, 11.0, 203.0, 21.0);

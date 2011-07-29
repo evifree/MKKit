@@ -15,6 +15,8 @@
 #import <MKKit/MKKit/MKErrorContol/MKErrorHandeling.h>
 #import <MKKit/MKKit/MKErrorContol/MKWarningIcon.h>
 
+#define TEXT_FIELD_SHOULD_VALIDATE_NOTIFICATION     @"textFieldShouldValidateNotificaiton"
+
 /**---------------------------------------------------------------------------------------------
  The MKTextField class is a subclass of UITextField. This class adds validation control to a text field.
  MKTextField implemnts the MKInputValidation protocol. This class can automatically preform imput validations

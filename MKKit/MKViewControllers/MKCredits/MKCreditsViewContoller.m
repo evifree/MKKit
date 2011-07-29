@@ -205,6 +205,8 @@
 
 
 - (void)dealloc {
+    [_creditsArray release];
+    
     [super dealloc];
 }
 

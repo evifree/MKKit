@@ -21,6 +21,7 @@
 
 #import <MKKit/MKKit/MKControls/MKContolHeaders.h>
 #import <MKKit/MKKit/MKErrorContol/MKErrorContolHeaders.h>
+#import <MKKit/MKKit/MKGraphics/MKGraphics.h>
 #import <MKKit/MKKit/MKTableCells/MKTableCellHeaders.h>
 #import <MKKit/MKKit/MKViewControllers/MKViewContorllerHeaders.h>
 #import <MKKit/MKKit/MKViews/MKViewHeader.h>

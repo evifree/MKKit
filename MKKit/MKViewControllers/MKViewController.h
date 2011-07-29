@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MKKit/MKKit/MKViews/MKViewHeader.h>
 #import <MKKit/MKKit/MKDeffinitions.h>
+#import <MKKit/MKKit/MKGraphics/MKGraphics.h>
 #import <MKKit/MKKit/MKMacros.h>
 
 #import "MKViewControllerDelegate.h"

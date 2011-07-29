@@ -3,18 +3,17 @@
 //  MKKit
 //
 //  Created by Matthew King on 1/12/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Matt King. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
 #import <MKKit/MKKit/MKControls/MKTextField.h>
-
-#define MK_WARNING_ICON             @"MKValidator-Resources.bundle/WarningIcon.png"
+#import <MKKit/MKKit/MKViews/MKView.h>
 
 @class MKTextField;
 
-@interface MKWarningIcon : UIView {
+@interface MKWarningIcon : MKView {
 	MKTextField *_textField;
 	NSError *_error;
 }

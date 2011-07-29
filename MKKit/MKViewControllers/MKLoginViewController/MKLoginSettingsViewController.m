@@ -39,9 +39,6 @@
     [super viewDidLoad];
 
     self.title = @"PIN Settings";
-    //self.view.backgroundColor = LIGHT_GRAY;
-    //self.tableView.separatorColor = GRAY;
-    //self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLineEtched;
 }
 
 - (void)viewDidUnload {
@@ -60,6 +57,8 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:PICKER_SHOULD_DISMISS_NOTIFICATION object:nil];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -110,30 +109,6 @@
 	return title;
 }
 
-/*
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UILabel *view = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 41.0)] autorelease];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 0.0, 280.0, 41.0)];
-    label.backgroundColor = CLEAR;
-    label.font = VERDANA_BOLD(18.0);
-    label.textColor = WHITE;
-    label.shadowColor = BLACK;
-    label.shadowOffset = CGSizeMake(0.0, 1.0);
-    
-    if (section == 0) {
-        label.text = @"Change Pin";
-    }
-    if (section == 1) {
-        label.text = @"Challenge Question";
-    }
-    
-    [view addSubview:label];
-    [label release];
-    
-    return view;
-}
-*/
-
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 41.0;
 }
@@ -147,7 +122,7 @@
     if (indexPath.section == 0) {
         cell = (MKTableCellTextEntry *)[tableView dequeueReusableCellWithIdentifier:TextIdentifier];
         if (cell == nil) {
-            cell = [[[MKTableCellTextEntry alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TextIdentifier] autorelease];
+            cell = [[[MKTableCellTextEntry alloc] initWithType:MKTextEntryCellTypeStandard reuseIdentifier:TextIdentifier] autorelease];
             ((MKTableCellTextEntry *)cell).theTextField.keyboardType = UIKeyboardTypeNumberPad;
             ((MKTableCellTextEntry *)cell).theTextField.keyboardAppearance =UIKeyboardAppearanceDefault;
             ((MKTableCellTextEntry *)cell).theTextField.useInputAccessoryView = YES;
@@ -157,14 +132,23 @@
         if (indexPath.row == 0) {
             cell.key = CURRENT_PIN;
             ((MKTableCellTextEntry *)cell).theTextField.placeholder = @"Current PIN";
+            cell.theLabel.text = @"Current PIN:";
+            cell.validationType = MKValidateIsaSetLength;
+            cell.validatorTestStringLength = 4;
         }
         if (indexPath.row == 1) {
             cell.key = NEW_PIN;
             ((MKTableCellTextEntry *)cell).theTextField.placeholder = @"New PIN";
+            cell.theLabel.text = @"New PIN:";
+            cell.validationType = MKValidateIsaSetLength;
+            cell.validatorTestStringLength = 4;
         }
         if (indexPath.row == 2) {
             cell.key = CONFIRM_PIN;
             ((MKTableCellTextEntry *)cell).theTextField.placeholder = @"Confirm PIN";
+            cell.theLabel.text = @"Confirm PIN:";
+            cell.validationType = MKValidateIsaSetLength;
+            cell.validatorTestStringLength = 4;
         }
     }
     
@@ -172,7 +156,7 @@
         if (indexPath.row == 0) {
             cell = (MKTableCellPickerControlled *)[tableView dequeueReusableCellWithIdentifier:PickerIdentifier];
             if (cell == nil) {
-                cell = [[[MKTableCellPickerControlled alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:PickerIdentifier] autorelease];
+                cell = [[[MKTableCellPickerControlled alloc] initWithType:MKTableCellTypeNone reuseIdentifier:PickerIdentifier] autorelease];
                 cell.delegate = self;
                 ((MKTableCellPickerControlled *)cell).pickerType = MKTableCellPickerTypeStandard;
                 ((MKTableCellPickerControlled *)cell).pickerArray = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Questions" ofType:@"plist"]];
@@ -183,13 +167,14 @@
         if (indexPath.row == 1) {
             cell = (MKTableCellTextEntry *)[tableView dequeueReusableCellWithIdentifier:TextIdentifier];
             if (cell == nil) {
-                cell = [[[MKTableCellTextEntry alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TextIdentifier] autorelease];
+                cell = [[[MKTableCellTextEntry alloc] initWithType:MKTextEntryCellTypeStandard reuseIdentifier:TextIdentifier] autorelease];
                 cell.delegate = self;
             }
             cell.key = CHALLENGE_ANSWER;
             cell.validationType = MKValidateHasLength;
+            cell.theLabel.text = @"Answer:";
             
-            ((MKTableCellTextEntry *)cell).theTextField.placeholder = @"Answer";
+            ((MKTableCellTextEntry *)cell).theTextField.placeholder = @"Answer";            
         }
     }
     
@@ -200,14 +185,7 @@
 #pragma mark Table View
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    
 }
 
 #pragma mark MKTableCell
@@ -216,23 +194,34 @@
     NSString *text = (NSString *)value;
     [[NSUserDefaults standardUserDefaults] setObject:value forKey:aKey];
     
-    if ([aKey isEqualToString:CHALLENGE_ANSWER] && [text length] > 0) {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:CHALLENGE_SET];
-    }
-    else {
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:CHALLENGE_SET];
+    if ([aKey isEqualToString:CHALLENGE_QUESTION]) {
+         [[NSUserDefaults standardUserDefaults] setObject:value forKey:aKey];
     }
     
-    if ([aKey isEqualToString:CONFIRM_PIN]) {
-        if ([[NSUserDefaults standardUserDefaults] integerForKey:PIN] == [[[NSUserDefaults standardUserDefaults] objectForKey:CURRENT_PIN] integerValue]) {
-            if ([[[NSUserDefaults standardUserDefaults] objectForKey:NEW_PIN] isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:CONFIRM_PIN]]) {
-                [[NSUserDefaults standardUserDefaults] setInteger:[text integerValue] forKey:PIN];
-                
-                [MKPromptView promptWithType:MKPromptTypeGreen title:@"New PIN" message:@"Your PIN has been changed." duration:3.0];
-            }
+    if ([aKey isEqualToString:CHALLENGE_ANSWER] && [text length] > 0) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:CHALLENGE_SET];
+        [[NSUserDefaults standardUserDefaults] setObject:text forKey:CHALLENGE_ANSWER];
+    }
+    
+    if ([aKey isEqualToString:CURRENT_PIN] && [text length] == 4) {
+        if ([text integerValue] != [[NSUserDefaults standardUserDefaults] integerForKey:PIN]) {
+            [MKPromptView promptWithType:MKPromptTypeAmber title:@"PIN Mismatch" message:@"The PIN you entered does not match the PIN on file." duration:3.5];
         }
     }
     
+    if ([aKey isEqualToString:CONFIRM_PIN] && [value length] == 4) {
+        if ([[NSUserDefaults standardUserDefaults] integerForKey:PIN] == [[[NSUserDefaults standardUserDefaults] objectForKey:CURRENT_PIN] integerValue]) {
+            if ([[[NSUserDefaults standardUserDefaults] objectForKey:NEW_PIN] isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:CONFIRM_PIN]]) {
+                
+                [MKPromptView promptWithType:MKPromptTypeGreen title:@"New PIN" message:@"Your PIN has been changed." duration:3.0];
+                [[NSUserDefaults standardUserDefaults] setInteger:[text integerValue] forKey:PIN];
+            }
+            else {
+                [MKPromptView promptWithType:MKPromptTypeAmber title:@"PIN Mismatch" message:@"Your new PIN and PIN Confimation do not match." duration:3.5];
+            }
+        }
+    }
+        
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

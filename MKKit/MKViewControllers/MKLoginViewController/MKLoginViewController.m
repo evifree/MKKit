@@ -17,6 +17,7 @@
 - (void)checkPin;
 
 - (void)testAtempts;
+- (void)reset;
 
 @end
 
@@ -52,12 +53,17 @@ maxAtempts=mMaxAtempts;
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0, 140.0, 320.0, 106.0)];
     view.backgroundColor = [UIColor grayColor];
     
-    UIButton *help = [UIButton buttonWithType:UIButtonTypeCustom];
-    [help setImage:[UIImage imageNamed:MK_LOGIN_VIEW_HELP_BUTTON] forState:UIControlStateNormal];
-    [help addTarget:self action:@selector(onHelpButton:) forControlEvents:UIControlEventTouchUpInside];
+    MKButton *help = [[MKButton alloc] initWithType:MKButtonTypeHelp];
     help.frame = CGRectMake(295.0, 10.0, 20.0, 21.0);
     
+    [help completedAction: ^ (MKAction action) {
+        if (action == MKActionTouchUp) {
+            [self onHelpButton:help];
+        }
+    }];
+    
     [view addSubview:help];
+    [help release];
     
     mPromptLabel = [[UILabel alloc] initWithFrame:CGRectMake(25.0, 8.0, 275.0, 21.0)];
     mPromptLabel.textColor = [UIColor whiteColor];
@@ -66,7 +72,7 @@ maxAtempts=mMaxAtempts;
     mPromptLabel.textAlignment = UITextAlignmentCenter;
     mPromptLabel.backgroundColor = [UIColor clearColor];
     mPromptLabel.shadowColor = [UIColor blackColor];
-    mPromptLabel.shadowOffset = CGSizeMake(0.0, 1.0);
+    mPromptLabel.shadowOffset = CGSizeMake(0.0, -1.0);
     
     if (mPinIsSet) {
         mPromptLabel.text = @"Enter Your Pin";
@@ -170,7 +176,9 @@ maxAtempts=mMaxAtempts;
         [mBoxFour becomeFirstResponder];
     }
     if (textFeild == mBoxFour) {
-        [self checkPin];
+        if ([textFeild.text length] != 0) {
+            [self checkPin];   
+        }
     }
 }
 
@@ -181,7 +189,11 @@ maxAtempts=mMaxAtempts;
         NSString *promptString = [NSString stringWithFormat:@"What is your %@", question];
     
         [MKInputPrompt showWithMessage:promptString 
-                                onDone: ^ (NSString *text) { [self onChallengeAnswer:text]; [mBoxOne becomeFirstResponder]; }];
+                                onDone: ^ (NSString *text) { 
+                                    if ([text length] != 0) {
+                                        [self onChallengeAnswer:text]; 
+                                    }
+                                }];
     }
     else {
         [MKPromptView promptWithType:MKPromptTypeRed title:@"No Challenge Question" message:@"Your PIN cannot be retrived because no challenge question has been set." duration:3.5];
@@ -201,6 +213,13 @@ maxAtempts=mMaxAtempts;
         
         [MKPromptView promptWithType:MKPromptTypeRed title:@"Incorrect" message:promptString duration:5.0];
     }
+    
+    mBoxOne.text = @"";
+    mBoxTwo.text = @"";
+    mBoxThree.text = @"";
+    mBoxFour.text = @"";
+    
+    [mBoxOne becomeFirstResponder];
 }
 
 #pragma mark - Instance Methods
@@ -216,9 +235,14 @@ maxAtempts=mMaxAtempts;
             }
             else {
                 [mDelegate pinIsValidated:NO];
-                [MKPromptView promptWithType:MKPromptTypeRed title:@"Incorrect PIN" message:@"The PIN you entered is incorrect. Please check it and try again. Tap the help button for addional assistance." duration:3.0];
-                
                 [self testAtempts];
+                
+                mBoxOne.text = @"";
+                mBoxTwo.text = @"";
+                mBoxThree.text = @"";
+                mBoxFour.text = @"";
+                
+                [mBoxOne becomeFirstResponder];
             }
         }
     }
@@ -242,10 +266,35 @@ maxAtempts=mMaxAtempts;
     mAtempts += 1;
     
     if (mAtempts == mMaxAtempts && mMaxAtempts != 0) {
-        if ([mDelegate respondsToSelector:@selector(maxPinAtemptsMade)]) {
-            [mDelegate maxPinAtemptsMade];
+        if ([mDelegate respondsToSelector:@selector(maxPinAttemptsMade)]) {
+            if ([mDelegate maxPinAttemptsMade]) {
+                [self performSelector:@selector(reset) withObject:nil afterDelay:0.5];
+            }
         }
     }
+    else {
+        [MKPromptView promptWithType:MKPromptTypeRed title:@"Incorrect PIN" message:@"The PIN you entered is incorrect. Please check it and try again. Tap the help button for addional assistance." duration:3.0];
+    }
+}
+
+- (void)reset {
+    [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:PIN];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:PIN_SET];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:CHALLENGE_SET];
+    [[NSUserDefaults standardUserDefaults] setValue:@"(NULL)" forKey:CHALLENGE_ANSWER];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    mBoxOne.text = @"";
+    mBoxTwo.text = @"";
+    mBoxThree.text = @"";
+    mBoxFour.text = @"";
+    
+    [mBoxOne becomeFirstResponder];
+    
+    mPromptLabel.text = @"Set Your Pin";
+    mPinIsSet = NO;
+    mPin = 0;
+    mAtempts = 0;
 }
 
 #pragma mark - Memory Managment

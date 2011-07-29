@@ -71,6 +71,33 @@
 */
 - (void)didTapAccessoryForKey:(NSString *)aKey;
 
+/**
+ Called when the cell is swiped from right to the left.
+
+ @param aKey A unique NSString that identifies the cell.
+ 
+ @param indexPath The index path of the cell.
+*/
+- (void)didSwipeRightToLeftForKey:(NSString *)aKey indexPath:(NSIndexPath *)indexPath;
+
+/**
+ Called when the cell is swiped from left to the right.
+ 
+ @param aKey A unique NSString that identifies the cell.
+ 
+ @param indexPath The index path of the cell.
+*/
+- (void)didSwipeLeftToRightForKey:(NSString *)aKey indexPath:(NSIndexPath *)indexPath;
+
+/**
+ Called when the long press is done on the cell.
+ 
+ @param aKey A unique NSString that identifies the cell.
+ 
+ @param indexPath The index path of the cell.
+*/
+- (void)didLongPressForKey:(NSString *)aKey indexPath:(NSIndexPath *)indexPath;
+
 ///---------------------------------------------------------------------------------------
 /// @name MKTableCellTextEntry Methods
 ///---------------------------------------------------------------------------------------
@@ -110,6 +137,18 @@
 */
 - (void)willRemovePicker:(UIView *)thePicker forKey:(NSString *)aKey;
 
+///---------------------------------------------------------------------------------------
+/// @name Validation Methods
+///---------------------------------------------------------------------------------------
+
+/**
+ Called when a cell validates its input.
+ 
+ @param error the validation error
+ 
+ @param aKey a unique NSString that identifies the cell.
+*/
+- (void)cellDidValidate:(NSError *)error forKey:(NSString *)aKey;
 
 @end
 
