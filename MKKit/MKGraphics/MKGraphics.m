@@ -74,6 +74,39 @@ CGMutablePathRef createCircularPathForRect(CGRect rect) {
     return path;
 }
 
+CGMutablePathRef createPathForUpPointer(CGRect rect) {
+    CGMutablePathRef path = CGPathCreateMutable();
+    
+    CGPoint p1 = CGPointMake(CGRectGetMidX(rect), CGRectGetMinY(rect));
+    CGPoint p2 = CGPointMake(CGRectGetMaxX(rect), CGRectGetMaxY(rect));
+    CGPoint p3 = CGPointMake(CGRectGetMinX(rect), CGRectGetMaxY(rect));
+    
+    CGPathMoveToPoint(path, NULL, p1.x, p1.y);
+    CGPathAddLineToPoint(path, NULL, p2.x, p2.y);
+    CGPathAddLineToPoint(path, NULL, p3.x, p3.y);
+    CGPathAddLineToPoint(path, NULL, p1.x, p1.y);
+    
+    CGPathCloseSubpath(path);
+    
+    return path;
+}
+
+CGMutablePathRef createPathForDownPointer(CGRect rect) {
+    CGMutablePathRef path = CGPathCreateMutable();
+    
+    CGPoint p1 = CGPointMake(CGRectGetMinX(rect), CGRectGetMinY(rect));
+    CGPoint p2 = CGPointMake(CGRectGetMaxX(rect), CGRectGetMinY(rect));
+    CGPoint p3 = CGPointMake(CGRectGetMidX(rect), CGRectGetMaxY(rect));
+    
+    CGPathMoveToPoint(path, NULL, p1.x, p1.y);
+    CGPathAddLineToPoint(path, NULL, p2.x, p2.y);
+    CGPathAddLineToPoint(path, NULL, p3.x, p3.y);
+    CGPathAddLineToPoint(path, NULL, p1.x, p1.y);
+    
+    CGPathCloseSubpath(path);
+    
+    return path;
+}
 
 void drawOutlinePath(CGContextRef context, CGPathRef path, CGFloat width, CGColorRef color) {
     CGContextSaveGState(context);

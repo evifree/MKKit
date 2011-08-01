@@ -56,6 +56,24 @@
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, lHeight);
 }
 
+#pragma mark Getters
+
+- (CGFloat)x {
+    return self.frame.origin.x;
+}
+
+- (CGFloat)y {
+    return self.frame.origin.y;
+}
+
+- (CGFloat)width {
+    return self.frame.size.width;
+}
+
+- (CGFloat)height {
+    return self.frame.size.height;
+}
+
 #pragma mark - Showing the View
 
 - (void)showWithAnimationType:(MKViewAnimationType)type; {
@@ -161,7 +179,7 @@
         
         if (mAnimationType == MKViewAnimationTypeFadeIn || mAnimationType == MKViewAnimationTypeAppearAboveToolbar) {
             [UIView animateWithDuration:0.25
-                             animations: ^ { self.alpha = 1.0; }
+                             animations: ^ { self.alpha = 0.0; }
                              completion: ^ (BOOL finished) { [self removeFromSuperview]; }];
         }
         

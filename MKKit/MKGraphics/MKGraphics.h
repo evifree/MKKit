@@ -18,6 +18,8 @@ CGRect rectFor1pxStroke(CGRect rect);
 
 CGMutablePathRef createRoundedRectForRect(CGRect rect, CGFloat radius);
 CGMutablePathRef createCircularPathForRect(CGRect rect);
+CGMutablePathRef createPathForUpPointer(CGRect rect);
+CGMutablePathRef createPathForDownPointer(CGRect rect);
 
 void drawText(CGContextRef context, CGRect rect, CFStringRef text, CGColorRef color, CGColorRef shadowColor, CGFloat size);
 

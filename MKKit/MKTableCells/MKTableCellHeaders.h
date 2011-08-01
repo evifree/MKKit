@@ -18,4 +18,6 @@
 #import "MKTableCellTypes/MKTableCellTextEntry.h"
 #import "MKTableCellTypes/MKTableCellTextView.h"
 
+#import "MKTableCellSpecialtyViews/MKTableCellPopoutView.h"
+
 #import <MKKit/MKKit/MKViewControllers/MKIAPViewController/MKTableCellIAP.h>

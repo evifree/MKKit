@@ -111,6 +111,8 @@
 		AA6DF3FA138E04D80091B912 /* MKMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6DF3F8138E04D80091B912 /* MKMenuView.m */; };
 		AA6DF412138E07480091B912 /* MKMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6DF410138E07480091B912 /* MKMenuItem.h */; };
 		AA6DF413138E07480091B912 /* MKMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6DF411138E07480091B912 /* MKMenuItem.m */; };
+		AA6E116313E4831900FEF065 /* MKTableCellPopoutView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6E116113E4831900FEF065 /* MKTableCellPopoutView.h */; };
+		AA6E116413E4831900FEF065 /* MKTableCellPopoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6E116213E4831900FEF065 /* MKTableCellPopoutView.m */; };
 		AA778BE413A8617E00AFF686 /* MKGraphics.h in Headers */ = {isa = PBXBuildFile; fileRef = AA778BE213A8617E00AFF686 /* MKGraphics.h */; };
 		AA778BE513A8617E00AFF686 /* MKGraphics.m in Sources */ = {isa = PBXBuildFile; fileRef = AA778BE313A8617E00AFF686 /* MKGraphics.m */; };
 		AA7EA176110122760090E6EB /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA7EA175110122760090E6EB /* CoreData.framework */; };
@@ -239,6 +241,8 @@
 		AA6DF3F8138E04D80091B912 /* MKMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMenuView.m; sourceTree = "<group>"; };
 		AA6DF410138E07480091B912 /* MKMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMenuItem.h; sourceTree = "<group>"; };
 		AA6DF411138E07480091B912 /* MKMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMenuItem.m; sourceTree = "<group>"; };
+		AA6E116113E4831900FEF065 /* MKTableCellPopoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTableCellPopoutView.h; sourceTree = "<group>"; };
+		AA6E116213E4831900FEF065 /* MKTableCellPopoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTableCellPopoutView.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* MKKit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKKit_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AA778BE213A8617E00AFF686 /* MKGraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKGraphics.h; sourceTree = "<group>"; };
 		AA778BE313A8617E00AFF686 /* MKGraphics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKGraphics.m; sourceTree = "<group>"; };
@@ -374,6 +378,7 @@
 				AA02DDF012DAE2B7003B3560 /* MKTableCell.h */,
 				AA02DDF112DAE2B7003B3560 /* MKTableCell.m */,
 				AA33055C13C3EC2F006B2D11 /* MKTableElements */,
+				AA6E116013E482AE00FEF065 /* MKTableCellSpecialtyViews */,
 				AA02DDF312DAE2B7003B3560 /* MKTableCellTypes */,
 			);
 			path = MKTableCells;
@@ -549,6 +554,15 @@
 			path = MKMenuView;
 			sourceTree = "<group>";
 		};
+		AA6E116013E482AE00FEF065 /* MKTableCellSpecialtyViews */ = {
+			isa = PBXGroup;
+			children = (
+				AA6E116113E4831900FEF065 /* MKTableCellPopoutView.h */,
+				AA6E116213E4831900FEF065 /* MKTableCellPopoutView.m */,
+			);
+			path = MKTableCellSpecialtyViews;
+			sourceTree = "<group>";
+		};
 		AA778BE113A8616500AFF686 /* MKGraphics */ = {
 			isa = PBXGroup;
 			children = (
@@ -656,6 +670,7 @@
 				AA778BE413A8617E00AFF686 /* MKGraphics.h in Headers */,
 				AA1B84E713AD9E7700B8CF6D /* MKBarButtonItem.h in Headers */,
 				AA33055F13C3F082006B2D11 /* MKMaskIconView.h in Headers */,
+				AA6E116313E4831900FEF065 /* MKTableCellPopoutView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -764,6 +779,7 @@
 				AA778BE513A8617E00AFF686 /* MKGraphics.m in Sources */,
 				AA1B84E813AD9E7700B8CF6D /* MKBarButtonItem.m in Sources */,
 				AA33056013C3F082006B2D11 /* MKMaskIconView.m in Sources */,
+				AA6E116413E4831900FEF065 /* MKTableCellPopoutView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

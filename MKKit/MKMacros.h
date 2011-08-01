@@ -52,6 +52,7 @@
 
 #define MK_COLOR_HSB(h,s,b,a)                           [UIColor colorWithHue:((h)/360.0) saturation:((s)/100.0) brightness:((b)/100.0) alpha:(a)]
 #define MK_COLOR_RGB(r,g,b,a)                           [UIColor colorWithRed:((r)/255.0) green:((g)/255.0) blue:((b)/255.0) alpha:(a)]
+#define MK_SHADOW_COLOR                                 MK_COLOR_RGB(51.0, 51.0, 51.0, 0.5).CGColor
 
 #define BLACK                                           [UIColor blackColor]
 #define CLEAR                                           [UIColor clearColor]

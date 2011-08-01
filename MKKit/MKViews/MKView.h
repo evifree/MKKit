@@ -46,7 +46,6 @@ typedef enum {
     
     BOOL mShouldRemoveView;
     
-@private
     MKViewAnimationType mAnimationType;
 }
 
