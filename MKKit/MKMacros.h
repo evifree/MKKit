@@ -55,6 +55,7 @@
 #define MK_SHADOW_COLOR                                 MK_COLOR_RGB(51.0, 51.0, 51.0, 0.5).CGColor
 
 #define BLACK                                           [UIColor blackColor]
+#define BLUE                                            [UIColor blueColor]
 #define CLEAR                                           [UIColor clearColor]
 #define GRAY                                            [UIColor grayColor]
 #define LIGHT_GRAY                                      [UIColor lightGrayColor]

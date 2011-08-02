@@ -55,9 +55,7 @@
     
     CGMutablePathRef path = createRoundedRectForRect(drawRect, 20.0);
     CGMutablePathRef innerPath = createRoundedRectForRect(innerRect, 20.0);
-    
-    //CGColorRef fillColor = [UIColor colorWithHue:0 saturation:0 brightness:0.25 alpha:1.0].CGColor;
-    
+
     CGContextSaveGState(context);
     CGContextSetShadowWithColor(context, CGSizeMake(0.0, 3.0), 3.0, MK_SHADOW_COLOR);
     CGContextSetFillColorWithColor(context, mTintColor);
@@ -112,6 +110,7 @@
 - (void)showFromCell:(MKTableCell *)cell onView:(UITableView *)tableView {
     CGRect cellRect = [tableView rectForRowAtIndexPath:cell.indexPath];
     mAnimationType = MKViewAnimationTypeFadeIn;
+    mIndexPath = [cell.indexPath retain];
     
     if (mType != MKTableCellPopoutAuto) {
         mAutoType = mType;
@@ -145,6 +144,24 @@
                      animations: ^ { self.alpha = 1.0; } ];
 }
 
+#pragma mark - Elements
+
+- (void)setDiscloserButtonWithTarget:(id)target selector:(SEL)selector {
+    mView.frame = CGRectMake(mView.frame.origin.x, mView.frame.origin.y, (mView.frame.size.width - 33.0), mView.frame.size.height);
+    
+    MKButton *button = [[MKButton alloc] initWithType:MKButtonTypeDiscloser];
+    button.center = CGPointMake((CGRectGetMaxX(self.frame) - 25.0), CGRectGetMidY(mView.frame));
+    
+    [button completedAction: ^ (MKAction action) {
+        if (action == MKActionTouchUp) {
+            [target performSelector:selector withObject:mIndexPath];
+        }
+    }];
+    
+    [self addSubview:button];
+    [button release];
+}
+
 #pragma mark - Touches
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -158,6 +175,8 @@
 #pragma mark - Memory Managment
 
 - (void)dealloc {
+    [mIndexPath release];
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MK_TABLE_CELL_POPOUT_VIEW_SHOULD_REMOVE_NOTIFICATION object:nil];
     
     [super dealloc];

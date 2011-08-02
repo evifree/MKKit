@@ -19,16 +19,14 @@
 @synthesize type=mType, buttonText=mButtonText, tintColor, fontSize;
 
 void drawHelpButton(CGContextRef context, CGRect rect);
+void drawDiscloserButton(CGContextRef context, CGRect rect);
 void drawIAPButton(CGContextRef context, CGRect rect);
 void drawRoundRectButton(CGContextRef context, CGRect rect);
 
-static float kHorizPadding = 20.0;
-
-CGColorRef mTintColor = nil;
-CGFloat mFontSize = 14.0;
-
-bool mHighlighted = NO;
-bool lWorking = NO;
+static CGColorRef mTintColor = nil; 
+static CGFloat mFontSize = 14.0;
+static bool mHighlighted = NO;
+static bool mWorking = NO;
 
 #pragma mark - Initalizer
 
@@ -55,6 +53,9 @@ bool lWorking = NO;
             [self addSubview:mark];
             [mark release];
         }
+        else if (mType == MKButtonTypeDiscloser) {
+            self.frame = CGRectMake(0.0, 0.0, 25.0, 25.0);
+        }
         else {            
             mButtonLabel = [[UILabel alloc] init];
             mButtonLabel.backgroundColor = CLEAR;
@@ -67,6 +68,7 @@ bool lWorking = NO;
             [self addSubview:mButtonLabel];
             [mButtonLabel release];
         }
+        
         if (mType == MKButtonTypeRoundedRect) {
             mTintColor = [UIColor blueColor].CGColor;
         }
@@ -117,6 +119,9 @@ bool lWorking = NO;
     if (mType == MKButtonTypeIAP) {
         drawIAPButton(context, rect);
     }
+    else if (mType == MKButtonTypeDiscloser) {
+        drawDiscloserButton(context, rect);
+    }
     else if (mType == MKButtonTypeHelp) {
         drawHelpButton(context, self.bounds);
     }
@@ -135,6 +140,52 @@ void drawHelpButton(CGContextRef context, CGRect rect) {
     CGContextFillEllipseInRect(context, rect);
 }
 
+#pragma mark Discloser Button
+
+void drawDiscloserButton(CGContextRef context, CGRect rect) {
+    CGRect innerRect = CGRectInset(rect, kDiscloserOutlinePadding, kDiscloserOutlinePadding);
+    
+    CGColorRef borderColor = WHITE.CGColor;
+    CGColorRef innerColor = MK_COLOR_RGB(0.0, 0.0, 255.0, 1.0).CGColor;
+    
+    CGMutablePathRef outerPath = createCircularPathForRect(rect);
+    CGMutablePathRef innerPath = createCircularPathForRect(innerRect);
+    
+    CGContextSaveGState(context);
+    CGContextSetFillColorWithColor(context, borderColor);
+    CGContextAddPath(context, outerPath);
+    CGContextFillPath(context);
+    CGContextRestoreGState(context);
+    
+    CGContextSaveGState(context);
+    CGContextSetFillColorWithColor(context, innerColor);
+    CGContextAddPath(context, innerPath);
+    CGContextFillPath(context);
+    CGContextRestoreGState(context);
+    
+    CGPoint p1 = CGPointMake(10.0, 7.0);
+    CGPoint p2 = CGPointMake(16.0, 12.0);
+    CGPoint p3 = CGPointMake(10.0, 17.0);
+    
+    CGContextSaveGState(context);
+    CGContextSetStrokeColorWithColor(context, borderColor);
+    CGContextSetLineWidth(context, 3.0);
+    CGContextMoveToPoint(context, p1.x, p1.y);
+    CGContextAddLineToPoint(context, p2.x, p2.y);
+    CGContextAddLineToPoint(context, p3.x, p3.y);
+    CGContextStrokePath(context);
+    CGContextRestoreGState(context);
+    
+    CGContextSaveGState(context);
+    CGContextAddPath(context, outerPath);
+    CGContextClip(context);
+    drawCurvedGloss(context, rect, 40.0);
+    CGContextRestoreGState(context);
+    
+    CFRelease(outerPath);
+    CFRelease(innerPath);
+}
+
 #pragma mark IAP Button
 
 void drawIAPButton(CGContextRef context, CGRect rect) {
@@ -147,11 +198,11 @@ void drawIAPButton(CGContextRef context, CGRect rect) {
         
     CGColorRef blackColor = BLACK.CGColor;
         
-    if (!lWorking) {
+    if (!mWorking) {
         innerTop = MK_COLOR_HSB(224.0, 57.0, 70.0, 1.0).CGColor;
         innerBottom = MK_COLOR_HSB(224.0, 57.0, 67.0, 1.0).CGColor;
     }
-    else if (lWorking) {
+    else if (mWorking) {
         innerTop = MK_COLOR_HSB(127.0, 84.0, 70.0, 1.0).CGColor;
         innerBottom = MK_COLOR_HSB(127.0, 84.0, 67.0, 1.0).CGColor;
     }
@@ -271,7 +322,7 @@ void drawRoundRectButton(CGContextRef context, CGRect rect) {
 
 - (void)setWorking:(BOOL)working {
     [super setWorking:working];
-    lWorking = working;
+    mWorking = working;
     [self setNeedsDisplay];
 }
 

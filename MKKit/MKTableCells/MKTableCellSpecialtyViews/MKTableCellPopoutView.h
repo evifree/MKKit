@@ -31,7 +31,7 @@ static const CGFloat kPopoutViewWidth = 300.0;
  * `MKTableCellPopoutAuto` : will display the view above or below the cell depending on 
  its location.
  * `MKTableCellPopoutAbove` : displays the view above the cell
- * 'MKTableCellPopoutBelow` : displays the view below the cell
+ * `MKTableCellPopoutBelow` : displays the view below the cell
  
  MKTableCellPopoutView listens for the `MK_TABLE_CELL_POPOUT_VIEW_SHOULD_REMOVE_NOTIFICATION` 
  to remove itself from the table view. 
@@ -43,6 +43,7 @@ static const CGFloat kPopoutViewWidth = 300.0;
 @private
     MKTableCellPopoutViewType mAutoType;
     UIView *mView;
+    NSIndexPath *mIndexPath;
     
     CGColorRef mTintColor;
 }
@@ -74,6 +75,20 @@ static const CGFloat kPopoutViewWidth = 300.0;
  @param tableView the table view to disaply on
 */
 - (void)showFromCell:(MKTableCell *)cell onView:(UITableView *)tableView;
+
+///-------------------------------------------------------
+/// @name Elements
+///-------------------------------------------------------
+
+/**
+ Adds a MKButtonTypeDisloserButton on the right side of the popout view
+ 
+ @param taget the object that handles actions from the button
+ 
+ @param selector the selector to preform when the button is tapped. The 
+ expected format of the selector is `-(void)mySelector:(NSIndexPath *)indexPath`.
+*/
+- (void)setDiscloserButtonWithTarget:(id)target selector:(SEL)selector;
 
 ///-------------------------------------------------------
 /// @name Appearance
