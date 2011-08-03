@@ -1,21 +1,21 @@
 //
-//  MKTableCellPopoutView.m
+//  MKPopOutView.m
 //  MKKit
 //
-//  Created by Matthew King on 7/30/11.
+//  Created by Matthew King on 8/2/11.
 //  Copyright 2011 Matt King. All rights reserved.
 //
 
-#import "MKTableCellPopoutView.h"
+#import "MKPopOutView.h"
 
-@implementation MKTableCellPopoutView
+@implementation MKPopOutView
 
 #pragma mark - Initalizer
 
 @synthesize type=mType, tintColor;
 
-- (id)initWithView:(UIView *)view type:(MKTableCellPopoutViewType)type {
-    self = [super initWithFrame:CGRectMake(0.0, 0.0, (kPopoutViewWidth + 5.0), (view.frame.size.height + 30.0))];
+- (id)initWithView:(UIView *)view type:(MKPopOutViewType)type {
+    self = [super initWithFrame:CGRectMake(0.0, 0.0, (kPopOutViewWidth + 5.0), (view.frame.size.height + 30.0))];
     if (self) {
         mView = [view retain];
         mType = type;
@@ -24,11 +24,11 @@
         self.alpha = 0.0;
         self.backgroundColor = CLEAR;
         self.opaque = YES;
-                
+        
         [self addSubview:mView];
         [mView release];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeView) name:MK_TABLE_CELL_POPOUT_VIEW_SHOULD_REMOVE_NOTIFICATION object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeView) name:MK_POP_OUT_VIEW_SHOULD_REMOVE_NOTIFICATION object:nil];
     }
     return self;
 }
@@ -42,10 +42,10 @@
     CGRect drawRect = CGRectZero;
     
     switch (mAutoType) {
-        case MKTableCellPopoutBelow:
+        case MKPopOutBelow:
             drawRect = CGRectInset(rect, 5.0, 20.0);
             break;
-        case MKTableCellPopoutAbove:
+        case MKPopOutAbove:
             drawRect = CGRectMake(5.0, 5.0, (rect.size.width - 5.0), (rect.size.height - 30.0));
         default:
             break;
@@ -55,7 +55,7 @@
     
     CGMutablePathRef path = createRoundedRectForRect(drawRect, 20.0);
     CGMutablePathRef innerPath = createRoundedRectForRect(innerRect, 20.0);
-
+    
     CGContextSaveGState(context);
     CGContextSetShadowWithColor(context, CGSizeMake(0.0, 3.0), 3.0, MK_SHADOW_COLOR);
     CGContextSetFillColorWithColor(context, mTintColor);
@@ -69,7 +69,7 @@
     drawGlossAndLinearGradient(context, innerRect, mTintColor, mTintColor);
     CGContextRestoreGState(context);
     
-    if (mAutoType == MKTableCellPopoutBelow) {
+    if (mAutoType == MKPopOutBelow) {
         CGRect pointerRect = CGRectMake((CGRectGetMaxX(drawRect) - 70.0), (CGRectGetMinY(drawRect) - 20.0), 35.0, 20.0);
         CGMutablePathRef pointerPath = createPathForUpPointer(pointerRect);
         
@@ -81,7 +81,7 @@
         
         CFRelease(pointerPath);
     }
-    else if (mAutoType == MKTableCellPopoutAbove) {
+    else if (mAutoType == MKPopOutAbove) {
         CGRect pointerRect = CGRectMake((CGRectGetMaxX(drawRect) - 70.0), CGRectGetMaxY(drawRect), 35.0, 20.0);
         CGMutablePathRef pointerPath = createPathForDownPointer(pointerRect);
         
@@ -105,63 +105,6 @@
     [self setNeedsDisplay];
 }
 
-#pragma mark - Displaying
-
-- (void)showFromCell:(MKTableCell *)cell onView:(UITableView *)tableView {
-    CGRect cellRect = [tableView rectForRowAtIndexPath:cell.indexPath];
-    mAnimationType = MKViewAnimationTypeFadeIn;
-    mIndexPath = [cell.indexPath retain];
-    
-    if (mType != MKTableCellPopoutAuto) {
-        mAutoType = mType;
-    }
-    else {
-        if (CGRectGetMaxY(cellRect) < (tableView.bounds.size.height - (mView.frame.size.height + 50.0))) {
-            mAutoType = MKTableCellPopoutBelow;
-        }
-        else {
-            mAutoType = MKTableCellPopoutAbove;
-        }
-    }
-    
-    if (mAutoType == MKTableCellPopoutBelow) {
-        self.frame = CGRectMake(cellRect.origin.x, (cellRect.origin.y + cellRect.size.height), self.width, self.height);
-        mView.frame = CGRectMake(10.0, 10.0, kPopoutViewWidth, mView.frame.size.height);
-    }
-    else if (mAutoType == MKTableCellPopoutAbove) {
-        self.frame = CGRectMake(cellRect.origin.x, (cellRect.origin.y - self.frame.size.height), self.width, self.height);
-        mView.frame = CGRectMake(0.0, 0.0, kPopoutViewWidth, mView.frame.size.height);
-        
-        [tableView scrollRectToVisible:self.frame animated:YES];
-    }
-    
-    [self setNeedsDisplay];
-    
-    [tableView addSubview:self];
-    [tableView scrollRectToVisible:self.frame animated:YES];
-    
-    [UIView animateWithDuration:0.25 
-                     animations: ^ { self.alpha = 1.0; } ];
-}
-
-#pragma mark - Elements
-
-- (void)setDiscloserButtonWithTarget:(id)target selector:(SEL)selector {
-    mView.frame = CGRectMake(mView.frame.origin.x, mView.frame.origin.y, (mView.frame.size.width - 33.0), mView.frame.size.height);
-    
-    MKButton *button = [[MKButton alloc] initWithType:MKButtonTypeDiscloser];
-    button.center = CGPointMake((CGRectGetMaxX(self.frame) - 25.0), CGRectGetMidY(mView.frame));
-    
-    [button completedAction: ^ (MKAction action) {
-        if (action == MKActionTouchUp) {
-            [target performSelector:selector withObject:mIndexPath];
-        }
-    }];
-    
-    [self addSubview:button];
-    [button release];
-}
-
 #pragma mark - Touches
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -175,9 +118,7 @@
 #pragma mark - Memory Managment
 
 - (void)dealloc {
-    [mIndexPath release];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MK_TABLE_CELL_POPOUT_VIEW_SHOULD_REMOVE_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MK_POP_OUT_VIEW_SHOULD_REMOVE_NOTIFICATION object:nil];
     
     [super dealloc];
 }

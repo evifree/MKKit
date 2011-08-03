@@ -36,6 +36,7 @@
 //  sizes
 
 #define TOOLBAR_HEIGHT                                  34.0
+#define MK_TEXT_WIDTH(string, font)                     [(string) sizeWithFont:(font)].width
 
 //  conversions
 
@@ -58,6 +59,7 @@
 #define BLUE                                            [UIColor blueColor]
 #define CLEAR                                           [UIColor clearColor]
 #define GRAY                                            [UIColor grayColor]
+#define DARK_GRAY                                       [UIColor darkGrayColor]
 #define LIGHT_GRAY                                      [UIColor lightGrayColor]
 #define RED                                             [UIColor redColor]
 #define WHITE                                           [UIColor whiteColor]

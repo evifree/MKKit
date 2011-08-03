@@ -53,7 +53,7 @@ static bool mWorking = NO;
             [self addSubview:mark];
             [mark release];
         }
-        else if (mType == MKButtonTypeDiscloser) {
+        else if (mType == MKButtonTypeDisclosure) {
             self.frame = CGRectMake(0.0, 0.0, 25.0, 25.0);
         }
         else {            
@@ -119,7 +119,7 @@ static bool mWorking = NO;
     if (mType == MKButtonTypeIAP) {
         drawIAPButton(context, rect);
     }
-    else if (mType == MKButtonTypeDiscloser) {
+    else if (mType == MKButtonTypeDisclosure) {
         drawDiscloserButton(context, rect);
     }
     else if (mType == MKButtonTypeHelp) {

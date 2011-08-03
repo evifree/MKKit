@@ -111,8 +111,6 @@
 		AA6DF3FA138E04D80091B912 /* MKMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6DF3F8138E04D80091B912 /* MKMenuView.m */; };
 		AA6DF412138E07480091B912 /* MKMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6DF410138E07480091B912 /* MKMenuItem.h */; };
 		AA6DF413138E07480091B912 /* MKMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6DF411138E07480091B912 /* MKMenuItem.m */; };
-		AA6E116313E4831900FEF065 /* MKTableCellPopoutView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6E116113E4831900FEF065 /* MKTableCellPopoutView.h */; };
-		AA6E116413E4831900FEF065 /* MKTableCellPopoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6E116213E4831900FEF065 /* MKTableCellPopoutView.m */; };
 		AA778BE413A8617E00AFF686 /* MKGraphics.h in Headers */ = {isa = PBXBuildFile; fileRef = AA778BE213A8617E00AFF686 /* MKGraphics.h */; };
 		AA778BE513A8617E00AFF686 /* MKGraphics.m in Sources */ = {isa = PBXBuildFile; fileRef = AA778BE313A8617E00AFF686 /* MKGraphics.m */; };
 		AA7EA176110122760090E6EB /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA7EA175110122760090E6EB /* CoreData.framework */; };
@@ -123,6 +121,12 @@
 		AAA97EEE13915840009EBCDE /* MKTableCellLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA97EEC13915840009EBCDE /* MKTableCellLoading.m */; };
 		AAA97EF11391659A009EBCDE /* MKButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AAA97EEF1391659A009EBCDE /* MKButton.h */; };
 		AAA97EF21391659A009EBCDE /* MKButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA97EF01391659A009EBCDE /* MKButton.m */; };
+		AAB4D1E113E86A720061A6BD /* MKPopOutView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB4D1DF13E86A700061A6BD /* MKPopOutView.h */; };
+		AAB4D1E213E86A720061A6BD /* MKPopOutView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB4D1E013E86A700061A6BD /* MKPopOutView.m */; };
+		AAB4D1E513E884410061A6BD /* MKTitleView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB4D1E313E884400061A6BD /* MKTitleView.h */; };
+		AAB4D1E613E884410061A6BD /* MKTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB4D1E413E884400061A6BD /* MKTitleView.m */; };
+		AAB4D1F113E8C9810061A6BD /* MKElementAcentView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB4D1EF13E8C9810061A6BD /* MKElementAcentView.h */; };
+		AAB4D1F213E8C9810061A6BD /* MKElementAcentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB4D1F013E8C9810061A6BD /* MKElementAcentView.m */; };
 		AABE3D581376CFE500ECC539 /* MKLoginViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AABE3D551376CFE500ECC539 /* MKLoginViewController.h */; };
 		AABE3D591376CFE500ECC539 /* MKLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE3D561376CFE500ECC539 /* MKLoginViewController.m */; };
 		AABF4D8C13921A24001B547A /* MKIAPViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AABF4D8A13921A24001B547A /* MKIAPViewController.h */; };
@@ -241,8 +245,6 @@
 		AA6DF3F8138E04D80091B912 /* MKMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMenuView.m; sourceTree = "<group>"; };
 		AA6DF410138E07480091B912 /* MKMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMenuItem.h; sourceTree = "<group>"; };
 		AA6DF411138E07480091B912 /* MKMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMenuItem.m; sourceTree = "<group>"; };
-		AA6E116113E4831900FEF065 /* MKTableCellPopoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTableCellPopoutView.h; sourceTree = "<group>"; };
-		AA6E116213E4831900FEF065 /* MKTableCellPopoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTableCellPopoutView.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* MKKit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKKit_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AA778BE213A8617E00AFF686 /* MKGraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKGraphics.h; sourceTree = "<group>"; };
 		AA778BE313A8617E00AFF686 /* MKGraphics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKGraphics.m; sourceTree = "<group>"; };
@@ -257,6 +259,12 @@
 		AAA97EEC13915840009EBCDE /* MKTableCellLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTableCellLoading.m; sourceTree = "<group>"; };
 		AAA97EEF1391659A009EBCDE /* MKButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKButton.h; sourceTree = "<group>"; };
 		AAA97EF01391659A009EBCDE /* MKButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKButton.m; sourceTree = "<group>"; };
+		AAB4D1DF13E86A700061A6BD /* MKPopOutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPopOutView.h; sourceTree = "<group>"; };
+		AAB4D1E013E86A700061A6BD /* MKPopOutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPopOutView.m; sourceTree = "<group>"; };
+		AAB4D1E313E884400061A6BD /* MKTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTitleView.h; sourceTree = "<group>"; };
+		AAB4D1E413E884400061A6BD /* MKTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTitleView.m; sourceTree = "<group>"; };
+		AAB4D1EF13E8C9810061A6BD /* MKElementAcentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKElementAcentView.h; sourceTree = "<group>"; };
+		AAB4D1F013E8C9810061A6BD /* MKElementAcentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKElementAcentView.m; sourceTree = "<group>"; };
 		AABE3D551376CFE500ECC539 /* MKLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKLoginViewController.h; sourceTree = "<group>"; };
 		AABE3D561376CFE500ECC539 /* MKLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKLoginViewController.m; sourceTree = "<group>"; };
 		AABF4D8A13921A24001B547A /* MKIAPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKIAPViewController.h; sourceTree = "<group>"; };
@@ -378,7 +386,6 @@
 				AA02DDF012DAE2B7003B3560 /* MKTableCell.h */,
 				AA02DDF112DAE2B7003B3560 /* MKTableCell.m */,
 				AA33055C13C3EC2F006B2D11 /* MKTableElements */,
-				AA6E116013E482AE00FEF065 /* MKTableCellSpecialtyViews */,
 				AA02DDF312DAE2B7003B3560 /* MKTableCellTypes */,
 			);
 			path = MKTableCells;
@@ -424,10 +431,14 @@
 				AAEDEA751390A730007EA362 /* MKNoticeView.h */,
 				AAEDEA761390A731007EA362 /* MKNoticeView.m */,
 				AA6DF3ED138E02590091B912 /* MKPrompts */,
+				AAB4D1DF13E86A700061A6BD /* MKPopOutView.h */,
+				AAB4D1E013E86A700061A6BD /* MKPopOutView.m */,
 				AA02DE2212DAE2B7003B3560 /* MKPopOverView.h */,
 				AA02DE2312DAE2B7003B3560 /* MKPopOverView.m */,
 				AA2CE706138200680088C9B2 /* MKReflectedImageView.h */,
 				AA2CE707138200680088C9B2 /* MKReflectedImageView.m */,
+				AAB4D1E313E884400061A6BD /* MKTitleView.h */,
+				AAB4D1E413E884400061A6BD /* MKTitleView.m */,
 			);
 			path = MKViews;
 			sourceTree = "<group>";
@@ -519,6 +530,8 @@
 			children = (
 				AA33055D13C3F082006B2D11 /* MKMaskIconView.h */,
 				AA33055E13C3F082006B2D11 /* MKMaskIconView.m */,
+				AAB4D1EF13E8C9810061A6BD /* MKElementAcentView.h */,
+				AAB4D1F013E8C9810061A6BD /* MKElementAcentView.m */,
 			);
 			path = MKTableElements;
 			sourceTree = "<group>";
@@ -552,15 +565,6 @@
 				AA6DF411138E07480091B912 /* MKMenuItem.m */,
 			);
 			path = MKMenuView;
-			sourceTree = "<group>";
-		};
-		AA6E116013E482AE00FEF065 /* MKTableCellSpecialtyViews */ = {
-			isa = PBXGroup;
-			children = (
-				AA6E116113E4831900FEF065 /* MKTableCellPopoutView.h */,
-				AA6E116213E4831900FEF065 /* MKTableCellPopoutView.m */,
-			);
-			path = MKTableCellSpecialtyViews;
 			sourceTree = "<group>";
 		};
 		AA778BE113A8616500AFF686 /* MKGraphics */ = {
@@ -670,7 +674,9 @@
 				AA778BE413A8617E00AFF686 /* MKGraphics.h in Headers */,
 				AA1B84E713AD9E7700B8CF6D /* MKBarButtonItem.h in Headers */,
 				AA33055F13C3F082006B2D11 /* MKMaskIconView.h in Headers */,
-				AA6E116313E4831900FEF065 /* MKTableCellPopoutView.h in Headers */,
+				AAB4D1E113E86A720061A6BD /* MKPopOutView.h in Headers */,
+				AAB4D1E513E884410061A6BD /* MKTitleView.h in Headers */,
+				AAB4D1F113E8C9810061A6BD /* MKElementAcentView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -779,7 +785,9 @@
 				AA778BE513A8617E00AFF686 /* MKGraphics.m in Sources */,
 				AA1B84E813AD9E7700B8CF6D /* MKBarButtonItem.m in Sources */,
 				AA33056013C3F082006B2D11 /* MKMaskIconView.m in Sources */,
-				AA6E116413E4831900FEF065 /* MKTableCellPopoutView.m in Sources */,
+				AAB4D1E213E86A720061A6BD /* MKPopOutView.m in Sources */,
+				AAB4D1E613E884410061A6BD /* MKTitleView.m in Sources */,
+				AAB4D1F213E8C9810061A6BD /* MKElementAcentView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

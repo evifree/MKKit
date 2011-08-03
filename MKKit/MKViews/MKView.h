@@ -10,6 +10,8 @@
 #import <MKKit/MKKit/MKMacros.h>
 #import <UIKit/UIKit.h>
 
+#import <MKKit/MKKit/MKGraphics/MKGraphics.h>
+
 #import "MKViewDelegate.h"
 
 typedef enum {

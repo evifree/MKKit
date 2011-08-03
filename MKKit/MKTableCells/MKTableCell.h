@@ -18,6 +18,7 @@
 #import <MKKit/MKKit/MKStrings.h>
 
 #import "MKTableElements/MKMaskIconView.h"
+#import "MKTableElements/MKElementAcentView.h"
 #import "MKTableCellDelegate.h"
 
 typedef enum {
@@ -95,7 +96,10 @@ typedef enum {
  for the cellType parameter.
  
  @param cellType The type of the cell to create. 
+ 
  @param resuseIdentifier The rueseIdentifier for this type of cell.
+ 
+ @return MKTableCell instance
 */
 - (id)initWithType:(MKTableCellType)cellType reuseIdentifier:(NSString *)reuseIdentifier;
 
@@ -143,12 +147,26 @@ typedef enum {
 @property (nonatomic, retain) UIImage *iconMask;
 
 ///---------------------------------------------------------------------------------------
+/// @name Apearances
+///---------------------------------------------------------------------------------------
+
+/**
+ Accents the primary view of the cell by drawing a background gradient onto it.
+ 
+ @param position the postion of the table cell `MKTableCellPositionTop, MKTableCellPositionMiddle,
+ MKTablePositionBottom`. If you are using a plain table view style pass `MKTableCellMiddle` for all 
+ cells.
+*/
+- (void)acentPrimaryViewForCellAtPostion:(MKTableCellPosition)position;
+
+///---------------------------------------------------------------------------------------
 /// @name Input Validation
 ///---------------------------------------------------------------------------------------
 
 /** Sets the validation type to preform. 
  
  @see validatior
+ 
  @see MKInputValidation 
 */
 @property (nonatomic, assign) MKValidationType validationType;
@@ -203,6 +221,7 @@ typedef enum {
  MKInputValidation protocol.
  
  @see MKInputValidation
+ 
  @see validationType
 */
 @property (assign) id<MKInputValidation> validator;
@@ -303,6 +322,50 @@ static const CGFloat kCellSecondaryElementHeight    = 30.0;
  @param element the view that will be added to the cell.
  */
 - (void)addIconElement:(UIView *)element;
+
+///------------------------------------
+/// @name Apearance
+///------------------------------------
+
+- (void)accentPrimaryView;
+
+@end
+
+/**----------------------------------------------------------------------------
+ This catagory of MKPopOutView provides methods for displaying a pop out view from
+ a MKTableCell.
+-----------------------------------------------------------------------------*/
+
+@interface MKPopOutView (MKTableCell)
+
+@property (nonatomic, retain) NSIndexPath *aIndexPath;
+
+///-------------------------------------------------------
+/// @name Displaying
+///-------------------------------------------------------
+
+/**
+ Shows the view on the screen.
+ 
+ @param cell the cell to display the view from
+ 
+ @param tableView the table view to disaply on
+ */
+- (void)showFromCell:(MKTableCell *)cell onView:(UITableView *)tableView;
+
+///-------------------------------------------------------
+/// @name Elements
+///-------------------------------------------------------
+
+/**
+ Adds a MKButtonTypeDisloserButton on the right side of the popout view
+ 
+ @param taget the object that handles actions from the button
+ 
+ @param selector the selector to preform when the button is tapped. The 
+ expected format of the selector is `-(void)mySelector:(NSIndexPath *)indexPath`.
+ */
+- (void)setDisclosureButtonWithTarget:(id)target selector:(SEL)selector;
 
 @end
 

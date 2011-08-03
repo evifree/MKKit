@@ -140,6 +140,17 @@
     [iconView release];
 }
 
+- (void)setAccentPrimaryView:(BOOL)accent {
+    if (accent) {
+        UIView *view = [mCellView viewWithTag:1];
+        
+        MKElementAcentView *accentView = [[MKElementAcentView alloc] initWithFrame:CGRectMake(0.0, 0.0, view.frame.size.width, self.frame.size.height)];
+        [self.contentView addSubview:accentView];
+        [self.contentView sendSubviewToBack:accentView];
+        [accentView release];
+    }
+}
+
 - (void)setValidationType:(MKValidationType)valType {
 	mValidationType = valType;
 	
@@ -239,6 +250,26 @@
 
 - (void)willTransitionToState:(UITableViewCellStateMask)state {
     [super willTransitionToState:state];
+}
+
+#pragma mark - Appearance
+
+- (void)acentPrimaryViewForCellAtPostion:(MKTableCellPosition)position {
+    UIView *view = [mCellView viewWithTag:1];
+    
+    MKElementAcentView *accentView = [[MKElementAcentView alloc] initWithFrame:CGRectMake(0.0, 0.0, view.frame.size.width, self.frame.size.height) position:position];
+    [self.contentView addSubview:accentView];
+    [self.contentView sendSubviewToBack:accentView];
+    [accentView release];
+    
+    if (mTheLabel) {
+        mTheLabel.font = VERDANA_BOLD(14.0);
+        mTheLabel.adjustsFontSizeToFitWidth = YES;
+        mTheLabel.textColor = DARK_GRAY;
+        mTheLabel.shadowColor = WHITE;
+        mTheLabel.shadowOffset = CGSizeMake(0.0, 1.0);
+        mTheLabel.textAlignment = UITextAlignmentCenter;
+    }
 }
 
 #pragma mark - Validation Methods
@@ -381,12 +412,6 @@ void drawWarningIcon(CGContextRef context, CGRect rect) {
     CFRelease(path);
 }
 
-#pragma mark - Memory Managment
-
-- (void)dealloc {
-    [super dealloc];
-}
-
 @end
 
 @implementation MKView (MKTableCell)
@@ -460,10 +485,99 @@ void drawWarningIcon(CGContextRef context, CGRect rect) {
     [self addSubview:element];
     [self layoutCell];
 }
- 
-#pragma mark - Memory Management
+
+#pragma mark - Appearance
+
+- (void)accentPrimaryView {
+    UIView *view = [self viewWithTag:1];
+    
+    MKElementAcentView *accentView = [[MKElementAcentView alloc] initWithFrame:view.frame];
+    [self addSubview:accentView];
+    [self sendSubviewToBack:accentView];
+    [accentView release];
+}
+
+@end
+
+@implementation MKPopOutView (MKTableCell)
+
+@dynamic aIndexPath;
+
+NSIndexPath *mIndexPath = nil;
+
+#pragma mark - Accessor Methods
+
+- (void)setAIndexPath:(NSIndexPath *)path {
+    mIndexPath = [path retain];
+}
+
+- (NSIndexPath *)aIndexPath {
+    return mIndexPath;
+}
+
+#pragma mark - Displaying
+
+- (void)showFromCell:(MKTableCell *)cell onView:(UITableView *)tableView {
+    CGRect cellRect = [tableView rectForRowAtIndexPath:cell.indexPath];
+    mAnimationType = MKViewAnimationTypeFadeIn;
+    self.aIndexPath = [cell.indexPath retain];
+    
+    if (mType != MKPopOutAuto) {
+        mAutoType = mType;
+    }
+    else {
+        if (CGRectGetMaxY(cellRect) < (tableView.bounds.size.height - (mView.frame.size.height + 50.0))) {
+            mAutoType = MKPopOutBelow;
+        }
+        else {
+            mAutoType = MKPopOutAbove;
+        }
+    }
+    
+    if (mAutoType == MKPopOutBelow) {
+        self.frame = CGRectMake(cellRect.origin.x, (cellRect.origin.y + cellRect.size.height), self.width, self.height);
+        mView.frame = CGRectMake(10.0, 10.0, kPopOutViewWidth, mView.frame.size.height);
+    }
+    else if (mAutoType == MKPopOutAbove) {
+        self.frame = CGRectMake(cellRect.origin.x, (cellRect.origin.y - self.frame.size.height), self.width, self.height);
+        mView.frame = CGRectMake(0.0, 0.0, kPopOutViewWidth, mView.frame.size.height);
+        
+        [tableView scrollRectToVisible:self.frame animated:YES];
+    }
+    
+    [self setNeedsDisplay];
+    
+    [tableView addSubview:self];
+    [tableView scrollRectToVisible:self.frame animated:YES];
+    
+    [UIView animateWithDuration:0.25 
+                     animations: ^ { self.alpha = 1.0; } ];
+}
+
+#pragma mark - Elements
+
+- (void)setDisclosureButtonWithTarget:(id)target selector:(SEL)selector {
+    mView.frame = CGRectMake(mView.frame.origin.x, mView.frame.origin.y, (mView.frame.size.width - 33.0), mView.frame.size.height);
+    
+    MKButton *button = [[MKButton alloc] initWithType:MKButtonTypeDisclosure];
+    button.center = CGPointMake((CGRectGetMaxX(self.frame) - 25.0), CGRectGetMidY(mView.frame));
+    
+    [button completedAction: ^ (MKAction action) {
+        if (action == MKActionTouchUp) {
+            [target performSelector:selector withObject:self.aIndexPath];
+        }
+    }];
+    
+    [self addSubview:button];
+    [button release];
+}
 
 - (void)dealloc {
+    [mIndexPath release];
+    mIndexPath = nil;
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MK_POP_OUT_VIEW_SHOULD_REMOVE_NOTIFICATION object:nil];
+    
     [super dealloc];
 }
 

@@ -10,7 +10,7 @@
 
 typedef enum {
     MKButtonTypeHelp,
-    MKButtonTypeDiscloser,
+    MKButtonTypeDisclosure,
     MKButtonTypeIAP,
     MKButtonTypeRoundedRect,
 } MKButtonType;
@@ -23,7 +23,7 @@ static const float kDiscloserOutlinePadding = 2.0;
  types of buttons:
  
  * `MKButtonTypeHelp` : a small round button with a question mark
- * `MKButtonTypeDiscloser` : a blue and white button that resembles iOS discloser button
+ * `MKButtonTypeDisclosure` : a blue and white button that resembles iOS discloser button
  * `MKButtonTypeIAP` : a InApp Purchase button, mimics the purchase buttons from the
  * `MKButtonTypeRoundedRect` : a rounded rect button that can be assigned a color
  appStore

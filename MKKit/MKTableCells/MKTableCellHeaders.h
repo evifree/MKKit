@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 1/10/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Matt King. All rights reserved.
 //
 
 #import "MKTableCell.h"
@@ -17,7 +17,5 @@
 #import "MKTableCellTypes/MKTableCellSwitch.h"
 #import "MKTableCellTypes/MKTableCellTextEntry.h"
 #import "MKTableCellTypes/MKTableCellTextView.h"
-
-#import "MKTableCellSpecialtyViews/MKTableCellPopoutView.h"
 
 #import <MKKit/MKKit/MKViewControllers/MKIAPViewController/MKTableCellIAP.h>
