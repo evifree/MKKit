@@ -68,7 +68,7 @@
         self.opaque = NO;
         
         self.autoresizesSubviews = YES;
-        self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+        self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         
         maxWidth = 30.0;
         mBadgeColor = GRAY.CGColor;
@@ -119,7 +119,7 @@
         mBadgeLabel.shadowColor = BLACK;
         mBadgeLabel.shadowOffset = CGSizeMake(0.0, -1.0);
         mBadgeLabel.text = text;
-        mBadgeLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin;
+        mBadgeLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
     }
     else {
         mBadgeLabel.frame = rect;

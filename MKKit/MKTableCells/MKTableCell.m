@@ -257,7 +257,7 @@
 - (void)acentPrimaryViewForCellAtPostion:(MKTableCellPosition)position {
     UIView *view = [mCellView viewWithTag:1];
     
-    MKElementAcentView *accentView = [[MKElementAcentView alloc] initWithFrame:CGRectMake(0.0, 0.0, view.frame.size.width, self.frame.size.height) position:position];
+    MKElementAcentView *accentView = [[MKElementAcentView alloc] initWithFrame:CGRectMake(0.0, 0.0, (view.frame.size.width + 3.0), self.frame.size.height) position:position];
     [self.contentView addSubview:accentView];
     [self.contentView sendSubviewToBack:accentView];
     [accentView release];
@@ -472,7 +472,7 @@ void drawWarningIcon(CGContextRef context, CGRect rect) {
 
 - (void)addSecondaryElement:(UIView *)element {
     element.tag = 2;
-    element.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
+    element.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
     
     [self addSubview:element];
     [self layoutCell];

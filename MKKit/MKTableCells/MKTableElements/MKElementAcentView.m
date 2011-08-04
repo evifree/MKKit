@@ -21,6 +21,7 @@ CGMutablePathRef createPathForBottomCell(CGRect rect);
         self.backgroundColor = CLEAR;
         self.opaque = YES;
         self.alpha = 1.0;
+        self.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
         
         mPosition = position;
     }
