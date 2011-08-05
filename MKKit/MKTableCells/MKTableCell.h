@@ -19,6 +19,7 @@
 
 #import "MKTableElements/MKMaskIconView.h"
 #import "MKTableElements/MKElementAcentView.h"
+
 #import "MKTableCellDelegate.h"
 
 typedef enum {
@@ -38,6 +39,8 @@ typedef enum {
 
 @protocol MKTableCellDelegate;
 @protocol MKInputValidation;
+
+@class MKBadgeCellView;
 
 /**-------------------------------------------------------------------------------------
  An MKTableCell is a subclass UITableViewCell. MKTableCell is designed as a superClass for 
@@ -145,6 +148,17 @@ typedef enum {
 
 /** An imaged to be masked. The masking is completed by the MKMaskIconView */
 @property (nonatomic, retain) UIImage *iconMask;
+
+/**
+ Adds a badge to the cell.
+ 
+ @param text the text to display on the badge.
+ 
+ @param color the color of the badge.
+ 
+ @param rect the rect of the badge.
+*/
+- (void)addBadgeWithText:(NSString *)text color:(UIColor *)color rect:(CGRect)rect;
 
 ///---------------------------------------------------------------------------------------
 /// @name Apearances
@@ -272,7 +286,7 @@ static const CGFloat kCellSecondaryElementHeight    = 30.0;
 ---------------------------------------------------------------------------*/
 
 @interface MKView (MKTableCell)
-
+    
 ///-----------------------------------
 /// @name Creating
 ///-----------------------------------
@@ -295,6 +309,9 @@ static const CGFloat kCellSecondaryElementHeight    = 30.0;
 */
 - (void)layoutCell;
 
+/** Yes if the secondary element should not atomically adjust its size. */
+@property (nonatomic, assign) BOOL pinnedSecondaryElement;
+
 ///-----------------------------------
 /// @name Adding Elements
 ///-----------------------------------
@@ -314,6 +331,15 @@ static const CGFloat kCellSecondaryElementHeight    = 30.0;
  @param element the view that will be added to the cell.
  */
 - (void)addSecondaryElement:(UIView *)element;
+
+/**
+ Adds a secondary element to the cell is that fills the desired rect.
+ 
+ @param element the view to add to the cell.
+ 
+ @param rect the rect of the view.
+*/ 
+- (void)addSecondaryElement:(UIView *)element inRect:(CGRect)rect;
 
 /**
  Adds a Icon Element to the cell. The icon element 

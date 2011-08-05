@@ -13,7 +13,6 @@
 #import <MKKit/MKKit/MKGraphics/MKGraphics.h>
 
 @class MKBadgeCellView;
-@class MKTableCell;
 
 /**---------------------------------------------------------------------------------
  MKTableCellBadge class creates a table cell with Lable and a badge on the right side
@@ -42,15 +41,10 @@
 
 
 @interface MKBadgeCellView : MKView {
-    UILabel *mLabel;
-    
 @private
     UILabel *mBadgeLabel;
-    CGFloat maxWidth;
     CGColorRef mBadgeColor;
 }
-
-@property (nonatomic, retain) UILabel *label;
 
 @property (nonatomic, copy) NSString *badgeText;
 

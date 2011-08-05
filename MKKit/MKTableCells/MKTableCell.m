@@ -8,6 +8,8 @@
 
 #import "MKTableCell.h"
 
+#import "MKTableCellTypes/MKTableCellBadge.h"
+
 @interface MKTableCell ()
 
 - (void)accessoryButton:(id)sender;
@@ -248,8 +250,15 @@
 	
 }
 
-- (void)willTransitionToState:(UITableViewCellStateMask)state {
-    [super willTransitionToState:state];
+#pragma mark - Elements
+
+- (void)addBadgeWithText:(NSString *)text color:(UIColor *)color rect:(CGRect)rect {
+    MKBadgeCellView *badge = [[MKBadgeCellView alloc] initWithFrame:rect];
+    badge.badgeText = text;
+    badge.badgeColor = color;
+    
+    [mCellView addSubview:badge];
+    [badge release];
 }
 
 #pragma mark - Appearance
@@ -416,6 +425,10 @@ void drawWarningIcon(CGContextRef context, CGRect rect) {
 
 @implementation MKView (MKTableCell)
 
+@dynamic pinnedSecondaryElement;
+
+static bool mPinnedSecondaryElement = NO;
+
 #pragma mark - Initalizer
 
 - (id)initWithCell:(MKTableCell *)cell {
@@ -425,9 +438,9 @@ void drawWarningIcon(CGContextRef context, CGRect rect) {
         self.opaque = NO;
         self.autoresizesSubviews = YES;
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
+        self.pinnedSecondaryElement = NO;
         
         mShouldRemoveView = NO;
-        
     }
     return self;
 }
@@ -444,10 +457,12 @@ void drawWarningIcon(CGContextRef context, CGRect rect) {
     }
     
     if (secondaryElement) {
-        secondaryElement.frame = CGRectMake(kCellSecondaryElementX, kCellSecondaryElementY, kCellSecondaryElementWidth, kCellSecondaryElementHeight);
+        if (!self.pinnedSecondaryElement) {
+            secondaryElement.frame = CGRectMake(kCellSecondaryElementX, kCellSecondaryElementY, kCellSecondaryElementWidth, kCellSecondaryElementHeight);
+        }
         
         if (primaryElement) {
-            primaryElement.frame = CGRectMake(primaryElement.frame.origin.x, primaryElement.frame.origin.y, (primaryElement.frame.size.width - kCellSecondaryElementWidth - 5.0), primaryElement.frame.size.height);
+            primaryElement.frame = CGRectMake(primaryElement.frame.origin.x, primaryElement.frame.origin.y, (CGRectGetMinX(secondaryElement.frame) - CGRectGetMinX(primaryElement.frame) - 5.0), primaryElement.frame.size.height);
         }
     }
     
@@ -458,6 +473,19 @@ void drawWarningIcon(CGContextRef context, CGRect rect) {
             primaryElement.frame = CGRectMake((primaryElement.frame.origin.x + 44.0), primaryElement.frame.origin.y, (primaryElement.frame.size.width - 44.0), primaryElement.frame.size.height);
         }
     }
+}
+
+#pragma mark - Accessory Methods
+#pragma mark Setters
+
+- (void)setPinnedSecondaryElement:(BOOL)pinned {
+    mPinnedSecondaryElement = pinned;
+}
+
+#pragma mark Getters
+
+- (BOOL)pinnedSecondaryElement {
+    return mPinnedSecondaryElement;
 }
 
 #pragma mark - Adding Elements
@@ -471,6 +499,16 @@ void drawWarningIcon(CGContextRef context, CGRect rect) {
 }
 
 - (void)addSecondaryElement:(UIView *)element {
+    element.tag = 2;
+    element.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    
+    [self addSubview:element];
+    [self layoutCell];
+}
+
+- (void)addSecondaryElement:(UIView *)element inRect:(CGRect)rect {
+    self.pinnedSecondaryElement = YES;
+    
     element.tag = 2;
     element.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
     
