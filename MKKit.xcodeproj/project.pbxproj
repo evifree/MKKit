@@ -117,6 +117,13 @@
 		AA7EFCF310FFE90900B4C1BC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA7EFCF210FFE90900B4C1BC /* CoreGraphics.framework */; };
 		AA7EFCF510FFE91B00B4C1BC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA7EFCF410FFE91B00B4C1BC /* UIKit.framework */; };
 		AA7EFD5410FFE94100B4C1BC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA7EFD5310FFE94100B4C1BC /* QuartzCore.framework */; };
+		AAA3BE8613EB932800594F55 /* MKTabbedViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AAA3BE8413EB932800594F55 /* MKTabbedViewController.h */; };
+		AAA3BE8713EB932800594F55 /* MKTabbedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA3BE8513EB932800594F55 /* MKTabbedViewController.m */; };
+		AAA3BE8A13EB978E00594F55 /* MKTabbedView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAA3BE8813EB978E00594F55 /* MKTabbedView.h */; };
+		AAA3BE8B13EB978E00594F55 /* MKTabbedView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA3BE8913EB978E00594F55 /* MKTabbedView.m */; };
+		AAA3BE8D13EBA12C00594F55 /* MKTabbedViewProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = AAA3BE8C13EBA12C00594F55 /* MKTabbedViewProtocols.h */; };
+		AAA3BE9013EBB53700594F55 /* MKTabItem.h in Headers */ = {isa = PBXBuildFile; fileRef = AAA3BE8E13EBB53700594F55 /* MKTabItem.h */; };
+		AAA3BE9113EBB53700594F55 /* MKTabItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA3BE8F13EBB53700594F55 /* MKTabItem.m */; };
 		AAA97EED13915840009EBCDE /* MKTableCellLoading.h in Headers */ = {isa = PBXBuildFile; fileRef = AAA97EEB13915840009EBCDE /* MKTableCellLoading.h */; };
 		AAA97EEE13915840009EBCDE /* MKTableCellLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA97EEC13915840009EBCDE /* MKTableCellLoading.m */; };
 		AAA97EF11391659A009EBCDE /* MKButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AAA97EEF1391659A009EBCDE /* MKButton.h */; };
@@ -254,6 +261,13 @@
 		AA7EFCF210FFE90900B4C1BC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		AA7EFCF410FFE91B00B4C1BC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AA7EFD5310FFE94100B4C1BC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		AAA3BE8413EB932800594F55 /* MKTabbedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTabbedViewController.h; sourceTree = "<group>"; };
+		AAA3BE8513EB932800594F55 /* MKTabbedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTabbedViewController.m; sourceTree = "<group>"; };
+		AAA3BE8813EB978E00594F55 /* MKTabbedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTabbedView.h; sourceTree = "<group>"; };
+		AAA3BE8913EB978E00594F55 /* MKTabbedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTabbedView.m; sourceTree = "<group>"; };
+		AAA3BE8C13EBA12C00594F55 /* MKTabbedViewProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTabbedViewProtocols.h; sourceTree = "<group>"; };
+		AAA3BE8E13EBB53700594F55 /* MKTabItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTabItem.h; sourceTree = "<group>"; };
+		AAA3BE8F13EBB53700594F55 /* MKTabItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTabItem.m; sourceTree = "<group>"; };
 		AAA5A1AC1345589C00D2C23F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		AAA97EEB13915840009EBCDE /* MKTableCellLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTableCellLoading.h; sourceTree = "<group>"; };
 		AAA97EEC13915840009EBCDE /* MKTableCellLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTableCellLoading.m; sourceTree = "<group>"; };
@@ -475,6 +489,7 @@
 				AABF4D89139219F9001B547A /* MKIAPViewController */,
 				AABE3D541376CFB800ECC539 /* MKLoginViewController */,
 				AA02E14112DAFC14003B3560 /* MKTabBar */,
+				AAA3BE8313EB92F400594F55 /* MKTabbedViewController */,
 				AA6330D81344155700886CE3 /* MKWebViewController */,
 			);
 			path = MKViewControllers;
@@ -574,6 +589,20 @@
 				AA778BE313A8617E00AFF686 /* MKGraphics.m */,
 			);
 			path = MKGraphics;
+			sourceTree = "<group>";
+		};
+		AAA3BE8313EB92F400594F55 /* MKTabbedViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AAA3BE8C13EBA12C00594F55 /* MKTabbedViewProtocols.h */,
+				AAA3BE8413EB932800594F55 /* MKTabbedViewController.h */,
+				AAA3BE8513EB932800594F55 /* MKTabbedViewController.m */,
+				AAA3BE8813EB978E00594F55 /* MKTabbedView.h */,
+				AAA3BE8913EB978E00594F55 /* MKTabbedView.m */,
+				AAA3BE8E13EBB53700594F55 /* MKTabItem.h */,
+				AAA3BE8F13EBB53700594F55 /* MKTabItem.m */,
+			);
+			path = MKTabbedViewController;
 			sourceTree = "<group>";
 		};
 		AABE3D541376CFB800ECC539 /* MKLoginViewController */ = {
@@ -677,6 +706,10 @@
 				AAB4D1E113E86A720061A6BD /* MKPopOutView.h in Headers */,
 				AAB4D1E513E884410061A6BD /* MKTitleView.h in Headers */,
 				AAB4D1F113E8C9810061A6BD /* MKElementAcentView.h in Headers */,
+				AAA3BE8613EB932800594F55 /* MKTabbedViewController.h in Headers */,
+				AAA3BE8A13EB978E00594F55 /* MKTabbedView.h in Headers */,
+				AAA3BE8D13EBA12C00594F55 /* MKTabbedViewProtocols.h in Headers */,
+				AAA3BE9013EBB53700594F55 /* MKTabItem.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -788,6 +821,9 @@
 				AAB4D1E213E86A720061A6BD /* MKPopOutView.m in Sources */,
 				AAB4D1E613E884410061A6BD /* MKTitleView.m in Sources */,
 				AAB4D1F213E8C9810061A6BD /* MKElementAcentView.m in Sources */,
+				AAA3BE8713EB932800594F55 /* MKTabbedViewController.m in Sources */,
+				AAA3BE8B13EB978E00594F55 /* MKTabbedView.m in Sources */,
+				AAA3BE9113EBB53700594F55 /* MKTabItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

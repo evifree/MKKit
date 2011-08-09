@@ -12,11 +12,10 @@
 
 - (NSDecimalNumber *)sumOfArray:(NSArray *)anArray {
 	NSInteger count = [anArray count];
-	NSInteger start = 0;
 	NSDecimalNumber *total = [NSDecimalNumber zero];
 	
-	for (start; start < count; start++) {
-		NSDecimalNumber *next = [anArray objectAtIndex:start];
+	for (int i = 0; i < count; i++) {
+		NSDecimalNumber *next = [anArray objectAtIndex:i];
 		total = [total decimalNumberByAdding:next];
 	}
 	
@@ -25,11 +24,10 @@
 
 - (NSDecimalNumber *)averageOfArray:(NSArray *)anArray {
 	NSInteger count = [anArray count];
-	NSInteger start = 0;
 	NSDecimalNumber *sum = [NSDecimalNumber zero];
 	
-	for (start; start < count; start++) {
-		NSDecimalNumber *next = [anArray objectAtIndex:start];
+	for (int i; i < count; i++) {
+		NSDecimalNumber *next = [anArray objectAtIndex:i];
 		sum = [sum decimalNumberByAdding:next];
 	}
 	

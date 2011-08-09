@@ -1,0 +1,321 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>MKTabbedView Class Reference</title>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+		<meta name="generator" content="appledoc 2.0b3" />
+	</head>
+	<body>
+		<article>
+			<div class="main-navigation navigation-top">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="header">
+				<div class="section-header">
+					<h1 class="title title-header">MKTabbedView Class Reference</h1>
+				</div>		
+			</div>
+			<div id="container">	
+				
+				<div class="section section-specification"><table cellspacing="0"><tbody>
+					<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value"><a href="MKView.html">MKView</a> : UIView</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">MKTabbedView.h</td>
+</tr>
+					</tbody></table></div>
+				
+				
+				
+				<div class="section section-overview">
+					<h2 class="subtitle subtitle-overview">Overview</h2>
+					
+<p> <a href="MKTabbedView.html">MKTabbedView</a> provides the view for the MKTabbedViewController. Tabs and content display is controlled by this class. </p>
+
+<p> <a href="MKTabbedView.html">MKTabbedView</a> controller implements the <code><a href="../Protocols/MKTabbedViewDataSource.html">MKTabbedViewDataSource</a></code>, and <code><a href="../Protocols/MKTabbedViewDelegate.html">MKTabbedViewDelegate</a></code>. </p>
+
+				</div>
+				
+				
+				
+				
+				<div class="section section-tasks">
+					<h2 class="subtitle subtitle-tasks">Tasks</h2>
+					
+					<h3 class="subsubtitle task-title">Tab Control</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setTabs">- setTabs</a></code>
+		<span class="tooltip"> Gets the tabs from the <code><a href="../Protocols/MKTabbedViewDataSource.html">MKTabbedViewDataSource</a></code> and sets them on the view. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/switchToTabAtIndex:">- switchToTabAtIndex:</a></code>
+		<span class="tooltip"> Displays the content of the selected provide by the <code>MKTabbedDataSource</code>. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Getting Tabs</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/tabAtIndex:">- tabAtIndex:</a></code>
+		<span class="tooltip"> Returns the tab for the specified index. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Protocols</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/dataSource"> dataSource</a></code>
+		<span class="tooltip"> The <a href="../Protocols/MKTabbedViewDataSource.html">MKTabbedViewDataSource</a></span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/tabbedDelegate"> tabbedDelegate</a></code>
+		<span class="tooltip"> The <a href="../Protocols/MKTabbedViewDelegate.html">MKTabbedViewDelegate</a></span>
+	</span>
+	
+</li>
+					</ul>
+					
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/setTabs" title="setTabs"></a>
+	<h3 class="subsubtitle method-title">setTabs</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Gets the tabs from the <code><a href="../Protocols/MKTabbedViewDataSource.html">MKTabbedViewDataSource</a></code> and sets them on the view. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)setTabs</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection arguments-section exceptions">
+		<h4 class="method-subtitle exception-title">Exceptions</h4>
+		
+		<dl class="argument-def exception-def">
+			<dt><em>Invalid</em></dt>
+			<dd> Array : rasied the NSArray returned by the datasource contains more than 3 objects. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTabbedView.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/switchToTabAtIndex:" title="switchToTabAtIndex:"></a>
+	<h3 class="subsubtitle method-title">switchToTabAtIndex:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Displays the content of the selected provide by the <code>MKTabbedDataSource</code>. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)switchToTabAtIndex:(NSInteger)<em>index</em></code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTabbedView.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/tabAtIndex:" title="tabAtIndex:"></a>
+	<h3 class="subsubtitle method-title">tabAtIndex:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Returns the tab for the specified index. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (MKTabItem *)tabAtIndex:(NSInteger)<em>index</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>index</em></dt>
+			<dd> the index of the tab. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p> <a href="MKTabItem.html">MKTabItem</a> instance </p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTabbedView.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Properties</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/dataSource" title="dataSource"></a>
+	<h3 class="subsubtitle method-title">dataSource</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The <a href="../Protocols/MKTabbedViewDataSource.html">MKTabbedViewDataSource</a></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) id&lt;MKTabbedViewDataSource&gt; dataSource</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTabbedView.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/tabbedDelegate" title="tabbedDelegate"></a>
+	<h3 class="subsubtitle method-title">tabbedDelegate</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The <a href="../Protocols/MKTabbedViewDelegate.html">MKTabbedViewDelegate</a></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) id&lt;MKTabbedViewDelegate&gt; tabbedDelegate</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTabbedView.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+			</div>
+			<div class="main-navigation navigation-bottom">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="footer">
+				<hr />
+				<div class="footer-copyright">
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-08-08)</span><br />
+					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
+				</div>
+			</div>
+		</article>
+	</body>
+</html>
