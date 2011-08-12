@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 1/15/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010 Matt King. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -50,7 +50,13 @@
  
  @param number The number to format.
 */
-- (NSString *)localCurencyFromNumber:(NSNumber *)number; 
+- (NSString *)localCurrencyFromNumber:(NSNumber *)number; 
+
+/** Returns a string from a given number that is formatted into the local currency.
+ 
+ @param number The number to format.
+ */
++ (NSString *)localCurrencyWithNumber:(NSNumber *)number;
 
 ///-----------------------------------------------------------------------
 /// @name Path Strings

@@ -83,6 +83,8 @@
 		AA02E1AF12DB0899003B3560 /* MKTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = AA02E1AD12DB0899003B3560 /* MKTextField.h */; };
 		AA02E1B012DB0899003B3560 /* MKTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = AA02E1AE12DB0899003B3560 /* MKTextField.m */; };
 		AA06E09713927DA1000071C0 /* MKIAPObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = AA06E09613927DA1000071C0 /* MKIAPObserver.h */; };
+		AA0D155813F308200067BA2A /* MKTableCellBadgeView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0D155613F3081F0067BA2A /* MKTableCellBadgeView.h */; };
+		AA0D155913F308200067BA2A /* MKTableCellBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0D155713F3081F0067BA2A /* MKTableCellBadgeView.m */; };
 		AA10A9D91385BCCB0091DCEC /* MKLoginSettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA10A9D71385BCCB0091DCEC /* MKLoginSettingsViewController.h */; };
 		AA10A9DA1385BCCB0091DCEC /* MKLoginSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA10A9D81385BCCB0091DCEC /* MKLoginSettingsViewController.m */; };
 		AA1B84E713AD9E7700B8CF6D /* MKBarButtonItem.h in Headers */ = {isa = PBXBuildFile; fileRef = AA1B84E513AD9E7600B8CF6D /* MKBarButtonItem.h */; };
@@ -95,8 +97,6 @@
 		AA2FBE4513444550002441C2 /* MKMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = AA2FBE4413444550002441C2 /* MKMacros.h */; };
 		AA33055F13C3F082006B2D11 /* MKMaskIconView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA33055D13C3F082006B2D11 /* MKMaskIconView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA33056013C3F082006B2D11 /* MKMaskIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA33055E13C3F082006B2D11 /* MKMaskIconView.m */; };
-		AA40E8F913A5C64B00643C6C /* MKTableCellBadge.h in Headers */ = {isa = PBXBuildFile; fileRef = AA40E8F713A5C64B00643C6C /* MKTableCellBadge.h */; };
-		AA40E8FA13A5C64B00643C6C /* MKTableCellBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = AA40E8F813A5C64B00643C6C /* MKTableCellBadge.m */; };
 		AA56A535128EDF0300E5DD5C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA56A534128EDF0300E5DD5C /* MessageUI.framework */; };
 		AA6330DC134415B900886CE3 /* MKViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6330D9134415B900886CE3 /* MKViewController.h */; };
 		AA6330DD134415B900886CE3 /* MKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6330DA134415B900886CE3 /* MKViewController.m */; };
@@ -132,8 +132,8 @@
 		AAB4D1E213E86A720061A6BD /* MKPopOutView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB4D1E013E86A700061A6BD /* MKPopOutView.m */; };
 		AAB4D1E513E884410061A6BD /* MKTitleView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB4D1E313E884400061A6BD /* MKTitleView.h */; };
 		AAB4D1E613E884410061A6BD /* MKTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB4D1E413E884400061A6BD /* MKTitleView.m */; };
-		AAB4D1F113E8C9810061A6BD /* MKElementAcentView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB4D1EF13E8C9810061A6BD /* MKElementAcentView.h */; };
-		AAB4D1F213E8C9810061A6BD /* MKElementAcentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB4D1F013E8C9810061A6BD /* MKElementAcentView.m */; };
+		AAB4D1F113E8C9810061A6BD /* MKElementAccentView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB4D1EF13E8C9810061A6BD /* MKElementAccentView.h */; };
+		AAB4D1F213E8C9810061A6BD /* MKElementAccentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB4D1F013E8C9810061A6BD /* MKElementAccentView.m */; };
 		AABE3D581376CFE500ECC539 /* MKLoginViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AABE3D551376CFE500ECC539 /* MKLoginViewController.h */; };
 		AABE3D591376CFE500ECC539 /* MKLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE3D561376CFE500ECC539 /* MKLoginViewController.m */; };
 		AABF4D8C13921A24001B547A /* MKIAPViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AABF4D8A13921A24001B547A /* MKIAPViewController.h */; };
@@ -224,6 +224,8 @@
 		AA02E1AD12DB0899003B3560 /* MKTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTextField.h; sourceTree = "<group>"; };
 		AA02E1AE12DB0899003B3560 /* MKTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTextField.m; sourceTree = "<group>"; };
 		AA06E09613927DA1000071C0 /* MKIAPObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKIAPObserver.h; sourceTree = "<group>"; };
+		AA0D155613F3081F0067BA2A /* MKTableCellBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTableCellBadgeView.h; sourceTree = "<group>"; };
+		AA0D155713F3081F0067BA2A /* MKTableCellBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTableCellBadgeView.m; sourceTree = "<group>"; };
 		AA10A9D71385BCCB0091DCEC /* MKLoginSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKLoginSettingsViewController.h; sourceTree = "<group>"; };
 		AA10A9D81385BCCB0091DCEC /* MKLoginSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKLoginSettingsViewController.m; sourceTree = "<group>"; };
 		AA1B84E513AD9E7600B8CF6D /* MKBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBarButtonItem.h; sourceTree = "<group>"; };
@@ -236,8 +238,6 @@
 		AA2FBE4413444550002441C2 /* MKMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMacros.h; sourceTree = "<group>"; };
 		AA33055D13C3F082006B2D11 /* MKMaskIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMaskIconView.h; sourceTree = "<group>"; };
 		AA33055E13C3F082006B2D11 /* MKMaskIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMaskIconView.m; sourceTree = "<group>"; };
-		AA40E8F713A5C64B00643C6C /* MKTableCellBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTableCellBadge.h; sourceTree = "<group>"; };
-		AA40E8F813A5C64B00643C6C /* MKTableCellBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTableCellBadge.m; sourceTree = "<group>"; };
 		AA56A534128EDF0300E5DD5C /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		AA6330D9134415B900886CE3 /* MKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKViewController.h; sourceTree = "<group>"; };
 		AA6330DA134415B900886CE3 /* MKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKViewController.m; sourceTree = "<group>"; };
@@ -277,8 +277,8 @@
 		AAB4D1E013E86A700061A6BD /* MKPopOutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPopOutView.m; sourceTree = "<group>"; };
 		AAB4D1E313E884400061A6BD /* MKTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTitleView.h; sourceTree = "<group>"; };
 		AAB4D1E413E884400061A6BD /* MKTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTitleView.m; sourceTree = "<group>"; };
-		AAB4D1EF13E8C9810061A6BD /* MKElementAcentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKElementAcentView.h; sourceTree = "<group>"; };
-		AAB4D1F013E8C9810061A6BD /* MKElementAcentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKElementAcentView.m; sourceTree = "<group>"; };
+		AAB4D1EF13E8C9810061A6BD /* MKElementAccentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKElementAccentView.h; sourceTree = "<group>"; };
+		AAB4D1F013E8C9810061A6BD /* MKElementAccentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKElementAccentView.m; sourceTree = "<group>"; };
 		AABE3D551376CFE500ECC539 /* MKLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKLoginViewController.h; sourceTree = "<group>"; };
 		AABE3D561376CFE500ECC539 /* MKLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKLoginViewController.m; sourceTree = "<group>"; };
 		AABF4D8A13921A24001B547A /* MKIAPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKIAPViewController.h; sourceTree = "<group>"; };
@@ -408,8 +408,6 @@
 		AA02DDF312DAE2B7003B3560 /* MKTableCellTypes */ = {
 			isa = PBXGroup;
 			children = (
-				AA40E8F713A5C64B00643C6C /* MKTableCellBadge.h */,
-				AA40E8F813A5C64B00643C6C /* MKTableCellBadge.m */,
 				AA02DE0212DAE2B7003B3560 /* MKTableCellCheckBox.h */,
 				AA02DE0312DAE2B7003B3560 /* MKTableCellCheckBox.m */,
 				AA02DE0412DAE2B7003B3560 /* MKTableCellFeed.h */,
@@ -545,8 +543,10 @@
 			children = (
 				AA33055D13C3F082006B2D11 /* MKMaskIconView.h */,
 				AA33055E13C3F082006B2D11 /* MKMaskIconView.m */,
-				AAB4D1EF13E8C9810061A6BD /* MKElementAcentView.h */,
-				AAB4D1F013E8C9810061A6BD /* MKElementAcentView.m */,
+				AAB4D1EF13E8C9810061A6BD /* MKElementAccentView.h */,
+				AAB4D1F013E8C9810061A6BD /* MKElementAccentView.m */,
+				AA0D155613F3081F0067BA2A /* MKTableCellBadgeView.h */,
+				AA0D155713F3081F0067BA2A /* MKTableCellBadgeView.m */,
 			);
 			path = MKTableElements;
 			sourceTree = "<group>";
@@ -699,17 +699,17 @@
 				AABF4D9013921DA0001B547A /* MKIAPController.h in Headers */,
 				AABF4D9413921E1A001B547A /* MKTableCellIAP.h in Headers */,
 				AA06E09713927DA1000071C0 /* MKIAPObserver.h in Headers */,
-				AA40E8F913A5C64B00643C6C /* MKTableCellBadge.h in Headers */,
 				AA778BE413A8617E00AFF686 /* MKGraphics.h in Headers */,
 				AA1B84E713AD9E7700B8CF6D /* MKBarButtonItem.h in Headers */,
 				AA33055F13C3F082006B2D11 /* MKMaskIconView.h in Headers */,
 				AAB4D1E113E86A720061A6BD /* MKPopOutView.h in Headers */,
 				AAB4D1E513E884410061A6BD /* MKTitleView.h in Headers */,
-				AAB4D1F113E8C9810061A6BD /* MKElementAcentView.h in Headers */,
+				AAB4D1F113E8C9810061A6BD /* MKElementAccentView.h in Headers */,
 				AAA3BE8613EB932800594F55 /* MKTabbedViewController.h in Headers */,
 				AAA3BE8A13EB978E00594F55 /* MKTabbedView.h in Headers */,
 				AAA3BE8D13EBA12C00594F55 /* MKTabbedViewProtocols.h in Headers */,
 				AAA3BE9013EBB53700594F55 /* MKTabItem.h in Headers */,
+				AA0D155813F308200067BA2A /* MKTableCellBadgeView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -814,16 +814,16 @@
 				AABF4D8D13921A24001B547A /* MKIAPViewController.m in Sources */,
 				AABF4D9113921DA0001B547A /* MKIAPController.m in Sources */,
 				AABF4D9513921E1A001B547A /* MKTableCellIAP.m in Sources */,
-				AA40E8FA13A5C64B00643C6C /* MKTableCellBadge.m in Sources */,
 				AA778BE513A8617E00AFF686 /* MKGraphics.m in Sources */,
 				AA1B84E813AD9E7700B8CF6D /* MKBarButtonItem.m in Sources */,
 				AA33056013C3F082006B2D11 /* MKMaskIconView.m in Sources */,
 				AAB4D1E213E86A720061A6BD /* MKPopOutView.m in Sources */,
 				AAB4D1E613E884410061A6BD /* MKTitleView.m in Sources */,
-				AAB4D1F213E8C9810061A6BD /* MKElementAcentView.m in Sources */,
+				AAB4D1F213E8C9810061A6BD /* MKElementAccentView.m in Sources */,
 				AAA3BE8713EB932800594F55 /* MKTabbedViewController.m in Sources */,
 				AAA3BE8B13EB978E00594F55 /* MKTabbedView.m in Sources */,
 				AAA3BE9113EBB53700594F55 /* MKTabItem.m in Sources */,
+				AA0D155913F308200067BA2A /* MKTableCellBadgeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

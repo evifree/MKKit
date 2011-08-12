@@ -6,61 +6,9 @@
 //  Copyright 2011 Matt King. All rights reserved.
 //
 
-#import "MKTableCellBadge.h"
+#import "MKTableCellBadgeView.h"
 
-@implementation MKTableCellBadge
-
-@synthesize badgeText, badgeColor;
-
-- (id)initWithType:(MKTableCellType)type reuseIdentifier:(NSString *)reuseIdentifier {
-    self = [super initWithType:MKTableCellTypeNone reuseIdentifier:reuseIdentifier];
-    if (self) {
-        self.contentView.autoresizesSubviews = YES;
-        
-        mCellView = [[MKView alloc] initWithCell:self];
-        
-        CGRect labelRect = CGRectMake(10.0, 10.0, 170.0, 21.0);
-		
-		mTheLabel = [[UILabel alloc] initWithFrame:labelRect];
-        mTheLabel.backgroundColor = CLEAR;
-		mTheLabel.textAlignment = UITextAlignmentLeft;
-		mTheLabel.adjustsFontSizeToFitWidth = NO;
-		mTheLabel.minimumFontSize = 10.0;
-        mTheLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
-		
-        [mCellView addPrimaryElement:mTheLabel];
-        [mTheLabel release];
-        
-        [self.contentView addSubview:mCellView];
-        [mCellView release];
-    }
-    return self;
-}
- 
-#pragma mark - Accessor Methods
-
-- (void)setBadgeText:(NSString *)text {
-    CGRect rect = CGRectMake((320.0 - 125.0), 10.0, 100.0, 22.0);
-    
-    mBadgeCellView = [[MKBadgeCellView alloc] initWithFrame:rect];
-    [mCellView addSecondaryElement:mBadgeCellView inRect:mBadgeCellView.frame];
-    
-    mBadgeCellView.badgeText = text;
-}
-
-- (void)setBadgeColor:(UIColor *)color {
-    mBadgeCellView.badgeColor = color;
-}
- 
-#pragma mark - Memory Managment
-
-- (void)dealloc {
-    [super dealloc];
-}
-
-@end
-
-@implementation MKBadgeCellView
+@implementation MKTableCellBadgeView
 
 @synthesize badgeText, badgeColor;
 
@@ -72,7 +20,7 @@
         self.backgroundColor = CLEAR;
         self.alpha = 1.0;
         self.opaque = NO;
-     
+        
         mBadgeColor = GRAY.CGColor;
         
         mBadgeLabel = [[UILabel alloc] initWithFrame:self.frame];
@@ -92,7 +40,7 @@
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetAllowsAntialiasing(context, YES);
-
+    
     CGRect rrect = rect;
     
     CGMutablePathRef roundRectPath = createRoundedRectForRect(rrect, 10.0);

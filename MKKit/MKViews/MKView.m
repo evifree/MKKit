@@ -204,3 +204,63 @@
 }
 
 @end
+
+@implementation MKView (MKTableHeader)
+
+@dynamic titleLabel;
+
+UILabel *mTitleLabel;
+
+#pragma mark - Initalizers
+
+- (id)initWithTitle:(NSString *)title {
+    self = [super initWithFrame:CGRectMake(0.0, 0.0, 315.0, 31.0)];
+    if (self) {
+        self.backgroundColor = CLEAR;
+        
+        mTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 5.0, (MK_TEXT_WIDTH(title, VERDANA_BOLD(16.0))), 21.0)];
+        mTitleLabel.backgroundColor = CLEAR;
+        mTitleLabel.font = VERDANA_BOLD(16.0);
+        mTitleLabel.textColor = DARK_GRAY;
+        mTitleLabel.adjustsFontSizeToFitWidth = YES;
+        mTitleLabel.minimumFontSize = 12.0;
+        mTitleLabel.shadowColor = MK_COLOR_HSB(345.0, 2.0, 86.0, 1.0);
+        mTitleLabel.shadowOffset = CGSizeMake(0.0, 1.0);
+        mTitleLabel.text = title;
+        
+        [self addSubview:mTitleLabel];
+        [mTitleLabel release];
+    }
+    return self;
+}
+
++ (id)headerViewWithTitle:(NSString *)title {
+    [self release];
+    
+    MKView *view = [[MKView alloc] initWithTitle:title];
+    [view autorelease];
+    
+    return view;
+}
+
+#pragma mark - Accessor Methods
+
+#pragma mark Setters
+
+- (void)setTitleLabel:(UILabel *)label {
+    mTitleLabel = [label retain];
+}
+
+#pragma mark Getters
+
+- (UILabel *)titleLabel {
+    return mTitleLabel;
+}
+
+#pragma mark - Memory Managament
+
+- (void)dealloc {
+    [super dealloc];
+}
+
+@end

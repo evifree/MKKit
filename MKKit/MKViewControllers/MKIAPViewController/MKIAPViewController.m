@@ -145,7 +145,7 @@
         cell.theLabel.text = product.localizedTitle;
         cell.key = product.productIdentifier;
         ((MKTableCellIAP *)cell).IAPIdentifier = product.productIdentifier;
-        ((MKTableCellIAP *)cell).price = [string localCurencyFromNumber:product.price];
+        ((MKTableCellIAP *)cell).price = [string localCurrencyFromNumber:product.price];
         
         [string release];
     }

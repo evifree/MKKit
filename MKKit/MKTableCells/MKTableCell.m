@@ -8,7 +8,7 @@
 
 #import "MKTableCell.h"
 
-#import "MKTableCellTypes/MKTableCellBadge.h"
+#import "MKTableElements/MKTableCellBadgeView.h"
 
 @interface MKTableCell ()
 
@@ -23,7 +23,8 @@
 @synthesize delegate, type, theLabel=mTheLabel, smallLabel=mSmallLabel, key, accessoryViewType, 
             validationType=mValidationType, validating=mValidating, validator, icon,
             iconMask, validatorTestStringLength=mValidatorTestStringLength, accessoryIcon, 
-            recognizeLeftToRightSwipe, recognizeRightToLeftSwipe, recognizeLongPress, indexPath;
+            recognizeLeftToRightSwipe, recognizeRightToLeftSwipe, recognizeLongPress, indexPath,
+            primaryViewTrim;
 
 #pragma mark - Initalizer
 
@@ -35,6 +36,7 @@
         
         if (type != MKTableCellTypeNone) {
             mCellView = [[MKView alloc] initWithCell:self];
+            mCellView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
             [self.contentView addSubview:mCellView];
             [mCellView release];
         }
@@ -142,17 +144,6 @@
     [iconView release];
 }
 
-- (void)setAccentPrimaryView:(BOOL)accent {
-    if (accent) {
-        UIView *view = [mCellView viewWithTag:1];
-        
-        MKElementAcentView *accentView = [[MKElementAcentView alloc] initWithFrame:CGRectMake(0.0, 0.0, view.frame.size.width, self.frame.size.height)];
-        [self.contentView addSubview:accentView];
-        [self.contentView sendSubviewToBack:accentView];
-        [accentView release];
-    }
-}
-
 - (void)setValidationType:(MKValidationType)valType {
 	mValidationType = valType;
 	
@@ -186,6 +177,14 @@
     MKMaskIconView *iconView = [[MKMaskIconView alloc] initWithImage:lIconMask];
     [mCellView addIconElement:iconView];
     [iconView release];
+}
+
+- (void)setPrimaryViewTrim:(CGFloat)trim {
+    MKElementAccentView *view = (MKElementAccentView *)[self.contentView viewWithTag:kAccentViewTag];
+    view.frame = CGRectMake(view.x, view.y, (view.width - trim), view.height);
+    
+    UIView *textView = [mCellView viewWithTag:kPrimaryViewTag];
+    textView.frame = CGRectMake(textView.frame.origin.x, textView.frame.origin.y, (textView.frame.size.width - trim), textView.frame.size.height);
 }
 
 #pragma mark Gestures
@@ -253,7 +252,7 @@
 #pragma mark - Elements
 
 - (void)addBadgeWithText:(NSString *)text color:(UIColor *)color rect:(CGRect)rect {
-    MKBadgeCellView *badge = [[MKBadgeCellView alloc] initWithFrame:rect];
+    MKTableCellBadgeView *badge = [[MKTableCellBadgeView alloc] initWithFrame:rect];
     badge.badgeText = text;
     badge.badgeColor = color;
     
@@ -263,12 +262,13 @@
 
 #pragma mark - Appearance
 
-- (void)acentPrimaryViewForCellAtPostion:(MKTableCellPosition)position {
+- (void)accentPrimaryViewForCellAtPosition:(MKTableCellPosition)position {
     UIView *view = [mCellView viewWithTag:1];
     
-    MKElementAcentView *accentView = [[MKElementAcentView alloc] initWithFrame:CGRectMake(0.0, 0.0, (view.frame.size.width + 3.0), self.frame.size.height) position:position];
+    MKElementAccentView *accentView = [[MKElementAccentView alloc] initWithFrame:CGRectMake(0.0, 0.0, (view.frame.size.width + 3.0), self.frame.size.height) position:position];
     [self.contentView addSubview:accentView];
     [self.contentView sendSubviewToBack:accentView];
+    accentView.tag = kAccentViewTag;
     [accentView release];
     
     if (mTheLabel) {
@@ -279,6 +279,11 @@
         mTheLabel.shadowOffset = CGSizeMake(0.0, 1.0);
         mTheLabel.textAlignment = UITextAlignmentCenter;
     }
+}
+
+- (void)accentPrimaryViewForCellAtPosition:(MKTableCellPosition)position trim:(CGFloat)trim {
+    [self accentPrimaryViewForCellAtPosition:position];
+    self.primaryViewTrim = trim;
 }
 
 #pragma mark - Validation Methods
@@ -448,9 +453,9 @@ static bool mPinnedSecondaryElement = NO;
 #pragma mark - Layout
 
 - (void)layoutCell {
-    UIView *primaryElement = [self viewWithTag:1];
-    UIView *secondaryElement = [self viewWithTag:2];
-    UIView *iconElement = [self viewWithTag:3];
+    UIView *primaryElement = [self viewWithTag:kPrimaryViewTag];
+    UIView *secondaryElement = [self viewWithTag:kSecondaryViewTag];
+    UIView *iconElement = [self viewWithTag:kIconViewTag];
     
     if (primaryElement) {
         primaryElement.frame = CGRectMake(kCellPrimaryElementX, kCellPrimaryElementY, kCellPrimaryElementyWidth, kCellSecondaryElementHeight);
@@ -491,7 +496,7 @@ static bool mPinnedSecondaryElement = NO;
 #pragma mark - Adding Elements
 
 - (void)addPrimaryElement:(UIView *)element {
-    element.tag = 1;
+    element.tag = kPrimaryViewTag;
     element.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
     
     [self addSubview:element];
@@ -499,7 +504,7 @@ static bool mPinnedSecondaryElement = NO;
 }
 
 - (void)addSecondaryElement:(UIView *)element {
-    element.tag = 2;
+    element.tag = kSecondaryViewTag;
     element.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
     
     [self addSubview:element];
@@ -509,7 +514,7 @@ static bool mPinnedSecondaryElement = NO;
 - (void)addSecondaryElement:(UIView *)element inRect:(CGRect)rect {
     self.pinnedSecondaryElement = YES;
     
-    element.tag = 2;
+    element.tag = kSecondaryViewTag;
     element.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
     
     [self addSubview:element];
@@ -517,22 +522,11 @@ static bool mPinnedSecondaryElement = NO;
 }
 
 - (void)addIconElement:(UIView *)element {
-    element.tag = 3;
+    element.tag = kIconViewTag;
     element.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
     
     [self addSubview:element];
     [self layoutCell];
-}
-
-#pragma mark - Appearance
-
-- (void)accentPrimaryView {
-    UIView *view = [self viewWithTag:1];
-    
-    MKElementAcentView *accentView = [[MKElementAcentView alloc] initWithFrame:view.frame];
-    [self addSubview:accentView];
-    [self sendSubviewToBack:accentView];
-    [accentView release];
 }
 
 @end

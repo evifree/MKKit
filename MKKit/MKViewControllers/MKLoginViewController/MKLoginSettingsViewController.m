@@ -39,6 +39,7 @@
     [super viewDidLoad];
 
     self.title = @"PIN Settings";
+    self.tableView.backgroundColor = LIGHT_GRAY;
 }
 
 - (void)viewDidUnload {
@@ -93,26 +94,6 @@
     return rows;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	NSString *title = nil;
-	
-	switch (section) {
-		case 0:
-			title = @"Change Pin";
-			break;
-		case 1:
-			title = @"Challenge Question";
-			break;
-        default:
-			break;
-	}
-	return title;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 41.0;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MKTableCell *cell = nil;
     
@@ -132,23 +113,26 @@
         if (indexPath.row == 0) {
             cell.key = CURRENT_PIN;
             ((MKTableCellTextEntry *)cell).theTextField.placeholder = @"Current PIN";
-            cell.theLabel.text = @"Current PIN:";
+            cell.theLabel.text = @"Current";
             cell.validationType = MKValidateIsaSetLength;
             cell.validatorTestStringLength = 4;
+            [cell accentPrimaryViewForCellAtPosition:MKTableCellPositionTop];
         }
         if (indexPath.row == 1) {
             cell.key = NEW_PIN;
             ((MKTableCellTextEntry *)cell).theTextField.placeholder = @"New PIN";
-            cell.theLabel.text = @"New PIN:";
+            cell.theLabel.text = @"New";
             cell.validationType = MKValidateIsaSetLength;
             cell.validatorTestStringLength = 4;
+            [cell accentPrimaryViewForCellAtPosition:MKTableCellPositionMiddle];
         }
         if (indexPath.row == 2) {
             cell.key = CONFIRM_PIN;
             ((MKTableCellTextEntry *)cell).theTextField.placeholder = @"Confirm PIN";
-            cell.theLabel.text = @"Confirm PIN:";
+            cell.theLabel.text = @"Confirm";
             cell.validationType = MKValidateIsaSetLength;
             cell.validatorTestStringLength = 4;
+            [cell accentPrimaryViewForCellAtPosition:MKTableCellPositionBottom];
         }
     }
     
@@ -161,8 +145,9 @@
                 ((MKTableCellPickerControlled *)cell).pickerType = MKTableCellPickerTypeStandard;
                 ((MKTableCellPickerControlled *)cell).pickerArray = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Questions" ofType:@"plist"]];
             }
-            cell.theLabel.text = @"Question:";
+            cell.theLabel.text = @"Question";
             cell.key = CHALLENGE_QUESTION;
+            [cell accentPrimaryViewForCellAtPosition:MKTableCellPositionTop];
         }
         if (indexPath.row == 1) {
             cell = (MKTableCellTextEntry *)[tableView dequeueReusableCellWithIdentifier:TextIdentifier];
@@ -172,9 +157,10 @@
             }
             cell.key = CHALLENGE_ANSWER;
             cell.validationType = MKValidateHasLength;
-            cell.theLabel.text = @"Answer:";
+            cell.theLabel.text = @"Answer";
             
-            ((MKTableCellTextEntry *)cell).theTextField.placeholder = @"Answer";            
+            ((MKTableCellTextEntry *)cell).theTextField.placeholder = @"Answer"; 
+            [cell accentPrimaryViewForCellAtPosition:MKTableCellPositionBottom];
         }
     }
     
@@ -186,6 +172,26 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    MKView *view = nil;
+    
+    switch (section) {
+        case 0:
+            view = [MKView headerViewWithTitle:@"Change PIN"];
+            break;
+        case 1:
+            view = [MKView headerViewWithTitle:@"Challenge Question"];
+        default:
+            break;
+    }
+    
+    return view;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 32.0;
 }
 
 #pragma mark MKTableCell

@@ -36,6 +36,8 @@
         
         [self addSubview:titleLabel];
         [titleLabel release];
+        
+        mShouldRemoveView = NO;
     }
     return self;
 }
@@ -62,6 +64,8 @@
         self.alpha = 1.0;
         
         mImage = [icon retain];
+        
+        mShouldRemoveView = NO;
     }
     return self;
 }

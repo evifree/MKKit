@@ -10,8 +10,6 @@
 
 @implementation MKMaskIconView
 
-UIImage *lImage = nil;
-
 #pragma mark - Initalizer
 
 - (id)initWithImage:(UIImage *)image {
@@ -21,7 +19,7 @@ UIImage *lImage = nil;
         self.opaque = NO;
         self.alpha = 1.0;
         
-        lImage = image;
+        mImage = [image retain];
     }
     return self;
 }
@@ -38,7 +36,7 @@ UIImage *lImage = nil;
     CGContextSaveGState(context);
     CGContextTranslateCTM(context, 0.0, rect.size.height);
     CGContextScaleCTM(context, 1.0, -1.0);
-    CGContextClipToMask(context, rect, lImage.CGImage);
+    CGContextClipToMask(context, rect, mImage.CGImage);
     drawLinearGradient(context, rect, bottomColor, topColor);
     CGContextRestoreGState(context);
 }
@@ -46,8 +44,7 @@ UIImage *lImage = nil;
 #pragma mark - Memory Managment
 
 - (void)dealloc {
-    lImage = nil;
-    [lImage release];
+    [mImage release];
     
     [super dealloc];
 }

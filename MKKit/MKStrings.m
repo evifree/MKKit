@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 1/15/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010 Matt King. All rights reserved.
 //
 
 #import "MKStrings.h"
@@ -28,7 +28,7 @@
 #pragma mark --
 #pragma mark Number String
 
-- (NSString *)localCurencyFromNumber:(NSNumber *)number {
+- (NSString *)localCurrencyFromNumber:(NSNumber *)number {
 	NSString *aString = nil;
 	
 	NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
@@ -38,6 +38,21 @@
 	aString = [numberFormatter stringFromNumber:number];
 	
 	[numberFormatter release];	
+	
+	return aString;
+}
+
++ (NSString *)localCurrencyWithNumber:(NSNumber *)number {
+    NSString *aString = nil;
+	
+	NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+	[numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
+	[numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+	[numberFormatter setLocale:[NSLocale currentLocale]];
+	aString = [numberFormatter stringFromNumber:number];
+	
+	[numberFormatter release];	
+    [self autorelease];
 	
 	return aString;
 }

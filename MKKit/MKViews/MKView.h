@@ -105,3 +105,40 @@ typedef enum {
 @property (nonatomic, assign) id<MKViewDelegate> delegate;
 
 @end
+
+/**-----------------------------------------------------------------------
+ This category makes a clone of the iOS Grouped table section header. With 
+ this class you have control of the UILabel instance, not just the text. 
+------------------------------------------------------------------------*/
+@interface MKView (MKTableHeader) 
+
+///---------------------------------------------
+/// @name Creating
+///---------------------------------------------
+
+/**
+ Returns an instace of MKView sized for a grouped table header.
+ 
+ @param title the text that will display on the header.
+ 
+ @param MKView instance
+*/
+- (id)initWithTitle:(NSString *)title;
+
+/**
+ Returns an instace of MKView sized for a grouped table header.
+ 
+ @param title the text that will display on the header.
+ 
+ @param MKView instance
+*/
++ (id)headerViewWithTitle:(NSString *)title;
+
+///---------------------------------------------
+/// @name View Elements
+///---------------------------------------------
+
+/** The UILabel instance that is displayed on the view */
+@property (nonatomic, retain) UILabel *titleLabel;
+
+@end

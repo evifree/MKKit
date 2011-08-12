@@ -18,9 +18,11 @@
 #import <MKKit/MKKit/MKStrings.h>
 
 #import "MKTableElements/MKMaskIconView.h"
-#import "MKTableElements/MKElementAcentView.h"
+#import "MKTableElements/MKElementAccentView.h"
 
 #import "MKTableCellDelegate.h"
+
+static const int kAccentViewTag = 1;
 
 typedef enum {
 	MKTableCellTypeNone,
@@ -168,10 +170,25 @@ typedef enum {
  Accents the primary view of the cell by drawing a background gradient onto it.
  
  @param position the postion of the table cell `MKTableCellPositionTop, MKTableCellPositionMiddle,
- MKTablePositionBottom`. If you are using a plain table view style pass `MKTableCellMiddle` for all 
- cells.
+ MKTableCellPositionBottom`, or `MKTableCellPositionSingleCell`. If you are using a plain table 
+ view style pass `MKTableCellMiddle` for all cells.
 */
-- (void)acentPrimaryViewForCellAtPostion:(MKTableCellPosition)position;
+- (void)accentPrimaryViewForCellAtPosition:(MKTableCellPosition)position;
+
+/**
+ Accents the primary view of the cell by drawing a background gradient onto it, and trims
+ the views width by the given amount.
+ 
+ @param position the postion of the table cell `MKTableCellPositionTop, MKTableCellPositionMiddle,
+ MKTableCellPositionBottom`, or `MKTableCellPositionSingleCell`. If you are using a plain table 
+ view style pass `MKTableCellMiddle` for all cells.
+ 
+ @param trim how much to trim off the width of the the accent view.
+ */
+- (void)accentPrimaryViewForCellAtPosition:(MKTableCellPosition)position trim:(CGFloat)trim;
+
+/** The ammount to trim a accent view by */
+@property (nonatomic, assign) CGFloat primaryViewTrim;
 
 ///---------------------------------------------------------------------------------------
 /// @name Input Validation
@@ -281,6 +298,10 @@ static const CGFloat kCellSecondaryElementY         = 7.0;
 static const CGFloat kCellSecondaryElementWidth     = 191.0;
 static const CGFloat kCellSecondaryElementHeight    = 30.0;
 
+static const int kPrimaryViewTag                    = 1;
+static const int kSecondaryViewTag                  = 2;
+static const int kIconViewTag                       = 3;
+
 /**--------------------------------------------------------------------------
  This catagory of MKView provides a standard layout for MKTableCell objects.
 ---------------------------------------------------------------------------*/
@@ -349,12 +370,6 @@ static const CGFloat kCellSecondaryElementHeight    = 30.0;
  */
 - (void)addIconElement:(UIView *)element;
 
-///------------------------------------
-/// @name Apearance
-///------------------------------------
-
-- (void)accentPrimaryView;
-
 @end
 
 /**----------------------------------------------------------------------------
@@ -364,7 +379,12 @@ static const CGFloat kCellSecondaryElementHeight    = 30.0;
 
 @interface MKPopOutView (MKTableCell)
 
-@property (nonatomic, retain) NSIndexPath *aIndexPath;
+///------------------------------------------------------
+/// @name Identifing
+///------------------------------------------------------
+
+/** The index path of the cell showing the pop out view */
+@property (nonatomic, retain, readonly) NSIndexPath *aIndexPath;
 
 ///-------------------------------------------------------
 /// @name Displaying
