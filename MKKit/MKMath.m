@@ -26,7 +26,7 @@
 	NSInteger count = [anArray count];
 	NSDecimalNumber *sum = [NSDecimalNumber zero];
 	
-	for (int i; i < count; i++) {
+	for (int i = 0; i < count; i++) {
 		NSDecimalNumber *next = [anArray objectAtIndex:i];
 		sum = [sum decimalNumberByAdding:next];
 	}

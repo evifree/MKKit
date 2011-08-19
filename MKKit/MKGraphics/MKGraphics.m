@@ -135,6 +135,7 @@ void drawCurvedGloss(CGContextRef context, CGRect rect, CGFloat radius) {
     CGColorRef glossEnd = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.1].CGColor;
     
     CGMutablePathRef glossPath = CGPathCreateMutable();
+    CGMutablePathRef roundRect = createRoundedRectForRect(rect, 6.0f);
     
     CGContextSaveGState(context);
     CGPathMoveToPoint(glossPath, NULL, CGRectGetMidX(rect), CGRectGetMinY(rect)-radius+rect.size.height/2);
@@ -142,7 +143,7 @@ void drawCurvedGloss(CGContextRef context, CGRect rect, CGFloat radius) {
     CGPathCloseSubpath(glossPath);
     CGContextAddPath(context, glossPath);
     CGContextClip(context);
-    CGContextAddPath(context, createRoundedRectForRect(rect, 6.0f));
+    CGContextAddPath(context, roundRect);
     CGContextClip(context);
     
     CGRect half = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height/2);    
@@ -151,6 +152,7 @@ void drawCurvedGloss(CGContextRef context, CGRect rect, CGFloat radius) {
     CGContextRestoreGState(context);
     
     CFRelease(glossPath);
+    CFRelease(roundRect);
 }
 
 void drawLinearGloss(CGContextRef context, CGRect rect) {

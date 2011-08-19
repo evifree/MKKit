@@ -552,7 +552,7 @@ NSIndexPath *mIndexPath = nil;
 - (void)showFromCell:(MKTableCell *)cell onView:(UITableView *)tableView {
     CGRect cellRect = [tableView rectForRowAtIndexPath:cell.indexPath];
     mAnimationType = MKViewAnimationTypeFadeIn;
-    self.aIndexPath = [cell.indexPath retain];
+    self.aIndexPath = cell.indexPath;
     
     if (mType != MKPopOutAuto) {
         mAutoType = mType;

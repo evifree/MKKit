@@ -112,7 +112,7 @@
     
     CGSize size = [message sizeWithFont:[UIFont boldSystemFontOfSize:14.0] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
     
-    CGRect frameRect;
+    CGRect frameRect = CGRectZero;
     
     if (![[UIApplication sharedApplication] isStatusBarHidden]) {
         frameRect = CGRectMake(0.0, (0.0 + STATUS_BAR_HEIGHT), IPHONE_WIDTH, (INPUT_MESSAGE_TOP_MARGIN + MAX(size.height, 21.0) + INPUT_MESSAGE_BOTTOM_MARGIN));

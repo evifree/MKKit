@@ -25,8 +25,9 @@ void drawRoundRectButton(CGContextRef context, CGRect rect);
 
 static CGColorRef mTintColor = nil; 
 static CGFloat mFontSize = 14.0;
-static bool mHighlighted = NO;
-static bool mWorking = NO;
+
+bool mHighlighted = NO;
+bool lWorking = NO;
 
 #pragma mark - Initalizer
 
@@ -197,12 +198,14 @@ void drawIAPButton(CGContextRef context, CGRect rect) {
     CGColorRef innerBottom;
         
     CGColorRef blackColor = BLACK.CGColor;
-        
-    if (!mWorking) {
+    
+    NSLog(@"Draw %i", lWorking);
+    
+    if (!lWorking) {
         innerTop = MK_COLOR_HSB(224.0, 57.0, 70.0, 1.0).CGColor;
         innerBottom = MK_COLOR_HSB(224.0, 57.0, 67.0, 1.0).CGColor;
     }
-    else if (mWorking) {
+    else if (lWorking) {
         innerTop = MK_COLOR_HSB(127.0, 84.0, 70.0, 1.0).CGColor;
         innerBottom = MK_COLOR_HSB(127.0, 84.0, 67.0, 1.0).CGColor;
     }
@@ -314,15 +317,23 @@ void drawRoundRectButton(CGContextRef context, CGRect rect) {
         
     mButtonLabel.frame = CGRectMake(20.0, 4.5, [self widthForTitle:mButtonText], 21.0);
     mButtonLabel.text = mButtonText;
+    
+    //if (mType == MKButtonTypeIAP) {
+     //   if ([buttonText isEqualToString:@"Installing"]) {
+     //       mWorking = YES;
+     //   }
+    //}
         
     [self setNeedsDisplayInRect:CGRectMake(x, minY, width, height)];
     
     [mButtonText release];
 }
 
-- (void)setWorking:(BOOL)working {
-    [super setWorking:working];
-    mWorking = working;
+- (void)setWorking:(BOOL)isWorking {
+    [super setWorking:isWorking];
+    lWorking = isWorking;
+    NSLog(@"%i", lWorking);
+    
     [self setNeedsDisplay];
 }
 
@@ -358,8 +369,8 @@ void drawRoundRectButton(CGContextRef context, CGRect rect) {
     self.highlighted = NO;
     
     if (mType == MKButtonTypeIAP) {
-        self.working = YES;
         self.buttonText = @"Installing";
+        self.working = YES;
     }
     else {
         [self setNeedsDisplay];

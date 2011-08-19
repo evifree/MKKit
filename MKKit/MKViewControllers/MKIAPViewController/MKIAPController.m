@@ -10,9 +10,9 @@
 
 @interface MKIAPController ()
 
-- (id)initWithIdentifiers:(NSSet *)identifiers response:(MKProductResponseBlock)response;
-- (id)initWithIdentifiers:(NSSet *)identifiers completion:(MKPurchaseCompletionBlock)completion;
-- (id)initWithCompletion:(MKRestoreCompletionBlock)completion;
+//- (id)initWithIdentifiers:(NSSet *)identifiers response:(MKProductResponseBlock)response;
+//- (id)initWithIdentifiers:(NSSet *)identifiers completion:(MKPurchaseCompletionBlock)completion;
+//- (id)initWithCompletion:(MKRestoreCompletionBlock)completion;
 
 - (void)completeTransaction:(SKPaymentTransaction *)transaction;
 - (void)restoreTransaction:(SKPaymentTransaction *)transaction;
@@ -34,6 +34,7 @@
     return  self;
 }
 
+/*
 - (id)initWithIdentifiers:(NSSet *)identifiers response:(MKProductResponseBlock)response {
     self = [super init];
     if (self) {
@@ -70,20 +71,24 @@
     }
     return self;
 }
+*/
 
 #pragma mark - Requests
 
 + (void)productsRequestWithIdentifiers:(NSSet *)identifiers response:(MKProductResponseBlock)response {
     [self release];
     
-    [[self alloc] initWithIdentifiers:identifiers response:response];
+    MKIAPController *controller = [[MKIAPController alloc] init];
+    controller.productResponse = response;
+    [controller productsRequestWithIdentifiers:identifiers];
+    [controller autorelease];
 }
 
 - (void)productsRequestWithIdentifiers:(NSSet *)identifiers {
     mIsPurchaseRequest = NO;
     
     SKProductsRequest *request = [[[SKProductsRequest alloc] initWithProductIdentifiers:identifiers] autorelease];
-    request.delegate = self;
+    request.delegate = [self retain];
     [request start];
 }
 
@@ -92,14 +97,18 @@
 + (void)purchaseRequestWithIdentifiers:(NSSet *)identifiers completion:(MKPurchaseCompletionBlock)completion {
     [self release];
     
-    [[self alloc] initWithIdentifiers:identifiers completion:completion];
+    MKIAPController *controller = [[MKIAPController alloc] init];
+    controller.purchaseCompleteBlock = completion;
+    [controller purchaseRequestWithIdentifiers:identifiers];
+    [controller autorelease];
+
 }
 
 - (void)purchaseRequestWithIdentifiers:(NSSet *)identifiers {
     mIsPurchaseRequest = YES;
     
     SKProductsRequest *request = [[[SKProductsRequest alloc] initWithProductIdentifiers:identifiers] autorelease];
-    request.delegate = self;
+    request.delegate = [self retain];
     [request start];
 }
 
@@ -108,7 +117,10 @@
 + (void)restorePurchase:(MKRestoreCompletionBlock)completion {
     [self release];
     
-    [[self alloc] initWithCompletion:completion];
+    MKIAPController *controller = [[MKIAPController alloc] init];
+    controller.restoreCompleteBlock = completion;
+    [controller restorePurchases];
+    [controller autorelease];
 }
 
 - (void)restorePurchases {
@@ -228,6 +240,10 @@
 
 - (void)dealloc {
     [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
+    
+    [productResponse release];
+    [purchaseCompleteBlock release];
+    [restoreCompleteBlock release];
     
     [super dealloc];
 }

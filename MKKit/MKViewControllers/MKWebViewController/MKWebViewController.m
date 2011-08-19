@@ -54,6 +54,10 @@
     [mURLRequest release];
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+}
+
 #pragma mark - actions
 
 - (void)done:(id)sender {

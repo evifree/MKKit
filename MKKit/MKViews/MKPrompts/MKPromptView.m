@@ -71,10 +71,10 @@
 #pragma mark - Drawing 
 
 - (void)drawRect:(CGRect)rect {
-    CGColorRef startColor;
-    CGColorRef endColor;
-    CGColorRef textColor;
-    CGColorRef indentColor;
+    CGColorRef startColor = CLEAR.CGColor;
+    CGColorRef endColor = CLEAR.CGColor;
+    CGColorRef textColor = CLEAR.CGColor;
+    CGColorRef indentColor = CLEAR.CGColor;
     
     if (mType == MKPromptTypeRed) {
         startColor = MK_COLOR_HSB(360.0, 98.0, 65.0, 1.0).CGColor;
@@ -140,7 +140,7 @@
     
     CGSize size = [message sizeWithFont:[UIFont boldSystemFontOfSize:14.0] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
     
-    CGRect frameRect;
+    CGRect frameRect = CGRectZero;
     
     if (![[UIApplication sharedApplication] isStatusBarHidden]) {
         frameRect = CGRectMake(0.0, (0.0 + STATUS_BAR_HEIGHT), IPHONE_WIDTH, (MESSAGE_TOP_MARGIN + MAX(size.height, 21.0) + MESSAGE_BOTTOM_MARGIN));
