@@ -11,7 +11,6 @@
 #import <MKKit/MKKit/MKControls/MKContolHeaders.h>
 #import <MKKit/MKKit/MKErrorContol/MKInputValidation.h>
 #import <MKKit/MKKit/MKErrorContol/MKValidator.h>
-#import <MKKit/MKKit/MKViews/MKViewHeader.h>
 
 #import <MKKit/MKKit/MKDeffinitions.h>
 #import <MKKit/MKKit/MKMacros.h>
@@ -22,7 +21,31 @@
 
 #import "MKTableCellDelegate.h"
 
-static const int kAccentViewTag = 1;
+static const int kPrimaryViewTag                    = 1;
+static const int kSecondaryViewTag                  = 2;
+static const int kIconViewTag                       = 3;
+static const int kAccentViewTag                     = 4;
+static const int kBadgeViewTag                      = 5;
+
+static const CGFloat kBadgeTextPadding              = 20.0;
+static const CGFloat kBadgeTextFontSize             = 12.0;
+static const CGFloat kBadgeHeight                   = 22.0;
+static const CGFloat kBadgeY                        = 10.0;
+static const CGFloat kBadgeX                        = 280.0;
+static const CGFloat kBadgeXWidthAdjustment         = 30.0;
+
+static const CGFloat kCellIconRectX                 = 10.0;
+static const CGFloat kCellIconRectY                 = 7.0;
+static const CGFloat kCellIconRectWidth             = 30.0;
+static const CGFloat kCellIconRectHeight            = 30.0;
+static const CGFloat kCellPrimaryElementX           = 7.0;
+static const CGFloat kCellPrimaryElementY           = 7.0;
+static const CGFloat kCellPrimaryElementyWidth      = 294.0;
+static const CGFloat kCellPrimaryElementHeight      = 30.0;
+static const CGFloat kCellSecondaryElementX         = 115.0;
+static const CGFloat kCellSecondaryElementY         = 7.0;
+static const CGFloat kCellSecondaryElementWidth     = 191.0;
+static const CGFloat kCellSecondaryElementHeight    = 30.0;
 
 typedef enum {
 	MKTableCellTypeNone,
@@ -39,10 +62,17 @@ typedef enum {
 	MKTableCellAccessoryWarningIcon,
 } MKTableCellAccessoryViewType;
 
+typedef struct {
+    CGColorRef color;
+    CFStringRef text;
+} MKTableCellBadge;
+
+MKTableCellBadge MKTableCellBadgeMake(CGColorRef color, CFStringRef text);
+
 @protocol MKTableCellDelegate;
 @protocol MKInputValidation;
 
-@class MKBadgeCellView;
+@class MKBadgeCellView, MKView;
 
 /**-------------------------------------------------------------------------------------
  An MKTableCell is a subclass UITableViewCell. MKTableCell is designed as a superClass for 
@@ -72,6 +102,7 @@ typedef enum {
 @interface MKTableCell : UITableViewCell {
 	id delegate;
     id validator;
+    NSString *mKey;
     
 	MKTableCellType type;
 	MKTableCellAccessoryViewType accessoryViewType;
@@ -150,6 +181,12 @@ typedef enum {
 
 /** An imaged to be masked. The masking is completed by the MKMaskIconView */
 @property (nonatomic, retain) UIImage *iconMask;
+
+/** A bagde that is displayed on the left hand side of the cell. A badge can
+ be created by using the `MKTableCellBadgeMake(CGColorRef color, CFStringRef text)`
+ function
+*/
+@property (nonatomic, assign) MKTableCellBadge badge;
 
 /**
  Adds a badge to the cell.
@@ -284,23 +321,6 @@ typedef enum {
 - (id)initWithImage:(UIImage *)image;
 
 @end
-
-static const CGFloat kCellIconRectX                 = 10.0;
-static const CGFloat kCellIconRectY                 = 7.0;
-static const CGFloat kCellIconRectWidth             = 30.0;
-static const CGFloat kCellIconRectHeight            = 30.0;
-static const CGFloat kCellPrimaryElementX           = 7.0;
-static const CGFloat kCellPrimaryElementY           = 7.0;
-static const CGFloat kCellPrimaryElementyWidth      = 294.0;
-static const CGFloat kCellPrimaryElementHeight      = 30.0;
-static const CGFloat kCellSecondaryElementX         = 115.0;
-static const CGFloat kCellSecondaryElementY         = 7.0;
-static const CGFloat kCellSecondaryElementWidth     = 191.0;
-static const CGFloat kCellSecondaryElementHeight    = 30.0;
-
-static const int kPrimaryViewTag                    = 1;
-static const int kSecondaryViewTag                  = 2;
-static const int kIconViewTag                       = 3;
 
 /**--------------------------------------------------------------------------
  This catagory of MKView provides a standard layout for MKTableCell objects.

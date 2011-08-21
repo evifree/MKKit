@@ -153,6 +153,8 @@
 #pragma mark - Memory Management
 
 - (void)dealloc {
+    [mOnDoneBlock release];
+    
     [super dealloc];
 }
 

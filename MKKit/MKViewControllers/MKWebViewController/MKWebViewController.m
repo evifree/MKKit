@@ -56,6 +56,19 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
+    
+    MKWebView *webView = (MKWebView *)[self view];
+    
+    [webView->bottomBar removeFromSuperview];
+    
+    [self.view removeFromSuperview];
+    self.view = nil;
+}
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
+    
+    NSLog(@"Unload");
 }
 
 #pragma mark - actions
@@ -130,14 +143,14 @@
         MKBarButtonItem *backItem = [[MKBarButtonItem alloc] initWithType:MKBarButtonItemBackArrow];
         [backItem completedAction: ^ (MKAction action) {
             if (action == MKActionTouchUp) {
-                [self back:backItem];
+                [mWebView goBack];
             }
         }];
         
         MKBarButtonItem *forwardItem = [[MKBarButtonItem alloc] initWithType:MKBarButtonItemForwardArrow];
         [forwardItem completedAction: ^ (MKAction action) {
             if (action == MKActionTouchUp) {
-                [self forward:forwardItem];
+                [mWebView goForward];
             }
         }];
         
@@ -160,7 +173,7 @@
         [space release];
         [done release];
         
-        UIToolbar *bottomBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0, (self.frame.size.height - 34.0), self.frame.size.width, 34.0)];
+        bottomBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0, (self.frame.size.height - 34.0), self.frame.size.width, 34.0)];
         bottomBar.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
         bottomBar.tintColor = [UIColor grayColor];
         [bottomBar setItems:items];
@@ -210,6 +223,8 @@
 #pragma mark - Memory Managment
 
 - (void)dealloc {
+    NSLog(@"Dealloc");
+    
     [super dealloc];
 }
 

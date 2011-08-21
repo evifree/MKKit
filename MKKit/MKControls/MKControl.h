@@ -14,7 +14,7 @@
 #import "MKControlDelegate.h"
 
 typedef void (^MKActionBlock)(MKAction action);
-
+ 
 @protocol MKControlDelegate;
 
 /**---------------------------------------------------------------------------------------------
@@ -25,6 +25,13 @@ typedef void (^MKActionBlock)(MKAction action);
 @interface MKControl : UIControl {
     id mDelegate;
     BOOL mWorking;
+
+@private
+    NSMutableSet *mTargets;
+    struct {
+        bool blockUsage;
+        bool targetUsage;
+    } mControlUsageFlags;
 }
 
 ///---------------------------------------------------------
@@ -45,6 +52,17 @@ typedef void (^MKActionBlock)(MKAction action);
  * `MKActionTouchUp` : a touch up action.
 */
 - (void)completedAction:(MKActionBlock)actionBlock;
+
+/**
+ Sets the target and callback method to perform after an action takes place.
+ 
+ @param target the object to send the message to.
+ 
+ @param selector the selector to call.
+ 
+ @param action the action to listen for.
+*/
+- (void)addTarget:(id)target selector:(SEL)selector action:(MKAction)controlAction;
 
 ///---------------------------------------------------------
 /// @name Control States
@@ -68,3 +86,12 @@ typedef void (^MKActionBlock)(MKAction action);
 @property (nonatomic, copy) MKActionBlock action;
 
 @end
+
+@interface MKControlTarget : NSObject
+
+@property (nonatomic, assign) id target;
+@property (nonatomic, assign) SEL selector;
+@property (nonatomic, assign) MKAction action;
+
+@end
+

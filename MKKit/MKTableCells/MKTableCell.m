@@ -18,13 +18,26 @@
 
 @end
 
+#pragma mark - Functions
+
+MKTableCellBadge iBadge;
+
+MKTableCellBadge MKTableCellBadgeMake(CGColorRef color, CFStringRef text) {
+    iBadge.color = color;
+    iBadge.text = text;
+    
+    return iBadge;
+}
+
+#pragma mark -
+
 @implementation MKTableCell
 
-@synthesize delegate, type, theLabel=mTheLabel, smallLabel=mSmallLabel, key, accessoryViewType, 
+@synthesize delegate, type, theLabel=mTheLabel, smallLabel=mSmallLabel, key=mKey, accessoryViewType, 
             validationType=mValidationType, validating=mValidating, validator, icon,
             iconMask, validatorTestStringLength=mValidatorTestStringLength, accessoryIcon, 
             recognizeLeftToRightSwipe, recognizeRightToLeftSwipe, recognizeLongPress, indexPath,
-            primaryViewTrim;
+            primaryViewTrim, badge;
 
 #pragma mark - Initalizer
 
@@ -108,6 +121,7 @@
 }
 	
 #pragma mark - Accessor Methods
+#pragma mark Accessories
 
 - (void)setAccessoryViewType:(MKTableCellAccessoryViewType)aType {
 	if (aType == MKTableCellAccessoryNone) {
@@ -135,14 +149,12 @@
 
 - (void)setAccessoryIcon:(UIImage *)lIcon {
     MKControl *iconView = [[MKControl alloc] initWithImage:lIcon];
-    [iconView completedAction: ^ (MKAction action) {
-        if (action == MKActionTouchDown) {
-            [self accessoryButton:iconView];
-        }
-    }];
+    [iconView addTarget:self selector:@selector(accessoryButton:) action:MKActionTouchDown];
     self.accessoryView = iconView;
     [iconView release];
 }
+
+#pragma mark Validation
 
 - (void)setValidationType:(MKValidationType)valType {
 	mValidationType = valType;
@@ -165,6 +177,8 @@
     }
 }
 
+#pragma mark Icons
+
 - (void)setIcon:(UIImage *)anImage {
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     imageView.image = anImage;
@@ -179,12 +193,33 @@
     [iconView release];
 }
 
+#pragma mark Accents
+
 - (void)setPrimaryViewTrim:(CGFloat)trim {
     MKElementAccentView *view = (MKElementAccentView *)[self.contentView viewWithTag:kAccentViewTag];
     view.frame = CGRectMake(view.x, view.y, (view.width - trim), view.height);
     
     UIView *textView = [mCellView viewWithTag:kPrimaryViewTag];
     textView.frame = CGRectMake(textView.frame.origin.x, textView.frame.origin.y, (textView.frame.size.width - trim), textView.frame.size.height);
+}
+
+- (void)setBadge:(MKTableCellBadge)aBadge {
+    UIView *view = (UIView *)[mCellView viewWithTag:kBadgeViewTag];
+    
+    if (view) {
+        [view removeFromSuperview];
+    }
+    
+    CGSize width = [(NSString *)aBadge.text sizeWithFont:SYSTEM_BOLD(kBadgeTextFontSize)];
+    CGRect rect = CGRectMake((kBadgeX - width.width - kBadgeXWidthAdjustment), kBadgeY, (width.width + kBadgeTextPadding), kBadgeHeight);
+    
+    MKTableCellBadgeView *badgeView = [[MKTableCellBadgeView alloc] initWithFrame:rect];
+    badgeView.badgeText = (NSString *)aBadge.text;
+    badgeView.badgeColor = [UIColor colorWithCGColor:aBadge.color];
+    badgeView.tag = kBadgeViewTag;
+    
+    [mCellView addSubview:badgeView];
+    [badgeView release];
 }
 
 #pragma mark Gestures
@@ -252,18 +287,30 @@
 #pragma mark - Elements
 
 - (void)addBadgeWithText:(NSString *)text color:(UIColor *)color rect:(CGRect)rect {
-    MKTableCellBadgeView *badge = [[MKTableCellBadgeView alloc] initWithFrame:rect];
-    badge.badgeText = text;
-    badge.badgeColor = color;
+    UIView *view = (UIView *)[mCellView viewWithTag:kBadgeViewTag];
     
-    [mCellView addSubview:badge];
-    [badge release];
+    if (view) {
+        [view removeFromSuperview];
+    }
+    
+    MKTableCellBadgeView *abadge = [[MKTableCellBadgeView alloc] initWithFrame:rect];
+    abadge.badgeText = text;
+    abadge.badgeColor = color;
+    abadge.tag = kBadgeViewTag;
+    
+    [mCellView addSubview:abadge];
+    [abadge release];
 }
 
 #pragma mark - Appearance
 
 - (void)accentPrimaryViewForCellAtPosition:(MKTableCellPosition)position {
-    UIView *view = [mCellView viewWithTag:1];
+    UIView *view = (UIView *)[mCellView viewWithTag:kPrimaryViewTag];
+    UIView *aView = (UIView *)[self.contentView viewWithTag:kAccentViewTag];
+    
+    if (aView) {
+        [aView removeFromSuperview];
+    }
     
     MKElementAccentView *accentView = [[MKElementAccentView alloc] initWithFrame:CGRectMake(0.0, 0.0, (view.frame.size.width + 3.0), self.frame.size.height) position:position];
     [self.contentView addSubview:accentView];
@@ -329,7 +376,6 @@
     }
     
     [super dealloc];
-	
 }
 
 @end

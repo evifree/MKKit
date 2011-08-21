@@ -15,8 +15,8 @@ typedef enum {
     MKButtonTypeRoundedRect,
 } MKButtonType;
 
-static const float kHorizPadding = 20.0;
-static const float kDiscloserOutlinePadding = 2.0;
+static const float kHorizPadding                = 20.0;
+static const float kDiscloserOutlinePadding     = 2.0;
 
 /**-----------------------------------------------------------------------------
  MKButton provides specalty buttons for various use. There are currently four

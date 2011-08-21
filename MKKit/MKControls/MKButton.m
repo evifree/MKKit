@@ -199,8 +199,6 @@ void drawIAPButton(CGContextRef context, CGRect rect) {
         
     CGColorRef blackColor = BLACK.CGColor;
     
-    NSLog(@"Draw %i", lWorking);
-    
     if (!lWorking) {
         innerTop = MK_COLOR_HSB(224.0, 57.0, 70.0, 1.0).CGColor;
         innerBottom = MK_COLOR_HSB(224.0, 57.0, 67.0, 1.0).CGColor;
@@ -318,12 +316,6 @@ void drawRoundRectButton(CGContextRef context, CGRect rect) {
     mButtonLabel.frame = CGRectMake(20.0, 4.5, [self widthForTitle:mButtonText], 21.0);
     mButtonLabel.text = mButtonText;
     
-    //if (mType == MKButtonTypeIAP) {
-     //   if ([buttonText isEqualToString:@"Installing"]) {
-     //       mWorking = YES;
-     //   }
-    //}
-        
     [self setNeedsDisplayInRect:CGRectMake(x, minY, width, height)];
     
     [mButtonText release];
@@ -332,7 +324,6 @@ void drawRoundRectButton(CGContextRef context, CGRect rect) {
 - (void)setWorking:(BOOL)isWorking {
     [super setWorking:isWorking];
     lWorking = isWorking;
-    NSLog(@"%i", lWorking);
     
     [self setNeedsDisplay];
 }
