@@ -31,7 +31,7 @@ typedef void (^MKActionBlock)(MKAction action);
     struct {
         bool blockUsage;
         bool targetUsage;
-    } mControlUsageFlags;
+    } MKControlFlags;
 }
 
 ///---------------------------------------------------------

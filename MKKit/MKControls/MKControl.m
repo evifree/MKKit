@@ -19,7 +19,7 @@
 - (void)completedAction:(MKActionBlock)actionBlock {
     self.action = actionBlock;
     
-    mControlUsageFlags.blockUsage = YES;
+    MKControlFlags.blockUsage = YES;
 }
 
 
@@ -36,17 +36,17 @@
     [mTargets addObject:newTarget];
     [newTarget release];
     
-    mControlUsageFlags.targetUsage = YES;
+    MKControlFlags.targetUsage = YES;
 }
 
 #pragma mark - Touches
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    if (mControlUsageFlags.blockUsage) {
+    if (MKControlFlags.blockUsage) {
         self.action(MKActionTouchDown);
     }
     
-    if (mControlUsageFlags.targetUsage) {
+    if (MKControlFlags.targetUsage) {
         for (MKControlTarget *aTarget in mTargets) {
             if (aTarget.action == MKActionTouchDown) {
                 [aTarget.target performSelector:aTarget.selector withObject:self];
@@ -60,11 +60,11 @@
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    if (mControlUsageFlags.blockUsage) {
+    if (MKControlFlags.blockUsage) {
         self.action(MKActionTouchUp);
     }
     
-    if (mControlUsageFlags.targetUsage) {
+    if (MKControlFlags.targetUsage) {
         for (MKControlTarget *aTarget in mTargets) {
             if (aTarget.action == MKActionTouchUp) {
                 [aTarget.target performSelector:aTarget.selector withObject:self];
@@ -78,11 +78,11 @@
 }
 
 - (void)dealloc {
-    if (mControlUsageFlags.blockUsage) {
+    if (MKControlFlags.blockUsage) {
         [action release];
     }
     
-    if (mControlUsageFlags.targetUsage) {
+    if (MKControlFlags.targetUsage) {
         [mTargets release];
     }
     

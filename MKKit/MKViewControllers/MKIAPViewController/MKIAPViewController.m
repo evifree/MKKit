@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 5/29/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Matt King. All rights reserved.
 //
 
 #import "MKIAPViewController.h"
@@ -34,21 +34,6 @@
     [super viewDidLoad];
     
     self.title = @"Store";
-    
-    [MKIAPController productsRequestWithIdentifiers:mIdentifiers 
-                                           response: ^ (SKProductsResponse *response, NSError *error) { 
-                                                        if (error == nil) {
-                                                            [self onProductsResponse:response.products];
-                                                        }
-                                                        else {
-                                                            MKErrorHandeling *handel = [[MKErrorHandeling alloc] init];
-                                                            [handel applicationDidError:error];
-                                                            [handel release];
-                                                        }
-                                                    }];
-    
-    [mIdentifiers release];
-    
 }
 
 - (void)viewDidUnload {
@@ -59,6 +44,20 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    [MKIAPController productsRequestWithIdentifiers:mIdentifiers 
+                                           response: ^ (SKProductsResponse *response, NSError *error) { 
+                                               if (error == nil) {
+                                                   [self onProductsResponse:response.products];
+                                               }
+                                               else {
+                                                   MKErrorHandeling *handel = [[MKErrorHandeling alloc] init];
+                                                   [handel applicationDidError:error];
+                                                   [handel release];
+                                               }
+                                           }];
+    
+    [mIdentifiers release];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -72,6 +71,11 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:MK_REMOVE_BLOCK_OBJECT_NOTIFICATION object:nil];
+    
+    [self.view removeFromSuperview];
+    self.view = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -157,14 +161,6 @@
 #pragma mark UITableView
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
 }
 
 #pragma mark - MKTableCell

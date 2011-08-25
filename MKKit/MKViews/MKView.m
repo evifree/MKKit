@@ -32,6 +32,8 @@
         self.height = frame.size.height;
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeView) name:MK_VIEW_SHOULD_REMOVE_NOTIFICATION object:nil];
+        
+        MKViewFlags.isHeaderView = NO;
     }
     return self;
 }
@@ -213,12 +215,12 @@ UILabel *mTitleLabel;
 
 #pragma mark - Initalizers
 
-- (id)initWithTitle:(NSString *)title {
-    self = [super initWithFrame:CGRectMake(0.0, 0.0, 315.0, 31.0)];
+- (id)initWithTitle:(NSString *)title type:(MKTableHeaderType)type {
+    self = [super initWithFrame:CGRectMake(0.0, 0.0, 303.0, 40.0)];
     if (self) {
         self.backgroundColor = CLEAR;
         
-        mTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 5.0, (MK_TEXT_WIDTH(title, VERDANA_BOLD(16.0))), 21.0)];
+        mTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(17.0, 5.0, 303.0, 30.0)];
         mTitleLabel.backgroundColor = CLEAR;
         mTitleLabel.font = VERDANA_BOLD(16.0);
         mTitleLabel.textColor = DARK_GRAY;
@@ -230,17 +232,42 @@ UILabel *mTitleLabel;
         
         [self addSubview:mTitleLabel];
         [mTitleLabel release];
+        
+        MKViewFlags.isHeaderView = YES;
+        
+        if (type == MKTableHeaderTypePlain) {
+            MKViewFlags.isHeaderPlain = YES;
+            mTitleLabel.textAlignment = UITextAlignmentCenter;
+            mTitleLabel.frame = CGRectMake(0.0, 5.0, 315.0, 30.0);
+            mTitleLabel.font = VERDANA_BOLD(20.0);
+        }
     }
     return self;
 }
 
-+ (id)headerViewWithTitle:(NSString *)title {
++ (id)headerViewWithTitle:(NSString *)title type:(MKTableHeaderType)type {
     [self release];
     
-    MKView *view = [[MKView alloc] initWithTitle:title];
+    MKView *view = [[MKView alloc] initWithTitle:title type:type];
     [view autorelease];
     
     return view;
+}
+
+#pragma mark - Drawing
+
+- (void)drawRect:(CGRect)rect {
+    if (MKViewFlags.isHeaderView && MKViewFlags.isHeaderPlain) {
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        CGContextSetAllowsAntialiasing(context, YES);
+    
+        CGColorRef topColor = MK_COLOR_HSB(345.0, 2.0, 99.0, 1.0).CGColor;
+        CGColorRef bottomColor = MK_COLOR_HSB(345.0, 2.0, 86.0, 1.0).CGColor;
+        
+        CGContextSaveGState(context);
+        drawGlossAndLinearGradient(context, rect, topColor, bottomColor);
+        CGContextSaveGState(context);
+    }
 }
 
 #pragma mark - Accessor Methods

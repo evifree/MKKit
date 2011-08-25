@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 1/14/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010 Matt King. All rights reserved.
 //
 
 #import <MKKit/MKKit/MKDeffinitions.h>
@@ -15,6 +15,7 @@
 #import <MKKit/MKKit/MKCoreData.h>
 #import <MKKit/MKKit/MKNotificationController.h>
 #import <MKKit/MKKit/MKMath.h>
+#import <MKKit/MKKit/MKObject.h>
 #import <MKKit/MKKit/MKRandoms.h>
 #import <MKKit/MKKit/MKSounds.h>
 #import <MKKit/MKKit/MKStrings.h>

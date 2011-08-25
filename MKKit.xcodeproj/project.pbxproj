@@ -117,6 +117,9 @@
 		AA7EFCF310FFE90900B4C1BC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA7EFCF210FFE90900B4C1BC /* CoreGraphics.framework */; };
 		AA7EFCF510FFE91B00B4C1BC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA7EFCF410FFE91B00B4C1BC /* UIKit.framework */; };
 		AA7EFD5410FFE94100B4C1BC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA7EFD5310FFE94100B4C1BC /* QuartzCore.framework */; };
+		AA99D3161405B1BE00CFFD56 /* MKObjectDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA99D3151405B1BE00CFFD56 /* MKObjectDelegate.h */; };
+		AA99D3191405B71E00CFFD56 /* MKObject.h in Headers */ = {isa = PBXBuildFile; fileRef = AA99D3171405B71E00CFFD56 /* MKObject.h */; };
+		AA99D31A1405B71E00CFFD56 /* MKObject.m in Sources */ = {isa = PBXBuildFile; fileRef = AA99D3181405B71E00CFFD56 /* MKObject.m */; };
 		AAA3BE8613EB932800594F55 /* MKTabbedViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AAA3BE8413EB932800594F55 /* MKTabbedViewController.h */; };
 		AAA3BE8713EB932800594F55 /* MKTabbedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA3BE8513EB932800594F55 /* MKTabbedViewController.m */; };
 		AAA3BE8A13EB978E00594F55 /* MKTabbedView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAA3BE8813EB978E00594F55 /* MKTabbedView.h */; };
@@ -261,6 +264,9 @@
 		AA7EFCF210FFE90900B4C1BC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		AA7EFCF410FFE91B00B4C1BC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AA7EFD5310FFE94100B4C1BC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		AA99D3151405B1BE00CFFD56 /* MKObjectDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKObjectDelegate.h; sourceTree = "<group>"; };
+		AA99D3171405B71E00CFFD56 /* MKObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKObject.h; sourceTree = "<group>"; };
+		AA99D3181405B71E00CFFD56 /* MKObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKObject.m; sourceTree = "<group>"; };
 		AAA3BE8413EB932800594F55 /* MKTabbedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTabbedViewController.h; sourceTree = "<group>"; };
 		AAA3BE8513EB932800594F55 /* MKTabbedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTabbedViewController.m; sourceTree = "<group>"; };
 		AAA3BE8813EB978E00594F55 /* MKTabbedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTabbedView.h; sourceTree = "<group>"; };
@@ -376,6 +382,9 @@
 				AA02DDE612DAE2B7003B3560 /* MKMath.m */,
 				AA02DDE712DAE2B7003B3560 /* MKNotificationController.h */,
 				AA02DDE812DAE2B7003B3560 /* MKNotificationController.m */,
+				AA99D3171405B71E00CFFD56 /* MKObject.h */,
+				AA99D3181405B71E00CFFD56 /* MKObject.m */,
+				AA99D3151405B1BE00CFFD56 /* MKObjectDelegate.h */,
 				AA02DDE912DAE2B7003B3560 /* MKRandoms.h */,
 				AA02DDEA12DAE2B7003B3560 /* MKRandoms.m */,
 				AA02DDEB12DAE2B7003B3560 /* MKSounds.h */,
@@ -710,6 +719,8 @@
 				AAA3BE8D13EBA12C00594F55 /* MKTabbedViewProtocols.h in Headers */,
 				AAA3BE9013EBB53700594F55 /* MKTabItem.h in Headers */,
 				AA0D155813F308200067BA2A /* MKTableCellBadgeView.h in Headers */,
+				AA99D3161405B1BE00CFFD56 /* MKObjectDelegate.h in Headers */,
+				AA99D3191405B71E00CFFD56 /* MKObject.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -824,6 +835,7 @@
 				AAA3BE8B13EB978E00594F55 /* MKTabbedView.m in Sources */,
 				AAA3BE9113EBB53700594F55 /* MKTabItem.m in Sources */,
 				AA0D155913F308200067BA2A /* MKTableCellBadgeView.m in Sources */,
+				AA99D31A1405B71E00CFFD56 /* MKObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

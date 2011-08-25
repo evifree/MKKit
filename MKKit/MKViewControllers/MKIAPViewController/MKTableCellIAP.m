@@ -44,12 +44,6 @@
     mButton.frame = CGRectMake((270.0 - mButton.frame.size.width), 7.0, mButton.frame.size.width, 30.0);
     [mButton addTarget:self selector:@selector(completePurchase) action:MKActionTouchUp]; 
     
-    //[mButton completedAction: ^ (MKAction action) {
-    //    if (action == MKActionTouchUp) {
-    //        [self completPurchase];
-    //    }
-    //}];
-    
     [self.contentView addSubview:mButton];
     [mButton release];
 }

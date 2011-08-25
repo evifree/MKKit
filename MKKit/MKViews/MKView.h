@@ -21,6 +21,11 @@ typedef enum {
     MKViewAnimationTypeAppearAboveToolbar,
 } MKViewAnimationType;
 
+typedef enum {
+    MKTableHeaderTypeGrouped,
+    MKTableHeaderTypePlain,
+} MKTableHeaderType;
+
 #define MK_VIEW_SHOULD_REMOVE_NOTIFICATION      @"MKViewShouldRemoveNotification"
 
 @protocol MKViewDelegate;
@@ -43,12 +48,16 @@ typedef enum {
 
 @interface MKView : UIView {
     id mDelegate;
-    
     UIViewController *mController;
-    
     BOOL mShouldRemoveView;
-    
     MKViewAnimationType mAnimationType;
+    
+@private
+    struct {
+        bool isHeaderView;
+        bool isHeaderGrouped;
+        bool isHeaderPlain;
+    } MKViewFlags;
 }
 
 ///------------------------------------------------------
@@ -121,18 +130,28 @@ typedef enum {
  
  @param title the text that will display on the header.
  
- @param MKView instance
+ @param type the header type to return
+ 
+ * `MKTableHeaderTypeGrouped` : Returns a header for grouped tables
+ * `MKTableHeaderTypePlain` : Returns a header for plain tables
+ 
+ @return MKView instance
 */
-- (id)initWithTitle:(NSString *)title;
+- (id)initWithTitle:(NSString *)title type:(MKTableHeaderType)type;
 
 /**
  Returns an instace of MKView sized for a grouped table header.
  
  @param title the text that will display on the header.
  
- @param MKView instance
+ @param type the header type to return
+ 
+ * `MKTableHeaderTypeGrouped` : Returns a header for grouped tables
+ * `MKTableHeaderTypePlain` : Returns a header for plain tables
+ 
+ @return MKView instance
 */
-+ (id)headerViewWithTitle:(NSString *)title;
++ (id)headerViewWithTitle:(NSString *)title type:(MKTableHeaderType)type;
 
 ///---------------------------------------------
 /// @name View Elements

@@ -3,16 +3,19 @@
 //  MKKit
 //
 //  Created by Matthew King on 5/28/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Matt King. All rights reserved.
 //
 
 #import <StoreKit/StoreKit.h>
 #import <UIKit/UIKit.h>
 
+#import <MKKit/MKKit/MKObject.h>
+
 typedef void (^MKProductResponseBlock)(SKProductsResponse *response, NSError *error);
 typedef void (^MKPurchaseCompletionBlock)(SKPaymentTransaction *transaction, NSError *error);
 typedef void (^MKRestoreCompletionBlock)(SKPaymentTransaction *transaction, NSError *error);
 
+@protocol MKObjectDelegate;
 @protocol MKIAPDelegate;
 
 /**----------------------------------------------------------------------------------------------------------------
@@ -26,7 +29,7 @@ typedef void (^MKRestoreCompletionBlock)(SKPaymentTransaction *transaction, NSEr
  the MKAIPViewController is restoring purchases.
 -----------------------------------------------------------------------------------------------------------------*/
 
-@interface MKIAPController : NSObject <SKPaymentTransactionObserver, SKProductsRequestDelegate, SKRequestDelegate> {
+@interface MKIAPController : MKObject <SKPaymentTransactionObserver, SKProductsRequestDelegate, SKRequestDelegate> {
     id mDelegate;
     BOOL mIsPurchaseRequest;
 }

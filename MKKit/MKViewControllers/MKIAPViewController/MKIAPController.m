@@ -10,13 +10,15 @@
 
 @interface MKIAPController ()
 
-//- (id)initWithIdentifiers:(NSSet *)identifiers response:(MKProductResponseBlock)response;
-//- (id)initWithIdentifiers:(NSSet *)identifiers completion:(MKPurchaseCompletionBlock)completion;
-//- (id)initWithCompletion:(MKRestoreCompletionBlock)completion;
+- (id)initWithIdentifiers:(NSSet *)identifiers response:(MKProductResponseBlock)response;
+- (id)initWithIdentifiers:(NSSet *)identifiers completion:(MKPurchaseCompletionBlock)completion;
+- (id)initWithCompletion:(MKRestoreCompletionBlock)completion;
 
 - (void)completeTransaction:(SKPaymentTransaction *)transaction;
 - (void)restoreTransaction:(SKPaymentTransaction *)transaction;
 - (void)failedTransaction:(SKPaymentTransaction *)transaction;
+
+- (void)onRelease;
 
 @end
 
@@ -34,7 +36,6 @@
     return  self;
 }
 
-/*
 - (id)initWithIdentifiers:(NSSet *)identifiers response:(MKProductResponseBlock)response {
     self = [super init];
     if (self) {
@@ -44,6 +45,8 @@
         SKProductsRequest *request = [[[SKProductsRequest alloc] initWithProductIdentifiers:identifiers] autorelease];
         request.delegate = self;
         [request start];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onRelease) name:MK_REMOVE_BLOCK_OBJECT_NOTIFICATION object:nil];
     }
     return self;
 }
@@ -57,6 +60,8 @@
         SKProductsRequest *request = [[[SKProductsRequest alloc] initWithProductIdentifiers:identifiers] autorelease];
         request.delegate = self;
         [request start];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onRelease) name:MK_REMOVE_BLOCK_OBJECT_NOTIFICATION object:nil];
     }
     return self;
 }
@@ -68,20 +73,18 @@
         
         [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
         [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onRelease) name:MK_REMOVE_BLOCK_OBJECT_NOTIFICATION object:nil];
     }
     return self;
 }
-*/
 
 #pragma mark - Requests
 
 + (void)productsRequestWithIdentifiers:(NSSet *)identifiers response:(MKProductResponseBlock)response {
     [self release];
     
-    MKIAPController *controller = [[MKIAPController alloc] init];
-    controller.productResponse = response;
-    [controller productsRequestWithIdentifiers:identifiers];
-    [controller autorelease];
+    self = [[self alloc] initWithIdentifiers:identifiers response:response];
 }
 
 - (void)productsRequestWithIdentifiers:(NSSet *)identifiers {
@@ -97,11 +100,7 @@
 + (void)purchaseRequestWithIdentifiers:(NSSet *)identifiers completion:(MKPurchaseCompletionBlock)completion {
     [self release];
     
-    MKIAPController *controller = [[MKIAPController alloc] init];
-    controller.purchaseCompleteBlock = completion;
-    [controller purchaseRequestWithIdentifiers:identifiers];
-    [controller autorelease];
-
+    self = [[self alloc] initWithIdentifiers:identifiers completion:completion];
 }
 
 - (void)purchaseRequestWithIdentifiers:(NSSet *)identifiers {
@@ -238,8 +237,23 @@
 
 #pragma mark - Memory Managment
 
+- (void)onRelease {
+    BOOL respond = YES;
+    
+    if ([self.objectDelegate respondsToSelector:@selector(object:shouldObserveNotificationNamed:)]) {
+        if (![self.objectDelegate object:self shouldObserveNotificationNamed:MK_REMOVE_BLOCK_OBJECT_NOTIFICATION]) {
+            respond = NO;
+        }
+    }
+    
+    if (respond) {
+        [self release];
+    }
+}
+
 - (void)dealloc {
     [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MK_REMOVE_BLOCK_OBJECT_NOTIFICATION object:nil];
     
     [productResponse release];
     [purchaseCompleteBlock release];

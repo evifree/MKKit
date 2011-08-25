@@ -12,11 +12,16 @@ typedef enum {
     MKButtonTypeHelp,
     MKButtonTypeDisclosure,
     MKButtonTypeIAP,
+    MKButtonTypePlastic,
     MKButtonTypeRoundedRect,
 } MKButtonType;
 
 static const float kHorizPadding                = 20.0;
 static const float kDiscloserOutlinePadding     = 2.0;
+static const float kHelpButtonFontSize          = 18.0;
+static const float kIAPButtonFontSize           = 14.0;
+static const float kPlasticButtonFontSize       = 30.0;
+static const float kRoundRectButtonFontSize     = 14.0;
 
 /**-----------------------------------------------------------------------------
  MKButton provides specalty buttons for various use. There are currently four
@@ -35,6 +40,13 @@ static const float kDiscloserOutlinePadding     = 2.0;
 
 @private
     UILabel *mButtonLabel;
+    
+    struct {
+        bool isWorking;
+        bool isHighlighted;
+        CGColorRef tintColor;
+        CGFloat fontSize;
+    } MKButtonFlags;
 }
 
 ///------------------------------------------------------
@@ -56,10 +68,19 @@ static const float kDiscloserOutlinePadding     = 2.0;
  @param type the type of button to use
  
  @param title the text of the button
- 
- @exception UnsuableType rasied if MKButtonTypeHelp is passed to this method.
- */
+*/
 - (id)initWithType:(MKButtonType)type title:(NSString *)title;
+
+/**
+ Returns and instance of MKButton
+ 
+ @param type the type of button to use
+ 
+ @param title the text of the button
+ 
+ @param titn the tint color of the button
+*/
+- (id)initWithType:(MKButtonType)type title:(NSString *)title tint:(UIColor *)tint;
 
 
 ///---------------------------------------------------------
