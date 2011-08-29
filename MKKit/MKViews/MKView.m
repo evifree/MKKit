@@ -219,8 +219,11 @@ UILabel *mTitleLabel;
     self = [super initWithFrame:CGRectMake(0.0, 0.0, 303.0, 40.0)];
     if (self) {
         self.backgroundColor = CLEAR;
+        self.autoresizesSubviews = YES;
+        self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         
         mTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(17.0, 5.0, 303.0, 30.0)];
+        mTitleLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
         mTitleLabel.backgroundColor = CLEAR;
         mTitleLabel.font = VERDANA_BOLD(16.0);
         mTitleLabel.textColor = DARK_GRAY;

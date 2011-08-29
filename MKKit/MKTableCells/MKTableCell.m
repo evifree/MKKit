@@ -21,12 +21,21 @@
 #pragma mark - Functions
 
 MKTableCellBadge iBadge;
+MKTableCellAccent iAccent;
 
 MKTableCellBadge MKTableCellBadgeMake(CGColorRef color, CFStringRef text) {
     iBadge.color = color;
     iBadge.text = text;
     
     return iBadge;
+}
+
+MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellPosition position, CGColorRef tint) {
+    iAccent.type = type;
+    iAccent.position = position;
+    iAccent.tint = tint;
+    
+    return iAccent;
 }
 
 #pragma mark -
@@ -37,7 +46,7 @@ MKTableCellBadge MKTableCellBadgeMake(CGColorRef color, CFStringRef text) {
             validationType=mValidationType, validating=mValidating, validator, icon,
             iconMask, validatorTestStringLength=mValidatorTestStringLength, accessoryIcon, 
             recognizeLeftToRightSwipe, recognizeRightToLeftSwipe, recognizeLongPress, indexPath,
-            primaryViewTrim, badge;
+            primaryViewTrim, badge, accent;
 
 #pragma mark - Initalizer
 
@@ -57,6 +66,7 @@ MKTableCellBadge MKTableCellBadgeMake(CGColorRef color, CFStringRef text) {
         if (type == MKTableCellTypeLabel) {
             mTheLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 			mTheLabel.font = [UIFont fontWithName:@"Verdana-Bold" size:16.0];
+            mTheLabel.backgroundColor = CLEAR;
 			mTheLabel.textAlignment = UITextAlignmentLeft;
 			mTheLabel.adjustsFontSizeToFitWidth = NO;
             mTheLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
@@ -195,6 +205,29 @@ MKTableCellBadge MKTableCellBadgeMake(CGColorRef color, CFStringRef text) {
 
 #pragma mark Accents
 
+- (void)setAccent:(MKTableCellAccent)anAccent {
+    UIView *view = [mCellView viewWithTag:kAccentViewTag];
+    
+    if (view) {
+        [view removeFromSuperview];
+    }
+    
+    if (anAccent.type == MKTableCellAccentTypeFull) {
+        MKTableCellAccentView *view = [[MKTableCellAccentView alloc] initWithFrame:mCellView.frame position:anAccent.position];
+        view.tint = [UIColor colorWithCGColor:anAccent.tint];
+        view.tag = kAccentViewTag;
+        
+        [mCellView addSubview:view];
+        [mCellView sendSubviewToBack:view];
+        
+        [view release];
+    }
+    
+    if (anAccent.type == MKTableCellAccentTypePrimaryView) {
+        [self accentPrimaryViewForCellAtPosition:anAccent.position];
+    }
+}
+
 - (void)setPrimaryViewTrim:(CGFloat)trim {
     MKElementAccentView *view = (MKElementAccentView *)[self.contentView viewWithTag:kAccentViewTag];
     view.frame = CGRectMake(view.x, view.y, (view.width - trim), view.height);
@@ -277,8 +310,8 @@ MKTableCellBadge MKTableCellBadgeMake(CGColorRef color, CFStringRef text) {
     [super setSelected:selected animated:animated];
     
     if (selected) {
-        if ([delegate respondsToSelector:@selector(didSelectCell:forKey:)]) {
-            [delegate didSelectCell:self forKey:self.key];
+        if ([delegate respondsToSelector:@selector(didSelectCell:forKey:indexPath:)]) {
+            [delegate didSelectCell:self forKey:self.key indexPath:self.indexPath];
         }
     }
 	
@@ -380,7 +413,7 @@ MKTableCellBadge MKTableCellBadgeMake(CGColorRef color, CFStringRef text) {
 
 @end
 
-
+#pragma mark -
 
 @implementation MKControl (MKTableCell)
 
@@ -473,6 +506,8 @@ void drawWarningIcon(CGContextRef context, CGRect rect) {
 }
 
 @end
+
+#pragma mark - 
 
 @implementation MKView (MKTableCell)
 
@@ -577,6 +612,8 @@ static bool mPinnedSecondaryElement = NO;
 
 @end
 
+#pragma mark -
+
 @implementation MKPopOutView (MKTableCell)
 
 @dynamic aIndexPath;
@@ -649,6 +686,8 @@ NSIndexPath *mIndexPath = nil;
     [self addSubview:button];
     [button release];
 }
+
+#pragma mark - Memory Management
 
 - (void)dealloc {
     [mIndexPath release];

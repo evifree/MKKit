@@ -31,7 +31,7 @@ bool mHighlighted = NO;
 - (id)initWithType:(MKButtonType)type {
     self = [super init];
     if (self) {
-        self = [self initWithType:mType title:nil tint:nil];
+        self = [self initWithType:type title:nil tint:nil];
     }
     return self;
 }

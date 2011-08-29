@@ -78,7 +78,7 @@ static const float kRoundRectButtonFontSize     = 14.0;
  
  @param title the text of the button
  
- @param titn the tint color of the button
+ @param tint the tint color of the button
 */
 - (id)initWithType:(MKButtonType)type title:(NSString *)title tint:(UIColor *)tint;
 

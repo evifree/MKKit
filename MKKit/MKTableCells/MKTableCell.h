@@ -18,6 +18,7 @@
 
 #import "MKTableElements/MKMaskIconView.h"
 #import "MKTableElements/MKElementAccentView.h"
+#import "MKTableElements/MKTableCellAccentView.h"
 
 #import "MKTableCellDelegate.h"
 
@@ -62,12 +63,24 @@ typedef enum {
 	MKTableCellAccessoryWarningIcon,
 } MKTableCellAccessoryViewType;
 
+typedef enum {
+    MKTableCellAccentTypePrimaryView,
+    MKTableCellAccentTypeFull,
+} MKTableCellAccentType;
+
 typedef struct {
     CGColorRef color;
     CFStringRef text;
 } MKTableCellBadge;
 
+typedef struct {
+    MKTableCellAccentType type;
+    MKTableCellPosition position;
+    CGColorRef tint;
+} MKTableCellAccent;
+
 MKTableCellBadge MKTableCellBadgeMake(CGColorRef color, CFStringRef text);
+MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellPosition position, CGColorRef tint);
 
 @protocol MKTableCellDelegate;
 @protocol MKInputValidation;
@@ -202,6 +215,12 @@ MKTableCellBadge MKTableCellBadgeMake(CGColorRef color, CFStringRef text);
 ///---------------------------------------------------------------------------------------
 /// @name Apearances
 ///---------------------------------------------------------------------------------------
+
+/** Sets an accent for the cell. Use the 
+ `MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellPosition position, CGColorRef tint)`
+ function to create an MKTableCell Accent.
+*/
+@property (nonatomic, assign) MKTableCellAccent accent;
 
 /**
  Accents the primary view of the cell by drawing a background gradient onto it.

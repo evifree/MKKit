@@ -64,8 +64,10 @@ pickerArray=_pickerArray;
 }
 
 - (void)setPlaceholder:(NSString *)holder {
-    mPickerLabel.textColor = LIGHT_GRAY;
-    mPickerLabel.text = holder;
+    if ([mPickerLabel.text length] == 0) {
+        mPickerLabel.textColor = LIGHT_GRAY;
+        mPickerLabel.text = holder;
+    }
 }
 
 #pragma mark Cell Behaivor

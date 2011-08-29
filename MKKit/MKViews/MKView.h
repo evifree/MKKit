@@ -104,7 +104,7 @@ typedef enum {
 ///-----------------------------------------------------
 
 /** The view controller that owns the view. */
-@property (nonatomic, retain) UIViewController *controller;
+@property (nonatomic, retain) IBOutlet UIViewController *controller;
 
 ///------------------------------------------------------
 /// @name Delegate

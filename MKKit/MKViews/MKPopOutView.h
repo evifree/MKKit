@@ -45,7 +45,7 @@ static const CGFloat kPopOutViewWidth = 300.0;
 ///------------------------------------------------------
 
 /**
- Returns and intialized instance of MKTableCellPopoutView
+ Returns and intialized instance of MKPopoutView
  
  @param view the content of the popout view
  

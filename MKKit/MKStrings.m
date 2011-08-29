@@ -25,6 +25,18 @@
 	return rtn;
 }
 
++ (NSString *)stringWithDate:(NSDate *)date format:(NSString *)format {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+	[formatter setDateFormat:format];
+	
+	NSString *rtn = [formatter stringFromDate:date];
+	
+	[formatter release];
+	[self autorelease];
+    
+	return rtn;
+}
+
 #pragma mark --
 #pragma mark Number String
 
@@ -55,6 +67,36 @@
     [self autorelease];
 	
 	return aString;
+}
+
+- (NSString *)stringFromDecimalNumber:(NSDecimalNumber *)number decimalPlaces:(NSUInteger)places {
+    NSString *aString = nil;
+    
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setMaximumFractionDigits:places];
+    [numberFormatter setMinimumFractionDigits:places];
+    [numberFormatter setMinimumIntegerDigits:1];
+    
+    aString = [numberFormatter stringFromNumber:number];
+    [numberFormatter release];
+    
+    return  aString;
+}
+
++ (NSString *)stringWithDecimalNumber:(NSDecimalNumber *)number decimalPlaces:(NSUInteger)places {
+    NSString *aString = nil;
+    
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setMaximumFractionDigits:places];
+    [numberFormatter setMinimumFractionDigits:places];
+    [numberFormatter setMinimumIntegerDigits:1];
+    
+    aString = [numberFormatter stringFromNumber:number];
+    [numberFormatter release];
+    
+    [self autorelease];
+    
+    return  aString;
 }
 
 #pragma mark -

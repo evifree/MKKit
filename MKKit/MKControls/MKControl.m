@@ -8,7 +8,11 @@
 
 #import "MKControl.h"
 
-#pragma mark - Functions
+@interface MKControl () 
+
+- (void)processAction:(MKAction)controlAction;
+
+@end
 
 @implementation MKControl
 
@@ -39,45 +43,38 @@
     MKControlFlags.targetUsage = YES;
 }
 
+- (void)processAction:(MKAction)controlAction {
+    if (MKControlFlags.blockUsage) {
+        self.action(controlAction);
+    }
+    
+    if (MKControlFlags.targetUsage) {
+        for (MKControlTarget *aTarget in mTargets) {
+            if (aTarget.action == controlAction) {
+                [aTarget.target performSelector:aTarget.selector withObject:self];
+            }
+        }
+    }
+    
+    if ([mDelegate respondsToSelector:@selector(didCompleteAction:sender:)]) {
+        [mDelegate didCompleteAction:controlAction sender:self];
+    }
+
+}
+
 #pragma mark - Touches
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    if (MKControlFlags.blockUsage) {
-        self.action(MKActionTouchDown);
-    }
-    
-    if (MKControlFlags.targetUsage) {
-        for (MKControlTarget *aTarget in mTargets) {
-            if (aTarget.action == MKActionTouchDown) {
-                [aTarget.target performSelector:aTarget.selector withObject:self];
-            }
-        }
-    }
-    
-    if ([mDelegate respondsToSelector:@selector(didCompleteAction:sender:)]) {
-        [mDelegate didCompleteAction:MKActionTouchDown sender:self];
-    }
+    [self processAction:MKActionTouchDown];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    if (MKControlFlags.blockUsage) {
-        self.action(MKActionTouchUp);
-    }
-    
-    if (MKControlFlags.targetUsage) {
-        for (MKControlTarget *aTarget in mTargets) {
-            if (aTarget.action == MKActionTouchUp) {
-                [aTarget.target performSelector:aTarget.selector withObject:self];
-            }
-        }
-    }
-    
-    if ([mDelegate respondsToSelector:@selector(didCompleteAction:sender:)]) {
-        [mDelegate didCompleteAction:MKActionTouchUp sender:self];
-    }
+    [self processAction:MKActionTouchUp];
 }
 
-- (void)dealloc {
+#pragma mark - Memory Management
+
+- (void)dealloc { 
     if (MKControlFlags.blockUsage) {
         [action release];
     }

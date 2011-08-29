@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 10/5/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010 Matt King. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -72,7 +72,7 @@ typedef void (^MKActionBlock)(MKAction action);
 @property (nonatomic, assign) BOOL working;
 
 ///---------------------------------------------------------
-/// @name Delegate
+/// @name Delegates
 ///---------------------------------------------------------
 
 /** delegate the controls delegate */
