@@ -106,7 +106,7 @@
             cell = [[[MKTableCellTextEntry alloc] initWithType:MKTextEntryCellTypeStandard reuseIdentifier:TextIdentifier] autorelease];
             ((MKTableCellTextEntry *)cell).theTextField.keyboardType = UIKeyboardTypeNumberPad;
             ((MKTableCellTextEntry *)cell).theTextField.keyboardAppearance =UIKeyboardAppearanceDefault;
-            ((MKTableCellTextEntry *)cell).theTextField.useInputAccessoryView = YES;
+            ((MKTableCellTextEntry *)cell).theTextField.accessoryType = MKInputAccessoryTypeDone;
             cell.delegate = self;
         }
         

@@ -9,6 +9,7 @@
 #import "MKView.h"
 #import "MKLoadingView.h"
 #import "MKNoticeView.h"
+#import "MKPhotoView.h"
 #import "MKPopOutView.h"
 #import "MKPopOverView.h"
 #import "MKReflectedImageView.h"

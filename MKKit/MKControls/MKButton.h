@@ -11,6 +11,7 @@
 typedef enum {
     MKButtonTypeHelp,
     MKButtonTypeDisclosure,
+    MKButtonTypeDropDownIndicator,
     MKButtonTypeIAP,
     MKButtonTypePlastic,
     MKButtonTypeRoundedRect,
@@ -29,8 +30,10 @@ static const float kRoundRectButtonFontSize     = 14.0;
  
  * `MKButtonTypeHelp` : a small round button with a question mark
  * `MKButtonTypeDisclosure` : a blue and white button that resembles iOS discloser button
+ * `MKButtonTypeDropDownIndicator : a small button with down arrow on it.
  * `MKButtonTypeIAP` : a InApp Purchase button, mimics the purchase buttons from the
- * `MKButtonTypeRoundedRect` : a rounded rect button that can be assigned a color
+ * `MKButtonTypePlastic` : a button with a rounded shine, giving it a plasic look. Default tint is black.
+ * `MKButtonTypeRoundedRect` : a rounded rect button that can be assigned a color. Default tint is blue.
  appStore
 ------------------------------------------------------------------------------*/
 
@@ -40,7 +43,6 @@ static const float kRoundRectButtonFontSize     = 14.0;
 
 @private
     UILabel *mButtonLabel;
-    
     struct {
         bool isWorking;
         bool isHighlighted;

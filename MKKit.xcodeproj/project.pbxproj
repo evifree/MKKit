@@ -147,6 +147,8 @@
 		AABF4D9113921DA0001B547A /* MKIAPController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABF4D8F13921DA0001B547A /* MKIAPController.m */; };
 		AABF4D9413921E1A001B547A /* MKTableCellIAP.h in Headers */ = {isa = PBXBuildFile; fileRef = AABF4D9213921E1A001B547A /* MKTableCellIAP.h */; };
 		AABF4D9513921E1A001B547A /* MKTableCellIAP.m in Sources */ = {isa = PBXBuildFile; fileRef = AABF4D9313921E1A001B547A /* MKTableCellIAP.m */; };
+		AAE70D23140DB7B700797D84 /* MKPhotoView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE70D21140DB7B700797D84 /* MKPhotoView.h */; };
+		AAE70D24140DB7B700797D84 /* MKPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE70D22140DB7B700797D84 /* MKPhotoView.m */; };
 		AAEDEA771390A732007EA362 /* MKNoticeView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAEDEA751390A730007EA362 /* MKNoticeView.h */; };
 		AAEDEA781390A732007EA362 /* MKNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEDEA761390A731007EA362 /* MKNoticeView.m */; };
 		AAEFE115121873BA008143E4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAEFE114121873BA008143E4 /* CoreLocation.framework */; };
@@ -298,6 +300,8 @@
 		AABF4D9213921E1A001B547A /* MKTableCellIAP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTableCellIAP.h; sourceTree = "<group>"; };
 		AABF4D9313921E1A001B547A /* MKTableCellIAP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTableCellIAP.m; sourceTree = "<group>"; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AAE70D21140DB7B700797D84 /* MKPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPhotoView.h; sourceTree = "<group>"; };
+		AAE70D22140DB7B700797D84 /* MKPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPhotoView.m; sourceTree = "<group>"; };
 		AAEDEA751390A730007EA362 /* MKNoticeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKNoticeView.h; sourceTree = "<group>"; };
 		AAEDEA761390A731007EA362 /* MKNoticeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKNoticeView.m; sourceTree = "<group>"; };
 		AAEFE114121873BA008143E4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -455,6 +459,8 @@
 				AA6DF3F6138E04B90091B912 /* MKMenuView */,
 				AAEDEA751390A730007EA362 /* MKNoticeView.h */,
 				AAEDEA761390A731007EA362 /* MKNoticeView.m */,
+				AAE70D21140DB7B700797D84 /* MKPhotoView.h */,
+				AAE70D22140DB7B700797D84 /* MKPhotoView.m */,
 				AA6DF3ED138E02590091B912 /* MKPrompts */,
 				AAB4D1DF13E86A700061A6BD /* MKPopOutView.h */,
 				AAB4D1E013E86A700061A6BD /* MKPopOutView.m */,
@@ -728,6 +734,7 @@
 				AA99D3161405B1BE00CFFD56 /* MKObjectDelegate.h in Headers */,
 				AA99D3191405B71E00CFFD56 /* MKObject.h in Headers */,
 				AA737F261409DBBA0078830C /* MKTableCellAccentView.h in Headers */,
+				AAE70D23140DB7B700797D84 /* MKPhotoView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -844,6 +851,7 @@
 				AA0D155913F308200067BA2A /* MKTableCellBadgeView.m in Sources */,
 				AA99D31A1405B71E00CFFD56 /* MKObject.m in Sources */,
 				AA737F271409DBBA0078830C /* MKTableCellAccentView.m in Sources */,
+				AAE70D24140DB7B700797D84 /* MKPhotoView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

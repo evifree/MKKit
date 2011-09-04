@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 1/10/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Matt King. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -15,7 +15,16 @@
 #import <MKKit/MKKit/MKErrorContol/MKErrorHandeling.h>
 #import <MKKit/MKKit/MKErrorContol/MKWarningIcon.h>
 
+#import <MKKit/MKKit/MKStrings.h>
+
 #define TEXT_FIELD_SHOULD_VALIDATE_NOTIFICATION     @"textFieldShouldValidateNotificaiton"
+
+typedef enum {
+    MKInputAccessoryTypeDone,
+    MKInputAccessoryTypeFinancial,
+} MKInputAccessoryType;
+
+@class MKView;
 
 /**---------------------------------------------------------------------------------------------
  The MKTextField class is a subclass of UITextField. This class adds validation control to a text field.
@@ -92,8 +101,18 @@
 /// @name Text Input Opptions
 ///---------------------------------------------------------------------------------------
 
-/** Set to YES to use MKInputAccessoryView as the accessory for the keyboard. Default is NO. */
-@property (nonatomic, assign) BOOL useInputAccessoryView;
+/** Set to YES to use MKInputAccessoryView as the accessory for the keyboard. Default is NO.
+
+  Deprecated v0.7 use accessoryType property instead. 
+*/
+@property (nonatomic, assign) BOOL useInputAccessoryView DEPRECATED_ATTRIBUTE;
+
+/** Sets a toolbar above the keyboard. Set the type to match your needs.
+ 
+ * `MKInputAccessoryTypeDone` : a toolbar with a Done button.
+ * `MKInputAccessoryTypeFinancial` : a toolbar with a Credit and Debit button.
+*/
+@property (nonatomic, assign) MKInputAccessoryType accessoryType;
 
 ///---------------------------------------------------------------------------------------
 /// @name Validatior
@@ -114,12 +133,28 @@
 /**---------------------------------------------------------------------------------------
  The MKInputAccessoryView is a helper class for the MKTextField class. It provides a toolbar with a done
  button to be placed on top of the keyboard when it is dispalyed. You should not need to call implement this
- class directly.
+ class directly. The accessory view handles all actions from its buttons.
 -----------------------------------------------------------------------------------------*/ 
 
-@interface MKInputAccessoryView : UIView {
-	UIToolbar *_toolbar;
+@interface MKInputAccessoryView : MKView {
+	UIToolbar *mToolbar;
 }
+
+/** 
+ Returns an instance of MKInputAccessoryView set up for the given type.
+ 
+ * `MKInputAccessoryTypeDone` : a toolbar with a Done button.
+ * `MKInputAccessoryTypeFinancial` : a toolbar with a Credit and Debit button.
+ 
+ @warning *Note* `MKInputAccessoryTypeFinancial` is designed to be used with number
+ values. Taping the debit or creidt buttons will set the entered number to a negative
+ or positive value.
+
+ @param type the type of accessory to use
+
+ @return MKInputAccessoryView instance
+*/
+- (id)initWithType:(MKInputAccessoryType)type;
 
 /** The toolbar that is drawn above the keyboard.*/
 @property (nonatomic, retain) UIToolbar *toolbar;

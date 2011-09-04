@@ -21,6 +21,8 @@
         self.alpha = 1.0;
         self.opaque = NO;
         
+        mShouldRemoveView = NO;
+        
         mBadgeColor = GRAY.CGColor;
         
         mBadgeLabel = [[UILabel alloc] initWithFrame:self.frame];

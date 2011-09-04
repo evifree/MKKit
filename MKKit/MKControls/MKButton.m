@@ -20,6 +20,7 @@
 
 void drawHelpButton(CGContextRef context, CGRect rect);
 void drawDiscloserButton(CGContextRef context, CGRect rect);
+void drawDropDownIndicatorButton(CGContextRef context, CGRect rect, CGColorRef tint, bool highlighted);
 void drawIAPButton(CGContextRef context, CGRect rect, bool working, bool highlighted);
 void drawPlasticButton(CGContextRef context, CGRect rect, CGColorRef tint, bool highlighted);
 void drawRoundRectButton(CGContextRef context, CGRect rect, CGColorRef tint, bool highlighted);
@@ -61,6 +62,17 @@ bool mHighlighted = NO;
         
         if (mType == MKButtonTypeDisclosure) {
             self.frame = CGRectMake(0.0, 0.0, 25.0, 25.0);
+        }
+        
+        if (mType == MKButtonTypeDropDownIndicator) {
+            self.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+            if (tint) {
+                MKButtonFlags.tintColor = tint.CGColor;
+            }
+            else {
+                MKButtonFlags.tintColor = LIGHT_GRAY.CGColor;
+            }
+
         }
         
         if (mType == MKButtonTypeIAP) {
@@ -111,6 +123,9 @@ bool mHighlighted = NO;
     }
     else if (mType == MKButtonTypeDisclosure) {
         drawDiscloserButton(context, rect);
+    }
+    else if (mType == MKButtonTypeDropDownIndicator) {
+        drawDropDownIndicatorButton(context, rect, MKButtonFlags.tintColor, MKButtonFlags.isHighlighted);
     }
     else if (mType == MKButtonTypeIAP) {
         drawIAPButton(context, rect, MKButtonFlags.isWorking, MKButtonFlags.isHighlighted);
@@ -177,6 +192,60 @@ void drawDiscloserButton(CGContextRef context, CGRect rect) {
     
     CFRelease(outerPath);
     CFRelease(innerPath);
+}
+
+#pragma mark Drop Down Indicator Button
+
+void drawDropDownIndicatorButton(CGContextRef context, CGRect rect, CGColorRef tint, bool highlighted) {
+    CGFloat outerMargin = 1.0;
+    CGFloat buttonMargin = 1.0;
+    CGFloat arrowMargin = 10.0;
+    
+    CGRect innerRect = CGRectInset(rect, outerMargin, outerMargin);
+    CGRect buttonRect = CGRectInset(innerRect, buttonMargin, buttonMargin);
+    CGRect startArrowRect = CGRectInset(innerRect, arrowMargin, arrowMargin);
+    CGRect arrowRect = CGRectMake(startArrowRect.origin.x, (startArrowRect.origin.y + 3.0), startArrowRect.size.width, (startArrowRect.size.height -2.0));
+    
+    CGMutablePathRef buttonPath = createRoundedRectForRect(buttonRect, 7.0);
+    CGMutablePathRef outlinePath = createRoundedRectForRect(innerRect, 7.0);
+    CGMutablePathRef arrowPath = createPathForDownPointer(arrowRect);
+    
+    CGColorRef shadowColor = MK_COLOR_HSB(345.0, 2.0, 56.0, 1.0).CGColor;
+    
+    drawOutlinePath(context, outlinePath, 0.5, BLACK.CGColor);
+    
+    CGContextSaveGState(context);
+    CGContextSetShadowWithColor(context, CGSizeMake(0.0, -1.0), 1.0, BLACK.CGColor);
+    CGContextSetFillColorWithColor(context, tint);
+    CGContextAddPath(context, buttonPath);
+    CGContextFillPath(context);
+    CGContextRestoreGState(context);
+    
+    CGContextSaveGState(context);
+    CGContextSetShadowWithColor(context, CGSizeMake(0.0, 1.0), 1.0, shadowColor);
+    CGContextAddPath(context, buttonPath);
+    CGContextClip(context);
+    drawLinearGloss(context, buttonRect);
+    CGContextRestoreGState(context);
+    
+    CGContextSaveGState(context);
+    CGContextSetShadowWithColor(context, CGSizeMake(0.0, 1.0), 1.0, WHITE.CGColor);
+    CGContextSetFillColorWithColor(context, DARK_GRAY.CGColor);
+    CGContextAddPath(context, arrowPath);
+    CGContextFillPath(context);
+    CGContextRestoreGState(context);
+    
+    if (highlighted) {
+        CGContextSaveGState(context);
+        CGContextSetFillColorWithColor(context, BLACK.CGColor);
+        CGContextAddPath(context, buttonPath);
+        CGContextFillPath(context);
+        CGContextRestoreGState(context);
+    }
+    
+    CFRelease(buttonPath);
+    CFRelease(outlinePath);
+    CFRelease(arrowPath);
 }
 
 #pragma mark IAP Button

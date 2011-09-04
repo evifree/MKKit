@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 1/10/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Matt King. All rights reserved.
 //
 
 #import "MKTextField.h"
@@ -25,7 +25,7 @@
 @implementation MKTextField
 
 @synthesize validator=_validator, error=_error, validated=_validated, animated, validationType, 
-			automaticalyValidate, useInputAccessoryView, displayWarningIcon;
+			automaticalyValidate, useInputAccessoryView, displayWarningIcon, accessoryType;
 
 #pragma mark Initalizer
 
@@ -61,7 +61,7 @@
 
 - (void)setUseInputAccessoryView:(BOOL)use {
 	if (use) {
-		MKInputAccessoryView *accessoryView = [[MKInputAccessoryView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0)];
+		MKInputAccessoryView *accessoryView = [[MKInputAccessoryView alloc] initWithType:MKInputAccessoryTypeDone];
 		accessoryView.textField = self;
 		self.inputAccessoryView = accessoryView;
 		[accessoryView release];
@@ -70,6 +70,13 @@
 		self.inputAccessoryView = nil;
 	}
 
+}
+
+- (void)setAccessoryType:(MKInputAccessoryType)type {
+    MKInputAccessoryView *accessoryView = [[MKInputAccessoryView alloc] initWithType:type];
+    accessoryView.textField = self;
+    self.inputAccessoryView = accessoryView;
+    [accessoryView release];
 }
 
 #pragma mark Validation Methods
@@ -193,41 +200,83 @@
 @interface MKInputAccessoryView ()
 
 - (void)doneButton:(id)sender;
+- (void)creditButton:(id)sender;
+- (void)debitButton:(id)sender;
 
 @end
 
 @implementation MKInputAccessoryView
 
-@synthesize toolbar=_toolbar, textField;
+@synthesize toolbar=mToolbar, textField;
 
-- (id)initWithFrame:(CGRect)frame {
-	self = [super initWithFrame:frame];
-	if (self) {
-		self.autoresizesSubviews = YES;
+- (id)initWithType:(MKInputAccessoryType)type {
+    self = [super initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0)];
+    if (self) {
+        self.autoresizesSubviews = YES;
+        self.alpha = 1.0;
+        
+        mShouldRemoveView = NO;
 		
-		_toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0)];
-		_toolbar.barStyle = UIBarStyleBlackOpaque;
-		_toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
+		mToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0)];
+		mToolbar.barStyle = UIBarStyleBlackOpaque;
+		mToolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
+        
+        UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 		
-		UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-		UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(doneButton:)];
+        if (type == MKInputAccessoryTypeDone) {
+            UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(doneButton:)];
+            
+            NSArray *items = [NSArray arrayWithObjects:space, done, nil];
+            mToolbar.items = items;
+            
+            [done release];
+        }
+        
+        if  (type == MKInputAccessoryTypeFinancial) {
+            UIBarButtonItem *credit = [[UIBarButtonItem alloc] initWithTitle:@"Credit (+)" style:UIBarButtonItemStyleBordered target:self action:@selector(creditButton:)];
+            UIBarButtonItem *debit = [[UIBarButtonItem alloc] initWithTitle:@"Debit (-)" style:UIBarButtonItemStyleBordered target:self action:@selector(debitButton:)];
+            
+            NSArray *items = [NSArray arrayWithObjects:space, credit, debit, nil];
+            mToolbar.items = items;
+            
+            [credit release];
+            [debit release];
+        }
+        
+        [space release];
+
+		[self addSubview:mToolbar];
 		
-		NSArray *items = [NSArray arrayWithObjects:space, done, nil];
-		_toolbar.items = items;
-		
-		[space release];
-		[done release];
-		
-		[self addSubview:_toolbar];
-		
-		[_toolbar release];
-	}
-	return self;
+		[mToolbar release];
+    }
+    return self;
 }
+
+#pragma mark - Actions
 
 - (void)doneButton:(id)sender {
 	[self.textField resignFirstResponder];
 }
+
+- (void)creditButton:(id)sender {
+    if ([self.textField.text floatValue] < 0.0) {
+        float num = ([self.textField.text floatValue] * -1.0);
+        self.textField.text = [MKStrings stringWithDecimalNumber:[NSDecimalNumber numberWithFloat:num] decimalPlaces:2];
+    }
+    
+    [self.textField resignFirstResponder];
+}
+
+- (void)debitButton:(id)sender {
+    if ([self.textField.text floatValue] > 0.0) {
+        float num = ([self.textField.text floatValue] * -1.0);
+        self.textField.text = [MKStrings stringWithDecimalNumber:[NSDecimalNumber numberWithFloat:num] decimalPlaces:2];
+    }
+    [self.textField resignFirstResponder];
+}
+
+
+#pragma mark Memory Management
 
 - (void)dealloc {
 	[super dealloc];

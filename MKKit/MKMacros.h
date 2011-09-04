@@ -8,6 +8,7 @@
 
 #import <MKKit/MKKit/MKDeffinitions.h>
 
+#import <Availability.h>
 #import <math.h>
 
 //  constants

@@ -58,7 +58,7 @@ void drawAccentForSingleCell(CGContextRef context, CGRect rect, CGColorRef topCo
     CGMutablePathRef path = createRoundedRectForRect(rect, 10.0);
     
     CGContextSaveGState(context);
-    CGContextSetFillColorWithColor(context, WHITE.CGColor);
+    CGContextSetFillColorWithColor(context, topColor);
     CGContextAddPath(context, path);
     CGContextFillPath(context);
     CGContextRestoreGState(context);
