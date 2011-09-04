@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 #import <MKKit/MKKit/MKErrorContol/MKErrorHandeling.h>
 
-typedef void (^MKFechCompletionBlock)(NSMutableArray *results, NSError *error);
+typedef void (^MKFetchCompletionBlock)(NSMutableArray *results, NSError *error);
 
 /**---------------------------------------------------------------------------------------------
 
@@ -22,7 +22,7 @@ typedef void (^MKFechCompletionBlock)(NSMutableArray *results, NSError *error);
 -----------------------------------------------------------------------------------------------*/
 
 @interface MKCoreData : NSObject {
-	MKFechCompletionBlock mFechCompletionBlock;
+	MKFetchCompletionBlock mFetchCompletionBlock;
 }
 
 ///---------------------------------------
@@ -83,13 +83,13 @@ typedef void (^MKFechCompletionBlock)(NSMutableArray *results, NSError *error);
  
  @param result Code block to preform when the fech is complete
 */
-- (void)fetchResultsForEntity:(NSString *)entity sortedBy:(NSString *)attribute accending:(BOOL)accending result:(MKFechCompletionBlock)result;
+- (void)fetchResultsForEntity:(NSString *)entity sortedBy:(NSString *)attribute accending:(BOOL)accending result:(MKFetchCompletionBlock)result;
 
 ///---------------------------------------
 /// @name Code Blocks
 ///---------------------------------------
 
 /** the code to be preformed when a fech is complete. You should not set this property directly.*/
-@property (nonatomic, copy) MKFechCompletionBlock fechCompletionBlock;
+@property (nonatomic, copy) MKFetchCompletionBlock fechCompletionBlock;
 
 @end

@@ -29,6 +29,7 @@ static const CGFloat kDefaultReflectionOpacity = 0.35;
 - (id)initWithImage:(UIImage *)image drawAt:(CGPoint)point {
     self = [super initWithFrame:CGRectMake(point.x, point.y, image.size.width, ((image.size.height * 2.0) + 2))];
     if (self) {
+        self.backgroundColor = CLEAR;
         mImage = [image retain];
         
         NSUInteger reflectionHeight = image.size.height * kDefaultReflectionFraction;

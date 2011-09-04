@@ -19,7 +19,7 @@
 @implementation MKTableCellPickerControlled
 
 @synthesize pickerLabel=mPickerLabel, pickerDate=mPickerDate, 
-pickerView=_pickerView, owner=_owner;
+pickerView=_pickerView, owner=_owner, placeholder;
 
 @synthesize pickerFrame=_pickerFrame, pickerType, pickerSubType, 
 pickerArray=_pickerArray;
@@ -63,6 +63,13 @@ pickerArray=_pickerArray;
 	_pickerArray = [array retain];
 }
 
+- (void)setPlaceholder:(NSString *)holder {
+    if ([mPickerLabel.text length] == 0) {
+        mPickerLabel.textColor = LIGHT_GRAY;
+        mPickerLabel.text = holder;
+    }
+}
+
 #pragma mark Cell Behaivor
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -101,7 +108,8 @@ pickerArray=_pickerArray;
 
 - (void)changeDate:(UIDatePicker *)sender {
 	MKStrings *string = [[MKStrings alloc] init];
-	
+	self.pickerLabel.textColor = BLACK;
+    
 	if (pickerType == MKTableCellPickerTypeDate) {
 		mPickerDate = [sender.date retain];
 		[mPickerDate release];
@@ -152,6 +160,7 @@ pickerArray=_pickerArray;
 		[delegate valueDidChange:index forKey:self.key];
 	}
 	
+    self.pickerLabel.textColor = BLACK;
 	self.pickerLabel.text = [self.pickerArray objectAtIndex:row];
 }
 
@@ -227,6 +236,8 @@ pickerArray=_pickerArray;
 #pragma mark Drawing
 
 - (UIView *)assignPicker {
+    self.pickerCell.pickerLabel.textColor = BLACK;
+    
 	if (self.pickerCell.pickerType == MKTableCellPickerTypeStandard) {
 		UIPickerView *aPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0.0, 44.0, 320.0, 216.0)];
 		aPicker.showsSelectionIndicator = YES;
@@ -273,7 +284,7 @@ pickerArray=_pickerArray;
 		[aDatePicker addTarget:self.pickerCell action:@selector(changeDate:) forControlEvents:UIControlEventValueChanged];
 		
 		MKStrings *string = [[MKStrings alloc] init];
-		self.pickerCell.pickerLabel.text = [string date:aDatePicker.date withFormat:@"MMM dd, yyyy"];
+        self.pickerCell.pickerLabel.text = [string date:aDatePicker.date withFormat:@"MMM dd, yyyy"];
 		[string release];
 		
 		if ([self.pickerCell.delegate respondsToSelector:@selector(valueDidChange:forKey:)]) {

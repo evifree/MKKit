@@ -55,10 +55,11 @@ maxAtempts=mMaxAtempts;
     
     MKButton *help = [[MKButton alloc] initWithType:MKButtonTypeHelp];
     help.frame = CGRectMake(295.0, 10.0, 20.0, 21.0);
+    help.tag = 1;
     
     [help completedAction: ^ (MKAction action) {
         if (action == MKActionTouchUp) {
-            [self onHelpButton:help];
+            [self onHelpButton:nil];
         }
     }];
     
@@ -120,8 +121,24 @@ maxAtempts=mMaxAtempts;
     
     [self.view addSubview:view];
     [view release];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    mBoxOne.text = @"";
+    mBoxTwo.text = @"";
+    mBoxThree.text = @"";
+    mBoxFour.text = @"";
     
     [mBoxOne becomeFirstResponder];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+    [self.view removeFromSuperview];
+    self.view = nil;
 }
 
 - (void)viewDidUnload {

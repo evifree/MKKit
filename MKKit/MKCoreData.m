@@ -17,7 +17,7 @@
 
 @implementation MKCoreData
 
-@synthesize fechCompletionBlock=mFechCompletionBlock;
+@synthesize fechCompletionBlock=mFetchCompletionBlock;
 
 static NSManagedObjectContext *managedObjectContext = nil;
 static MKCoreData *sharedData = nil;
@@ -98,7 +98,7 @@ static MKCoreData *sharedData = nil;
 	return mutableFetchResults;
 }
 
-- (void)fetchResultsForEntity:(NSString *)entity sortedBy:(NSString *)attribute accending:(BOOL)accending result:(MKFechCompletionBlock)result {
+- (void)fetchResultsForEntity:(NSString *)entity sortedBy:(NSString *)attribute accending:(BOOL)accending result:(MKFetchCompletionBlock)result {
     self.fechCompletionBlock = result;
     
     NSFetchRequest *request = [[NSFetchRequest alloc] init]; 
@@ -144,6 +144,7 @@ static MKCoreData *sharedData = nil;
 	}
 	
 	[managedObjectContext release];
+    [mFetchCompletionBlock release];
 	
 	if (sharedData) {
 		sharedData = nil;

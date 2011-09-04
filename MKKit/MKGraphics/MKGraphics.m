@@ -74,6 +74,39 @@ CGMutablePathRef createCircularPathForRect(CGRect rect) {
     return path;
 }
 
+CGMutablePathRef createPathForUpPointer(CGRect rect) {
+    CGMutablePathRef path = CGPathCreateMutable();
+    
+    CGPoint p1 = CGPointMake(CGRectGetMidX(rect), CGRectGetMinY(rect));
+    CGPoint p2 = CGPointMake(CGRectGetMaxX(rect), CGRectGetMaxY(rect));
+    CGPoint p3 = CGPointMake(CGRectGetMinX(rect), CGRectGetMaxY(rect));
+    
+    CGPathMoveToPoint(path, NULL, p1.x, p1.y);
+    CGPathAddLineToPoint(path, NULL, p2.x, p2.y);
+    CGPathAddLineToPoint(path, NULL, p3.x, p3.y);
+    CGPathAddLineToPoint(path, NULL, p1.x, p1.y);
+    
+    CGPathCloseSubpath(path);
+    
+    return path;
+}
+
+CGMutablePathRef createPathForDownPointer(CGRect rect) {
+    CGMutablePathRef path = CGPathCreateMutable();
+    
+    CGPoint p1 = CGPointMake(CGRectGetMinX(rect), CGRectGetMinY(rect));
+    CGPoint p2 = CGPointMake(CGRectGetMaxX(rect), CGRectGetMinY(rect));
+    CGPoint p3 = CGPointMake(CGRectGetMidX(rect), CGRectGetMaxY(rect));
+    
+    CGPathMoveToPoint(path, NULL, p1.x, p1.y);
+    CGPathAddLineToPoint(path, NULL, p2.x, p2.y);
+    CGPathAddLineToPoint(path, NULL, p3.x, p3.y);
+    CGPathAddLineToPoint(path, NULL, p1.x, p1.y);
+    
+    CGPathCloseSubpath(path);
+    
+    return path;
+}
 
 void drawOutlinePath(CGContextRef context, CGPathRef path, CGFloat width, CGColorRef color) {
     CGContextSaveGState(context);
@@ -102,6 +135,7 @@ void drawCurvedGloss(CGContextRef context, CGRect rect, CGFloat radius) {
     CGColorRef glossEnd = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.1].CGColor;
     
     CGMutablePathRef glossPath = CGPathCreateMutable();
+    CGMutablePathRef roundRect = createRoundedRectForRect(rect, 6.0f);
     
     CGContextSaveGState(context);
     CGPathMoveToPoint(glossPath, NULL, CGRectGetMidX(rect), CGRectGetMinY(rect)-radius+rect.size.height/2);
@@ -109,7 +143,7 @@ void drawCurvedGloss(CGContextRef context, CGRect rect, CGFloat radius) {
     CGPathCloseSubpath(glossPath);
     CGContextAddPath(context, glossPath);
     CGContextClip(context);
-    CGContextAddPath(context, createRoundedRectForRect(rect, 6.0f));
+    CGContextAddPath(context, roundRect);
     CGContextClip(context);
     
     CGRect half = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height/2);    
@@ -118,6 +152,7 @@ void drawCurvedGloss(CGContextRef context, CGRect rect, CGFloat radius) {
     CGContextRestoreGState(context);
     
     CFRelease(glossPath);
+    CFRelease(roundRect);
 }
 
 void drawLinearGloss(CGContextRef context, CGRect rect) {

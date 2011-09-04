@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 3/30/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Matt King. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

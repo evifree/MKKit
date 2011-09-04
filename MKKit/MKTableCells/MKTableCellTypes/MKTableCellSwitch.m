@@ -27,6 +27,8 @@
         CGRect switchFrame = CGRectMake(198.3, 10.0, 172.0, 21.0);
 		CGRect labelFrame = CGRectMake(10.0, 11.0, 200.0, 21.0);
 		
+        mCellView = [[MKView alloc] initWithCell:self];
+        
 		mTheLabel = [[UILabel alloc] initWithFrame:labelFrame];
 		mTheLabel.textAlignment = UITextAlignmentLeft;
 		mTheLabel.adjustsFontSizeToFitWidth = YES;
@@ -34,7 +36,7 @@
 		mTheLabel.backgroundColor = [UIColor clearColor];
 		mTheLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
 		
-		[self.contentView addSubview:mTheLabel];
+        [mCellView addPrimaryElement:mTheLabel];
 		[mTheLabel release];
 		
 		_theSwitch = [[UISwitch alloc] initWithFrame:switchFrame];
@@ -42,8 +44,11 @@
 		_theSwitch.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin;
 		[_theSwitch addTarget:self action:@selector(switchFlipped:) forControlEvents:UIControlEventValueChanged];
 		
-		[self.contentView addSubview:_theSwitch];
+        [mCellView addSecondaryElement:_theSwitch inRect:switchFrame];
 		[_theSwitch release];
+        
+        [self.contentView addSubview:mCellView];
+        [mCellView release];
     }
     return self;
 }

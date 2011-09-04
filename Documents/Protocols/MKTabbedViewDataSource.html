@@ -1,0 +1,193 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>MKTabbedViewDataSource Protocol Reference</title>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+		<meta name="generator" content="appledoc 2.0b3" />
+	</head>
+	<body>
+		<article>
+			<div class="main-navigation navigation-top">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="header">
+				<div class="section-header">
+					<h1 class="title title-header">MKTabbedViewDataSource Protocol Reference</h1>
+				</div>		
+			</div>
+			<div id="container">	
+				
+				<div class="section section-specification"><table cellspacing="0"><tbody>
+					<tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">MKTabbedViewProtocols.h</td>
+</tr>
+					</tbody></table></div>
+				
+				
+				
+				<div class="section section-overview">
+					<h2 class="subtitle subtitle-overview">Overview</h2>
+					
+<p> The <a href="MKTabbedViewDataSource.html">MKTabbedViewDataSource</a> Protocol provides methods for suppling content for the MKTabbedViewController. </p>
+
+				</div>
+				
+				
+				
+				
+				<div class="section section-tasks">
+					<h2 class="subtitle subtitle-tasks">Tasks</h2>
+					
+					
+<h3 class="subsubtitle task-title">Content Methods</h3>
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/tabsForView:">- tabsForView:</a></code>
+		<span class="tooltip"> Return an array of <a href="../Classes/MKTabItem.html">MKTabItem</a> instances. These instances will create the tabs of <a href="../Classes/MKTabbedViewController.html">MKTabbedViewController</a></span>
+	</span>
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/viewForTabAtIndex:">- viewForTabAtIndex:</a></code>
+		<span class="tooltip"> Return the view that should be displayed when the tab is touched. </span>
+	</span>
+	<span class="task-item-suffix">required method</span>
+</li>
+					</ul>
+					
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/tabsForView:" title="tabsForView:"></a>
+	<h3 class="subsubtitle method-title">tabsForView:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Return an array of <a href="../Classes/MKTabItem.html">MKTabItem</a> instances. These instances will create the tabs of <a href="../Classes/MKTabbedViewController.html">MKTabbedViewController</a></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSArray *)tabsForView:(MKTabbedView *)<em>tabbedView</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>tabbedView</em></dt>
+			<dd> the <a href="../Classes/MKTabbedView.html">MKTabbedView</a> instance requesing the array. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection arguments-section exceptions">
+		<h4 class="method-subtitle exception-title">Exceptions</h4>
+		
+		<dl class="argument-def exception-def">
+			<dt><em>an</em></dt>
+			<dd> excepetion is raise if their are more than 3 MKTabItems in the array. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTabbedViewProtocols.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/viewForTabAtIndex:" title="viewForTabAtIndex:"></a>
+	<h3 class="subsubtitle method-title">viewForTabAtIndex:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Return the view that should be displayed when the tab is touched. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (UIView *)viewForTabAtIndex:(NSInteger)<em>index</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>index</em></dt>
+			<dd> the index of the selected tab. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTabbedViewProtocols.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+				
+				
+			</div>
+			<div class="main-navigation navigation-bottom">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="footer">
+				<hr />
+				<div class="footer-copyright">
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-08-08)</span><br />
+					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
+				</div>
+			</div>
+		</article>
+	</body>
+</html>

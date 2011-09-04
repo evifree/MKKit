@@ -10,7 +10,7 @@
 
 @interface MKTableCellIAP ()
 
-- (void)completPurchase;
+- (void)completePurchase;
 
 @end
 
@@ -42,13 +42,7 @@
 - (void)setPrice:(NSString *)price {
     mButton = [[MKButton alloc] initWithType:MKButtonTypeIAP title:price];
     mButton.frame = CGRectMake((270.0 - mButton.frame.size.width), 7.0, mButton.frame.size.width, 30.0);
-    
-    
-    [mButton completedAction: ^ (MKAction action) {
-        if (action == MKActionTouchUp) {
-            [self completPurchase];
-        }
-    }];
+    [mButton addTarget:self selector:@selector(completePurchase) action:MKActionTouchUp]; 
     
     [self.contentView addSubview:mButton];
     [mButton release];
@@ -56,7 +50,7 @@
 
 #pragma mark - Actions
 
-- (void)completPurchase {
+- (void)completePurchase {
     NSSet *items = [NSSet setWithObject:self.IAPIdentifier];
     self.accessoryViewType = MKTableCellAccessoryActivity;
     mButton.working = YES;

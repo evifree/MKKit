@@ -8,6 +8,8 @@
 
 #import "MKTableCell.h"
 
+#import "MKTableElements/MKTableCellBadgeView.h"
+
 @interface MKTableCell ()
 
 - (void)accessoryButton:(id)sender;
@@ -16,12 +18,35 @@
 
 @end
 
+#pragma mark - Functions
+
+MKTableCellBadge iBadge;
+MKTableCellAccent iAccent;
+
+MKTableCellBadge MKTableCellBadgeMake(CGColorRef color, CFStringRef text) {
+    iBadge.color = color;
+    iBadge.text = text;
+    
+    return iBadge;
+}
+
+MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellPosition position, CGColorRef tint) {
+    iAccent.type = type;
+    iAccent.position = position;
+    iAccent.tint = tint;
+    
+    return iAccent;
+}
+
+#pragma mark -
+
 @implementation MKTableCell
 
-@synthesize delegate, type, theLabel=mTheLabel, smallLabel=mSmallLabel, key, accessoryViewType, 
+@synthesize delegate, type, theLabel=mTheLabel, smallLabel=mSmallLabel, key=mKey, accessoryViewType, 
             validationType=mValidationType, validating=mValidating, validator, icon,
             iconMask, validatorTestStringLength=mValidatorTestStringLength, accessoryIcon, 
-            recognizeLeftToRightSwipe, recognizeRightToLeftSwipe, recognizeLongPress, indexPath;
+            recognizeLeftToRightSwipe, recognizeRightToLeftSwipe, recognizeLongPress, indexPath,
+            primaryViewTrim, badge, accent;
 
 #pragma mark - Initalizer
 
@@ -33,6 +58,7 @@
         
         if (type != MKTableCellTypeNone) {
             mCellView = [[MKView alloc] initWithCell:self];
+            mCellView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
             [self.contentView addSubview:mCellView];
             [mCellView release];
         }
@@ -40,6 +66,7 @@
         if (type == MKTableCellTypeLabel) {
             mTheLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 			mTheLabel.font = [UIFont fontWithName:@"Verdana-Bold" size:16.0];
+            mTheLabel.backgroundColor = CLEAR;
 			mTheLabel.textAlignment = UITextAlignmentLeft;
 			mTheLabel.adjustsFontSizeToFitWidth = NO;
             mTheLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
@@ -104,6 +131,7 @@
 }
 	
 #pragma mark - Accessor Methods
+#pragma mark Accessories
 
 - (void)setAccessoryViewType:(MKTableCellAccessoryViewType)aType {
 	if (aType == MKTableCellAccessoryNone) {
@@ -131,14 +159,12 @@
 
 - (void)setAccessoryIcon:(UIImage *)lIcon {
     MKControl *iconView = [[MKControl alloc] initWithImage:lIcon];
-    [iconView completedAction: ^ (MKAction action) {
-        if (action == MKActionTouchDown) {
-            [self accessoryButton:iconView];
-        }
-    }];
+    [iconView addTarget:self selector:@selector(accessoryButton:) action:MKActionTouchDown];
     self.accessoryView = iconView;
     [iconView release];
 }
+
+#pragma mark Validation
 
 - (void)setValidationType:(MKValidationType)valType {
 	mValidationType = valType;
@@ -161,6 +187,8 @@
     }
 }
 
+#pragma mark Icons
+
 - (void)setIcon:(UIImage *)anImage {
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     imageView.image = anImage;
@@ -173,6 +201,58 @@
     MKMaskIconView *iconView = [[MKMaskIconView alloc] initWithImage:lIconMask];
     [mCellView addIconElement:iconView];
     [iconView release];
+}
+
+#pragma mark Accents
+
+- (void)setAccent:(MKTableCellAccent)anAccent {
+    UIView *view = [mCellView viewWithTag:kAccentViewTag];
+    
+    if (view) {
+        [view removeFromSuperview];
+    }
+    
+    if (anAccent.type == MKTableCellAccentTypeFull) {
+        MKTableCellAccentView *view = [[MKTableCellAccentView alloc] initWithFrame:mCellView.frame position:anAccent.position];
+        view.tint = [UIColor colorWithCGColor:anAccent.tint];
+        view.tag = kAccentViewTag;
+        
+        [mCellView addSubview:view];
+        [mCellView sendSubviewToBack:view];
+        
+        [view release];
+    }
+    
+    if (anAccent.type == MKTableCellAccentTypePrimaryView) {
+        [self accentPrimaryViewForCellAtPosition:anAccent.position];
+    }
+}
+
+- (void)setPrimaryViewTrim:(CGFloat)trim {
+    MKElementAccentView *view = (MKElementAccentView *)[self.contentView viewWithTag:kAccentViewTag];
+    view.frame = CGRectMake(view.x, view.y, (view.width - trim), view.height);
+    
+    UIView *textView = [mCellView viewWithTag:kPrimaryViewTag];
+    textView.frame = CGRectMake(textView.frame.origin.x, textView.frame.origin.y, (textView.frame.size.width - trim), textView.frame.size.height);
+}
+
+- (void)setBadge:(MKTableCellBadge)aBadge {
+    UIView *view = (UIView *)[mCellView viewWithTag:kBadgeViewTag];
+    
+    if (view) {
+        [view removeFromSuperview];
+    }
+    
+    CGSize width = [(NSString *)aBadge.text sizeWithFont:SYSTEM_BOLD(kBadgeTextFontSize)];
+    CGRect rect = CGRectMake((kBadgeX - width.width - kBadgeXWidthAdjustment), kBadgeY, (width.width + kBadgeTextPadding), kBadgeHeight);
+    
+    MKTableCellBadgeView *badgeView = [[MKTableCellBadgeView alloc] initWithFrame:rect];
+    badgeView.badgeText = (NSString *)aBadge.text;
+    badgeView.badgeColor = [UIColor colorWithCGColor:aBadge.color];
+    badgeView.tag = kBadgeViewTag;
+    
+    [mCellView addSubview:badgeView];
+    [badgeView release];
 }
 
 #pragma mark Gestures
@@ -230,15 +310,60 @@
     [super setSelected:selected animated:animated];
     
     if (selected) {
-        if ([delegate respondsToSelector:@selector(didSelectCell:forKey:)]) {
-            [delegate didSelectCell:self forKey:self.key];
+        if ([delegate respondsToSelector:@selector(didSelectCell:forKey:indexPath:)]) {
+            [delegate didSelectCell:self forKey:self.key indexPath:self.indexPath];
         }
     }
 	
 }
 
-- (void)willTransitionToState:(UITableViewCellStateMask)state {
-    [super willTransitionToState:state];
+#pragma mark - Elements
+
+- (void)addBadgeWithText:(NSString *)text color:(UIColor *)color rect:(CGRect)rect {
+    UIView *view = (UIView *)[mCellView viewWithTag:kBadgeViewTag];
+    
+    if (view) {
+        [view removeFromSuperview];
+    }
+    
+    MKTableCellBadgeView *abadge = [[MKTableCellBadgeView alloc] initWithFrame:rect];
+    abadge.badgeText = text;
+    abadge.badgeColor = color;
+    abadge.tag = kBadgeViewTag;
+    
+    [mCellView addSubview:abadge];
+    [abadge release];
+}
+
+#pragma mark - Appearance
+
+- (void)accentPrimaryViewForCellAtPosition:(MKTableCellPosition)position {
+    UIView *view = (UIView *)[mCellView viewWithTag:kPrimaryViewTag];
+    UIView *aView = (UIView *)[self.contentView viewWithTag:kAccentViewTag];
+    
+    if (aView) {
+        [aView removeFromSuperview];
+    }
+    
+    MKElementAccentView *accentView = [[MKElementAccentView alloc] initWithFrame:CGRectMake(0.0, 0.0, (view.frame.size.width + 3.0), self.frame.size.height) position:position];
+    [self.contentView addSubview:accentView];
+    [self.contentView sendSubviewToBack:accentView];
+    accentView.tag = kAccentViewTag;
+    [accentView release];
+    
+    if (mTheLabel) {
+        mTheLabel.font = VERDANA_BOLD(14.0);
+        mTheLabel.adjustsFontSizeToFitWidth = YES;
+        mTheLabel.textColor = DARK_GRAY;
+        mTheLabel.shadowColor = WHITE;
+        mTheLabel.shadowOffset = CGSizeMake(0.0, 1.0);
+        mTheLabel.textAlignment = UITextAlignmentCenter;
+    }
+}
+
+- (void)accentPrimaryViewForCellAtPosition:(MKTableCellPosition)position trim:(CGFloat)trim {
+    [self accentPrimaryViewForCellAtPosition:position];
+    self.primaryViewTrim = trim;
 }
 
 #pragma mark - Validation Methods
@@ -284,12 +409,11 @@
     }
     
     [super dealloc];
-	
 }
 
 @end
 
-
+#pragma mark -
 
 @implementation MKControl (MKTableCell)
 
@@ -381,15 +505,15 @@ void drawWarningIcon(CGContextRef context, CGRect rect) {
     CFRelease(path);
 }
 
-#pragma mark - Memory Managment
-
-- (void)dealloc {
-    [super dealloc];
-}
-
 @end
 
+#pragma mark - 
+
 @implementation MKView (MKTableCell)
+
+@dynamic pinnedSecondaryElement;
+
+static bool mPinnedSecondaryElement = NO;
 
 #pragma mark - Initalizer
 
@@ -400,9 +524,9 @@ void drawWarningIcon(CGContextRef context, CGRect rect) {
         self.opaque = NO;
         self.autoresizesSubviews = YES;
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
+        self.pinnedSecondaryElement = NO;
         
         mShouldRemoveView = NO;
-        
     }
     return self;
 }
@@ -410,19 +534,21 @@ void drawWarningIcon(CGContextRef context, CGRect rect) {
 #pragma mark - Layout
 
 - (void)layoutCell {
-    UIView *primaryElement = [self viewWithTag:1];
-    UIView *secondaryElement = [self viewWithTag:2];
-    UIView *iconElement = [self viewWithTag:3];
+    UIView *primaryElement = [self viewWithTag:kPrimaryViewTag];
+    UIView *secondaryElement = [self viewWithTag:kSecondaryViewTag];
+    UIView *iconElement = [self viewWithTag:kIconViewTag];
     
     if (primaryElement) {
         primaryElement.frame = CGRectMake(kCellPrimaryElementX, kCellPrimaryElementY, kCellPrimaryElementyWidth, kCellSecondaryElementHeight);
     }
     
     if (secondaryElement) {
-        secondaryElement.frame = CGRectMake(kCellSecondaryElementX, kCellSecondaryElementY, kCellSecondaryElementWidth, kCellSecondaryElementHeight);
+        if (!self.pinnedSecondaryElement) {
+            secondaryElement.frame = CGRectMake(kCellSecondaryElementX, kCellSecondaryElementY, kCellSecondaryElementWidth, kCellSecondaryElementHeight);
+        }
         
         if (primaryElement) {
-            primaryElement.frame = CGRectMake(primaryElement.frame.origin.x, primaryElement.frame.origin.y, (primaryElement.frame.size.width - kCellSecondaryElementWidth - 5.0), primaryElement.frame.size.height);
+            primaryElement.frame = CGRectMake(primaryElement.frame.origin.x, primaryElement.frame.origin.y, (CGRectGetMinX(secondaryElement.frame) - CGRectGetMinX(primaryElement.frame) - 5.0), primaryElement.frame.size.height);
         }
     }
     
@@ -435,10 +561,23 @@ void drawWarningIcon(CGContextRef context, CGRect rect) {
     }
 }
 
+#pragma mark - Accessory Methods
+#pragma mark Setters
+
+- (void)setPinnedSecondaryElement:(BOOL)pinned {
+    mPinnedSecondaryElement = pinned;
+}
+
+#pragma mark Getters
+
+- (BOOL)pinnedSecondaryElement {
+    return mPinnedSecondaryElement;
+}
+
 #pragma mark - Adding Elements
 
 - (void)addPrimaryElement:(UIView *)element {
-    element.tag = 1;
+    element.tag = kPrimaryViewTag;
     element.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
     
     [self addSubview:element];
@@ -446,24 +585,116 @@ void drawWarningIcon(CGContextRef context, CGRect rect) {
 }
 
 - (void)addSecondaryElement:(UIView *)element {
-    element.tag = 2;
-    element.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
+    element.tag = kSecondaryViewTag;
+    element.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    
+    [self addSubview:element];
+    [self layoutCell];
+}
+
+- (void)addSecondaryElement:(UIView *)element inRect:(CGRect)rect {
+    self.pinnedSecondaryElement = YES;
+    
+    element.tag = kSecondaryViewTag;
+    element.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
     
     [self addSubview:element];
     [self layoutCell];
 }
 
 - (void)addIconElement:(UIView *)element {
-    element.tag = 3;
+    element.tag = kIconViewTag;
     element.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
     
     [self addSubview:element];
     [self layoutCell];
 }
- 
+
+@end
+
+#pragma mark -
+
+@implementation MKPopOutView (MKTableCell)
+
+@dynamic aIndexPath;
+
+NSIndexPath *mIndexPath = nil;
+
+#pragma mark - Accessor Methods
+
+- (void)setAIndexPath:(NSIndexPath *)path {
+    mIndexPath = [path retain];
+}
+
+- (NSIndexPath *)aIndexPath {
+    return mIndexPath;
+}
+
+#pragma mark - Displaying
+
+- (void)showFromCell:(MKTableCell *)cell onView:(UITableView *)tableView {
+    CGRect cellRect = [tableView rectForRowAtIndexPath:cell.indexPath];
+    mAnimationType = MKViewAnimationTypeFadeIn;
+    self.aIndexPath = cell.indexPath;
+    
+    if (mType != MKPopOutAuto) {
+        mAutoType = mType;
+    }
+    else {
+        if (CGRectGetMaxY(cellRect) < (tableView.bounds.size.height - (mView.frame.size.height + 50.0))) {
+            mAutoType = MKPopOutBelow;
+        }
+        else {
+            mAutoType = MKPopOutAbove;
+        }
+    }
+    
+    if (mAutoType == MKPopOutBelow) {
+        self.frame = CGRectMake(cellRect.origin.x, (cellRect.origin.y + cellRect.size.height), self.width, self.height);
+        mView.frame = CGRectMake(10.0, 10.0, kPopOutViewWidth, mView.frame.size.height);
+    }
+    else if (mAutoType == MKPopOutAbove) {
+        self.frame = CGRectMake(cellRect.origin.x, (cellRect.origin.y - self.frame.size.height), self.width, self.height);
+        mView.frame = CGRectMake(0.0, 0.0, kPopOutViewWidth, mView.frame.size.height);
+        
+        [tableView scrollRectToVisible:self.frame animated:YES];
+    }
+    
+    [self setNeedsDisplay];
+    
+    [tableView addSubview:self];
+    [tableView scrollRectToVisible:self.frame animated:YES];
+    
+    [UIView animateWithDuration:0.25 
+                     animations: ^ { self.alpha = 1.0; } ];
+}
+
+#pragma mark - Elements
+
+- (void)setDisclosureButtonWithTarget:(id)target selector:(SEL)selector {
+    mView.frame = CGRectMake(mView.frame.origin.x, mView.frame.origin.y, (mView.frame.size.width - 33.0), mView.frame.size.height);
+    
+    MKButton *button = [[MKButton alloc] initWithType:MKButtonTypeDisclosure];
+    button.center = CGPointMake((CGRectGetMaxX(self.frame) - 25.0), CGRectGetMidY(mView.frame));
+    
+    [button completedAction: ^ (MKAction action) {
+        if (action == MKActionTouchUp) {
+            [target performSelector:selector withObject:self.aIndexPath];
+        }
+    }];
+    
+    [self addSubview:button];
+    [button release];
+}
+
 #pragma mark - Memory Management
 
 - (void)dealloc {
+    [mIndexPath release];
+    mIndexPath = nil;
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MK_POP_OUT_VIEW_SHOULD_REMOVE_NOTIFICATION object:nil];
+    
     [super dealloc];
 }
 

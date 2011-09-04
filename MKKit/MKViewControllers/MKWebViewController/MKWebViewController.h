@@ -50,9 +50,10 @@
  --------------------------------------------------------------------------------------------*/
 
 @interface MKWebView : MKView <UIWebViewDelegate> {
-@private
+@public
     MKWebViewLoadingBar *mLoadingBar;
     UIWebView *mWebView;
+    UIToolbar *bottomBar;
 }
 
 ///-----------------------------------------------

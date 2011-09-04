@@ -8,6 +8,7 @@
 
 #import <MKKit/MKKit/MKDeffinitions.h>
 
+#import <Availability.h>
 #import <math.h>
 
 //  constants
@@ -36,6 +37,7 @@
 //  sizes
 
 #define TOOLBAR_HEIGHT                                  34.0
+#define MK_TEXT_WIDTH(string, font)                     [(string) sizeWithFont:(font)].width
 
 //  conversions
 
@@ -52,10 +54,13 @@
 
 #define MK_COLOR_HSB(h,s,b,a)                           [UIColor colorWithHue:((h)/360.0) saturation:((s)/100.0) brightness:((b)/100.0) alpha:(a)]
 #define MK_COLOR_RGB(r,g,b,a)                           [UIColor colorWithRed:((r)/255.0) green:((g)/255.0) blue:((b)/255.0) alpha:(a)]
+#define MK_SHADOW_COLOR                                 MK_COLOR_RGB(51.0, 51.0, 51.0, 0.5).CGColor
 
 #define BLACK                                           [UIColor blackColor]
+#define BLUE                                            [UIColor blueColor]
 #define CLEAR                                           [UIColor clearColor]
 #define GRAY                                            [UIColor grayColor]
+#define DARK_GRAY                                       [UIColor darkGrayColor]
 #define LIGHT_GRAY                                      [UIColor lightGrayColor]
 #define RED                                             [UIColor redColor]
 #define WHITE                                           [UIColor whiteColor]

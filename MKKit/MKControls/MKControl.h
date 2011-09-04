@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 10/5/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010 Matt King. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -14,7 +14,7 @@
 #import "MKControlDelegate.h"
 
 typedef void (^MKActionBlock)(MKAction action);
-
+ 
 @protocol MKControlDelegate;
 
 /**---------------------------------------------------------------------------------------------
@@ -25,6 +25,13 @@ typedef void (^MKActionBlock)(MKAction action);
 @interface MKControl : UIControl {
     id mDelegate;
     BOOL mWorking;
+
+@private
+    NSMutableSet *mTargets;
+    struct {
+        bool blockUsage;
+        bool targetUsage;
+    } MKControlFlags;
 }
 
 ///---------------------------------------------------------
@@ -46,6 +53,17 @@ typedef void (^MKActionBlock)(MKAction action);
 */
 - (void)completedAction:(MKActionBlock)actionBlock;
 
+/**
+ Sets the target and callback method to perform after an action takes place.
+ 
+ @param target the object to send the message to.
+ 
+ @param selector the selector to call.
+ 
+ @param action the action to listen for.
+*/
+- (void)addTarget:(id)target selector:(SEL)selector action:(MKAction)controlAction;
+
 ///---------------------------------------------------------
 /// @name Control States
 ///---------------------------------------------------------
@@ -54,7 +72,7 @@ typedef void (^MKActionBlock)(MKAction action);
 @property (nonatomic, assign) BOOL working;
 
 ///---------------------------------------------------------
-/// @name Delegate
+/// @name Delegates
 ///---------------------------------------------------------
 
 /** delegate the controls delegate */
@@ -68,3 +86,12 @@ typedef void (^MKActionBlock)(MKAction action);
 @property (nonatomic, copy) MKActionBlock action;
 
 @end
+
+@interface MKControlTarget : NSObject
+
+@property (nonatomic, assign) id target;
+@property (nonatomic, assign) SEL selector;
+@property (nonatomic, assign) MKAction action;
+
+@end
+

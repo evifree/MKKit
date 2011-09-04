@@ -10,7 +10,7 @@
 
 @interface MKButton ()
 
-- (float)widthForTitle:(NSString *)title;
+- (void)labelWithText:(NSString *)text;
 
 @end
 
@@ -19,57 +19,20 @@
 @synthesize type=mType, buttonText=mButtonText, tintColor, fontSize;
 
 void drawHelpButton(CGContextRef context, CGRect rect);
-void drawIAPButton(CGContextRef context, CGRect rect);
-void drawRoundRectButton(CGContextRef context, CGRect rect);
-
-static float kHorizPadding = 20.0;
-
-CGColorRef mTintColor = nil;
-CGFloat mFontSize = 14.0;
+void drawDiscloserButton(CGContextRef context, CGRect rect);
+void drawDropDownIndicatorButton(CGContextRef context, CGRect rect, CGColorRef tint, bool highlighted);
+void drawIAPButton(CGContextRef context, CGRect rect, bool working, bool highlighted);
+void drawPlasticButton(CGContextRef context, CGRect rect, CGColorRef tint, bool highlighted);
+void drawRoundRectButton(CGContextRef context, CGRect rect, CGColorRef tint, bool highlighted);
 
 bool mHighlighted = NO;
-bool lWorking = NO;
 
 #pragma mark - Initalizer
 
 - (id)initWithType:(MKButtonType)type {
     self = [super init];
     if (self) {
-        self.frame = CGRectMake(0.0, 0.0, 20.0, 20.0);
-        self.backgroundColor = CLEAR;
-        self.opaque = NO;
-        
-        mType = type;
-        self.fontSize = 14.0;
-        
-        if  (mType == MKButtonTypeHelp) {
-            UILabel *mark = [[UILabel alloc] initWithFrame:CGRectMake(1.0, 2.0, 19.0, 18.0)];
-            mark.backgroundColor = CLEAR;
-            mark.font = VERDANA_BOLD(18.0);
-            mark.textColor = GRAY;
-            mark.textAlignment = UITextAlignmentCenter;
-            mark.shadowColor = BLACK;
-            mark.shadowOffset = CGSizeMake(0.0, -1.0);
-            mark.text = @"?";
-            
-            [self addSubview:mark];
-            [mark release];
-        }
-        else {            
-            mButtonLabel = [[UILabel alloc] init];
-            mButtonLabel.backgroundColor = CLEAR;
-            mButtonLabel.font = SYSTEM_BOLD(14.0);
-            mButtonLabel.textColor = WHITE;
-            mButtonLabel.textAlignment = UITextAlignmentCenter;
-            mButtonLabel.shadowColor = BLACK;
-            mButtonLabel.shadowOffset = CGSizeMake(0.0, -1.0);
-            
-            [self addSubview:mButtonLabel];
-            [mButtonLabel release];
-        }
-        if (mType == MKButtonTypeRoundedRect) {
-            mTintColor = [UIColor blueColor].CGColor;
-        }
+        self = [self initWithType:type title:nil tint:nil];
     }
     return self;
 }
@@ -77,33 +40,74 @@ bool lWorking = NO;
 - (id)initWithType:(MKButtonType)type title:(NSString *)title {
     self = [super init];
     if (self) {
-        self.frame = CGRectMake(0.0, 0.0, ([self widthForTitle:title] + (kHorizPadding * 2)) ,30.0);
+        self = [self initWithType:type title:title tint:nil];
+    }
+    return self;
+}
+
+- (id)initWithType:(MKButtonType)type title:(NSString *)title tint:(UIColor *)tint {
+    self = [super init];
+    if (self) {
         self.backgroundColor = CLEAR;
         self.opaque = NO;
-        self.fontSize = 14.0;
-    
+        
         mType = type;
+        MKButtonFlags.isWorking = NO;
+        MKButtonFlags.isHighlighted = NO;
         
-        if (mType == MKButtonTypeHelp) {
-            NSException *exception = [NSException exceptionWithName:@"Unsuable Type" reason:@"MKButtonTypeHelp cannot be used with the method use initWithType: instead" userInfo:nil];
-            [exception raise];
+        if  (mType == MKButtonTypeHelp) {
+            MKButtonFlags.fontSize = kHelpButtonFontSize;
+            [self labelWithText:@"?"];
         }
+        
+        if (mType == MKButtonTypeDisclosure) {
+            self.frame = CGRectMake(0.0, 0.0, 25.0, 25.0);
+        }
+        
+        if (mType == MKButtonTypeDropDownIndicator) {
+            self.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+            if (tint) {
+                MKButtonFlags.tintColor = tint.CGColor;
+            }
+            else {
+                MKButtonFlags.tintColor = LIGHT_GRAY.CGColor;
+            }
+
+        }
+        
+        if (mType == MKButtonTypeIAP) {
+            self.frame = CGRectMake(0.0, 0.0, (MK_TEXT_WIDTH(title, SYSTEM_BOLD(kIAPButtonFontSize)) + (kHorizPadding * 2)) ,30.0);
+            MKButtonFlags.fontSize = kIAPButtonFontSize;
+            [self labelWithText:title];
+        }
+        
+        if (mType == MKButtonTypePlastic) {
+            self.frame = CGRectMake(0.0, 0.0, (MK_TEXT_WIDTH(title, VERDANA_BOLD(kPlasticButtonFontSize)) + (kHorizPadding * 2)) ,30.0);
+            MKButtonFlags.fontSize = kPlasticButtonFontSize;
+            
+            if (tint) {
+                MKButtonFlags.tintColor = tint.CGColor;
+            }
+            else {
+                MKButtonFlags.tintColor = BLACK.CGColor;
+            }
+            
+            [self labelWithText:title];
+        }
+        
         if (mType == MKButtonTypeRoundedRect) {
-            mTintColor = [UIColor blueColor].CGColor;
+            self.frame = CGRectMake(0.0, 0.0, (MK_TEXT_WIDTH(title, SYSTEM_BOLD(kRoundRectButtonFontSize)) + (kHorizPadding * 2)) ,30.0);
+            MKButtonFlags.fontSize = kRoundRectButtonFontSize;
+            
+            if (tint) {
+                MKButtonFlags.tintColor = tint.CGColor;
+            }
+            else {
+                MKButtonFlags.tintColor = BLUE.CGColor;
+            }
+            
+            [self labelWithText:title];
         }
-        
-        mButtonLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 4.5, [self widthForTitle:title], 21.0)];
-        mButtonLabel.backgroundColor = CLEAR;
-        mButtonLabel.font = SYSTEM_BOLD(14.0);
-        mButtonLabel.textColor = WHITE;
-        mButtonLabel.textAlignment = UITextAlignmentCenter;
-        mButtonLabel.adjustsFontSizeToFitWidth = YES;
-        mButtonLabel.shadowColor = BLACK;
-        mButtonLabel.shadowOffset = CGSizeMake(0.0, -1.0);
-        mButtonLabel.text = title;
-        
-        [self addSubview:mButtonLabel];
-        [mButtonLabel release];
     }
     return self;
 }
@@ -114,15 +118,24 @@ bool lWorking = NO;
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetAllowsAntialiasing(context, YES);
     
-    if (mType == MKButtonTypeIAP) {
-        drawIAPButton(context, rect);
+    if (mType == MKButtonTypeHelp) {
+        drawHelpButton(context, rect);
     }
-    else if (mType == MKButtonTypeHelp) {
-        drawHelpButton(context, self.bounds);
+    else if (mType == MKButtonTypeDisclosure) {
+        drawDiscloserButton(context, rect);
+    }
+    else if (mType == MKButtonTypeDropDownIndicator) {
+        drawDropDownIndicatorButton(context, rect, MKButtonFlags.tintColor, MKButtonFlags.isHighlighted);
+    }
+    else if (mType == MKButtonTypeIAP) {
+        drawIAPButton(context, rect, MKButtonFlags.isWorking, MKButtonFlags.isHighlighted);
+    }
+    else if (mType == MKButtonTypePlastic) {
+        drawPlasticButton(context, rect, MKButtonFlags.tintColor, MKButtonFlags.isHighlighted);
+        mButtonLabel.frame = rect;
     }
     else if (mType == MKButtonTypeRoundedRect) {
-        drawRoundRectButton(context, rect);
-        mButtonLabel.shadowColor = [UIColor colorWithCGColor:mTintColor];
+        drawRoundRectButton(context, rect, MKButtonFlags.tintColor, MKButtonFlags.isHighlighted);
         mButtonLabel.frame = rect;
     }
 }
@@ -135,9 +148,109 @@ void drawHelpButton(CGContextRef context, CGRect rect) {
     CGContextFillEllipseInRect(context, rect);
 }
 
+#pragma mark Discloser Button
+
+void drawDiscloserButton(CGContextRef context, CGRect rect) {
+    CGRect innerRect = CGRectInset(rect, kDiscloserOutlinePadding, kDiscloserOutlinePadding);
+    
+    CGColorRef borderColor = WHITE.CGColor;
+    CGColorRef innerColor = MK_COLOR_RGB(0.0, 0.0, 255.0, 1.0).CGColor;
+    
+    CGMutablePathRef outerPath = createCircularPathForRect(rect);
+    CGMutablePathRef innerPath = createCircularPathForRect(innerRect);
+    
+    CGContextSaveGState(context);
+    CGContextSetFillColorWithColor(context, borderColor);
+    CGContextAddPath(context, outerPath);
+    CGContextFillPath(context);
+    CGContextRestoreGState(context);
+    
+    CGContextSaveGState(context);
+    CGContextSetFillColorWithColor(context, innerColor);
+    CGContextAddPath(context, innerPath);
+    CGContextFillPath(context);
+    CGContextRestoreGState(context);
+    
+    CGPoint p1 = CGPointMake(10.0, 7.0);
+    CGPoint p2 = CGPointMake(16.0, 12.0);
+    CGPoint p3 = CGPointMake(10.0, 17.0);
+    
+    CGContextSaveGState(context);
+    CGContextSetStrokeColorWithColor(context, borderColor);
+    CGContextSetLineWidth(context, 3.0);
+    CGContextMoveToPoint(context, p1.x, p1.y);
+    CGContextAddLineToPoint(context, p2.x, p2.y);
+    CGContextAddLineToPoint(context, p3.x, p3.y);
+    CGContextStrokePath(context);
+    CGContextRestoreGState(context);
+    
+    CGContextSaveGState(context);
+    CGContextAddPath(context, outerPath);
+    CGContextClip(context);
+    drawCurvedGloss(context, rect, 40.0);
+    CGContextRestoreGState(context);
+    
+    CFRelease(outerPath);
+    CFRelease(innerPath);
+}
+
+#pragma mark Drop Down Indicator Button
+
+void drawDropDownIndicatorButton(CGContextRef context, CGRect rect, CGColorRef tint, bool highlighted) {
+    CGFloat outerMargin = 1.0;
+    CGFloat buttonMargin = 1.0;
+    CGFloat arrowMargin = 10.0;
+    
+    CGRect innerRect = CGRectInset(rect, outerMargin, outerMargin);
+    CGRect buttonRect = CGRectInset(innerRect, buttonMargin, buttonMargin);
+    CGRect startArrowRect = CGRectInset(innerRect, arrowMargin, arrowMargin);
+    CGRect arrowRect = CGRectMake(startArrowRect.origin.x, (startArrowRect.origin.y + 3.0), startArrowRect.size.width, (startArrowRect.size.height -2.0));
+    
+    CGMutablePathRef buttonPath = createRoundedRectForRect(buttonRect, 7.0);
+    CGMutablePathRef outlinePath = createRoundedRectForRect(innerRect, 7.0);
+    CGMutablePathRef arrowPath = createPathForDownPointer(arrowRect);
+    
+    CGColorRef shadowColor = MK_COLOR_HSB(345.0, 2.0, 56.0, 1.0).CGColor;
+    
+    drawOutlinePath(context, outlinePath, 0.5, BLACK.CGColor);
+    
+    CGContextSaveGState(context);
+    CGContextSetShadowWithColor(context, CGSizeMake(0.0, -1.0), 1.0, BLACK.CGColor);
+    CGContextSetFillColorWithColor(context, tint);
+    CGContextAddPath(context, buttonPath);
+    CGContextFillPath(context);
+    CGContextRestoreGState(context);
+    
+    CGContextSaveGState(context);
+    CGContextSetShadowWithColor(context, CGSizeMake(0.0, 1.0), 1.0, shadowColor);
+    CGContextAddPath(context, buttonPath);
+    CGContextClip(context);
+    drawLinearGloss(context, buttonRect);
+    CGContextRestoreGState(context);
+    
+    CGContextSaveGState(context);
+    CGContextSetShadowWithColor(context, CGSizeMake(0.0, 1.0), 1.0, WHITE.CGColor);
+    CGContextSetFillColorWithColor(context, DARK_GRAY.CGColor);
+    CGContextAddPath(context, arrowPath);
+    CGContextFillPath(context);
+    CGContextRestoreGState(context);
+    
+    if (highlighted) {
+        CGContextSaveGState(context);
+        CGContextSetFillColorWithColor(context, BLACK.CGColor);
+        CGContextAddPath(context, buttonPath);
+        CGContextFillPath(context);
+        CGContextRestoreGState(context);
+    }
+    
+    CFRelease(buttonPath);
+    CFRelease(outlinePath);
+    CFRelease(arrowPath);
+}
+
 #pragma mark IAP Button
 
-void drawIAPButton(CGContextRef context, CGRect rect) {
+void drawIAPButton(CGContextRef context, CGRect rect, bool working, bool highlighted) {
     CGFloat outerMargin = 2.0;
     CGRect outerRect = CGRectInset(rect, outerMargin, outerMargin);
     CGMutablePathRef outerPath = createRoundedRectForRect(outerRect, 6.0);
@@ -146,17 +259,17 @@ void drawIAPButton(CGContextRef context, CGRect rect) {
     CGColorRef innerBottom;
         
     CGColorRef blackColor = BLACK.CGColor;
-        
-    if (!lWorking) {
+    
+    if (!working) {
         innerTop = MK_COLOR_HSB(224.0, 57.0, 70.0, 1.0).CGColor;
         innerBottom = MK_COLOR_HSB(224.0, 57.0, 67.0, 1.0).CGColor;
     }
-    else if (lWorking) {
+    else if (working) {
         innerTop = MK_COLOR_HSB(127.0, 84.0, 70.0, 1.0).CGColor;
         innerBottom = MK_COLOR_HSB(127.0, 84.0, 67.0, 1.0).CGColor;
     }
 
-    if (!mHighlighted) {
+    if (!highlighted) {
         CGContextSaveGState(context);
         CGContextSetFillColorWithColor(context, innerBottom);
         CGContextAddPath(context, outerPath);
@@ -190,20 +303,68 @@ void drawIAPButton(CGContextRef context, CGRect rect) {
     CFRelease(outerPath);
 }
 
+#pragma mark Plastic Button
+
+void drawPlasticButton(CGContextRef context, CGRect rect, CGColorRef tint, bool highlighted) {
+    CGFloat outerMargin = 1.0;
+    CGFloat buttonMargin = 1.0;
+    
+    CGRect innerRect = CGRectInset(rect, outerMargin, outerMargin);
+    CGRect buttonRect = CGRectInset(innerRect, buttonMargin, buttonMargin);
+    
+    CGMutablePathRef buttonPath = createRoundedRectForRect(buttonRect, 7.0);
+    CGMutablePathRef outlinePath = createRoundedRectForRect(innerRect, 7.0);
+    
+    CGColorRef shadowColor = MK_COLOR_HSB(345.0, 2.0, 56.0, 1.0).CGColor;
+    
+    drawOutlinePath(context, outlinePath, 0.5, BLACK.CGColor);
+    
+    CGContextSaveGState(context);
+    CGContextSetShadowWithColor(context, CGSizeMake(0.0, -1.0), 1.0, BLACK.CGColor);
+    CGContextSetFillColorWithColor(context, WHITE.CGColor);
+    CGContextAddPath(context, buttonPath);
+    CGContextFillPath(context);
+    CGContextRestoreGState(context);
+    
+    CGContextSaveGState(context);
+    CGContextSetShadowWithColor(context, CGSizeMake(0.0, 1.0), 1.0, shadowColor);
+    CGContextSetFillColorWithColor(context, tint);
+    CGContextAddPath(context, buttonPath);
+    CGContextFillPath(context);
+    CGContextRestoreGState(context);
+    
+    CGContextSaveGState(context);
+    CGContextAddPath(context, buttonPath);
+    CGContextClip(context);
+    drawCurvedGloss(context, buttonRect, 40.0);
+    CGContextRestoreGState(context);
+    
+    if (highlighted) {
+        CGContextSaveGState(context);
+        CGContextSetFillColorWithColor(context, BLACK.CGColor);
+        CGContextAddPath(context, buttonPath);
+        CGContextFillPath(context);
+        CGContextRestoreGState(context);
+    }
+    
+    CFRelease(buttonPath);
+    CFRelease(outlinePath);
+}
+
 #pragma mark Rounded Rect Button
 
-void drawRoundRectButton(CGContextRef context, CGRect rect) {
+void drawRoundRectButton(CGContextRef context, CGRect rect, CGColorRef tint,  bool highlighted) {
     CGFloat margin = 2.0;
     CGRect buttonRect = CGRectInset(rect, margin, margin);
     
     CGMutablePathRef rrectPath = createRoundedRectForRect(buttonRect, 10.0);
     
-    const CGFloat* components = CGColorGetComponents(mTintColor);
+    const CGFloat* components = CGColorGetComponents(tint);
     
     CGFloat red = components[0];
     CGFloat green = components[1];
     CGFloat blue = components[2];
-    CGFloat alpha = CGColorGetAlpha(mTintColor);
+    CGFloat alpha = CGColorGetAlpha(tint);
     
     CGColorRef topColor = [UIColor colorWithRed:red green:green blue:blue alpha:(alpha - 0.5)].CGColor;
     
@@ -218,7 +379,7 @@ void drawRoundRectButton(CGContextRef context, CGRect rect) {
     CGContextSaveGState(context);
     CGContextAddPath(context, rrectPath);
     CGContextClip(context);
-    drawGlossAndLinearGradient(context, buttonRect, topColor, mTintColor);
+    drawGlossAndLinearGradient(context, buttonRect, topColor, tint);
     CGContextRestoreGState(context);
     
     CGContextSaveGState(context);
@@ -227,7 +388,7 @@ void drawRoundRectButton(CGContextRef context, CGRect rect) {
     CGContextStrokePath(context);
     CGContextRestoreGState(context);
     
-    if (mHighlighted) {
+    if (highlighted) {
         CGColorRef shadowColor = MK_COLOR_RGB(51.0, 51.0, 51.0, 0.9).CGColor;
         
         CGContextSaveGState(context);
@@ -244,7 +405,7 @@ void drawRoundRectButton(CGContextRef context, CGRect rect) {
 
 - (void)setHighlighted:(BOOL)highlighted {
     [super setHighlighted:highlighted];
-    mHighlighted = highlighted;
+    MKButtonFlags.isHighlighted = highlighted;
     
     [self setNeedsDisplay];
 }
@@ -256,35 +417,73 @@ void drawRoundRectButton(CGContextRef context, CGRect rect) {
     CGFloat minY = CGRectGetMinY(self.frame);
     CGFloat height = CGRectGetHeight(self.frame);
         
-    CGFloat x = (maxX - ([self widthForTitle:mButtonText] + (kHorizPadding * 2)));
-    CGFloat width = ([self widthForTitle:mButtonText] + (kHorizPadding * 2));
+    CGFloat x = (maxX - (MK_TEXT_WIDTH(buttonText, SYSTEM_BOLD(MKButtonFlags.fontSize)) + (kHorizPadding * 2)));
+    CGFloat width = (MK_TEXT_WIDTH(buttonText, SYSTEM_BOLD(MKButtonFlags.fontSize)) + (kHorizPadding * 2));
         
     self.frame = CGRectMake(x, minY, width, height);
         
-    mButtonLabel.frame = CGRectMake(20.0, 4.5, [self widthForTitle:mButtonText], 21.0);
+    mButtonLabel.frame = CGRectMake(20.0, 4.5, MK_TEXT_WIDTH(buttonText, SYSTEM_BOLD(MKButtonFlags.fontSize)), 21.0);
     mButtonLabel.text = mButtonText;
-        
+    
     [self setNeedsDisplayInRect:CGRectMake(x, minY, width, height)];
     
     [mButtonText release];
 }
 
-- (void)setWorking:(BOOL)working {
-    [super setWorking:working];
-    lWorking = working;
+- (void)setWorking:(BOOL)isWorking {
+    [super setWorking:isWorking];
+    MKButtonFlags.isWorking = isWorking;
+    
     [self setNeedsDisplay];
 }
 
 - (void)setTintColor:(UIColor *)color {
-    mTintColor = color.CGColor;
+    MKButtonFlags.tintColor = color.CGColor;
     [self setNeedsDisplay];
 }
 
 - (void)setFontSize:(CGFloat)size {
-    mFontSize = size;
+    MKButtonFlags.fontSize = size;
     mButtonLabel.font = SYSTEM_BOLD(size);
 }
 
+#pragma mark - Elements
+
+- (void)labelWithText:(NSString *)text {
+    mButtonLabel = [[UILabel alloc] init];
+    mButtonLabel.backgroundColor = CLEAR;
+    mButtonLabel.textAlignment = UITextAlignmentCenter;
+    mButtonLabel.shadowColor = BLACK;
+    mButtonLabel.shadowOffset = CGSizeMake(0.0, -1.0);
+    mButtonLabel.text = text;
+    
+    if (mType == MKButtonTypeHelp) {
+        mButtonLabel.frame = CGRectMake(1.0, 2.0, 19.0, 18.0);
+        mButtonLabel.font = VERDANA_BOLD(MKButtonFlags.fontSize);
+        mButtonLabel.textColor = GRAY;
+    }
+    if  (mType == MKButtonTypeIAP) {
+        mButtonLabel.frame = CGRectMake(20.0, 4.5, MK_TEXT_WIDTH(text, SYSTEM_BOLD(MKButtonFlags.fontSize)), 21.0);
+        mButtonLabel.textColor = WHITE;
+        mButtonLabel.font = SYSTEM_BOLD(MKButtonFlags.fontSize);
+        mButtonLabel.text = text;
+    }
+    if (mType == MKButtonTypeRoundedRect || mType == MKButtonTypePlastic) {
+        mButtonLabel.textColor = WHITE;
+        mButtonLabel.font = SYSTEM_BOLD(MKButtonFlags.fontSize);
+        mButtonLabel.text = text;
+        mButtonLabel.shadowColor = [UIColor colorWithCGColor:MKButtonFlags.tintColor];
+        
+        if (mType == MKButtonTypePlastic) {
+            mButtonLabel.font = VERDANA_BOLD(MKButtonFlags.fontSize);
+        }
+    }
+    
+    [self addSubview:mButtonLabel];
+    [mButtonLabel release];
+}
+
+/*
 #pragma mark - Sizing
 
 - (float)widthForTitle:(NSString *)title {
@@ -292,6 +491,7 @@ void drawRoundRectButton(CGContextRef context, CGRect rect) {
     
     return size.width;
 }
+*/
 
 #pragma mark - Touches
 
@@ -307,8 +507,8 @@ void drawRoundRectButton(CGContextRef context, CGRect rect) {
     self.highlighted = NO;
     
     if (mType == MKButtonTypeIAP) {
-        self.working = YES;
         self.buttonText = @"Installing";
+        self.working = YES;
     }
     else {
         [self setNeedsDisplay];

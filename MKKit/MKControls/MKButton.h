@@ -10,17 +10,30 @@
 
 typedef enum {
     MKButtonTypeHelp,
+    MKButtonTypeDisclosure,
+    MKButtonTypeDropDownIndicator,
     MKButtonTypeIAP,
+    MKButtonTypePlastic,
     MKButtonTypeRoundedRect,
 } MKButtonType;
+
+static const float kHorizPadding                = 20.0;
+static const float kDiscloserOutlinePadding     = 2.0;
+static const float kHelpButtonFontSize          = 18.0;
+static const float kIAPButtonFontSize           = 14.0;
+static const float kPlasticButtonFontSize       = 30.0;
+static const float kRoundRectButtonFontSize     = 14.0;
 
 /**-----------------------------------------------------------------------------
  MKButton provides specalty buttons for various use. There are currently four
  types of buttons:
  
  * `MKButtonTypeHelp` : a small round button with a question mark
+ * `MKButtonTypeDisclosure` : a blue and white button that resembles iOS discloser button
+ * `MKButtonTypeDropDownIndicator : a small button with down arrow on it.
  * `MKButtonTypeIAP` : a InApp Purchase button, mimics the purchase buttons from the
- * `MKButtonTypeRoundedRect : a rounded rect button that can be assigned a color
+ * `MKButtonTypePlastic` : a button with a rounded shine, giving it a plasic look. Default tint is black.
+ * `MKButtonTypeRoundedRect` : a rounded rect button that can be assigned a color. Default tint is blue.
  appStore
 ------------------------------------------------------------------------------*/
 
@@ -30,6 +43,12 @@ typedef enum {
 
 @private
     UILabel *mButtonLabel;
+    struct {
+        bool isWorking;
+        bool isHighlighted;
+        CGColorRef tintColor;
+        CGFloat fontSize;
+    } MKButtonFlags;
 }
 
 ///------------------------------------------------------
@@ -51,10 +70,19 @@ typedef enum {
  @param type the type of button to use
  
  @param title the text of the button
- 
- @exception UnsuableType rasied if MKButtonTypeHelp is passed to this method.
- */
+*/
 - (id)initWithType:(MKButtonType)type title:(NSString *)title;
+
+/**
+ Returns and instance of MKButton
+ 
+ @param type the type of button to use
+ 
+ @param title the text of the button
+ 
+ @param tint the tint color of the button
+*/
+- (id)initWithType:(MKButtonType)type title:(NSString *)title tint:(UIColor *)tint;
 
 
 ///---------------------------------------------------------

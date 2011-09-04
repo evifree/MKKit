@@ -11,14 +11,42 @@
 #import <MKKit/MKKit/MKControls/MKContolHeaders.h>
 #import <MKKit/MKKit/MKErrorContol/MKInputValidation.h>
 #import <MKKit/MKKit/MKErrorContol/MKValidator.h>
-#import <MKKit/MKKit/MKViews/MKViewHeader.h>
 
 #import <MKKit/MKKit/MKDeffinitions.h>
 #import <MKKit/MKKit/MKMacros.h>
 #import <MKKit/MKKit/MKStrings.h>
 
 #import "MKTableElements/MKMaskIconView.h"
+#import "MKTableElements/MKElementAccentView.h"
+#import "MKTableElements/MKTableCellAccentView.h"
+
 #import "MKTableCellDelegate.h"
+
+static const int kPrimaryViewTag                    = 1;
+static const int kSecondaryViewTag                  = 2;
+static const int kIconViewTag                       = 3;
+static const int kAccentViewTag                     = 4;
+static const int kBadgeViewTag                      = 5;
+
+static const CGFloat kBadgeTextPadding              = 20.0;
+static const CGFloat kBadgeTextFontSize             = 12.0;
+static const CGFloat kBadgeHeight                   = 22.0;
+static const CGFloat kBadgeY                        = 10.0;
+static const CGFloat kBadgeX                        = 280.0;
+static const CGFloat kBadgeXWidthAdjustment         = 30.0;
+
+static const CGFloat kCellIconRectX                 = 10.0;
+static const CGFloat kCellIconRectY                 = 7.0;
+static const CGFloat kCellIconRectWidth             = 30.0;
+static const CGFloat kCellIconRectHeight            = 30.0;
+static const CGFloat kCellPrimaryElementX           = 7.0;
+static const CGFloat kCellPrimaryElementY           = 7.0;
+static const CGFloat kCellPrimaryElementyWidth      = 294.0;
+static const CGFloat kCellPrimaryElementHeight      = 30.0;
+static const CGFloat kCellSecondaryElementX         = 115.0;
+static const CGFloat kCellSecondaryElementY         = 7.0;
+static const CGFloat kCellSecondaryElementWidth     = 191.0;
+static const CGFloat kCellSecondaryElementHeight    = 30.0;
 
 typedef enum {
 	MKTableCellTypeNone,
@@ -35,8 +63,29 @@ typedef enum {
 	MKTableCellAccessoryWarningIcon,
 } MKTableCellAccessoryViewType;
 
+typedef enum {
+    MKTableCellAccentTypePrimaryView,
+    MKTableCellAccentTypeFull,
+} MKTableCellAccentType;
+
+typedef struct {
+    CGColorRef color;
+    CFStringRef text;
+} MKTableCellBadge;
+
+typedef struct {
+    MKTableCellAccentType type;
+    MKTableCellPosition position;
+    CGColorRef tint;
+} MKTableCellAccent;
+
+MKTableCellBadge MKTableCellBadgeMake(CGColorRef color, CFStringRef text);
+MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellPosition position, CGColorRef tint);
+
 @protocol MKTableCellDelegate;
 @protocol MKInputValidation;
+
+@class MKBadgeCellView, MKView;
 
 /**-------------------------------------------------------------------------------------
  An MKTableCell is a subclass UITableViewCell. MKTableCell is designed as a superClass for 
@@ -66,6 +115,7 @@ typedef enum {
 @interface MKTableCell : UITableViewCell {
 	id delegate;
     id validator;
+    NSString *mKey;
     
 	MKTableCellType type;
 	MKTableCellAccessoryViewType accessoryViewType;
@@ -95,7 +145,10 @@ typedef enum {
  for the cellType parameter.
  
  @param cellType The type of the cell to create. 
+ 
  @param resuseIdentifier The rueseIdentifier for this type of cell.
+ 
+ @return MKTableCell instance
 */
 - (id)initWithType:(MKTableCellType)cellType reuseIdentifier:(NSString *)reuseIdentifier;
 
@@ -142,6 +195,57 @@ typedef enum {
 /** An imaged to be masked. The masking is completed by the MKMaskIconView */
 @property (nonatomic, retain) UIImage *iconMask;
 
+/** A bagde that is displayed on the left hand side of the cell. A badge can
+ be created by using the `MKTableCellBadgeMake(CGColorRef color, CFStringRef text)`
+ function
+*/
+@property (nonatomic, assign) MKTableCellBadge badge;
+
+/**
+ Adds a badge to the cell.
+ 
+ @param text the text to display on the badge.
+ 
+ @param color the color of the badge.
+ 
+ @param rect the rect of the badge.
+*/
+- (void)addBadgeWithText:(NSString *)text color:(UIColor *)color rect:(CGRect)rect;
+
+///---------------------------------------------------------------------------------------
+/// @name Apearances
+///---------------------------------------------------------------------------------------
+
+/** Sets an accent for the cell. Use the 
+ `MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellPosition position, CGColorRef tint)`
+ function to create an MKTableCell Accent.
+*/
+@property (nonatomic, assign) MKTableCellAccent accent;
+
+/**
+ Accents the primary view of the cell by drawing a background gradient onto it.
+ 
+ @param position the postion of the table cell `MKTableCellPositionTop, MKTableCellPositionMiddle,
+ MKTableCellPositionBottom`, or `MKTableCellPositionSingleCell`. If you are using a plain table 
+ view style pass `MKTableCellMiddle` for all cells.
+*/
+- (void)accentPrimaryViewForCellAtPosition:(MKTableCellPosition)position;
+
+/**
+ Accents the primary view of the cell by drawing a background gradient onto it, and trims
+ the views width by the given amount.
+ 
+ @param position the postion of the table cell `MKTableCellPositionTop, MKTableCellPositionMiddle,
+ MKTableCellPositionBottom`, or `MKTableCellPositionSingleCell`. If you are using a plain table 
+ view style pass `MKTableCellMiddle` for all cells.
+ 
+ @param trim how much to trim off the width of the the accent view.
+ */
+- (void)accentPrimaryViewForCellAtPosition:(MKTableCellPosition)position trim:(CGFloat)trim;
+
+/** The ammount to trim a accent view by */
+@property (nonatomic, assign) CGFloat primaryViewTrim;
+
 ///---------------------------------------------------------------------------------------
 /// @name Input Validation
 ///---------------------------------------------------------------------------------------
@@ -149,6 +253,7 @@ typedef enum {
 /** Sets the validation type to preform. 
  
  @see validatior
+ 
  @see MKInputValidation 
 */
 @property (nonatomic, assign) MKValidationType validationType;
@@ -203,6 +308,7 @@ typedef enum {
  MKInputValidation protocol.
  
  @see MKInputValidation
+ 
  @see validationType
 */
 @property (assign) id<MKInputValidation> validator;
@@ -235,25 +341,12 @@ typedef enum {
 
 @end
 
-static const CGFloat kCellIconRectX                 = 10.0;
-static const CGFloat kCellIconRectY                 = 7.0;
-static const CGFloat kCellIconRectWidth             = 30.0;
-static const CGFloat kCellIconRectHeight            = 30.0;
-static const CGFloat kCellPrimaryElementX           = 7.0;
-static const CGFloat kCellPrimaryElementY           = 7.0;
-static const CGFloat kCellPrimaryElementyWidth      = 294.0;
-static const CGFloat kCellPrimaryElementHeight      = 30.0;
-static const CGFloat kCellSecondaryElementX         = 115.0;
-static const CGFloat kCellSecondaryElementY         = 7.0;
-static const CGFloat kCellSecondaryElementWidth     = 191.0;
-static const CGFloat kCellSecondaryElementHeight    = 30.0;
-
 /**--------------------------------------------------------------------------
  This catagory of MKView provides a standard layout for MKTableCell objects.
 ---------------------------------------------------------------------------*/
 
 @interface MKView (MKTableCell)
-
+    
 ///-----------------------------------
 /// @name Creating
 ///-----------------------------------
@@ -276,6 +369,9 @@ static const CGFloat kCellSecondaryElementHeight    = 30.0;
 */
 - (void)layoutCell;
 
+/** Yes if the secondary element should not atomically adjust its size. */
+@property (nonatomic, assign) BOOL pinnedSecondaryElement;
+
 ///-----------------------------------
 /// @name Adding Elements
 ///-----------------------------------
@@ -297,12 +393,64 @@ static const CGFloat kCellSecondaryElementHeight    = 30.0;
 - (void)addSecondaryElement:(UIView *)element;
 
 /**
+ Adds a secondary element to the cell is that fills the desired rect.
+ 
+ @param element the view to add to the cell.
+ 
+ @param rect the rect of the view.
+*/ 
+- (void)addSecondaryElement:(UIView *)element inRect:(CGRect)rect;
+
+/**
  Adds a Icon Element to the cell. The icon element 
  appears on the left side of the cell.
  
  @param element the view that will be added to the cell.
  */
 - (void)addIconElement:(UIView *)element;
+
+@end
+
+/**----------------------------------------------------------------------------
+ This catagory of MKPopOutView provides methods for displaying a pop out view from
+ a MKTableCell.
+-----------------------------------------------------------------------------*/
+
+@interface MKPopOutView (MKTableCell)
+
+///------------------------------------------------------
+/// @name Identifing
+///------------------------------------------------------
+
+/** The index path of the cell showing the pop out view */
+@property (nonatomic, retain, readonly) NSIndexPath *aIndexPath;
+
+///-------------------------------------------------------
+/// @name Displaying
+///-------------------------------------------------------
+
+/**
+ Shows the view on the screen.
+ 
+ @param cell the cell to display the view from
+ 
+ @param tableView the table view to disaply on
+ */
+- (void)showFromCell:(MKTableCell *)cell onView:(UITableView *)tableView;
+
+///-------------------------------------------------------
+/// @name Elements
+///-------------------------------------------------------
+
+/**
+ Adds a MKButtonTypeDisloserButton on the right side of the popout view
+ 
+ @param taget the object that handles actions from the button
+ 
+ @param selector the selector to preform when the button is tapped. The 
+ expected format of the selector is `-(void)mySelector:(NSIndexPath *)indexPath`.
+ */
+- (void)setDisclosureButtonWithTarget:(id)target selector:(SEL)selector;
 
 @end
 

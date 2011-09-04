@@ -139,6 +139,48 @@
 		<span class="tooltip"> An imaged to be masked. The masking is completed by the <a href="MKMaskIconView.html">MKMaskIconView</a></span>
 	</span>
 	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/badge"> badge</a></code>
+		<span class="tooltip"> A bagde that is displayed on the left hand side of the cell. A <a href="#//api/name/badge">badge</a> can be created by using the <code>MKTableCellBadgeMake(CGColorRef color, CFStringRef text)</code> function </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addBadgeWithText:color:rect:">- addBadgeWithText:color:rect:</a></code>
+		<span class="tooltip"> Adds a <a href="#//api/name/badge">badge</a> to the cell. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Apearances</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/accent"> accent</a></code>
+		<span class="tooltip"> Sets an <a href="#//api/name/accent">accent</a> for the cell. Use the <code>MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellPosition position, CGColorRef tint)</code> function to create an <a href="MKTableCell.html">MKTableCell</a> Accent. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/accentPrimaryViewForCellAtPosition:">- accentPrimaryViewForCellAtPosition:</a></code>
+		<span class="tooltip"> Accents the primary view of the cell by drawing a background gradient onto it. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/accentPrimaryViewForCellAtPosition:trim:">- accentPrimaryViewForCellAtPosition:trim:</a></code>
+		<span class="tooltip"> Accents the primary view of the cell by drawing a background gradient onto it, and trims the views width by the given amount. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/primaryViewTrim"> primaryViewTrim</a></code>
+		<span class="tooltip"> The ammount to trim a <a href="#//api/name/accent">accent</a> view by </span>
+	</span>
+	
 </li>
 					</ul>
 					
@@ -232,6 +274,147 @@
 					<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 					
 					<div class="section-method">
+	<a name="//api/name/accentPrimaryViewForCellAtPosition:" title="accentPrimaryViewForCellAtPosition:"></a>
+	<h3 class="subsubtitle method-title">accentPrimaryViewForCellAtPosition:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Accents the primary view of the cell by drawing a background gradient onto it. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)accentPrimaryViewForCellAtPosition:(MKTableCellPosition)<em>position</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>position</em></dt>
+			<dd> the postion of the table cell <code>MKTableCellPositionTop, MKTableCellPositionMiddle, MKTableCellPositionBottom</code>, or <code>MKTableCellPositionSingleCell</code>. If you are using a plain table view style pass <code>MKTableCellMiddle</code> for all cells. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCell.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/accentPrimaryViewForCellAtPosition:trim:" title="accentPrimaryViewForCellAtPosition:trim:"></a>
+	<h3 class="subsubtitle method-title">accentPrimaryViewForCellAtPosition:trim:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Accents the primary view of the cell by drawing a background gradient onto it, and trims the views width by the given amount. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)accentPrimaryViewForCellAtPosition:(MKTableCellPosition)<em>position</em> trim:(CGFloat)<em>trim</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>position</em></dt>
+			<dd> the postion of the table cell <code>MKTableCellPositionTop, MKTableCellPositionMiddle, MKTableCellPositionBottom</code>, or <code>MKTableCellPositionSingleCell</code>. If you are using a plain table view style pass <code>MKTableCellMiddle</code> for all cells. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>trim</em></dt>
+			<dd> how much to trim off the width of the the <a href="#//api/name/accent">accent</a> view. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCell.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/addBadgeWithText:color:rect:" title="addBadgeWithText:color:rect:"></a>
+	<h3 class="subsubtitle method-title">addBadgeWithText:color:rect:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Adds a <a href="#//api/name/badge">badge</a> to the cell. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)addBadgeWithText:(NSString *)<em>text</em> color:(UIColor *)<em>color</em> rect:(CGRect)<em>rect</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>text</em></dt>
+			<dd> the text to display on the badge. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>color</em></dt>
+			<dd> the color of the badge. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>rect</em></dt>
+			<dd> the rect of the badge. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCell.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
 	<a name="//api/name/initWithType:reuseIdentifier:" title="initWithType:reuseIdentifier:"></a>
 	<h3 class="subsubtitle method-title">initWithType:reuseIdentifier:</h3>
 	
@@ -261,6 +444,11 @@
 	</div>
 	
 	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p> <a href="MKTableCell.html">MKTableCell</a> instance </p>
+	</div>
 	
 	
 	
@@ -327,6 +515,38 @@
 					<h2 class="subtitle subtitle-methods">Properties</h2>
 					
 					<div class="section-method">
+	<a name="//api/name/accent" title="accent"></a>
+	<h3 class="subsubtitle method-title">accent</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Sets an <a href="#//api/name/accent">accent</a> for the cell. Use the <code>MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellPosition position, CGColorRef tint)</code> function to create an <a href="MKTableCell.html">MKTableCell</a> Accent. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) MKTableCellAccent accent</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCell.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
 	<a name="//api/name/accessoryIcon" title="accessoryIcon"></a>
 	<h3 class="subsubtitle method-title">accessoryIcon</h3>
 	
@@ -370,6 +590,38 @@
 	
 	
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) MKTableCellAccessoryViewType accessoryViewType</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCell.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/badge" title="badge"></a>
+	<h3 class="subsubtitle method-title">badge</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> A bagde that is displayed on the left hand side of the cell. A <a href="#//api/name/badge">badge</a> can be created by using the <code>MKTableCellBadgeMake(CGColorRef color, CFStringRef text)</code> function </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) MKTableCellBadge badge</code></div>
 	
 	
 	
@@ -539,6 +791,38 @@
 	
 	
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) NSString *key</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCell.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/primaryViewTrim" title="primaryViewTrim"></a>
+	<h3 class="subsubtitle method-title">primaryViewTrim</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The ammount to trim a <a href="#//api/name/accent">accent</a> view by </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) CGFloat primaryViewTrim</code></div>
 	
 	
 	
@@ -912,7 +1196,7 @@
 			<div id="footer">
 				<hr />
 				<div class="footer-copyright">
-					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-07-29)</span><br />
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-08-28)</span><br />
 					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
 				</div>
 			</div>

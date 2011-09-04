@@ -55,11 +55,13 @@
 /**
  Called when the cell is selected.
  
- @param cell the cell that was touched
+ @param cell the cell that was touched.
  
- @param aKey the key of the cell that was touched
+ @param aKey the key of the cell that was touched.
+ 
+ @param indexPath the index path of the cell.
  */
-- (void)didSelectCell:(MKTableCell *)cell forKey:(NSString *)aKey;
+- (void)didSelectCell:(MKTableCell *)cell forKey:(NSString *)aKey indexPath:(NSIndexPath *)indexPath;
 
 /** 
  Called when the cells Accessory View is touched. 

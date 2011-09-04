@@ -96,6 +96,8 @@ typedef enum {
 */
 @property (nonatomic, retain) UILabel *pickerLabel;
 
+/** Sets a placeholder string in the pickerLabel. */
+@property (nonatomic, copy) NSString *placeholder;
 
 ///-------------------------------------------------------------------------------------------
 /// @name Picker Types (Required)
@@ -187,6 +189,7 @@ typedef enum {
 /** The Default Initalizer.
 
  @param frame The to draw the view into.
+ 
  @param cell The cell that is contorlling this objcet
 */
 - (id)initWithFrame:(CGRect)frame cell:(MKTableCellPickerControlled *)cell;

@@ -10,6 +10,8 @@
 #import <MKKit/MKKit/MKMacros.h>
 #import <UIKit/UIKit.h>
 
+#import <MKKit/MKKit/MKGraphics/MKGraphics.h>
+
 #import "MKViewDelegate.h"
 
 typedef enum {
@@ -18,6 +20,11 @@ typedef enum {
     MKViewAnimationTypeMoveInFromTop,
     MKViewAnimationTypeAppearAboveToolbar,
 } MKViewAnimationType;
+
+typedef enum {
+    MKTableHeaderTypeGrouped,
+    MKTableHeaderTypePlain,
+} MKTableHeaderType;
 
 #define MK_VIEW_SHOULD_REMOVE_NOTIFICATION      @"MKViewShouldRemoveNotification"
 
@@ -41,13 +48,16 @@ typedef enum {
 
 @interface MKView : UIView {
     id mDelegate;
-    
     UIViewController *mController;
-    
     BOOL mShouldRemoveView;
+    MKViewAnimationType mAnimationType;
     
 @private
-    MKViewAnimationType mAnimationType;
+    struct {
+        bool isHeaderView;
+        bool isHeaderGrouped;
+        bool isHeaderPlain;
+    } MKViewFlags;
 }
 
 ///------------------------------------------------------
@@ -94,7 +104,7 @@ typedef enum {
 ///-----------------------------------------------------
 
 /** The view controller that owns the view. */
-@property (nonatomic, retain) UIViewController *controller;
+@property (nonatomic, retain) IBOutlet UIViewController *controller;
 
 ///------------------------------------------------------
 /// @name Delegate
@@ -102,5 +112,52 @@ typedef enum {
 
 /** The MKViewDelegate */
 @property (nonatomic, assign) id<MKViewDelegate> delegate;
+
+@end
+
+/**-----------------------------------------------------------------------
+ This category makes a clone of the iOS Grouped table section header. With 
+ this class you have control of the UILabel instance, not just the text. 
+------------------------------------------------------------------------*/
+@interface MKView (MKTableHeader) 
+
+///---------------------------------------------
+/// @name Creating
+///---------------------------------------------
+
+/**
+ Returns an instace of MKView sized for a grouped table header.
+ 
+ @param title the text that will display on the header.
+ 
+ @param type the header type to return
+ 
+ * `MKTableHeaderTypeGrouped` : Returns a header for grouped tables
+ * `MKTableHeaderTypePlain` : Returns a header for plain tables
+ 
+ @return MKView instance
+*/
+- (id)initWithTitle:(NSString *)title type:(MKTableHeaderType)type;
+
+/**
+ Returns an instace of MKView sized for a grouped table header.
+ 
+ @param title the text that will display on the header.
+ 
+ @param type the header type to return
+ 
+ * `MKTableHeaderTypeGrouped` : Returns a header for grouped tables
+ * `MKTableHeaderTypePlain` : Returns a header for plain tables
+ 
+ @return MKView instance
+*/
++ (id)headerViewWithTitle:(NSString *)title type:(MKTableHeaderType)type;
+
+///---------------------------------------------
+/// @name View Elements
+///---------------------------------------------
+
+/** The UILabel instance that is displayed on the view */
+@property (nonatomic, retain) UILabel *titleLabel;
 
 @end
