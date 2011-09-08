@@ -7,6 +7,7 @@
 //
 
 #import <MKKit/MKKit/MKDeffinitions.h>
+#import <MKKit/MKKit/MKAvailability.h>
 
 #import <Availability.h>
 #import <math.h>

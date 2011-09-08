@@ -27,7 +27,7 @@
 @synthesize validator=_validator, error=_error, validated=_validated, animated, validationType, 
 			automaticalyValidate, useInputAccessoryView, displayWarningIcon, accessoryType;
 
-#pragma mark Initalizer
+#pragma mark - Initalizer
 
 - (id)initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
@@ -45,7 +45,7 @@
 	return self;
 }
 
-#pragma mark Acccesor Methods
+#pragma mark - Acccesor Methods
 
 - (void)setAutomaticalyValidate:(BOOL)autoVal {
 	if (autoVal == YES) {
@@ -59,19 +59,6 @@
 	}
 }
 
-- (void)setUseInputAccessoryView:(BOOL)use {
-	if (use) {
-		MKInputAccessoryView *accessoryView = [[MKInputAccessoryView alloc] initWithType:MKInputAccessoryTypeDone];
-		accessoryView.textField = self;
-		self.inputAccessoryView = accessoryView;
-		[accessoryView release];
-	}
-	else {
-		self.inputAccessoryView = nil;
-	}
-
-}
-
 - (void)setAccessoryType:(MKInputAccessoryType)type {
     MKInputAccessoryView *accessoryView = [[MKInputAccessoryView alloc] initWithType:type];
     accessoryView.textField = self;
@@ -79,7 +66,7 @@
     [accessoryView release];
 }
 
-#pragma mark Validation Methods
+#pragma mark - Validation Methods
 
 - (void)validate {
 	[self validateWithType:self.validationType];
@@ -171,7 +158,7 @@
 	}
 }
 
-#pragma mark Actions
+#pragma mark - Actions
 
 - (void)editingEnded:(id)sender {
 	[self validate];
@@ -181,12 +168,19 @@
 	[self clearError];
 }
 
-#pragma mark Memory Managment
+#pragma mark - Memory Managment
 
 - (void)dealloc {
 	[_validator release];
 	
 	[super dealloc];
+}
+
+#pragma mark - Depreceations
+
+- (void)setUseInputAccessoryView:(BOOL)use {
+    NSException *exception = [NSException exceptionWithName:@"Depreceated Property" reason:@"useInputAccessoryView has been deprecated. Use the accessoryType property instead." userInfo:nil];
+    [exception raise];
 }
 
 @end

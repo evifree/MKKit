@@ -113,8 +113,19 @@
 		AA6DF413138E07480091B912 /* MKMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6DF411138E07480091B912 /* MKMenuItem.m */; };
 		AA737F261409DBBA0078830C /* MKTableCellAccentView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA737F241409DBBA0078830C /* MKTableCellAccentView.h */; };
 		AA737F271409DBBA0078830C /* MKTableCellAccentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA737F251409DBBA0078830C /* MKTableCellAccentView.m */; };
+		AA77677814133D940064579F /* MKGraphViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA77677614133D940064579F /* MKGraphViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA77677914133D940064579F /* MKGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA77677714133D940064579F /* MKGraphViewController.m */; };
+		AA7767991413E2330064579F /* MKBarGraphView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7767971413E2330064579F /* MKBarGraphView.h */; };
+		AA77679A1413E2330064579F /* MKBarGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7767981413E2330064579F /* MKBarGraphView.m */; };
+		AA77679D1413E90A0064579F /* MKAvailability.h in Headers */ = {isa = PBXBuildFile; fileRef = AA77679C1413E90A0064579F /* MKAvailability.h */; };
+		AA7767A61413FA770064579F /* MKGraphsAvailability.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7767A41413FA770064579F /* MKGraphsAvailability.h */; };
 		AA778BE413A8617E00AFF686 /* MKGraphics.h in Headers */ = {isa = PBXBuildFile; fileRef = AA778BE213A8617E00AFF686 /* MKGraphics.h */; };
 		AA778BE513A8617E00AFF686 /* MKGraphics.m in Sources */ = {isa = PBXBuildFile; fileRef = AA778BE313A8617E00AFF686 /* MKGraphics.m */; };
+		AA7B66A51418006D00B0188E /* MKGraphView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7B66A31418006D00B0188E /* MKGraphView.h */; };
+		AA7B66A61418006D00B0188E /* MKGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7B66A41418006D00B0188E /* MKGraphView.m */; };
+		AA7B66AB1418658200B0188E /* MKGraphDataSet.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7B66A81418658200B0188E /* MKGraphDataSet.h */; };
+		AA7B66AC1418658200B0188E /* MKGraphDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7B66A91418658200B0188E /* MKGraphDataSet.m */; };
+		AA7B66AD1418658200B0188E /* MKGraphDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7B66AA1418658200B0188E /* MKGraphDataSource.h */; };
 		AA7EA176110122760090E6EB /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA7EA175110122760090E6EB /* CoreData.framework */; };
 		AA7EFCF310FFE90900B4C1BC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA7EFCF210FFE90900B4C1BC /* CoreGraphics.framework */; };
 		AA7EFCF510FFE91B00B4C1BC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA7EFCF410FFE91B00B4C1BC /* UIKit.framework */; };
@@ -147,11 +158,17 @@
 		AABF4D9113921DA0001B547A /* MKIAPController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABF4D8F13921DA0001B547A /* MKIAPController.m */; };
 		AABF4D9413921E1A001B547A /* MKTableCellIAP.h in Headers */ = {isa = PBXBuildFile; fileRef = AABF4D9213921E1A001B547A /* MKTableCellIAP.h */; };
 		AABF4D9513921E1A001B547A /* MKTableCellIAP.m in Sources */ = {isa = PBXBuildFile; fileRef = AABF4D9313921E1A001B547A /* MKTableCellIAP.m */; };
+		AAD0024214131FAE0088D5F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		AAD0026A141323300088D5F9 /* MKGraphs.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD00269141323300088D5F9 /* MKGraphs.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAE70D23140DB7B700797D84 /* MKPhotoView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE70D21140DB7B700797D84 /* MKPhotoView.h */; };
 		AAE70D24140DB7B700797D84 /* MKPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE70D22140DB7B700797D84 /* MKPhotoView.m */; };
 		AAEDEA771390A732007EA362 /* MKNoticeView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAEDEA751390A730007EA362 /* MKNoticeView.h */; };
 		AAEDEA781390A732007EA362 /* MKNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEDEA761390A731007EA362 /* MKNoticeView.m */; };
 		AAEFE115121873BA008143E4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAEFE114121873BA008143E4 /* CoreLocation.framework */; };
+		AAFC9898141534F30071B91C /* MKGraphDrawing.h in Headers */ = {isa = PBXBuildFile; fileRef = AAFC9896141534F30071B91C /* MKGraphDrawing.h */; };
+		AAFC9899141534F30071B91C /* MKGraphDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFC9897141534F30071B91C /* MKGraphDrawing.m */; };
+		AAFC989C141599E90071B91C /* MKGraphPlotting.h in Headers */ = {isa = PBXBuildFile; fileRef = AAFC989A141599E90071B91C /* MKGraphPlotting.h */; };
+		AAFC989D141599E90071B91C /* MKGraphPlotting.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFC989B141599E90071B91C /* MKGraphPlotting.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -262,8 +279,19 @@
 		AA737F241409DBBA0078830C /* MKTableCellAccentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTableCellAccentView.h; sourceTree = "<group>"; };
 		AA737F251409DBBA0078830C /* MKTableCellAccentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTableCellAccentView.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* MKKit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKKit_Prefix.pch; sourceTree = SOURCE_ROOT; };
+		AA77677614133D940064579F /* MKGraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKGraphViewController.h; sourceTree = "<group>"; };
+		AA77677714133D940064579F /* MKGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKGraphViewController.m; sourceTree = "<group>"; };
+		AA7767971413E2330064579F /* MKBarGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBarGraphView.h; sourceTree = "<group>"; };
+		AA7767981413E2330064579F /* MKBarGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBarGraphView.m; sourceTree = "<group>"; };
+		AA77679C1413E90A0064579F /* MKAvailability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKAvailability.h; sourceTree = "<group>"; };
+		AA7767A41413FA770064579F /* MKGraphsAvailability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKGraphsAvailability.h; sourceTree = "<group>"; };
 		AA778BE213A8617E00AFF686 /* MKGraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKGraphics.h; sourceTree = "<group>"; };
 		AA778BE313A8617E00AFF686 /* MKGraphics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKGraphics.m; sourceTree = "<group>"; };
+		AA7B66A31418006D00B0188E /* MKGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKGraphView.h; sourceTree = "<group>"; };
+		AA7B66A41418006D00B0188E /* MKGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKGraphView.m; sourceTree = "<group>"; };
+		AA7B66A81418658200B0188E /* MKGraphDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MKGraphDataSet.h; path = MKGraphs/MKGraphData/MKGraphDataSet.h; sourceTree = SOURCE_ROOT; };
+		AA7B66A91418658200B0188E /* MKGraphDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MKGraphDataSet.m; path = MKGraphs/MKGraphData/MKGraphDataSet.m; sourceTree = SOURCE_ROOT; };
+		AA7B66AA1418658200B0188E /* MKGraphDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MKGraphDataSource.h; path = MKGraphs/MKGraphData/MKGraphDataSource.h; sourceTree = SOURCE_ROOT; };
 		AA7EA175110122760090E6EB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		AA7EFCE510FFE8C900B4C1BC /* MKKit-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MKKit-Info.plist"; sourceTree = "<group>"; };
 		AA7EFCEE10FFE8E900B4C1BC /* libMKKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMKKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -300,11 +328,18 @@
 		AABF4D9213921E1A001B547A /* MKTableCellIAP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTableCellIAP.h; sourceTree = "<group>"; };
 		AABF4D9313921E1A001B547A /* MKTableCellIAP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTableCellIAP.m; sourceTree = "<group>"; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AAD0024114131FAE0088D5F9 /* libMKGraphs.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMKGraphs.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAD0024514131FAE0088D5F9 /* MKGraphs-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MKGraphs-Prefix.pch"; sourceTree = "<group>"; };
+		AAD00269141323300088D5F9 /* MKGraphs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKGraphs.h; sourceTree = SOURCE_ROOT; };
 		AAE70D21140DB7B700797D84 /* MKPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPhotoView.h; sourceTree = "<group>"; };
 		AAE70D22140DB7B700797D84 /* MKPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPhotoView.m; sourceTree = "<group>"; };
 		AAEDEA751390A730007EA362 /* MKNoticeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKNoticeView.h; sourceTree = "<group>"; };
 		AAEDEA761390A731007EA362 /* MKNoticeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKNoticeView.m; sourceTree = "<group>"; };
 		AAEFE114121873BA008143E4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		AAFC9896141534F30071B91C /* MKGraphDrawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKGraphDrawing.h; sourceTree = "<group>"; };
+		AAFC9897141534F30071B91C /* MKGraphDrawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKGraphDrawing.m; sourceTree = "<group>"; };
+		AAFC989A141599E90071B91C /* MKGraphPlotting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKGraphPlotting.h; sourceTree = "<group>"; };
+		AAFC989B141599E90071B91C /* MKGraphPlotting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKGraphPlotting.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,6 +358,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AAD0023E14131FAE0088D5F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAD0024214131FAE0088D5F9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -330,6 +373,7 @@
 			isa = PBXGroup;
 			children = (
 				AA7EFCEE10FFE8E900B4C1BC /* libMKKit.a */,
+				AAD0024114131FAE0088D5F9 /* libMKGraphs.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -339,6 +383,7 @@
 			children = (
 				AA02DFF112DAF0AD003B3560 /* MKKit.h */,
 				AA02DDB612DAE2B7003B3560 /* MKKit */,
+				AAD0024314131FAE0088D5F9 /* MKGraphs */,
 				AA1F0FD2128B7C4F003EB755 /* Resources */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
@@ -378,6 +423,7 @@
 			children = (
 				AA02DDDF12DAE2B7003B3560 /* MKDeffinitions.h */,
 				AA2FBE4413444550002441C2 /* MKMacros.h */,
+				AA77679C1413E90A0064579F /* MKAvailability.h */,
 				AA02DDCF12DAE2B7003B3560 /* MKAlerts.h */,
 				AA02DDD012DAE2B7003B3560 /* MKAlerts.m */,
 				AA02DDD112DAE2B7003B3560 /* MKAnimations.h */,
@@ -603,6 +649,30 @@
 			path = MKMenuView;
 			sourceTree = "<group>";
 		};
+		AA77678F1413E1470064579F /* MKGraphsData */ = {
+			isa = PBXGroup;
+			children = (
+				AA7B66A81418658200B0188E /* MKGraphDataSet.h */,
+				AA7B66A91418658200B0188E /* MKGraphDataSet.m */,
+				AA7B66AA1418658200B0188E /* MKGraphDataSource.h */,
+			);
+			path = MKGraphsData;
+			sourceTree = "<group>";
+		};
+		AA7767961413E2330064579F /* MKGraphView */ = {
+			isa = PBXGroup;
+			children = (
+				AAFC9896141534F30071B91C /* MKGraphDrawing.h */,
+				AAFC9897141534F30071B91C /* MKGraphDrawing.m */,
+				AAFC989A141599E90071B91C /* MKGraphPlotting.h */,
+				AAFC989B141599E90071B91C /* MKGraphPlotting.m */,
+				AA7B66A31418006D00B0188E /* MKGraphView.h */,
+				AA7B66A41418006D00B0188E /* MKGraphView.m */,
+				AA7B66A71418566400B0188E /* MKGraphTypes */,
+			);
+			path = MKGraphView;
+			sourceTree = "<group>";
+		};
 		AA778BE113A8616500AFF686 /* MKGraphics */ = {
 			isa = PBXGroup;
 			children = (
@@ -610,6 +680,15 @@
 				AA778BE313A8617E00AFF686 /* MKGraphics.m */,
 			);
 			path = MKGraphics;
+			sourceTree = "<group>";
+		};
+		AA7B66A71418566400B0188E /* MKGraphTypes */ = {
+			isa = PBXGroup;
+			children = (
+				AA7767971413E2330064579F /* MKBarGraphView.h */,
+				AA7767981413E2330064579F /* MKBarGraphView.m */,
+			);
+			name = MKGraphTypes;
 			sourceTree = "<group>";
 		};
 		AAA3BE8313EB92F400594F55 /* MKTabbedViewController */ = {
@@ -649,6 +728,28 @@
 				AABF4D9313921E1A001B547A /* MKTableCellIAP.m */,
 			);
 			path = MKIAPViewController;
+			sourceTree = "<group>";
+		};
+		AAD0024314131FAE0088D5F9 /* MKGraphs */ = {
+			isa = PBXGroup;
+			children = (
+				AAD00269141323300088D5F9 /* MKGraphs.h */,
+				AA7767A41413FA770064579F /* MKGraphsAvailability.h */,
+				AA77677614133D940064579F /* MKGraphViewController.h */,
+				AA77677714133D940064579F /* MKGraphViewController.m */,
+				AA77678F1413E1470064579F /* MKGraphsData */,
+				AA7767961413E2330064579F /* MKGraphView */,
+				AAD0024414131FAE0088D5F9 /* Supporting Files */,
+			);
+			path = MKGraphs;
+			sourceTree = "<group>";
+		};
+		AAD0024414131FAE0088D5F9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AAD0024514131FAE0088D5F9 /* MKGraphs-Prefix.pch */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -735,6 +836,23 @@
 				AA99D3191405B71E00CFFD56 /* MKObject.h in Headers */,
 				AA737F261409DBBA0078830C /* MKTableCellAccentView.h in Headers */,
 				AAE70D23140DB7B700797D84 /* MKPhotoView.h in Headers */,
+				AA77679D1413E90A0064579F /* MKAvailability.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAD0023F14131FAE0088D5F9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAD0026A141323300088D5F9 /* MKGraphs.h in Headers */,
+				AA77677814133D940064579F /* MKGraphViewController.h in Headers */,
+				AA7767991413E2330064579F /* MKBarGraphView.h in Headers */,
+				AA7767A61413FA770064579F /* MKGraphsAvailability.h in Headers */,
+				AAFC9898141534F30071B91C /* MKGraphDrawing.h in Headers */,
+				AAFC989C141599E90071B91C /* MKGraphPlotting.h in Headers */,
+				AA7B66A51418006D00B0188E /* MKGraphView.h in Headers */,
+				AA7B66AB1418658200B0188E /* MKGraphDataSet.h in Headers */,
+				AA7B66AD1418658200B0188E /* MKGraphDataSource.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -756,6 +874,23 @@
 			name = MKKit;
 			productName = MKKit;
 			productReference = AA7EFCEE10FFE8E900B4C1BC /* libMKKit.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		AAD0024014131FAE0088D5F9 /* MKGraphs */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAD0026314131FAF0088D5F9 /* Build configuration list for PBXNativeTarget "MKGraphs" */;
+			buildPhases = (
+				AAD0023D14131FAE0088D5F9 /* Sources */,
+				AAD0023E14131FAE0088D5F9 /* Frameworks */,
+				AAD0023F14131FAE0088D5F9 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MKGraphs;
+			productName = MKGraphs;
+			productReference = AAD0024114131FAE0088D5F9 /* libMKGraphs.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -783,6 +918,7 @@
 			projectRoot = "";
 			targets = (
 				AA7EFCED10FFE8E900B4C1BC /* MKKit */,
+				AAD0024014131FAE0088D5F9 /* MKGraphs */,
 			);
 		};
 /* End PBXProject section */
@@ -855,6 +991,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AAD0023D14131FAE0088D5F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA77677914133D940064579F /* MKGraphViewController.m in Sources */,
+				AA77679A1413E2330064579F /* MKBarGraphView.m in Sources */,
+				AAFC9899141534F30071B91C /* MKGraphDrawing.m in Sources */,
+				AAFC989D141599E90071B91C /* MKGraphPlotting.m in Sources */,
+				AA7B66A61418006D00B0188E /* MKGraphView.m in Sources */,
+				AA7B66AC1418658200B0188E /* MKGraphDataSet.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
@@ -897,11 +1046,13 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				"GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS[arch=*]" = "MK_MAX_VERSION_ALLOWED=8";
 				HEADER_SEARCH_PATHS = "/Users/Jullie/Desktop/iPhone-Projects/Frameworks/";
 				PRODUCT_NAME = MKKit;
 				PROVISIONING_PROFILE = "BEDD7322-A695-479B-9169-D3895EFF433B";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -917,7 +1068,55 @@
 				PROVISIONING_PROFILE = "BEDD7322-A695-479B-9169-D3895EFF433B";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		AAD0025F14131FAE0088D5F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/MKGraphs.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MKGraphs/MKGraphs-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = "MKKIT_AVAILABLE=1";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "$(MKKIT)";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		AAD0026014131FAE0088D5F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/MKGraphs.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MKGraphs/MKGraphs-Prefix.pch";
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = "MKKIT_AVAILABLE=1";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "$(MKKIT)";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -938,6 +1137,15 @@
 			buildConfigurations = (
 				AA7EFCEF10FFE8E900B4C1BC /* Debug */,
 				AA7EFCF010FFE8E900B4C1BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		AAD0026314131FAF0088D5F9 /* Build configuration list for PBXNativeTarget "MKGraphs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAD0025F14131FAE0088D5F9 /* Debug */,
+				AAD0026014131FAE0088D5F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
