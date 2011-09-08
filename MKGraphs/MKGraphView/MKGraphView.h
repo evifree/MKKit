@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-#import <MKKit/MKGraphs/MKGraphsData/MKGraphDataSource.h>
-#import <MKKit/MKGraphs/MKGraphsData/MKGraphDataSet.h>
+#import <MKKit/MKGraphs/MKGraphData/MKGraphDataSource.h>
+#import <MKKit/MKGraphs/MKGraphData/MKGraphDataSet.h>
 #import <MKKit/MKGraphs/MKGraphsAvailability.h>
 
 #import "MKGraphDrawing.h"

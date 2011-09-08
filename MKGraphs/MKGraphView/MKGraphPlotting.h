@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreFoundation/CoreFoundation.h>
 
-#import <MKKit/MKGraphs/MKGraphsData/MKGraphDataSource.h>
+#import <MKKit/MKGraphs/MKGraphData/MKGraphDataSource.h>
 #import "MKGraphDrawing.h"
 
 struct MKGraphAxisPointLabel {

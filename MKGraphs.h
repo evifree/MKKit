@@ -6,5 +6,5 @@
 //  Copyright (c) 2011 Matt King. All rights reserved.
 //
 
-#import <MKKit/MKGraphs/MKGraphsData/MKGraphDataSet.h>
+#import <MKKit/MKGraphs/MKGraphData/MKGraphDataSet.h>
 #import <MKKit/MKGraphs/MKGraphViewController.h>
