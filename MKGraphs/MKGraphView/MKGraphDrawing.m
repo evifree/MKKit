@@ -9,19 +9,19 @@
 #import <MKKit/MKKit/MKGraphics/MKGraphics.h>
 #import "MKGraphDrawing.h"
 
-void drawHorizontalText(CGContextRef context, CGRect rect, CFStringRef text, CGFloat size, CGColorRef color, UITextAlignment alignement) {
+void drawHorizontalText(CGContextRef context, CGRect rect, CFStringRef text, CGFloat size, CGColorRef color, UITextAlignment alignment) {
     CGContextSaveGState(context);
     CGContextSetFillColorWithColor(context, color);
-    [(NSString *)text drawInRect:rect withFont:[UIFont fontWithName:@"Verdana-Bold" size:size] lineBreakMode:UILineBreakModeClip alignment:alignement];
+    [(NSString *)text drawInRect:rect withFont:[UIFont fontWithName:@"Verdana-Bold" size:size] lineBreakMode:UILineBreakModeClip alignment:alignment];
     CGContextRestoreGState(context);
 }
 
-void drawVerticalText(CGContextRef context, CGRect rect, CFStringRef text, CGFloat size, CGColorRef color, UITextAlignment alignement) {
+void drawVerticalText(CGContextRef context, CGRect rect, CFStringRef text, CGFloat size, CGColorRef color, UITextAlignment alignment) {
     CGContextSaveGState(context);
     CGContextTranslateCTM(context, CGRectGetMidX(rect), CGRectGetMidY(rect));
     CGContextRotateCTM(context, MK_D2R(-90.0));
     CGContextTranslateCTM(context, -CGRectGetMidX(rect), -CGRectGetMidY(rect));
     CGContextSetFillColorWithColor(context, color);
-    [(NSString *)text drawInRect:rect withFont:[UIFont fontWithName:@"Verdana-Bold" size:size] lineBreakMode:UILineBreakModeClip alignment:alignement];
+    [(NSString *)text drawInRect:rect withFont:[UIFont fontWithName:@"Verdana-Bold" size:size] lineBreakMode:UILineBreakModeClip alignment:alignment];
     CGContextRestoreGState(context);
 }

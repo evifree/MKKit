@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 10/20/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010-2011 Matt King. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -107,7 +107,7 @@
 /** 
  Called when a the MKTextField object of becomes the first responder.
 	
- @warning Note * This method is only called by the MKTableCellTextEntry class.
+ @warning *Note* This method is only called by the MKTableCellTextEntry class.
  
  @param textField The text field that has become the first responder.
 */
@@ -116,7 +116,7 @@
 /** 
  Called after a picker has been added to the applications keyWindow.
  
- @warning Note * This medthod is only called by the MKTableCellPickerControlled class.
+ @warning *Note* This medthod is only called by the MKTableCellPickerControlled class.
  
  @param thePicker The view that holds the specified picker.
  
@@ -131,7 +131,7 @@
 /** 
  Called before a picker will be removed from the applications keyWindow.
 
- @warning Note * This medthod is only called by the MKTableCellPickerControlled class.
+ @warning *Note* This medthod is only called by the MKTableCellPickerControlled class.
  
  @param thePicker The view that holds the specified picker.
  

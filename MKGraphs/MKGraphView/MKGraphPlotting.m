@@ -16,18 +16,3 @@ struct MKGraphAxisPointLabel MKGraphAxisPointLabelMake(CGPoint point, CFStringRe
     
     return pointLabel;
 }
-
-CFMutableArrayRef CreateYAxisPoints(MKGraphScale scale, CGRect graphRect) {
-    CFMutableArrayRef points = CFArrayCreateMutable(kCFAllocatorDefault, 4.0, &kCFTypeArrayCallBacks);
-    
-    CGFloat xPoint = CGRectGetMinX(graphRect);
-    
-    NSString *pointOneLabel = [NSString stringWithFormat:@"%f", scale.max];
-    
-    struct MKGraphAxisPointLabel pointOne = MKGraphAxisPointLabelMake(CGPointMake(xPoint, CGRectGetMinY(graphRect)), (CFStringRef)pointOneLabel);
-    const struct MKGraphAxisPointLabel *pPointOne = &pointOne;
-    
-    CFArrayAppendValue(points, pPointOne);
-    
-    return points;
-}

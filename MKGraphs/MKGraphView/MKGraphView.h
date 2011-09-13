@@ -24,7 +24,14 @@ typedef enum {
     MKGraphTypeBar,
 } MKGraphType;
 
+typedef struct {
+    float value;
+    CGColorRef color;
+    CFStringRef label;
+} MKLimitLine;
+
 MKGraphScale MKGraphScaleMake(float max, float min);
+MKLimitLine MKLimitLineMake(float value, CGColorRef color, CFStringRef label);
 
 static const float kBarPadding = 2.0;
 
@@ -36,6 +43,7 @@ static const float kBarPadding = 2.0;
 @interface MKGraphView : UIView {
     id datasource;
     MKGraphScale mScale;
+    MKLimitLine mLimit;
     NSInteger dataSetsCount;
     NSMutableArray *dataSets;
     bool hasGraphData;
@@ -71,6 +79,9 @@ static const float kBarPadding = 2.0;
 
 /** Scale of the graph. Set through the delegate. */
 @property (nonatomic, assign, readonly) MKGraphScale scale;
+
+/** Draws a line across the the x Axis at a given point */
+@property (nonatomic, assign) MKLimitLine limitLine;
 
 /** Title of the x Axis */
 @property (nonatomic, copy) NSString *xAxisTitle;

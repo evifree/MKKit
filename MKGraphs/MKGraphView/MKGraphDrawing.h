@@ -19,5 +19,5 @@
     #define VERDANA_BOLD(points)                    [UIFont fontWithName:@"Verdana-Bold" size:(points)]
 #endif
 
-void drawHorizontalText(CGContextRef context, CGRect rect, CFStringRef text, CGFloat size, CGColorRef color, UITextAlignment alignement);
-void drawVerticalText(CGContextRef context, CGRect rect, CFStringRef text, CGFloat size, CGColorRef color, UITextAlignment alignement);
+void drawHorizontalText(CGContextRef context, CGRect rect, CFStringRef text, CGFloat size, CGColorRef color, UITextAlignment alignment);
+void drawVerticalText(CGContextRef context, CGRect rect, CFStringRef text, CGFloat size, CGColorRef color, UITextAlignment alignment);

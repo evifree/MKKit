@@ -26,7 +26,6 @@
     MKControlFlags.blockUsage = YES;
 }
 
-
 - (void)addTarget:(id)target selector:(SEL)selector action:(MKAction)controlAction {
     MKControlTarget *newTarget = [[MKControlTarget alloc] init];
     newTarget.target = target;

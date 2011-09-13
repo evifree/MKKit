@@ -18,6 +18,7 @@
 
 #import "MKTableElements/MKMaskIconView.h"
 #import "MKTableElements/MKElementAccentView.h"
+#import "MKTableElements/MKSwipeCellView.h"
 #import "MKTableElements/MKTableCellAccentView.h"
 
 #import "MKTableCellDelegate.h"

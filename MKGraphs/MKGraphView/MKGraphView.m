@@ -9,18 +9,28 @@
 #import "MKGraphView.h"
 #import "MKBarGraphView.h"
 
-MKGraphScale iScale;
-
 MKGraphScale MKGraphScaleMake(float max, float min) {
+    MKGraphScale iScale;
+    
     iScale.max = max;
     iScale.min = min;
     
     return iScale;
 }
 
+MKLimitLine MKLimitLineMake(float value, CGColorRef color, CFStringRef label) {
+    MKLimitLine limit;
+    
+    limit.value = value;
+    limit.color = color;
+    limit.label = label;
+    
+    return limit;
+}
+
 @implementation MKGraphView
 
-@synthesize xAxisTitle, yAxisTitle, scale=mScale, datasource;
+@synthesize xAxisTitle, yAxisTitle, scale=mScale, datasource, limitLine=mLimit;
 
 - (id)initWithFrame:(CGRect)frame type:(MKGraphType)type {
     self = [super initWithFrame:frame];

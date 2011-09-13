@@ -23,6 +23,7 @@
         bool hasYAxis;
         bool hasXAxisTitle;
         bool hasYAxisTitle;
+        bool hasLimitLine;
         bool showHorizontalGridLines;
         bool showVerticalGridLines;
         int numberOfDataSets;

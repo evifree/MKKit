@@ -98,6 +98,8 @@
 		AA33055F13C3F082006B2D11 /* MKMaskIconView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA33055D13C3F082006B2D11 /* MKMaskIconView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA33056013C3F082006B2D11 /* MKMaskIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA33055E13C3F082006B2D11 /* MKMaskIconView.m */; };
 		AA56A535128EDF0300E5DD5C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA56A534128EDF0300E5DD5C /* MessageUI.framework */; };
+		AA61791B141BCF12001859E7 /* MKSwipeCellItem.h in Headers */ = {isa = PBXBuildFile; fileRef = AA617919141BCF11001859E7 /* MKSwipeCellItem.h */; };
+		AA61791C141BCF12001859E7 /* MKSwipeCellItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AA61791A141BCF12001859E7 /* MKSwipeCellItem.m */; };
 		AA6330DC134415B900886CE3 /* MKViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6330D9134415B900886CE3 /* MKViewController.h */; };
 		AA6330DD134415B900886CE3 /* MKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6330DA134415B900886CE3 /* MKViewController.m */; };
 		AA6330DF1344163F00886CE3 /* MKViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6330DE1344163F00886CE3 /* MKViewControllerDelegate.h */; };
@@ -150,6 +152,8 @@
 		AAB4D1E613E884410061A6BD /* MKTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB4D1E413E884400061A6BD /* MKTitleView.m */; };
 		AAB4D1F113E8C9810061A6BD /* MKElementAccentView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB4D1EF13E8C9810061A6BD /* MKElementAccentView.h */; };
 		AAB4D1F213E8C9810061A6BD /* MKElementAccentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB4D1F013E8C9810061A6BD /* MKElementAccentView.m */; };
+		AAB76CE4141B3682007829EB /* MKSwipeCellView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB76CE2141B3682007829EB /* MKSwipeCellView.h */; };
+		AAB76CE5141B3682007829EB /* MKSwipeCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB76CE3141B3682007829EB /* MKSwipeCellView.m */; };
 		AABE3D581376CFE500ECC539 /* MKLoginViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AABE3D551376CFE500ECC539 /* MKLoginViewController.h */; };
 		AABE3D591376CFE500ECC539 /* MKLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE3D561376CFE500ECC539 /* MKLoginViewController.m */; };
 		AABF4D8C13921A24001B547A /* MKIAPViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AABF4D8A13921A24001B547A /* MKIAPViewController.h */; };
@@ -263,6 +267,8 @@
 		AA33055D13C3F082006B2D11 /* MKMaskIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMaskIconView.h; sourceTree = "<group>"; };
 		AA33055E13C3F082006B2D11 /* MKMaskIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMaskIconView.m; sourceTree = "<group>"; };
 		AA56A534128EDF0300E5DD5C /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		AA617919141BCF11001859E7 /* MKSwipeCellItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKSwipeCellItem.h; sourceTree = "<group>"; };
+		AA61791A141BCF12001859E7 /* MKSwipeCellItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSwipeCellItem.m; sourceTree = "<group>"; };
 		AA6330D9134415B900886CE3 /* MKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKViewController.h; sourceTree = "<group>"; };
 		AA6330DA134415B900886CE3 /* MKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKViewController.m; sourceTree = "<group>"; };
 		AA6330DE1344163F00886CE3 /* MKViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKViewControllerDelegate.h; sourceTree = "<group>"; };
@@ -319,6 +325,8 @@
 		AAB4D1E413E884400061A6BD /* MKTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTitleView.m; sourceTree = "<group>"; };
 		AAB4D1EF13E8C9810061A6BD /* MKElementAccentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKElementAccentView.h; sourceTree = "<group>"; };
 		AAB4D1F013E8C9810061A6BD /* MKElementAccentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKElementAccentView.m; sourceTree = "<group>"; };
+		AAB76CE2141B3682007829EB /* MKSwipeCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKSwipeCellView.h; sourceTree = "<group>"; };
+		AAB76CE3141B3682007829EB /* MKSwipeCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSwipeCellView.m; sourceTree = "<group>"; };
 		AABE3D551376CFE500ECC539 /* MKLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKLoginViewController.h; sourceTree = "<group>"; };
 		AABE3D561376CFE500ECC539 /* MKLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKLoginViewController.m; sourceTree = "<group>"; };
 		AABF4D8A13921A24001B547A /* MKIAPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKIAPViewController.h; sourceTree = "<group>"; };
@@ -610,12 +618,24 @@
 				AA33055E13C3F082006B2D11 /* MKMaskIconView.m */,
 				AAB4D1EF13E8C9810061A6BD /* MKElementAccentView.h */,
 				AAB4D1F013E8C9810061A6BD /* MKElementAccentView.m */,
+				AA61791D141BCFB4001859E7 /* MKSwipeCellView */,
 				AA737F241409DBBA0078830C /* MKTableCellAccentView.h */,
 				AA737F251409DBBA0078830C /* MKTableCellAccentView.m */,
 				AA0D155613F3081F0067BA2A /* MKTableCellBadgeView.h */,
 				AA0D155713F3081F0067BA2A /* MKTableCellBadgeView.m */,
 			);
 			path = MKTableElements;
+			sourceTree = "<group>";
+		};
+		AA61791D141BCFB4001859E7 /* MKSwipeCellView */ = {
+			isa = PBXGroup;
+			children = (
+				AAB76CE2141B3682007829EB /* MKSwipeCellView.h */,
+				AAB76CE3141B3682007829EB /* MKSwipeCellView.m */,
+				AA617919141BCF11001859E7 /* MKSwipeCellItem.h */,
+				AA61791A141BCF12001859E7 /* MKSwipeCellItem.m */,
+			);
+			name = MKSwipeCellView;
 			sourceTree = "<group>";
 		};
 		AA6330D81344155700886CE3 /* MKWebViewController */ = {
@@ -837,6 +857,8 @@
 				AA737F261409DBBA0078830C /* MKTableCellAccentView.h in Headers */,
 				AAE70D23140DB7B700797D84 /* MKPhotoView.h in Headers */,
 				AA77679D1413E90A0064579F /* MKAvailability.h in Headers */,
+				AAB76CE4141B3682007829EB /* MKSwipeCellView.h in Headers */,
+				AA61791B141BCF12001859E7 /* MKSwipeCellItem.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -988,6 +1010,8 @@
 				AA99D31A1405B71E00CFFD56 /* MKObject.m in Sources */,
 				AA737F271409DBBA0078830C /* MKTableCellAccentView.m in Sources */,
 				AAE70D24140DB7B700797D84 /* MKPhotoView.m in Sources */,
+				AAB76CE5141B3682007829EB /* MKSwipeCellView.m in Sources */,
+				AA61791C141BCF12001859E7 /* MKSwipeCellItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1048,6 +1072,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				"GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS[arch=*]" = "MK_MAX_VERSION_ALLOWED=8";
 				HEADER_SEARCH_PATHS = "/Users/Jullie/Desktop/iPhone-Projects/Frameworks/";
+				MACH_O_TYPE = staticlib;
 				PRODUCT_NAME = MKKit;
 				PROVISIONING_PROFILE = "BEDD7322-A695-479B-9169-D3895EFF433B";
 				SDKROOT = iphoneos;
@@ -1064,6 +1089,7 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				HEADER_SEARCH_PATHS = "/Users/Jullie/Desktop/iPhone-Projects/Frameworks/";
+				MACH_O_TYPE = staticlib;
 				PRODUCT_NAME = MKKit;
 				PROVISIONING_PROFILE = "BEDD7322-A695-479B-9169-D3895EFF433B";
 				SDKROOT = iphoneos;

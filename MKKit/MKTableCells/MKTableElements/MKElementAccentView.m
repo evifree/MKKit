@@ -57,7 +57,7 @@ CGMutablePathRef createPathForSingleCell(CGRect rect);
     }
     
     if (mPosition == MKTableCellPositionBottom) {
-        CGRect bottomRect = CGRectMake(0.0, 0.0, rect.size.width, (rect.size.height - kBottomCellPadding));
+        CGRect bottomRect = CGRectMake(0.0, 0.0, rect.size.width, rect.size.height);
         CGMutablePathRef bottomPath = createPathForBottomCell(bottomRect);
         
         CGContextSaveGState(context);
@@ -78,7 +78,7 @@ CGMutablePathRef createPathForSingleCell(CGRect rect);
     }
     
     if (mPosition == MKTableCellPositionSingleCell) {
-        CGRect singleRect = CGRectMake(0.0, 0.0, rect.size.width, (rect.size.height - kSingleCellPadding));
+        CGRect singleRect = CGRectMake(0.0, 0.0, rect.size.width, rect.size.height);
         CGMutablePathRef singlePath = createPathForSingleCell(singleRect);
         
         CGContextSaveGState(context);

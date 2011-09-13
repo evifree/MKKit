@@ -13,6 +13,8 @@ void drawXAxisTitle(CGContextRef context, CGRect rect, CFStringRef title);
 void drawYAxisTitle(CGContextRef context, CGRect rect, CFStringRef title);
 void drawYAxisLabels(CGContextRef context, CGRect rect, MKGraphScale scale);
 
+void drawLimitLine(CGContextRef context, CGRect rect, CFStringRef label, CGColorRef color, float value, float max);
+
 void drawVerticalBar(CGContextRef context, CGRect rect, CGColorRef color);
 
 @implementation MKBarGraphView
@@ -25,6 +27,7 @@ void drawVerticalBar(CGContextRef context, CGRect rect, CGColorRef color);
         
         MKGraphViewFlags.hasXAxis = YES;
         MKGraphViewFlags.hasYAxis = YES;
+        MKGraphViewFlags.hasLimitLine = NO;
         
         hasGraphData = NO;
     }
@@ -41,6 +44,11 @@ void drawVerticalBar(CGContextRef context, CGRect rect, CGColorRef color);
 - (void)setYAxisTitle:(NSString *)title {
     MKGraphViewFlags.hasYAxisTitle = YES;
     mYAxisTitle = (CFStringRef)title;
+}
+
+- (void)setLimitLine:(MKLimitLine)limitLine {
+    MKGraphViewFlags.hasLimitLine = YES;
+    mLimit = limitLine;
 }
 
 #pragma mark - Drawing
@@ -63,6 +71,7 @@ void drawVerticalBar(CGContextRef context, CGRect rect, CGColorRef color);
     if (MKGraphViewFlags.hasYAxisTitle) {
         drawYAxisTitle(context, yAxisTextRect, mYAxisTitle);
     }
+    
     
     if (hasGraphData) {
         drawYAxisLabels(context, graphRect, mScale);
@@ -94,7 +103,10 @@ void drawVerticalBar(CGContextRef context, CGRect rect, CGColorRef color);
                 [[NSNotificationCenter defaultCenter] postNotificationName:MK_LOADING_VIEW_SHOULD_REMOVE_NOTIFICATION object:nil];
             }
 #endif
-
+        }
+        
+        if (MKGraphViewFlags.hasLimitLine) {
+            drawLimitLine(context, graphRect, mLimit.label, mLimit.color, mLimit.value, mScale.max);
         }
     }
 }
@@ -207,6 +219,28 @@ void drawYAxisLabels(CGContextRef context, CGRect rect, MKGraphScale scale) {
     drawHorizontalText(context, pointFiveRect, pointFive.title, 8.0, [UIColor blackColor].CGColor, UITextAlignmentLeft);
     CGContextRestoreGState(context);
 }
+
+#pragma mark limit Line
+
+void drawLimitLine(CGContextRef context, CGRect rect, CFStringRef label, CGColorRef color, float value, float max) {
+    float px1 = CGRectGetMinX(rect);
+    float px2 = CGRectGetMaxX(rect);
+    float yPoint = ((CGRectGetHeight(rect) * (1.0 - (value / max))) + CGRectGetMinY(rect));
+    
+    CGContextSaveGState(context);
+    CGContextSetLineWidth(context, 1.0);
+    CGContextSetStrokeColorWithColor(context, color);
+    CGContextMoveToPoint(context, px1, yPoint);
+    CGContextAddLineToPoint(context, px2, yPoint);
+    CGContextStrokePath(context);
+    
+    CGRect textRect = CGRectMake((CGRectGetMaxX(rect) + 3.0), (yPoint - 4.0), MK_TEXT_WIDTH((NSString *)label, VERDANA_BOLD(8.0)), 8.0);
+    
+    if (label) {
+        drawHorizontalText(context, textRect, label, 8.0, color, UITextAlignmentLeft);
+    }
+}
+
 
 #pragma mark data drawing
 

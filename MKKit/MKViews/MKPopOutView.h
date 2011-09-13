@@ -70,3 +70,4 @@ static const CGFloat kPopOutViewWidth = 300.0;
 @property (nonatomic, assign, readonly) MKPopOutViewType type;
 
 @end
+

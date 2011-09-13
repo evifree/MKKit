@@ -18,5 +18,3 @@ struct MKGraphAxisPointLabel {
 } MKGraphAxisPointLabel MK_VISIBLE_ATTRIBUTE;
 
 struct MKGraphAxisPointLabel MKGraphAxisPointLabelMake(CGPoint point, CFStringRef title);
-
-CFMutableArrayRef CreateYAxisPoints(MKGraphScale scale, CGRect graphRect);
