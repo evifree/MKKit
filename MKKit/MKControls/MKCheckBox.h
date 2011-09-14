@@ -3,32 +3,65 @@
 //  MKKit
 //
 //  Created by Matthew King on 10/3/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010 Matt King. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "MKControl.h"
 
-@class MKControl;
+typedef enum {
+    MKCheckBoxRoundedRect,
+    MKCheckBoxRound,
+} MKCheckBoxType;
 
 /**----------------------------------------------------------------------------------------
  The MKCheckBox class creates a 30x30 checkbox object. When the user touches the check box it is toggled
  on and off.
  
- You should use `initWithFrame:` to initalize this class.
- 
- MKCheckBox send a `UIControlEventValueChanged` action.
+ MKCheckBox dispatches the MKActionValueChanged
 -------------------------------------------------------------------------------------------*/
 
 @interface MKCheckBox : MKControl {
-	BOOL _boxChecked;
-	
-	@private
-		UIImageView *checkMarkView;
+@private
+    MKCheckBoxType mType;
+    struct {
+        bool isChecked;
+    } MKCheckBoxFlags;
 }
 
+///------------------------------------
+/// @name Creating
+///------------------------------------
+
+/** 
+ Returns an instance of MKCheckBox.
+ 
+ @param type the MKCheckBoxType to uses
+ 
+ * `MKCheckBoxRoundedRect` : A rounded rect outline for the check box.
+ * `MKCheckBoxRound` : A round outline for the check box.
+ 
+ @return MKCheckBox instance.
+*/
+- (id)initWithType:(MKCheckBoxType)type;
+
+///------------------------------------
+/// @name Control
+///------------------------------------
+
 /** `YES` if the box is checked, `NO` if it is not */
-@property (nonatomic, assign, getter=isBoxChecked) BOOL boxChecked;
+@property (nonatomic, assign) BOOL boxChecked;
+
+///------------------------------------
+/// @name Apperance
+///------------------------------------
+
+/** Sets the type of check box that is used.
+ 
+ * `MKCheckBoxRoundedRect` : A rounded rect outline for the check box.
+ * `MKCheckBoxRound` : A round outline for the check box.
+*/
+@property (nonatomic, assign) MKCheckBoxType type;
 
 @end

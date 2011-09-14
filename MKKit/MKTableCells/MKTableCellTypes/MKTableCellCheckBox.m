@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 11/11/10.
-//  Copyright 2010 Matt King. All rights reserved.
+//  Copyright 2010-2011 Matt King. All rights reserved.
 //
 
 #import "MKTableCellCheckBox.h"
@@ -17,29 +17,31 @@
 
 @implementation MKTableCellCheckBox
 
-@synthesize checkBox=_checkBox;
+@synthesize checkBox=mCheckBox;
 
 - (id)initWithType:(MKTableCellType)cellType reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithType:MKTableCellTypeNone reuseIdentifier:reuseIdentifier];
     if (self) {
-        CGRect checkBoxRect = CGRectMake(10.0, 7.0, 30.0, 30.0);
-		CGRect labelRect = CGRectMake(58.0, 11.0, 203.0, 21.0);
-		
-		mTheLabel = [[UILabel alloc] initWithFrame:labelRect];
+        mCellView = [[MKView alloc] initWithCell:self];
+        
+        mTheLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 		mTheLabel.textAlignment = UITextAlignmentLeft;
 		mTheLabel.adjustsFontSizeToFitWidth = YES;
 		mTheLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
 		mTheLabel.backgroundColor = [UIColor clearColor];
+		mTheLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
 		
-		[self.contentView addSubview:mTheLabel];
+		[mCellView addPrimaryElement:mTheLabel];
 		[mTheLabel release];
 		
-		_checkBox = [[MKCheckBox alloc] initWithFrame:checkBoxRect];
-		[_checkBox addTarget:self action:@selector(boxWasChecked:) forControlEvents:UIControlEventValueChanged];
+		mCheckBox = [[MKCheckBox alloc] initWithType:MKCheckBoxRound];
+		[mCheckBox addTarget:self selector:@selector(boxWasChecked:) action:MKActionValueChanged];
 		
-		[self.contentView addSubview:_checkBox];
+		[mCellView addIconElement:mCheckBox];
+		[mCheckBox release];
 		
-		[_checkBox release];		
+        [self.contentView addSubview:mCellView];
+        [mCellView release];
     }
     return self;
 }

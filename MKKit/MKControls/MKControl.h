@@ -85,6 +85,17 @@ typedef void (^MKActionBlock)(MKAction action);
 /** the action completion block */
 @property (nonatomic, copy) MKActionBlock action;
 
+///---------------------------------------------------------
+/// @name Sending Actions
+///---------------------------------------------------------
+
+/** 
+ Sends actions to the targest, blocks, and delegates.
+ 
+ @param action the action to send
+*/
+- (void)processAction:(MKAction)action;
+
 @end
 
 @interface MKControlTarget : NSObject

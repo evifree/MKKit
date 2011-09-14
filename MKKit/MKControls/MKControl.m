@@ -8,12 +8,6 @@
 
 #import "MKControl.h"
 
-@interface MKControl () 
-
-- (void)processAction:(MKAction)controlAction;
-
-@end
-
 @implementation MKControl
 
 @synthesize delegate=mDelegate, working=mWorking, action;

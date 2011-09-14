@@ -3,14 +3,16 @@
 //  MKKit
 //
 //  Created by Matthew King on 9/28/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010-2011 Matt King All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import <MKKit/MKKit/MKMacros.h>
 
 typedef enum {
     MKActionTouchDown,
     MKActionTouchUp,
+    MKActionValueChanged,
 } MKAction;
 
 /**-------------------------------------------------------------------------------------------
@@ -29,10 +31,10 @@ typedef enum {
  
  @param sender The MKControl subclass that has completed an action.
  
- @warning *Warning* This method is scheduled for depreciation. Use didCompleteAction:sender: 
+ @warning *Warning* This method is depreciated. Use didCompleteAction:sender: 
  instead.
 */
-- (void)didCompleteAction:(id)sender;
+- (void)didCompleteAction:(id)sender MK_DEPRECATED_0_8;
 
 /** Called whenever an action has been completed.
  
