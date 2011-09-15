@@ -13,20 +13,23 @@
 #pragma mark - Initalizer
 
 - (id)initWithItems:(NSArray *)items cell:(MKTableCell *)cell {
-    self = [super initWithFrame:CGRectMake(320.0, 0.0, cell.frame.size.width, cell.frame.size.height)];
+    self = [super initWithFrame:CGRectMake(0.0, 0.0, cell.frame.size.width, cell.frame.size.height)];
     if (self) {
         self.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
-        self.alpha = 1.0;
+        self.alpha = 0.0;
         
         mShouldRemoveView = NO;
         mCell = [cell retain];
         mItems = [items retain];
         
-        [mCell addSubview:self];
+        [cell addSubview:self];
+        [cell sendSubviewToBack:self];
         
         UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(remove)];
         [self addGestureRecognizer:swipe];
         [swipe release];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(remove) name:MK_SWIPE_VIEW_SHOULD_REMOVE_NOTIFICATION object:nil];
     }
     return self;
 }
@@ -76,19 +79,21 @@
 #pragma mark - Display
 
 - (void)show {
-    [UIView animateWithDuration:0.25
-                     animations: ^ { self.x = 0.0; } ];
+    [UIView animateWithDuration:0.35
+                     animations: ^ { mCell.cellView.x = -mCell.cellView.width; self.alpha = 1.0; } 
+                     completion: ^ (BOOL finished) { [mCell bringSubviewToFront:self]; }];
 }
 
 - (void)remove {
-    [UIView animateWithDuration:0.25 
-                     animations: ^ { self.x = 320.0;} 
+    [UIView animateWithDuration:0.35 
+                     animations: ^ { mCell.cellView.x = 0.0; self.alpha = 0.0; } 
                      completion: ^ (BOOL finished) { [self removeFromSuperview]; }];
 }
 
 #pragma mark - Memory Managment
 
 - (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MK_SWIPE_VIEW_SHOULD_REMOVE_NOTIFICATION object:nil];
     [mCell release];
     
     [super dealloc];

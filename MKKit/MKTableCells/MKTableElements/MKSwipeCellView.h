@@ -11,6 +11,8 @@
 #import <MKKit/MKKit/MKTableCells/MKTableCell.h>
 #import "MKSwipeCellItem.h"
 
+#define MK_SWIPE_VIEW_SHOULD_REMOVE_NOTIFICATION        @"MKSwipeViewShouldRemoveNotification"
+
 @class MKTableCell;
 
 /**------------------------------------------------------------

@@ -18,7 +18,7 @@
 
 #import "MKTableElements/MKMaskIconView.h"
 #import "MKTableElements/MKElementAccentView.h"
-#import "MKTableElements/MKSwipeCellView.h"
+//#import "MKTableElements/MKSwipeCellView.h"
 #import "MKTableElements/MKTableCellAccentView.h"
 
 #import "MKTableCellDelegate.h"
@@ -86,7 +86,7 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 @protocol MKTableCellDelegate;
 @protocol MKInputValidation;
 
-@class MKBadgeCellView, MKView;
+@class MKBadgeCellView, MKView, MKSwipeCellView;
 
 /**-------------------------------------------------------------------------------------
  An MKTableCell is a subclass UITableViewCell. MKTableCell is designed as a superClass for 
@@ -183,6 +183,9 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 ///---------------------------------------------------------------------------------------
 /// @name Cell Elements
 ///---------------------------------------------------------------------------------------
+
+//** A refercnce to the view that holds the cell elements */
+@property (nonatomic, retain) MKView *cellView;
 
 /** A reference to the primary label of all MKTableCell Subclass that have at least on label. */
 @property (nonatomic, retain) UILabel *theLabel;
