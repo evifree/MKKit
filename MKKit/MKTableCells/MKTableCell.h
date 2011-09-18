@@ -3,10 +3,11 @@
 //  MKKit
 //
 //  Created by Matthew King on 3/19/10.
-//  Copyright 2010 Matt King. All rights reserved.
+//  Copyright 2010-2011 Matt King. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import <objc/runtime.h>
 
 #import <MKKit/MKKit/MKControls/MKContolHeaders.h>
 #import <MKKit/MKKit/MKErrorContol/MKInputValidation.h>
@@ -18,50 +19,25 @@
 
 #import "MKTableElements/MKMaskIconView.h"
 #import "MKTableElements/MKElementAccentView.h"
-//#import "MKTableElements/MKSwipeCellView.h"
 #import "MKTableElements/MKTableCellAccentView.h"
 
 #import "MKTableCellDelegate.h"
-
-static const int kPrimaryViewTag                    = 1;
-static const int kSecondaryViewTag                  = 2;
-static const int kIconViewTag                       = 3;
-static const int kAccentViewTag                     = 4;
-static const int kBadgeViewTag                      = 5;
-
-static const CGFloat kBadgeTextPadding              = 20.0;
-static const CGFloat kBadgeTextFontSize             = 12.0;
-static const CGFloat kBadgeHeight                   = 22.0;
-static const CGFloat kBadgeY                        = 10.0;
-static const CGFloat kBadgeX                        = 280.0;
-static const CGFloat kBadgeXWidthAdjustment         = 30.0;
-
-static const CGFloat kCellIconRectX                 = 10.0;
-static const CGFloat kCellIconRectY                 = 7.0;
-static const CGFloat kCellIconRectWidth             = 30.0;
-static const CGFloat kCellIconRectHeight            = 30.0;
-static const CGFloat kCellPrimaryElementX           = 7.0;
-static const CGFloat kCellPrimaryElementY           = 7.0;
-static const CGFloat kCellPrimaryElementyWidth      = 294.0;
-static const CGFloat kCellPrimaryElementHeight      = 30.0;
-static const CGFloat kCellSecondaryElementX         = 115.0;
-static const CGFloat kCellSecondaryElementY         = 7.0;
-static const CGFloat kCellSecondaryElementWidth     = 191.0;
-static const CGFloat kCellSecondaryElementHeight    = 30.0;
 
 typedef enum {
 	MKTableCellTypeNone,
 	MKTableCellTypeDescription,
 	MKTableCellTypeLabel,
-	MKTableCellTypeScore,
-	MKTableCellTypeAction,
+	MKTableCellTypeScore, 
+	MKTableCellTypeAction, 
 } MKTableCellType;
 
 typedef enum {
-	MKTableCellAccessoryNone,
-    MKTableCellAccessoryActivity,
-	MKTableCellAccessoryInfoButton,
-	MKTableCellAccessoryWarningIcon,
+	MKTableCellAccessoryNone        = 0,
+    MKTableCellAccessoryActivity    = 1,
+    MKTableCellAccessoryAdd         = 2,
+	MKTableCellAccessoryInfoButton  = 3,
+    MKTableCellAccessorySubtract    = 4,
+	MKTableCellAccessoryWarningIcon = 5,
 } MKTableCellAccessoryViewType;
 
 typedef enum {
@@ -107,7 +83,9 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
  
  * `MKTableCellAccessoryNone` : No accessory.
  * `MKTableCellAccessoryActivity` : Displays an activity indicator as the cells accessory.
+ * `MKTableCellAccessoryAdd` : Displays a round green button with a plus sign as the cells accessory.
  * `MKTableCellAccessoryInfoButton` : Displays an info button as the cells accessory.
+ * `MKTableCellAccessorySubtract` : Displays an round red button with a minus sign as the cells accessory.
  * `MKTableCellAccessoryWarningIcon` : Dispalays a warning icon as the cell accessory. 
  
  The MKTableCellDelegate Protocol is adopted by MKTableCell.
@@ -119,7 +97,6 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
     NSString *mKey;
     
 	MKTableCellType type;
-	MKTableCellAccessoryViewType accessoryViewType;
 	
     MKValidationType mValidationType;
     NSInteger mValidatorTestStringLength;
@@ -243,11 +220,11 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
  MKTableCellPositionBottom`, or `MKTableCellPositionSingleCell`. If you are using a plain table 
  view style pass `MKTableCellMiddle` for all cells.
  
- @param trim how much to trim off the width of the the accent view.
+ @param trim the width to trim the accent view down to.
  */
 - (void)accentPrimaryViewForCellAtPosition:(MKTableCellPosition)position trim:(CGFloat)trim;
 
-/** The ammount to trim a accent view by */
+/** The width to trim a accent view to */
 @property (nonatomic, assign) CGFloat primaryViewTrim;
 
 ///---------------------------------------------------------------------------------------
@@ -319,11 +296,16 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 
 @end
 
+//MKTableCellAccessoryViewType mType MK_VISIBLE_ATTRIBUTE;
+
 /**--------------------------------------------------------------------------
  This catagory of MKControl provides the control for table cell accessories.
 ---------------------------------------------------------------------------*/
-
 @interface MKControl (MKTableCell)
+
+///------------------------------------------
+/// @name Creating
+///------------------------------------------
 
 /**
  Retuns an istance for the specified type.
@@ -342,6 +324,13 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
  @return MKControl instance
 */
 - (id)initWithImage:(UIImage *)image;
+
+///----------------------------------------
+/// @name Type
+///----------------------------------------
+
+/** Reference to the MKTableCellAccessoryViewType */
+@property (nonatomic, assign) id viewType;
 
 @end
 
@@ -413,6 +402,15 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
  */
 - (void)addIconElement:(UIView *)element;
 
+/**
+ Adds a view under the primary and seconday views. The primay and secondary
+ views adjust to fit the new element. If the cell has an icon view assigned, 
+ the detail element is moved to right to fit the icon.
+ 
+ @param element the view that will be added to the cell.
+*/
+- (void)addDetailElement:(UIView *)element;
+
 @end
 
 /**----------------------------------------------------------------------------
@@ -458,3 +456,33 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 
 @end
 
+static const int kPrimaryViewTag                    = 1;
+static const int kSecondaryViewTag                  = 2;
+static const int kIconViewTag                       = 3;
+static const int kAccentViewTag                     = 4;
+static const int kBadgeViewTag                      = 5;
+static const int kDetailViewTag                     = 6;
+
+static const CGFloat kBadgeTextPadding              = 20.0;
+static const CGFloat kBadgeTextFontSize             = 12.0;
+static const CGFloat kBadgeHeight                   = 22.0;
+static const CGFloat kBadgeY                        = 10.0;
+static const CGFloat kBadgeX                        = 280.0;
+static const CGFloat kBadgeXWidthAdjustment         = 30.0;
+
+static const CGFloat kCellIconRectX                 = 10.0;
+static const CGFloat kCellIconRectY                 = 7.0;
+static const CGFloat kCellIconRectWidth             = 30.0;
+static const CGFloat kCellIconRectHeight            = 30.0;
+static const CGFloat kCellPrimaryElementX           = 7.0;
+static const CGFloat kCellPrimaryElementY           = 7.0;
+static const CGFloat kCellPrimaryElementyWidth      = 294.0;
+static const CGFloat kCellPrimaryElementHeight      = 30.0;
+static const CGFloat kCellSecondaryElementX         = 115.0;
+static const CGFloat kCellSecondaryElementY         = 7.0;
+static const CGFloat kCellSecondaryElementWidth     = 191.0;
+static const CGFloat kCellSecondaryElementHeight    = 30.0;
+static const CGFloat kCellDetailElementX            = 7.0;
+static const CGFloat kCellDetailElementY            = 29.0;
+static const CGFloat kCellDetailElementWidth        = 294.0;
+static const CGFloat kCellDetailElementHeight       = 12.0;

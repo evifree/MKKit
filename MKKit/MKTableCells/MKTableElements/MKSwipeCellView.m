@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 9/10/11.
-//  Copyright (c) 2011 Matt King. All rights reserved.
+//  Copyright (c) 2010-2011 Matt King. All rights reserved.
 //
 
 #import "MKSwipeCellView.h"
@@ -29,7 +29,9 @@
         [self addGestureRecognizer:swipe];
         [swipe release];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(remove) name:MK_SWIPE_VIEW_SHOULD_REMOVE_NOTIFICATION object:nil];
+        MKSwipeViewShouldRemoveNotification = @"MKSwipeViewShouldRemoveNotification";
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(remove) name:MKSwipeViewShouldRemoveNotification object:nil];
     }
     return self;
 }
@@ -93,7 +95,7 @@
 #pragma mark - Memory Managment
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MK_SWIPE_VIEW_SHOULD_REMOVE_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MKSwipeViewShouldRemoveNotification object:nil];
     [mCell release];
     
     [super dealloc];

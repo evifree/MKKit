@@ -3,15 +3,13 @@
 //  MKKit
 //
 //  Created by Matthew King on 9/10/11.
-//  Copyright (c) 2011 Matt King. All rights reserved.
+//  Copyright (c) 2010-2011 Matt King. All rights reserved.
 //
 
 #import <MKKit/MKKit/MKViews/MKView.h>
 #import <MKKit/MKKit/MKControls/MKControl.h>
 #import <MKKit/MKKit/MKTableCells/MKTableCell.h>
 #import "MKSwipeCellItem.h"
-
-#define MK_SWIPE_VIEW_SHOULD_REMOVE_NOTIFICATION        @"MKSwipeViewShouldRemoveNotification"
 
 @class MKTableCell;
 
@@ -59,3 +57,5 @@
 @end
 
 static const float kItemTakeUpWidth = 40.0;
+
+NSString *MKSwipeViewShouldRemoveNotification MK_VISIBLE_ATTRIBUTE;

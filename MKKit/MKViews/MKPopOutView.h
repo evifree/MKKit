@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 8/2/11.
-//  Copyright 2011 Matt King. All rights reserved.
+//  Copyright 2010-2011 Matt King. All rights reserved.
 //
 
 #import "MKView.h"
@@ -13,10 +13,6 @@ typedef enum {
     MKPopOutAbove,
     MKPopOutBelow,
 } MKPopOutViewType;
-
-static const CGFloat kPopOutViewWidth = 300.0;
-
-#define MK_POP_OUT_VIEW_SHOULD_REMOVE_NOTIFICATION        @"MKTableCellPopOutViewShouldRemoveNotification"
 
 /**----------------------------------------------------------------------------------
  MKPopOutView provides a view that displays additional information. The view looks like 
@@ -71,3 +67,6 @@ static const CGFloat kPopOutViewWidth = 300.0;
 
 @end
 
+static const CGFloat kPopOutViewWidth = 300.0;
+
+NSString *MKPopOutViewShouldRemoveNotification MK_VISIBLE_ATTRIBUTE;

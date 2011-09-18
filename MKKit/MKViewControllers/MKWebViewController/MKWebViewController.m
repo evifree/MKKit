@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 3/30/11.
-//  Copyright 2011 Matt King. All rights reserved.
+//  Copyright 2010-2011 Matt King. All rights reserved.
 //
 
 #import <MKKit/MKKit/MKErrorContol/MKErrorHandeling.h>
@@ -223,8 +223,6 @@
 #pragma mark - Memory Managment
 
 - (void)dealloc {
-    NSLog(@"Dealloc");
-    
     [super dealloc];
 }
 

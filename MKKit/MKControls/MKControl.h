@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 10/5/10.
-//  Copyright 2010 Matt King. All rights reserved.
+//  Copyright 2010-2011 Matt King. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -95,6 +95,16 @@ typedef void (^MKActionBlock)(MKAction action);
  @param action the action to send
 */
 - (void)processAction:(MKAction)action;
+
+///--------------------------------------------------------
+/// @name Observing Changes
+///--------------------------------------------------------
+
+/**
+ This method is for catagories to observer dealloc calls. Default 
+ implemtation does nothing.
+*/
+- (void)didRelease;
 
 @end
 

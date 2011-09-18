@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 3/19/10.
-//  Copyright 2010 Matt King. All rights reserved.
+//  Copyright 2010-2011 Matt King. All rights reserved.
 //
 
 #import "MKTableCell.h"
@@ -78,19 +78,20 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 		if (type == MKTableCellTypeDescription) {
             mTheLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 			mTheLabel.textAlignment = UITextAlignmentLeft;
-            mTheLabel.backgroundColor = RED;
+            mTheLabel.backgroundColor = CLEAR;
 			
             [mCellView addPrimaryElement:mTheLabel];
             [mTheLabel release];
             
 			mSmallLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-			mSmallLabel.textAlignment = UITextAlignmentRight;
+			mSmallLabel.textAlignment = UITextAlignmentLeft;
 			mSmallLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
 			mSmallLabel.adjustsFontSizeToFitWidth = YES;
+            mSmallLabel.font = SYSTEM(12.0);
 			mSmallLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
-            mSmallLabel.backgroundColor = GRAY;
+            mSmallLabel.backgroundColor = CLEAR;
 			
-			[mCellView addSecondaryElement:mSmallLabel];
+			[mCellView addDetailElement:mSmallLabel];
 			[mSmallLabel release];
 		}
                     
@@ -154,6 +155,18 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
         
         self.accessoryView = activityIndicator;
         [activityIndicator release];
+    }
+    if (aType == MKTableCellAccessoryAdd) {
+        MKControl *iconImage = [[MKControl alloc] initWithType:MKTableCellAccessoryAdd];
+        [iconImage addTarget:self selector:@selector(accessoryButton:) action:MKActionTouchUp];
+        self.accessoryView = iconImage;
+        [iconImage release];
+    }
+    if (aType == MKTableCellAccessorySubtract) {
+        MKControl *iconImage = [[MKControl alloc] initWithType:MKTableCellAccessorySubtract];
+        [iconImage addTarget:self selector:@selector(accessoryButton:) action:MKActionTouchUp];
+        self.accessoryView = iconImage;
+        [iconImage release];
     }
 }
 
@@ -230,10 +243,10 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 
 - (void)setPrimaryViewTrim:(CGFloat)trim {
     MKElementAccentView *view = (MKElementAccentView *)[self.contentView viewWithTag:kAccentViewTag];
-    view.frame = CGRectMake(view.x, view.y, (view.width - trim), view.height);
+    view.frame = CGRectMake(view.x, view.y, trim, view.height);
     
     UIView *textView = [mCellView viewWithTag:kPrimaryViewTag];
-    textView.frame = CGRectMake(textView.frame.origin.x, textView.frame.origin.y, (textView.frame.size.width - trim), textView.frame.size.height);
+    textView.frame = CGRectMake(textView.frame.origin.x, textView.frame.origin.y, (trim - CGRectGetMinX(textView.frame)), textView.frame.size.height);
 }
 
 - (void)setBadge:(MKTableCellBadge)aBadge {
@@ -345,7 +358,7 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
         [aView removeFromSuperview];
     }
     
-    MKElementAccentView *accentView = [[MKElementAccentView alloc] initWithFrame:CGRectMake(0.0, 0.0, (view.frame.size.width + 3.0), self.frame.size.height) position:position];
+    MKElementAccentView *accentView = [[MKElementAccentView alloc] initWithFrame:CGRectMake(0.0, 0.0, (CGRectGetMaxX(view.frame) + 5.0), self.frame.size.height) position:position];
     [self.contentView addSubview:accentView];
     [self.contentView sendSubviewToBack:accentView];
     accentView.tag = kAccentViewTag;
@@ -363,7 +376,9 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 
 - (void)accentPrimaryViewForCellAtPosition:(MKTableCellPosition)position trim:(CGFloat)trim {
     [self accentPrimaryViewForCellAtPosition:position];
-    self.primaryViewTrim = trim;
+    if (self.primaryViewTrim == 0.0) {
+        self.primaryViewTrim = trim;
+    }
 }
 
 #pragma mark - Validation Methods
@@ -375,8 +390,12 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 #pragma mark - Actions
 
 - (void)accessoryButton:(id)sender {
-	if ([self.delegate respondsToSelector:@selector(didTapAccessoryForKey:)]) {
-		[self.delegate didTapAccessoryForKey:self.key];
+	if ([self.delegate respondsToSelector:@selector(didTapAccessoryForKey:indexPath:)]) {
+        if (self.indexPath == nil) {
+            NSException *exception = [NSException exceptionWithName:@"No Index Path" reason:@"The indexPath property of MKTableCell must be set to call the didTapAccessoryForKey:indexPath delegate method." userInfo:nil];
+            [exception raise];
+        }
+		[self.delegate didTapAccessoryForKey:self.key indexPath:self.indexPath];
 	}
 }
 
@@ -415,11 +434,15 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 
 #pragma mark -
 
+static const char *TypeTagKey = "TypeTag";
+
 @implementation MKControl (MKTableCell)
 
 void drawWarningIcon(CGContextRef context, CGRect rect);
+void drawAddIcon(CGContextRef context, CGRect rect);
+void drawSubtractIcon(CGContextRef context, CGRect rect);
 
-MKTableCellAccessoryViewType mType = MKTableCellAccessoryNone;
+@dynamic viewType;
 
 #pragma mark - Initalizer
 
@@ -429,10 +452,9 @@ MKTableCellAccessoryViewType mType = MKTableCellAccessoryNone;
         self.frame = CGRectMake(0.0, 0.0, 30.0, 30.0);
         self.backgroundColor = CLEAR;
         self.opaque = NO;
+        self.viewType = [NSNumber numberWithInt:type];
         
-        mType = type;
-        
-        if (mType == MKTableCellAccessoryWarningIcon) {
+        if (((int)type) == MKTableCellAccessoryWarningIcon) {
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 5.0, 30.0, 25.0)];
             label.textAlignment = UITextAlignmentCenter;
             label.backgroundColor = CLEAR;
@@ -455,8 +477,7 @@ MKTableCellAccessoryViewType mType = MKTableCellAccessoryNone;
         self.frame = CGRectMake(0.0, 0.0, 30.0, 30.0);
         self.backgroundColor = CLEAR;
         self.opaque = NO;
-        
-        mType = MKTableCellAccessoryNone;
+        self.viewType = [NSNumber numberWithInt:MKTableCellAccessoryNone];
         
         UIImageView *view = [[UIImageView alloc] initWithImage:image];
         view.frame = self.frame;
@@ -466,14 +487,30 @@ MKTableCellAccessoryViewType mType = MKTableCellAccessoryNone;
     return self;
 }
 
+#pragma mark - Accessors
+
+- (void)setViewType:(id)type {
+    objc_setAssociatedObject(self, TypeTagKey, type, OBJC_ASSOCIATION_ASSIGN);
+}
+
+- (id)viewType {
+    return objc_getAssociatedObject(self, TypeTagKey);
+}
+
 #pragma mark - Drawing
 
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetAllowsAntialiasing(context, YES);
     
-    if (mType == MKTableCellAccessoryWarningIcon) {
+    if ([(NSNumber *)self.viewType intValue] == MKTableCellAccessoryWarningIcon) {
         drawWarningIcon(context, rect);
+    }
+    if ([(NSNumber *)self.viewType intValue] == MKTableCellAccessoryAdd) {
+        drawAddIcon(context, rect);
+    }
+    if ([(NSNumber *)self.viewType intValue] == MKTableCellAccessorySubtract) {
+        drawSubtractIcon(context, rect);
     }
 }
 
@@ -503,6 +540,88 @@ void drawWarningIcon(CGContextRef context, CGRect rect) {
     CGContextSaveGState(context);
     
     CFRelease(path);
+}
+
+#pragma mark Add Icon
+
+void drawAddIcon(CGContextRef context, CGRect rect) {
+    CGColorRef fillColor = MK_COLOR_HSB(117.0, 96.0, 91.0, 1.0).CGColor;
+    CGColorRef plusShadowColor = MK_COLOR_HSB(117.0, 96.0, 57.0, 1.0).CGColor;
+    
+    CGRect drawRect = CGRectInset(rect, 4.0, 4.0);
+    CGRect plusRect = CGRectInset(drawRect, 5.0, 5.0);
+    
+    CGMutablePathRef path = createCircularPathForRect(drawRect);
+    
+    CGContextSaveGState(context);
+    CGContextSetFillColorWithColor(context, fillColor);
+    CGContextAddPath(context, path);
+    CGContextClip(context);
+    CGContextFillRect(context, drawRect);
+    drawCurvedGloss(context, rect, rect.size.width);
+    CGContextRestoreGState(context);
+    
+    CGContextSaveGState(context);
+    CGContextSetLineWidth(context, 2.0);
+    CGContextSetStrokeColorWithColor(context, WHITE.CGColor);
+    CGContextSetShadowWithColor(context, CGSizeMake(0.0, 1.0), 3.0, MK_SHADOW_COLOR);
+    CGContextAddPath(context, path);
+    CGContextStrokePath(context);
+    CGContextRestoreGState(context);
+    
+    CGContextSaveGState(context);
+    CGContextSetLineWidth(context, 3.0);
+    CGContextSetStrokeColorWithColor(context, WHITE.CGColor);
+    CGContextSetShadowWithColor(context, CGSizeMake(0.0, -1.0), 1.0, plusShadowColor);
+    CGContextMoveToPoint(context, CGRectGetMidX(plusRect), CGRectGetMinY(plusRect));
+    CGContextAddLineToPoint(context, CGRectGetMidX(plusRect), CGRectGetMaxY(plusRect));
+    CGContextMoveToPoint(context, CGRectGetMinX(plusRect), CGRectGetMidY(plusRect));
+    CGContextAddLineToPoint(context, CGRectGetMaxX(plusRect), CGRectGetMidY(plusRect));
+    CGContextStrokePath(context);
+    CGContextRestoreGState(context);
+}
+
+#pragma mark Subtract Icon
+
+void drawSubtractIcon(CGContextRef context, CGRect rect) {
+    CGColorRef fillColor = RED.CGColor;
+    CGColorRef plusShadowColor = RED.CGColor;
+    
+    CGRect drawRect = CGRectInset(rect, 4.0, 4.0);
+    CGRect plusRect = CGRectInset(drawRect, 5.0, 5.0);
+    
+    CGMutablePathRef path = createCircularPathForRect(drawRect);
+    
+    CGContextSaveGState(context);
+    CGContextSetFillColorWithColor(context, fillColor);
+    CGContextAddPath(context, path);
+    CGContextClip(context);
+    CGContextFillRect(context, drawRect);
+    drawCurvedGloss(context, rect, rect.size.width);
+    CGContextRestoreGState(context);
+    
+    CGContextSaveGState(context);
+    CGContextSetLineWidth(context, 2.0);
+    CGContextSetStrokeColorWithColor(context, WHITE.CGColor);
+    CGContextSetShadowWithColor(context, CGSizeMake(0.0, 1.0), 3.0, MK_SHADOW_COLOR);
+    CGContextAddPath(context, path);
+    CGContextStrokePath(context);
+    CGContextRestoreGState(context);
+    
+    CGContextSaveGState(context);
+    CGContextSetLineWidth(context, 3.0);
+    CGContextSetStrokeColorWithColor(context, WHITE.CGColor);
+    CGContextSetShadowWithColor(context, CGSizeMake(0.0, -1.0), 1.0, plusShadowColor);
+    CGContextMoveToPoint(context, CGRectGetMinX(plusRect), CGRectGetMidY(plusRect));
+    CGContextAddLineToPoint(context, CGRectGetMaxX(plusRect), CGRectGetMidY(plusRect));
+    CGContextStrokePath(context);
+    CGContextRestoreGState(context);
+}
+
+#pragma mark - Memory Mangament
+
+- (void)didRelease {
+    objc_removeAssociatedObjects(self.viewType);
 }
 
 @end
@@ -537,6 +656,7 @@ static bool mPinnedSecondaryElement = NO;
     UIView *primaryElement = [self viewWithTag:kPrimaryViewTag];
     UIView *secondaryElement = [self viewWithTag:kSecondaryViewTag];
     UIView *iconElement = [self viewWithTag:kIconViewTag];
+    UIView *detailElement = [self viewWithTag:kDetailViewTag];
     
     if (primaryElement) {
         primaryElement.frame = CGRectMake(kCellPrimaryElementX, kCellPrimaryElementY, kCellPrimaryElementyWidth, kCellSecondaryElementHeight);
@@ -552,11 +672,25 @@ static bool mPinnedSecondaryElement = NO;
         }
     }
     
+    if (detailElement) {
+        detailElement.frame = CGRectMake(kCellDetailElementX, kCellDetailElementY, kCellDetailElementWidth, kCellDetailElementHeight);
+        
+        if (primaryElement) {
+            primaryElement.frame = CGRectMake(primaryElement.frame.origin.x, (primaryElement.frame.origin.y - 5.0), primaryElement.frame.size.width, (primaryElement.frame.size.height - 5.0));
+        }
+        if (secondaryElement) {
+            secondaryElement.frame = CGRectMake(secondaryElement.frame.origin.x, (secondaryElement.frame.origin.y - 5.0), secondaryElement.frame.size.width, (secondaryElement.frame.size.height - 5.0));
+        }
+    }
+
     if (iconElement) {
         iconElement.frame = CGRectMake(kCellIconRectX, kCellIconRectY, kCellIconRectWidth, kCellIconRectHeight);
         
         if (primaryElement) {
             primaryElement.frame = CGRectMake((primaryElement.frame.origin.x + 44.0), primaryElement.frame.origin.y, (primaryElement.frame.size.width - 44.0), primaryElement.frame.size.height);
+        }
+        if (detailElement) {
+            detailElement.frame = CGRectMake((detailElement.frame.origin.x + 44.0), detailElement.frame.origin.y, (detailElement.frame.size.width - 44.0), detailElement.frame.size.height);
         }
     }
 }
@@ -605,6 +739,14 @@ static bool mPinnedSecondaryElement = NO;
 - (void)addIconElement:(UIView *)element {
     element.tag = kIconViewTag;
     element.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
+    
+    [self addSubview:element];
+    [self layoutCell];
+}
+
+- (void)addDetailElement:(UIView *)element {
+    element.tag = kDetailViewTag;
+    element.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
     
     [self addSubview:element];
     [self layoutCell];
@@ -693,7 +835,7 @@ NSIndexPath *mIndexPath = nil;
     [mIndexPath release];
     mIndexPath = nil;
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MK_POP_OUT_VIEW_SHOULD_REMOVE_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MKPopOutViewShouldRemoveNotification object:nil];
     
     [super dealloc];
 }

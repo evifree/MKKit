@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import <MKKit/MKKit/MKMacros.h>
+
 @class MKTableCell;
 
 /**--------------------------------------------------------------------------------------
@@ -39,7 +41,7 @@
  value is changed. It is imporant that the key property of MKTableCell is set for this method to work
  propery.
  
- @warning Note * If a contol gives an integer or bool for its value, the value is converted into an
+ @warning *Note* If a contol gives an integer or bool for its value, the value is converted into an
  NSNumber object before this method is called.
  
  @param value An object represnting the new value of the control objcet.
@@ -47,6 +49,7 @@
  @param aKey A unique NSString that identifies the cell.
  */
 - (void)valueDidChange:(id)value forKey:(NSString *)aKey;
+
 
 ///---------------------------------------------------------------------------------------
 /// @name Responding to Events
@@ -64,14 +67,24 @@
 - (void)didSelectCell:(MKTableCell *)cell forKey:(NSString *)aKey indexPath:(NSIndexPath *)indexPath;
 
 /** 
+ @warning *Deprecated. Use didTapAccessoryForKey:indexPath: instead.*
+*/
+- (void)didTapAccessoryForKey:(NSString *)aKey MK_DEPRECATED_0_8;
+
+/** 
  Called when the cells Accessory View is touched. 
  
- @warning Note * This method is called when using one of the MKTableCellAccessoryType constances. If your 
- using one of the UITableCellView accessory use those methods to process touches.
+ @warning *Note* This method is called when using one of the MKTableCellAccessoryTypes. If your 
+ using one of the UITableCellView accessory this method will not be called.
  
  @param aKey A unique NSString that identifies the cell.
+ 
+ @param indexPath the index path of the cell whos acessory was taped.
+ 
+ @exception No index path. The index path property of the cell must be set for this
+ method to be called.
 */
-- (void)didTapAccessoryForKey:(NSString *)aKey;
+- (void)didTapAccessoryForKey:(NSString *)aKey indexPath:(NSIndexPath *)indexPath;
 
 /**
  Called when the cell is swiped from right to the left.

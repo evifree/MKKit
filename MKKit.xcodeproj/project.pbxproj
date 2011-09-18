@@ -169,6 +169,7 @@
 		AAEDEA771390A732007EA362 /* MKNoticeView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAEDEA751390A730007EA362 /* MKNoticeView.h */; };
 		AAEDEA781390A732007EA362 /* MKNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEDEA761390A731007EA362 /* MKNoticeView.m */; };
 		AAEFE115121873BA008143E4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAEFE114121873BA008143E4 /* CoreLocation.framework */; };
+		AAF5FD761423B8AE00907C96 /* libobjc.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF5FD751423B8AD00907C96 /* libobjc.A.dylib */; };
 		AAFC9898141534F30071B91C /* MKGraphDrawing.h in Headers */ = {isa = PBXBuildFile; fileRef = AAFC9896141534F30071B91C /* MKGraphDrawing.h */; };
 		AAFC9899141534F30071B91C /* MKGraphDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFC9897141534F30071B91C /* MKGraphDrawing.m */; };
 		AAFC989C141599E90071B91C /* MKGraphPlotting.h in Headers */ = {isa = PBXBuildFile; fileRef = AAFC989A141599E90071B91C /* MKGraphPlotting.h */; };
@@ -344,6 +345,7 @@
 		AAEDEA751390A730007EA362 /* MKNoticeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKNoticeView.h; sourceTree = "<group>"; };
 		AAEDEA761390A731007EA362 /* MKNoticeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKNoticeView.m; sourceTree = "<group>"; };
 		AAEFE114121873BA008143E4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		AAF5FD751423B8AD00907C96 /* libobjc.A.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libobjc.A.dylib; path = usr/lib/libobjc.A.dylib; sourceTree = SDKROOT; };
 		AAFC9896141534F30071B91C /* MKGraphDrawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKGraphDrawing.h; sourceTree = "<group>"; };
 		AAFC9897141534F30071B91C /* MKGraphDrawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKGraphDrawing.m; sourceTree = "<group>"; };
 		AAFC989A141599E90071B91C /* MKGraphPlotting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKGraphPlotting.h; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAF5FD761423B8AE00907C96 /* libobjc.A.dylib in Frameworks */,
 				AA1D506913919384009DD3B6 /* StoreKit.framework in Frameworks */,
 				AA7EFCF310FFE90900B4C1BC /* CoreGraphics.framework in Frameworks */,
 				AA7EFCF510FFE91B00B4C1BC /* UIKit.framework in Frameworks */,
@@ -404,6 +407,7 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AAF5FD751423B8AD00907C96 /* libobjc.A.dylib */,
 				AA1D506813919384009DD3B6 /* StoreKit.framework */,
 				AA56A534128EDF0300E5DD5C /* MessageUI.framework */,
 				AAEFE114121873BA008143E4 /* CoreLocation.framework */,
