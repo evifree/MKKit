@@ -13,12 +13,7 @@ Go into the build settings of your projects target. Find the Header Search Paths
 
 In you applications Prefix.pch file add ``#import <MKKit/MKKit.h>``
 
-## Using Objects Resources ##
-
-Some objects have other resources with them. Object resources come in separate bundles for the object. Just add the resource bundles to 
-your project for the ones that you need to use. 
-
-Documentation
+## Documentation ##
 
 To view the documentation open the 'Documentation' folder and double click on index.html or hierarchy.html. The documentation will open
 in Safari.
