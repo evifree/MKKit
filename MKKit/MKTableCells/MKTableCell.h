@@ -158,7 +158,7 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 @property (nonatomic, assign) NSIndexPath *indexPath;
 
 ///---------------------------------------------------------------------------------------
-/// @name Cell Elements
+/// @name Elements
 ///---------------------------------------------------------------------------------------
 
 //** A refercnce to the view that holds the cell elements */
@@ -173,7 +173,17 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 /** The image displayed on cell that suport image views */
 @property (nonatomic, retain) UIImage *icon;
 
-/** An imaged to be masked. The masking is completed by the MKMaskIconView */
+/** 
+ An imaged to be masked. The masking is completed by the MKView (IconView) catagory. The
+ default gradient for the mask is a dark gray top moving to a lighter bottom.
+ 
+ The masks gradient can be set by accessing the icon of the cell.
+ 
+        [(MKView *)cell.cellview viewForTag:kIconViewTag].gradient = someGradient;
+ 
+ @see MKView
+ @see MKGraphicStructures
+ */
 @property (nonatomic, retain) UIImage *iconMask;
 
 /** A bagde that is displayed on the left hand side of the cell. A badge can

@@ -211,7 +211,11 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 }
 
 - (void)setIconMask:(UIImage *)lIconMask {
-    MKMaskIconView *iconView = [[MKMaskIconView alloc] initWithImage:lIconMask];
+    UIColor *topColor =  MK_COLOR_HSB(345.0, 0.0, 86.0, 1.0);
+    UIColor *bottomColor = MK_COLOR_HSB(345.0, 0.0, 56.0, 1.0);
+
+    MKView *iconView = [[MKView alloc] initWithImage:lIconMask 
+                                            gradient:[MKGraphicsStructures linearGradientWithTopColor:topColor bottomColor:bottomColor]];
     [mCellView addIconElement:iconView];
     [iconView release];
 }

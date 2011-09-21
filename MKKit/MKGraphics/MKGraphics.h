@@ -3,13 +3,15 @@
 //  MKKit
 //
 //  Created by Matthew King on 6/14/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2010-2011 Matt King. All rights reserved.
 //
 
 #import <QuartzCore/QuartzCore.h>
 #import <UIKit/UIKit.h>
 
 #import <MKKit/MKKit/MKMacros.h>
+
+#import "MKGraphicsStructures.h"
 
 void drawLinearGradient(CGContextRef context, CGRect rect, CGColorRef startColor, CGColorRef endColor);
 void drawGlossAndLinearGradient(CGContextRef conext, CGRect rect, CGColorRef startColor, CGColorRef endColor);

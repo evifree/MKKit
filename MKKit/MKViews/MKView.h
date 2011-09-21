@@ -3,12 +3,13 @@
 //  MKKit
 //
 //  Created by Matthew King on 10/9/10.
-//  Copyright 2010 Matt King. All rights reserved.
+//  Copyright 2010-2011 Matt King. All rights reserved.
 //
 
 #import <MKKit/MKKit/MKDeffinitions.h>
 #import <MKKit/MKKit/MKMacros.h>
 #import <UIKit/UIKit.h>
+#import <objc/runtime.h>
 
 #import <MKKit/MKKit/MKGraphics/MKGraphics.h>
 
@@ -25,8 +26,6 @@ typedef enum {
     MKTableHeaderTypeGrouped,
     MKTableHeaderTypePlain,
 } MKTableHeaderType;
-
-#define MK_VIEW_SHOULD_REMOVE_NOTIFICATION      @"MKViewShouldRemoveNotification"
 
 @protocol MKViewDelegate;
 
@@ -51,12 +50,15 @@ typedef enum {
     UIViewController *mController;
     BOOL mShouldRemoveView;
     MKViewAnimationType mAnimationType;
+    MKGraphicsStructures *mGradient;
     
 @private
     struct {
         bool isHeaderView;
         bool isHeaderGrouped;
         bool isHeaderPlain;
+        bool isIconMask;
+        bool usesGradient;
     } MKViewFlags;
 }
 
@@ -99,6 +101,20 @@ typedef enum {
 /** The height of the view */
 @property (nonatomic, assign) CGFloat height;
 
+///----------------------------------------------------
+/// @name Graphics Settings
+///----------------------------------------------------
+
+/** 
+ Sets a gradient to be used for any drawings of the view. 
+ 
+ Use the method + [(id) MKGraphicStructures linearGradientWithTopColor:bottomColor:] 
+ to make  a MKLinearGradient.
+ 
+ Default is a soild white gradient.
+ */
+@property (nonatomic, retain) MKGraphicsStructures *gradient;
+
 ///-----------------------------------------------------
 /// @name Ownership
 ///-----------------------------------------------------
@@ -112,6 +128,8 @@ typedef enum {
 
 /** The MKViewDelegate */
 @property (nonatomic, assign) id<MKViewDelegate> delegate;
+
+- (void)didRelease;
 
 @end
 
@@ -161,3 +179,41 @@ typedef enum {
 @property (nonatomic, retain) UILabel *titleLabel;
 
 @end
+
+/**-----------------------------------------------------------------------
+ This catagory of MKView draws the image onto a CoreGraphics context and colors
+ it with the provied gradient.
+ -----------------------------------------------------------------------*/
+@interface MKView (IconMask)
+
+///---------------------------------------------
+/// @name Creating
+///---------------------------------------------
+
+/**
+ Returns an instance of MKView that draws the image on to a CoreGraphics context
+ and colors it with the gradient.
+ 
+ @param image the image to draw.
+ 
+ @param gradient the gradient to color the image with. Use the method
+ + [(id) MKGraphicStructures linearGradientWithTopColor:bottomColor:] to 
+ make a gradient. Pass the same color for the top and bottom for a solid 
+ colored drawing.
+ 
+ Default is solid white.
+ 
+ @return MKView instance
+*/
+- (id)initWithImage:(UIImage *)image gradient:(MKGraphicsStructures *)gradient;
+
+///---------------------------------------------
+/// @name Elements
+///---------------------------------------------
+
+/** The image that is drawn onto the context */
+@property (nonatomic, retain) UIImage *image;
+
+@end
+
+NSString *MKViewShouldRemoveNotification MK_VISIBLE_ATTRIBUTE;

@@ -152,6 +152,8 @@
 		AAB4D1E613E884410061A6BD /* MKTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB4D1E413E884400061A6BD /* MKTitleView.m */; };
 		AAB4D1F113E8C9810061A6BD /* MKElementAccentView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB4D1EF13E8C9810061A6BD /* MKElementAccentView.h */; };
 		AAB4D1F213E8C9810061A6BD /* MKElementAccentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB4D1F013E8C9810061A6BD /* MKElementAccentView.m */; };
+		AAB5EE831426B93C00AFE278 /* MKGraphicsStructures.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB5EE811426B93C00AFE278 /* MKGraphicsStructures.h */; };
+		AAB5EE841426B93C00AFE278 /* MKGraphicsStructures.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB5EE821426B93C00AFE278 /* MKGraphicsStructures.m */; };
 		AAB76CE4141B3682007829EB /* MKSwipeCellView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB76CE2141B3682007829EB /* MKSwipeCellView.h */; };
 		AAB76CE5141B3682007829EB /* MKSwipeCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB76CE3141B3682007829EB /* MKSwipeCellView.m */; };
 		AABE3D581376CFE500ECC539 /* MKLoginViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AABE3D551376CFE500ECC539 /* MKLoginViewController.h */; };
@@ -326,6 +328,8 @@
 		AAB4D1E413E884400061A6BD /* MKTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTitleView.m; sourceTree = "<group>"; };
 		AAB4D1EF13E8C9810061A6BD /* MKElementAccentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKElementAccentView.h; sourceTree = "<group>"; };
 		AAB4D1F013E8C9810061A6BD /* MKElementAccentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKElementAccentView.m; sourceTree = "<group>"; };
+		AAB5EE811426B93C00AFE278 /* MKGraphicsStructures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKGraphicsStructures.h; sourceTree = "<group>"; };
+		AAB5EE821426B93C00AFE278 /* MKGraphicsStructures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKGraphicsStructures.m; sourceTree = "<group>"; };
 		AAB76CE2141B3682007829EB /* MKSwipeCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKSwipeCellView.h; sourceTree = "<group>"; };
 		AAB76CE3141B3682007829EB /* MKSwipeCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSwipeCellView.m; sourceTree = "<group>"; };
 		AABE3D551376CFE500ECC539 /* MKLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKLoginViewController.h; sourceTree = "<group>"; };
@@ -702,6 +706,8 @@
 			children = (
 				AA778BE213A8617E00AFF686 /* MKGraphics.h */,
 				AA778BE313A8617E00AFF686 /* MKGraphics.m */,
+				AAB5EE811426B93C00AFE278 /* MKGraphicsStructures.h */,
+				AAB5EE821426B93C00AFE278 /* MKGraphicsStructures.m */,
 			);
 			path = MKGraphics;
 			sourceTree = "<group>";
@@ -863,6 +869,7 @@
 				AA77679D1413E90A0064579F /* MKAvailability.h in Headers */,
 				AAB76CE4141B3682007829EB /* MKSwipeCellView.h in Headers */,
 				AA61791B141BCF12001859E7 /* MKSwipeCellItem.h in Headers */,
+				AAB5EE831426B93C00AFE278 /* MKGraphicsStructures.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1016,6 +1023,7 @@
 				AAE70D24140DB7B700797D84 /* MKPhotoView.m in Sources */,
 				AAB76CE5141B3682007829EB /* MKSwipeCellView.m in Sources */,
 				AA61791C141BCF12001859E7 /* MKSwipeCellItem.m in Sources */,
+				AAB5EE841426B93C00AFE278 /* MKGraphicsStructures.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 6/14/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2010-2011 Matt King. All rights reserved.
 //
 
 #import "MKGraphics.h"
@@ -16,7 +16,7 @@ void drawLinearGradient(CGContextRef context, CGRect rect, CGColorRef startColor
     
     NSArray *colors = [NSArray arrayWithObjects:(id)startColor, (id)endColor, nil];
     
-    CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (CFArrayRef) colors, locations);
+    CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (CFArrayRef)colors, locations);
     
     CGPoint startPoint = CGPointMake(CGRectGetMidX(rect), CGRectGetMinX(rect));
     CGPoint endPoint = CGPointMake(CGRectGetMidX(rect), CGRectGetMaxY(rect));
@@ -74,6 +74,7 @@ CGMutablePathRef createCircularPathForRect(CGRect rect) {
     return path;
 }
 
+
 CGMutablePathRef createPathForUpPointer(CGRect rect) {
     CGMutablePathRef path = CGPathCreateMutable();
     
@@ -119,6 +120,7 @@ void drawOutlinePath(CGContextRef context, CGPathRef path, CGFloat width, CGColo
 
 #pragma mark - Text
 
+//////////////////////////////////////////////////////////////////////////////////////
 void drawText(CGContextRef context, CGRect rect, CFStringRef text, CGColorRef color, CGColorRef shadowColor, CGFloat size) {
     CGContextSaveGState(context);
     CGContextSetFillColorWithColor(context, color);
