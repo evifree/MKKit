@@ -95,8 +95,6 @@
 		AA2CE708138200680088C9B2 /* MKReflectedImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA2CE706138200680088C9B2 /* MKReflectedImageView.h */; };
 		AA2CE709138200680088C9B2 /* MKReflectedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2CE707138200680088C9B2 /* MKReflectedImageView.m */; };
 		AA2FBE4513444550002441C2 /* MKMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = AA2FBE4413444550002441C2 /* MKMacros.h */; };
-		AA33055F13C3F082006B2D11 /* MKMaskIconView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA33055D13C3F082006B2D11 /* MKMaskIconView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA33056013C3F082006B2D11 /* MKMaskIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA33055E13C3F082006B2D11 /* MKMaskIconView.m */; };
 		AA56A535128EDF0300E5DD5C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA56A534128EDF0300E5DD5C /* MessageUI.framework */; };
 		AA61791B141BCF12001859E7 /* MKSwipeCellItem.h in Headers */ = {isa = PBXBuildFile; fileRef = AA617919141BCF11001859E7 /* MKSwipeCellItem.h */; };
 		AA61791C141BCF12001859E7 /* MKSwipeCellItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AA61791A141BCF12001859E7 /* MKSwipeCellItem.m */; };
@@ -267,8 +265,6 @@
 		AA2CE706138200680088C9B2 /* MKReflectedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKReflectedImageView.h; sourceTree = "<group>"; };
 		AA2CE707138200680088C9B2 /* MKReflectedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKReflectedImageView.m; sourceTree = "<group>"; };
 		AA2FBE4413444550002441C2 /* MKMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMacros.h; sourceTree = "<group>"; };
-		AA33055D13C3F082006B2D11 /* MKMaskIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMaskIconView.h; sourceTree = "<group>"; };
-		AA33055E13C3F082006B2D11 /* MKMaskIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMaskIconView.m; sourceTree = "<group>"; };
 		AA56A534128EDF0300E5DD5C /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		AA617919141BCF11001859E7 /* MKSwipeCellItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKSwipeCellItem.h; sourceTree = "<group>"; };
 		AA61791A141BCF12001859E7 /* MKSwipeCellItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSwipeCellItem.m; sourceTree = "<group>"; };
@@ -622,8 +618,6 @@
 		AA33055C13C3EC2F006B2D11 /* MKTableElements */ = {
 			isa = PBXGroup;
 			children = (
-				AA33055D13C3F082006B2D11 /* MKMaskIconView.h */,
-				AA33055E13C3F082006B2D11 /* MKMaskIconView.m */,
 				AAB4D1EF13E8C9810061A6BD /* MKElementAccentView.h */,
 				AAB4D1F013E8C9810061A6BD /* MKElementAccentView.m */,
 				AA61791D141BCFB4001859E7 /* MKSwipeCellView */,
@@ -853,7 +847,6 @@
 				AA06E09713927DA1000071C0 /* MKIAPObserver.h in Headers */,
 				AA778BE413A8617E00AFF686 /* MKGraphics.h in Headers */,
 				AA1B84E713AD9E7700B8CF6D /* MKBarButtonItem.h in Headers */,
-				AA33055F13C3F082006B2D11 /* MKMaskIconView.h in Headers */,
 				AAB4D1E113E86A720061A6BD /* MKPopOutView.h in Headers */,
 				AAB4D1E513E884410061A6BD /* MKTitleView.h in Headers */,
 				AAB4D1F113E8C9810061A6BD /* MKElementAccentView.h in Headers */,
@@ -1010,7 +1003,6 @@
 				AABF4D9513921E1A001B547A /* MKTableCellIAP.m in Sources */,
 				AA778BE513A8617E00AFF686 /* MKGraphics.m in Sources */,
 				AA1B84E813AD9E7700B8CF6D /* MKBarButtonItem.m in Sources */,
-				AA33056013C3F082006B2D11 /* MKMaskIconView.m in Sources */,
 				AAB4D1E213E86A720061A6BD /* MKPopOutView.m in Sources */,
 				AAB4D1E613E884410061A6BD /* MKTitleView.m in Sources */,
 				AAB4D1F213E8C9810061A6BD /* MKElementAccentView.m in Sources */,

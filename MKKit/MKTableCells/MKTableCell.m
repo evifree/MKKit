@@ -94,7 +94,8 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 			[mCellView addDetailElement:mSmallLabel];
 			[mSmallLabel release];
 		}
-                    
+        
+        /*
 		if (type == MKTableCellTypeScore) {
             mTheLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 			mTheLabel.textAlignment = UITextAlignmentLeft;
@@ -124,6 +125,7 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
             [mCellView addPrimaryElement:mTheLabel];
             [mTheLabel release];
 		}
+        */
         
 		[self.contentView setAutoresizesSubviews:YES];
 		[self setSelectionStyle:UITableViewCellSelectionStyleNone];
@@ -211,6 +213,12 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 }
 
 - (void)setIconMask:(UIImage *)lIconMask {
+    UIView *view = [mCellView viewWithTag:kIconViewTag];
+    
+    if (view) {
+        [view removeFromSuperview];
+    }
+    
     UIColor *topColor =  MK_COLOR_HSB(345.0, 0.0, 86.0, 1.0);
     UIColor *bottomColor = MK_COLOR_HSB(345.0, 0.0, 56.0, 1.0);
 

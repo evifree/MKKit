@@ -17,7 +17,6 @@
 #import <MKKit/MKKit/MKMacros.h>
 #import <MKKit/MKKit/MKStrings.h>
 
-#import "MKTableElements/MKMaskIconView.h"
 #import "MKTableElements/MKElementAccentView.h"
 #import "MKTableElements/MKTableCellAccentView.h"
 
@@ -27,8 +26,8 @@ typedef enum {
 	MKTableCellTypeNone,
 	MKTableCellTypeDescription,
 	MKTableCellTypeLabel,
-	MKTableCellTypeScore, 
-	MKTableCellTypeAction, 
+	//MKTableCellTypeScore, 
+	//MKTableCellTypeAction, 
 } MKTableCellType;
 
 typedef enum {
@@ -71,9 +70,7 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
  * `MKTableCellTypeNone` : A blank table cell this to be used when implementing on the subclasses.
  * `MKTableCellTypeDescription` : A table cell that has two labels side by side.
  * `MKTableCellTypeLabel` : A cell with label centered on it.
- * `MKTableCellTypeScore` : A cell with a 30x30 image view and two labels side by side.
- * `MKTableCellTypeAction` : A cell with a 30x30 image view, one label, and a discloser arrow.
- 
+  
  When a MKTableCell is created it intializes an UITableViewCell with a style of UITableViewCellStyleDefault. 
  It than removes the elements of that cell and replaces them its own. If you use the UTableCellView 
  intializer instead, be sure to set the style UITableViewCellStyleDefault to keep unneeded subviews from being 
@@ -88,7 +85,16 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
  * `MKTableCellAccessorySubtract` : Displays an round red button with a minus sign as the cells accessory.
  * `MKTableCellAccessoryWarningIcon` : Dispalays a warning icon as the cell accessory. 
  
+ Cell accessories are a subclass of MKControl, or UIControl. Responces to acctions from
+ accessories are built in. Ues the didTapAccessoryForKey:indexPath: delegate method to observe
+ actions from the accessory. 
+ 
+ @warning *Note* If the indexPath property is not set the delegate will pass 'nil' as the 
+ indexPath parameter.
+ 
  The MKTableCellDelegate Protocol is adopted by MKTableCell.
+ 
+ @see MKTableCellDelegate
 ----------------------------------------------------------------------------------------*/
 
 @interface MKTableCell : UITableViewCell {
@@ -119,8 +125,8 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 
 /** Returns an intalized MKTableCell. 
  
- @warning *Note* If you are using one of the MKTableCell subclasses or subclassing pass MKTableCellTypeNone
- for the cellType parameter.
+ @warning *Note* If you are using one of the MKTableCell subclasses or subclassing pass MKTableCellTypeNone,
+ or a type designated for that subclass, for the cellType parameter.
  
  @param cellType The type of the cell to create. 
  
@@ -141,20 +147,33 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 /// @name Accessories
 ///---------------------------------------------------------------------------------------
 
-/** Sets MKTableCellAccessoryType for the cell. */
+/** 
+ Sets MKTableCellAccessoryType for the cell. There are several prebuilt accessory types
+ to chose from or you can use your own by setting the accessoryIcon property.
+*/
 @property (nonatomic, assign) MKTableCellAccessoryViewType accessoryViewType;
 
-/** Sets an image as the cells accessory */
+/** 
+ Sets an image as the cells accessory. If you want to use on the prebuilt accessory types
+ set the accessoryViewType property.
+*/
 @property (nonatomic, retain) UIImage *accessoryIcon;
 
 ///---------------------------------------------------------------------------------------
 /// @name Referencing
 ///---------------------------------------------------------------------------------------
 
-/** A unique NSString that identifies the cell. This is used in most MKTableCellDelegate methods. */
+/** 
+ A unique NSString that identifies the cell. This is used in MKTableCellDelegate methods to 
+ help with easy NSMutableDictionary use.
+*/
 @property (nonatomic, assign) NSString *key;
 
-/** The NSIndexPath of the cell. Property must be set to return a value. */
+/** 
+ The NSIndexPath of the cell. Property must be set to return a value. 
+ 
+ @warning *Required for delegate methods that return have an NSIndexPath parameter.*
+*/
 @property (nonatomic, assign) NSIndexPath *indexPath;
 
 ///---------------------------------------------------------------------------------------
@@ -179,7 +198,7 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
  
  The masks gradient can be set by accessing the icon of the cell.
  
-        [(MKView *)cell.cellview viewForTag:kIconViewTag].gradient = someGradient;
+    [(MKView *)cell.cellview viewForTag:kIconViewTag].gradient = someGradient;
  
  @see MKView
  @see MKGraphicStructures
@@ -207,7 +226,8 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 /// @name Apearances
 ///---------------------------------------------------------------------------------------
 
-/** Sets an accent for the cell. Use the 
+/** 
+ Sets an accent for the cell. Use the 
  `MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellPosition position, CGColorRef tint)`
  function to create an MKTableCell Accent.
 */
@@ -234,7 +254,7 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
  */
 - (void)accentPrimaryViewForCellAtPosition:(MKTableCellPosition)position trim:(CGFloat)trim;
 
-/** The width to trim a accent view to */
+/** The width of the accent view. */
 @property (nonatomic, assign) CGFloat primaryViewTrim;
 
 ///---------------------------------------------------------------------------------------
@@ -273,13 +293,13 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 /// @name Gesture Recognition
 ///---------------------------------------------------------------------------------------
 
-/** Set YES to allow the cell to recognize left to right swipes */
+/** Set `YES` to allow the cell to recognize left to right swipes. Default is `NO`. */
 @property (nonatomic, assign) BOOL recognizeLeftToRightSwipe;
 
-/** Set YES to allow the cell to recgnize right to left swipes */
+/** Set `YES` to allow the cell to recgnize right to left swipes. Default is `NO`. */
 @property (nonatomic, assign) BOOL recognizeRightToLeftSwipe;
 
-/** Set Yes to allow the cell to recognize long presses */
+/** Set `YES` to allow the cell to recognize long presses. Default is `NO`. */
 @property (nonatomic, assign) BOOL recognizeLongPress;
 
 ///---------------------------------------------------------------------------------------
