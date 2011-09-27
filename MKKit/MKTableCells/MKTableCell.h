@@ -18,7 +18,6 @@
 #import <MKKit/MKKit/MKStrings.h>
 
 #import "MKTableElements/MKElementAccentView.h"
-#import "MKTableElements/MKTableCellAccentView.h"
 
 #import "MKTableCellDelegate.h"
 
@@ -26,8 +25,6 @@ typedef enum {
 	MKTableCellTypeNone,
 	MKTableCellTypeDescription,
 	MKTableCellTypeLabel,
-	//MKTableCellTypeScore, 
-	//MKTableCellTypeAction, 
 } MKTableCellType;
 
 typedef enum {
@@ -61,7 +58,7 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 @protocol MKTableCellDelegate;
 @protocol MKInputValidation;
 
-@class MKBadgeCellView, MKView, MKSwipeCellView;
+@class MKBadgeCellView, MKView, MKSwipeCellView, MKTableCellAccentView;
 
 /**-------------------------------------------------------------------------------------
  An MKTableCell is a subclass UITableViewCell. MKTableCell is designed as a superClass for 
@@ -492,6 +489,7 @@ static const int kIconViewTag                       = 3;
 static const int kAccentViewTag                     = 4;
 static const int kBadgeViewTag                      = 5;
 static const int kDetailViewTag                     = 6;
+static const int kSwipeViewTag                      = 7;
 
 static const CGFloat kBadgeTextPadding              = 20.0;
 static const CGFloat kBadgeTextFontSize             = 12.0;

@@ -9,6 +9,8 @@
 #import "MKTableCell.h"
 
 #import "MKTableElements/MKTableCellBadgeView.h"
+#import "MKTableElements/MKElementAccentView.h"
+#import "MKTableElements/MKTableCellAccentView.h"
 
 @interface MKTableCell ()
 
@@ -94,39 +96,7 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 			[mCellView addDetailElement:mSmallLabel];
 			[mSmallLabel release];
 		}
-        
-        /*
-		if (type == MKTableCellTypeScore) {
-            mTheLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-			mTheLabel.textAlignment = UITextAlignmentLeft;
-            
-            [mCellView addPrimaryElement:mTheLabel];
-            [mTheLabel release];
-			
-			mSmallLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-			mSmallLabel.textAlignment = UITextAlignmentRight;
-			mSmallLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
-			mSmallLabel.adjustsFontSizeToFitWidth = YES;
-			mSmallLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
-			
-			[mCellView addSecondaryElement:mSmallLabel];
-            [mSmallLabel release];
-			
-			self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		}
-		
-		if (type == MKTableCellTypeAction) {
-            mTheLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-			mTheLabel.textAlignment = UITextAlignmentLeft;
-			mTheLabel.adjustsFontSizeToFitWidth = YES;
-			mTheLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
-			mTheLabel.backgroundColor = [UIColor clearColor];
-			
-            [mCellView addPrimaryElement:mTheLabel];
-            [mTheLabel release];
-		}
-        */
-        
+               
 		[self.contentView setAutoresizesSubviews:YES];
 		[self setSelectionStyle:UITableViewCellSelectionStyleNone];
     }

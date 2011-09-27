@@ -17,6 +17,7 @@
     if (self) {
         self.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
         self.alpha = 0.0;
+        self.tag = kSwipeViewTag;
         
         mShouldRemoveView = NO;
         mCell = [cell retain];
@@ -81,9 +82,13 @@
 #pragma mark - Display
 
 - (void)show {
-    [UIView animateWithDuration:0.35
-                     animations: ^ { mCell.cellView.x = -mCell.cellView.width; self.alpha = 1.0; } 
-                     completion: ^ (BOOL finished) { [mCell bringSubviewToFront:self]; }];
+    UIView *view = (UIView *)[mCell.cellView viewWithTag:kSwipeViewTag];
+    
+    if (!view) {
+        [UIView animateWithDuration:0.35
+                         animations: ^ { mCell.cellView.x = -mCell.cellView.width; self.alpha = 1.0; } 
+                         completion: ^ (BOOL finished) { [mCell bringSubviewToFront:self]; }];
+    }
 }
 
 - (void)remove {
