@@ -603,7 +603,9 @@ void drawSubtractIcon(CGContextRef context, CGRect rect) {
 #pragma mark - Memory Mangament
 
 - (void)didRelease {
-    objc_removeAssociatedObjects(self.viewType);
+    if (self.viewType) {
+        objc_removeAssociatedObjects(self.viewType);
+    }
 }
 
 @end

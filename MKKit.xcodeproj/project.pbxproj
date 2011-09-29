@@ -314,6 +314,8 @@
 		AAA3BE8E13EBB53700594F55 /* MKTabItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTabItem.h; sourceTree = "<group>"; };
 		AAA3BE8F13EBB53700594F55 /* MKTabItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTabItem.m; sourceTree = "<group>"; };
 		AAA5A1AC1345589C00D2C23F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		AAA836CF143299FF006381E5 /* MKApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKApplication.h; sourceTree = "<group>"; };
+		AAA836D0143299FF006381E5 /* MKApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKApplication.m; sourceTree = "<group>"; };
 		AAA97EEB13915840009EBCDE /* MKTableCellLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTableCellLoading.h; sourceTree = "<group>"; };
 		AAA97EEC13915840009EBCDE /* MKTableCellLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTableCellLoading.m; sourceTree = "<group>"; };
 		AAA97EEF1391659A009EBCDE /* MKButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKButton.h; sourceTree = "<group>"; };
@@ -436,6 +438,8 @@
 				AA02DDDF12DAE2B7003B3560 /* MKDeffinitions.h */,
 				AA2FBE4413444550002441C2 /* MKMacros.h */,
 				AA77679C1413E90A0064579F /* MKAvailability.h */,
+				AAA836CF143299FF006381E5 /* MKApplication.h */,
+				AAA836D0143299FF006381E5 /* MKApplication.m */,
 				AA02DDCF12DAE2B7003B3560 /* MKAlerts.h */,
 				AA02DDD012DAE2B7003B3560 /* MKAlerts.m */,
 				AA02DDD112DAE2B7003B3560 /* MKAnimations.h */,
