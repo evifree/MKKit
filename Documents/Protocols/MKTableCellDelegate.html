@@ -73,8 +73,14 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/didTapAccessoryForKey:">- didTapAccessoryForKey:</a></code>
-		<span class="tooltip"> Called when the cells Accessory View is touched. <p class="warning"> Note * This method is called when using one of the MKTableCellAccessoryType constances. If your using one of the UITableCellView accessory use those methods to process touches. </p></span>
+		<code><a href="#//api/name/didTapAccessoryForKey:MK_DEPRECATED_0_8:">- didTapAccessoryForKey:MK_DEPRECATED_0_8:</a></code>
+		<span class="tooltip"> <p class="warning"> <strong> Deprecated. Use <a href="#//api/name/didTapAccessoryForKey:indexPath:">didTapAccessoryForKey:indexPath:</a> instead. </strong></p></span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/didTapAccessoryForKey:indexPath:">- didTapAccessoryForKey:indexPath:</a></code>
+		<span class="tooltip"> Called when the cells Accessory View is touched. <p class="warning"> <strong> Note </strong> This method is called when using one of the MKTableCellAccessoryTypes. If your using one of the UITableCellView accessory this method will not be called. </p></span>
 	</span>
 	
 </li><li>
@@ -104,13 +110,13 @@
 						<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/textFieldIsFirstResponder:">- textFieldIsFirstResponder:</a></code>
-		<span class="tooltip"> Called when a the <a href="../Classes/MKTextField.html">MKTextField</a> object of becomes the first responder. @warning Note * This method is only called by the <a href="../Classes/MKTableCellTextEntry.html">MKTableCellTextEntry</a> class. </span>
+		<span class="tooltip"> Called when a the <a href="../Classes/MKTextField.html">MKTextField</a> object of becomes the first responder. @warning <strong> Note </strong> This method is only called by the <a href="../Classes/MKTableCellTextEntry.html">MKTableCellTextEntry</a> class. </span>
 	</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/didAddPicker:forKey:">- didAddPicker:forKey:</a></code>
-		<span class="tooltip"> Called after a picker has been added to the applications keyWindow. <p class="warning"> Note * This medthod is only called by the <a href="../Classes/MKTableCellPickerControlled.html">MKTableCellPickerControlled</a> class. </p></span>
+		<span class="tooltip"> Called after a picker has been added to the applications keyWindow. <p class="warning"> <strong> Note </strong> This medthod is only called by the <a href="../Classes/MKTableCellPickerControlled.html">MKTableCellPickerControlled</a> class. </p></span>
 	</span>
 	
 </li>
@@ -122,7 +128,7 @@
 						<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/willRemovePicker:forKey:">- willRemovePicker:forKey:</a></code>
-		<span class="tooltip"> Called before a picker will be removed from the applications keyWindow. <p class="warning"> Note * This medthod is only called by the <a href="../Classes/MKTableCellPickerControlled.html">MKTableCellPickerControlled</a> class. </p></span>
+		<span class="tooltip"> Called before a picker will be removed from the applications keyWindow. <p class="warning"> <strong> Note </strong> This medthod is only called by the <a href="../Classes/MKTableCellPickerControlled.html">MKTableCellPickerControlled</a> class. </p></span>
 	</span>
 	
 </li>
@@ -133,8 +139,14 @@
 					<ul class="task-list">
 						<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/cellDidValidate:forKey:">- cellDidValidate:forKey:</a></code>
-		<span class="tooltip"> Called when a cell validates its input. </span>
+		<code><a href="#//api/name/cellDidValidate:forKey:MK_DEPRECATED_0_8:">- cellDidValidate:forKey:MK_DEPRECATED_0_8:</a></code>
+		<span class="tooltip"> <p class="warning"> <strong> This method has been deprecated. Use <a href="#//api/name/cellDidValidate:forKey:indexPath:">cellDidValidate:forKey:indexPath:</a> instead. </strong></p></span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cellDidValidate:forKey:indexPath:">- cellDidValidate:forKey:indexPath:</a></code>
+		<span class="tooltip"> Called when a cell validates its input. If there is a validation error, the error will be passed through this method. The userInfo dictionay of the error contains addtional information about the error. The error information can be accessed through the following keys: <ul><li> <code>MKValidatorField</code>: The input field that was validated. </li><li> <code>MKValidatorEnteredText</code>: The text that was entered into the field. </li></ul></span>
 	</span>
 	
 </li>
@@ -152,17 +164,49 @@
 					<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 					
 					<div class="section-method">
-	<a name="//api/name/cellDidValidate:forKey:" title="cellDidValidate:forKey:"></a>
-	<h3 class="subsubtitle method-title">cellDidValidate:forKey:</h3>
+	<a name="//api/name/cellDidValidate:forKey:MK_DEPRECATED_0_8:" title="cellDidValidate:forKey:MK_DEPRECATED_0_8:"></a>
+	<h3 class="subsubtitle method-title">cellDidValidate:forKey:MK_DEPRECATED_0_8:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p> Called when a cell validates its input. </p>
+		<p> <p class="warning"> <strong> This method has been deprecated. Use <a href="#//api/name/cellDidValidate:forKey:indexPath:">cellDidValidate:forKey:indexPath:</a> instead. </strong></p></p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (void)cellDidValidate:(NSError *)<em>error</em> forKey:(NSString *)<em>aKey</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)cellDidValidate:(NSError *)<em>error</em> forKey:(NSString *)<em>aKey</em> MK_DEPRECATED_0_8</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCellDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/cellDidValidate:forKey:indexPath:" title="cellDidValidate:forKey:indexPath:"></a>
+	<h3 class="subsubtitle method-title">cellDidValidate:forKey:indexPath:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Called when a cell validates its input. If there is a validation error, the error will be passed through this method. The userInfo dictionay of the error contains addtional information about the error. The error information can be accessed through the following keys: <ul><li> <code>MKValidatorField</code>: The input field that was validated. </li><li> <code>MKValidatorEnteredText</code>: The text that was entered into the field. </li></ul></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)cellDidValidate:(NSError *)<em>error</em> forKey:(NSString *)<em>aKey</em> indexPath:(NSIndexPath *)<em>indexPath</em></code></div>
 	
 	
 	<div class="method-subsection arguments-section parameters">
@@ -170,12 +214,17 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>error</em></dt>
-			<dd> the validation error </dd>
+			<dd> the validation error. </dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>aKey</em></dt>
 			<dd> a unique NSString that identifies the cell. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>indexPath</em></dt>
+			<dd> the indexPath of the cell. <p class="warning"> <strong> Note </strong> Index paths are not automatically set. If the indexPath property is not set <code>nil</code> will be passed. </p></dd>
 		</dl>
 		
 	</div>
@@ -205,7 +254,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p> Called after a picker has been added to the applications keyWindow. <p class="warning"> Note * This medthod is only called by the <a href="../Classes/MKTableCellPickerControlled.html">MKTableCellPickerControlled</a> class. </p></p>
+		<p> Called after a picker has been added to the applications keyWindow. <p class="warning"> <strong> Note </strong> This medthod is only called by the <a href="../Classes/MKTableCellPickerControlled.html">MKTableCellPickerControlled</a> class. </p></p>
 	</div>		
 	
 	
@@ -439,28 +488,18 @@
 </div>
 					
 					<div class="section-method">
-	<a name="//api/name/didTapAccessoryForKey:" title="didTapAccessoryForKey:"></a>
-	<h3 class="subsubtitle method-title">didTapAccessoryForKey:</h3>
+	<a name="//api/name/didTapAccessoryForKey:MK_DEPRECATED_0_8:" title="didTapAccessoryForKey:MK_DEPRECATED_0_8:"></a>
+	<h3 class="subsubtitle method-title">didTapAccessoryForKey:MK_DEPRECATED_0_8:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p> Called when the cells Accessory View is touched. <p class="warning"> Note * This method is called when using one of the MKTableCellAccessoryType constances. If your using one of the UITableCellView accessory use those methods to process touches. </p></p>
+		<p> <p class="warning"> <strong> Deprecated. Use <a href="#//api/name/didTapAccessoryForKey:indexPath:">didTapAccessoryForKey:indexPath:</a> instead. </strong></p></p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (void)didTapAccessoryForKey:(NSString *)<em>aKey</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)didTapAccessoryForKey:(NSString *)<em>aKey</em> MK_DEPRECATED_0_8</code></div>
 	
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>aKey</em></dt>
-			<dd> A unique NSString that identifies the cell. </dd>
-		</dl>
-		
-	</div>
 	
 	
 	
@@ -481,13 +520,70 @@
 </div>
 					
 					<div class="section-method">
+	<a name="//api/name/didTapAccessoryForKey:indexPath:" title="didTapAccessoryForKey:indexPath:"></a>
+	<h3 class="subsubtitle method-title">didTapAccessoryForKey:indexPath:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Called when the cells Accessory View is touched. <p class="warning"> <strong> Note </strong> This method is called when using one of the MKTableCellAccessoryTypes. If your using one of the UITableCellView accessory this method will not be called. </p></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)didTapAccessoryForKey:(NSString *)<em>aKey</em> indexPath:(NSIndexPath *)<em>indexPath</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aKey</em></dt>
+			<dd> A unique NSString that identifies the cell. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>indexPath</em></dt>
+			<dd> the index path of the cell whos acessory was taped. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection arguments-section exceptions">
+		<h4 class="method-subtitle exception-title">Exceptions</h4>
+		
+		<dl class="argument-def exception-def">
+			<dt><em>No</em></dt>
+			<dd> index path. The index path property of the cell must be set for this method to be called. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCellDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
 	<a name="//api/name/textFieldIsFirstResponder:" title="textFieldIsFirstResponder:"></a>
 	<h3 class="subsubtitle method-title">textFieldIsFirstResponder:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p> Called when a the <a href="../Classes/MKTextField.html">MKTextField</a> object of becomes the first responder. @warning Note * This method is only called by the <a href="../Classes/MKTableCellTextEntry.html">MKTableCellTextEntry</a> class. </p>
+		<p> Called when a the <a href="../Classes/MKTextField.html">MKTextField</a> object of becomes the first responder. @warning <strong> Note </strong> This method is only called by the <a href="../Classes/MKTableCellTextEntry.html">MKTableCellTextEntry</a> class. </p>
 	</div>		
 	
 	
@@ -560,7 +656,7 @@
 		
 		<p> Called when a the Value of a controled object is changed. </p>
 		
-		<p> All of the sublcasses that use any type of user input contols call this method whenever the input value is changed. It is imporant that the key property of <a href="../Classes/MKTableCell.html">MKTableCell</a> is set for this method to work propery. <p class="warning"> Note * If a contol gives an integer or bool for its value, the value is converted into an NSNumber object before this method is called. </p></p>
+		<p> All of the sublcasses that use any type of user input contols call this method whenever the input value is changed. It is imporant that the key property of <a href="../Classes/MKTableCell.html">MKTableCell</a> is set for this method to work propery. <p class="warning"> <strong> Note </strong> If a contol gives an integer or bool for its value, the value is converted into an NSNumber object before this method is called. </p></p>
 		
 	</div>
 	
@@ -585,7 +681,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p> Called before a picker will be removed from the applications keyWindow. <p class="warning"> Note * This medthod is only called by the <a href="../Classes/MKTableCellPickerControlled.html">MKTableCellPickerControlled</a> class. </p></p>
+		<p> Called before a picker will be removed from the applications keyWindow. <p class="warning"> <strong> Note </strong> This medthod is only called by the <a href="../Classes/MKTableCellPickerControlled.html">MKTableCellPickerControlled</a> class. </p></p>
 	</div>		
 	
 	
@@ -640,7 +736,7 @@
 			<div id="footer">
 				<hr />
 				<div class="footer-copyright">
-					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-08-28)</span><br />
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-10-16)</span><br />
 					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
 				</div>
 			</div>

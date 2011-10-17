@@ -3,16 +3,10 @@
 //  MKKit
 //
 //  Created by Matthew King on 10/5/10.
-//  Copyright 2010 Matt King. All rights reserved.
+//  Copyright 2010-2011 Matt King. All rights reserved.
 //
 
 #import "MKControl.h"
-
-@interface MKControl () 
-
-- (void)processAction:(MKAction)controlAction;
-
-@end
 
 @implementation MKControl
 
@@ -25,7 +19,6 @@
     
     MKControlFlags.blockUsage = YES;
 }
-
 
 - (void)addTarget:(id)target selector:(SEL)selector action:(MKAction)controlAction {
     MKControlTarget *newTarget = [[MKControlTarget alloc] init];
@@ -74,7 +67,13 @@
 
 #pragma mark - Memory Management
 
+- (void)didRelease {
+    //method for catagories use.
+}
+
 - (void)dealloc { 
+    [self didRelease];
+    
     if (MKControlFlags.blockUsage) {
         [action release];
     }

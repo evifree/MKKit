@@ -107,6 +107,37 @@
 	return [paths objectAtIndex:0];
 }
 
++ (NSString *)stringWithDocumentsDirectoryPath {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    [self autorelease];
+	return [paths objectAtIndex:0];
+}
+
+#pragma mark - UUID
+
+- (NSString *)stringFromUUID {
+    NSString *rtn;
+    
+    CFUUIDRef uuidObj = CFUUIDCreate(nil);
+    rtn = (NSString*)CFUUIDCreateString(nil, uuidObj);
+    CFRelease(uuidObj);
+    
+    return [rtn autorelease];
+}
+
++ (NSString *)UUIDString {
+    NSString *rtn;
+    
+    CFUUIDRef uuidObj = CFUUIDCreate(nil);
+    rtn = (NSString*)CFUUIDCreateString(nil, uuidObj);
+    CFRelease(uuidObj);
+    
+    [self autorelease];
+    
+    return [rtn autorelease];
+}
+
 #pragma mark -
 #pragma mark Memory Managment
 

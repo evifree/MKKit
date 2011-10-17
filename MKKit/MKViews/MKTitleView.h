@@ -17,28 +17,36 @@
     
 }
 
+///-------------------------------------
+/// @name Creating
+///-------------------------------------
+
 /**
  Creates an instance of MKTitleView.
  
  @param title the string that will be displayed on the navigation bar
  
  @param image the image icon that will displayed on the navigation bar.
- MKTitleView expects the image to 25px by 25px. The image should be a mask
- with only black and transparent colors.
  
  @return MKTitleView instance
 */ 
 - (id)initWithTitle:(NSString *)title image:(UIImage *)image;
 
-@end
-
-@interface MKTitleViewIcon : MKView {
-@private
-    UIImage *mImage;
-}
-
-@property (nonatomic, retain) UIImage *image;
-
-- (id)initWithFrame:(CGRect)frame icon:(UIImage *)icon;
+/**
+ Creates an instance of MKTitleView.
+ 
+ @param title the string that will be displayed on the navigation bar.
+ 
+ @param image the image mask that will be drawn onto the navigtaion bar.
+ 
+ @param gradient the gradient that will be used to color the image. Use the method
+ + [(id) MKGraphicStructures linearGradientWithTopColor:bottomColor:]to make a gradient.
+ Pass the same color for the top and bottom for a solid color.
+ 
+ Default is solid white.
+ 
+ @return MKTitleView instance
+*/
+- (id)initWithTitle:(NSString *)title image:(UIImage *)image gradient:(MKGraphicsStructures *)gradient;
 
 @end

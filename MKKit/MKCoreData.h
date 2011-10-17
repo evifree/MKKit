@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 5/12/10.
-//  Copyright 2010 Matt King. All rights reserved.
+//  Copyright 2010-2011 Matt King. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -18,7 +18,7 @@ typedef void (^MKFetchCompletionBlock)(NSMutableArray *results, NSError *error);
  A NSManagedObject context needs to set before this object can preform any methods. You do this by
  calling sharedDataWithContext: 
  
-	[[MKCoreData sharedData] sharedDataWithContext:myContext];
+	[MKCoreData sharedDataWithContext:myContext];
 -----------------------------------------------------------------------------------------------*/
 
 @interface MKCoreData : NSObject {

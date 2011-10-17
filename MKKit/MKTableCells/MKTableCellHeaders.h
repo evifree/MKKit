@@ -17,4 +17,6 @@
 #import "MKTableCellTypes/MKTableCellTextEntry.h"
 #import "MKTableCellTypes/MKTableCellTextView.h"
 
+#import "MKTableElements/MKSwipeCellView.h"
+
 #import <MKKit/MKKit/MKViewControllers/MKIAPViewController/MKTableCellIAP.h>

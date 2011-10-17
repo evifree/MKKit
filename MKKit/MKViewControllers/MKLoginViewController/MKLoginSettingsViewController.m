@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 5/19/11.
-//  Copyright 2011 Matt King. All rights reserved.
+//  Copyright 2010-2011 Matt King. All rights reserved.
 //
 
 #import "MKLoginSettingsViewController.h"
@@ -12,17 +12,29 @@
 #define NEW_PIN             @"newPin"
 #define CONFIRM_PIN         @"confirmPin"
 
+@interface MKLoginSettingsViewController ()
+
+- (void)onDone:(id)sender;
+- (void)onValidation;
+
+@end
+
 @implementation MKLoginSettingsViewController
 
 - (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(onDone:)];
+        self.navigationItem.rightBarButtonItem = done;
+        [done release];
+        
     }
     return self;
 }
 
 - (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MKValidatorDidValidateTableView object:nil];
+    
     [super dealloc];
 }
 
@@ -54,6 +66,9 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    [[MKValidator sharedValidator] registerTableView:self.tableView];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onValidation) name:MKValidatorDidValidateTableView object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -64,11 +79,23 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
+    
+    [[MKValidator sharedValidator] removeTableView];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark - Actions
+
+- (void)onDone:(id)sender {
+    [[MKValidator sharedValidator] validate];
+}
+
+- (void)onValidation {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Table view data source
@@ -116,6 +143,7 @@
             cell.theLabel.text = @"Current";
             cell.validationType = MKValidateIsaSetLength;
             cell.validatorTestStringLength = 4;
+            cell.indexPath = indexPath;
             [cell accentPrimaryViewForCellAtPosition:MKTableCellPositionTop];
         }
         if (indexPath.row == 1) {
@@ -124,6 +152,7 @@
             cell.theLabel.text = @"New";
             cell.validationType = MKValidateIsaSetLength;
             cell.validatorTestStringLength = 4;
+            cell.indexPath = indexPath;
             [cell accentPrimaryViewForCellAtPosition:MKTableCellPositionMiddle];
         }
         if (indexPath.row == 2) {
@@ -132,21 +161,25 @@
             cell.theLabel.text = @"Confirm";
             cell.validationType = MKValidateIsaSetLength;
             cell.validatorTestStringLength = 4;
+            cell.indexPath = indexPath;
             [cell accentPrimaryViewForCellAtPosition:MKTableCellPositionBottom];
         }
     }
     
     if (indexPath.section == 1) {
         if (indexPath.row == 0) {
+            NSArray *questions = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Questions" ofType:@"plist"]];
+            
             cell = (MKTableCellPickerControlled *)[tableView dequeueReusableCellWithIdentifier:PickerIdentifier];
             if (cell == nil) {
                 cell = [[[MKTableCellPickerControlled alloc] initWithType:MKTableCellTypeNone reuseIdentifier:PickerIdentifier] autorelease];
                 cell.delegate = self;
                 ((MKTableCellPickerControlled *)cell).pickerType = MKTableCellPickerTypeStandard;
-                ((MKTableCellPickerControlled *)cell).pickerArray = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Questions" ofType:@"plist"]];
+                ((MKTableCellPickerControlled *)cell).pickerArray = questions; //[NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Questions" ofType:@"plist"]];
             }
             cell.theLabel.text = @"Question";
             cell.key = CHALLENGE_QUESTION;
+            ((MKTableCellPickerControlled *)cell).pickerLabel.text = [questions objectAtIndex:[[[NSUserDefaults standardUserDefaults] objectForKey:CHALLENGE_QUESTION] integerValue]];
             [cell accentPrimaryViewForCellAtPosition:MKTableCellPositionTop];
         }
         if (indexPath.row == 1) {
@@ -156,10 +189,13 @@
                 cell.delegate = self;
             }
             cell.key = CHALLENGE_ANSWER;
+            cell.indexPath = indexPath;
             cell.validationType = MKValidateHasLength;
             cell.theLabel.text = @"Answer";
             
-            ((MKTableCellTextEntry *)cell).theTextField.placeholder = @"Answer"; 
+            ((MKTableCellTextEntry *)cell).theTextField.placeholder = @"Answer";
+            ((MKTableCellTextEntry *)cell).theTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:CHALLENGE_ANSWER];
+            
             [cell accentPrimaryViewForCellAtPosition:MKTableCellPositionBottom];
         }
     }
@@ -229,6 +265,21 @@
     }
         
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)cellDidValidate:(NSError *)error forKey:(NSString *)aKey indexPath:(NSIndexPath *)indexPath {
+    MKTableCell *cell = (MKTableCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    if (error) {
+        MKControl *icon = [[MKControl alloc] initWithType:MKTableCellAccessoryWarningIcon];
+        [icon completedAction: ^ (MKAction action) {
+            if (action == MKActionTouchDown) {
+                [MKErrorHandeling applicationDidError:error];
+            }
+        }];
+        
+        cell.accessoryView = icon;
+        [icon release];
+    }
 }
 
 @end

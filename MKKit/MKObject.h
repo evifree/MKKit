@@ -3,12 +3,13 @@
 //  MKKit
 //
 //  Created by Matthew King on 8/24/11.
-//  Copyright (c) 2011 Matt King. All rights reserved.
+//  Copyright (c) 2010-2011 Matt King. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
 #import "MKObjectDelegate.h"
+#import "MKMacros.h"
 
 #define MK_REMOVE_BLOCK_OBJECT_NOTIFICATION     @"MKRemoveBlockNotification"
 
@@ -27,7 +28,17 @@
 @interface MKObject : NSObject 
 
 ///------------------------------
-/// @name Protocol
+/// @name Observing Changes
+///------------------------------
+
+/** 
+ A method for use by subclasses and catagories. Default implentaion
+ does nothing.
+*/
+- (void)didRelease;
+
+///------------------------------
+/// @name Delegate
 ///------------------------------
 
 /** the objectProtocol */

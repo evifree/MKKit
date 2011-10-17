@@ -1,0 +1,274 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>MKApplication Class Reference</title>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+		<meta name="generator" content="appledoc 2.0b3" />
+	</head>
+	<body>
+		<article>
+			<div class="main-navigation navigation-top">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="header">
+				<div class="section-header">
+					<h1 class="title title-header">MKApplication Class Reference</h1>
+				</div>		
+			</div>
+			<div id="container">	
+				
+				<div class="section section-specification"><table cellspacing="0"><tbody>
+					<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">UIApplication</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">MKApplication.h</td>
+</tr>
+					</tbody></table></div>
+				
+				
+				
+				<div class="section section-overview">
+					<h2 class="subtitle subtitle-overview">Overview</h2>
+					
+<p> <strong> Overview </strong></p>
+
+<p> <a href="MKApplication.html">MKApplication</a> subclasses UIApplication to add some special methods. <p class="warning"> <strong> Important Notice </strong> To use <a href="MKApplication.html">MKApplication</a> you must add the class files to your project. Make sure to check the <code>Copy items into projects destination group folder</code> box. </p></p>
+
+<p> <strong> Usage </strong></p>
+
+<p> To use <a href="MKApplication.html">MKApplication</a> you need make changes in your applications main.m file. Replace the method call <code>UIApplicationMain(argc, argv, nil, nil)</code> with <code>UIApplicationMain(argc, argv, @&quot;MKApplication&quot;, nil)</code>. </p>
+
+<p> <strong> Required Frameworks </strong> <ul><li> Fondation </li><li> UIKit </li></ul></p>
+
+				</div>
+				
+				
+				
+				
+				<div class="section section-tasks">
+					<h2 class="subtitle subtitle-tasks">Tasks</h2>
+					
+					
+<h3 class="subsubtitle task-title">Idle Timer</h3>
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/useIdleTimer"> useIdleTimer</a></code>
+		<span class="tooltip"> Set this property to YES to turn on an idle timer for the application. An Idle timer will send a message if there are no touches for a set amount of time. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/minutes"> minutes</a></code>
+		<span class="tooltip"> The number of <a href="#//api/name/minutes">minutes</a> until an idle timer expires. Default is 5 mins. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/resetIdleTimer">- resetIdleTimer</a></code>
+		<span class="tooltip"> Resets the idle timer. If <a href="#//api/name/useIdleTimer">useIdleTimer</a> is set to <code>NO</code> calling this method will change set it to <code>YES</code>. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cancelIdleTimer">- cancelIdleTimer</a></code>
+		<span class="tooltip"> Cancels the idle timer and removes it. Use this method to stop a timer when the application enters the background. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/cancelIdleTimer" title="cancelIdleTimer"></a>
+	<h3 class="subsubtitle method-title">cancelIdleTimer</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Cancels the idle timer and removes it. Use this method to stop a timer when the application enters the background. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)cancelIdleTimer</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKApplication.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/resetIdleTimer" title="resetIdleTimer"></a>
+	<h3 class="subsubtitle method-title">resetIdleTimer</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Resets the idle timer. If <a href="#//api/name/useIdleTimer">useIdleTimer</a> is set to <code>NO</code> calling this method will change set it to <code>YES</code>. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)resetIdleTimer</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKApplication.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Properties</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/minutes" title="minutes"></a>
+	<h3 class="subsubtitle method-title">minutes</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The number of <a href="#//api/name/minutes">minutes</a> until an idle timer expires. Default is 5 mins. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) NSInteger minutes</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKApplication.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/useIdleTimer" title="useIdleTimer"></a>
+	<h3 class="subsubtitle method-title">useIdleTimer</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Set this property to YES to turn on an idle timer for the application. An Idle timer will send a message if there are no touches for a set amount of time. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL useIdleTimer</code></div>
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		
+		<p> Set this property to YES to turn on an idle timer for the application. An Idle timer will send a message if there are no touches for a set amount of time. </p>
+		
+		<p> The timer will post a <code>MKApplicationIdleTimeDidExpire</code> Notification when the time is up. </p>
+		
+		<p> The idle time is automatically reset everytime the user touhes anywhere on the screen. You can reset the timer yourself at anytime by calling the <a href="#//api/name/resetIdleTimer">resetIdleTimer</a> method. </p>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><a href="#//api/name/minutes">minutes</a></code></li>
+			
+			<li><code><a href="#//api/name/resetIdleTimer">resetIdleTimer</a></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKApplication.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+			</div>
+			<div class="main-navigation navigation-bottom">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="footer">
+				<hr />
+				<div class="footer-copyright">
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-10-16)</span><br />
+					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
+				</div>
+			</div>
+		</article>
+	</body>
+</html>

@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 8/2/11.
-//  Copyright 2011 Matt King. All rights reserved.
+//  Copyright 2010-2011 Matt King. All rights reserved.
 //
 
 #import "MKPopOutView.h"
@@ -28,7 +28,8 @@
         [self addSubview:mView];
         [mView release];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeView) name:MK_POP_OUT_VIEW_SHOULD_REMOVE_NOTIFICATION object:nil];
+        MKPopOutViewShouldRemoveNotification = @"MKPopOutViewShouldRemoveNotification";
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeView) name:MKPopOutViewShouldRemoveNotification object:nil];
     }
     return self;
 }
@@ -118,7 +119,7 @@
 #pragma mark - Memory Managment
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MK_POP_OUT_VIEW_SHOULD_REMOVE_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MKPopOutViewShouldRemoveNotification object:nil];
     
     [super dealloc];
 }

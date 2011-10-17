@@ -8,8 +8,21 @@
 
 #import "MKObject.h"
 
+
 @implementation MKObject
 
 @synthesize objectDelegate;
+
+#pragma mark - Memory Managment
+
+- (void)didRelease {
+    //For use by sublcasses and categories.
+}
+
+- (void)dealloc {
+    [self didRelease];
+    
+    [super dealloc];
+}
 
 @end

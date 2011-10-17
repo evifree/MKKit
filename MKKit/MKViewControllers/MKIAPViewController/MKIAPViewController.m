@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 5/29/11.
-//  Copyright 2011 Matt King. All rights reserved.
+//  Copyright 2010-2011 Matt King. All rights reserved.
 //
 
 #import "MKIAPViewController.h"
@@ -44,6 +44,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [MKIAPController openStore];
     
     [MKIAPController productsRequestWithIdentifiers:mIdentifiers 
                                            response: ^ (SKProductsResponse *response, NSError *error) { 
@@ -72,7 +73,9 @@
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:MK_REMOVE_BLOCK_OBJECT_NOTIFICATION object:nil];
+    [MKIAPController closeStore];
+    
+    //[[NSNotificationCenter defaultCenter] postNotificationName:MK_REMOVE_BLOCK_OBJECT_NOTIFICATION object:nil];
     
     [self.view removeFromSuperview];
     self.view = nil;
@@ -148,6 +151,7 @@
         }
         cell.theLabel.text = product.localizedTitle;
         cell.key = product.productIdentifier;
+        cell.indexPath = indexPath;
         ((MKTableCellIAP *)cell).IAPIdentifier = product.productIdentifier;
         ((MKTableCellIAP *)cell).price = [string localCurrencyFromNumber:product.price];
         
@@ -165,7 +169,7 @@
 
 #pragma mark - MKTableCell
 
-- (void)didTapAccessoryForKey:(NSString *)aKey {
+- (void)didTapAccessoryForKey:(NSString *)aKey indexPath:(NSIndexPath *)indexPath {
     for (SKProduct *product in mItems) {
         if ([product.productIdentifier isEqualToString:aKey]) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:product.localizedTitle message:product.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];

@@ -24,7 +24,7 @@
 				<div class="section section-specification"><table cellspacing="0"><tbody>
 					<tr>
 	<td class="specification-title">Inherits from</td>
-	<td class="specification-value">NSObject</td>
+	<td class="specification-value"><a href="MKObject.html">MKObject</a> : NSObject</td>
 </tr><tr>
 	<td class="specification-title">Conforms to</td>
 	<td class="specification-value"><a href="../Protocols/MKInputValidation.html">MKInputValidation</a></td>
@@ -39,20 +39,348 @@
 				<div class="section section-overview">
 					<h2 class="subtitle subtitle-overview">Overview</h2>
 					
+<p> <strong> Overview </strong></p>
+
 <p> The <a href="MKValidator.html">MKValidator</a> is default validator for implementing the <a href="../Protocols/MKInputValidation.html">MKInputValidation</a> protocol. This class will handel all of the validation methods for you. This can be overriden by add your own class that implements the <a href="../Protocols/MKInputValidation.html">MKInputValidation</a> protocol. </p>
+
+<p> <strong> Validation Types </strong></p>
+
+<p> There are four types of validation that can be preformed. <ul><li> <code>MKValidationNone</code>: No valition type set. </li><li> <code>MKValidateIsaNumber</code>: Calls the inputIsaNumber: method. </li><li> <code>MKValidateIsaSetLength</code>: Calls the inputIsaSetLength: method. </li><li> <code>MKValidateHasLength</code>: Calls the inputHasLength: method. </li></ul></p>
+
+<p> <strong> Using the Singlton </strong></p>
+
+<p> <a href="MKValidator.html">MKValidator</a> offers the option of a singlton instance. If you have several fields to validate, it is recomended that you use the singlton instance to prevent your application from having several instances of MKValidator. The singlton should also be used when using the Table View methods of MKValidator. </p>
+
+<p> You can get the singlton by calling the <a href="#//api/name/sharedValidator">sharedValidator</a> method. </p>
+
+<p> <strong> Validating Table View Forms </strong></p>
+
+<p> When used with MKTableCells, <a href="MKValidator.html">MKValidator</a> can preform input validations on the entire table. To do this set the <code>validationType</code> property of an MKTableCell, after your table view is loaded call the <a href="#//api/name/registerTableView:">registerTableView:</a> method. <a href="MKValidator.html">MKValidator</a> will find the cells that can be validated add them to the validation stack. </p>
+
+<p> When you are ready to <a href="#//api/name/validate">validate</a> the table view call the <a href="#//api/name/validate">validate</a> method. The <a href="../Protocols/MKTableCellDelegate.html">MKTableCellDelegate</a> will notify you of each cell that has been validated throught the didValidateCell:forKey:indexPath: method. If a cell does not pass validation an NSError will be passed thought this delegate. The error will contain two keys in the userInfo dictonary: </p>
+
+<p> <code>MKValidatorField</code>: This key is for the feild object that has been validated. <code>MKValidatorEnteredText</code>: This key is for the text, if any, that was entered into the field. </p>
+
+<p> If the table view passes validation the <code>MKValidatorDidValidateTableView</code> notification is posted. After the validation is complete, or when the user leaves the table view call the <a href="#//api/name/removeTableView">removeTableView</a> method to clear the validation stack. If this is not called you may have error while trying to <a href="#//api/name/validate">validate</a> other tables. <p class="warning"> <strong> Note </strong> Do not register for the <code>MKValidaorDidValidateTableView</code> notification until after you have called the registerTableView method. </p> <p class="warning"> <strong> Note </strong> At this time only <a href="MKTableCellTextEntry.html">MKTableCellTextEntry</a> cells support input validation. </p></p>
+
+<p> Review the source code of <a href="MKLoginSettingsViewController.html">MKLoginSettingsViewController</a> for an exampe of how validation works. </p>
+
+<p> <a href="MKValidator.html">MKValidator</a> conforms to the <a href="../Protocols/MKInputValidation.html">MKInputValidation</a> protocol. </p>
+
+<p> <strong> Required Classes </strong> <ul><li> MKMacros </li><li> <a href="MKObject.html">MKObject</a></li></ul></p>
+
+<p> *Required Frameworks <ul><li> Foundation </li><li> UIKit </li></ul></p>
 
 				</div>
 				
 				
 				
 				
+				<div class="section section-tasks">
+					<h2 class="subtitle subtitle-tasks">Tasks</h2>
+					
+					<h3 class="subsubtitle task-title">Singlton</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sharedValidator">+ sharedValidator</a></code>
+		<span class="tooltip"> Returns a the singleton instance of MKValidator. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Working With Table Views</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/registerTableView:">- registerTableView:</a></code>
+		<span class="tooltip"> Adds the cells that support validation to the validation stack. This method looks for cells that have the <code>validationType</code> property set. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/removeTableView">- removeTableView</a></code>
+		<span class="tooltip"> Clears all existing cells from the validation stack. This method should be called from the <code>viewDidDisapear:</code> method. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addValidationRow:">- addValidationRow:</a></code>
+		<span class="tooltip"> Adds the table view row at the given indexPath to the validation stack. If you use the the registerTableView method does not need to be called. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/removeValidationRow:">- removeValidationRow:</a></code>
+		<span class="tooltip"> Removes the table view row at the given indexPath from the validation stack. To remove all the rows call the <a href="#//api/name/removeTableView">removeTableView</a> method instead. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/validate">- validate</a></code>
+		<span class="tooltip"> Validates the entire validation stack by the respective <code>validationType</code>. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/tableView"> tableView</a></code>
+		<span class="tooltip"> The current table view that has been registered for validation. This property is automatically set when the <a href="#//api/name/registerTableView:">registerTableView:</a> method is called. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+				</div>
 				
 				
 				
 				
 				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Class Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/sharedValidator" title="sharedValidator"></a>
+	<h3 class="subsubtitle method-title">sharedValidator</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Returns a the singleton instance of MKValidator. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (id)sharedValidator</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKValidator.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
 				
 				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/addValidationRow:" title="addValidationRow:"></a>
+	<h3 class="subsubtitle method-title">addValidationRow:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Adds the table view row at the given indexPath to the validation stack. If you use the the registerTableView method does not need to be called. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)addValidationRow:(NSIndexPath *)<em>indexPath</em></code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKValidator.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/registerTableView:" title="registerTableView:"></a>
+	<h3 class="subsubtitle method-title">registerTableView:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Adds the cells that support validation to the validation stack. This method looks for cells that have the <code>validationType</code> property set. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)registerTableView:(UITableView *)<em>tableView</em></code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKValidator.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/removeTableView" title="removeTableView"></a>
+	<h3 class="subsubtitle method-title">removeTableView</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Clears all existing cells from the validation stack. This method should be called from the <code>viewDidDisapear:</code> method. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)removeTableView</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKValidator.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/removeValidationRow:" title="removeValidationRow:"></a>
+	<h3 class="subsubtitle method-title">removeValidationRow:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Removes the table view row at the given indexPath from the validation stack. To remove all the rows call the <a href="#//api/name/removeTableView">removeTableView</a> method instead. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)removeValidationRow:(NSIndexPath *)<em>indexPath</em></code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKValidator.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/validate" title="validate"></a>
+	<h3 class="subsubtitle method-title">validate</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Validates the entire validation stack by the respective <code>validationType</code>. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)validate</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKValidator.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Properties</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/tableView" title="tableView"></a>
+	<h3 class="subsubtitle method-title">tableView</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The current table view that has been registered for validation. This property is automatically set when the <a href="#//api/name/registerTableView:">registerTableView:</a> method is called. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UITableView *tableView</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKValidator.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
 				
 				
 			</div>
@@ -65,7 +393,7 @@
 			<div id="footer">
 				<hr />
 				<div class="footer-copyright">
-					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-07-26)</span><br />
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-10-16)</span><br />
 					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
 				</div>
 			</div>

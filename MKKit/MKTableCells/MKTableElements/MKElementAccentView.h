@@ -3,15 +3,10 @@
 //  MKKit
 //
 //  Created by Matthew King on 8/2/11.
-//  Copyright 2011 Matt King. All rights reserved.
+//  Copyright 2010-2011 Matt King. All rights reserved.
 //
 
 #import <MKKit/MKKit/MKViews/MKView.h>
-
-static const CGFloat kBorderLineWidth =         2.0;
-static const CGFloat kBottomCellPadding =       1.0;
-static const CGFloat kSingleCellPadding =       1.0;
-static const CGFloat kRoundedCornerRadius =     10.0;
 
 typedef enum {
     MKTableCellPositionTop,
@@ -40,3 +35,8 @@ typedef enum {
 - (id)initWithFrame:(CGRect)frame position:(MKTableCellPosition)position;
 
 @end
+
+static const CGFloat kBorderLineWidth =         2.0;
+static const CGFloat kBottomCellPadding =       1.0;
+static const CGFloat kSingleCellPadding =       1.0;
+static const CGFloat kRoundedCornerRadius =     10.0;

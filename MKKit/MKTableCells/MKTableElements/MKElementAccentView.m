@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 8/2/11.
-//  Copyright 2011 Matt King. All rights reserved.
+//  Copyright 2010-2011 Matt King. All rights reserved.
 //
 
 #import "MKElementAccentView.h"
@@ -22,7 +22,7 @@ CGMutablePathRef createPathForSingleCell(CGRect rect);
         self.backgroundColor = CLEAR;
         self.opaque = YES;
         self.alpha = 1.0;
-        self.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
+        self.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
         
         mPosition = position;
     }
@@ -39,12 +39,13 @@ CGMutablePathRef createPathForSingleCell(CGRect rect);
     CGColorRef bottomColor = MK_COLOR_HSB(345.0, 2.0, 86.0, 1.0).CGColor;
     
     if (mPosition == MKTableCellPositionTop) {
-        CGMutablePathRef topPath = createPathForTopCell(rect);
+        CGRect topRect = CGRectMake(0.0, 0.0, rect.size.width, (rect.size.height - 1.0));
+        CGMutablePathRef topPath = createPathForTopCell(topRect);
         
         CGContextSaveGState(context);
         CGContextAddPath(context, topPath);
         CGContextClip(context);
-        drawGlossAndLinearGradient(context, rect, topColor, bottomColor);
+        drawGlossAndLinearGradient(context, topRect, topColor, bottomColor);
         CGContextSaveGState(context);
         
         CFRelease(topPath);
@@ -57,7 +58,7 @@ CGMutablePathRef createPathForSingleCell(CGRect rect);
     }
     
     if (mPosition == MKTableCellPositionBottom) {
-        CGRect bottomRect = CGRectMake(0.0, 0.0, rect.size.width, (rect.size.height - kBottomCellPadding));
+        CGRect bottomRect = CGRectMake(0.0, 0.0, rect.size.width, (rect.size.height - 1.0));
         CGMutablePathRef bottomPath = createPathForBottomCell(bottomRect);
         
         CGContextSaveGState(context);
@@ -78,7 +79,7 @@ CGMutablePathRef createPathForSingleCell(CGRect rect);
     }
     
     if (mPosition == MKTableCellPositionSingleCell) {
-        CGRect singleRect = CGRectMake(0.0, 0.0, rect.size.width, (rect.size.height - kSingleCellPadding));
+        CGRect singleRect = CGRectMake(0.0, 0.0, rect.size.width, (rect.size.height - 1.0));
         CGMutablePathRef singlePath = createPathForSingleCell(singleRect);
         
         CGContextSaveGState(context);

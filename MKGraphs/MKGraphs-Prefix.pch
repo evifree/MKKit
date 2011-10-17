@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'MKGraphs' target in the 'MKGraphs' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif

@@ -1,0 +1,252 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>MKGraphDataSource Protocol Reference</title>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+		<meta name="generator" content="appledoc 2.0b3" />
+	</head>
+	<body>
+		<article>
+			<div class="main-navigation navigation-top">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="header">
+				<div class="section-header">
+					<h1 class="title title-header">MKGraphDataSource Protocol Reference</h1>
+				</div>		
+			</div>
+			<div id="container">	
+				
+				<div class="section section-specification"><table cellspacing="0"><tbody>
+					<tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">MKGraphDataSource.h</td>
+</tr>
+					</tbody></table></div>
+				
+				
+				
+				<div class="section section-overview">
+					<h2 class="subtitle subtitle-overview">Overview</h2>
+					
+<p> Provides the data for a MKGraphView. All methods are required for the graph view to work correcly. </p>
+
+				</div>
+				
+				
+				
+				
+				<div class="section section-tasks">
+					<h2 class="subtitle subtitle-tasks">Tasks</h2>
+					
+					<h3 class="subsubtitle task-title">Set Up</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/numberOfDataSetsForGraphView:">- numberOfDataSetsForGraphView:</a></code>
+		<span class="tooltip"> Return the nuber of data sets that your graph will use. </span>
+	</span>
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/scaleForGraphView:">- scaleForGraphView:</a></code>
+		<span class="tooltip"> Retrun the scale of the graph. Scales can be made using the <code>MKGraphScaleMake(float max, float min)</code> funtion. </span>
+	</span>
+	<span class="task-item-suffix">required method</span>
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Providing Data</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/graphView:dataSetForIndex:">- graphView:dataSetForIndex:</a></code>
+		<span class="tooltip"> Return a <a href="../Classes/MKGraphDataSet.html">MKGraphDataSet</a> for each set of data in the graph. </span>
+	</span>
+	<span class="task-item-suffix">required method</span>
+</li>
+					</ul>
+					
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/graphView:dataSetForIndex:" title="graphView:dataSetForIndex:"></a>
+	<h3 class="subsubtitle method-title">graphView:dataSetForIndex:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Return a <a href="../Classes/MKGraphDataSet.html">MKGraphDataSet</a> for each set of data in the graph. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (MKGraphDataSet *)graphView:(MKGraphView *)<em>graphview</em> dataSetForIndex:(NSInteger)<em>index</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>index</em></dt>
+			<dd> the index of the data set. Index 0 is closest to the origin of the graph. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>graphView</em></dt>
+			<dd> the <a href="../Classes/MKGraphView.html">MKGraphView</a> instance that is asking for the data. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKGraphDataSource.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/numberOfDataSetsForGraphView:" title="numberOfDataSetsForGraphView:"></a>
+	<h3 class="subsubtitle method-title">numberOfDataSetsForGraphView:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Return the nuber of data sets that your graph will use. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSInteger)numberOfDataSetsForGraphView:(MKGraphView *)<em>graphView</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>graphView</em></dt>
+			<dd> the <a href="../Classes/MKGraphView.html">MKGraphView</a> instance that is asking for the data. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection arguments-section exceptions">
+		<h4 class="method-subtitle exception-title">Exceptions</h4>
+		
+		<dl class="argument-def exception-def">
+			<dt><em>Too</em></dt>
+			<dd> many data sets : An execption will be rasied if there are too many data sets to fit on the graph area. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKGraphDataSource.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/scaleForGraphView:" title="scaleForGraphView:"></a>
+	<h3 class="subsubtitle method-title">scaleForGraphView:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Retrun the scale of the graph. Scales can be made using the <code>MKGraphScaleMake(float max, float min)</code> funtion. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (MKGraphScale)scaleForGraphView:(MKGraphView *)<em>graphView</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>graphView</em></dt>
+			<dd> the <a href="../Classes/MKGraphView.html">MKGraphView</a> instance that is asking for the data. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKGraphDataSource.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+				
+				
+			</div>
+			<div class="main-navigation navigation-bottom">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="footer">
+				<hr />
+				<div class="footer-copyright">
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-09-07)</span><br />
+					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
+				</div>
+			</div>
+		</article>
+	</body>
+</html>

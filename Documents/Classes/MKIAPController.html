@@ -39,9 +39,29 @@
 				<div class="section section-overview">
 					<h2 class="subtitle subtitle-overview">Overview</h2>
 					
+<p> <strong> Overview </strong></p>
+
 <p> The <a href="MKIAPController.html">MKIAPController</a> executes inApp Purchases for you. This class is used by the MKIAPViewController. It can be used by itself as well, if you want to create your own store front. </p>
 
 <p> <a href="MKIAPController.html">MKIAPController</a> works in two ways. You can create an instance of it, preform requests and then recive the responses through the delegate. Your other option is to use factory methods with code blocks to handle the response. <p class="warning"> <strong> Note </strong> If you are using the MKAIPViewController, inApp Purchases are built in. The only thing not done by the MKAIPViewController is restoring purchases. </p></p>
+
+<p> <strong> Custom Store Front Usage </strong></p>
+
+<p> If you use your own store front instead of the MKIAPViewController, MKIAPContoller can still be used to process your transactions. Transactions can be montitored using code blocks or the MKIAPContollerDelegate. </p>
+
+<p> When using code blocks you need to open and close the store. Use the <a href="#//api/name/openStore">openStore</a> and <a href="#//api/name/closeStore">closeStore</a> class methods to do this. Opening and closeing only needs to be done once. After the <a href="#//api/name/openStore">openStore</a> method is called, you can process as many transactions as you need. It is important to close the store once all transactions are complete. The <a href="#//api/name/closeStore">closeStore</a> class method closes out the store kit delegates and observers as well as releases the MKIAPController. </p>
+
+<p> Review the source code of <a href="MKIAPViewController.html">MKIAPViewController</a> and <a href="MKTableCellIAP.html">MKTableCellIAP</a> to see examples on using code blocks for your inApp purchases. </p>
+
+<p> To use the MKIAPControllerDelegate to monitor transactions, you need to create an instance of MKIAPController. Ensure that your store front conforms to the <a href="../Protocols/MKIAPDelegate.html">MKIAPDelegate</a> protocols. </p>
+
+<p> <strong> Using the Singleton </strong></p>
+
+<p> <a href="MKIAPController.html">MKIAPController</a> offers a singleton instance if need. You can get the singleton by calling the <a href="#//api/name/sharedStore">sharedStore</a> class method. The singleton instance can work with both code blocks or the MKIAPControllerDelegate. <p class="warning"> <strong> Note </strong> The <a href="#//api/name/openStore">openStore</a> and <a href="#//api/name/closeStore">closeStore</a> class methods opperate off the singleton instance. The <a href="#//api/name/closeStore">closeStore</a> method will remove the singleton instance from memory. </p></p>
+
+<p> <strong> Required Classes </strong> <ul><li> <a href="MKObject.html">MKObject</a></li></ul></p>
+
+<p> <strong> Required Frameworks </strong> <ul><li> Foundation </li><li> StoreKit </li><li> UIKit </li></ul></p>
 
 				</div>
 				
@@ -58,6 +78,36 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/initWithDelegate:">- initWithDelegate:</a></code>
 		<span class="tooltip"> Returns an intialized instance of MKIAPController. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sharedStore">+ sharedStore</a></code>
+		<span class="tooltip"> Returns the singleton instance of MKIAPController. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Store Control</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/openStore">+ openStore</a></code>
+		<span class="tooltip"> Creates a singleton instance and prepares the <a href="MKIAPController.html">MKIAPController</a> for transactions using code blocks. This method is required to called before making any requests that use code blocks. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/closeStore">+ closeStore</a></code>
+		<span class="tooltip"> Clears store kit observers and delegates, and removes <a href="MKIAPController.html">MKIAPController</a> singleton instance from memory. Ensure that this method is not called until all the code blocks have been completed. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/storeIsOpen"> storeIsOpen</a></code>
+		<span class="tooltip"> Tells if a store is open or not. <code>YES</code> if a store has been opened, <code>NO&apos; if the store is closed Default is</code> NO`. </span>
 	</span>
 	
 </li>
@@ -161,6 +211,70 @@
 				
 				<div class="section section-methods">
 					<h2 class="subtitle subtitle-methods">Class Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/closeStore" title="closeStore"></a>
+	<h3 class="subsubtitle method-title">closeStore</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Clears store kit observers and delegates, and removes <a href="MKIAPController.html">MKIAPController</a> singleton instance from memory. Ensure that this method is not called until all the code blocks have been completed. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)closeStore</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKIAPController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/openStore" title="openStore"></a>
+	<h3 class="subsubtitle method-title">openStore</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Creates a singleton instance and prepares the <a href="MKIAPController.html">MKIAPController</a> for transactions using code blocks. This method is required to called before making any requests that use code blocks. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)openStore</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKIAPController.h</code><br />
+	</div>				
+	
+	
+</div>
 					
 					<div class="section-method">
 	<a name="//api/name/productsRequestWithIdentifiers:response:" title="productsRequestWithIdentifiers:response:"></a>
@@ -310,6 +424,38 @@
 		<p> The MKRestoreCompletionBlock is in this format : <code>^(SKPaymentTransaction *transaction, NSError *error)</code></p>
 		
 	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKIAPController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/sharedStore" title="sharedStore"></a>
+	<h3 class="subsubtitle method-title">sharedStore</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Returns the singleton instance of MKIAPController. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (id)sharedStore</code></div>
+	
+	
+	
+	
+	
 	
 	
 	
@@ -652,6 +798,38 @@
 	
 </div>
 					
+					<div class="section-method">
+	<a name="//api/name/storeIsOpen" title="storeIsOpen"></a>
+	<h3 class="subsubtitle method-title">storeIsOpen</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Tells if a store is open or not. <code>YES</code> if a store has been opened, <code>NO&apos; if the store is closed Default is</code> NO`. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (assign, readonly) BOOL storeIsOpen</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKIAPController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
 				</div>
 				
 				
@@ -665,7 +843,7 @@
 			<div id="footer">
 				<hr />
 				<div class="footer-copyright">
-					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-08-24)</span><br />
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-10-16)</span><br />
 					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
 				</div>
 			</div>

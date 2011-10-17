@@ -25,11 +25,11 @@
     self = [super initWithType:MKTableCellTypeNone reuseIdentifier:reuseIdentifier];
     if (self) {
         CGRect switchFrame = CGRectMake(198.3, 10.0, 172.0, 21.0);
-		CGRect labelFrame = CGRectMake(10.0, 11.0, 200.0, 21.0);
+		//CGRect labelFrame = CGRectMake(10.0, 11.0, 150.0, 21.0);
 		
         mCellView = [[MKView alloc] initWithCell:self];
         
-		mTheLabel = [[UILabel alloc] initWithFrame:labelFrame];
+		mTheLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 		mTheLabel.textAlignment = UITextAlignmentLeft;
 		mTheLabel.adjustsFontSizeToFitWidth = YES;
 		mTheLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;

@@ -24,6 +24,7 @@
 		_theTextView = [[UITextView alloc] initWithFrame:textViewFrame];
 		_theTextView.editable = YES;
 		_theTextView.delegate = self;
+        _theTextView.backgroundColor = CLEAR;
 		_theTextView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
 		
 		[self.contentView addSubview:_theTextView];

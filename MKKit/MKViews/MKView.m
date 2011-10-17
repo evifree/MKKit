@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 10/9/10.
-//  Copyright 2010 Matt King. All rights reserved.
+//  Copyright 2010-2010 Matt King. All rights reserved.
 //
 
 #import "MKView.h"
@@ -14,7 +14,7 @@
 
 @implementation MKView
 
-@synthesize x, y, width, height, controller=mController, delegate=mDelegate;
+@synthesize x, y, width, height, gradient=mGradient, controller=mController, delegate=mDelegate;
 
 #pragma mark - Initalizer
 
@@ -31,7 +31,8 @@
         self.width = frame.size.width;
         self.height = frame.size.height;
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeView) name:MK_VIEW_SHOULD_REMOVE_NOTIFICATION object:nil];
+        MKViewShouldRemoveNotification = @"MKViewShouldRemoveNotification";
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeView) name:MKViewShouldRemoveNotification object:nil];
         
         MKViewFlags.isHeaderView = NO;
     }
@@ -58,6 +59,12 @@
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, lHeight);
 }
 
+- (void)setGradient:(MKGraphicsStructures *)grade {
+    mGradient = [grade retain];
+    MKViewFlags.usesGradient = YES;
+    [self setNeedsDisplay];
+}
+
 #pragma mark Getters
 
 - (CGFloat)x {
@@ -74,6 +81,38 @@
 
 - (CGFloat)height {
     return self.frame.size.height;
+}
+
+#pragma mark - Drawing
+
+- (void)drawRect:(CGRect)rect {
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetAllowsAntialiasing(context, YES);
+
+    if (MKViewFlags.isHeaderView && MKViewFlags.isHeaderPlain) {
+        CGColorRef topColor = MK_COLOR_HSB(345.0, 2.0, 99.0, 1.0).CGColor;
+        CGColorRef bottomColor = MK_COLOR_HSB(345.0, 2.0, 86.0, 1.0).CGColor;
+        
+        CGContextSaveGState(context);
+        drawGlossAndLinearGradient(context, rect, topColor, bottomColor);
+        CGContextSaveGState(context);
+    }
+    if (MKViewFlags.isIconMask) {
+        CGColorRef bottomColor = MK_COLOR_HSB(354.0, 1.0, 99.0, 1.0).CGColor;
+        CGColorRef topColor = MK_COLOR_HSB(354.0, 1.0, 99.0, 1.0).CGColor;
+        
+        if (MKViewFlags.usesGradient) {
+            bottomColor = self.gradient.bottom.CGColor;
+            topColor = self.gradient.top.CGColor;
+        }
+        
+        CGContextSaveGState(context);
+        CGContextTranslateCTM(context, 0.0, rect.size.height);
+        CGContextScaleCTM(context, 1.0, -1.0);
+        CGContextClipToMask(context, rect, self.image.CGImage);
+        drawLinearGradient(context, rect, topColor, bottomColor);
+        CGContextRestoreGState(context);
+    }
 }
 
 #pragma mark - Showing the View
@@ -197,10 +236,20 @@
 
 #pragma mark - Memory Management
 
+- (void)didRelease {
+    //For use by catagories
+}
+
 - (void)dealloc {
-    [mController release];
+    [self didRelease];
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MK_VIEW_SHOULD_REMOVE_NOTIFICATION object:nil];
+    mController = nil;
+    
+    if (mGradient) {
+        [mGradient release];
+    }
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MKViewShouldRemoveNotification object:nil];
     
 	[super dealloc];
 }
@@ -257,22 +306,6 @@ UILabel *mTitleLabel;
     return view;
 }
 
-#pragma mark - Drawing
-
-- (void)drawRect:(CGRect)rect {
-    if (MKViewFlags.isHeaderView && MKViewFlags.isHeaderPlain) {
-        CGContextRef context = UIGraphicsGetCurrentContext();
-        CGContextSetAllowsAntialiasing(context, YES);
-    
-        CGColorRef topColor = MK_COLOR_HSB(345.0, 2.0, 99.0, 1.0).CGColor;
-        CGColorRef bottomColor = MK_COLOR_HSB(345.0, 2.0, 86.0, 1.0).CGColor;
-        
-        CGContextSaveGState(context);
-        drawGlossAndLinearGradient(context, rect, topColor, bottomColor);
-        CGContextSaveGState(context);
-    }
-}
-
 #pragma mark - Accessor Methods
 
 #pragma mark Setters
@@ -287,10 +320,51 @@ UILabel *mTitleLabel;
     return mTitleLabel;
 }
 
-#pragma mark - Memory Managament
+@end
 
-- (void)dealloc {
-    [super dealloc];
+static const char *ImageTag = "imageTag";
+
+@implementation MKView (IconMask) 
+
+@dynamic image;
+
+#pragma mark - Initalizer
+
+- (id)initWithImage:(UIImage *)image gradient:(MKGraphicsStructures *)aGradient {
+    self = [super initWithFrame:CGRectMake(0.0, 0.0, image.size.width, image.size.height)];
+    if (self) {
+        self.backgroundColor = CLEAR;
+        self.opaque = YES;
+        self.alpha = 1.0;
+        
+        self.image = image;
+        
+        MKViewFlags.usesGradient = YES;
+        self.gradient = aGradient;
+        
+        mShouldRemoveView = NO;
+        MKViewFlags.isIconMask = YES;
+    }
+    return self;
+}
+
+#pragma mark - Accessor Methods
+#pragma mark setters
+- (void)setImage:(UIImage *)image {
+    objc_setAssociatedObject(self, ImageTag, image, OBJC_ASSOCIATION_RETAIN);
+    [self setNeedsDisplay];
+}
+
+#pragma mark getters
+
+- (UIImage *)image {
+    return objc_getAssociatedObject(self, ImageTag);
+}
+
+#pragma mark - Memory Managment
+
+- (void)didRelease {
+    objc_removeAssociatedObjects(self);
 }
 
 @end

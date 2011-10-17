@@ -3,17 +3,18 @@
 //  MKKit
 //
 //  Created by Matthew King on 1/15/10.
-//  Copyright 2010 Matt King. All rights reserved.
+//  Copyright 2010-2011 Matt King. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import "MKObject.h"
 
 /**---------------------------------------------------------------------------------------------------
- The MKStrings class formats NSDate and NSNumber objects into readable strings. This class also returns
- string represtions of directory paths.
------------------------------------------------------------------------------------------------------*/
+ The MKStrings class creates specaillty strings such as number and date formats, paths, and UUIDs. You 
+ have the choice to use instance methods or class methods for all strings.
+ -----------------------------------------------------------------------------------------------------*/
 
-@interface MKStrings : NSObject {
+@interface MKStrings : MKObject {
 	
 }
 
@@ -106,5 +107,18 @@
 
 /** Returns the path to the applications document directory */
 - (NSString *)documentsDirectoryPath;
+
+/** Returns the path to the applications documents directory */
++ (NSString *)stringWithDocumentsDirectoryPath; 
+
+///-----------------------------------------------------------------------
+/// @name UUID
+///-----------------------------------------------------------------------
+
+/** Creates a new UUID and retruns it as a String */
++ (NSString *)UUIDString;
+
+/** Creates a new UUID and returns it as a String */
+- (NSString *)stringFromUUID;
 
 @end
