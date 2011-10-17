@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 8/2/11.
-//  Copyright 2011 Matt King. All rights reserved.
+//  Copyright 2010-2011 Matt King. All rights reserved.
 //
 
 #import "MKElementAccentView.h"
@@ -22,7 +22,7 @@ CGMutablePathRef createPathForSingleCell(CGRect rect);
         self.backgroundColor = CLEAR;
         self.opaque = YES;
         self.alpha = 1.0;
-        self.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
+        self.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
         
         mPosition = position;
     }

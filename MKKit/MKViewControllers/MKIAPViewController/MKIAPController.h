@@ -19,6 +19,8 @@ typedef void (^MKRestoreCompletionBlock)(SKPaymentTransaction *transaction, NSEr
 @protocol MKIAPDelegate;
 
 /**----------------------------------------------------------------------------------------------------------------
+ *Overview*
+ 
  The MKIAPController executes inApp Purchases for you. This class is used by the MKIAPViewController. It can be
  used by itself as well, if you want to create your own store front.
  
@@ -27,11 +29,47 @@ typedef void (^MKRestoreCompletionBlock)(SKPaymentTransaction *transaction, NSEr
  
  @warning *Note* If you are using the MKAIPViewController, inApp Purchases are built in. The only thing not done by 
  the MKAIPViewController is restoring purchases.
+ 
+ *Custom Store Front Usage*
+ 
+ If you use your own store front instead of the MKIAPViewController, MKIAPContoller can still be used to process
+ your transactions. Transactions can be montitored using code blocks or the MKIAPContollerDelegate. 
+ 
+ When using code blocks you need to open and close the store. Use the openStore and closeStore class methods to do this.
+ Opening and closeing only needs to be done once. After the openStore method is called, you can process as many transactions
+ as you need. It is important to close the store once all transactions are complete. The closeStore class method
+ closes out the store kit delegates and observers as well as releases the MKIAPController.
+ 
+ Review the source code of MKIAPViewController and MKTableCellIAP to see examples on using code blocks for your
+ inApp purchases.
+ 
+ To use the MKIAPControllerDelegate to monitor transactions, you need to create an instance of MKIAPController.
+ Ensure that your store front conforms to the MKIAPDelegate protocols.
+ 
+ *Using the Singleton*
+ 
+ MKIAPController offers a singleton instance if need. You can get the singleton by calling the sharedStore class method.
+ The singleton instance can work with both code blocks or the MKIAPControllerDelegate. 
+ 
+ @warning *Note* The openStore and closeStore class methods opperate off the singleton instance. The closeStore method
+ will remove the singleton instance from memory.
+ 
+ *Required Classes*
+ 
+ * MKObject
+ 
+ *Required Frameworks*
+ 
+ * Foundation
+ * StoreKit
+ * UIKit
 -----------------------------------------------------------------------------------------------------------------*/
 
 @interface MKIAPController : MKObject <SKPaymentTransactionObserver, SKProductsRequestDelegate, SKRequestDelegate> {
+@private
     id mDelegate;
     BOOL mIsPurchaseRequest;
+    BOOL mIsOpen;
 }
 
 ///----------------------------------------------------------------
@@ -44,6 +82,33 @@ typedef void (^MKRestoreCompletionBlock)(SKPaymentTransaction *transaction, NSEr
  @param delegate the instances delegate
 */
 - (id)initWithDelegate:(id<MKIAPDelegate>)delegate;
+
+/**
+ Returns the singleton instance of MKIAPController.
+*/
++ (id)sharedStore;
+
+///---------------------------------------------------------------
+/// @name Store Control
+///---------------------------------------------------------------
+
+/**
+ Creates a singleton instance and prepares the MKIAPController for transactions using code blocks.
+ This method is required to called before making any requests that use code blocks.
+*/
++ (void)openStore;
+
+/**
+ Clears store kit observers and delegates, and removes MKIAPController singleton instance from 
+ memory. Ensure that this method is not called until all the code blocks have been completed.
+*/
++ (void)closeStore;
+
+/** 
+ Tells if a store is open or not. `YES` if a store has been opened, `NO' if the store is closed 
+ Default is `NO`.
+*/
+@property (assign, readonly) BOOL storeIsOpen;
 
 ///----------------------------------------------------------------
 /// @name Product Requests

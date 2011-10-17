@@ -3,28 +3,63 @@
 //  MKKit
 //
 //  Created by Matthew King on 5/28/11.
-//  Copyright 2011 Matt King. All rights reserved.
+//  Copyright 2010-2011 Matt King. All rights reserved.
 //
 
 #import "MKIAPController.h"
 
 @interface MKIAPController ()
 
-- (id)initWithIdentifiers:(NSSet *)identifiers response:(MKProductResponseBlock)response;
-- (id)initWithIdentifiers:(NSSet *)identifiers completion:(MKPurchaseCompletionBlock)completion;
-- (id)initWithCompletion:(MKRestoreCompletionBlock)completion;
-
 - (void)completeTransaction:(SKPaymentTransaction *)transaction;
 - (void)restoreTransaction:(SKPaymentTransaction *)transaction;
 - (void)failedTransaction:(SKPaymentTransaction *)transaction;
-
-- (void)onRelease;
 
 @end
 
 @implementation MKIAPController
 
-@synthesize delegate=mDelegate, productResponse, purchaseCompleteBlock, restoreCompleteBlock;
+@synthesize delegate=mDelegate, productResponse, purchaseCompleteBlock, restoreCompleteBlock, storeIsOpen=mIsOpen;
+
+MKIAPController *mSharedStore = nil;
+
+#pragma mark - Singleton
+
++ (id)sharedStore {
+    @synchronized(self) {
+        if (!mSharedStore) {
+            mSharedStore = [[[self class] alloc] init];
+        }
+    }
+    return mSharedStore;
+}
+
++ (id)allocWithZone:(NSZone *)zone {
+    @synchronized(self) {
+        if (mSharedStore == nil) {
+            mSharedStore = [super allocWithZone:zone];
+            return mSharedStore;
+        }
+    }
+    return nil;
+}
+
+#pragma mark - Opening And Closing
+
++ (void)openStore {
+    mSharedStore = [MKIAPController sharedStore];
+    mSharedStore->mIsOpen = YES;
+}
+
++ (void)closeStore {
+    if (mSharedStore) {
+        mSharedStore->mIsOpen = NO;
+        
+        [mSharedStore release];
+        mSharedStore = nil;
+        
+        [self release];
+    }
+}
 
 #pragma mark - Initalizer
 
@@ -36,90 +71,53 @@
     return  self;
 }
 
-- (id)initWithIdentifiers:(NSSet *)identifiers response:(MKProductResponseBlock)response {
-    self = [super init];
-    if (self) {
-        self.productResponse = response;
-        mIsPurchaseRequest = NO;
-        
-        SKProductsRequest *request = [[[SKProductsRequest alloc] initWithProductIdentifiers:identifiers] autorelease];
-        request.delegate = self;
-        [request start];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onRelease) name:MK_REMOVE_BLOCK_OBJECT_NOTIFICATION object:nil];
-    }
-    return self;
-}
+#pragma mark - Accessor Methods
 
-- (id)initWithIdentifiers:(NSSet *)identifiers completion:(MKPurchaseCompletionBlock)completion {
-    self = [super init];
-    if (self) {
-        self.purchaseCompleteBlock = completion;
-        mIsPurchaseRequest = YES;
-        
-        SKProductsRequest *request = [[[SKProductsRequest alloc] initWithProductIdentifiers:identifiers] autorelease];
-        request.delegate = self;
-        [request start];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onRelease) name:MK_REMOVE_BLOCK_OBJECT_NOTIFICATION object:nil];
-    }
-    return self;
+- (BOOL)storeIsOpen {
+    return mIsOpen;
 }
-
-- (id)initWithCompletion:(MKRestoreCompletionBlock)completion {
-    self = [super init];
-    if (self) {
-        self.restoreCompleteBlock = completion;
-        
-        [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
-        [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onRelease) name:MK_REMOVE_BLOCK_OBJECT_NOTIFICATION object:nil];
-    }
-    return self;
-}
-
+ 
 #pragma mark - Requests
 
 + (void)productsRequestWithIdentifiers:(NSSet *)identifiers response:(MKProductResponseBlock)response {
-    [self release];
-    
-    self = [[self alloc] initWithIdentifiers:identifiers response:response];
+    if (mSharedStore.storeIsOpen) {
+        mSharedStore.productResponse = response;
+        [mSharedStore productsRequestWithIdentifiers:identifiers];
+    }
 }
 
 - (void)productsRequestWithIdentifiers:(NSSet *)identifiers {
     mIsPurchaseRequest = NO;
     
     SKProductsRequest *request = [[[SKProductsRequest alloc] initWithProductIdentifiers:identifiers] autorelease];
-    request.delegate = [self retain];
+    request.delegate = self;
     [request start];
 }
 
 #pragma mark - Purchasing
 
 + (void)purchaseRequestWithIdentifiers:(NSSet *)identifiers completion:(MKPurchaseCompletionBlock)completion {
-    [self release];
-    
-    self = [[self alloc] initWithIdentifiers:identifiers completion:completion];
+    if (mSharedStore.storeIsOpen) {
+        mSharedStore.purchaseCompleteBlock = completion;
+        [mSharedStore purchaseRequestWithIdentifiers:identifiers];
+    }
 }
 
 - (void)purchaseRequestWithIdentifiers:(NSSet *)identifiers {
     mIsPurchaseRequest = YES;
     
     SKProductsRequest *request = [[[SKProductsRequest alloc] initWithProductIdentifiers:identifiers] autorelease];
-    request.delegate = [self retain];
+    request.delegate = self;
     [request start];
 }
 
 #pragma mark - Restoring
 
 + (void)restorePurchase:(MKRestoreCompletionBlock)completion {
-    [self release];
-    
-    MKIAPController *controller = [[MKIAPController alloc] init];
-    controller.restoreCompleteBlock = completion;
-    [controller restorePurchases];
-    [controller autorelease];
+    if (mSharedStore.storeIsOpen) {
+        mSharedStore.restoreCompleteBlock = completion;
+        [mSharedStore restorePurchases];
+    }
 }
 
 - (void)restorePurchases {
@@ -137,7 +135,6 @@
         if ([mDelegate respondsToSelector:@selector(didRecieveResponse:)]) {
             [mDelegate didRecieveResponse:response];
         }
-        [self autorelease];
     }
     
     if (mIsPurchaseRequest) {
@@ -188,8 +185,8 @@
 }
 
 - (void)paymentQueue:(SKPaymentQueue *)queue restoreCompletedTransactionsFailedWithError:(NSError *)error {
-	self.restoreCompleteBlock(nil, error);
-    
+    self.restoreCompleteBlock(nil, error);
+	    
     if ([mDelegate respondsToSelector:@selector(didError:)]) {
         [mDelegate didError:error];
     }
@@ -234,27 +231,11 @@
     
     self.purchaseCompleteBlock(transaction, transaction.error);
 }
-
-#pragma mark - Memory Managment
-
-- (void)onRelease {
-    BOOL respond = YES;
-    
-    if ([self.objectDelegate respondsToSelector:@selector(object:shouldObserveNotificationNamed:)]) {
-        if (![self.objectDelegate object:self shouldObserveNotificationNamed:MK_REMOVE_BLOCK_OBJECT_NOTIFICATION]) {
-            respond = NO;
-        }
-    }
-    
-    if (respond) {
-        [self release];
-    }
-}
-
+ 
 - (void)dealloc {
+    NSLog(@"release");
     [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MK_REMOVE_BLOCK_OBJECT_NOTIFICATION object:nil];
-    
+        
     [productResponse release];
     [purchaseCompleteBlock release];
     [restoreCompleteBlock release];

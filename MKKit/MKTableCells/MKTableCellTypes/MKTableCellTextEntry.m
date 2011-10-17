@@ -93,46 +93,47 @@
 #pragma mark -
 #pragma mark Validation Methods
 
-- (void)validateWithType:(MKValidationType)aType {
+- (BOOL)validatedWithType:(MKValidationType)aType {
+    BOOL validated = YES;
+    
+    NSMutableDictionary *errorInfo = [[NSMutableDictionary alloc] initWithCapacity:3];
+    [errorInfo setObject:self.theTextField forKey:MKValidatorField];
+    if (self.theTextField.text) {
+        [errorInfo setObject:self.theTextField.text forKey:MKValidatorEnteredText];
+    }
+    
 	if (aType == MKValidateIsaNumber) {
 		if ([validator respondsToSelector:@selector(inputIsaNumber:)]) {
 			if (![validator inputIsaNumber:self.theTextField.text]) {
-				mValidationError = [NSError errorWithDomain:ERROR_DESCRIPTION_701 code:ERROR_CODE_701 userInfo:nil];
+				mValidationError = [NSError errorWithDomain:ERROR_DESCRIPTION_701 code:ERROR_CODE_701 userInfo:errorInfo];
+                validated = NO;
 			}
 		}
 	}
     if (aType == MKValidateIsaSetLength) {
         if ([validator respondsToSelector:@selector(inputIsaSetLength:)]) {
             if (![validator inputIsaSetLength:self.theTextField.text]) {
-                mValidationError = [NSError errorWithDomain:ERROR_DESCRIPTION_703(mValidatorTestStringLength) code:ERROR_CODE_703 userInfo:nil];
+                mValidationError = [NSError errorWithDomain:ERROR_DESCRIPTION_703(mValidatorTestStringLength) code:ERROR_CODE_703 userInfo:errorInfo];
+                validated = NO;
             }
         }
     }
 	if (aType == MKValidateHasLength) {
 		if ([validator respondsToSelector:@selector(inputHasLength:)]) {
 			if (![validator inputHasLength:self.theTextField.text]) {
-				mValidationError = [NSError errorWithDomain:ERROR_DESCRIPTION_702 code:ERROR_CODE_702 userInfo:nil];
-			}
+				mValidationError = [NSError errorWithDomain:ERROR_DESCRIPTION_702 code:ERROR_CODE_702 userInfo:errorInfo];
+                validated = NO;
+            }
 		}
 	}
-	
-	if (mValidationError) {
-		[mValidationError retain];
-		
-        MKControl *icon = [[MKControl alloc] initWithType:MKTableCellAccessoryWarningIcon];
-        [icon completedAction: ^ (MKAction action) {
-            if (action == MKActionTouchDown) {
-                [self warningIcon:icon];
-            }
-        }];
-        
-        self.accessoryView = icon;
-        [icon release];
+    
+    [errorInfo release];
+    
+    if ([delegate respondsToSelector:@selector(cellDidValidate:forKey:indexPath:)]) {
+        [delegate cellDidValidate:mValidationError forKey:self.key indexPath:self.indexPath];
     }
     
-    if ([delegate respondsToSelector:@selector(cellDidValidate:forKey:)]) {
-        [delegate cellDidValidate:mValidationError forKey:self.key];
-    }
+    return validated;
 }
 
 #pragma mark -
@@ -160,9 +161,6 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField {		
 	if ([delegate respondsToSelector:@selector(valueDidChange:forKey:)]) {
 		[delegate valueDidChange:textField.text forKey:self.key];
-	}
-	if (mValidating) {
-		[self validateWithType:self.validationType];
 	}
 }
 

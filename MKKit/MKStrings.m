@@ -123,7 +123,7 @@
     rtn = (NSString*)CFUUIDCreateString(nil, uuidObj);
     CFRelease(uuidObj);
     
-    return rtn;
+    return [rtn autorelease];
 }
 
 + (NSString *)UUIDString {
@@ -135,7 +135,7 @@
     
     [self autorelease];
     
-    return rtn;
+    return [rtn autorelease];
 }
 
 #pragma mark -

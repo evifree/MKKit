@@ -61,6 +61,8 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 @class MKBadgeCellView, MKView, MKSwipeCellView, MKTableCellAccentView;
 
 /**-------------------------------------------------------------------------------------
+ *Overview*
+ 
  An MKTableCell is a subclass UITableViewCell. MKTableCell is designed as a superClass for 
  several customized sublcasses. The MKTableCell itself creates a few basic Table Cells:
  
@@ -72,6 +74,8 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
  It than removes the elements of that cell and replaces them its own. If you use the UTableCellView 
  intializer instead, be sure to set the style UITableViewCellStyleDefault to keep unneeded subviews from being 
  part of the cell.
+ 
+ *Cell Accessories*
  
  MKTableCell objects have some addtional accessoy types built in:
  
@@ -89,9 +93,40 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
  @warning *Note* If the indexPath property is not set the delegate will pass 'nil' as the 
  indexPath parameter.
  
+ *Validating User Input*
+ 
+ MKTableCell works with MKValidator to validate user input. To validate input of a form, set
+ the `validationType` property of each cell that will be validated. You can then use the table
+ validation methods of MKValidator to validate the cells. If you wish to use your own validation
+ methods, set a class to the `validator` property of MKTableCell. The class you use must conform
+ to the MKInputValidation Protocol. See MKValidator and MKInputValidation for more information.
+ 
+ *Cell Delegate*
+ 
  The MKTableCellDelegate Protocol is adopted by MKTableCell.
  
  @see MKTableCellDelegate
+ 
+ *Required Classes*
+ 
+ * MKControl
+ * MKDeffinitions
+ * MKElementAccentView
+ * MKMacros
+ * MKStrings
+ * MKSwipeCellView
+ * MKTableCellAccentView
+ * MKTableCellBadgeView
+ * MKView
+ 
+ *Required Libraries*
+ 
+ * libobjc
+ 
+ *Required Frameworks*
+ 
+ * Foundation
+ * UIKit
 ----------------------------------------------------------------------------------------*/
 
 @interface MKTableCell : UITableViewCell {
@@ -120,7 +155,8 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 /// @name Initalizing
 ///---------------------------------------------------------------------------------------
 
-/** Returns an intalized MKTableCell. 
+/** 
+ Returns an intalized MKTableCell. 
  
  @warning *Note* If you are using one of the MKTableCell subclasses or subclassing pass MKTableCellTypeNone,
  or a type designated for that subclass, for the cellType parameter.
@@ -171,7 +207,7 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
  
  @warning *Required for delegate methods that return have an NSIndexPath parameter.*
 */
-@property (nonatomic, assign) NSIndexPath *indexPath;
+@property (nonatomic, retain) NSIndexPath *indexPath;
 
 ///---------------------------------------------------------------------------------------
 /// @name Elements
@@ -202,14 +238,15 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
  */
 @property (nonatomic, retain) UIImage *iconMask;
 
-/** A bagde that is displayed on the left hand side of the cell. A badge can
+/** 
+ A bagde that is displayed on the left hand side of the cell. A badge can
  be created by using the `MKTableCellBadgeMake(CGColorRef color, CFStringRef text)`
  function
 */
 @property (nonatomic, assign) MKTableCellBadge badge;
 
 /**
- Adds a badge to the cell.
+ Adds a badge to the cell in the given rect.
  
  @param text the text to display on the badge.
  
@@ -258,33 +295,45 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 /// @name Input Validation
 ///---------------------------------------------------------------------------------------
 
-/** Sets the validation type to preform. 
+/** 
+ Sets the validation type to preform. `MKValidator` will look for this property when
+ using the table view validation methods. Setting this property will automatically set
+ the `MKValidator` singlton as the cells `validator`. If you want to use your own validator,
+ you need to set the `validatior` property.
  
  @see validatior
  
- @see MKInputValidation 
+ @see MKValidator 
 */
 @property (nonatomic, assign) MKValidationType validationType;
 
 /** the lenght to compare to if using MKValidateIsaSetLenght */
 @property (nonatomic, assign) NSInteger validatorTestStringLength;
 
-/** YES is the cell validates user input, NO if it does not.*/
+/** `YES` is the cell validates user input, `NO` if it does not. Default is `NO`.*/
 @property (nonatomic, assign, readonly) BOOL validating;
 
 ///--------------------------------------------------------------------------------------
 /// @name Validation Methods
 ///--------------------------------------------------------------------------------------
 
-/** Tells the validator to valiate the input using the specified type. If you set a validationType
- other than `MKValidationNone` you will not need to call this method directly.
+/** 
+ @warning *This method has been deprecated. Use `validtedWithType:` instead.*
+*/
+- (void)validateWithType:(MKValidationType)aType MK_DEPRECATED_0_8;
+
+/** 
+ Tells the validator to valiate the input using the specified type. If you set a `validationType`
+ other than `MKValidationNone` you will not need to call this method directly. 
+ 
+ @return `YES` if validation passes, `NO` if not.
  
  @warning *Note* The default implentation of this method does nothing. Subclasses need to overide
  it to run a validation.
  
  @see MKInputValidation
 */
-- (void)validateWithType:(MKValidationType)aType;
+- (BOOL)validatedWithType:(MKValidationType)aType;
 
 ///---------------------------------------------------------------------------------------
 /// @name Gesture Recognition
@@ -309,7 +358,8 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 */
 @property (assign) id<MKTableCellDelegate> delegate;
 
-/** The MKInputValidator. This is automatically assigned when a validationType is set. 
+/** 
+ The `MKInputValidation`. This is automatically assigned when a `validationType` is set. 
  
  @warning *Note* If you want to use one of your own objects as the validator set the validation type to
  `MKValidationNone` and assign your own object to this property. The object you assign must adopt the
@@ -389,7 +439,16 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 */
 - (void)layoutCell;
 
-/** Yes if the secondary element should not atomically adjust its size. */
+/**
+ Yes if the primary element should not atomically adjust its size. 
+ Default is `NO`.
+*/
+@property (nonatomic, assign) BOOL pinnedPrimaryElement;
+
+/** 
+ Yes if the secondary element should not atomically adjust its size. 
+ Default is `NO`.
+*/
 @property (nonatomic, assign) BOOL pinnedSecondaryElement;
 
 ///-----------------------------------
@@ -405,6 +464,17 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 - (void)addPrimaryElement:(UIView *)element;
 
 /**
+ Adds a Primary Element to the cell that is placed in the given
+ rect. Using this method will set the pinnedPrimaryElement 
+ property to `YES`.
+ 
+ @param element the view to add to the cell
+ 
+ @param rect the rect of the view
+*/
+- (void)addPrimaryElement:(UIView *)element inRect:(CGRect)rect;
+
+/**
  Adds a Secondary Element to the cell. The secondary element 
  appears on the right side of the cell.
  
@@ -414,6 +484,8 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 
 /**
  Adds a secondary element to the cell is that fills the desired rect.
+ Using this method will set the pinnedSecondary element Property to 
+ `YES`.
  
  @param element the view to add to the cell.
  

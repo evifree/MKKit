@@ -157,13 +157,28 @@
 ///---------------------------------------------------------------------------------------
 
 /**
- Called when a cell validates its input.
+ @warning *This method has been deprecated. Use cellDidValidate:forKey:indexPath: instead.*
+ */
+- (void)cellDidValidate:(NSError *)error forKey:(NSString *)aKey MK_DEPRECATED_0_8;
+
+/**
+ Called when a cell validates its input. If there is a validation error, the error will be
+ passed through this method. The userInfo dictionay of the error contains addtional information
+ about the error. The error information can be accessed through the following keys:
  
- @param error the validation error
+ * `MKValidatorField` : The input field that was validated.
+ * `MKValidatorEnteredText` : The text that was entered into the field.
+ 
+ @param error the validation error. 
  
  @param aKey a unique NSString that identifies the cell.
-*/
-- (void)cellDidValidate:(NSError *)error forKey:(NSString *)aKey;
+ 
+ @param indexPath the indexPath of the cell.
+ 
+ @warning *Note* Index paths are not automatically set. If the indexPath property is
+ not set `nil` will be passed.
+ */
+- (void)cellDidValidate:(NSError *)error forKey:(NSString *)aKey indexPath:(NSIndexPath *)indexPath;
 
 @end
 

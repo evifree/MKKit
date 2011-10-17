@@ -25,6 +25,7 @@
         CGRect labelRect = CGRectMake(10.0, 5.0, 300.0, 21.0);
 		
 		mTheLabel = [[UILabel alloc] initWithFrame:labelRect];
+        mTheLabel.backgroundColor = CLEAR;
 		mTheLabel.textAlignment = UITextAlignmentLeft;
 		mTheLabel.adjustsFontSizeToFitWidth = NO;
 		mTheLabel.minimumFontSize = 10.0;

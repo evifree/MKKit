@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 10/9/10.
-//  Copyright 2010 Matt King. All rights reserved.
+//  Copyright 2010-2010 Matt King. All rights reserved.
 //
 
 #import "MKView.h"
@@ -242,8 +242,12 @@
 
 - (void)dealloc {
     [self didRelease];
-    [mController release];
-    [mGradient release];
+    
+    mController = nil;
+    
+    if (mGradient) {
+        [mGradient release];
+    }
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MKViewShouldRemoveNotification object:nil];
     

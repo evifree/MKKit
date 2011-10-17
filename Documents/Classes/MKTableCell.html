@@ -36,15 +36,31 @@
 				<div class="section section-overview">
 					<h2 class="subtitle subtitle-overview">Overview</h2>
 					
+<p> <strong> Overview </strong></p>
+
 <p> An <a href="MKTableCell.html">MKTableCell</a> is a subclass UITableViewCell. <a href="MKTableCell.html">MKTableCell</a> is designed as a superClass for several customized sublcasses. The <a href="MKTableCell.html">MKTableCell</a> itself creates a few basic Table Cells: <ul><li> <code>MKTableCellTypeNone</code>: A blank table cell this to be used when implementing on the subclasses. </li><li> <code>MKTableCellTypeDescription</code>: A table cell that has two labels side by side. </li><li> <code>MKTableCellTypeLabel</code>: A cell with label centered on it. </li></ul></p>
 
 <p> When a <a href="MKTableCell.html">MKTableCell</a> is created it intializes an UITableViewCell with a style of UITableViewCellStyleDefault. It than removes the elements of that cell and replaces them its own. If you use the UTableCellView intializer instead, be sure to set the style UITableViewCellStyleDefault to keep unneeded subviews from being part of the cell. </p>
+
+<p> <strong> Cell Accessories </strong></p>
 
 <p> <a href="MKTableCell.html">MKTableCell</a> objects have some addtional accessoy types built in: <ul><li> <code>MKTableCellAccessoryNone</code>: No accessory. </li><li> <code>MKTableCellAccessoryActivity</code>: Displays an activity indicator as the cells accessory. </li><li> <code>MKTableCellAccessoryAdd</code>: Displays a round green button with a plus sign as the cells accessory. </li><li> <code>MKTableCellAccessoryInfoButton</code>: Displays an info button as the cells accessory. </li><li> <code>MKTableCellAccessorySubtract</code>: Displays an round red button with a minus sign as the cells accessory. </li><li> <code>MKTableCellAccessoryWarningIcon</code>: Dispalays a warning <a href="#//api/name/icon">icon</a> as the cell accessory. </li></ul></p>
 
 <p> Cell accessories are a subclass of MKControl, or UIControl. Responces to acctions from accessories are built in. Ues the didTapAccessoryForKey:indexPath: <a href="#//api/name/delegate">delegate</a> method to observe actions from the accessory. <p class="warning"> <strong> Note </strong> If the <a href="#//api/name/indexPath">indexPath</a> property is not set the <a href="#//api/name/delegate">delegate</a> will pass &apos;nil&apos; as the <a href="#//api/name/indexPath">indexPath</a> parameter. </p></p>
 
+<p> <strong> Validating User Input </strong></p>
+
+<p> <a href="MKTableCell.html">MKTableCell</a> works with <a href="MKValidator.html">MKValidator</a> to validate user input. To validate input of a form, set the <code><a href="#//api/name/validationType">validationType</a></code> property of each cell that will be validated. You can then use the table validation methods of <a href="MKValidator.html">MKValidator</a> to validate the cells. If you wish to use your own validation methods, set a class to the <code><a href="#//api/name/validator">validator</a></code> property of MKTableCell. The class you use must conform to the <a href="../Protocols/MKInputValidation.html">MKInputValidation</a> Protocol. See <a href="MKValidator.html">MKValidator</a> and <a href="../Protocols/MKInputValidation.html">MKInputValidation</a> for more information. </p>
+
+<p> <strong> Cell Delegate </strong></p>
+
 <p> The <a href="../Protocols/MKTableCellDelegate.html">MKTableCellDelegate</a> Protocol is adopted by MKTableCell. </p>
+
+<p> <strong> Required Classes </strong> <ul><li> <a href="MKControl.html">MKControl</a></li><li> MKDeffinitions </li><li> <a href="MKElementAccentView.html">MKElementAccentView</a></li><li> MKMacros </li><li> <a href="MKStrings.html">MKStrings</a></li><li> <a href="MKSwipeCellView.html">MKSwipeCellView</a></li><li> <a href="MKTableCellAccentView.html">MKTableCellAccentView</a></li><li> <a href="MKTableCellBadgeView.html">MKTableCellBadgeView</a></li><li> <a href="MKView.html">MKView</a></li></ul></p>
+
+<p> <strong> Required Libraries </strong> <ul><li> libobjc </li></ul></p>
+
+<p> <strong> Required Frameworks </strong> <ul><li> Foundation </li><li> UIKit </li></ul></p>
 
 				</div>
 				
@@ -150,7 +166,7 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/addBadgeWithText:color:rect:">- addBadgeWithText:color:rect:</a></code>
-		<span class="tooltip"> Adds a <a href="#//api/name/badge">badge</a> to the cell. </span>
+		<span class="tooltip"> Adds a <a href="#//api/name/badge">badge</a> to the cell in the given rect. </span>
 	</span>
 	
 </li>
@@ -192,7 +208,7 @@
 						<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/validationType"> validationType</a></code>
-		<span class="tooltip"> Sets the validation <a href="#//api/name/type">type</a> to preform. </span>
+		<span class="tooltip"> Sets the validation <a href="#//api/name/type">type</a> to preform. <code><a href="MKValidator.html">MKValidator</a></code> will look for this property when using the table view validation methods. Setting this property will automatically set the <code><a href="MKValidator.html">MKValidator</a></code> singlton as the cells <code><a href="#//api/name/validator">validator</a></code>. If you want to use your own validator, you need to set the <code>validatior</code> property. </span>
 	</span>
 	
 </li><li>
@@ -204,7 +220,7 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/validating"> validating</a></code>
-		<span class="tooltip"> YES is the cell validates user input, NO if it does not. </span>
+		<span class="tooltip"> <code>YES</code> is the cell validates user input, <code>NO</code> if it does not. Default is <code>NO</code>. </span>
 	</span>
 	
 </li>
@@ -215,8 +231,14 @@
 					<ul class="task-list">
 						<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/validateWithType:">- validateWithType:</a></code>
-		<span class="tooltip"> Tells the <a href="#//api/name/validator">validator</a> to valiate the input using the specified type. If you set a <a href="#//api/name/validationType">validationType</a> other than <code>MKValidationNone</code> you will not need to call this method directly. <p class="warning"> <strong> Note </strong> The default implentation of this method does nothing. Subclasses need to overide it to run a validation. </p></span>
+		<code><a href="#//api/name/validateWithType:MK_DEPRECATED_0_8:">- validateWithType:MK_DEPRECATED_0_8:</a></code>
+		<span class="tooltip"> <p class="warning"> <strong> This method has been deprecated. Use `validtedWithType:` instead. </strong></p></span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/validatedWithType:">- validatedWithType:</a></code>
+		<span class="tooltip"> Tells the <a href="#//api/name/validator">validator</a> to valiate the input using the specified type. If you set a <code><a href="#//api/name/validationType">validationType</a></code> other than <code>MKValidationNone</code> you will not need to call this method directly. </span>
 	</span>
 	
 </li>
@@ -258,7 +280,7 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/validator"> validator</a></code>
-		<span class="tooltip"> The MKInputValidator. This is automatically assigned when a <a href="#//api/name/validationType">validationType</a> is set. <p class="warning"> <strong> Note </strong> If you want to use one of your own objects as the <a href="#//api/name/validator">validator</a> set the validation <a href="#//api/name/type">type</a> to <code>MKValidationNone</code> and assign your own object to this property. The object you assign must adopt the <a href="../Protocols/MKInputValidation.html">MKInputValidation</a> protocol. </p></span>
+		<span class="tooltip"> The <code><a href="../Protocols/MKInputValidation.html">MKInputValidation</a></code>. This is automatically assigned when a <code><a href="#//api/name/validationType">validationType</a></code> is set. <p class="warning"> <strong> Note </strong> If you want to use one of your own objects as the <a href="#//api/name/validator">validator</a> set the validation <a href="#//api/name/type">type</a> to <code>MKValidationNone</code> and assign your own object to this property. The object you assign must adopt the <a href="../Protocols/MKInputValidation.html">MKInputValidation</a> protocol. </p></span>
 	</span>
 	
 </li>
@@ -371,7 +393,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p> Adds a <a href="#//api/name/badge">badge</a> to the cell. </p>
+		<p> Adds a <a href="#//api/name/badge">badge</a> to the cell in the given rect. </p>
 	</div>		
 	
 	
@@ -469,20 +491,57 @@
 </div>
 					
 					<div class="section-method">
-	<a name="//api/name/validateWithType:" title="validateWithType:"></a>
-	<h3 class="subsubtitle method-title">validateWithType:</h3>
+	<a name="//api/name/validateWithType:MK_DEPRECATED_0_8:" title="validateWithType:MK_DEPRECATED_0_8:"></a>
+	<h3 class="subsubtitle method-title">validateWithType:MK_DEPRECATED_0_8:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p> Tells the <a href="#//api/name/validator">validator</a> to valiate the input using the specified type. If you set a <a href="#//api/name/validationType">validationType</a> other than <code>MKValidationNone</code> you will not need to call this method directly. <p class="warning"> <strong> Note </strong> The default implentation of this method does nothing. Subclasses need to overide it to run a validation. </p></p>
+		<p> <p class="warning"> <strong> This method has been deprecated. Use `validtedWithType:` instead. </strong></p></p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (void)validateWithType:(MKValidationType)<em>aType</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)validateWithType:(MKValidationType)<em>aType</em> MK_DEPRECATED_0_8</code></div>
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCell.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/validatedWithType:" title="validatedWithType:"></a>
+	<h3 class="subsubtitle method-title">validatedWithType:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Tells the <a href="#//api/name/validator">validator</a> to valiate the input using the specified type. If you set a <code><a href="#//api/name/validationType">validationType</a></code> other than <code>MKValidationNone</code> you will not need to call this method directly. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (BOOL)validatedWithType:(MKValidationType)<em>aType</em></code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p> <code>YES</code> if validation passes, <code>NO</code> if not. <p class="warning"> <strong> Note </strong> The default implentation of this method does nothing. Subclasses need to overide it to run a validation. </p></p>
+	</div>
 	
 	
 	
@@ -812,7 +871,7 @@
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) NSIndexPath *indexPath</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) NSIndexPath *indexPath</code></div>
 	
 	
 	
@@ -1096,7 +1155,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p> YES is the cell validates user input, NO if it does not. </p>
+		<p> <code>YES</code> is the cell validates user input, <code>NO</code> if it does not. Default is <code>NO</code>. </p>
 	</div>		
 	
 	
@@ -1128,7 +1187,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p> Sets the validation <a href="#//api/name/type">type</a> to preform. </p>
+		<p> Sets the validation <a href="#//api/name/type">type</a> to preform. <code><a href="MKValidator.html">MKValidator</a></code> will look for this property when using the table view validation methods. Setting this property will automatically set the <code><a href="MKValidator.html">MKValidator</a></code> singlton as the cells <code><a href="#//api/name/validator">validator</a></code>. If you want to use your own validator, you need to set the <code>validatior</code> property. </p>
 	</div>		
 	
 	
@@ -1147,7 +1206,7 @@
 		<h4 class="method-subtitle">See Also</h4>
 		<ul>
 			
-			<li><code><a href="../Protocols/MKInputValidation.html">MKInputValidation</a></code></li>
+			<li><code><a href="MKValidator.html">MKValidator</a></code></li>
 			
 		</ul>
 	</div>
@@ -1169,7 +1228,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p> The MKInputValidator. This is automatically assigned when a <a href="#//api/name/validationType">validationType</a> is set. <p class="warning"> <strong> Note </strong> If you want to use one of your own objects as the <a href="#//api/name/validator">validator</a> set the validation <a href="#//api/name/type">type</a> to <code>MKValidationNone</code> and assign your own object to this property. The object you assign must adopt the <a href="../Protocols/MKInputValidation.html">MKInputValidation</a> protocol. </p></p>
+		<p> The <code><a href="../Protocols/MKInputValidation.html">MKInputValidation</a></code>. This is automatically assigned when a <code><a href="#//api/name/validationType">validationType</a></code> is set. <p class="warning"> <strong> Note </strong> If you want to use one of your own objects as the <a href="#//api/name/validator">validator</a> set the validation <a href="#//api/name/type">type</a> to <code>MKValidationNone</code> and assign your own object to this property. The object you assign must adopt the <a href="../Protocols/MKInputValidation.html">MKInputValidation</a> protocol. </p></p>
 	</div>		
 	
 	
@@ -1250,7 +1309,7 @@
 			<div id="footer">
 				<hr />
 				<div class="footer-copyright">
-					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-09-26)</span><br />
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-10-16)</span><br />
 					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
 				</div>
 			</div>

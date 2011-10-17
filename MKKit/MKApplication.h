@@ -11,15 +11,24 @@
 #import <MKKit/MKKit.h>
 
 /**-------------------------------------------------------------------
+ *Overview*
+ 
  MKApplication subclasses UIApplication to add some special methods. 
  
  @warning *Important Notice* To use MKApplication you must add the class
  files to your project. Make sure to check the `Copy items into projects
  destination group folder` box.
  
+ *Usage*
+ 
  To use MKApplication you need make changes in your applications main.m
  file. Replace the method call `UIApplicationMain(argc, argv, nil, nil)` with
  `UIApplicationMain(argc, argv, @"MKApplication", nil)`. 
+ 
+ *Required Frameworks*
+ 
+ * Fondation
+ * UIKit
 --------------------------------------------------------------------*/
 
 @interface MKApplication : UIApplication {
@@ -58,6 +67,12 @@
  change set it to `YES`.
 */
 - (void)resetIdleTimer;
+
+/**
+ Cancels the idle timer and removes it. Use this method to stop a timer when the 
+ application enters the background.
+*/
+- (void)cancelIdleTimer;
 
 @end
 

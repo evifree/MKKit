@@ -160,7 +160,7 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 	}
 	else {
 		mValidating = YES;
-		validator = [[MKValidator alloc] init];
+		validator = [MKValidator sharedValidator];
 	}
 }
 
@@ -229,6 +229,7 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
     
     UIView *textView = [mCellView viewWithTag:kPrimaryViewTag];
     textView.frame = CGRectMake(textView.frame.origin.x, textView.frame.origin.y, (trim - CGRectGetMinX(textView.frame)), textView.frame.size.height);
+    textView.autoresizingMask = UIViewAutoresizingNone;
 }
 
 - (void)setBadge:(MKTableCellBadge)aBadge {
@@ -366,7 +367,11 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 #pragma mark - Validation Methods
 
 - (void)validateWithType:(MKValidationType)aType {
-	//Impelmented by suclasses
+    //Deprecated Method//
+}
+
+- (BOOL)validatedWithType:(MKValidationType)aType {
+	return YES;
 }
 
 #pragma mark - Actions
@@ -405,10 +410,6 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 #pragma mark - Memory Management
 
 - (void)dealloc {
-    if (mValidating) {
-        [validator release];
-    }
-    
     [super dealloc];
 }
 
@@ -561,6 +562,8 @@ void drawAddIcon(CGContextRef context, CGRect rect) {
     CGContextAddLineToPoint(context, CGRectGetMaxX(plusRect), CGRectGetMidY(plusRect));
     CGContextStrokePath(context);
     CGContextRestoreGState(context);
+    
+    CFRelease(path);
 }
 
 #pragma mark Subtract Icon
@@ -598,6 +601,8 @@ void drawSubtractIcon(CGContextRef context, CGRect rect) {
     CGContextAddLineToPoint(context, CGRectGetMaxX(plusRect), CGRectGetMidY(plusRect));
     CGContextStrokePath(context);
     CGContextRestoreGState(context);
+    
+    CFRelease(path);
 }
 
 #pragma mark - Memory Mangament
@@ -614,9 +619,10 @@ void drawSubtractIcon(CGContextRef context, CGRect rect) {
 
 @implementation MKView (MKTableCell)
 
-@dynamic pinnedSecondaryElement;
+@dynamic pinnedSecondaryElement, pinnedPrimaryElement;
 
-static bool mPinnedSecondaryElement = NO;
+static const char *PinnedPrimary = "PinnedPrimary";
+static const char *PinnedSecondary = "PinnedSecondary";
 
 #pragma mark - Initalizer
 
@@ -628,6 +634,7 @@ static bool mPinnedSecondaryElement = NO;
         self.autoresizesSubviews = YES;
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
         self.pinnedSecondaryElement = NO;
+        self.pinnedPrimaryElement = NO;
         
         mShouldRemoveView = NO;
     }
@@ -643,7 +650,9 @@ static bool mPinnedSecondaryElement = NO;
     UIView *detailElement = [self viewWithTag:kDetailViewTag];
     
     if (primaryElement) {
-        primaryElement.frame = CGRectMake(kCellPrimaryElementX, kCellPrimaryElementY, kCellPrimaryElementyWidth, kCellSecondaryElementHeight);
+        if (!self.pinnedPrimaryElement) {
+            primaryElement.frame = CGRectMake(kCellPrimaryElementX, kCellPrimaryElementY, kCellPrimaryElementyWidth, kCellSecondaryElementHeight);
+        }
     }
     
     if (secondaryElement) {
@@ -651,7 +660,7 @@ static bool mPinnedSecondaryElement = NO;
             secondaryElement.frame = CGRectMake(kCellSecondaryElementX, kCellSecondaryElementY, kCellSecondaryElementWidth, kCellSecondaryElementHeight);
         }
         
-        if (primaryElement) {
+        if (primaryElement && !self.pinnedPrimaryElement) {
             primaryElement.frame = CGRectMake(primaryElement.frame.origin.x, primaryElement.frame.origin.y, (CGRectGetMinX(secondaryElement.frame) - CGRectGetMinX(primaryElement.frame) - 5.0), primaryElement.frame.size.height);
         }
     }
@@ -670,7 +679,7 @@ static bool mPinnedSecondaryElement = NO;
     if (iconElement) {
         iconElement.frame = CGRectMake(kCellIconRectX, kCellIconRectY, kCellIconRectWidth, kCellIconRectHeight);
         
-        if (primaryElement) {
+        if (primaryElement && !self.pinnedPrimaryElement) {
             primaryElement.frame = CGRectMake((primaryElement.frame.origin.x + 44.0), primaryElement.frame.origin.y, (primaryElement.frame.size.width - 44.0), primaryElement.frame.size.height);
         }
         if (detailElement) {
@@ -683,13 +692,23 @@ static bool mPinnedSecondaryElement = NO;
 #pragma mark Setters
 
 - (void)setPinnedSecondaryElement:(BOOL)pinned {
-    mPinnedSecondaryElement = pinned;
+    NSNumber *pinnedObj = [NSNumber numberWithBool:pinned];
+    objc_setAssociatedObject(self, PinnedSecondary, pinnedObj, OBJC_ASSOCIATION_RETAIN);
+}
+
+- (void)setPinnedPrimaryElement:(BOOL)pinned {
+    NSNumber *pinnedObj = [NSNumber numberWithBool:pinned];
+    objc_setAssociatedObject(self, PinnedPrimary, pinnedObj, OBJC_ASSOCIATION_RETAIN);
 }
 
 #pragma mark Getters
 
 - (BOOL)pinnedSecondaryElement {
-    return mPinnedSecondaryElement;
+    return [objc_getAssociatedObject(self, PinnedSecondary) boolValue];
+}
+
+- (BOOL)pinnedPrimaryElement {
+    return [objc_getAssociatedObject(self, PinnedPrimary) boolValue];
 }
 
 #pragma mark - Adding Elements
@@ -697,6 +716,16 @@ static bool mPinnedSecondaryElement = NO;
 - (void)addPrimaryElement:(UIView *)element {
     element.tag = kPrimaryViewTag;
     element.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
+    
+    [self addSubview:element];
+    [self layoutCell];
+}
+
+- (void)addPrimaryElement:(UIView *)element inRect:(CGRect)rect {
+    self.pinnedPrimaryElement = YES;
+    
+    element.tag = kPrimaryViewTag;
+    element.autoresizingMask = UIViewAutoresizingNone;
     
     [self addSubview:element];
     [self layoutCell];
@@ -734,6 +763,10 @@ static bool mPinnedSecondaryElement = NO;
     
     [self addSubview:element];
     [self layoutCell];
+}
+
+- (void)didRelease {
+    objc_removeAssociatedObjects(self);
 }
 
 @end

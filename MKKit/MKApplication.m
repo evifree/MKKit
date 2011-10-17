@@ -18,6 +18,8 @@
 
 @synthesize minutes, useIdleTimer;
 
+#pragma mark - Initalizer
+
 - (id)init {
     self = [super init];
     if (self) {
@@ -25,6 +27,8 @@
     }
     return self;
 }
+
+#pragma mark - Events
 
 - (void)sendEvent:(UIEvent *)event {
     [super sendEvent:event];
@@ -44,11 +48,14 @@
     }
 }
 
+#pragma mark - Idle Timer
+
 - (void)resetIdleTimer {
     self.useIdleTimer = YES;
     if (mIdleTimer) {
         [mIdleTimer invalidate];
         [mIdleTimer release];
+        mIdleTimer = nil;
     }
     
     if (self.minutes == 0) {
@@ -59,13 +66,29 @@
     mIdleTimer = [[NSTimer scheduledTimerWithTimeInterval:time target:self selector:@selector(timerDidFire:) userInfo:nil repeats:NO] retain];
 }
 
+- (void)cancelIdleTimer {
+    self.useIdleTimer = NO;
+    if (mIdleTimer) {
+        [mIdleTimer invalidate];
+        [mIdleTimer release];
+        mIdleTimer = nil;
+    }
+}
+
 - (void)timerDidFire:(NSTimer *)timer {
     [[NSNotificationCenter defaultCenter] postNotificationName:MKApplicationIdleTimeDidExpire object:nil];
     
     [mIdleTimer release];
+    mIdleTimer = nil;
 }
 
+#pragma mark - Memory Managment
+
 - (void)dealloc {
+    if (mIdleTimer) {
+        [mIdleTimer release];
+    }
+    
     [super dealloc];
 }
 
