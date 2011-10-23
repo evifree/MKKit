@@ -6,11 +6,12 @@
 //  Copyright (c) 2011 Matt King. All rights reserved.
 //
 
-#ifndef MKKIT_AVAILABLE
-    #define MKKIT_AVAILABLE
-    #define MKKIT_ALLOWED 9999
-#else
-    #define MKKIT_ALLOWED 8
-#endif
+/////////////////////////////////////////////////////////
+/// TOGGLE MARCO TO MAKE MKKIT AVAILABLE TO MKGRAPHS.  //
+/////////////////////////////////////////////////////////
 
-#define MKKIT_MAX_ALLOWED 9
+#define MKKIT_AVAILABLE_TO_MKGRAPHS        1 // 1=AVAILABLE 0=NONAVAILABLE //
+
+#if MKKIT_AVALIABLE_TO_MKGRAPHS
+    #define MKKIT_MAX_GRAPHS_VERSION       9
+#endif

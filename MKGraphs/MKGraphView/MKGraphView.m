@@ -52,7 +52,7 @@ MKLimitLine MKLimitLineMake(float value, CGColorRef color, CFStringRef label) {
 #pragma mark - Building
 
 - (void)buildGraph {
-#if MKKIT_ALLOWED <= MKKIT_MAX_ALLOWED
+#if MKKIT_AVAILABLE_TO_MKGRAPHS
     MKLoadingView *loadingView = [[MKLoadingView alloc] initWithType:MKLoadingViewTypeIndicator status:@"Loading"];
     [loadingView showWithAnimationType:MKViewAnimationTypeFadeIn];
     [loadingView release];

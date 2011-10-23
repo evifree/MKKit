@@ -15,8 +15,8 @@
 #import "MKGraphDrawing.h"
 #import "MKGraphPlotting.h"
 
-#if MKKIT_ALLOWED <= MKKIT_MAX_ALLOWED
-#import <MKKit/MKKit/MKViews/MKLoadingView.h>
+#if MKKIT_AVAILABLE_TO_MKGRAPHS
+    #import <MKKit/MKKit/MKViews/MKLoadingView.h>
 #endif
 
 typedef enum {

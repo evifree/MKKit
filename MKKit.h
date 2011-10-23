@@ -26,3 +26,12 @@
 #import <MKKit/MKKit/MKTableCells/MKTableCellHeaders.h>
 #import <MKKit/MKKit/MKViewControllers/MKViewContorllerHeaders.h>
 #import <MKKit/MKKit/MKViews/MKViewHeader.h>
+
+
+#if MK_FEEDS_ALLOWED
+    #import <MKKit/MKFeed.h>
+#endif
+
+#if MK_GRAPHS_ALLOWED
+    #import <MKKit/MKGraphs.h>
+#endif

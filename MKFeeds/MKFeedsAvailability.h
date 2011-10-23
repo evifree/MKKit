@@ -6,17 +6,13 @@
 //  Copyright (c) 2011 Matt King. All rights reserved.
 //
 
-#ifndef MKKIT_AVAILABLE
-    #define MKKIT_AVAILABLE
-    #define MKKIT_ALLOWED 9999
-#else
-    #define MKKIT_ALLOWED 8
-#endif
+///////////////////////////////////////////////////////////
+// TOGGLE THE MACRO TO MAKE MKKIT AVAILABLE TO MKFEEDS.  //
+///////////////////////////////////////////////////////////
 
-#define MKKIT_MAX_ALLOWED 9
+#define MKKIT_AVAILABLE_TO_MKFEEDS      1  // 1=AVAILABLE 0=NONAVAILABLE // 
 
-
-#if MKKIT_ALLOWED <= MKKIT_MAX_ALLOWED
+#if MKKIT_AVALILABLE_TO_MKFEEDS
     #import <MKKit/MKKit/MKMacros.h>
 #else
     #define MK_VISIBLE_ATTRIBUTE          __attribute__((visibility ("default")))

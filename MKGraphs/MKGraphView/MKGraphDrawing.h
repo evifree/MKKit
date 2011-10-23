@@ -9,7 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <UIKit/UIKit.h>
 
-#if MKKIT_ALLOWED <= MKKIT_MAX_ALLOWED
+#if MKKIT_AVAILABLE_TO_MKGRAPHS
     #import <MKKit/MKKit/MKMacros.h>
 #else
     #define PI                                      3.14159265359f
