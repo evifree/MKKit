@@ -48,6 +48,14 @@
 
 <p> Cell accessories are a subclass of MKControl, or UIControl. Responces to acctions from accessories are built in. Ues the didTapAccessoryForKey:indexPath: <a href="#//api/name/delegate">delegate</a> method to observe actions from the accessory. <p class="warning"> <strong> Note </strong> If the <a href="#//api/name/indexPath">indexPath</a> property is not set the <a href="#//api/name/delegate">delegate</a> will pass &apos;nil&apos; as the <a href="#//api/name/indexPath">indexPath</a> parameter. </p></p>
 
+<p> <strong> Subclassing Notes </strong></p>
+
+<p> MKTableCells use a special catigory of <a href="MKView.html">MKView</a> to control the cells content. If you are subclassing a table cell you can the method from this catigory to add content to cell. See <a href="MKTableCell.html">MKTableCell</a> methods of <a href="MKView.html">MKView</a> for information on how to use these methods. </p>
+
+<p> <strong> Using as Storyboard Prototypes </strong></p>
+
+<p> <a href="MKTableCell.html">MKTableCell</a> can be used as Storyboard prototype cells. It is important to set the <a href="#//api/name/stroryboardPrototype">stroryboardPrototype</a> property to <code>YES</code> when you are using <a href="MKTableCell.html">MKTableCell</a> as a prototype. This is required for the cell to function properly. When using <a href="MKTableCell.html">MKTableCell</a> as a prototype cell, the preset cell types are not avalilble. Instead certain display elements have been made availble to Interface Builder. Simply create the prototype cell in the Storyboard editor and make the conections to the needed elements. Ensure that the you set class the <a href="MKTableCell.html">MKTableCell</a> in the inspector so the elements are visable make conections. <p class="warning"> <strong> Note </strong> The <a href="MKTableCell.html">MKTableCell</a> catigory of <a href="MKView.html">MKView</a> is not used for prototype cells. The layout and resizing of the cells contect is up to you to handle. </p></p>
+
 <p> <strong> Validating User Input </strong></p>
 
 <p> <a href="MKTableCell.html">MKTableCell</a> works with <a href="MKValidator.html">MKValidator</a> to validate user input. To validate input of a form, set the <code><a href="#//api/name/validationType">validationType</a></code> property of each cell that will be validated. You can then use the table validation methods of <a href="MKValidator.html">MKValidator</a> to validate the cells. If you wish to use your own validation methods, set a class to the <code><a href="#//api/name/validator">validator</a></code> property of MKTableCell. The class you use must conform to the <a href="../Protocols/MKInputValidation.html">MKInputValidation</a> Protocol. See <a href="MKValidator.html">MKValidator</a> and <a href="../Protocols/MKInputValidation.html">MKInputValidation</a> for more information. </p>
@@ -263,6 +271,18 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/recognizeLongPress"> recognizeLongPress</a></code>
 		<span class="tooltip"> Set <code>YES</code> to allow the cell to recognize long presses. Default is <code>NO</code>. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Storyboard Prototype</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/stroryboardPrototype"> stroryboardPrototype</a></code>
+		<span class="tooltip"> Set to <code>YES</code> if you are using <a href="MKTableCell.html">MKTableCell</a> as a prototype cell. If you are using the cell for a prototype and do not set this property to yes, some elements may not function propery. Default is <code>NO</code>. </span>
 	</span>
 	
 </li>
@@ -714,7 +734,7 @@
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) MKView *cellView</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) IBOutlet MKView *cellView</code></div>
 	
 	
 	
@@ -746,7 +766,7 @@
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>@property (assign) id&lt;MKTableCellDelegate&gt; delegate</code></div>
+	<div class="method-subsection method-declaration"><code>@property (assign) IBOutlet id&lt;MKTableCellDelegate&gt; delegate</code></div>
 	
 	
 	
@@ -787,7 +807,7 @@
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UIImage *icon</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) IBOutlet UIImage *icon</code></div>
 	
 	
 	
@@ -1063,7 +1083,39 @@
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UILabel *smallLabel</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) IBOutlet UILabel *smallLabel</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCell.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/stroryboardPrototype" title="stroryboardPrototype"></a>
+	<h3 class="subsubtitle method-title">stroryboardPrototype</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Set to <code>YES</code> if you are using <a href="MKTableCell.html">MKTableCell</a> as a prototype cell. If you are using the cell for a prototype and do not set this property to yes, some elements may not function propery. Default is <code>NO</code>. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL stroryboardPrototype</code></div>
 	
 	
 	
@@ -1095,7 +1147,7 @@
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UILabel *theLabel</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) IBOutlet UILabel *theLabel</code></div>
 	
 	
 	
@@ -1309,7 +1361,7 @@
 			<div id="footer">
 				<hr />
 				<div class="footer-copyright">
-					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-10-16)</span><br />
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-10-22)</span><br />
 					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
 				</div>
 			</div>

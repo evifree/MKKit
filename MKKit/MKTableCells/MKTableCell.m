@@ -48,7 +48,7 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
             validationType=mValidationType, validating=mValidating, validator, icon,
             iconMask, validatorTestStringLength=mValidatorTestStringLength, accessoryIcon, 
             recognizeLeftToRightSwipe, recognizeRightToLeftSwipe, recognizeLongPress, indexPath,
-            primaryViewTrim, badge, accent, cellView=mCellView;
+            primaryViewTrim, badge, accent, cellView=mCellView, stroryboardPrototype;
 
 #pragma mark - Initalizer
 
@@ -175,27 +175,31 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 #pragma mark Icons
 
 - (void)setIcon:(UIImage *)anImage {
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    imageView.image = anImage;
+    if (!stroryboardPrototype) {
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+        imageView.image = anImage;
     
-    [mCellView addIconElement:imageView];
-    [imageView release];
+        [mCellView addIconElement:imageView];
+        [imageView release];
+    }
 }
 
 - (void)setIconMask:(UIImage *)lIconMask {
-    UIView *view = [mCellView viewWithTag:kIconViewTag];
-    
-    if (view) {
-        [view removeFromSuperview];
+    if (!stroryboardPrototype) {
+        UIView *view = [mCellView viewWithTag:kIconViewTag];
+        
+        if (view) {
+            [view removeFromSuperview];
+        }
+        
+        UIColor *topColor =  MK_COLOR_HSB(345.0, 0.0, 86.0, 1.0);
+        UIColor *bottomColor = MK_COLOR_HSB(345.0, 0.0, 56.0, 1.0);
+        
+        MKView *iconView = [[MKView alloc] initWithImage:lIconMask 
+                                                gradient:[MKGraphicsStructures linearGradientWithTopColor:topColor bottomColor:bottomColor]];
+        [mCellView addIconElement:iconView];
+        [iconView release];
     }
-    
-    UIColor *topColor =  MK_COLOR_HSB(345.0, 0.0, 86.0, 1.0);
-    UIColor *bottomColor = MK_COLOR_HSB(345.0, 0.0, 56.0, 1.0);
-
-    MKView *iconView = [[MKView alloc] initWithImage:lIconMask 
-                                            gradient:[MKGraphicsStructures linearGradientWithTopColor:topColor bottomColor:bottomColor]];
-    [mCellView addIconElement:iconView];
-    [iconView release];
 }
 
 #pragma mark Accents
@@ -300,17 +304,9 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
     }
 }
 
-#pragma mark - Cell behavior
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-    
-    if (selected) {
-        if ([delegate respondsToSelector:@selector(didSelectCell:forKey:indexPath:)]) {
-            [delegate didSelectCell:self forKey:self.key indexPath:self.indexPath];
-        }
-    }
-	
+- (void)storyboardPrototypeWithType:(MKTableCellType)celltype {
+    self.type = celltype;
+    self = [self initWithType:celltype reuseIdentifier:self.reuseIdentifier];
 }
 
 #pragma mark - Elements

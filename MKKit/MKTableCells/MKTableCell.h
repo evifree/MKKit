@@ -93,6 +93,24 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
  @warning *Note* If the indexPath property is not set the delegate will pass 'nil' as the 
  indexPath parameter.
  
+ *Subclassing Notes*
+ 
+ MKTableCells use a special catigory of MKView to control the cells content. If you are subclassing
+ a table cell you can the method from this catigory to add content to cell. See MKTableCell methods
+ of MKView for information on how to use these methods.
+ 
+ *Using as Storyboard Prototypes*
+ 
+ MKTableCell can be used as Storyboard prototype cells. It is important to set the stroryboardPrototype
+ property to `YES` when you are using MKTableCell as a prototype. This is required for the cell to 
+ function properly. When using MKTableCell as a prototype cell, the preset cell types are not avalilble. 
+ Instead certain display elements have been made availble to Interface Builder. Simply create the prototype 
+ cell in the Storyboard editor and make the conections to the needed elements. Ensure that the you set class 
+ the MKTableCell in the inspector so the elements are visable make conections.
+ 
+ @warning *Note* The MKTableCell catigory of MKView is not used for prototype cells. The layout and 
+ resizing of the cells contect is up to you to handle.
+ 
  *Validating User Input*
  
  MKTableCell works with MKValidator to validate user input. To validate input of a form, set
@@ -214,16 +232,16 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 ///---------------------------------------------------------------------------------------
 
 //** A refercnce to the view that holds the cell elements */
-@property (nonatomic, retain) MKView *cellView;
+@property (nonatomic, retain) IBOutlet MKView *cellView;
 
 /** A reference to the primary label of all MKTableCell Subclass that have at least on label. */
-@property (nonatomic, retain) UILabel *theLabel;
+@property (nonatomic, retain) IBOutlet UILabel *theLabel;
 
 /** A reference to the secondary label of all MKTableCell Subclasses that have two labels. */
-@property (nonatomic, retain) UILabel *smallLabel;
+@property (nonatomic, retain) IBOutlet UILabel *smallLabel;
 
 /** The image displayed on cell that suport image views */
-@property (nonatomic, retain) UIImage *icon;
+@property (nonatomic, retain) IBOutlet UIImage *icon;
 
 /** 
  An imaged to be masked. The masking is completed by the MKView (IconView) catagory. The
@@ -349,6 +367,16 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 @property (nonatomic, assign) BOOL recognizeLongPress;
 
 ///---------------------------------------------------------------------------------------
+/// @name Storyboard Prototype
+///---------------------------------------------------------------------------------------
+
+/** Set to `YES` if you are using MKTableCell as a prototype cell. If you are using the 
+ cell for a prototype and do not set this property to yes, some elements may not function
+ propery. Default is `NO`.
+*/
+@property (nonatomic, assign) BOOL stroryboardPrototype;
+
+///---------------------------------------------------------------------------------------
 /// @name Adopted Protocols
 ///---------------------------------------------------------------------------------------
 
@@ -356,7 +384,7 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
  
  @see MKTableCellDelegate
 */
-@property (assign) id<MKTableCellDelegate> delegate;
+@property (assign) IBOutlet id<MKTableCellDelegate> delegate;
 
 /** 
  The `MKInputValidation`. This is automatically assigned when a `validationType` is set. 

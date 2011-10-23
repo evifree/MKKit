@@ -86,6 +86,7 @@
 #pragma mark - Drawing
 
 - (void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetAllowsAntialiasing(context, YES);
 

@@ -13,4 +13,4 @@
     #define MKKIT_ALLOWED 8
 #endif
 
-#define MKKIT_MAX_ALLOWED 8
+#define MKKIT_MAX_ALLOWED 9
