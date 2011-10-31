@@ -30,6 +30,8 @@ typedef void (^MKRequestComplete)(NSArray *feedInfo, NSError *error);
  * `MKFeedRSSFeedTitle` : The title of the feed item -- NSString.
  * `MKFeedRSSFeedDescription` : The description\content of the feed item -- NSString.
  * `MKFeedRSSFeedLink` : The URL the feed item is linked to -- NSString.
+ * `MKFeedRSSFeedPublicationDate` : The publication data of the feed item -- NSString.
+ * `MKFeedRSSFeedGUID` : The GUID of the feed item -- NSString.
  
  *Requied Framworks*
  
@@ -116,9 +118,12 @@ typedef void (^MKRequestComplete)(NSArray *feedInfo, NSError *error);
 @end
 
 NSString *MKFeedRSSFeedItem MK_VISIBLE_ATTRIBUTE;
+
 NSString *MKFeedRSSFeedTitle MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedRSSFeedDescription MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedRSSFeedLink MK_VISIBLE_ATTRIBUTE;
+NSString *MKFeedRSSFeedPublicationData MK_VISIBLE_ATTRIBUTE;
+NSString *MKFeedRSSFeedGUID MK_VISIBLE_ATTRIBUTE;
 
 /**-----------------------------------------------------------------------------------
  *Overview*

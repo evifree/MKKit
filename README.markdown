@@ -41,7 +41,7 @@ Continual work is done to make the documentation more detailed.
 MKKit has additional libraries that can be added to your projects. These are libraries that preform a specific function. To use on these
 libraries add it to your project the same way you would add the MKKit.
 
-Each addtional library can function with out the MKKit library, however they will use some MKKit class if they are availible. In each of 
+Each addtional library can function with out the MKKit library, however they will use some classes if they are availible. In each of 
 the libraies availiblity header files there is are macros that can be used to toggle the availiblity of other libraries. 
 
 ## Detailed Information ##

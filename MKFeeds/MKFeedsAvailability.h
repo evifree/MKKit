@@ -12,7 +12,7 @@
 
 #define MKKIT_AVAILABLE_TO_MKFEEDS      1  // 1=AVAILABLE 0=NONAVAILABLE // 
 
-#if MKKIT_AVALILABLE_TO_MKFEEDS
+#if MKKIT_AVAILABLE_TO_MKFEEDS
     #import <MKKit/MKKit/MKMacros.h>
 #else
     #define MK_VISIBLE_ATTRIBUTE          __attribute__((visibility ("default")))

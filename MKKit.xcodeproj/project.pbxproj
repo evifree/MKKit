@@ -95,6 +95,7 @@
 		AA2CE708138200680088C9B2 /* MKReflectedImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA2CE706138200680088C9B2 /* MKReflectedImageView.h */; };
 		AA2CE709138200680088C9B2 /* MKReflectedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2CE707138200680088C9B2 /* MKReflectedImageView.m */; };
 		AA2FBE4513444550002441C2 /* MKMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = AA2FBE4413444550002441C2 /* MKMacros.h */; };
+		AA3210161456536800F9F08A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3210151456536800F9F08A /* libxml2.dylib */; };
 		AA3297A8144FD03A00982DCE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		AA3297B4144FD0B600982DCE /* MKRSSFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = AA3297B2144FD0B600982DCE /* MKRSSFeed.h */; };
 		AA3297B5144FD0B600982DCE /* MKRSSFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3297B3144FD0B600982DCE /* MKRSSFeed.m */; };
@@ -135,6 +136,12 @@
 		AA7EFCF310FFE90900B4C1BC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA7EFCF210FFE90900B4C1BC /* CoreGraphics.framework */; };
 		AA7EFCF510FFE91B00B4C1BC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA7EFCF410FFE91B00B4C1BC /* UIKit.framework */; };
 		AA7EFD5410FFE94100B4C1BC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA7EFD5310FFE94100B4C1BC /* QuartzCore.framework */; };
+		AA86F5611457B0BA00A7D4FC /* MKHTMLExtractor.h in Headers */ = {isa = PBXBuildFile; fileRef = AA86F55B1457B0BA00A7D4FC /* MKHTMLExtractor.h */; };
+		AA86F5621457B0BA00A7D4FC /* MKHTMLExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = AA86F55C1457B0BA00A7D4FC /* MKHTMLExtractor.m */; };
+		AA86F5631457B0BA00A7D4FC /* MKHTMLNode.h in Headers */ = {isa = PBXBuildFile; fileRef = AA86F55D1457B0BA00A7D4FC /* MKHTMLNode.h */; };
+		AA86F5641457B0BA00A7D4FC /* MKHTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = AA86F55E1457B0BA00A7D4FC /* MKHTMLNode.m */; };
+		AA86F5651457B0BA00A7D4FC /* MKHTMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = AA86F55F1457B0BA00A7D4FC /* MKHTMLParser.h */; };
+		AA86F5661457B0BA00A7D4FC /* MKHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = AA86F5601457B0BA00A7D4FC /* MKHTMLParser.m */; };
 		AA99D3161405B1BE00CFFD56 /* MKObjectDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA99D3151405B1BE00CFFD56 /* MKObjectDelegate.h */; };
 		AA99D3191405B71E00CFFD56 /* MKObject.h in Headers */ = {isa = PBXBuildFile; fileRef = AA99D3171405B71E00CFFD56 /* MKObject.h */; };
 		AA99D31A1405B71E00CFFD56 /* MKObject.m in Sources */ = {isa = PBXBuildFile; fileRef = AA99D3181405B71E00CFFD56 /* MKObject.m */; };
@@ -157,6 +164,7 @@
 		AAB4D1F213E8C9810061A6BD /* MKElementAccentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB4D1F013E8C9810061A6BD /* MKElementAccentView.m */; };
 		AAB5EE831426B93C00AFE278 /* MKGraphicsStructures.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB5EE811426B93C00AFE278 /* MKGraphicsStructures.h */; };
 		AAB5EE841426B93C00AFE278 /* MKGraphicsStructures.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB5EE821426B93C00AFE278 /* MKGraphicsStructures.m */; };
+		AAB6FF5F1458D5DE0030C974 /* MKHTMLParserDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB6FF5E1458D5DE0030C974 /* MKHTMLParserDelegate.h */; };
 		AAB76CE4141B3682007829EB /* MKSwipeCellView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB76CE2141B3682007829EB /* MKSwipeCellView.h */; };
 		AAB76CE5141B3682007829EB /* MKSwipeCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB76CE3141B3682007829EB /* MKSwipeCellView.m */; };
 		AABE3D581376CFE500ECC539 /* MKLoginViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AABE3D551376CFE500ECC539 /* MKLoginViewController.h */; };
@@ -270,6 +278,7 @@
 		AA2CE706138200680088C9B2 /* MKReflectedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKReflectedImageView.h; sourceTree = "<group>"; };
 		AA2CE707138200680088C9B2 /* MKReflectedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKReflectedImageView.m; sourceTree = "<group>"; };
 		AA2FBE4413444550002441C2 /* MKMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMacros.h; sourceTree = "<group>"; };
+		AA3210151456536800F9F08A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		AA3297A7144FD03A00982DCE /* libMKFeeds.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMKFeeds.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA3297AB144FD03A00982DCE /* MKFeeds-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MKFeeds-Prefix.pch"; sourceTree = "<group>"; };
 		AA3297B2144FD0B600982DCE /* MKRSSFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKRSSFeed.h; sourceTree = "<group>"; };
@@ -314,6 +323,12 @@
 		AA7EFCF210FFE90900B4C1BC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		AA7EFCF410FFE91B00B4C1BC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AA7EFD5310FFE94100B4C1BC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		AA86F55B1457B0BA00A7D4FC /* MKHTMLExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MKHTMLExtractor.h; path = MKFeeds/MKHTML/MKHTMLExtractor.h; sourceTree = SOURCE_ROOT; };
+		AA86F55C1457B0BA00A7D4FC /* MKHTMLExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MKHTMLExtractor.m; path = MKFeeds/MKHTML/MKHTMLExtractor.m; sourceTree = SOURCE_ROOT; };
+		AA86F55D1457B0BA00A7D4FC /* MKHTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MKHTMLNode.h; path = MKFeeds/MKHTML/MKHTMLNode.h; sourceTree = SOURCE_ROOT; };
+		AA86F55E1457B0BA00A7D4FC /* MKHTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MKHTMLNode.m; path = MKFeeds/MKHTML/MKHTMLNode.m; sourceTree = SOURCE_ROOT; };
+		AA86F55F1457B0BA00A7D4FC /* MKHTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MKHTMLParser.h; path = MKFeeds/MKHTML/MKHTMLParser.h; sourceTree = SOURCE_ROOT; };
+		AA86F5601457B0BA00A7D4FC /* MKHTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MKHTMLParser.m; path = MKFeeds/MKHTML/MKHTMLParser.m; sourceTree = SOURCE_ROOT; };
 		AA99D3151405B1BE00CFFD56 /* MKObjectDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKObjectDelegate.h; sourceTree = "<group>"; };
 		AA99D3171405B71E00CFFD56 /* MKObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKObject.h; sourceTree = "<group>"; };
 		AA99D3181405B71E00CFFD56 /* MKObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKObject.m; sourceTree = "<group>"; };
@@ -339,6 +354,7 @@
 		AAB4D1F013E8C9810061A6BD /* MKElementAccentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKElementAccentView.m; sourceTree = "<group>"; };
 		AAB5EE811426B93C00AFE278 /* MKGraphicsStructures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKGraphicsStructures.h; sourceTree = "<group>"; };
 		AAB5EE821426B93C00AFE278 /* MKGraphicsStructures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKGraphicsStructures.m; sourceTree = "<group>"; };
+		AAB6FF5E1458D5DE0030C974 /* MKHTMLParserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MKHTMLParserDelegate.h; path = MKFeeds/MKHTML/MKHTMLParserDelegate.h; sourceTree = SOURCE_ROOT; };
 		AAB76CE2141B3682007829EB /* MKSwipeCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKSwipeCellView.h; sourceTree = "<group>"; };
 		AAB76CE3141B3682007829EB /* MKSwipeCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSwipeCellView.m; sourceTree = "<group>"; };
 		AABE3D551376CFE500ECC539 /* MKLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKLoginViewController.h; sourceTree = "<group>"; };
@@ -370,6 +386,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA3210161456536800F9F08A /* libxml2.dylib in Frameworks */,
 				AA3297A8144FD03A00982DCE /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -430,6 +447,7 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AA3210151456536800F9F08A /* libxml2.dylib */,
 				AAF5FD751423B8AD00907C96 /* libobjc.A.dylib */,
 				AA1D506813919384009DD3B6 /* StoreKit.framework */,
 				AA56A534128EDF0300E5DD5C /* MessageUI.framework */,
@@ -640,6 +658,21 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		AA2662091454EF6D009696D0 /* MKHTML */ = {
+			isa = PBXGroup;
+			children = (
+				AA86F55B1457B0BA00A7D4FC /* MKHTMLExtractor.h */,
+				AA86F55C1457B0BA00A7D4FC /* MKHTMLExtractor.m */,
+				AA86F55D1457B0BA00A7D4FC /* MKHTMLNode.h */,
+				AA86F55E1457B0BA00A7D4FC /* MKHTMLNode.m */,
+				AA86F55F1457B0BA00A7D4FC /* MKHTMLParser.h */,
+				AA86F5601457B0BA00A7D4FC /* MKHTMLParser.m */,
+				AAB6FF5E1458D5DE0030C974 /* MKHTMLParserDelegate.h */,
+			);
+			name = MKHTML;
+			path = MKTextExtractor;
+			sourceTree = "<group>";
+		};
 		AA3297A9144FD03A00982DCE /* MKFeeds */ = {
 			isa = PBXGroup;
 			children = (
@@ -647,6 +680,7 @@
 				AA3297C7144FD9A300982DCE /* MKFeedsAvailability.h */,
 				AA3297B2144FD0B600982DCE /* MKRSSFeed.h */,
 				AA3297B3144FD0B600982DCE /* MKRSSFeed.m */,
+				AA2662091454EF6D009696D0 /* MKHTML */,
 				AA3297AA144FD03A00982DCE /* Supporting Files */,
 			);
 			path = MKFeeds;
@@ -831,6 +865,10 @@
 				AA3297B4144FD0B600982DCE /* MKRSSFeed.h in Headers */,
 				AA3297BE144FD7CE00982DCE /* MKFeed.h in Headers */,
 				AA3297C9144FD9A300982DCE /* MKFeedsAvailability.h in Headers */,
+				AA86F5611457B0BA00A7D4FC /* MKHTMLExtractor.h in Headers */,
+				AA86F5631457B0BA00A7D4FC /* MKHTMLNode.h in Headers */,
+				AA86F5651457B0BA00A7D4FC /* MKHTMLParser.h in Headers */,
+				AAB6FF5F1458D5DE0030C974 /* MKHTMLParserDelegate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1028,6 +1066,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA3297B5144FD0B600982DCE /* MKRSSFeed.m in Sources */,
+				AA86F5621457B0BA00A7D4FC /* MKHTMLExtractor.m in Sources */,
+				AA86F5641457B0BA00A7D4FC /* MKHTMLNode.m in Sources */,
+				AA86F5661457B0BA00A7D4FC /* MKHTMLParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1165,7 +1206,10 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				HEADER_SEARCH_PATHS = "$(MKKIT)";
+				HEADER_SEARCH_PATHS = (
+					/usr/include/libxml2,
+					"$(MKKIT)",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1183,7 +1227,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MKFeeds/MKFeeds-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				HEADER_SEARCH_PATHS = "$(MKKIT)";
+				HEADER_SEARCH_PATHS = (
+					/usr/include/libxml2,
+					"$(MKKIT)",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

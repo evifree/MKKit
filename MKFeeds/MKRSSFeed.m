@@ -27,6 +27,8 @@ static NSString *currentElement = nil;
         MKFeedRSSFeedTitle = @"title";
         MKFeedRSSFeedDescription = @"description";
         MKFeedRSSFeedLink = @"link";
+        MKFeedRSSFeedPublicationData = @"pubData";
+        MKFeedRSSFeedGUID = @"guid";
 	}
 	return self; 
 }
@@ -56,31 +58,17 @@ static NSString *currentElement = nil;
 
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-	// this method is called when the server has determined that it
-    // has enough information to create the NSURLResponse
-	
-    // it can be called multiple times, for example in the case of a
-    // redirect, so each time we reset the data.
-    // receivedData is declared as a method instance elsewhere
-    //[receivedData setLength:0];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-	//NSLog([[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-	// append the new data to the receivedData
-	// receivedData is declared as a method instance elsewhere
-	[requestData appendData:data];
+    [requestData appendData:data];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-	// release the connection, and the data object
-	[theConnection release];
-	// receivedData is declared as a method instance elsewhere
+    [theConnection release];
 	[requestData release];
 	
 	[request release];
-	
-    // inform the user
     
     if (MKRSSFeedTags.usesCompletionBlock) {
         self.requestCompleteBlock(nil, error);
@@ -89,6 +77,10 @@ static NSString *currentElement = nil;
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    ////////////////////////////////////////////////////////////
+    // UNCOMMENT THESE LINES TO POST THE FEED DATA IN THE LOG //
+    ////////////////////////////////////////////////////////////
+    
 	//NSString *data = [[NSString alloc] initWithData:requestData encoding:NSASCIIStringEncoding];
 	//NSLog(@"%@", data);
 	
@@ -96,7 +88,6 @@ static NSString *currentElement = nil;
 	[theParser setDelegate:self];
 	[theParser parse];
 	
-	// release the connection, and the data object
 	[theConnection release];
 	[requestData release];
 	[request release];
@@ -121,6 +112,12 @@ static NSString *currentElement = nil;
 	else if ([elementName isEqualToString:MKFeedRSSFeedLink]) {
 		currentElement = elementName;
 	}
+    else if ([elementName isEqualToString:MKFeedRSSFeedGUID]) {
+        currentElement = elementName;
+    }
+    else if ([elementName isEqualToString:MKFeedRSSFeedPublicationData]) {
+        currentElement = elementName;
+    }
 
 }
 
@@ -146,9 +143,21 @@ static NSString *currentElement = nil;
 		NSString *discription = [formatString stringByReplacingOccurrencesOfString:@"  " withString:@""];
 		[feed setObject:discription forKey:currentElement];
 	}
-	else if ([elementName isEqualToString:MKFeedRSSFeedItem]) {
-		[feed setObject:currentString forKey:currentElement];
+	else if ([elementName isEqualToString:MKFeedRSSFeedLink]) {
+        NSString *formatString = [currentString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+		NSString *link = [formatString stringByReplacingOccurrencesOfString:@"  " withString:@""];
+		[feed setObject:link forKey:currentElement];
 	}
+    else if ([elementName isEqualToString:MKFeedRSSFeedGUID]) {
+        NSString *formatString = [currentString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+		NSString *guid = [formatString stringByReplacingOccurrencesOfString:@"  " withString:@""];
+		[feed setObject:guid forKey:currentElement];
+    }
+    else if ([elementName isEqualToString:MKFeedRSSFeedPublicationData]) {
+        NSString *formatString = [currentString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+		NSString *pubDate = [formatString stringByReplacingOccurrencesOfString:@"  " withString:@""];
+		[feed setObject:pubDate forKey:currentElement];
+    }
 	
 	[currentString release];
 	currentString = nil;

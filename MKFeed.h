@@ -7,3 +7,4 @@
 //
 
 #import <MKKit/MKFeeds/MKRSSFeed.h>
+#import <MKKit/MKFeeds/MKHTML/MKHTMLExtractor.h>

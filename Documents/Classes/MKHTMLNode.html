@@ -1,0 +1,817 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>MKHTMLNode Class Reference</title>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+		<meta name="generator" content="appledoc 2.0b3" />
+	</head>
+	<body>
+		<article>
+			<div class="main-navigation navigation-top">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="header">
+				<div class="section-header">
+					<h1 class="title title-header">MKHTMLNode Class Reference</h1>
+				</div>		
+			</div>
+			<div id="container">	
+				
+				<div class="section section-specification"><table cellspacing="0"><tbody>
+					<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">MKHTMLNode.h</td>
+</tr>
+					</tbody></table></div>
+				
+				
+				
+				<div class="section section-overview">
+					<h2 class="subtitle subtitle-overview">Overview</h2>
+					
+<p> <strong> Overview </strong></p>
+
+<p> <a href="MKHTMLNode.html">MKHTMLNode</a> provides access to the nodes of an web site. There are several methods to navigate through the nodes and obtain information about the node. </p>
+
+<p> <strong> Creating Instances </strong></p>
+
+<p> <a href="MKHTMLParser.html">MKHTMLParser</a> works with <a href="MKHTMLNode.html">MKHTMLNode</a> to create instances of MKHTMLNode. Using the <a href="MKHTMLParser.html">MKHTMLParser</a> is the prefered method for creating the first instance. After that use the Finding Nodes method of MKHTMLNode. </p>
+
+				</div>
+				
+				
+				
+				
+				<div class="section section-tasks">
+					<h2 class="subtitle subtitle-tasks">Tasks</h2>
+					
+					<h3 class="subsubtitle task-title">Creating Instances</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithNode:">- initWithNode:</a></code>
+		<span class="tooltip"> Creates an instance of MKHTMLNode. This method should not need to be called directly. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Getting Text</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/allText">- allText</a></code>
+		<span class="tooltip"> Returns all the text in the node to include the text of all the children. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/allTextForNodesNamed:">- allTextForNodesNamed:</a></code>
+		<span class="tooltip"> Returns all the text from the first node with the specified name. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/htmlString">- htmlString</a></code>
+		<span class="tooltip"> Returns the html code of the node in a string format. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Finding Nodes</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/nodeWithAttribute:value:allowPartial:">- nodeWithAttribute:value:allowPartial:</a></code>
+		<span class="tooltip"> Finds the first node has a given attribute matching the specified value. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/childrenWithAttribute:value:allowPartial:">- childrenWithAttribute:value:allowPartial:</a></code>
+		<span class="tooltip"> Finds all nodes that have a given attribute matching the specified value. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/childNodeNamed:">- childNodeNamed:</a></code>
+		<span class="tooltip"> Finds the first node of the given name. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/childrenNamed:">- childrenNamed:</a></code>
+		<span class="tooltip"> Finds all the <a href="#//api/name/children">children</a> nodes of the given name. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/children">- children</a></code>
+		<span class="tooltip"> Finds all the <a href="#//api/name/children">children</a> of the node. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/nextChildNode">- nextChildNode</a></code>
+		<span class="tooltip"> Moves to the next child of the tree. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/previousChildNode">- previousChildNode</a></code>
+		<span class="tooltip"> Moves to the previous node of the tree. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/parentNode">- parentNode</a></code>
+		<span class="tooltip"> Moves to the parent Node of the tree. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Node Attributes</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/nodeName">- nodeName</a></code>
+		<span class="tooltip"> Returns the name of the current node. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Getting Node Types</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/nodeType">- nodeType</a></code>
+		<span class="tooltip"> Returns the type of the node. <a href="MKHTMLNode.html">MKHTMLNode</a> supports the following types: <ul><li> <code>MKHTMLNodeDiv</code>: node with &lt;div&gt; name. </li><li> <code>MKHTMLNodeP</code>: node with &lt;p&gt; name. </li><li> <code>MKHTMLNodeScript</code>: node with &lt;script&gt; name. </li><li> <code>MKHTMLNodeA</code>: node with &lt;a&gt; name. </li><li> <code>MKHTMLClosingNode</code>: node that closes out another node &lt;/somenode&gt;. </li><li> <code>MKHTMLNodeUnknown</code>: node that cannot be identified by one of the other types. </li></ul></span>
+	</span>
+	
+</li>
+					</ul>
+					
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/allText" title="allText"></a>
+	<h3 class="subsubtitle method-title">allText</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Returns all the text in the node to include the text of all the children. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSString *)allText</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p> NSString instance </p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKHTMLNode.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/allTextForNodesNamed:" title="allTextForNodesNamed:"></a>
+	<h3 class="subsubtitle method-title">allTextForNodesNamed:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Returns all the text from the first node with the specified name. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSString *)allTextForNodesNamed:(NSString *)<em>name</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd> The name of the node. i.e. node &lt;p&gt; name would be p. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p> NSString instance </p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKHTMLNode.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/childNodeNamed:" title="childNodeNamed:"></a>
+	<h3 class="subsubtitle method-title">childNodeNamed:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Finds the first node of the given name. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (MKHTMLNode *)childNodeNamed:(NSString *)<em>name</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd> The name of the node to find. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p> <a href="MKHTMLNode.html">MKHTMLNode</a> instance </p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKHTMLNode.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/children" title="children"></a>
+	<h3 class="subsubtitle method-title">children</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Finds all the <a href="#//api/name/children">children</a> of the node. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSArray *)children</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p> NSArray instance populated with <a href="MKHTMLNode.html">MKHTMLNode</a> objects. </p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKHTMLNode.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/childrenNamed:" title="childrenNamed:"></a>
+	<h3 class="subsubtitle method-title">childrenNamed:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Finds all the <a href="#//api/name/children">children</a> nodes of the given name. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSArray *)childrenNamed:(NSString *)<em>name</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd> The name of the node to find. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p> NSArray instance populated with <a href="MKHTMLNode.html">MKHTMLNode</a> objects. </p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKHTMLNode.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/childrenWithAttribute:value:allowPartial:" title="childrenWithAttribute:value:allowPartial:"></a>
+	<h3 class="subsubtitle method-title">childrenWithAttribute:value:allowPartial:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Finds all nodes that have a given attribute matching the specified value. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSArray *)childrenWithAttribute:(NSString *)<em>attribute</em> value:(NSString *)<em>value</em> allowPartial:(BOOL)<em>partial</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>value</em></dt>
+			<dd> The value the attribute should have. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>partial</em></dt>
+			<dd> <code>YES</code> if a partial match to the value is allow. <code>NO</code> if an exact match is needed. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>attruibute</em></dt>
+			<dd> The attribute to look for. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p> NSArray instance populated with <a href="MKHTMLNode.html">MKHTMLNode</a> objects. </p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		
+		<p> Finds all nodes that have a given attribute matching the specified value. </p>
+		
+		<p> For exampe to find the node <code>&lt;div class=&quot;article&quot;&gt;</code>, call <code>[someNode childrenWithAttribute:@&quot;class&quot; value:@&quot;article&quot; allowPartial:YES]</code>. </p>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKHTMLNode.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/htmlString" title="htmlString"></a>
+	<h3 class="subsubtitle method-title">htmlString</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Returns the html code of the node in a string format. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSString *)htmlString</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p> NSString instance </p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKHTMLNode.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/initWithNode:" title="initWithNode:"></a>
+	<h3 class="subsubtitle method-title">initWithNode:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Creates an instance of MKHTMLNode. This method should not need to be called directly. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithNode:(xmlNode *)<em>xmlNode</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>xmlNode</em></dt>
+			<dd> The node for the instance </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p> MKHtMLNode instance </p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKHTMLNode.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/nextChildNode" title="nextChildNode"></a>
+	<h3 class="subsubtitle method-title">nextChildNode</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Moves to the next child of the tree. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (MKHTMLNode *)nextChildNode</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p> <a href="MKHTMLNode.html">MKHTMLNode</a> instance </p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKHTMLNode.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/nodeName" title="nodeName"></a>
+	<h3 class="subsubtitle method-title">nodeName</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Returns the name of the current node. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSString *)nodeName</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p> NSString instance </p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKHTMLNode.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/nodeType" title="nodeType"></a>
+	<h3 class="subsubtitle method-title">nodeType</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Returns the type of the node. <a href="MKHTMLNode.html">MKHTMLNode</a> supports the following types: <ul><li> <code>MKHTMLNodeDiv</code>: node with &lt;div&gt; name. </li><li> <code>MKHTMLNodeP</code>: node with &lt;p&gt; name. </li><li> <code>MKHTMLNodeScript</code>: node with &lt;script&gt; name. </li><li> <code>MKHTMLNodeA</code>: node with &lt;a&gt; name. </li><li> <code>MKHTMLClosingNode</code>: node that closes out another node &lt;/somenode&gt;. </li><li> <code>MKHTMLNodeUnknown</code>: node that cannot be identified by one of the other types. </li></ul></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (MKHTMLNodeType)nodeType</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p> MKHTMLNodeType </p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKHTMLNode.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/nodeWithAttribute:value:allowPartial:" title="nodeWithAttribute:value:allowPartial:"></a>
+	<h3 class="subsubtitle method-title">nodeWithAttribute:value:allowPartial:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Finds the first node has a given attribute matching the specified value. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (MKHTMLNode *)nodeWithAttribute:(NSString *)<em>attribute</em> value:(NSString *)<em>value</em> allowPartial:(BOOL)<em>partial</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>value</em></dt>
+			<dd> The value the attribute should have. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>partial</em></dt>
+			<dd> <code>YES</code> if a partial match to the value is allow. <code>NO</code> if an exact match is needed. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>attruibute</em></dt>
+			<dd> The attribute to look for. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p> <a href="MKHTMLNode.html">MKHTMLNode</a> instance. </p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		
+		<p> Finds the first node has a given attribute matching the specified value. </p>
+		
+		<p> For exampe to find the node <code>&lt;div class=&quot;article&quot;&gt;</code>, call <code>[someNode nodeWithAttribute:@&quot;class&quot; value:@&quot;article&quot; allowPartial:YES]</code>. </p>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKHTMLNode.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/parentNode" title="parentNode"></a>
+	<h3 class="subsubtitle method-title">parentNode</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Moves to the parent Node of the tree. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (MKHTMLNode *)parentNode</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p> <a href="MKHTMLNode.html">MKHTMLNode</a> instance </p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKHTMLNode.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/previousChildNode" title="previousChildNode"></a>
+	<h3 class="subsubtitle method-title">previousChildNode</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Moves to the previous node of the tree. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (MKHTMLNode *)previousChildNode</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p> <a href="MKHTMLNode.html">MKHTMLNode</a> instance </p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKHTMLNode.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+				
+				
+			</div>
+			<div class="main-navigation navigation-bottom">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="footer">
+				<hr />
+				<div class="footer-copyright">
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-10-30)</span><br />
+					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
+				</div>
+			</div>
+		</article>
+	</body>
+</html>
