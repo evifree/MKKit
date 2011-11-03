@@ -1,7 +1,10 @@
 ## MKKit ##
 
 The MKKit is an open source project that has several objects the help build apps easier and faster. The framework also includes
-several specialty view controllers, views, controls, table cells, and specialty libraries.
+several specialty view controllers, views, controls, table cells, and specialty libraries. 
+
+The goal of MKKit is to provide a framework that makes creating apps a faster process. MKKit focuses on custom contols, custom views 
+and commom controllers. 
 
 ## Installing ##
 
@@ -22,6 +25,10 @@ You need to link your project to the required frameworks and libraries used in M
 * Use ``#import <MKKit/MKGraphs.h>`` to use MKGraphs classes.
 
 Visit the MKKit Blog <http://matt62king.blogspot.com/search/label/MKKit> for more detailed information on installing MKKit.
+
+## Contributing ##
+
+I am always looking for contributers to the MKKit project. If you would like to contribute contact me via email: matt62king@gmail.com.
 
 ## Versioning ##
 

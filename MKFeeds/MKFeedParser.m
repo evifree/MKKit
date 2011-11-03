@@ -262,7 +262,7 @@ static NSString *currentElement = nil;
         self.requestCompleteBlock(items, nil);
     }
     else {
-        [delegate RSSFeed:self didReturnData:items];
+        [delegate feed:self didReturnData:items];
     }
 	
 	[items release];

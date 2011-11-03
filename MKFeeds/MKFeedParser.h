@@ -28,12 +28,20 @@ typedef enum {
  *Overview*
  
  MKFeedParser requests RSS/ATOM feeds from the internet and pases them into an array for 
- use by your app.
+ use by your app. MKFeedParser will automaically detect what type of feed it is parsing.
+ You can acess the type of feed using the sourceType property. This property will return
+ one of two values:
+ 
+ * `MKFeedSourceRSS` : Returned if the feed is in RSS format.
+ * `MKFeedSourceAtom` : Returned if the feed is in an Atom format.
+ 
+ It is important to know what type of feed is being parsed in order to retrive the 
+ data from it.
  
  *Using Returned Data*
  
- Data can returned through ethier the MKRSSFeedDelegate or the MKRequestComplete block.
- Both methods pass an NSArray that holds the information from the RSS feed. The array
+ Data can returned through ethier the MKFeedParserDelegate or the MKRequestComplete block.
+ Both methods pass an NSArray that holds the information from the feed. The array
  contains NSDictonary objects, use the following keys to get the feed data from one of 
  the dictonaries.
  
@@ -123,8 +131,18 @@ typedef enum {
 /** The URL address of the feed. */
 @property (nonatomic, copy, readonly) NSString *url;
 
+/** The content type of the feed. This property will return one of the following:
+ 
+ * `MKContentTypePlainText` : The content of the feed is in a Text String.
+ * `MKContentTypeHTML` : The content of the feed is in a HTML String.
+*/
 @property (nonatomic, readonly) MKFeedContentType contentType;
 
+/** The source type of the feed. This property will return one of the following:
+ 
+ * `MKSourceTypeRSS` : The feed source is in a RSS format.
+ * `MKSourceTypeAtom` : The feed source is in an Atom format.
+*/
 @property (nonatomic, readonly) MKFeedSourceType sourceType;
 
 ///-----------------------------------------------
