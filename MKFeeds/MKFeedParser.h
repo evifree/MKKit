@@ -12,12 +12,22 @@
 
 typedef void (^MKRequestComplete)(NSArray *feedInfo, NSError *error);
 
-@protocol MKRSSFeedDelegate;
+typedef enum {
+    MKFeedContentPlainText,
+    MKFeedContentHTML,
+} MKFeedContentType;
+
+typedef enum {
+    MKFeedSourceRSS,
+    MKFeedSourceAtom,
+} MKFeedSourceType;
+
+@protocol MKFeedParserDelegate;
 
 /**---------------------------------------------------------------------------------
  *Overview*
  
- MKRSSFeed requests RSS feeds from the internet and pases them into an array for 
+ MKFeedParser requests RSS/ATOM feeds from the internet and pases them into an array for 
  use by your app.
  
  *Using Returned Data*
@@ -27,18 +37,28 @@ typedef void (^MKRequestComplete)(NSArray *feedInfo, NSError *error);
  contains NSDictonary objects, use the following keys to get the feed data from one of 
  the dictonaries.
  
+ *RSS Feed Keys*
+ 
  * `MKFeedRSSFeedTitle` : The title of the feed item -- NSString.
  * `MKFeedRSSFeedDescription` : The description\content of the feed item -- NSString.
  * `MKFeedRSSFeedLink` : The URL the feed item is linked to -- NSString.
- * `MKFeedRSSFeedPublicationDate` : The publication data of the feed item -- NSString.
+ * `MKFeedRSSFeedPublicationDate` : The publication date of the feed item -- NSString.
  * `MKFeedRSSFeedGUID` : The GUID of the feed item -- NSString.
+ 
+ *Atom Feed Keys*
+ 
+ * `MKFeedAtomTitle` : The title of the feed item -- NSString.
+ * `MKFeedAtomLink` : The URL the feed item is linked to -- NSString.
+ * `MKFeedAtomID` : The uniquie id of the feed item -- NSString.
+ * `MKFeedAtomUpdated` : The data the feed item was last updated -- NSString.
+ * `MKFeedAtomSummary` : The summary of feed item -- NSString.
  
  *Requied Framworks*
  
  * Foundation
 ----------------------------------------------------------------------------------*/
 
-@interface MKRSSFeed : NSObject <NSXMLParserDelegate> {
+@interface MKFeedParser : NSObject <NSXMLParserDelegate> {
 	NSString *mUrl;
 	id delegate;
     MKRequestComplete mRequestCompleteBlock;
@@ -47,11 +67,13 @@ typedef void (^MKRequestComplete)(NSArray *feedInfo, NSError *error);
 	NSMutableURLRequest *request; 
 	NSMutableData *requestData;
     NSURLConnection *theConnection;
-	
 	NSXMLParser *theParser;
 	NSMutableDictionary *feed;
 	NSMutableArray *items;
 	NSMutableString *currentString;
+    
+    MKFeedContentType mContentType;
+    MKFeedSourceType mSourceType;
     
     struct {
         BOOL usesCompletionBlock;
@@ -74,7 +96,7 @@ typedef void (^MKRequestComplete)(NSArray *feedInfo, NSError *error);
  
  @exception Missing-URL Exception is rasied if the aURL paramenter is nil
 */
-- (id)initWithURL:(NSString *)aURL delegate:(id<MKRSSFeedDelegate>)theDelegate;
+- (id)initWithURL:(NSString *)aURL delegate:(id<MKFeedParserDelegate>)theDelegate;
 
 ///----------------------------------------------
 /// @name Preforming Requests
@@ -95,18 +117,22 @@ typedef void (^MKRequestComplete)(NSArray *feedInfo, NSError *error);
 - (void)requestWithCompletionBlock:(MKRequestComplete)block;
 
 ///-----------------------------------------------
-/// @name Feed URL
+/// @name Feed Information
 ///-----------------------------------------------
 
 /** The URL address of the feed. */
 @property (nonatomic, copy, readonly) NSString *url;
+
+@property (nonatomic, readonly) MKFeedContentType contentType;
+
+@property (nonatomic, readonly) MKFeedSourceType sourceType;
 
 ///-----------------------------------------------
 /// @name Delegate
 ///-----------------------------------------------
 
 /** The MKRSSFeedDelegate */
-@property (assign) id<MKRSSFeedDelegate> delegate;
+@property (assign) id<MKFeedParserDelegate> delegate;
 
 ///-----------------------------------------------
 /// @name Blocks
@@ -117,20 +143,29 @@ typedef void (^MKRequestComplete)(NSArray *feedInfo, NSError *error);
  
 @end
 
+NSString *MKFeedRSSFeedStart MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedRSSFeedItem MK_VISIBLE_ATTRIBUTE;
+NSString *MKFeedAtomFeedStart MK_VISIBLE_ATTRIBUTE;
+NSString *MKFeedAtomFeedEntry MK_VISIBLE_ATTRIBUTE;
 
 NSString *MKFeedRSSFeedTitle MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedRSSFeedDescription MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedRSSFeedLink MK_VISIBLE_ATTRIBUTE;
-NSString *MKFeedRSSFeedPublicationData MK_VISIBLE_ATTRIBUTE;
+NSString *MKFeedRSSFeedPublicationDate MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedRSSFeedGUID MK_VISIBLE_ATTRIBUTE;
+
+NSString *MKFeedAtomTitle MK_VISIBLE_ATTRIBUTE;
+NSString *MKFeedAtomLink MK_VISIBLE_ATTRIBUTE;
+NSString *MKFeedAtomID MK_VISIBLE_ATTRIBUTE;
+NSString *MKFeedAtomUpdated MK_VISIBLE_ATTRIBUTE;
+NSString *MKFeedAtomSummary MK_VISIBLE_ATTRIBUTE;
 
 /**-----------------------------------------------------------------------------------
  *Overview*
  
  The MKRSSFeedDelegate provides methods to observe the actions taken by the MKRSSFeed class.
 ------------------------------------------------------------------------------------*/
-@protocol MKRSSFeedDelegate <NSObject>
+@protocol MKFeedParserDelegate <NSObject>
 
 ///-----------------------------------------------
 /// @name Required Methods
@@ -143,7 +178,7 @@ NSString *MKFeedRSSFeedGUID MK_VISIBLE_ATTRIBUTE;
  
  @param data the parsed RSS feed data.
 */
-- (void)RSSFeed:(MKRSSFeed *)feed didReturnData:(NSArray *)data;
+- (void)feed:(MKFeedParser *)feed didReturnData:(NSArray *)data;
 
 
 @end 
