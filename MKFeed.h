@@ -6,5 +6,5 @@
 //  Copyright (c) 2011 Matt King. All rights reserved.
 //
 
-#import <MKKit/MKFeeds/MKRSSFeed.h>
+#import <MKKit/MKFeeds/MKFeedParser.h>
 #import <MKKit/MKFeeds/MKHTML/MKHTMLExtractor.h>

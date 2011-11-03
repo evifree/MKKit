@@ -97,8 +97,8 @@
 		AA2FBE4513444550002441C2 /* MKMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = AA2FBE4413444550002441C2 /* MKMacros.h */; };
 		AA3210161456536800F9F08A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3210151456536800F9F08A /* libxml2.dylib */; };
 		AA3297A8144FD03A00982DCE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
-		AA3297B4144FD0B600982DCE /* MKRSSFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = AA3297B2144FD0B600982DCE /* MKRSSFeed.h */; };
-		AA3297B5144FD0B600982DCE /* MKRSSFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3297B3144FD0B600982DCE /* MKRSSFeed.m */; };
+		AA3297B4144FD0B600982DCE /* MKFeedParser.h in Headers */ = {isa = PBXBuildFile; fileRef = AA3297B2144FD0B600982DCE /* MKFeedParser.h */; };
+		AA3297B5144FD0B600982DCE /* MKFeedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3297B3144FD0B600982DCE /* MKFeedParser.m */; };
 		AA3297BE144FD7CE00982DCE /* MKFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = AA3297BC144FD7CE00982DCE /* MKFeed.h */; };
 		AA3297C9144FD9A300982DCE /* MKFeedsAvailability.h in Headers */ = {isa = PBXBuildFile; fileRef = AA3297C7144FD9A300982DCE /* MKFeedsAvailability.h */; };
 		AA56A535128EDF0300E5DD5C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA56A534128EDF0300E5DD5C /* MessageUI.framework */; };
@@ -281,8 +281,8 @@
 		AA3210151456536800F9F08A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		AA3297A7144FD03A00982DCE /* libMKFeeds.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMKFeeds.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA3297AB144FD03A00982DCE /* MKFeeds-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MKFeeds-Prefix.pch"; sourceTree = "<group>"; };
-		AA3297B2144FD0B600982DCE /* MKRSSFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKRSSFeed.h; sourceTree = "<group>"; };
-		AA3297B3144FD0B600982DCE /* MKRSSFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKRSSFeed.m; sourceTree = "<group>"; };
+		AA3297B2144FD0B600982DCE /* MKFeedParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKFeedParser.h; sourceTree = "<group>"; };
+		AA3297B3144FD0B600982DCE /* MKFeedParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKFeedParser.m; sourceTree = "<group>"; };
 		AA3297BC144FD7CE00982DCE /* MKFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MKFeed.h; path = ../MKFeed.h; sourceTree = "<group>"; };
 		AA3297C7144FD9A300982DCE /* MKFeedsAvailability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKFeedsAvailability.h; sourceTree = "<group>"; };
 		AA56A534128EDF0300E5DD5C /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -678,8 +678,8 @@
 			children = (
 				AA3297BC144FD7CE00982DCE /* MKFeed.h */,
 				AA3297C7144FD9A300982DCE /* MKFeedsAvailability.h */,
-				AA3297B2144FD0B600982DCE /* MKRSSFeed.h */,
-				AA3297B3144FD0B600982DCE /* MKRSSFeed.m */,
+				AA3297B2144FD0B600982DCE /* MKFeedParser.h */,
+				AA3297B3144FD0B600982DCE /* MKFeedParser.m */,
 				AA2662091454EF6D009696D0 /* MKHTML */,
 				AA3297AA144FD03A00982DCE /* Supporting Files */,
 			);
@@ -862,7 +862,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA3297B4144FD0B600982DCE /* MKRSSFeed.h in Headers */,
+				AA3297B4144FD0B600982DCE /* MKFeedParser.h in Headers */,
 				AA3297BE144FD7CE00982DCE /* MKFeed.h in Headers */,
 				AA3297C9144FD9A300982DCE /* MKFeedsAvailability.h in Headers */,
 				AA86F5611457B0BA00A7D4FC /* MKHTMLExtractor.h in Headers */,
@@ -1065,7 +1065,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA3297B5144FD0B600982DCE /* MKRSSFeed.m in Sources */,
+				AA3297B5144FD0B600982DCE /* MKFeedParser.m in Sources */,
 				AA86F5621457B0BA00A7D4FC /* MKHTMLExtractor.m in Sources */,
 				AA86F5641457B0BA00A7D4FC /* MKHTMLNode.m in Sources */,
 				AA86F5661457B0BA00A7D4FC /* MKHTMLParser.m in Sources */,
