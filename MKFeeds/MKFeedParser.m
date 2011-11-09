@@ -41,6 +41,7 @@ static NSString *currentElement = nil;
         MKFeedAtomID = @"id";
         MKFeedAtomUpdated = @"updated";
         MKFeedAtomSummary = @"summary";
+        MKFeedAtomAuthorName = @"name";
 	}
 	return self; 
 }
@@ -104,7 +105,7 @@ static NSString *currentElement = nil;
     // UNCOMMENT THESE LINES TO POST THE FEED DATA IN THE LOG //
     ////////////////////////////////////////////////////////////
     
-	NSString *data = [[NSString alloc] initWithData:requestData encoding:NSASCIIStringEncoding];
+	NSString *data = [[NSString alloc] initWithData:requestData encoding:NSUTF8StringEncoding];
 	NSLog(@"%@", data);
 	
 	theParser = [[NSXMLParser alloc] initWithData:requestData];
@@ -182,6 +183,9 @@ static NSString *currentElement = nil;
             NSString *link = (NSString *)[attributeDict objectForKey:@"href"];
             [feed setObject:link forKey:MKFeedAtomLink];
         }
+        else if ([elementName isEqualToString:MKFeedAtomAuthorName]) {
+            currentElement = elementName;
+        }
     }
 }
 
@@ -193,7 +197,9 @@ static NSString *currentElement = nil;
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
-	if (mSourceType == MKFeedSourceRSS) {
+	////////////////// RSS FEED PROCESSING
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    if (mSourceType == MKFeedSourceRSS) {
         if ([elementName isEqualToString:MKFeedRSSFeedItem]) {
             [items addObject:feed];
             [feed release];
@@ -225,6 +231,8 @@ static NSString *currentElement = nil;
         }
     }
     
+    /////////////////// ATOM FEED PROCESSING
+    ////////////////////////////////////////////////////////////////////////////////////////////////
     if (mSourceType == MKFeedSourceAtom) {
         if ([elementName isEqualToString:MKFeedAtomFeedEntry]) {
             [items addObject:feed];
@@ -250,6 +258,12 @@ static NSString *currentElement = nil;
             NSString *updated = [formatString stringByReplacingOccurrencesOfString:@"  " withString:@""];
             [feed setObject:updated forKey:currentElement];
         }
+        else if ([elementName isEqualToString:MKFeedAtomAuthorName]) {
+            NSString *formatString = [currentString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+            NSString *authorName = [formatString stringByReplacingOccurrencesOfString:@"  " withString:@""];
+            [feed setObject:authorName forKey:currentElement];
+        }
+
     }
     
 	[currentString release];

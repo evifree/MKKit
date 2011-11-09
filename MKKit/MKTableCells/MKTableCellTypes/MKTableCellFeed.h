@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 12/23/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010-2011 Matt King. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -39,22 +39,39 @@ typedef enum {
 -------------------------------------------------------------------------------------------------------*/
 
 @interface MKTableCellFeed : MKTableCell {
+@private
 	MKTableCellFeedType mFeedType;
-	
     NSString *mContentText;
 	UITextView *mTheTextView;
 	UIWebView *mTheWebView;
-	
 	NSString *mFeedUrl;
 	NSString *mHTMLString;
 }
 
 ///------------------------------------------------------
+/// @name Content
+///------------------------------------------------------
+
+/** A String that give the content for `MKTableCellFeedTypeDynamic` */
+@property (nonatomic, retain) NSString *contentText;
+
+/** A String that is displayed under the the content text. Your cell
+ needs to be made 25.0 points heigher to make room for this text. */
+@property (nonatomic, retain) NSString *detailText;
+
+///------------------------------------------------------
 /// @name Cell Elements
 ///------------------------------------------------------
 
-/** A String that give the content for MKTableCellFeedTypeDynamic */
-@property (nonatomic, retain) NSString *contentText;
+/** The label that holds the content text if the feed type is
+ `MKTableCellFeedTypeDynamic`.
+*/
+@property (nonatomic, retain) UILabel *contentLabel;
+
+/** The lable that holds the detail text. Your cell needs to 
+ made 25.0 points height to make room for the the lable.
+*/
+@property (nonatomic, retain) UILabel *detailLabel;
 
 /** A text view that displays the elememts content. */
 @property (nonatomic, retain) UITextView *theTextView;
@@ -85,3 +102,6 @@ typedef enum {
 @property (nonatomic, retain) NSString *HTMLString;	
 
 @end
+
+static const int kFeedContentViewTag      = 101;
+static const int kDescriptionViewTag      = 102;

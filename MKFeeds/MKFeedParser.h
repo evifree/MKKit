@@ -22,6 +22,11 @@ typedef enum {
     MKFeedSourceAtom,
 } MKFeedSourceType;
 
+typedef enum {
+    MKFeedEncodingNone,
+    MKFeedEncodingUTF8,
+} MKFeedEncoding;
+
 @protocol MKFeedParserDelegate;
 
 /**---------------------------------------------------------------------------------
@@ -60,6 +65,7 @@ typedef enum {
  * `MKFeedAtomID` : The uniquie id of the feed item -- NSString.
  * `MKFeedAtomUpdated` : The data the feed item was last updated -- NSString.
  * `MKFeedAtomSummary` : The summary of feed item -- NSString.
+ * `MKFeedAtomAuthorName` : The name of the feed items author -- NSString.
  
  *Requied Framworks*
  
@@ -85,6 +91,7 @@ typedef enum {
     
     struct {
         BOOL usesCompletionBlock;
+        MKFeedEncoding mEncoding;
     } MKRSSFeedTags;
 }
 
@@ -177,6 +184,7 @@ NSString *MKFeedAtomLink MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedAtomID MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedAtomUpdated MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedAtomSummary MK_VISIBLE_ATTRIBUTE;
+NSString *MKFeedAtomAuthorName MK_VISIBLE_ATTRIBUTE;
 
 /**-----------------------------------------------------------------------------------
  *Overview*

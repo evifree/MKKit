@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 12/23/10.
-//  Copyright 2010 Matt King. All rights reserved.
+//  Copyright 2010-2011 Matt King. All rights reserved.
 //
 
 #import "MKTableCellFeed.h"
@@ -12,9 +12,9 @@
 
 @synthesize feedType=mFeedType;
 
-@synthesize contentText=mContentText, theTextView=mTheTextView, theWebView=mTheWebView;
+@synthesize contentText=mContentText, theTextView=mTheTextView, theWebView=mTheWebView, contentLabel, detailLabel;
 
-@synthesize feedUrl=mFeedUrl, HTMLString=mHTMLString;
+@synthesize feedUrl=mFeedUrl, HTMLString=mHTMLString, detailText;
 
 #pragma mark -
 #pragma mark Initalizer
@@ -38,7 +38,64 @@
 }
 
 #pragma mark -
-#pragma mark Accessor Methods
+#pragma mark Memory Management
+
+- (void)dealloc {
+    self.contentText = nil;
+    self.theWebView = nil;
+    self.theTextView = nil;
+    self.feedUrl = nil;
+    self.HTMLString = nil;
+    self.contentLabel = nil;
+    self.detailLabel = nil;
+    self.contentLabel = nil;
+    
+    [super dealloc];
+}
+
+#pragma mark - Accessor Methods
+#pragma mark Getters
+
+- (UILabel *)detailLabel {
+    return (UILabel *)[self.contentLabel viewWithTag:kDescriptionViewTag];
+}
+
+- (UILabel *)contentLabel {
+    return (UILabel *)[self.contentLabel viewWithTag:kFeedContentViewTag];
+}
+
+#pragma mark Setters
+
+- (void)setDetailText:(NSString *)text {
+    UIView *contentView = (UIView *)[self.contentView viewWithTag:kFeedContentViewTag];
+    UIView *detailView = (UIView *)[self.contentView viewWithTag:kDescriptionViewTag];
+    CGFloat y = 0.0;
+    
+    if (detailView) {
+        [detailView removeFromSuperview];
+    }
+    
+    if (contentView) {
+        y = (CGRectGetMaxY(contentView.frame) + 5.0);
+    }
+    else {
+        y = 32.0;
+    }
+    
+    CGRect labelRect = CGRectMake(10.0, y, 300.0, 21.0);
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:labelRect];
+    label.backgroundColor = CLEAR;
+    label.minimumFontSize = 12.0;
+    label.font = SYSTEM(12.0);
+    label.textColor = LIGHT_GRAY;
+    label.textAlignment = UITextAlignmentLeft;
+    label.tag = kDescriptionViewTag;
+    label.text = text;
+    
+    [self.contentView addSubview:label];
+    [label release];
+}
 
 - (void)setFeedType:(MKTableCellFeedType)aType {
     mFeedType = aType;
@@ -51,7 +108,7 @@
         label.minimumFontSize = 14.0;
         label.numberOfLines = 0;
         label.font = [UIFont systemFontOfSize:14.0];
-        label.tag = 1;
+        label.tag = kFeedContentViewTag;
         
         [self.contentView addSubview:label];
         [label release];
@@ -99,11 +156,16 @@
     
     CGSize size = [contentText sizeWithFont:[UIFont systemFontOfSize:14.0] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
     
-    if (mFeedType == MKTableCellFeedTypeDynamic) {
-        UILabel *label = (UILabel*)[self viewWithTag:1];
+    UILabel *label = (UILabel*)[self viewWithTag:kFeedContentViewTag];
     
-        [label setText:contentText];
-        [label setFrame:CGRectMake(DYNAMIC_CELL_CONTENT_MARGIN, (DYNAMIC_CELL_CONTENT_MARGIN + 17.0), width - (DYNAMIC_CELL_CONTENT_MARGIN * 2), MAX(size.height, 44.0f))];
+    [label setText:contentText];
+    [label setFrame:CGRectMake(DYNAMIC_CELL_CONTENT_MARGIN, (DYNAMIC_CELL_CONTENT_MARGIN + 17.0), width - (DYNAMIC_CELL_CONTENT_MARGIN * 2), MAX(size.height, 44.0f))];
+
+    UIView *adetailLabel = (UIView *)[self.contentView viewWithTag:kDescriptionViewTag];
+    
+    if (adetailLabel) {
+        CGFloat y = (CGRectGetMaxY(label.frame) + 3.0);
+        adetailLabel.frame = CGRectMake(detailLabel.frame.origin.x, y, detailLabel.frame.size.width, detailLabel.frame.size.height);
     }
 }
 
@@ -116,13 +178,5 @@
     
     // Configure the view for the selected state.
 }
-
-#pragma mark -
-#pragma mark Memory Management
-
-- (void)dealloc {
-    [super dealloc];
-}
-
 
 @end
