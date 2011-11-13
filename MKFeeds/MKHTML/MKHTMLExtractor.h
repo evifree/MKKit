@@ -12,10 +12,12 @@ typedef void (^MKHTMLExtractorRequestHandler)(NSDictionary *results, NSError *er
 
 typedef enum {
     MKHTMLExtractorRequestNone,
-    MKHTMLExtractorMainBodyTextRequest,
+    MKHTMLExtractorMainBodyHTMLRequest,
 } MKHTMLExtractorRequestType;
 
 @class MKHTMLParser;
+
+@protocol MKHTMLExtractorDelegate;
 
 /**-----------------------------------------------------------------------------------
  *Overview*
@@ -44,9 +46,14 @@ typedef enum {
     NSURLConnection *aConnection;
     NSMutableData *requestData;
     NSMutableString *dataString;
+    NSMutableDictionary *mResultsDict;
+    NSArray *mAttributesArray;
     NSString *URL;
     struct {
         BOOL requestComplete;
+        int currentPage;
+        int numberOfPages;
+        int attemptCount;
     } MKHTMLExtractorFlags;
 }
 
@@ -60,8 +67,8 @@ typedef enum {
  @param aURL the address of the website that data
  will be extracted from. Cannot be nil.
  
- @exception No URL : exeption is raised if the aURL 
- parameter is nil.
+ @exception MKHTMLExtractorNILURLException : exeption is raised if the aURL 
+ parameter is nil. Execption is catchable.
  
  @return MKHTMLExtractor instance
 */
@@ -103,12 +110,44 @@ typedef enum {
 
 /**
  Returns the main text of a web page. This is most ideal for getting
- the article from a news story. 
+ the article from a news story. The string is in an HTML format.
+ 
+ The method will automatically look for contiuation pages. Each page
+ will be placed in the results dictonary with the page number as the
+ key. The delegate method extractor:didFindPage:content: method is
+ called for every page that is found.
+
+ @return NSString : main body of a web page in a HTML format.
  
  @warning *Note* This method will return `nil` if no request has been
  completed.
 */
-- (NSString *)mainBodyText;
+- (NSString *)mainBodyHTML;
+
+///--------------------------------------------
+/// @name Using Data
+///--------------------------------------------
+
+/**
+ An NSDictionary containing the results of an extraction. Keys for
+ the dictionary are the corisponding page number. use the numberOfPages
+ property to find how many pages were found.
+*/
+@property (nonatomic, readonly) NSDictionary *results;
+
+/**
+ The number of pages found during an extraction.
+*/
+@property (nonatomic, readonly) NSInteger numberOfPages;
+
+///--------------------------------------------
+/// @name Delegate
+///--------------------------------------------
+
+/**
+ The MKHTMLExtractorDelegate
+*/
+@property (assign) id<MKHTMLExtractorDelegate> delegate;
 
 ///--------------------------------------------
 /// @name Handeler Blocks
@@ -121,4 +160,13 @@ typedef enum {
 
 @end
 
-NSString *MKHTMLExtractorMainBodyText MK_VISIBLE_ATTRIBUTE;
+NSString *MKHTMLExtractorNILURLExecption MK_VISIBLE_ATTRIBUTE;
+
+@interface MKHTMLAttribueValue : NSObject 
+
+- (id)initWithAttribute:(NSString *)attrib value:(NSString *)val;
+
+@property (nonatomic, copy) NSString *attribute;
+@property (nonatomic, copy) NSString *value;
+
+@end

@@ -10,10 +10,10 @@
 // TOGGLE THE MACRO TO MAKE MKKIT AVAILABLE TO MKFEEDS.  //
 ///////////////////////////////////////////////////////////
 
-#define MKKIT_AVAILABLE_TO_MKFEEDS      1  // 1=AVAILABLE 0=NONAVAILABLE // 
+#define MKKIT_AVAILABLE_TO_MKFEEDS          1  // 1=AVAILABLE 0=NONAVAILABLE // 
 
 #if MKKIT_AVAILABLE_TO_MKFEEDS
     #import <MKKit/MKKit/MKMacros.h>
 #else
-    #define MK_VISIBLE_ATTRIBUTE          __attribute__((visibility ("default")))
+    #define MK_VISIBLE_ATTRIBUTE            __attribute__((visibility ("default")))
 #endif

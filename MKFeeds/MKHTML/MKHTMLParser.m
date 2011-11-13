@@ -8,20 +8,9 @@
 
 #import "MKHTMLParser.h"
 
-#import "MKHTMLParserDelegate.h"
 #import "MKHTMLNode.h"
 
-/*
-@interface MKHTMLParser ()
-
-- (void)nextNode;
-
-@end
-*/
-
 @implementation MKHTMLParser
-
-//@synthesize delegate;
 
 #pragma mark - Initalizer
 
@@ -38,10 +27,24 @@
 			htmlDoc = htmlReadDoc((xmlChar*)[data bytes], "", enc, XML_PARSE_NOERROR | XML_PARSE_NOWARNING);
 		}
 		else {
+            MKHTMLParserNILDataException = @"MKHTMLParserNILDataException";
+            NSException *exception = [NSException exceptionWithName:MKHTMLParserNILDataException reason:@"data parameter cannot be nil" userInfo:nil];
+            @throw exception;
 		}
 	}
 	return self;
 }
+
+#pragma mark - Memory Managment
+
+- (void)dealloc {
+    if (htmlDoc) {
+        xmlFreeDoc(htmlDoc);
+    }
+    
+    [super dealloc];
+}
+
 
 #pragma mark - Base Nodes
 
@@ -59,51 +62,5 @@
     
     return [[self root] childNodeNamed:@"body"]; 
 }
-
-/*
-#pragma mark - Pasing
-
-- (void)parseNode:(MKHTMLNode *)node {
-    mCurrentNode = [node retain];
-    [self.delegate HTMLParserDidStart:self];
-    
-    [self nextNode];
-}
-
-- (void)nextNode {
-    if (mCurrentNode != nil || mCurrentNode != NULL) {
-        [self.delegate HTMLParser:self didFindNodeNamed:[mCurrentNode nodeName]];
-        NSString *string = [mCurrentNode allText];
-        
-        if ([string length] > 0) {
-            [self.delegate HTMLParser:self didFindString:string];
-        }
-        
-        if ([self.delegate respondsToSelector:@selector(HTMLParser:didEndNodeNamed:)]) {
-            [self.delegate HTMLParser:self didEndNodeNamed:[mCurrentNode nodeName]];
-        }
-        
-        [self parseNode:[mCurrentNode nextChildNode]];
-        
-        [mCurrentNode release];
-        mCurrentNode = nil;
-    }
-    else {
-        [self.delegate HTMLParserDidEnd:self];
-    }
-}
-*/
  
-#pragma mark - Memory Managment
-
-- (void)dealloc {
-    //self.delegate = nil;
-    
-    if (htmlDoc) {
-        xmlFreeDoc(htmlDoc);
-    }
-    
-    [super dealloc];
-}
-
 @end

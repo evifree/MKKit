@@ -42,7 +42,7 @@
 
 <p> <strong> Request Handlers </strong></p>
 
-<p> <a href="MKHTMLExtractor.html">MKHTMLExtractor</a> supports the use of code blocks to handle responces from an extraction request. Call the <a href="#//api/name/requestType:withHandler:">requestType:withHandler:</a> method to make use of the handler block. The handle block will pass an NSDictionay object with the extraction results. The results can be accesed with the following keys: <ul><li> MKHTMLExtractorMainBodyText : key that holds the main body text of the web site. </li></ul></p>
+<p> <a href="MKHTMLExtractor.html">MKHTMLExtractor</a> supports the use of code blocks to handle responces from an extraction request. Call the <a href="#//api/name/requestType:withHandler:">requestType:withHandler:</a> method to make use of the handler block. The handle block will pass an NSDictionay object with the extraction results. The <a href="#//api/name/results">results</a> can be accesed with the following keys: <ul><li> MKHTMLExtractorMainBodyText : key that holds the main body text of the web site. </li></ul></p>
 
 				</div>
 				
@@ -76,7 +76,7 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/requestType:withHandler:">- requestType:withHandler:</a></code>
-		<span class="tooltip"> Makes a <a href="#//api/name/request">request</a> from the supplied URL, preforms an extraction, and passes the results through the handler block. </span>
+		<span class="tooltip"> Makes a <a href="#//api/name/request">request</a> from the supplied URL, preforms an extraction, and passes the <a href="#//api/name/results">results</a> through the handler block. </span>
 	</span>
 	
 </li><li>
@@ -93,8 +93,38 @@
 					<ul class="task-list">
 						<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/mainBodyText">- mainBodyText</a></code>
-		<span class="tooltip"> Returns the main text of a web page. This is most ideal for getting the article from a news story. <p class="warning"> <strong> Note </strong> This method will return <code>nil</code> if no <a href="#//api/name/request">request</a> has been completed. </p></span>
+		<code><a href="#//api/name/mainBodyHTML">- mainBodyHTML</a></code>
+		<span class="tooltip"> Returns the main text of a web page. This is most ideal for getting the article from a news story. The string is in an HTML format. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Using Data</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/results"> results</a></code>
+		<span class="tooltip"> An NSDictionary containing the <a href="#//api/name/results">results</a> of an extraction. Keys for the dictionary are the corisponding page number. use the <a href="#//api/name/numberOfPages">numberOfPages</a> property to find how many pages were found. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/numberOfPages"> numberOfPages</a></code>
+		<span class="tooltip"> The number of pages found during an extraction. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Delegate</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/delegate"> delegate</a></code>
+		<span class="tooltip"> The <a href="../Protocols/MKHTMLExtractorDelegate.html">MKHTMLExtractorDelegate</a></span>
 	</span>
 	
 </li>
@@ -162,8 +192,8 @@
 		<h4 class="method-subtitle exception-title">Exceptions</h4>
 		
 		<dl class="argument-def exception-def">
-			<dt><em>No</em></dt>
-			<dd> URL : exeption is raised if the aURL parameter is nil. </dd>
+			<dt><em>MKHTMLExtractorNILURLException</em></dt>
+			<dd> : exeption is raised if the aURL parameter is nil. Execption is catchable. </dd>
 		</dl>
 		
 	</div>
@@ -181,22 +211,36 @@
 </div>
 					
 					<div class="section-method">
-	<a name="//api/name/mainBodyText" title="mainBodyText"></a>
-	<h3 class="subsubtitle method-title">mainBodyText</h3>
+	<a name="//api/name/mainBodyHTML" title="mainBodyHTML"></a>
+	<h3 class="subsubtitle method-title">mainBodyHTML</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p> Returns the main text of a web page. This is most ideal for getting the article from a news story. <p class="warning"> <strong> Note </strong> This method will return <code>nil</code> if no <a href="#//api/name/request">request</a> has been completed. </p></p>
+		<p> Returns the main text of a web page. This is most ideal for getting the article from a news story. The string is in an HTML format. </p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (NSString *)mainBodyText</code></div>
+	<div class="method-subsection method-declaration"><code>- (NSString *)mainBodyHTML</code></div>
 	
 	
 	
 	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p> NSString : main body of a web page in a HTML format. <p class="warning"> <strong> Note </strong> This method will return <code>nil</code> if no <a href="#//api/name/request">request</a> has been completed. </p></p>
+	</div>
 	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		
+		<p> Returns the main text of a web page. This is most ideal for getting the article from a news story. The string is in an HTML format. </p>
+		
+		<p> The method will automatically look for contiuation pages. Each page will be placed in the <a href="#//api/name/results">results</a> dictonary with the page number as the key. The <a href="#//api/name/delegate">delegate</a> method extractor:didFindPage:content: method is called for every page that is found. </p>
+		
+	</div>
 	
 	
 	
@@ -251,7 +295,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p> Makes a <a href="#//api/name/request">request</a> from the supplied URL, preforms an extraction, and passes the results through the handler block. </p>
+		<p> Makes a <a href="#//api/name/request">request</a> from the supplied URL, preforms an extraction, and passes the <a href="#//api/name/results">results</a> through the handler block. </p>
 	</div>		
 	
 	
@@ -268,7 +312,7 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>handler</em></dt>
-			<dd> The code block to preform when the <a href="#//api/name/request">request</a> is complete. The block will pass to parameters (NSDictionary <strong> results, NSError </strong> error). The results can accessed from the dictionary by using the following keys: <ul><li> MKHTMLExtractorMainBodyText : key to the main text of the web site -- NSString. </li></ul></dd>
+			<dd> The code block to preform when the <a href="#//api/name/request">request</a> is complete. The block will pass to parameters (NSDictionary <strong> results, NSError </strong> error). The <a href="#//api/name/results">results</a> can accessed from the dictionary by using the following keys: <ul><li> MKHTMLExtractorMainBodyText : key to the main text of the web site -- NSString. </li></ul></dd>
 		</dl>
 		
 	</div>
@@ -297,6 +341,70 @@
 				
 				<div class="section section-methods">
 					<h2 class="subtitle subtitle-methods">Properties</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/delegate" title="delegate"></a>
+	<h3 class="subsubtitle method-title">delegate</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The <a href="../Protocols/MKHTMLExtractorDelegate.html">MKHTMLExtractorDelegate</a></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (assign) id&lt;MKHTMLExtractorDelegate&gt; delegate</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKHTMLExtractor.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/numberOfPages" title="numberOfPages"></a>
+	<h3 class="subsubtitle method-title">numberOfPages</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The number of pages found during an extraction. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSInteger numberOfPages</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKHTMLExtractor.h</code><br />
+	</div>				
+	
+	
+</div>
 					
 					<div class="section-method">
 	<a name="//api/name/requestHandler" title="requestHandler"></a>
@@ -362,6 +470,38 @@
 	
 </div>
 					
+					<div class="section-method">
+	<a name="//api/name/results" title="results"></a>
+	<h3 class="subsubtitle method-title">results</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> An NSDictionary containing the <a href="#//api/name/results">results</a> of an extraction. Keys for the dictionary are the corisponding page number. use the <a href="#//api/name/numberOfPages">numberOfPages</a> property to find how many pages were found. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSDictionary *results</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKHTMLExtractor.h</code><br />
+	</div>				
+	
+	
+</div>
+					
 				</div>
 				
 				
@@ -375,7 +515,7 @@
 			<div id="footer">
 				<hr />
 				<div class="footer-copyright">
-					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-10-30)</span><br />
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-11-13)</span><br />
 					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
 				</div>
 			</div>

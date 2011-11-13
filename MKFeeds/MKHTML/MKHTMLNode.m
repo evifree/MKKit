@@ -13,6 +13,9 @@ static const char *kDivNode             = "div";
 static const char *kPNode               = "p";
 static const char *kScriptNode          = "script";
 static const char *kANode               = "a";
+static const char *kLiNode              = "li";
+static const char *kBlockquoteNode      = "blockquote";
+static const char *kH1                  = "h1";
 static const char *kClosingNode         = "text";
 
 @interface MKHTMLNode () 
@@ -30,6 +33,7 @@ static const char *kClosingNode         = "text";
 NSString * allNodeContents(xmlNode *node);
 NSString * allContentsForNodesNamed(xmlNode *node, const char *name);
 NSString * rawContentsOfNode(xmlNode *node);
+NSString * getAttributeNamed(xmlNode *node, const char *nameStr);
 MKHTMLNodeType nodeType(xmlNode *node);
 
 #pragma mark - Initalizing
@@ -46,6 +50,11 @@ MKHTMLNodeType nodeType(xmlNode *node);
 
 - (NSString *)nodeName {
     return [NSString stringWithCString:(void *)mNode->name encoding:NSUTF8StringEncoding];
+}
+
+- (NSString *)valueOfAttribute:(NSString *)attribute {
+    const char * nameStr = [attribute UTF8String];
+	return getAttributeNamed(mNode, nameStr);
 }
 
 #pragma mark - Getting Text
@@ -281,6 +290,20 @@ NSString * rawContentsOfNode(xmlNode * node) {
 	return string;
 }
 
+NSString * getAttributeNamed(xmlNode *node, const char *nameStr) {
+	for(xmlAttrPtr attr = node->properties; NULL != attr; attr = attr->next) {
+		if (strcmp((char*)attr->name, nameStr) == 0) {				
+			for(xmlNode * child = attr->children; NULL != child; child = child->next) {
+				return [NSString stringWithCString:(void*)child->content encoding:NSUTF8StringEncoding];
+			}
+			break;
+		}
+	}
+    
+	return NULL;
+}
+
+
 MKHTMLNodeType nodeType(xmlNode *node) {
     if (node == NULL || node->name == NULL)
 		return MKHTMLNodeUnknown;
@@ -298,6 +321,15 @@ MKHTMLNodeType nodeType(xmlNode *node) {
     }
     else if (strcmp(tagName, kANode) == 0) {
         return MKHTMLNodeA;
+    }
+    else if (strcmp(tagName, kLiNode) == 0) {
+        return MKHTMLNodeLi;
+    }
+    else if (strcmp(tagName, kBlockquoteNode) == 0) {
+        return MKHTMLNodeBlockquote;
+    }
+    else if (strcmp(tagName, kH1) == 0) {
+        return MKHTMLNodeH1;
     }
     else if (strcmp(tagName, kClosingNode) == 0) {
         return MKHTMLClosingNode;

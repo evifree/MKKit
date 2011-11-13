@@ -15,10 +15,13 @@
 #import <MKKit/MKFeeds/MKFeedsAvailability.h>
 
 typedef enum {
+    MKHTMLNodeA,
+    MKHTMLNodeBlockquote,
     MKHTMLNodeDiv,
+    MKHTMLNodeH1,
+    MKHTMLNodeLi,
     MKHTMLNodeP,
     MKHTMLNodeScript,
-    MKHTMLNodeA,
     MKHTMLClosingNode,
     MKHTMLNodeUnknown,
 } MKHTMLNodeType;
@@ -176,6 +179,15 @@ typedef enum {
 */
 - (NSString *)nodeName;
 
+/**
+ Returns the value of the given attribute.
+ 
+ @param attribute the name of the attribute
+ 
+ @return NSString instance
+*/
+- (NSString *)valueOfAttribute:(NSString *)attribute;
+
 ///-------------------------------------------
 /// @name Getting Node Types
 ///-------------------------------------------
@@ -183,10 +195,13 @@ typedef enum {
 /**
  Returns the type of the node. MKHTMLNode supports the following types:
  
- * `MKHTMLNodeDiv` : node with <div> name.
- * `MKHTMLNodeP` : node with <p> name.
- * `MKHTMLNodeScript` : node with <script> name.
  * `MKHTMLNodeA` : node with <a> name.
+ * `MKHTMLNodeBlockquote` : node with <blockquote> name.
+ * `MKHTMLNodeDiv` : node with <div> name.
+ * `MKHTMLNodeH1` : node with <h1> name.
+ * `MKHTMLNodeP` : node with <p> name.
+ * `MKHTMLNodeLi` : node with <li> name.
+ * `MKHTMLNodeScript` : node with <script> name.
  * `MKHTMLClosingNode` : node that closes out another node </somenode>.
  * `MKHTMLNodeUnknown` : node that cannot be identified by one of the other types.
  

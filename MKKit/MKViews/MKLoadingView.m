@@ -51,7 +51,8 @@ CGFloat lProgress = 0.0;
             [activityIndicator release];
         }
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeView) name:MK_LOADING_VIEW_SHOULD_REMOVE_NOTIFICATION object:nil];
+        MKLoadingViewShouldRemoveNotification = @"MKLoadingViewShouldRemoveNotification";
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeView) name:MKLoadingViewShouldRemoveNotification object:nil];
     }
     return self;
 }
@@ -119,7 +120,7 @@ void drawProgressBar(CGContextRef context, CGRect rect) {
 } 
  
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MK_LOADING_VIEW_SHOULD_REMOVE_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MKLoadingViewShouldRemoveNotification object:nil];
     
     [super dealloc];
 }

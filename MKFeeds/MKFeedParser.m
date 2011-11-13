@@ -19,8 +19,9 @@ static NSString *currentElement = nil;
 - (id)initWithURL:(NSString *)aURL delegate:(id<MKFeedParserDelegate>)theDelegate {
 	if (self = [super init]) {
         if (aURL == nil) {
-            NSException *ecxeption = [NSException exceptionWithName:@"nil URL" reason:@"URL cannot be a nil value." userInfo:nil];
-            [ecxeption raise];
+            MKFeedParserNILURLException = @"MKFeedParserNILURLException";
+            NSException *exception = [NSException exceptionWithName:MKFeedParserNILURLException reason:@"URL cannot be a nil value." userInfo:nil];
+            @throw exception;
         }
 		mUrl = [aURL copy];
 		delegate = theDelegate;
@@ -44,6 +45,15 @@ static NSString *currentElement = nil;
         MKFeedAtomAuthorName = @"name";
 	}
 	return self; 
+}
+
+#pragma mark - Memory Management
+
+-(void)dealloc {
+    self.delegate = nil;
+    self.requestCompleteBlock = nil;
+    
+	[super dealloc];
 }
 
 #pragma mark - Accessor Methods
@@ -105,8 +115,8 @@ static NSString *currentElement = nil;
     // UNCOMMENT THESE LINES TO POST THE FEED DATA IN THE LOG //
     ////////////////////////////////////////////////////////////
     
-	NSString *data = [[NSString alloc] initWithData:requestData encoding:NSUTF8StringEncoding];
-	NSLog(@"%@", data);
+	//NSString *data = [[NSString alloc] initWithData:requestData encoding:NSUTF8StringEncoding];
+	//NSLog(@"%@", data);
 	
 	theParser = [[NSXMLParser alloc] initWithData:requestData];
 	[theParser setDelegate:self];
@@ -216,7 +226,8 @@ static NSString *currentElement = nil;
         }
         else if ([elementName isEqualToString:MKFeedRSSFeedLink]) {
             NSString *formatString = [currentString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-            NSString *link = [formatString stringByReplacingOccurrencesOfString:@"  " withString:@""];
+            NSString *nextFormatString = [formatString stringByReplacingOccurrencesOfString:@"\t" withString:@""];
+            NSString *link = [nextFormatString stringByReplacingOccurrencesOfString:@" " withString:@""];
             [feed setObject:link forKey:currentElement];
         }
         else if ([elementName isEqualToString:MKFeedRSSFeedGUID]) {
@@ -281,13 +292,6 @@ static NSString *currentElement = nil;
 	
 	[items release];
 	[theParser release];
-}
-
--(void)dealloc {
-    self.delegate = nil;
-    self.requestCompleteBlock = nil;
-
-	[super dealloc];
 }
 
 @end

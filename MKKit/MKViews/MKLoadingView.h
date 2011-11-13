@@ -15,7 +15,7 @@ typedef enum {
     MKLoadingViewTypeProgressBar,
 } MKLoadingViewType;
 
-#define MK_LOADING_VIEW_SHOULD_REMOVE_NOTIFICATION      @"MKLoadingViewShouldRemoveNotification"
+//#define MK_LOADING_VIEW_SHOULD_REMOVE_NOTIFICATION      @"MKLoadingViewShouldRemoveNotification"
 
 /**------------------------------------------------------------------------
  MKLoadingView Provides a small view that informs the user of a process taking
@@ -71,3 +71,4 @@ typedef enum {
 
 @end
 
+NSString *MKLoadingViewShouldRemoveNotification MK_VISIBLE_ATTRIBUTE;

@@ -109,7 +109,8 @@ typedef enum {
  
  @return MKRSSFeed instance
  
- @exception Missing-URL Exception is rasied if the aURL paramenter is nil
+ @exception MKFeedParserNILURLException Exception is thrown if the aURL paramenter is nil.
+ Exception is catchable.
 */
 - (id)initWithURL:(NSString *)aURL delegate:(id<MKFeedParserDelegate>)theDelegate;
 
@@ -136,7 +137,7 @@ typedef enum {
 ///-----------------------------------------------
 
 /** The URL address of the feed. */
-@property (nonatomic, copy, readonly) NSString *url;
+@property (nonatomic, readonly) NSString *url;
 
 /** The content type of the feed. This property will return one of the following:
  
@@ -167,6 +168,8 @@ typedef enum {
 @property (nonatomic, copy) MKRequestComplete requestCompleteBlock;
  
 @end
+
+NSString *MKFeedParserNILURLException MK_VISIBLE_ATTRIBUTE;
 
 NSString *MKFeedRSSFeedStart MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedRSSFeedItem MK_VISIBLE_ATTRIBUTE;

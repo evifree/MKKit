@@ -164,9 +164,9 @@
 		AAB4D1F213E8C9810061A6BD /* MKElementAccentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB4D1F013E8C9810061A6BD /* MKElementAccentView.m */; };
 		AAB5EE831426B93C00AFE278 /* MKGraphicsStructures.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB5EE811426B93C00AFE278 /* MKGraphicsStructures.h */; };
 		AAB5EE841426B93C00AFE278 /* MKGraphicsStructures.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB5EE821426B93C00AFE278 /* MKGraphicsStructures.m */; };
-		AAB6FF5F1458D5DE0030C974 /* MKHTMLParserDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB6FF5E1458D5DE0030C974 /* MKHTMLParserDelegate.h */; };
 		AAB76CE4141B3682007829EB /* MKSwipeCellView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB76CE2141B3682007829EB /* MKSwipeCellView.h */; };
 		AAB76CE5141B3682007829EB /* MKSwipeCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB76CE3141B3682007829EB /* MKSwipeCellView.m */; };
+		AABD97BF146E260D004F1AA1 /* MKHTMLExtractorDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AABD97BE146E260D004F1AA1 /* MKHTMLExtractorDelegate.h */; };
 		AABE3D581376CFE500ECC539 /* MKLoginViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AABE3D551376CFE500ECC539 /* MKLoginViewController.h */; };
 		AABE3D591376CFE500ECC539 /* MKLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE3D561376CFE500ECC539 /* MKLoginViewController.m */; };
 		AABF4D8C13921A24001B547A /* MKIAPViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AABF4D8A13921A24001B547A /* MKIAPViewController.h */; };
@@ -354,9 +354,9 @@
 		AAB4D1F013E8C9810061A6BD /* MKElementAccentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKElementAccentView.m; sourceTree = "<group>"; };
 		AAB5EE811426B93C00AFE278 /* MKGraphicsStructures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKGraphicsStructures.h; sourceTree = "<group>"; };
 		AAB5EE821426B93C00AFE278 /* MKGraphicsStructures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKGraphicsStructures.m; sourceTree = "<group>"; };
-		AAB6FF5E1458D5DE0030C974 /* MKHTMLParserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MKHTMLParserDelegate.h; path = MKFeeds/MKHTML/MKHTMLParserDelegate.h; sourceTree = SOURCE_ROOT; };
 		AAB76CE2141B3682007829EB /* MKSwipeCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKSwipeCellView.h; sourceTree = "<group>"; };
 		AAB76CE3141B3682007829EB /* MKSwipeCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSwipeCellView.m; sourceTree = "<group>"; };
+		AABD97BE146E260D004F1AA1 /* MKHTMLExtractorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MKHTMLExtractorDelegate.h; path = MKFeeds/MKHTML/MKHTMLExtractorDelegate.h; sourceTree = SOURCE_ROOT; };
 		AABE3D551376CFE500ECC539 /* MKLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKLoginViewController.h; sourceTree = "<group>"; };
 		AABE3D561376CFE500ECC539 /* MKLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKLoginViewController.m; sourceTree = "<group>"; };
 		AABF4D8A13921A24001B547A /* MKIAPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKIAPViewController.h; sourceTree = "<group>"; };
@@ -663,11 +663,11 @@
 			children = (
 				AA86F55B1457B0BA00A7D4FC /* MKHTMLExtractor.h */,
 				AA86F55C1457B0BA00A7D4FC /* MKHTMLExtractor.m */,
+				AABD97BE146E260D004F1AA1 /* MKHTMLExtractorDelegate.h */,
 				AA86F55D1457B0BA00A7D4FC /* MKHTMLNode.h */,
 				AA86F55E1457B0BA00A7D4FC /* MKHTMLNode.m */,
 				AA86F55F1457B0BA00A7D4FC /* MKHTMLParser.h */,
 				AA86F5601457B0BA00A7D4FC /* MKHTMLParser.m */,
-				AAB6FF5E1458D5DE0030C974 /* MKHTMLParserDelegate.h */,
 			);
 			name = MKHTML;
 			path = MKTextExtractor;
@@ -868,7 +868,7 @@
 				AA86F5611457B0BA00A7D4FC /* MKHTMLExtractor.h in Headers */,
 				AA86F5631457B0BA00A7D4FC /* MKHTMLNode.h in Headers */,
 				AA86F5651457B0BA00A7D4FC /* MKHTMLParser.h in Headers */,
-				AAB6FF5F1458D5DE0030C974 /* MKHTMLParserDelegate.h in Headers */,
+				AABD97BF146E260D004F1AA1 /* MKHTMLExtractorDelegate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

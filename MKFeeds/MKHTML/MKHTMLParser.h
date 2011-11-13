@@ -12,9 +12,9 @@
 #import <Foundation/Foundation.h>
 #import <libxml/HTMLparser.h>
 
-@class MKHTMLNode;
+#import <MKKit/MKFeeds/MKFeedsAvailability.h>
 
-//@protocol MKHTMLParserDelegate;
+@class MKHTMLNode;
 
 /**---------------------------------------------------------------------------------
  *Overview*
@@ -37,7 +37,10 @@
  Creates an instance of MKHTMLParser with the given data.
  
  @param data This prarameter should contain the data that 
- was recived from an NSURLConnection.
+ was recived from an NSURLConnection. Cannot be nil.
+ 
+ @exception MKHTMLParserNILDataException Exception is thrown if data is nil.
+ Exception is catchable.
  
  @return MKHTMLParser instance
 */
@@ -62,8 +65,6 @@
 */
 - (MKHTMLNode *)body;
 
-//- (void)parseNode:(MKHTMLNode *)node;
-
-//@property (assign) id<MKHTMLParserDelegate> delegate;
-
 @end
+
+NSString *MKHTMLParserNILDataException MK_VISIBLE_ATTRIBUTE;

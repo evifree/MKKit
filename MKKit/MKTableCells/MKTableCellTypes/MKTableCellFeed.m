@@ -143,7 +143,7 @@
 }
 
 - (void)setContentText:(NSString *)contentText {
-    CGFloat width = 320.0;
+    CGFloat width = 300.0;
     
     if (DEVICE_ORIENTATION_IS_LANDSCAPED) {
         width = DYNAMIC_CELL_CONTENT_WIDTH_LANDSCAPE;
@@ -159,7 +159,7 @@
     UILabel *label = (UILabel*)[self viewWithTag:kFeedContentViewTag];
     
     [label setText:contentText];
-    [label setFrame:CGRectMake(DYNAMIC_CELL_CONTENT_MARGIN, (DYNAMIC_CELL_CONTENT_MARGIN + 17.0), width - (DYNAMIC_CELL_CONTENT_MARGIN * 2), MAX(size.height, 44.0f))];
+    [label setFrame:CGRectMake(DYNAMIC_CELL_CONTENT_MARGIN, (DYNAMIC_CELL_CONTENT_MARGIN + 17.0), width - (DYNAMIC_CELL_CONTENT_MARGIN * 2), MAX(size.height, 0.0f))];
 
     UIView *adetailLabel = (UIView *)[self.contentView viewWithTag:kDescriptionViewTag];
     
