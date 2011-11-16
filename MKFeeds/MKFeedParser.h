@@ -20,6 +20,7 @@ typedef enum {
 typedef enum {
     MKFeedSourceRSS,
     MKFeedSourceAtom,
+    MKFeedSourceTypeUnknown,
 } MKFeedSourceType;
 
 typedef enum {
@@ -209,5 +210,6 @@ NSString *MKFeedAtomAuthorName MK_VISIBLE_ATTRIBUTE;
 */
 - (void)feed:(MKFeedParser *)feed didReturnData:(NSArray *)data;
 
+@end
 
-@end 
+

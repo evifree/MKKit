@@ -182,6 +182,8 @@
 		AAEDEA771390A732007EA362 /* MKNoticeView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAEDEA751390A730007EA362 /* MKNoticeView.h */; };
 		AAEDEA781390A732007EA362 /* MKNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEDEA761390A731007EA362 /* MKNoticeView.m */; };
 		AAEFE115121873BA008143E4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAEFE114121873BA008143E4 /* CoreLocation.framework */; };
+		AAF37FE814703885001AE209 /* NSString+MKFeedParser.h in Headers */ = {isa = PBXBuildFile; fileRef = AAF37FE614703885001AE209 /* NSString+MKFeedParser.h */; };
+		AAF37FE914703885001AE209 /* NSString+MKFeedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF37FE714703885001AE209 /* NSString+MKFeedParser.m */; };
 		AAF5FD761423B8AE00907C96 /* libobjc.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF5FD751423B8AD00907C96 /* libobjc.A.dylib */; };
 		AAFC9898141534F30071B91C /* MKGraphDrawing.h in Headers */ = {isa = PBXBuildFile; fileRef = AAFC9896141534F30071B91C /* MKGraphDrawing.h */; };
 		AAFC9899141534F30071B91C /* MKGraphDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFC9897141534F30071B91C /* MKGraphDrawing.m */; };
@@ -374,6 +376,8 @@
 		AAEDEA751390A730007EA362 /* MKNoticeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKNoticeView.h; sourceTree = "<group>"; };
 		AAEDEA761390A731007EA362 /* MKNoticeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKNoticeView.m; sourceTree = "<group>"; };
 		AAEFE114121873BA008143E4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		AAF37FE614703885001AE209 /* NSString+MKFeedParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MKFeedParser.h"; sourceTree = "<group>"; };
+		AAF37FE714703885001AE209 /* NSString+MKFeedParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MKFeedParser.m"; sourceTree = "<group>"; };
 		AAF5FD751423B8AD00907C96 /* libobjc.A.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libobjc.A.dylib; path = usr/lib/libobjc.A.dylib; sourceTree = SDKROOT; };
 		AAFC9896141534F30071B91C /* MKGraphDrawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKGraphDrawing.h; sourceTree = "<group>"; };
 		AAFC9897141534F30071B91C /* MKGraphDrawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKGraphDrawing.m; sourceTree = "<group>"; };
@@ -680,6 +684,8 @@
 				AA3297C7144FD9A300982DCE /* MKFeedsAvailability.h */,
 				AA3297B2144FD0B600982DCE /* MKFeedParser.h */,
 				AA3297B3144FD0B600982DCE /* MKFeedParser.m */,
+				AAF37FE614703885001AE209 /* NSString+MKFeedParser.h */,
+				AAF37FE714703885001AE209 /* NSString+MKFeedParser.m */,
 				AA2662091454EF6D009696D0 /* MKHTML */,
 				AA3297AA144FD03A00982DCE /* Supporting Files */,
 			);
@@ -869,6 +875,7 @@
 				AA86F5631457B0BA00A7D4FC /* MKHTMLNode.h in Headers */,
 				AA86F5651457B0BA00A7D4FC /* MKHTMLParser.h in Headers */,
 				AABD97BF146E260D004F1AA1 /* MKHTMLExtractorDelegate.h in Headers */,
+				AAF37FE814703885001AE209 /* NSString+MKFeedParser.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1069,6 +1076,7 @@
 				AA86F5621457B0BA00A7D4FC /* MKHTMLExtractor.m in Sources */,
 				AA86F5641457B0BA00A7D4FC /* MKHTMLNode.m in Sources */,
 				AA86F5661457B0BA00A7D4FC /* MKHTMLParser.m in Sources */,
+				AAF37FE914703885001AE209 /* NSString+MKFeedParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

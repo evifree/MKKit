@@ -41,7 +41,6 @@ typedef enum {
 
 @interface MKHTMLExtractor : NSObject {
 @private
-    MKHTMLParser *htmlParser;
     NSMutableURLRequest *request;
     NSURLConnection *aConnection;
     NSMutableData *requestData;
@@ -103,26 +102,6 @@ typedef enum {
 
 /** The request that is currently being used. */
 @property (nonatomic, assign) MKHTMLExtractorRequestType requestType;
-
-///--------------------------------------------
-/// @name Extraction Methods
-///--------------------------------------------
-
-/**
- Returns the main text of a web page. This is most ideal for getting
- the article from a news story. The string is in an HTML format.
- 
- The method will automatically look for contiuation pages. Each page
- will be placed in the results dictonary with the page number as the
- key. The delegate method extractor:didFindPage:content: method is
- called for every page that is found.
-
- @return NSString : main body of a web page in a HTML format.
- 
- @warning *Note* This method will return `nil` if no request has been
- completed.
-*/
-- (NSString *)mainBodyHTML;
 
 ///--------------------------------------------
 /// @name Using Data
