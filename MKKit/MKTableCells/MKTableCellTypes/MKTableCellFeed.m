@@ -28,7 +28,8 @@
         mTheLabel.backgroundColor = CLEAR;
 		mTheLabel.textAlignment = UITextAlignmentLeft;
 		mTheLabel.adjustsFontSizeToFitWidth = NO;
-		mTheLabel.minimumFontSize = 10.0;
+        mTheLabel.font = SYSTEM_BOLD(14.0);
+		mTheLabel.minimumFontSize = 12.0;
         mTheLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
 		
 		[self.contentView addSubview:mTheLabel];

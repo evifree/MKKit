@@ -20,12 +20,16 @@
 ///////////////////////// FINDS IF PROJECT IS ARC COMPATABLE OR NOT ////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/// EXPERIMENTAL -- NOT YET IMPLEMENTED  ///
+
 #if __has_feature(objc_arc)
     #define MKKIT_ARC_COMPATABLE            1  // 1=COMPATABLE 0=NONCOMPATABLE
     #define MKKIT_SAFE_RELEASE(obj)
+    #define MKKIT_SAFE_AUTORELEASE(obj)
 #else
     #define MKKIT_ARC_COMPATABLE            0  // 1=COMPATABLE 0=NONCOMPATABLE
     #define MKKIT_SAFE_RELEASE(obj)         [(obj) release]
+    #define MKKIT_SAFE_AUTORELEASE(obj)     [(obj) autorelease]
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

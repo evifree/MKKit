@@ -8,7 +8,6 @@
 
 #import "MKTableCellTextView.h"
 
-
 @implementation MKTableCellTextView
 
 @synthesize theTextView=_theTextView;

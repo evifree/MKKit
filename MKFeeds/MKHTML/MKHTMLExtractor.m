@@ -53,8 +53,8 @@
     self.requestHandler = nil;
     self.delegate = nil;
     
-    MKKIT_SAFE_RELEASE(mResultsDict);
-    MKKIT_SAFE_RELEASE(URL);
+    [mResultsDict release];
+    [URL release];
     
     [super dealloc];
 }
@@ -109,8 +109,8 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    MKKIT_SAFE_RELEASE(aConnection);
-    MKKIT_SAFE_RELEASE(request);
+    [aConnection release];
+    [request release];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -129,9 +129,9 @@
     
     MKHTMLParser *parsedData = [[MKHTMLParser alloc] initWithData:requestData];
     
-    MKKIT_SAFE_RELEASE(aConnection);
-	MKKIT_SAFE_RELEASE(request);
-	MKKIT_SAFE_RELEASE(requestData);
+    [aConnection release];
+    [request release];
+    [requestData release];
     
     MKHTMLExtractorFlags.requestComplete = YES;
     
@@ -165,7 +165,7 @@
         }
     }
     
-    MKKIT_SAFE_RELEASE(parsedData);
+    [parsedData release];
 }
 
 #pragma mark - Extractor Methods
@@ -226,7 +226,6 @@
                 if (!baseURL) {
                     NSString *host = [[NSURL URLWithString:URL] host];
                     NSString *scheme = [[NSURL URLWithString:URL] scheme];
-                    NSLog(@"%@", host);
                     url = [NSString stringWithFormat:@"%@://%@%@", scheme, host, url];
                 }
                 [self requestPage:url];

@@ -401,50 +401,12 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 
 @end
 
-//MKTableCellAccessoryViewType mType MK_VISIBLE_ATTRIBUTE;
-
-/**--------------------------------------------------------------------------
- This catagory of MKControl provides the control for table cell accessories.
----------------------------------------------------------------------------*/
-@interface MKControl (MKTableCell)
-
-///------------------------------------------
-/// @name Creating
-///------------------------------------------
-
-/**
- Retuns an istance for the specified type.
- 
- @param type the type of accessory to create
- 
- @return MKControl instance
-*/
-- (id)initWithType:(MKTableCellAccessoryViewType)type;
-
-/**
- Returns an instance that displays the specified image.
- 
- @param image the image to display as the cells accessory
- 
- @return MKControl instance
-*/
-- (id)initWithImage:(UIImage *)image;
-
-///----------------------------------------
-/// @name Type
-///----------------------------------------
-
-/** Reference to the MKTableCellAccessoryViewType */
-@property (nonatomic, assign) id viewType;
-
-@end
-
 /**--------------------------------------------------------------------------
  This catagory of MKView provides a standard layout for MKTableCell objects.
----------------------------------------------------------------------------*/
+ ---------------------------------------------------------------------------*/
 
 @interface MKView (MKTableCell)
-    
+
 ///-----------------------------------
 /// @name Creating
 ///-----------------------------------
@@ -455,7 +417,7 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
  @param cell the cell the view will be placed on.
  
  @return MKView instance
-*/
+ */
 - (id)initWithCell:(MKTableCell *)cell;
 
 ///-----------------------------------
@@ -464,19 +426,19 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 
 /**
  Adjusts the elements of the cell to fit.
-*/
+ */
 - (void)layoutCell;
 
 /**
  Yes if the primary element should not atomically adjust its size. 
  Default is `NO`.
-*/
+ */
 @property (nonatomic, assign) BOOL pinnedPrimaryElement;
 
 /** 
  Yes if the secondary element should not atomically adjust its size. 
  Default is `NO`.
-*/
+ */
 @property (nonatomic, assign) BOOL pinnedSecondaryElement;
 
 ///-----------------------------------
@@ -488,7 +450,7 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
  appears on the left side of the cell.
  
  @param element the view that will be added to the cell.
-*/
+ */
 - (void)addPrimaryElement:(UIView *)element;
 
 /**
@@ -499,7 +461,7 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
  @param element the view to add to the cell
  
  @param rect the rect of the view
-*/
+ */
 - (void)addPrimaryElement:(UIView *)element inRect:(CGRect)rect;
 
 /**
@@ -518,7 +480,7 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
  @param element the view to add to the cell.
  
  @param rect the rect of the view.
-*/ 
+ */ 
 - (void)addSecondaryElement:(UIView *)element inRect:(CGRect)rect;
 
 /**
@@ -535,15 +497,51 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
  the detail element is moved to right to fit the icon.
  
  @param element the view that will be added to the cell.
-*/
+ */
 - (void)addDetailElement:(UIView *)element;
+
+@end
+
+/**--------------------------------------------------------------------------
+ This catagory of MKControl provides the control for table cell accessories.
+ ---------------------------------------------------------------------------*/
+@interface MKControl (MKTableCell)
+
+///------------------------------------------
+/// @name Creating
+///------------------------------------------
+
+/**
+ Retuns an istance for the specified type.
+ 
+ @param type the type of accessory to create
+ 
+ @return MKControl instance
+ */
+- (id)initWithType:(MKTableCellAccessoryViewType)type;
+
+/**
+ Returns an instance that displays the specified image.
+ 
+ @param image the image to display as the cells accessory
+ 
+ @return MKControl instance
+ */
+- (id)initWithImage:(UIImage *)image;
+
+///----------------------------------------
+/// @name Type
+///----------------------------------------
+
+/** Reference to the MKTableCellAccessoryViewType */
+@property (nonatomic, assign) id viewType;
 
 @end
 
 /**----------------------------------------------------------------------------
  This catagory of MKPopOutView provides methods for displaying a pop out view from
  a MKTableCell.
------------------------------------------------------------------------------*/
+ -----------------------------------------------------------------------------*/
 
 @interface MKPopOutView (MKTableCell)
 

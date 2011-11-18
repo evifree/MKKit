@@ -19,6 +19,7 @@ typedef enum {
     MKHTMLNodeBlockquote,
     MKHTMLNodeDiv,
     MKHTMLNodeH1,
+    MKHTMLNodeImg,
     MKHTMLNodeLi,
     MKHTMLNodeP,
     MKHTMLNodeScript,
@@ -199,6 +200,7 @@ typedef enum {
  * `MKHTMLNodeBlockquote` : node with <blockquote> name.
  * `MKHTMLNodeDiv` : node with <div> name.
  * `MKHTMLNodeH1` : node with <h1> name.
+ * `MKHTMLNodeIMG` : node with <img> name.
  * `MKHTMLNodeP` : node with <p> name.
  * `MKHTMLNodeLi` : node with <li> name.
  * `MKHTMLNodeScript` : node with <script> name.

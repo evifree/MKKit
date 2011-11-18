@@ -34,6 +34,7 @@ static NSString *currentElement = nil;
         
         MKFeedRSSFeedTitle = @"title";
         MKFeedRSSFeedDescription = @"description";
+        MKFeedRSSFeedDescriptionHTML = @"descriptionHTML";
         MKFeedRSSFeedLink = @"link";
         MKFeedRSSFeedPublicationDate = @"pubDate";
         MKFeedRSSFeedGUID = @"guid";
@@ -43,6 +44,7 @@ static NSString *currentElement = nil;
         MKFeedAtomID = @"id";
         MKFeedAtomUpdated = @"updated";
         MKFeedAtomSummary = @"summary";
+        MKFeedAtomSummaryHTML = @"summaryHTML";
         MKFeedAtomAuthorName = @"name";
 	}
 	return self; 
@@ -176,6 +178,9 @@ static NSString *currentElement = nil;
             else if ([elementName isEqualToString:MKFeedAtomSummary]) {
                 currentElement = elementName;
                 if ([[attributeDict objectForKey:@"type"] isEqualToString:@"html"]) {
+                    mContentType = MKFeedContentTypeHTMLEntities;
+                }
+                else if ([[attributeDict objectForKey:@"type"] isEqualToString:@"xhtml"]) {
                     mContentType = MKFeedContentHTML;
                 }
                 else {
@@ -195,7 +200,7 @@ static NSString *currentElement = nil;
             }
         } break;
         default:
-            break;
+        break;
     }
 }
 
@@ -217,7 +222,13 @@ static NSString *currentElement = nil;
                 [feed setObject:[currentString stringByRemovingNewLinesAndWhitespace] forKey:currentElement];
             }
             else if ([elementName isEqualToString:MKFeedRSSFeedDescription]) {
-                [feed setObject:[currentString stringByRemovingNewLinesAndWhitespace] forKey:currentElement];
+                if (![currentString stringContainsHTMLTags]) {
+                    NSString *decodeString = [currentString stringByDecodingHTMLEntities];
+                    [feed setObject:[decodeString stringByRemovingNewLinesAndWhitespace] forKey:currentElement];
+                }
+                else {
+                    [feed setObject:currentString forKey:MKFeedRSSFeedDescriptionHTML];
+                }
             }
             else if ([elementName isEqualToString:MKFeedRSSFeedLink]) {
                 [feed setObject:[currentString stringByRemovingNewLinesAndWhitespace] forKey:currentElement];
@@ -241,7 +252,13 @@ static NSString *currentElement = nil;
                 [feed setObject:[currentString stringByRemovingNewLinesAndWhitespace] forKey:currentElement];
             }
             else if ([elementName isEqualToString:MKFeedAtomSummary]) {
-                [feed setObject:[currentString stringByRemovingNewLinesAndWhitespace] forKey:currentElement];
+                if (![currentString stringContainsHTMLTags]) {
+                    NSString *decodeString = [currentString stringByDecodingHTMLEntities];
+                    [feed setObject:[decodeString stringByRemovingNewLinesAndWhitespace] forKey:currentElement];
+                }
+                else  {
+                    [feed setObject:currentString forKey:MKFeedAtomSummaryHTML];
+                }
             }
             else if ([elementName isEqualToString:MKFeedAtomUpdated]) {
                 [feed setObject:[currentString stringByRemovingNewLinesAndWhitespace] forKey:currentElement];
@@ -251,81 +268,10 @@ static NSString *currentElement = nil;
             }
         } break;
         default:
-            break;
-    }
-    /*
-	////////////////// RSS FEED PROCESSING
-    ///////////////////////////////////////////////////////////////////////////////////////////
-    if (mSourceType == MKFeedSourceRSS) {
-        if ([elementName isEqualToString:MKFeedRSSFeedItem]) {
-            [items addObject:feed];
-            [feed release];
-        }
-        else if ([elementName isEqualToString:MKFeedRSSFeedTitle]) {
-            //NSString *formatString = [currentString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-            //NSString *title = [formatString stringByReplacingOccurrencesOfString:@"  " withString:@""];
-            //NSString *title = [currentString stringByRemovingNewLinesAndWhitespace];
-            [feed setObject:[currentString stringByRemovingNewLinesAndWhitespace] forKey:currentElement];
-        }
-        else if ([elementName isEqualToString:MKFeedRSSFeedDescription]) {
-            NSString *formatString = [currentString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-            NSString *discription = [formatString stringByReplacingOccurrencesOfString:@"  " withString:@""];
-            [feed setObject:discription forKey:currentElement];
-        }
-        else if ([elementName isEqualToString:MKFeedRSSFeedLink]) {
-            NSString *formatString = [currentString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-            NSString *nextFormatString = [formatString stringByReplacingOccurrencesOfString:@"\t" withString:@""];
-            NSString *link = [nextFormatString stringByReplacingOccurrencesOfString:@" " withString:@""];
-            [feed setObject:link forKey:currentElement];
-        }
-        else if ([elementName isEqualToString:MKFeedRSSFeedGUID]) {
-            NSString *formatString = [currentString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-            NSString *guid = [formatString stringByReplacingOccurrencesOfString:@"  " withString:@""];
-            [feed setObject:guid forKey:currentElement];
-        }
-        else if ([elementName isEqualToString:MKFeedRSSFeedPublicationDate]) {
-            NSString *formatString = [currentString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-            NSString *pubDate = [formatString stringByReplacingOccurrencesOfString:@"  " withString:@""];
-            [feed setObject:pubDate forKey:currentElement];
-        }
+        break;
     }
     
-    /////////////////// ATOM FEED PROCESSING
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    if (mSourceType == MKFeedSourceAtom) {
-        if ([elementName isEqualToString:MKFeedAtomFeedEntry]) {
-            [items addObject:feed];
-            [feed release];
-        }
-        else if ([elementName isEqualToString:MKFeedAtomTitle]) {
-            NSString *formatString = [currentString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-            NSString *title = [formatString stringByReplacingOccurrencesOfString:@"  " withString:@""];
-            [feed setObject:title forKey:currentElement];
-        }
-        else if ([elementName isEqualToString:MKFeedAtomID]) {
-            NSString *formatString = [currentString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-            NSString *feedID = [formatString stringByReplacingOccurrencesOfString:@"  " withString:@""];
-            [feed setObject:feedID forKey:currentElement];
-        }
-        else if ([elementName isEqualToString:MKFeedAtomSummary]) {
-            NSString *formatString = [currentString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-            NSString *summary = [formatString stringByReplacingOccurrencesOfString:@"  " withString:@""];
-            [feed setObject:summary forKey:currentElement];
-        }
-        else if ([elementName isEqualToString:MKFeedAtomUpdated]) {
-            NSString *formatString = [currentString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-            NSString *updated = [formatString stringByReplacingOccurrencesOfString:@"  " withString:@""];
-            [feed setObject:updated forKey:currentElement];
-        }
-        else if ([elementName isEqualToString:MKFeedAtomAuthorName]) {
-            NSString *formatString = [currentString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-            NSString *authorName = [formatString stringByReplacingOccurrencesOfString:@"  " withString:@""];
-            [feed setObject:authorName forKey:currentElement];
-        }
-
-    }
-    */
-	[currentString release];
+    [currentString release];
 	currentString = nil;
 	currentElement = nil;
 }

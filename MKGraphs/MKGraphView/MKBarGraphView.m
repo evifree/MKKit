@@ -100,7 +100,7 @@ void drawVerticalBar(CGContextRef context, CGRect rect, CGColorRef color);
             
 #if MKKIT_AVAILABLE_TO_MKGRAPHS
             if (barCount == dataSetsCount) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:MK_LOADING_VIEW_SHOULD_REMOVE_NOTIFICATION object:nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName:MKLoadingViewShouldRemoveNotification object:nil];
             }
 #endif
         }

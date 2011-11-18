@@ -14,6 +14,7 @@ typedef void (^MKRequestComplete)(NSArray *feedInfo, NSError *error);
 
 typedef enum {
     MKFeedContentPlainText,
+    MKFeedContentTypeHTMLEntities,
     MKFeedContentHTML,
 } MKFeedContentType;
 
@@ -22,11 +23,6 @@ typedef enum {
     MKFeedSourceAtom,
     MKFeedSourceTypeUnknown,
 } MKFeedSourceType;
-
-typedef enum {
-    MKFeedEncodingNone,
-    MKFeedEncodingUTF8,
-} MKFeedEncoding;
 
 @protocol MKFeedParserDelegate;
 
@@ -55,6 +51,7 @@ typedef enum {
  
  * `MKFeedRSSFeedTitle` : The title of the feed item -- NSString.
  * `MKFeedRSSFeedDescription` : The description\content of the feed item -- NSString.
+ * `MKFeedRSSFeedDescriptionHTML` : A raw HTML representation of the feed content, if availible -- NSString.
  * `MKFeedRSSFeedLink` : The URL the feed item is linked to -- NSString.
  * `MKFeedRSSFeedPublicationDate` : The publication date of the feed item -- NSString.
  * `MKFeedRSSFeedGUID` : The GUID of the feed item -- NSString.
@@ -66,6 +63,7 @@ typedef enum {
  * `MKFeedAtomID` : The uniquie id of the feed item -- NSString.
  * `MKFeedAtomUpdated` : The data the feed item was last updated -- NSString.
  * `MKFeedAtomSummary` : The summary of feed item -- NSString.
+ * `MKFeedAtomSummaryHTML` : A raw HTML representation of the feed content, if availible -- NSString.
  * `MKFeedAtomAuthorName` : The name of the feed items author -- NSString.
  
  *Requied Framworks*
@@ -92,7 +90,6 @@ typedef enum {
     
     struct {
         BOOL usesCompletionBlock;
-        MKFeedEncoding mEncoding;
     } MKRSSFeedTags;
 }
 
@@ -167,7 +164,7 @@ typedef enum {
 
 /** The request complete block. This block is ran when a request is finished. */
 @property (nonatomic, copy) MKRequestComplete requestCompleteBlock;
- 
+
 @end
 
 NSString *MKFeedParserNILURLException MK_VISIBLE_ATTRIBUTE;
@@ -179,6 +176,7 @@ NSString *MKFeedAtomFeedEntry MK_VISIBLE_ATTRIBUTE;
 
 NSString *MKFeedRSSFeedTitle MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedRSSFeedDescription MK_VISIBLE_ATTRIBUTE;
+NSString *MKFeedRSSFeedDescriptionHTML MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedRSSFeedLink MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedRSSFeedPublicationDate MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedRSSFeedGUID MK_VISIBLE_ATTRIBUTE;
@@ -188,6 +186,7 @@ NSString *MKFeedAtomLink MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedAtomID MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedAtomUpdated MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedAtomSummary MK_VISIBLE_ATTRIBUTE;
+NSString *MKFeedAtomSummaryHTML MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedAtomAuthorName MK_VISIBLE_ATTRIBUTE;
 
 /**-----------------------------------------------------------------------------------

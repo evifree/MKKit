@@ -7,9 +7,44 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MKFeedsAvailability.h"
 
-@interface NSString (MKFeedParser_NSString)
+/**--------------------------------------------------------------
+ *Overview*
+ 
+ This is a special catagory of NSString to help the parser parse the
+ feed data.
+---------------------------------------------------------------*/
+@interface NSString (MKFeedParser)
 
+///--------------------------------------
+/// @name Parsing 
+///--------------------------------------
+
+/**
+ Removes extra returns and whitespace that may have been added
+ to during parsing.
+ 
+ @return NSString
+*/
 - (NSString *)stringByRemovingNewLinesAndWhitespace;
+
+/**
+ Converts HTML entity encodings into a readable text.
+ 
+ @return NSString
+*/
+- (NSString *)stringByDecodingHTMLEntities;
+
+///---------------------------------------
+/// @name Finding Code
+///---------------------------------------
+
+/**
+ Determines if the string has any HTML text it.
+ 
+ @return BOOL Yes if HTML is found, NO if not.
+*/
+- (BOOL)stringContainsHTMLTags;
 
 @end

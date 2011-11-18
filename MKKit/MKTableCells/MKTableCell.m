@@ -413,6 +413,162 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 
 #pragma mark -
 
+@implementation MKView (MKTableCell)
+
+@dynamic pinnedSecondaryElement, pinnedPrimaryElement;
+
+static const char *PinnedPrimary = "PinnedPrimary";
+static const char *PinnedSecondary = "PinnedSecondary";
+
+#pragma mark - Initalizer
+
+- (id)initWithCell:(MKTableCell *)cell {
+    self = [super initWithFrame:cell.contentView.frame];
+    if (self) {
+        self.backgroundColor = CLEAR;
+        self.opaque = NO;
+        self.autoresizesSubviews = YES;
+        self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
+        self.pinnedSecondaryElement = NO;
+        self.pinnedPrimaryElement = NO;
+        
+        mShouldRemoveView = NO;
+    }
+    return self;
+}
+
+#pragma mark - Layout
+
+- (void)layoutCell {
+    UIView *primaryElement = [self viewWithTag:kPrimaryViewTag];
+    UIView *secondaryElement = [self viewWithTag:kSecondaryViewTag];
+    UIView *iconElement = [self viewWithTag:kIconViewTag];
+    UIView *detailElement = [self viewWithTag:kDetailViewTag];
+    
+    if (primaryElement) {
+        if (!self.pinnedPrimaryElement) {
+            primaryElement.frame = CGRectMake(kCellPrimaryElementX, kCellPrimaryElementY, kCellPrimaryElementyWidth, kCellSecondaryElementHeight);
+        }
+    }
+    
+    if (secondaryElement) {
+        if (!self.pinnedSecondaryElement) {
+            secondaryElement.frame = CGRectMake(kCellSecondaryElementX, kCellSecondaryElementY, kCellSecondaryElementWidth, kCellSecondaryElementHeight);
+        }
+        
+        if (primaryElement && !self.pinnedPrimaryElement) {
+            primaryElement.frame = CGRectMake(primaryElement.frame.origin.x, primaryElement.frame.origin.y, (CGRectGetMinX(secondaryElement.frame) - CGRectGetMinX(primaryElement.frame) - 5.0), primaryElement.frame.size.height);
+        }
+    }
+    
+    if (detailElement) {
+        detailElement.frame = CGRectMake(kCellDetailElementX, kCellDetailElementY, kCellDetailElementWidth, kCellDetailElementHeight);
+        
+        if (primaryElement) {
+            primaryElement.frame = CGRectMake(primaryElement.frame.origin.x, (primaryElement.frame.origin.y - 5.0), primaryElement.frame.size.width, (primaryElement.frame.size.height - 5.0));
+        }
+        if (secondaryElement) {
+            secondaryElement.frame = CGRectMake(secondaryElement.frame.origin.x, (secondaryElement.frame.origin.y - 5.0), secondaryElement.frame.size.width, (secondaryElement.frame.size.height - 5.0));
+        }
+    }
+    
+    if (iconElement) {
+        iconElement.frame = CGRectMake(kCellIconRectX, kCellIconRectY, kCellIconRectWidth, kCellIconRectHeight);
+        
+        if (primaryElement && !self.pinnedPrimaryElement) {
+            primaryElement.frame = CGRectMake((primaryElement.frame.origin.x + 44.0), primaryElement.frame.origin.y, (primaryElement.frame.size.width - 44.0), primaryElement.frame.size.height);
+        }
+        if (detailElement) {
+            detailElement.frame = CGRectMake((detailElement.frame.origin.x + 44.0), detailElement.frame.origin.y, (detailElement.frame.size.width - 44.0), detailElement.frame.size.height);
+        }
+    }
+}
+
+#pragma mark - Accessory Methods
+#pragma mark Setters
+
+- (void)setPinnedSecondaryElement:(BOOL)pinned {
+    NSNumber *pinnedObj = [NSNumber numberWithBool:pinned];
+    objc_setAssociatedObject(self, PinnedSecondary, pinnedObj, OBJC_ASSOCIATION_RETAIN);
+}
+
+- (void)setPinnedPrimaryElement:(BOOL)pinned {
+    NSNumber *pinnedObj = [NSNumber numberWithBool:pinned];
+    objc_setAssociatedObject(self, PinnedPrimary, pinnedObj, OBJC_ASSOCIATION_RETAIN);
+}
+
+#pragma mark Getters
+
+- (BOOL)pinnedSecondaryElement {
+    return [objc_getAssociatedObject(self, PinnedSecondary) boolValue];
+}
+
+- (BOOL)pinnedPrimaryElement {
+    return [objc_getAssociatedObject(self, PinnedPrimary) boolValue];
+}
+
+#pragma mark - Adding Elements
+
+- (void)addPrimaryElement:(UIView *)element {
+    element.tag = kPrimaryViewTag;
+    element.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
+    
+    [self addSubview:element];
+    [self layoutCell];
+}
+
+- (void)addPrimaryElement:(UIView *)element inRect:(CGRect)rect {
+    self.pinnedPrimaryElement = YES;
+    
+    element.tag = kPrimaryViewTag;
+    element.autoresizingMask = UIViewAutoresizingNone;
+    
+    [self addSubview:element];
+    [self layoutCell];
+}
+
+- (void)addSecondaryElement:(UIView *)element {
+    element.tag = kSecondaryViewTag;
+    element.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    
+    [self addSubview:element];
+    [self layoutCell];
+}
+
+- (void)addSecondaryElement:(UIView *)element inRect:(CGRect)rect {
+    self.pinnedSecondaryElement = YES;
+    
+    element.tag = kSecondaryViewTag;
+    element.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    
+    [self addSubview:element];
+    [self layoutCell];
+}
+
+- (void)addIconElement:(UIView *)element {
+    element.tag = kIconViewTag;
+    element.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
+    
+    [self addSubview:element];
+    [self layoutCell];
+}
+
+- (void)addDetailElement:(UIView *)element {
+    element.tag = kDetailViewTag;
+    element.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
+    
+    [self addSubview:element];
+    [self layoutCell];
+}
+
+- (void)didRelease {
+    objc_removeAssociatedObjects(self);
+}
+
+@end
+
+#pragma mark - 
+
 static const char *TypeTagKey = "TypeTag";
 
 @implementation MKControl (MKTableCell)
@@ -611,162 +767,6 @@ void drawSubtractIcon(CGContextRef context, CGRect rect) {
 
 @end
 
-#pragma mark - 
-
-@implementation MKView (MKTableCell)
-
-@dynamic pinnedSecondaryElement, pinnedPrimaryElement;
-
-static const char *PinnedPrimary = "PinnedPrimary";
-static const char *PinnedSecondary = "PinnedSecondary";
-
-#pragma mark - Initalizer
-
-- (id)initWithCell:(MKTableCell *)cell {
-    self = [super initWithFrame:cell.contentView.frame];
-    if (self) {
-        self.backgroundColor = CLEAR;
-        self.opaque = NO;
-        self.autoresizesSubviews = YES;
-        self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
-        self.pinnedSecondaryElement = NO;
-        self.pinnedPrimaryElement = NO;
-        
-        mShouldRemoveView = NO;
-    }
-    return self;
-}
-
-#pragma mark - Layout
-
-- (void)layoutCell {
-    UIView *primaryElement = [self viewWithTag:kPrimaryViewTag];
-    UIView *secondaryElement = [self viewWithTag:kSecondaryViewTag];
-    UIView *iconElement = [self viewWithTag:kIconViewTag];
-    UIView *detailElement = [self viewWithTag:kDetailViewTag];
-    
-    if (primaryElement) {
-        if (!self.pinnedPrimaryElement) {
-            primaryElement.frame = CGRectMake(kCellPrimaryElementX, kCellPrimaryElementY, kCellPrimaryElementyWidth, kCellSecondaryElementHeight);
-        }
-    }
-    
-    if (secondaryElement) {
-        if (!self.pinnedSecondaryElement) {
-            secondaryElement.frame = CGRectMake(kCellSecondaryElementX, kCellSecondaryElementY, kCellSecondaryElementWidth, kCellSecondaryElementHeight);
-        }
-        
-        if (primaryElement && !self.pinnedPrimaryElement) {
-            primaryElement.frame = CGRectMake(primaryElement.frame.origin.x, primaryElement.frame.origin.y, (CGRectGetMinX(secondaryElement.frame) - CGRectGetMinX(primaryElement.frame) - 5.0), primaryElement.frame.size.height);
-        }
-    }
-    
-    if (detailElement) {
-        detailElement.frame = CGRectMake(kCellDetailElementX, kCellDetailElementY, kCellDetailElementWidth, kCellDetailElementHeight);
-        
-        if (primaryElement) {
-            primaryElement.frame = CGRectMake(primaryElement.frame.origin.x, (primaryElement.frame.origin.y - 5.0), primaryElement.frame.size.width, (primaryElement.frame.size.height - 5.0));
-        }
-        if (secondaryElement) {
-            secondaryElement.frame = CGRectMake(secondaryElement.frame.origin.x, (secondaryElement.frame.origin.y - 5.0), secondaryElement.frame.size.width, (secondaryElement.frame.size.height - 5.0));
-        }
-    }
-
-    if (iconElement) {
-        iconElement.frame = CGRectMake(kCellIconRectX, kCellIconRectY, kCellIconRectWidth, kCellIconRectHeight);
-        
-        if (primaryElement && !self.pinnedPrimaryElement) {
-            primaryElement.frame = CGRectMake((primaryElement.frame.origin.x + 44.0), primaryElement.frame.origin.y, (primaryElement.frame.size.width - 44.0), primaryElement.frame.size.height);
-        }
-        if (detailElement) {
-            detailElement.frame = CGRectMake((detailElement.frame.origin.x + 44.0), detailElement.frame.origin.y, (detailElement.frame.size.width - 44.0), detailElement.frame.size.height);
-        }
-    }
-}
-
-#pragma mark - Accessory Methods
-#pragma mark Setters
-
-- (void)setPinnedSecondaryElement:(BOOL)pinned {
-    NSNumber *pinnedObj = [NSNumber numberWithBool:pinned];
-    objc_setAssociatedObject(self, PinnedSecondary, pinnedObj, OBJC_ASSOCIATION_RETAIN);
-}
-
-- (void)setPinnedPrimaryElement:(BOOL)pinned {
-    NSNumber *pinnedObj = [NSNumber numberWithBool:pinned];
-    objc_setAssociatedObject(self, PinnedPrimary, pinnedObj, OBJC_ASSOCIATION_RETAIN);
-}
-
-#pragma mark Getters
-
-- (BOOL)pinnedSecondaryElement {
-    return [objc_getAssociatedObject(self, PinnedSecondary) boolValue];
-}
-
-- (BOOL)pinnedPrimaryElement {
-    return [objc_getAssociatedObject(self, PinnedPrimary) boolValue];
-}
-
-#pragma mark - Adding Elements
-
-- (void)addPrimaryElement:(UIView *)element {
-    element.tag = kPrimaryViewTag;
-    element.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
-    
-    [self addSubview:element];
-    [self layoutCell];
-}
-
-- (void)addPrimaryElement:(UIView *)element inRect:(CGRect)rect {
-    self.pinnedPrimaryElement = YES;
-    
-    element.tag = kPrimaryViewTag;
-    element.autoresizingMask = UIViewAutoresizingNone;
-    
-    [self addSubview:element];
-    [self layoutCell];
-}
-
-- (void)addSecondaryElement:(UIView *)element {
-    element.tag = kSecondaryViewTag;
-    element.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-    
-    [self addSubview:element];
-    [self layoutCell];
-}
-
-- (void)addSecondaryElement:(UIView *)element inRect:(CGRect)rect {
-    self.pinnedSecondaryElement = YES;
-    
-    element.tag = kSecondaryViewTag;
-    element.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-    
-    [self addSubview:element];
-    [self layoutCell];
-}
-
-- (void)addIconElement:(UIView *)element {
-    element.tag = kIconViewTag;
-    element.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
-    
-    [self addSubview:element];
-    [self layoutCell];
-}
-
-- (void)addDetailElement:(UIView *)element {
-    element.tag = kDetailViewTag;
-    element.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
-    
-    [self addSubview:element];
-    [self layoutCell];
-}
-
-- (void)didRelease {
-    objc_removeAssociatedObjects(self);
-}
-
-@end
-
 #pragma mark -
 
 @implementation MKPopOutView (MKTableCell)
@@ -854,4 +854,3 @@ NSIndexPath *mIndexPath = nil;
 }
 
 @end
-
