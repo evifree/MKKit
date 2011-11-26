@@ -35,6 +35,28 @@
 	return self;
 }
 
+-(id)initWithString:(NSString*)string { 
+	if (self = [super init]) {
+		htmlDoc = NULL;
+        
+		if ([string length] > 0) {
+			CFStringEncoding cfenc = CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding);
+			CFStringRef cfencstr = CFStringConvertEncodingToIANACharSetName(cfenc);
+			const char *enc = CFStringGetCStringPtr(cfencstr, 0);
+			
+			int optionsHtml = 0;
+			optionsHtml = optionsHtml | HTML_PARSE_RECOVER;
+			optionsHtml = optionsHtml | HTML_PARSE_NOERROR; //Uncomment this to see HTML errors
+			optionsHtml = optionsHtml | HTML_PARSE_NOWARNING;
+			htmlDoc = htmlReadDoc ((xmlChar*)[string UTF8String], NULL, enc, optionsHtml);
+		}
+		else  {
+    
+		}
+	}
+	return self;
+}
+
 #pragma mark - Memory Managment
 
 - (void)dealloc {

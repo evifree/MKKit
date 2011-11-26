@@ -53,6 +53,7 @@ typedef enum {
  * `MKFeedRSSFeedDescription` : The description\content of the feed item -- NSString.
  * `MKFeedRSSFeedDescriptionHTML` : A raw HTML representation of the feed content, if availible -- NSString.
  * `MKFeedRSSFeedLink` : The URL the feed item is linked to -- NSString.
+ * `MKFeedRssFeedOriginalLink` : The original URL the item is linked to -- NSString.
  * `MKFeedRSSFeedPublicationDate` : The publication date of the feed item -- NSString.
  * `MKFeedRSSFeedGUID` : The GUID of the feed item -- NSString.
  
@@ -167,24 +168,31 @@ typedef enum {
 
 @end
 
+/// Exections
 NSString *MKFeedParserNILURLException MK_VISIBLE_ATTRIBUTE;
 
+/// Internal tags
 NSString *MKFeedRSSFeedStart MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedRSSFeedItem MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedAtomFeedStart MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedAtomFeedEntry MK_VISIBLE_ATTRIBUTE;
 
+/// RSS Feed Dictonary Keys
 NSString *MKFeedRSSFeedTitle MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedRSSFeedDescription MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedRSSFeedDescriptionHTML MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedRSSFeedLink MK_VISIBLE_ATTRIBUTE;
+NSString *MKFeedRSSFeedOriginalLink MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedRSSFeedPublicationDate MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedRSSFeedGUID MK_VISIBLE_ATTRIBUTE;
+NSString *MKFeedRSSFeedCreator MK_VISIBLE_ATTRIBUTE;
 
+/// ATOM Feed Dictornary Keys
 NSString *MKFeedAtomTitle MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedAtomLink MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedAtomID MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedAtomUpdated MK_VISIBLE_ATTRIBUTE;
+NSString *MKFeedAtomContent MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedAtomSummary MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedAtomSummaryHTML MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedAtomAuthorName MK_VISIBLE_ATTRIBUTE;

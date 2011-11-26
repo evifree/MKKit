@@ -106,9 +106,9 @@
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
         label.backgroundColor = [UIColor clearColor];
         label.lineBreakMode = UILineBreakModeWordWrap;
-        label.minimumFontSize = 14.0;
+        label.minimumFontSize = 12.0;
         label.numberOfLines = 0;
-        label.font = [UIFont systemFontOfSize:14.0];
+        label.font = [UIFont systemFontOfSize:12.0];
         label.tag = kFeedContentViewTag;
         
         [self.contentView addSubview:label];
@@ -155,7 +155,7 @@
     
     CGSize constraint = CGSizeMake(width - (DYNAMIC_CELL_CONTENT_MARGIN * 2), 20000.0f);
     
-    CGSize size = [contentText sizeWithFont:[UIFont systemFontOfSize:14.0] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    CGSize size = [contentText sizeWithFont:[UIFont systemFontOfSize:12.0] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
     
     UILabel *label = (UILabel*)[self viewWithTag:kFeedContentViewTag];
     

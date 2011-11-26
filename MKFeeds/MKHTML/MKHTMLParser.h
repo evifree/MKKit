@@ -46,6 +46,8 @@
 */
 - (id)initWithData:(NSData *)data;
 
+- (id)initWithString:(NSString *)stirng;
+
 ///---------------------------------------------------------
 /// @name Getting Base Nodes
 ///---------------------------------------------------------

@@ -29,4 +29,21 @@
 */
 - (void)extactor:(MKHTMLExtractor *)extactor didFindPage:(NSInteger)page content:(NSString *)htmlString;
 
+/**
+ Called when the optimizedOutputForiPhone property is set to `YES`.
+ 
+ @param extractor the instance of MKHTMLExtractor that called this method
+ 
+ This method should return the path to an HTML file containing information of
+ the <head> tag. This can be used to style the output from MKHTMLExtractor. 
+ If the optimizedOutputForiPhone property of MKHTMLExtractor is set `YES`, HTML 
+ code is added to the output to support styling of the page. 
+ 
+ * Titles will be wraped in `<div class="title"></div>` tags.
+ * Paragaraphs will be wraped in `<div class="article"></di>` tags.
+ 
+ @return NSString The path to an HTML file containg <head> tag information.
+*/
+- (NSString *)extratorHTMLHeaderPath:(MKHTMLExtractor *)extractor;
+
 @end

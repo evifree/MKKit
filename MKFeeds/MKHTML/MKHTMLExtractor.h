@@ -13,6 +13,7 @@ typedef void (^MKHTMLExtractorRequestHandler)(NSDictionary *results, NSError *er
 typedef enum {
     MKHTMLExtractorRequestNone,
     MKHTMLExtractorMainBodyHTMLRequest,
+    MKHTMLExtractorFirstParagraph,
 } MKHTMLExtractorRequestType;
 
 @class MKHTMLParser;
@@ -23,11 +24,11 @@ typedef enum {
  *Overview*
  
  MKHTMLExtractor looks at given web pages and pulls out specific data. For example the 
- artical from a web page containing a news story. MKHTMLExtractor has preset types of
+ article from a web page containing a news story. MKHTMLExtractor has preset types of
  extraction types that can be used.
  
- * MKHTMLExtactorMainBodyTextRequest : Finds the main text of a web page and extacts it 
- as a NSString
+ * `MKHTMLExtactorMainBodyTextRequest` : Finds the main text of a web page and extacts it 
+ as a NSString that is in an HTML format.
  
  *Request Handlers*
  
@@ -36,7 +37,7 @@ typedef enum {
  The handle block will pass an NSDictionay object with the extraction results. The results
  can be accesed with the following keys:
  
- * MKHTMLExtractorMainBodyText : key that holds the main body text of the web site.
+ * Each page that is found has the key for page number. For example page one's key is `1`.
 ------------------------------------------------------------------------------------*/
 
 @interface MKHTMLExtractor : NSObject {
@@ -47,9 +48,14 @@ typedef enum {
     NSMutableString *dataString;
     NSMutableDictionary *mResultsDict;
     NSArray *mAttributesArray;
+    NSString *mHTMLHeaderString;
+    NSString *mHTMLString;
     NSString *URL;
     struct {
         BOOL requestComplete;
+        BOOL requestFromURL;
+        BOOL usesCustomStyle;
+        BOOL articalTitleSet;
         int currentPage;
         int numberOfPages;
         int attemptCount;
@@ -73,15 +79,47 @@ typedef enum {
 */
 - (id)initWithURL:(NSString *)aURL;
 
+/**
+ Creates an instance of MKHTMLExtractor
+ 
+ @param htmlString an NSString representation of an HTML file
+ 
+ @exception MKHTMLExtractorNILHTMLException : exception is raised if the the 
+ htmlString is nil
+ 
+ @return MKHTMLExtractor instance
+*/
+- (id)initWithHTMLString:(NSString *)htmlString;
+
 ///--------------------------------------------
-/// @name Preforming Requests
+/// @name Customize Output
 ///--------------------------------------------
 
 /**
- Makes a request to the supplied URL and stores the 
- data returned from the web site.
+ Set this property to `YES` to optimize the HTML output for display on 
+ the iPhone. HTML code will be added inserted into the output to assist with
+ display.
+ 
+ When set to `YES` the delegate method extactorHTMLHeaderPath: method is called.
+ If this method is not used or returns `nil`, generic HTML code will be added.
+ 
+ @see MKHTMLExtractorDelegate for more information.
 */
-- (void)request;
+@property (nonatomic, assign) BOOL optimizeOutputForiPhone;
+
+/**
+ Set a NSString to this property for the title of an article. If the property
+ is set the extractor will not look for the title of an article, but use the 
+ this property instead.
+ 
+ @warning *Note* Setting this property does nothing if the requestType is not
+ `MKHTMLExtractorMainBodyHTMLRequest`.
+*/
+@property (nonatomic, copy) NSString *articleTitle;
+
+///--------------------------------------------
+/// @name Preforming Requests
+///--------------------------------------------
 
 /**
  Makes a request from the supplied URL, preforms an extraction, and
@@ -140,6 +178,7 @@ typedef enum {
 @end
 
 NSString *MKHTMLExtractorNILURLExecption MK_VISIBLE_ATTRIBUTE;
+NSString *MKHTMLExtractorNILHTMLStringException MK_VISIBLE_ATTRIBUTE;
 
 @interface MKHTMLAttribueValue : NSObject 
 

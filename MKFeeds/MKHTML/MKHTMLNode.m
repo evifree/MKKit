@@ -18,6 +18,7 @@ static const char *kBlockquoteNode      = "blockquote";
 static const char *kH1                  = "h1";
 static const char *kClosingNode         = "text";
 static const char *kImg                 = "img";
+static const char *kIFrame              = "iframe";
 
 @interface MKHTMLNode () 
 
@@ -337,6 +338,9 @@ MKHTMLNodeType nodeType(xmlNode *node) {
     }
     else if (strcmp(tagName, kClosingNode) == 0) {
         return MKHTMLClosingNode;
+    }
+    else if (strcmp(tagName, kIFrame) == 0) {
+        return MKHTMLNodeIFrame;
     }
     
     return MKHTMLNodeUnknown;

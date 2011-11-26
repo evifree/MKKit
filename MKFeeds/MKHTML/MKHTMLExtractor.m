@@ -11,19 +11,48 @@
 #import "MKHTMLNode.h"
 #import "MKHTMLExtractorDelegate.h"
 
+#import <MKKit/MKFeeds/NSString+MKFeedParser.h>
+
 @interface MKHTMLExtractor ()
 
+- (id)init;
+- (void)request;
 - (NSString *)mainBodyHTMLFromParsedData:(MKHTMLParser *)parsedData;
+- (void)extractFromData:(NSData *)data;
 - (void)findNextPageFromParsedData:(MKHTMLParser *)parsedData;
 - (void)requestPage:(NSString *)url;
+
+- (NSString *)styledTitleFromNode:(MKHTMLNode *)node;
+- (NSString *)styledParagraphFromNode:(MKHTMLNode *)node;
+- (NSString *)styledEmbedFromNode:(MKHTMLNode *)node;
 
 @end
 
 @implementation MKHTMLExtractor
 
-@synthesize requestHandler, requestType, delegate;
+@synthesize articleTitle, requestHandler, requestType, delegate;
 
-@dynamic results, numberOfPages;
+@dynamic results, numberOfPages, optimizeOutputForiPhone;
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        MKHTMLExtractorFlags.articalTitleSet = NO;
+        MKHTMLExtractorFlags.usesCustomStyle = NO;
+        MKHTMLExtractorFlags.currentPage    = 1;
+        MKHTMLExtractorFlags.numberOfPages  = 0;
+        MKHTMLExtractorFlags.attemptCount   = 0;
+        
+        MKHTMLAttribueValue *first = [[[MKHTMLAttribueValue alloc] initWithAttribute:@"id" value:@"text"] autorelease];
+        MKHTMLAttribueValue *second = [[[MKHTMLAttribueValue alloc] initWithAttribute:@"class" value:@"article"] autorelease];
+        MKHTMLAttribueValue *third = [[[MKHTMLAttribueValue alloc] initWithAttribute:@"id" value:@"post"] autorelease];
+        MKHTMLAttribueValue *fourth = [[[MKHTMLAttribueValue alloc] initWithAttribute:@"class" value:@"entry"] autorelease];
+        MKHTMLAttribueValue *fifth = [[[MKHTMLAttribueValue alloc] initWithAttribute:@"id" value:@"content"] autorelease];
+        
+        mAttributesArray = [[NSArray alloc] initWithObjects:first, second, third, fourth, fifth, nil];
+    }
+    return self;
+}
 
 - (id)initWithURL:(NSString *)aURL {
 	if (self = [super init]) {
@@ -34,27 +63,47 @@
         }
 		URL = [aURL copy];
         
-        MKHTMLExtractorFlags.currentPage    = 1;
-        MKHTMLExtractorFlags.numberOfPages  = 0;
-        MKHTMLExtractorFlags.attemptCount   = 0;
+        MKHTMLExtractorFlags.requestFromURL = YES;
         
-        MKHTMLAttribueValue *first = [[[MKHTMLAttribueValue alloc] initWithAttribute:@"class" value:@"article"] autorelease];
-        MKHTMLAttribueValue *second = [[[MKHTMLAttribueValue alloc] initWithAttribute:@"id" value:@"post"] autorelease];
-        MKHTMLAttribueValue *third = [[[MKHTMLAttribueValue alloc] initWithAttribute:@"id" value:@"content"] autorelease];
-        
-        mAttributesArray = [[NSArray alloc] initWithObjects:first, second, third, nil];
+        self = [self init];
     }
 	return self; 
+}
+
+- (id)initWithHTMLString:(NSString *)htmlString {
+    self = [super init];
+    if (self) {
+        if (htmlString == nil) {
+            MKHTMLExtractorNILHTMLStringException = @"MKHTMLExtractorNILHTMLStringExeption";
+            //NSException *exception = [NSException exceptionWithName:MKHTMLExtractorNILHTMLStringException reason:@"htmlString cannot be a nil value" userInfo:nil];
+            //@throw exception;
+        }
+        mHTMLString = [htmlString copy];
+        MKHTMLExtractorFlags.requestFromURL = NO;
+        
+        self = [self init];
+    }
+    return self;
 }
 
 #pragma mark - Memory Mangament
 
 - (void)dealloc {
+    self.articleTitle = nil;
     self.requestHandler = nil;
     self.delegate = nil;
     
+    [[NSURLCache sharedURLCache] removeCachedResponseForRequest:request];
+    
     [mResultsDict release];
-    [URL release];
+    [aConnection release];
+    [request release];
+    [requestData release];
+    [mHTMLHeaderString release];
+    
+    if (MKHTMLExtractorFlags.requestFromURL) {
+        [URL release];
+    }
     
     [super dealloc];
 }
@@ -70,32 +119,60 @@
     return MKHTMLExtractorFlags.numberOfPages;
 }
 
-#pragma mark - request
+- (BOOL)optimizeOutputForiPhone {
+    return MKHTMLExtractorFlags.usesCustomStyle;
+}
+
+#pragma mark Setters
+
+- (void)setOptimizeOutputForiPhone:(BOOL)optomize {
+    MKHTMLExtractorFlags.usesCustomStyle = optomize;
+    if (optomize) {
+        if ([self.delegate respondsToSelector:@selector(extratorHTMLHeaderPath:)]) {
+            mHTMLHeaderString = [[NSString alloc] initWithContentsOfFile:[self.delegate extratorHTMLHeaderPath:self] encoding:NSUTF8StringEncoding error:nil];
+        }
+        else {
+            mHTMLHeaderString = [[NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"initial-scale = 1.0, user-scalable = no, width = 320\"/><style type=\"text/css\">.title { font-size: 16pt; font-weight: bold;} .artical { font-size: 12pt; } </style><head><body>"] retain];
+        }
+    }
+}
+
+- (void)setArticleTitle:(NSString *)title {
+    MKHTMLExtractorFlags.articalTitleSet = YES;
+    
+    mHTMLHeaderString = [[mHTMLHeaderString stringByAppendingFormat:@"<div class=\"title\">%@</div>", title] retain];
+}
+
+#pragma mark - Request Methods
 
 - (void)request {
-	request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URL]];
-	
+	request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URL] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60.0];
 	aConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 	
-	if (aConnection) {
-		requestData = [[NSMutableData data] retain];
-	} 
+    requestData = [[NSMutableData data] retain];
 }
 
 - (void)requestType:(MKHTMLExtractorRequestType)type withHandler:(MKHTMLExtractorRequestHandler)handler {
     self.requestHandler = handler;
     self.requestType = type;
     
-    [self request];
+    switch (type) {
+        case MKHTMLExtractorMainBodyHTMLRequest: {
+            [self request]; 
+        } break;
+        case MKHTMLExtractorFirstParagraph: {
+            requestData = [(NSMutableData *)[mHTMLString dataUsingEncoding:[NSString defaultCStringEncoding]] retain];
+            [self extractFromData:requestData];
+            [mHTMLString release];
+        } break;
+        default:
+            break;
+    }
 }
 
 - (void)requestPage:(NSString *)url {
-    request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
-    aConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    
-    if (aConnection) {
-        requestData = [[NSMutableData data] retain];
-    }
+    URL = [url copy];
+    [self request];
 }
 
 #pragma mark - Connection Delegate
@@ -109,8 +186,8 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    [aConnection release];
-    [request release];
+    //[aConnection release];
+    //[request release];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -121,54 +198,89 @@
 	//NSString *data = [[NSString alloc] initWithData:requestData encoding:NSASCIIStringEncoding];
 	//NSLog(@"%@", data);
     
+    [self extractFromData:requestData];
+}
+
+#pragma mark - Extractor Methods
+
+- (void)extractFromData:(NSData *)data {
     if (MKHTMLExtractorFlags.currentPage == 1) {
         if (!mResultsDict) {
             mResultsDict = [[NSMutableDictionary alloc] initWithCapacity:0];
         }
     }
     
-    MKHTMLParser *parsedData = [[MKHTMLParser alloc] initWithData:requestData];
+    MKHTMLParser *parsedData = nil;
     
-    [aConnection release];
-    [request release];
-    [requestData release];
+    @try {
+       parsedData = [[MKHTMLParser alloc] initWithData:data];
+    }
+    @catch (NSException *exception) {
+        //NSLog(@"Catch : %@", [exception reason]);
+    }
+    @finally {}
     
     MKHTMLExtractorFlags.requestComplete = YES;
     
-    if (self.requestType == MKHTMLExtractorMainBodyHTMLRequest) {
-        NSString *page = [NSString stringWithFormat:@"%i", MKHTMLExtractorFlags.currentPage];
-        
-        for (MKHTMLAttribueValue *attribute in mAttributesArray) {
-            NSString *text = [self mainBodyHTMLFromParsedData:parsedData];
-            if ([text length] > 1) {
-                [mResultsDict setObject:text forKey:page];
+    switch (self.requestType) {
+        case MKHTMLExtractorMainBodyHTMLRequest: {
+            NSString *page = [NSString stringWithFormat:@"%i", MKHTMLExtractorFlags.currentPage];
             
-                if (MKHTMLExtractorFlags.currentPage == 1) {
-                    if (self.requestHandler) {
-                        self.requestHandler(mResultsDict, nil);
+            for (MKHTMLAttribueValue *attribute in mAttributesArray) {
+                NSString *text = [self mainBodyHTMLFromParsedData:parsedData];
+                if ([text length] > 1) {
+                    if (MKHTMLExtractorFlags.usesCustomStyle) {
+                        text = [mHTMLHeaderString stringByAppendingString:text];
+                        text = [text stringByAppendingString:@"</body></html>"];
                     }
+                    [mResultsDict setObject:text forKey:page];
+                    
+                    if (MKHTMLExtractorFlags.currentPage == 1) {
+                        if (self.requestHandler) {
+                            self.requestHandler(mResultsDict, nil);
+                        }
+                    }
+                    
+                    if ([self.delegate respondsToSelector:@selector(extactor:didFindPage:content:)]) {
+                        [self.delegate extactor:self didFindPage:[page integerValue] content:text];
+                    }
+                    
+                    MKHTMLExtractorFlags.numberOfPages = (MKHTMLExtractorFlags.numberOfPages + 1);
+                    MKHTMLExtractorFlags.attemptCount = 0;
+                    
+                    [self findNextPageFromParsedData:parsedData];
+                    break;
                 }
-            
-                if ([self.delegate respondsToSelector:@selector(extactor:didFindPage:content:)]) {
-                    [self.delegate extactor:self didFindPage:[page integerValue] content:text];
+                else {
+                    MKHTMLExtractorFlags.attemptCount = (MKHTMLExtractorFlags.attemptCount + 1);
                 }
+            }
+        } break;
+        case MKHTMLExtractorFirstParagraph: {
+            MKHTMLNode *firstp = [[parsedData root] childNodeNamed:@"p"];
+            NSString *firstpText = [firstp allText];
+            NSString *text = [firstpText stringByRemovingNewLinesAndWhitespace];
             
-                MKHTMLExtractorFlags.numberOfPages = (MKHTMLExtractorFlags.numberOfPages + 1);
-                MKHTMLExtractorFlags.attemptCount = 0;
-                
-                [self findNextPageFromParsedData:parsedData];
-                break;
+            if (text) {
+                [mResultsDict setObject:text forKey:@"text"];
+                if (self.requestHandler) {
+                    self.requestHandler(mResultsDict, nil);
+                }
             }
             else {
-                MKHTMLExtractorFlags.attemptCount = (MKHTMLExtractorFlags.attemptCount + 1);
+                if (self.requestHandler) {
+                    NSError *error = [NSError errorWithDomain:@"No Text Found" code:1001 userInfo:nil];
+                    self.requestHandler(nil, error);
+                }
             }
-        }
+        } break;
+        default:
+            break;
     }
     
     [parsedData release];
 }
 
-#pragma mark - Extractor Methods
 #pragma mark Main Body Text
 
 - (NSString *)mainBodyHTMLFromParsedData:(MKHTMLParser *)parsedData; {
@@ -186,29 +298,101 @@
         @finally {
         }
         
+        NSArray *elements = [[parsedData body] childrenNamed:@"article"];
+        
         if (attemptsLeft) {
-            NSArray *elements = [[parsedData body] childrenWithAttribute:attribute.attribute  value:attribute.value allowPartial:YES];
+            if ([elements count] == 0) {
+                elements = [[parsedData body] childrenWithAttribute:attribute.attribute  value:attribute.value allowPartial:YES];
+            }
             article = [[[NSMutableString alloc] initWithCapacity:0] autorelease];
-    
+            
             for (MKHTMLNode *node in elements) {
                 NSArray *children = [node children];
                 for (MKHTMLNode *child in children) {
                     switch ([child nodeType]) {
-                        case MKHTMLNodeH1:          [article appendString:[child htmlString]];   break;
-                        case MKHTMLNodeP:           [article appendString:[child htmlString]];   break;
-                        case MKHTMLNodeBlockquote:  [article appendString:[child htmlString]];   break;
+                        case MKHTMLNodeH1: {
+                            if (MKHTMLExtractorFlags.articalTitleSet == NO) {
+                                if (self.optimizeOutputForiPhone) {
+                                    [article appendString:[self styledTitleFromNode:child]];
+                                }
+                                else {
+                                    [article appendString:[child htmlString]]; 
+                                }
+                            }
+                        } break;
+                        case MKHTMLNodeP: {
+                            if (self.optimizeOutputForiPhone) {
+                                [article appendString:[self styledParagraphFromNode:child]];
+                            }
+                            else {
+                                [article appendString:[child htmlString]];
+                            }
+                        } break;
+                            
+                        case MKHTMLNodeBlockquote: {
+                            [article appendString:[child htmlString]];
+                        } break;
                         default: break;
                     }
                 }
             }
         }
     }
+    return article;
+}
+
+#pragma mark Main Body Helpers
+
+- (NSString *)styledTitleFromNode:(MKHTMLNode *)node {
+    NSMutableString *rtn = [NSMutableString string];
     
-    if ([article length] == 0) {
-        
+    [rtn appendString:@"<div class=\"title\">"];
+    [rtn appendString:[node allText]];
+    [rtn appendString:@"</div>"];
+
+    return rtn;
+}
+
+- (NSString *)styledParagraphFromNode:(MKHTMLNode *)node {
+    NSMutableString *rtn = [NSMutableString string];
+    
+    if ([node childNodeNamed:@"iframe"]) {
+        [rtn appendString:[self styledEmbedFromNode:[node childNodeNamed:@"iframe"]]];
     }
     
-    return article;
+    else if ([node childNodeNamed:@"img"]) {
+        [rtn appendString:[self styledEmbedFromNode:[node childNodeNamed:@"img"]]];
+    }
+    else {
+        [rtn appendString:@"<div class=\"article\">"];
+        [rtn appendString:[node htmlString]];
+        [rtn appendString:@"</div>"];
+    }
+
+    return rtn;
+}
+
+- (NSString *)styledEmbedFromNode:(MKHTMLNode *)node {
+    NSMutableString *rtn = [NSMutableString string];
+    
+    NSString *src = [node valueOfAttribute:@"src"];
+    
+    NSString *baseURL = [[NSURL URLWithString:src] host];
+    
+    if (!baseURL) {
+        NSString *host = [[NSURL URLWithString:URL] host];
+        NSString *scheme = [[NSURL URLWithString:URL] scheme];
+        src = [NSString stringWithFormat:@"%@://%@%@", scheme, host, src];
+        src = [src stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    }
+    
+    switch ([node nodeType]) {
+        case MKHTMLNodeIFrame:  [rtn appendFormat:@"<iframe allowfullscreen=\"\" frameborder=\"0\" heigh=\"\" width=\"300\" src=\"%@\"></iframe>", src]; break;
+        case MKHTMLNodeImg:     [rtn appendFormat:@"<img src=\"%@\" width=\"300\" />", src]; break;
+        default:                [rtn appendString:[node htmlString]]; break;
+    }
+    
+    return rtn;
 }
 
 - (void)findNextPageFromParsedData:(MKHTMLParser *)parsedData {

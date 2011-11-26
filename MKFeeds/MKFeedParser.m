@@ -36,13 +36,16 @@ static NSString *currentElement = nil;
         MKFeedRSSFeedDescription = @"description";
         MKFeedRSSFeedDescriptionHTML = @"descriptionHTML";
         MKFeedRSSFeedLink = @"link";
+        MKFeedRSSFeedOriginalLink = @"originalLink";
         MKFeedRSSFeedPublicationDate = @"pubDate";
         MKFeedRSSFeedGUID = @"guid";
+        MKFeedRSSFeedCreator = @"dc:creator";
         
         MKFeedAtomTitle = @"title";
         MKFeedAtomLink = @"link";
         MKFeedAtomID = @"id";
         MKFeedAtomUpdated = @"updated";
+        MKFeedAtomContent = @"content";
         MKFeedAtomSummary = @"summary";
         MKFeedAtomSummaryHTML = @"summaryHTML";
         MKFeedAtomAuthorName = @"name";
@@ -73,7 +76,7 @@ static NSString *currentElement = nil;
 #pragma mark - request
 
 - (void)request {
-	request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:mUrl]];
+	request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:mUrl] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60.0];
 	
 	theConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 	
@@ -105,6 +108,7 @@ static NSString *currentElement = nil;
     [theConnection release];
 	[requestData release];
 	
+    [[NSURLCache sharedURLCache] removeCachedResponseForRequest:request];
 	[request release];
     
     if (MKRSSFeedTags.usesCompletionBlock) {
@@ -122,11 +126,14 @@ static NSString *currentElement = nil;
 	//NSLog(@"%@", data);
 	
 	theParser = [[NSXMLParser alloc] initWithData:requestData];
+    [theParser setShouldProcessNamespaces:YES];
 	[theParser setDelegate:self];
 	[theParser parse];
 	
 	[theConnection release];
 	[requestData release];
+    
+    [[NSURLCache sharedURLCache] removeCachedResponseForRequest:request];
 	[request release];
 }
 
@@ -137,7 +144,7 @@ static NSString *currentElement = nil;
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {
-	if ([elementName isEqualToString:MKFeedRSSFeedStart]) {
+    if ([elementName isEqualToString:MKFeedRSSFeedStart]) {
         mSourceType = MKFeedSourceRSS;
     }
     else if ([elementName isEqualToString:MKFeedAtomFeedStart]) {
@@ -149,8 +156,8 @@ static NSString *currentElement = nil;
             if ([elementName isEqualToString:MKFeedRSSFeedItem]) {
                 feed = [[NSMutableDictionary alloc] initWithCapacity:0];
             }
-            else if ([elementName isEqualToString:MKFeedRSSFeedTitle]) {
-                currentElement = elementName;
+            else if ([qualifiedName isEqualToString:MKFeedRSSFeedTitle]) {
+                currentElement = qualifiedName;
             }
             else if ([elementName isEqualToString:MKFeedRSSFeedDescription]) {
                 currentElement = elementName;
@@ -158,11 +165,17 @@ static NSString *currentElement = nil;
             else if ([elementName isEqualToString:MKFeedRSSFeedLink]) {
                 currentElement = elementName;
             }
+            else if ([elementName isEqualToString:MKFeedRSSFeedOriginalLink]) {
+                currentElement = elementName;
+            }
             else if ([elementName isEqualToString:MKFeedRSSFeedGUID]) {
                 currentElement = elementName;
             }
             else if ([elementName isEqualToString:MKFeedRSSFeedPublicationDate]) {
                 currentElement = elementName;
+            }
+            else if ([qualifiedName isEqualToString:MKFeedRSSFeedCreator]) {
+                currentElement = qualifiedName;
             }
         } break;
         case MKFeedSourceAtom: {
@@ -218,7 +231,7 @@ static NSString *currentElement = nil;
                 [items addObject:feed];
                 [feed release];
             }
-            else if ([elementName isEqualToString:MKFeedRSSFeedTitle]) {
+            else if ([qName isEqualToString:MKFeedRSSFeedTitle]) {
                 [feed setObject:[currentString stringByRemovingNewLinesAndWhitespace] forKey:currentElement];
             }
             else if ([elementName isEqualToString:MKFeedRSSFeedDescription]) {
@@ -228,9 +241,13 @@ static NSString *currentElement = nil;
                 }
                 else {
                     [feed setObject:currentString forKey:MKFeedRSSFeedDescriptionHTML];
+                    mContentType = MKFeedContentHTML;
                 }
             }
             else if ([elementName isEqualToString:MKFeedRSSFeedLink]) {
+                [feed setObject:[currentString stringByRemovingNewLinesAndWhitespace] forKey:currentElement];
+            }
+            else if ([elementName isEqualToString:MKFeedRSSFeedOriginalLink]) {
                 [feed setObject:[currentString stringByRemovingNewLinesAndWhitespace] forKey:currentElement];
             }
             else if ([elementName isEqualToString:MKFeedRSSFeedGUID]) {
@@ -238,6 +255,9 @@ static NSString *currentElement = nil;
             }
             else if ([elementName isEqualToString:MKFeedRSSFeedPublicationDate]) {
                 [feed setObject:[currentString stringByRemovingNewLinesAndWhitespace] forKey:currentElement];           
+            }
+            else if ([qName isEqualToString:MKFeedRSSFeedCreator]) {
+                [feed setObject:[currentString stringByRemovingNewLinesAndWhitespace] forKey:MKFeedRSSFeedCreator];
             }
         } break;
         case MKFeedSourceAtom: {
@@ -258,6 +278,7 @@ static NSString *currentElement = nil;
                 }
                 else  {
                     [feed setObject:currentString forKey:MKFeedAtomSummaryHTML];
+                    mContentType = MKFeedContentHTML;
                 }
             }
             else if ([elementName isEqualToString:MKFeedAtomUpdated]) {
