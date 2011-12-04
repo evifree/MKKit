@@ -24,6 +24,7 @@ typedef enum {
     MKFeedSourceTypeUnknown,
 } MKFeedSourceType;
 
+@class MKFeedItem;
 @protocol MKFeedParserDelegate;
 
 /**---------------------------------------------------------------------------------
@@ -43,33 +44,20 @@ typedef enum {
  *Using Returned Data*
  
  Data can returned through ethier the MKFeedParserDelegate or the MKRequestComplete block.
- Both methods pass an NSArray that holds the information from the feed. The array
- contains NSDictonary objects, use the following keys to get the feed data from one of 
- the dictonaries.
- 
- *RSS Feed Keys*
- 
- * `MKFeedRSSFeedTitle` : The title of the feed item -- NSString.
- * `MKFeedRSSFeedDescription` : The description\content of the feed item -- NSString.
- * `MKFeedRSSFeedDescriptionHTML` : A raw HTML representation of the feed content, if availible -- NSString.
- * `MKFeedRSSFeedLink` : The URL the feed item is linked to -- NSString.
- * `MKFeedRssFeedOriginalLink` : The original URL the item is linked to -- NSString.
- * `MKFeedRSSFeedPublicationDate` : The publication date of the feed item -- NSString.
- * `MKFeedRSSFeedGUID` : The GUID of the feed item -- NSString.
- 
- *Atom Feed Keys*
- 
- * `MKFeedAtomTitle` : The title of the feed item -- NSString.
- * `MKFeedAtomLink` : The URL the feed item is linked to -- NSString.
- * `MKFeedAtomID` : The uniquie id of the feed item -- NSString.
- * `MKFeedAtomUpdated` : The data the feed item was last updated -- NSString.
- * `MKFeedAtomSummary` : The summary of feed item -- NSString.
- * `MKFeedAtomSummaryHTML` : A raw HTML representation of the feed content, if availible -- NSString.
- * `MKFeedAtomAuthorName` : The name of the feed items author -- NSString.
+ Both methods pass an NSArray that holds the information from the feed. The array is an array
+ of MKFeedItem instaces. 
  
  *Requied Framworks*
  
  * Foundation
+ 
+ *Requred Classes*
+ 
+ * MKFeedItem
+ 
+ *Required Protocols*
+ 
+ * MKFeedParserDelegate
 ----------------------------------------------------------------------------------*/
 
 @interface MKFeedParser : NSObject <NSXMLParserDelegate> {
@@ -85,9 +73,12 @@ typedef enum {
 	NSMutableDictionary *feed;
 	NSMutableArray *items;
 	NSMutableString *currentString;
+    NSString *currentElement;
     
     MKFeedContentType mContentType;
     MKFeedSourceType mSourceType;
+    
+    MKFeedItem *mFeedItem;
     
     struct {
         BOOL usesCompletionBlock;

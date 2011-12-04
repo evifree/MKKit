@@ -8,14 +8,13 @@
 
 #import "MKFeedParser.h"
 #import "NSString+MKFeedParser.h"
+#import "MKFeedItem.h"
 
 @implementation MKFeedParser
 
 @synthesize url=mUrl, delegate, requestCompleteBlock=mRequestCompleteBlock;
 
 @dynamic sourceType, contentType; 
-
-static NSString *currentElement = nil;
 
 - (id)initWithURL:(NSString *)aURL delegate:(id<MKFeedParserDelegate>)theDelegate {
 	if (self = [super init]) {
@@ -144,16 +143,43 @@ static NSString *currentElement = nil;
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {
-    if ([elementName isEqualToString:MKFeedRSSFeedStart]) {
+    if ([qualifiedName isEqualToString:MKFeedRSSFeedStart]) {
         mSourceType = MKFeedSourceRSS;
     }
-    else if ([elementName isEqualToString:MKFeedAtomFeedStart]) {
+    else if ([qualifiedName isEqualToString:MKFeedAtomFeedStart]) {
         mSourceType = MKFeedSourceAtom;
     }
-
+    
+    switch (mSourceType) {
+        case MKFeedSourceRSS: {
+            if ([qualifiedName isEqualToString:MKFeedRSSFeedItem]) {
+                mFeedItem = [[MKFeedItem alloc] initWithType:MKFeedSourceRSS];
+            }
+            else {
+                currentElement = [qualifiedName copy];
+            }
+        } break;
+        case MKFeedSourceAtom: {
+            if ([qualifiedName isEqualToString:MKFeedAtomFeedEntry]) {
+                mFeedItem = [[MKFeedItem alloc] initWithType:MKFeedSourceAtom];
+            } 
+            else if ([qualifiedName isEqualToString:MKFeedAtomLink]) {
+                currentElement = qualifiedName;
+                NSString *link = (NSString *)[attributeDict objectForKey:@"href"];
+                [mFeedItem addValue:link forElement:MKFeedAtomLink];
+            }
+            else {
+                currentElement = [qualifiedName copy];
+            }
+        } break;
+        default: break;
+    }
+    
+    /*
     switch (mSourceType) {
         case MKFeedSourceRSS: {
             if ([elementName isEqualToString:MKFeedRSSFeedItem]) {
+                //mFeedItem = [[[MKFeedItem alloc] initWithType:MKFeedSourceRSS] retain];
                 feed = [[NSMutableDictionary alloc] initWithCapacity:0];
             }
             else if ([qualifiedName isEqualToString:MKFeedRSSFeedTitle]) {
@@ -180,6 +206,7 @@ static NSString *currentElement = nil;
         } break;
         case MKFeedSourceAtom: {
             if ([elementName isEqualToString:MKFeedAtomFeedEntry]) {
+                //mFeedItem = [[[MKFeedItem alloc] initWithType:MKFeedSourceAtom] retain];
                 feed = [[NSMutableDictionary alloc] initWithCapacity:0];
             }
             else if ([elementName isEqualToString:MKFeedAtomTitle]) {
@@ -215,6 +242,7 @@ static NSString *currentElement = nil;
         default:
         break;
     }
+    */
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
@@ -225,6 +253,28 @@ static NSString *currentElement = nil;
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
+    switch (mSourceType) {
+        case MKFeedSourceRSS: {
+            if ([qName isEqualToString:MKFeedRSSFeedItem]) {
+                [items addObject:mFeedItem];
+                [mFeedItem release];
+            }  
+            else { 
+                [mFeedItem addValue:[currentString stringByRemovingNewLinesAndWhitespace] forElement:currentElement];
+            }
+        } break;
+        case MKFeedSourceAtom: {
+            if ([qName isEqualToString:MKFeedAtomFeedEntry]) {
+                [items addObject:mFeedItem];
+                [mFeedItem release];
+            }
+            else if (![qName isEqualToString:MKFeedAtomLink]) {
+                [mFeedItem addValue:[currentString stringByRemovingNewLinesAndWhitespace] forElement:currentElement];
+            }
+        } break;
+        default: break;
+    }
+    /*
     switch (mSourceType) {
         case MKFeedSourceRSS: {
             if ([elementName isEqualToString:MKFeedRSSFeedItem]) {
@@ -291,9 +341,11 @@ static NSString *currentElement = nil;
         default:
         break;
     }
-    
+    */
     [currentString release];
 	currentString = nil;
+    
+    [currentElement release];
 	currentElement = nil;
 }
 

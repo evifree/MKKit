@@ -8,6 +8,20 @@
 
 #import "MKGraphics.h"
 
+#pragma mark - Contexts
+
+CGContextRef createBitmapContext(int pixelsWide, int pixelsHigh) {
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+	
+	CGContextRef bitmapContext = CGBitmapContextCreate (NULL, pixelsWide, pixelsHigh, 8,
+														0, colorSpace,
+														(kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst));
+	CGColorSpaceRelease(colorSpace);
+    
+    return bitmapContext;
+}
+
+
 #pragma mark - gradients
 
 void drawLinearGradient(CGContextRef context, CGRect rect, CGColorRef startColor, CGColorRef endColor) {

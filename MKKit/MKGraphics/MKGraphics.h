@@ -13,6 +13,8 @@
 
 #import "MKGraphicsStructures.h"
 
+CGContextRef createBitmapContext(int pixelsWide, int pixelsHigh);
+
 void drawLinearGradient(CGContextRef context, CGRect rect, CGColorRef startColor, CGColorRef endColor);
 void drawGlossAndLinearGradient(CGContextRef conext, CGRect rect, CGColorRef startColor, CGColorRef endColor);
 

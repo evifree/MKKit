@@ -186,6 +186,7 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    NSLog(@"%@", [error localizedDescription]);
     //[aConnection release];
     //[request release];
 }

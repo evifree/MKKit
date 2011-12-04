@@ -13,9 +13,11 @@
 #import <MKKit/MKKit/MKAnimations.h>
 #import <MKKit/MKKit/MKClock.h>
 #import <MKKit/MKKit/MKCoreData.h>
+#import <MKKit/MKKit/MKImage.h>
 #import <MKKit/MKKit/MKNotificationController.h>
 #import <MKKit/MKKit/MKMath.h>
 #import <MKKit/MKKit/MKObject.h>
+#import <MKKit/MKKit/MKPageControl.h>
 #import <MKKit/MKKit/MKRandoms.h>
 #import <MKKit/MKKit/MKSounds.h>
 #import <MKKit/MKKit/MKStrings.h>

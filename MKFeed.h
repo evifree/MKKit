@@ -7,5 +7,6 @@
 //
 
 #import <MKKit/MKFeeds/MKFeedParser.h>
+#import <MKKit/MKFeeds/MKFeedItem.h>
 #import <MKKit/MKFeeds/MKHTML/MKHTMLExtractor.h>
 #import <MKKit/MKFeeds/MKHTML/MKHTMLExtractorDelegate.h>

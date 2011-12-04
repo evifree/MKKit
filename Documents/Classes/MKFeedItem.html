@@ -1,0 +1,518 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>MKFeedItem Class Reference</title>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+		<meta name="generator" content="appledoc 2.0b3" />
+	</head>
+	<body>
+		<article>
+			<div class="main-navigation navigation-top">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="header">
+				<div class="section-header">
+					<h1 class="title title-header">MKFeedItem Class Reference</h1>
+				</div>		
+			</div>
+			<div id="container">	
+				
+				<div class="section section-specification"><table cellspacing="0"><tbody>
+					<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">NSCoding</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">MKFeedItem.h</td>
+</tr>
+					</tbody></table></div>
+				
+				
+				
+				<div class="section section-overview">
+					<h2 class="subtitle subtitle-overview">Overview</h2>
+					
+<p> <strong> Overview </strong></p>
+
+<p> <a href="MKFeedItem.html">MKFeedItem</a> class holds data from an RSS or ATOM feed. Each instance holds the the data of one feed item. This is default class for accessing data from a <a href="MKFeedParser.html">MKFeedParser</a> instace. It can also be used independently. </p>
+
+<p> <strong> Required Frameworks </strong> <ul><li> Foundation </li></ul></p>
+
+<p> <strong> Required Classes </strong> <ul><li> <a href="MKFeedParser.html">MKFeedParser</a></li></ul></p>
+
+				</div>
+				
+				
+				
+				
+				<div class="section section-tasks">
+					<h2 class="subtitle subtitle-tasks">Tasks</h2>
+					
+					<h3 class="subsubtitle task-title">Creating Instances</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithType:">- initWithType:</a></code>
+		<span class="tooltip"> Creates and instace of <a href="MKFeedItem.html">MKFeedItem</a> with the given source type. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Adding Content</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addValue:forElement:">- addValue:forElement:</a></code>
+		<span class="tooltip"> Adds a value for a feed element. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Accessing Content</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/contentType"> contentType</a></code>
+		<span class="tooltip"> The type of feed that is being used. This will return one of three possibilities: <ul><li> <code>MKFeedSourceTypeRSS</code>: a RSS feed </li><li> <code>MKFeedSourceTypeAtom</code>: an Atom feed </li><li> <code>MKFeedSourceTypeUnknown</code>: an unknown feed type </li></ul></span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/itemTitle"> itemTitle</a></code>
+		<span class="tooltip"> The tilte of the feed item. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/itemContent"> itemContent</a></code>
+		<span class="tooltip"> The content of the feed item. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/itemLinkURL"> itemLinkURL</a></code>
+		<span class="tooltip"> The URL link of the feed item. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/itemOriginalLinkURL"> itemOriginalLinkURL</a></code>
+		<span class="tooltip"> The original URL link of the feed item. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/itemAuthor"> itemAuthor</a></code>
+		<span class="tooltip"> The author of the feed item. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/itemGUID"> itemGUID</a></code>
+		<span class="tooltip"> The GUID of the feed item. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/itemPubDate"> itemPubDate</a></code>
+		<span class="tooltip"> The published date of the feed item. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/addValue:forElement:" title="addValue:forElement:"></a>
+	<h3 class="subsubtitle method-title">addValue:forElement:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Adds a value for a feed element. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)addValue:(id)<em>value</em> forElement:(NSString *)<em>element</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>value</em></dt>
+			<dd> the value of the element. This will typically be a NSString. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>element</em></dt>
+			<dd> the name of the feed element. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKFeedItem.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/initWithType:" title="initWithType:"></a>
+	<h3 class="subsubtitle method-title">initWithType:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Creates and instace of <a href="MKFeedItem.html">MKFeedItem</a> with the given source type. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithType:(MKFeedSourceType)<em>type</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>MKFeedSourceType</em></dt>
+			<dd> the type of feed, options are: <ul><li> <code>MKFeedSourceTypeRSS</code>: a RSS feed </li><li> <code>MKFeedSourceTypeAtom</code>: an Atom feed </li><li> <code>MKFeedSourceTypeUnknown</code>: an unknown feed type </li></ul></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKFeedItem.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Properties</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/contentType" title="contentType"></a>
+	<h3 class="subsubtitle method-title">contentType</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The type of feed that is being used. This will return one of three possibilities: <ul><li> <code>MKFeedSourceTypeRSS</code>: a RSS feed </li><li> <code>MKFeedSourceTypeAtom</code>: an Atom feed </li><li> <code>MKFeedSourceTypeUnknown</code>: an unknown feed type </li></ul></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) MKFeedSourceType contentType</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKFeedItem.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/itemAuthor" title="itemAuthor"></a>
+	<h3 class="subsubtitle method-title">itemAuthor</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The author of the feed item. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *itemAuthor</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKFeedItem.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/itemContent" title="itemContent"></a>
+	<h3 class="subsubtitle method-title">itemContent</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The content of the feed item. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *itemContent</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKFeedItem.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/itemGUID" title="itemGUID"></a>
+	<h3 class="subsubtitle method-title">itemGUID</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The GUID of the feed item. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *itemGUID</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKFeedItem.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/itemLinkURL" title="itemLinkURL"></a>
+	<h3 class="subsubtitle method-title">itemLinkURL</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The URL link of the feed item. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *itemLinkURL</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKFeedItem.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/itemOriginalLinkURL" title="itemOriginalLinkURL"></a>
+	<h3 class="subsubtitle method-title">itemOriginalLinkURL</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The original URL link of the feed item. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *itemOriginalLinkURL</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKFeedItem.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/itemPubDate" title="itemPubDate"></a>
+	<h3 class="subsubtitle method-title">itemPubDate</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The published date of the feed item. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSDate *itemPubDate</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKFeedItem.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/itemTitle" title="itemTitle"></a>
+	<h3 class="subsubtitle method-title">itemTitle</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The tilte of the feed item. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *itemTitle</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKFeedItem.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+			</div>
+			<div class="main-navigation navigation-bottom">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="footer">
+				<hr />
+				<div class="footer-copyright">
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-12-04)</span><br />
+					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
+				</div>
+			</div>
+		</article>
+	</body>
+</html>

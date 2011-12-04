@@ -16,7 +16,7 @@
 
 @implementation MKButton
 
-@synthesize type=mType, buttonText=mButtonText, tintColor, fontSize;
+@synthesize type=mType, buttonText=mButtonText, tintColor, fontSize, fontColor;
 
 void drawHelpButton(CGContextRef context, CGRect rect);
 void drawDiscloserButton(CGContextRef context, CGRect rect);
@@ -336,7 +336,7 @@ void drawPlasticButton(CGContextRef context, CGRect rect, CGColorRef tint, bool 
     CGContextSaveGState(context);
     CGContextAddPath(context, buttonPath);
     CGContextClip(context);
-    drawCurvedGloss(context, buttonRect, 40.0);
+    drawCurvedGloss(context, buttonRect, buttonRect.size.width);
     CGContextRestoreGState(context);
     
     if (highlighted) {
@@ -367,8 +367,6 @@ void drawRoundRectButton(CGContextRef context, CGRect rect, CGColorRef tint,  bo
     CGFloat alpha = CGColorGetAlpha(tint);
     
     CGColorRef topColor = [UIColor colorWithRed:red green:green blue:blue alpha:(alpha - 0.5)].CGColor;
-    
-    CFRelease(components);
     
     CGContextSaveGState(context);
     CGContextSetFillColorWithColor(context, WHITE.CGColor);
@@ -447,6 +445,10 @@ void drawRoundRectButton(CGContextRef context, CGRect rect, CGColorRef tint,  bo
     mButtonLabel.font = SYSTEM_BOLD(size);
 }
 
+- (void)setFontColor:(UIColor *)color {
+    mButtonLabel.textColor = color;
+}
+
 #pragma mark - Elements
 
 - (void)labelWithText:(NSString *)text {
@@ -471,6 +473,7 @@ void drawRoundRectButton(CGContextRef context, CGRect rect, CGColorRef tint,  bo
     if (mType == MKButtonTypeRoundedRect || mType == MKButtonTypePlastic) {
         mButtonLabel.textColor = WHITE;
         mButtonLabel.font = SYSTEM_BOLD(MKButtonFlags.fontSize);
+        mButtonLabel.adjustsFontSizeToFitWidth = YES;
         mButtonLabel.text = text;
         mButtonLabel.shadowColor = [UIColor colorWithCGColor:MKButtonFlags.tintColor];
         
@@ -482,16 +485,6 @@ void drawRoundRectButton(CGContextRef context, CGRect rect, CGColorRef tint,  bo
     [self addSubview:mButtonLabel];
     [mButtonLabel release];
 }
-
-/*
-#pragma mark - Sizing
-
-- (float)widthForTitle:(NSString *)title {
-    CGSize size = [title sizeWithFont:SYSTEM_BOLD(mFontSize)];
-    
-    return size.width;
-}
-*/
 
 #pragma mark - Touches
 
@@ -518,6 +511,10 @@ void drawRoundRectButton(CGContextRef context, CGRect rect, CGColorRef tint,  bo
 #pragma mark - Memory Managemnet
 
 - (void)dealloc {
+    self.buttonText = nil;
+    self.tintColor = nil;
+    self.fontColor = nil;
+    
     [super dealloc];
 }
 

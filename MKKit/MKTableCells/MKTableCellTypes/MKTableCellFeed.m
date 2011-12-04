@@ -144,7 +144,7 @@
 }
 
 - (void)setContentText:(NSString *)contentText {
-    CGFloat width = 300.0;
+    CGFloat width = 320.0;
     
     if (DEVICE_ORIENTATION_IS_LANDSCAPED) {
         width = DYNAMIC_CELL_CONTENT_WIDTH_LANDSCAPE;

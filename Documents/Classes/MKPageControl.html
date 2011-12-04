@@ -1,0 +1,487 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>MKPageControl Class Reference</title>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+		<meta name="generator" content="appledoc 2.0b3" />
+	</head>
+	<body>
+		<article>
+			<div class="main-navigation navigation-top">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="header">
+				<div class="section-header">
+					<h1 class="title title-header">MKPageControl Class Reference</h1>
+				</div>		
+			</div>
+			<div id="container">	
+				
+				<div class="section section-specification"><table cellspacing="0"><tbody>
+					<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value"><a href="MKObject.html">MKObject</a> : NSObject</td>
+</tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">UIPageViewControllerDataSource</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">MKPageControl.h</td>
+</tr>
+					</tbody></table></div>
+				
+				
+				
+				<div class="section section-overview">
+					<h2 class="subtitle subtitle-overview">Overview</h2>
+					
+<p> <strong> Overview </strong></p>
+
+<p> <a href="MKPageControl.html">MKPageControl</a> provides methods to assist the UIPageViewController. MKPageContoll is a singleton instance so it can be accessed from all pages. Set the singleton instance to a UIPageViewController datasource and it will control the navigation though pages. </p>
+
+<p> <strong> Required Frameworks </strong> <ul><li> Foundation </li><li> UIKit </li></ul></p>
+
+<p> <strong> Required Classes </strong></p>
+
+<p> <a href="MKObject.html">MKObject</a></p>
+
+				</div>
+				
+				
+				
+				
+				<div class="section section-tasks">
+					<h2 class="subtitle subtitle-tasks">Tasks</h2>
+					
+					<h3 class="subsubtitle task-title">Creating</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sharedPages">+ sharedPages</a></code>
+		<span class="tooltip"> Returns the singleton instance or creates on if it does not exist. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Page Controll</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addPage:">- addPage:</a></code>
+		<span class="tooltip"> Adds a page to end of the stack. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/removeAllPages">- removeAllPages</a></code>
+		<span class="tooltip"> Removes all pages from and releases the singleton. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/nextPage">- nextPage</a></code>
+		<span class="tooltip"> The next page of the stack. Returns nil if no page exists. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/previousPage">- previousPage</a></code>
+		<span class="tooltip"> The previous page of the stack. Returns nil if no page exists. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/currentPage"> currentPage</a></code>
+		<span class="tooltip"> The current page number </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/numberOfPages"> numberOfPages</a></code>
+		<span class="tooltip"> The total number of pages </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Page View Controller</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pageViewController"> pageViewController</a></code>
+		<span class="tooltip"> The UIPageViewController of that is displaying. This property must be set manually. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/parentViewController"> parentViewController</a></code>
+		<span class="tooltip"> The parent of the UIPageViewController. This property must be set manually. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+				</div>
+				
+				
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Class Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/sharedPages" title="sharedPages"></a>
+	<h3 class="subsubtitle method-title">sharedPages</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Returns the singleton instance or creates on if it does not exist. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (MKPageControl *)sharedPages</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p> <a href="MKPageControl.html">MKPageControl</a> singleton </p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKPageControl.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/addPage:" title="addPage:"></a>
+	<h3 class="subsubtitle method-title">addPage:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Adds a page to end of the stack. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)addPage:(UIViewController *)<em>page</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>page</em></dt>
+			<dd> the view controller that to add. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKPageControl.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/nextPage" title="nextPage"></a>
+	<h3 class="subsubtitle method-title">nextPage</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The next page of the stack. Returns nil if no page exists. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (UIViewController *)nextPage</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p> UIViewController instance </p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKPageControl.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/previousPage" title="previousPage"></a>
+	<h3 class="subsubtitle method-title">previousPage</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The previous page of the stack. Returns nil if no page exists. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (UIViewController *)previousPage</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p> UIViewController instance </p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKPageControl.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/removeAllPages" title="removeAllPages"></a>
+	<h3 class="subsubtitle method-title">removeAllPages</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Removes all pages from and releases the singleton. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)removeAllPages</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKPageControl.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Properties</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/currentPage" title="currentPage"></a>
+	<h3 class="subsubtitle method-title">currentPage</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The current page number </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSInteger currentPage</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKPageControl.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/numberOfPages" title="numberOfPages"></a>
+	<h3 class="subsubtitle method-title">numberOfPages</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The total number of pages </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSInteger numberOfPages</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKPageControl.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/pageViewController" title="pageViewController"></a>
+	<h3 class="subsubtitle method-title">pageViewController</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The UIPageViewController of that is displaying. This property must be set manually. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UIPageViewController *pageViewController</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKPageControl.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/parentViewController" title="parentViewController"></a>
+	<h3 class="subsubtitle method-title">parentViewController</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The parent of the UIPageViewController. This property must be set manually. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UIViewController *parentViewController</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKPageControl.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+			</div>
+			<div class="main-navigation navigation-bottom">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="footer">
+				<hr />
+				<div class="footer-copyright">
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-12-04)</span><br />
+					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
+				</div>
+			</div>
+		</article>
+	</body>
+</html>

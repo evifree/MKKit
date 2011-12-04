@@ -74,10 +74,8 @@
 - (void)dealloc { 
     [self didRelease];
     
-    if (MKControlFlags.blockUsage) {
-        [action release];
-    }
-    
+    self.action = nil;
+        
     if (MKControlFlags.targetUsage) {
         [mTargets release];
     }

@@ -17,8 +17,8 @@ typedef enum {
 	MKTableCellFeedTypeHTML,
 } MKTableCellFeedType;
 
-#define DYNAMIC_CELL_CONTENT_WIDTH_LANDSCAPE        460.0
-#define DYNAMIC_CELL_CONTENT_WIDTH_PORTRAIT         300.0
+#define DYNAMIC_CELL_CONTENT_WIDTH_LANDSCAPE        480.0
+#define DYNAMIC_CELL_CONTENT_WIDTH_PORTRAIT         320.0
 #define DYNAMIC_CELL_CONTENT_MARGIN                 10.0
 
 /**-----------------------------------------------------------------------------------------------------
@@ -36,6 +36,15 @@ typedef enum {
  * `DYNAMIC_CELL_CONTENT_MARGIN                 10.0`
  
  @warning *Note* Default height for this cell is 130.0.
+ 
+ *Required Frameworks*
+ 
+ * Foundation
+ * UIKit
+ 
+ *Required Classes*
+ 
+ * MKTableCell
 -------------------------------------------------------------------------------------------------------*/
 
 @interface MKTableCellFeed : MKTableCell {

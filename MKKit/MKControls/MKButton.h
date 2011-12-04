@@ -23,18 +23,30 @@ static const float kHelpButtonFontSize          = 18.0;
 static const float kIAPButtonFontSize           = 14.0;
 static const float kPlasticButtonFontSize       = 30.0;
 static const float kRoundRectButtonFontSize     = 14.0;
+static const float kButtonTextPadding           = 10.0;
 
 /**-----------------------------------------------------------------------------
+ *Overview*
+ 
  MKButton provides specalty buttons for various use. There are currently four
  types of buttons:
  
  * `MKButtonTypeHelp` : a small round button with a question mark
  * `MKButtonTypeDisclosure` : a blue and white button that resembles iOS discloser button
  * `MKButtonTypeDropDownIndicator : a small button with down arrow on it.
- * `MKButtonTypeIAP` : a InApp Purchase button, mimics the purchase buttons from the
+ * `MKButtonTypeIAP` : a InApp Purchase button, mimics the purchase buttons from the appstore.
  * `MKButtonTypePlastic` : a button with a rounded shine, giving it a plasic look. Default tint is black.
  * `MKButtonTypeRoundedRect` : a rounded rect button that can be assigned a color. Default tint is blue.
- appStore
+ 
+ *Required Frameworks*
+ 
+ * Foundation
+ * UIKit
+ * Quartz Core
+ 
+ *Required Classes*
+ 
+ * MKControl
 ------------------------------------------------------------------------------*/
 
 @interface MKButton : MKControl {
@@ -96,13 +108,16 @@ static const float kRoundRectButtonFontSize     = 14.0;
 /// @name Behaviors
 ///---------------------------------------------------------
 
-/** type the Button Type */
+/** Type the Button Type */
 @property (nonatomic, assign) MKButtonType type;
 
-/** the tint color of a MKButtonTypeRoundedRect */ 
+/** The tint color of a MKButtonTypeRoundedRect */ 
 @property (nonatomic, retain) UIColor *tintColor;
 
-/** the size of the font on the button */
+/** The size of the font on the button */
 @property (nonatomic, assign) CGFloat fontSize;
+
+/** The font color of the button text */
+@property (nonatomic, retain) UIColor *fontColor;
            
 @end

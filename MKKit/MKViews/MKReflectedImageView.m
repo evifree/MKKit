@@ -15,7 +15,6 @@
 @end
 
 CGImageRef CreateGradientImage(int pixelsWide, int pixelsHigh);
-CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh);
 
 @implementation MKReflectedImageView
 
@@ -79,22 +78,11 @@ CGImageRef CreateGradientImage(int pixelsWide, int pixelsHigh) {
     return theCGImage;
 }
 
-CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh) {
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-	
-	CGContextRef bitmapContext = CGBitmapContextCreate (NULL, pixelsWide, pixelsHigh, 8,
-														0, colorSpace,
-														(kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst));
-	CGColorSpaceRelease(colorSpace);
-    
-    return bitmapContext;
-}
-
 - (UIImage *)reflectedImage:(UIImageView *)fromImage withHeight:(NSUInteger)height {
     if(height == 0)
 		return nil;
     
-    CGContextRef mainViewContentContext = MyCreateBitmapContext(fromImage.bounds.size.width, height);
+    CGContextRef mainViewContentContext = createBitmapContext(fromImage.bounds.size.width, height);
 	
     CGImageRef gradientMaskImage = CreateGradientImage(1, height);
 	

@@ -8,23 +8,43 @@
 
 #import "MKControl.h"
 
-#import <MKKit/MKKit/MKGraphics/MKGraphics.h>
-
 typedef enum {
+    MKBarButtonItemIcon,
     MKBarButtonItemBackArrow,
     MKBarButtonItemForwardArrow,
 } MKBarButtonItemType;
 
+@class MKImage;
+
 /**----------------------------------------------------------------------------
  MKBarButtonItem creates buttons for use on a tab bar. The button that will be displayed
- depends on the MKBarButtonItemType that is set. Currently There are two types:
+ depends on the MKBarButtonItemType that is set. Currently There are three types:
  
- * `MKBarButtonItemBackArrow` a triangle pointing to the left.
- * `MKBarButtonItemForwardArrow` a triangle pointing to the right.
+ * `MKBarButtonItemIcon` : a button created from an image. Use initWithIcon method
+ to for this type.
+ * `MKBarButtonItemBackArrow` : a triangle pointing to the left.
+ * `MKBarButtonItemForwardArrow`  : a triangle pointing to the right.
+ 
+ *Required Frameworks*
+ 
+ * Foundation
+ * UIKit
+ * Quartz Core
+ 
+ *Required Classes
+ 
+ * MKControl
+ * MKImage
 ------------------------------------------------------------------------------*/
 
 @interface MKBarButtonItem : MKControl {
     MKBarButtonItemType mType;
+    MKImage *mImageMask;
+    
+@private
+    struct {
+        BOOL requiresDrawing;
+    } MKBarButtonItemFlags;
 }
 
 ///-----------------------------------------
@@ -36,12 +56,29 @@ typedef enum {
  
  @param type the type of button to be displayed
 
- Currently There are two types:
+ Currently There are three types:
  
- * `MKBarButtonItemBackArrow` a triangle pointing to the left.
- * `MKBarButtonItemForwardArrow` a triangle pointing to the right.
+ * `MKBarButtonItemIcon` : a button created from an image. Use initWithIcon method
+ to for this type.
+ * `MKBarButtonItemBackArrow` : a triangle pointing to the left.
+ * `MKBarButtonItemForwardArrow` : a triangle pointing to the right.
+ 
+ @return MKBarButtonItem instance
 */
 - (id)initWithType:(MKBarButtonItemType)type;
+
+/**
+ Creates an instace of MKBarButtonItem from an image.
+ 
+ @param icon the image to use for the button
+ 
+ @return MKBarButtonItem instance
+*/
+- (id)initWithIcon:(MKImage *)icon;
+
+///------------------------------------------
+/// @name Types
+///------------------------------------------
 
 /** The type of button that is assigned */
 @property (nonatomic, assign) MKBarButtonItemType type;
