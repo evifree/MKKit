@@ -12,6 +12,21 @@
 
 @synthesize delegate=mDelegate, working=mWorking, action;
 
+@dynamic location;
+
+#pragma mark - Accessor Methods
+#pragma makr Setters
+
+- (void)setLocation:(CGPoint)location {
+    self.frame = CGRectMake(location.x, location.y, self.frame.size.width, self.frame.size.height);
+}
+
+#pragma mark Getters
+
+- (CGPoint)location {
+    return CGPointMake(self.frame.origin.x, self.frame.origin.y);
+}
+
 #pragma mark - Action Responders
 
 - (void)completedAction:(MKActionBlock)actionBlock {

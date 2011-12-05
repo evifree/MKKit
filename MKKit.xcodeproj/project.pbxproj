@@ -160,6 +160,8 @@
 		AAA97EF21391659A009EBCDE /* MKButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA97EF01391659A009EBCDE /* MKButton.m */; };
 		AAAE8712148A688C003E2060 /* MKImage.h in Headers */ = {isa = PBXBuildFile; fileRef = AAAE8710148A688C003E2060 /* MKImage.h */; };
 		AAAE8713148A688C003E2060 /* MKImage.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAE8711148A688C003E2060 /* MKImage.m */; };
+		AAAE8716148BC657003E2060 /* MKPaging.h in Headers */ = {isa = PBXBuildFile; fileRef = AAAE8714148BC656003E2060 /* MKPaging.h */; };
+		AAAE8717148BC657003E2060 /* MKPaging.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAE8715148BC656003E2060 /* MKPaging.m */; };
 		AAB4D1E113E86A720061A6BD /* MKPopOutView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB4D1DF13E86A700061A6BD /* MKPopOutView.h */; };
 		AAB4D1E213E86A720061A6BD /* MKPopOutView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB4D1E013E86A700061A6BD /* MKPopOutView.m */; };
 		AAB4D1E513E884410061A6BD /* MKTitleView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB4D1E313E884400061A6BD /* MKTitleView.h */; };
@@ -358,6 +360,8 @@
 		AAA97EF01391659A009EBCDE /* MKButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKButton.m; sourceTree = "<group>"; };
 		AAAE8710148A688C003E2060 /* MKImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKImage.h; sourceTree = "<group>"; };
 		AAAE8711148A688C003E2060 /* MKImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKImage.m; sourceTree = "<group>"; };
+		AAAE8714148BC656003E2060 /* MKPaging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPaging.h; sourceTree = "<group>"; };
+		AAAE8715148BC656003E2060 /* MKPaging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPaging.m; sourceTree = "<group>"; };
 		AAB4D1DF13E86A700061A6BD /* MKPopOutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPopOutView.h; sourceTree = "<group>"; };
 		AAB4D1E013E86A700061A6BD /* MKPopOutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPopOutView.m; sourceTree = "<group>"; };
 		AAB4D1E313E884400061A6BD /* MKTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTitleView.h; sourceTree = "<group>"; };
@@ -608,6 +612,8 @@
 				AAA97EF01391659A009EBCDE /* MKButton.m */,
 				AA02E11912DAFAFA003B3560 /* MKCheckBox.h */,
 				AA02E11A12DAFAFA003B3560 /* MKCheckBox.m */,
+				AAAE8714148BC656003E2060 /* MKPaging.h */,
+				AAAE8715148BC656003E2060 /* MKPaging.m */,
 				AA02E11F12DAFAFA003B3560 /* MKSlider.h */,
 				AA02E12012DAFAFA003B3560 /* MKSlider.m */,
 				AA02E1AD12DB0899003B3560 /* MKTextField.h */,
@@ -984,6 +990,7 @@
 				AAB5EE831426B93C00AFE278 /* MKGraphicsStructures.h in Headers */,
 				AAFB412F148717260002D494 /* MKPageControl.h in Headers */,
 				AAAE8712148A688C003E2060 /* MKImage.h in Headers */,
+				AAAE8716148BC657003E2060 /* MKPaging.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1170,6 +1177,7 @@
 				AAB5EE841426B93C00AFE278 /* MKGraphicsStructures.m in Sources */,
 				AAFB4130148717260002D494 /* MKPageControl.m in Sources */,
 				AAAE8713148A688C003E2060 /* MKImage.m in Sources */,
+				AAAE8717148BC657003E2060 /* MKPaging.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

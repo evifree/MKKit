@@ -18,21 +18,66 @@ typedef void (^MKActionBlock)(MKAction action);
 @protocol MKControlDelegate;
 
 /**---------------------------------------------------------------------------------------------
- The MKControl class is the super class of all other control objects. This class implements the 
- MKControlDelegate protocol.
+ *Overview*
+ 
+ The MKControl class is the super class of all other control objects of MKKit. 
+ 
+ *Observing Actions*
+ 
+ MKControl objects dispatch events in three ways, delegate methods, blocks, and by assigning 
+ targets and selectors. Each one sends actions according to one or more of the MKAction types.
+ You should be looking for one of the following action types:
+ 
+ * `MKActionTouchDown` : a touch down action.
+ * `MKActionTouchUp` : a touch up action.
+ * `MKActionValueChanged` : a change of value action.
+ * `MKActionValueIncreased` : a increase of a controls value.
+ * `MKActionValueDecreased` : a decrease of a controls value.
+ 
+ @warning *Note* Not all controls dispatch every action. Check the documention of the control
+ you are using to see what events it will dispatch.
+ 
+ *Required Frameworks*
+ 
+ * Foundation
+ * UIKit
+ * Quartz Core
+ * Core Graphics
+ 
+ *Required Classes*
+ 
+ * MKMacros
+ * MKGraphics
+ 
+ *Required Protocols
+ 
+ * MKControlDelegate
 -----------------------------------------------------------------------------------------------*/
 
 @interface MKControl : UIControl {
     id mDelegate;
     BOOL mWorking;
-
-@private
     NSMutableSet *mTargets;
+    
     struct {
         bool blockUsage;
         bool targetUsage;
     } MKControlFlags;
 }
+
+///---------------------------------------------------------
+/// @name Positioning
+///---------------------------------------------------------
+
+/** 
+ Moves the location of the control object. The point assigned
+ will represent the top left conner of the control
+
+ @warning *Note* Many MKControl objects set their own width and
+ height. Using the location property is the preffered method of
+ moving a controls position.
+*/
+@property (nonatomic, assign) CGPoint location;
 
 ///---------------------------------------------------------
 /// @name Responding to actions
@@ -45,11 +90,6 @@ typedef void (^MKActionBlock)(MKAction action);
  
  The action block is in this format `^(MKAction action)`.
  MKAction is the action that was completed.
- 
- The action will be on of the following types:
- 
- * `MKActionTouchDown` : a touch down action.
- * `MKActionTouchUp` : a touch up action.
 */
 - (void)completedAction:(MKActionBlock)actionBlock;
 

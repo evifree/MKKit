@@ -21,41 +21,6 @@ CGContextRef createBitmapContext(int pixelsWide, int pixelsHigh) {
     return bitmapContext;
 }
 
-
-#pragma mark - gradients
-
-void drawLinearGradient(CGContextRef context, CGRect rect, CGColorRef startColor, CGColorRef endColor) {
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGFloat locations[] = {0.0, 1.0};
-    
-    NSArray *colors = [NSArray arrayWithObjects:(id)startColor, (id)endColor, nil];
-    
-    CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (CFArrayRef)colors, locations);
-    
-    CGPoint startPoint = CGPointMake(CGRectGetMidX(rect), CGRectGetMinX(rect));
-    CGPoint endPoint = CGPointMake(CGRectGetMidX(rect), CGRectGetMaxY(rect));
-    
-    CGContextSaveGState(context);
-    CGContextAddRect(context, rect);
-    CGContextClip(context);
-    CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, 0);
-    CGContextRestoreGState(context);
-    
-    CGGradientRelease(gradient);
-    CGColorSpaceRelease(colorSpace);
-}
-
-void drawGlossAndLinearGradient(CGContextRef conext, CGRect rect, CGColorRef startColor, CGColorRef endColor) {
-    drawLinearGradient(conext, rect, startColor, endColor);
-    
-    UIColor *gloss1color = MK_COLOR_RGB(255.0, 255.0, 255.0, 0.35);
-    UIColor *gloss2color = MK_COLOR_RGB(255.0, 255.0, 255.0, 0.1);
-    
-    CGRect topHalf = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, (rect.size.height / 2.0));
-    
-    drawLinearGradient(conext, topHalf, gloss1color.CGColor, gloss2color.CGColor);
-}
-
 #pragma mark - Rects
 
 CGRect rectFor1pxStroke(CGRect rect) {
@@ -123,6 +88,43 @@ CGMutablePathRef createPathForDownPointer(CGRect rect) {
     return path;
 }
 
+CGMutablePathRef createPathForLeftArrow(CGRect rect) {
+    CGMutablePathRef path = CGPathCreateMutable();
+    
+    CGPoint p1 = CGPointMake(CGRectGetMinX(rect), CGRectGetMidY(rect));
+    CGPoint p2 = CGPointMake(CGRectGetMaxX(rect), CGRectGetMinY(rect));
+    CGPoint p3 = CGPointMake(CGRectGetMaxX(rect), CGRectGetMaxY(rect));
+    
+    CGPathMoveToPoint(path, NULL, p1.x, p1.y);
+    CGPathAddLineToPoint(path, NULL, p2.x, p2.y);
+    CGPathAddLineToPoint(path, NULL, p3.x, p3.y);
+    CGPathAddLineToPoint(path, NULL, p1.x, p1.y);
+    
+    CGPathCloseSubpath(path);
+    
+    return path;
+}
+
+CGMutablePathRef createPathForRightArrow(CGRect rect) {
+    CGMutablePathRef path = CGPathCreateMutable();
+    
+    CGPoint p1 = CGPointMake(CGRectGetMinX(rect), CGRectGetMinY(rect));
+    CGPoint p2 = CGPointMake(CGRectGetMaxX(rect), CGRectGetMidY(rect));
+    CGPoint p3 = CGPointMake(CGRectGetMinX(rect), CGRectGetMaxY(rect));
+    
+    CGPathMoveToPoint(path, NULL, p1.x, p1.y);
+    CGPathAddLineToPoint(path, NULL, p2.x, p2.y);
+    CGPathAddLineToPoint(path, NULL, p3.x, p3.y);
+    CGPathAddLineToPoint(path, NULL, p1.x, p1.y);
+    
+    CGPathCloseSubpath(path);
+    
+    return path;
+}
+
+#pragma mark - Drawing
+#pragma mark Paths
+
 void drawOutlinePath(CGContextRef context, CGPathRef path, CGFloat width, CGColorRef color) {
     CGContextSaveGState(context);
     CGContextSetLineWidth(context, width);
@@ -132,9 +134,8 @@ void drawOutlinePath(CGContextRef context, CGPathRef path, CGFloat width, CGColo
     CGContextRestoreGState(context);
 }
 
-#pragma mark - Text
+#pragma mark Text
 
-//////////////////////////////////////////////////////////////////////////////////////
 void drawText(CGContextRef context, CGRect rect, CFStringRef text, CGColorRef color, CGColorRef shadowColor, CGFloat size) {
     CGContextSaveGState(context);
     CGContextSetFillColorWithColor(context, color);
@@ -143,7 +144,7 @@ void drawText(CGContextRef context, CGRect rect, CFStringRef text, CGColorRef co
     CGContextRestoreGState(context);
 }
 
-#pragma mark - Gloss
+#pragma mark Gloss
 
 void drawCurvedGloss(CGContextRef context, CGRect rect, CGFloat radius) {
     
@@ -178,4 +179,38 @@ void drawLinearGloss(CGContextRef context, CGRect rect) {
     CGRect topHalf = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, (rect.size.height / 2.0));
     
     drawLinearGradient(context, topHalf, gloss1color.CGColor, gloss2color.CGColor);
+}
+
+#pragma mark Gradients
+
+void drawLinearGradient(CGContextRef context, CGRect rect, CGColorRef startColor, CGColorRef endColor) {
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    CGFloat locations[] = {0.0, 1.0};
+    
+    NSArray *colors = [NSArray arrayWithObjects:(id)startColor, (id)endColor, nil];
+    
+    CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (CFArrayRef)colors, locations);
+    
+    CGPoint startPoint = CGPointMake(CGRectGetMidX(rect), CGRectGetMinX(rect));
+    CGPoint endPoint = CGPointMake(CGRectGetMidX(rect), CGRectGetMaxY(rect));
+    
+    CGContextSaveGState(context);
+    CGContextAddRect(context, rect);
+    CGContextClip(context);
+    CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, 0);
+    CGContextRestoreGState(context);
+    
+    CGGradientRelease(gradient);
+    CGColorSpaceRelease(colorSpace);
+}
+
+void drawGlossAndLinearGradient(CGContextRef conext, CGRect rect, CGColorRef startColor, CGColorRef endColor) {
+    drawLinearGradient(conext, rect, startColor, endColor);
+    
+    UIColor *gloss1color = MK_COLOR_RGB(255.0, 255.0, 255.0, 0.35);
+    UIColor *gloss2color = MK_COLOR_RGB(255.0, 255.0, 255.0, 0.1);
+    
+    CGRect topHalf = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, (rect.size.height / 2.0));
+    
+    drawLinearGradient(conext, topHalf, gloss1color.CGColor, gloss2color.CGColor);
 }

@@ -13,6 +13,8 @@ typedef enum {
     MKActionTouchDown,
     MKActionTouchUp,
     MKActionValueChanged,
+    MKActionValueIncreased,
+    MKActionValueDecreased,
 } MKAction;
 
 /**-------------------------------------------------------------------------------------------
