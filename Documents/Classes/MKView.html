@@ -36,9 +36,17 @@
 				<div class="section section-overview">
 					<h2 class="subtitle subtitle-overview">Overview</h2>
 					
+<p> <strong> Overview </strong></p>
+
 <p> The <a href="MKView.html">MKView</a> class is a super class for specialty views. <a href="MKView.html">MKView</a> adopts the <a href="../Protocols/MKViewDelegate.html">MKViewDelegate</a> protocol. When the <a href="#//api/name/showWithAnimationType:">showWithAnimationType:</a> method is used, views are add to the application&apos;s keyWindow. </p>
 
 <p> The folling <code>MKViewAnimationType</code> (s) are avialible: <ul><li> <code>MKViewAnimationTypeNone</code>: No animations are preformed. View will just appear on the screen. </li><li> <code>MKViewAnimationTypeFadeIn</code>: The View will Fade onto the screen. </li><li> <code>MKViewAnimationTypeMoveInFromTop</code>: The View will slide onto the screen from the top. </li><li> <code>MKViewAnimationTypeAppearAboveToolbar</code>: The View will above so it is placed just above a toolbar. </li></ul> <p class="warning"> <strong> Note </strong> When the showWithAnitmationType: method is used, views are added to the application&apos;s key window. Some subclass of <a href="MKView.html">MKView</a> handel removing themselfs. You should check the documentation of the given class for removal options. </p></p>
+
+<p> <strong> Required Frameworks </strong> <ul><li> UIKit </li><li> Foundation </li><li> Core Graphics </li></ul></p>
+
+<p> <strong> Required Classes </strong> <ul><li> MKGraphics </li><li> MKGraphicStructures </li><li> MKMacros </li></ul></p>
+
+<p> *Required Protocols <ul><li> <a href="../Protocols/MKViewDelegate.html">MKViewDelegate</a></li></ul></p>
 
 				</div>
 				
@@ -138,73 +146,37 @@
 </li>
 					</ul>
 					
-					<h3 class="subsubtitle task-title">IconMask Methods</h3>
+					<h3 class="subsubtitle task-title">MKTitleView Methods</h3>
 
 					<ul class="task-list">
 						<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithImage:gradient:">- initWithImage:gradient:</a></code>
-		<span class="tooltip"> Returns an instance of <a href="MKView.html">MKView</a> that draws the <a href="#//api/name/image">image</a> on to a CoreGraphics context and colors it with the gradient. </span>
+		<code><a href="#//api/name/titleViewWithTitle:image:">+ titleViewWithTitle:image:</a></code>
+		<span class="tooltip"> Creates an autoreleased instance of <a href="MKView.html">MKView</a> Suited for display on a navigation bar. </span>
 	</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/image"> image</a></code>
-		<span class="tooltip"> The <a href="#//api/name/image">image</a> that is drawn onto the context </span>
+		<code><a href="#//api/name/initWithTitle:image:">- initWithTitle:image:</a></code>
+		<span class="tooltip"> Creates an instance of <a href="MKView.html">MKView</a> Suited for display on a navigation bar. </span>
 	</span>
 	
 </li>
 					</ul>
 					
-					<h3 class="subsubtitle task-title">MKTableCell Methods</h3>
+					<h3 class="subsubtitle task-title">IconMask Methods</h3>
 
 					<ul class="task-list">
 						<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithCell:">- initWithCell:</a></code>
-		<span class="tooltip"> Creates an instace of <a href="MKView.html">MKView</a> for the given table cell. </span>
+		<code><a href="#//api/name/initWithImage:gradient:MK_DEPRECATED_0_9:">- initWithImage:gradient:MK_DEPRECATED_0_9:</a></code>
+		<span class="tooltip"> <p class="warning"> <strong> Deprecated Method v0.9 </strong> Use <a href="MKImage.html">MKImage</a> methods instead. </p></span>
 	</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/layoutCell">- layoutCell</a></code>
-		<span class="tooltip"> Adjusts the elements of the cell to fit. </span>
-	</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/pinnedSecondaryElement"> pinnedSecondaryElement</a></code>
-		<span class="tooltip"> Yes if the secondary element should not atomically adjust its size. </span>
-	</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/addPrimaryElement:">- addPrimaryElement:</a></code>
-		<span class="tooltip"> Adds a Primary Element to the cell. The primary element appears on the left side of the cell. </span>
-	</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/addSecondaryElement:">- addSecondaryElement:</a></code>
-		<span class="tooltip"> Adds a Secondary Element to the cell. The secondary element appears on the right side of the cell. </span>
-	</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/addSecondaryElement:inRect:">- addSecondaryElement:inRect:</a></code>
-		<span class="tooltip"> Adds a secondary element to the cell is that fills the desired rect. </span>
-	</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/addIconElement:">- addIconElement:</a></code>
-		<span class="tooltip"> Adds a Icon Element to the cell. The icon element appears on the left side of the cell. </span>
-	</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/addDetailElement:">- addDetailElement:</a></code>
-		<span class="tooltip"> Adds a view under the primary and seconday views. The primay and secondary views adjust to fit the new element. If the cell has an icon view assigned, the detail element is moved to right to fit the icon. </span>
+		<code><a href="#//api/name/MK_DEPRECATED_0_9"> MK_DEPRECATED_0_9</a></code>
+		<span class="tooltip"> <p class="warning"> <strong> Deprecated Property v0.9 </strong></p></span>
 	</span>
 	
 </li>
@@ -229,6 +201,72 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/titleLabel"> titleLabel</a></code>
 		<span class="tooltip"> The UILabel instance that is displayed on the view </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">MKTableCell Methods</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithCell:">- initWithCell:</a></code>
+		<span class="tooltip"> Creates an instace of <a href="MKView.html">MKView</a> for the given table cell. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/layoutCell">- layoutCell</a></code>
+		<span class="tooltip"> Adjusts the elements of the cell to fit. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pinnedPrimaryElement"> pinnedPrimaryElement</a></code>
+		<span class="tooltip"> Yes if the primary element should not atomically adjust its size. Default is <code>NO</code>. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pinnedSecondaryElement"> pinnedSecondaryElement</a></code>
+		<span class="tooltip"> Yes if the secondary element should not atomically adjust its size. Default is <code>NO</code>. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addPrimaryElement:">- addPrimaryElement:</a></code>
+		<span class="tooltip"> Adds a Primary Element to the cell. The primary element appears on the left side of the cell. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addPrimaryElement:inRect:">- addPrimaryElement:inRect:</a></code>
+		<span class="tooltip"> Adds a Primary Element to the cell that is placed in the given rect. Using this method will set the <a href="#//api/name/pinnedPrimaryElement">pinnedPrimaryElement</a> property to <code>YES</code>. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addSecondaryElement:">- addSecondaryElement:</a></code>
+		<span class="tooltip"> Adds a Secondary Element to the cell. The secondary element appears on the right side of the cell. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addSecondaryElement:inRect:">- addSecondaryElement:inRect:</a></code>
+		<span class="tooltip"> Adds a secondary element to the cell is that fills the desired rect. Using this method will set the pinnedSecondary element Property to <code>YES</code>. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addIconElement:">- addIconElement:</a></code>
+		<span class="tooltip"> Adds a Icon Element to the cell. The icon element appears on the left side of the cell. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addDetailElement:">- addDetailElement:</a></code>
+		<span class="tooltip"> Adds a view under the primary and seconday views. The primay and secondary views adjust to fit the new element. If the cell has an icon view assigned, the detail element is moved to right to fit the icon. </span>
 	</span>
 	
 </li>
@@ -290,6 +328,58 @@
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
 		<code class="declared-in-ref">MKView.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/titleViewWithTitle:image:" title="titleViewWithTitle:image:"></a>
+	<h3 class="subsubtitle method-title">titleViewWithTitle:image:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Creates an autoreleased instance of <a href="MKView.html">MKView</a> Suited for display on a navigation bar. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (id)titleViewWithTitle:(NSString *)<em>title</em> image:(MKImage *)<em>image</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>title</em></dt>
+			<dd> the string that will be displayed on the navigation bar. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>image</em></dt>
+			<dd> the image that will be drawn onto the navigtaion bar. See MKImgae for options of creating images. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p> <a href="MKView.html">MKView</a> instance </p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKView+MKTitleView.h</code><br />
 	</div>				
 	
 	
@@ -429,6 +519,53 @@
 </div>
 					
 					<div class="section-method">
+	<a name="//api/name/addPrimaryElement:inRect:" title="addPrimaryElement:inRect:"></a>
+	<h3 class="subsubtitle method-title">addPrimaryElement:inRect:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Adds a Primary Element to the cell that is placed in the given rect. Using this method will set the <a href="#//api/name/pinnedPrimaryElement">pinnedPrimaryElement</a> property to <code>YES</code>. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)addPrimaryElement:(UIView *)<em>element</em> inRect:(CGRect)<em>rect</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>element</em></dt>
+			<dd> the view to add to the cell </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>rect</em></dt>
+			<dd> the rect of the view </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKTableCell.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
 	<a name="//api/name/addSecondaryElement:" title="addSecondaryElement:"></a>
 	<h3 class="subsubtitle method-title">addSecondaryElement:</h3>
 	
@@ -477,7 +614,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p> Adds a secondary element to the cell is that fills the desired rect. </p>
+		<p> Adds a secondary element to the cell is that fills the desired rect. Using this method will set the pinnedSecondary element Property to <code>YES</code>. </p>
 	</div>		
 	
 	
@@ -565,30 +702,62 @@
 </div>
 					
 					<div class="section-method">
-	<a name="//api/name/initWithImage:gradient:" title="initWithImage:gradient:"></a>
-	<h3 class="subsubtitle method-title">initWithImage:gradient:</h3>
+	<a name="//api/name/initWithImage:gradient:MK_DEPRECATED_0_9:" title="initWithImage:gradient:MK_DEPRECATED_0_9:"></a>
+	<h3 class="subsubtitle method-title">initWithImage:gradient:MK_DEPRECATED_0_9:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p> Returns an instance of <a href="MKView.html">MKView</a> that draws the <a href="#//api/name/image">image</a> on to a CoreGraphics context and colors it with the gradient. </p>
+		<p> <p class="warning"> <strong> Deprecated Method v0.9 </strong> Use <a href="MKImage.html">MKImage</a> methods instead. </p></p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (id)initWithImage:(UIImage *)<em>image</em> gradient:(MKGraphicsStructures *)<em>gradient</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithImage:(UIImage *)<em>image</em> gradient:(MKGraphicsStructures *)<em>gradient</em> MK_DEPRECATED_0_9</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKView.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/initWithTitle:image:" title="initWithTitle:image:"></a>
+	<h3 class="subsubtitle method-title">initWithTitle:image:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Creates an instance of <a href="MKView.html">MKView</a> Suited for display on a navigation bar. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithTitle:(NSString *)<em>title</em> image:(MKImage *)<em>image</em></code></div>
 	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>image</em></dt>
-			<dd> the <a href="#//api/name/image">image</a> to draw. </dd>
+			<dt><em>title</em></dt>
+			<dd> the string that will be displayed on the navigation bar. </dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>gradient</em></dt>
-			<dd> the <a href="#//api/name/gradient">gradient</a> to color the <a href="#//api/name/image">image</a> with. Use the method + [(id) MKGraphicStructures linearGradientWithTopColor:bottomColor:] to make a gradient. Pass the same color for the top and bottom for a solid colored drawing. </dd>
+			<dt><em>image</em></dt>
+			<dd> the image that will be drawn onto the navigtaion bar. See MKImgae for options of creating images. </dd>
 		</dl>
 		
 	</div>
@@ -602,15 +771,6 @@
 	
 	
 	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		
-		<p> Returns an instance of <a href="MKView.html">MKView</a> that draws the <a href="#//api/name/image">image</a> on to a CoreGraphics context and colors it with the gradient. </p>
-		
-		<p> Default is solid white. </p>
-		
-	</div>
-	
 	
 	
 	
@@ -619,7 +779,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">MKView.h</code><br />
+		<code class="declared-in-ref">MKView+MKTitleView.h</code><br />
 	</div>				
 	
 	
@@ -838,6 +998,38 @@
 					<h2 class="subtitle subtitle-methods">Properties</h2>
 					
 					<div class="section-method">
+	<a name="//api/name/MK_DEPRECATED_0_9" title="MK_DEPRECATED_0_9"></a>
+	<h3 class="subsubtitle method-title">MK_DEPRECATED_0_9</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> <p class="warning"> <strong> Deprecated Property v0.9 </strong></p></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UIImage *image MK_DEPRECATED_0_9</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKView.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
 	<a name="//api/name/controller" title="controller"></a>
 	<h3 class="subsubtitle method-title">controller</h3>
 	
@@ -977,17 +1169,17 @@
 </div>
 					
 					<div class="section-method">
-	<a name="//api/name/image" title="image"></a>
-	<h3 class="subsubtitle method-title">image</h3>
+	<a name="//api/name/pinnedPrimaryElement" title="pinnedPrimaryElement"></a>
+	<h3 class="subsubtitle method-title">pinnedPrimaryElement</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p> The <a href="#//api/name/image">image</a> that is drawn onto the context </p>
+		<p> Yes if the primary element should not atomically adjust its size. Default is <code>NO</code>. </p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UIImage *image</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL pinnedPrimaryElement</code></div>
 	
 	
 	
@@ -1002,7 +1194,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">MKView.h</code><br />
+		<code class="declared-in-ref">MKTableCell.h</code><br />
 	</div>				
 	
 	
@@ -1015,7 +1207,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p> Yes if the secondary element should not atomically adjust its size. </p>
+		<p> Yes if the secondary element should not atomically adjust its size. Default is <code>NO</code>. </p>
 	</div>		
 	
 	
@@ -1181,7 +1373,7 @@
 			<div id="footer">
 				<hr />
 				<div class="footer-copyright">
-					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-09-20)</span><br />
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-12-08)</span><br />
 					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
 				</div>
 			</div>

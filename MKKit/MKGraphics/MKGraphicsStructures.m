@@ -8,52 +8,73 @@
 
 #import "MKGraphicsStructures.h"
 
-@implementation MKGraphicsStructures
+@interface MKGraphicsStructures ()
+
+- (id)initWithLinearGradientTopColor:(UIColor *)topColor bottomColor:(UIColor *)bottomColor;
 
 @end
 
-static const char *TopColorTag = "TopColorTag";
-static const char *BottomColorTag = "BottomColorTag";
-
-@implementation MKGraphicsStructures (LinearGradient)
+@implementation MKGraphicsStructures
 
 @dynamic top, bottom;
 
-#pragma mark - Creating
+#pragma mark - Creation
+
++ (id)graphicsStructure {
+    return [[[[self class] alloc] init] autorelease];
+}
 
 + (id)linearGradientWithTopColor:(UIColor *)topColor bottomColor:(UIColor *)bottomColor {
-    MKGraphicsStructures *gradient = [[[[self class] alloc] init] autorelease];
-    gradient.top = topColor;
-    gradient.bottom = bottomColor;
+    return [[[[self class] alloc] initWithLinearGradientTopColor:topColor bottomColor:bottomColor] autorelease];
+}
+
+- (id)initWithLinearGradientTopColor:(UIColor *)topColor bottomColor:(UIColor *)bottomColor {
+    self = [super init];
+    if (self) {
+        mTopColor = [topColor retain];
+        mBottomColor = [bottomColor retain];
+    }
+    return self;
+}
+
+#pragma mark - Memory Managment
+
+- (void)dealloc {
+    self.top = nil;
+    self.bottom = nil;
     
-    return gradient;
+    [mTopColor release];
+    [mBottomColor release];
+    
+    [super dealloc];
+}
+
+#pragma mark - Adding Structures
+
+- (void)assignGradientTopColor:(UIColor *)topColor bottomColor:(UIColor *)bottomColor {
+    self.top = topColor;
+    self.bottom = bottomColor;
 }
 
 #pragma mark - Accessor Methods
 #pragma mark Setters
 
 - (void)setTop:(UIColor *)topColor {
-    objc_setAssociatedObject(self, TopColorTag, topColor, OBJC_ASSOCIATION_RETAIN);
+    mTopColor = [topColor retain];
 }
 
 - (void)setBottom:(UIColor *)bottomColor {
-    objc_setAssociatedObject(self, BottomColorTag, bottomColor, OBJC_ASSOCIATION_RETAIN);
+    mBottomColor = [bottomColor retain];
 }
 
 #pragma mark Getters
 
 - (UIColor *)top {
-    return (UIColor *)objc_getAssociatedObject(self, TopColorTag);
+    return mTopColor;
 }
 
 - (UIColor *)bottom {
-    return (UIColor *)objc_getAssociatedObject(self, BottomColorTag);
-}
-
-#pragma mark - Memory Managment
-
-- (void)didRelease {
-    objc_removeAssociatedObjects(self);
+    return mBottomColor;
 }
 
 @end

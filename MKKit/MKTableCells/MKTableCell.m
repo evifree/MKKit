@@ -40,17 +40,15 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
     return iAccent;
 }
 
-#pragma mark -
-
 @implementation MKTableCell
 
 @synthesize delegate, type, theLabel=mTheLabel, smallLabel=mSmallLabel, key=mKey, accessoryViewType, 
             validationType=mValidationType, validating=mValidating, validator, icon,
             iconMask, validatorTestStringLength=mValidatorTestStringLength, accessoryIcon, 
             recognizeLeftToRightSwipe, recognizeRightToLeftSwipe, recognizeLongPress, indexPath,
-            primaryViewTrim, badge, accent, cellView=mCellView, stroryboardPrototype;
+            primaryViewTrim, badge, accent, cellView=mCellView, stroryboardPrototype, image, accessoryImage;
 
-#pragma mark - Initalizer
+#pragma mark - Creating
 
 - (id)initWithType:(MKTableCellType)cellType reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
@@ -102,6 +100,19 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
     }
 	return self;
 }
+
+#pragma mark - Memory Management
+
+- (void)dealloc {
+    self.accessoryImage = nil;
+    self.indexPath = nil;
+    self.cellView = nil;
+    //self.theLabel = nil;
+    self.smallLabel = nil;
+    self.image = nil;
+    
+    [super dealloc];
+}
 	
 #pragma mark - Accessor Methods
 #pragma mark Accessories
@@ -142,8 +153,8 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
     }
 }
 
-- (void)setAccessoryIcon:(UIImage *)lIcon {
-    MKControl *iconView = [[MKControl alloc] initWithImage:lIcon];
+- (void)setAccessoryImage:(MKImage *)img {
+    MKControl *iconView = [[MKControl alloc] initWithImage:(UIImage *)img];
     [iconView addTarget:self selector:@selector(accessoryButton:) action:MKActionTouchDown];
     self.accessoryView = iconView;
     [iconView release];
@@ -174,31 +185,13 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 
 #pragma mark Icons
 
-- (void)setIcon:(UIImage *)anImage {
+- (void)setImage:(MKImage *)img {
     if (!stroryboardPrototype) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-        imageView.image = anImage;
-    
+        imageView.image = (UIImage *)img;
+        
         [mCellView addIconElement:imageView];
         [imageView release];
-    }
-}
-
-- (void)setIconMask:(UIImage *)lIconMask {
-    if (!stroryboardPrototype) {
-        UIView *view = [mCellView viewWithTag:kIconViewTag];
-        
-        if (view) {
-            [view removeFromSuperview];
-        }
-        
-        UIColor *topColor =  MK_COLOR_HSB(345.0, 0.0, 86.0, 1.0);
-        UIColor *bottomColor = MK_COLOR_HSB(345.0, 0.0, 56.0, 1.0);
-        
-        MKView *iconView = [[MKView alloc] initWithImage:lIconMask 
-                                                gradient:[MKGraphicsStructures linearGradientWithTopColor:topColor bottomColor:bottomColor]];
-        [mCellView addIconElement:iconView];
-        [iconView release];
     }
 }
 
@@ -362,10 +355,6 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 
 #pragma mark - Validation Methods
 
-- (void)validateWithType:(MKValidationType)aType {
-    //Deprecated Method//
-}
-
 - (BOOL)validatedWithType:(MKValidationType)aType {
 	return YES;
 }
@@ -403,10 +392,22 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
     }
 }
 
-#pragma mark - Memory Management
+#pragma mark - Deprecated
 
-- (void)dealloc {
-    [super dealloc];
+- (void)validateWithType:(MKValidationType)aType {
+    //Deprecated Method//
+}
+
+- (void)setIconMask:(UIImage *)lIconMask {
+    //Deprecated Method//
+}
+
+- (void)setIcon:(UIImage *)anImage {
+    //Deprecated Method//
+}
+
+- (void)setAccessoryIcon:(UIImage *)lIcon {
+    //Deprecated Method//
 }
 
 @end

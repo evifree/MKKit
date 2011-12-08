@@ -9,44 +9,25 @@
 #import "MKView.h"
 
 /**---------------------------------------------------------
- MKTitleView provides a custom title view for a navigation bar.
- The view has a small icon on the right and text next to it.
+ *Deprecated Class v0.9. Use MKView(MKTitleView) catagory methods instead.*
 ----------------------------------------------------------*/
 
-@interface MKTitleView : MKView {
+MK_DEPRECATED_0_9 @interface MKTitleView : MKView {
     
 }
 
 ///-------------------------------------
-/// @name Creating
+/// @name Deprecations
 ///-------------------------------------
 
 /**
- Creates an instance of MKTitleView.
- 
- @param title the string that will be displayed on the navigation bar
- 
- @param image the image icon that will displayed on the navigation bar.
- 
- @return MKTitleView instance
+ @warning *Deprecated Method v0.9* Use MKView(MKTitleView) catagory methods instead.
 */ 
-- (id)initWithTitle:(NSString *)title image:(UIImage *)image;
+- (id)initWithTitle:(NSString *)title image:(UIImage *)image MK_DEPRECATED_0_9;
 
 /**
- Creates an instance of MKTitleView.
- 
- @param title the string that will be displayed on the navigation bar.
- 
- @param image the image mask that will be drawn onto the navigtaion bar.
- 
- @param gradient the gradient that will be used to color the image. Use the method
- + [(id) MKGraphicStructures linearGradientWithTopColor:bottomColor:]to make a gradient.
- Pass the same color for the top and bottom for a solid color.
- 
- Default is solid white.
- 
- @return MKTitleView instance
+ @warning *Deprecated Method v0.9* Use MKView(MKTitleView) catagory methods instead.
 */
-- (id)initWithTitle:(NSString *)title image:(UIImage *)image gradient:(MKGraphicsStructures *)gradient;
+- (id)initWithTitle:(NSString *)title image:(UIImage *)image gradient:(MKGraphicsStructures *)gradient MK_DEPRECATED_0_9;
 
 @end

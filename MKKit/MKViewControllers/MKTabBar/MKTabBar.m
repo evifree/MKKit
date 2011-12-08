@@ -11,11 +11,12 @@
 
 @implementation MKTabBar
 
-@synthesize delegate, items;
+//@synthesize delegate, items;
 
 #pragma mark -
 #pragma mark Start Up
 
+/*
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
 		NSString *path = [[NSBundle mainBundle] pathForResource:@"tabBarItemBackground" ofType:@"png"];
@@ -79,6 +80,6 @@
 	[items release];
 	[delegate release];
 }
-
+*/
 
 @end

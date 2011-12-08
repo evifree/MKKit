@@ -16,15 +16,18 @@
  MKImage is a subclass of UIImage that addes the abillity to create masks
  of images and color them the desired color.
  
+ MKImage does support HiRes images.
+ 
  *Required Frameworks*
  
  * UIKit
  * Foundation
- * Quartz Core
+ * Core Graphics
  
  *Required Classes* 
  
  * MKGraphics
+ * MKGraphicsStructures
 ------------------------------------------------------------------------*/
 
 @interface MKImage : UIImage {
@@ -44,7 +47,7 @@
  
  @return MKImage instance
 */
-+ (id)imagedNamed:(NSString *)imageName maskedColor:(UIColor *)color;
++ (id)imagedNamed:(NSString *)imageName graphicStruct:(MKGraphicsStructures *)graphicStruct;
 
 /**
  Creates an Instance of MKImage.
@@ -55,6 +58,6 @@
  
  @return MKImage instance
 */
-- (id)initWithContentsOfFile:(NSString *)path maskedColor:(UIColor *)color;
+- (id)initWithContentsOfFile:(NSString *)path graphicStruct:(MKGraphicsStructures *)graphicStruct;
 
 @end

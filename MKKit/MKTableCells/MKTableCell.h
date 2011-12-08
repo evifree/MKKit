@@ -58,7 +58,7 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 @protocol MKTableCellDelegate;
 @protocol MKInputValidation;
 
-@class MKBadgeCellView, MKView, MKSwipeCellView, MKTableCellAccentView;
+@class MKBadgeCellView, MKView, MKSwipeCellView, MKTableCellAccentView, MKImage;
 
 /**-------------------------------------------------------------------------------------
  *Overview*
@@ -131,6 +131,7 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
  * MKDeffinitions
  * MKElementAccentView
  * MKMacros
+ * MKImage
  * MKStrings
  * MKSwipeCellView
  * MKTableCellAccentView
@@ -170,7 +171,7 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 }
 
 ///---------------------------------------------------------------------------------------
-/// @name Initalizing
+/// @name Creating
 ///---------------------------------------------------------------------------------------
 
 /** 
@@ -208,7 +209,7 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
  Sets an image as the cells accessory. If you want to use on the prebuilt accessory types
  set the accessoryViewType property.
 */
-@property (nonatomic, retain) UIImage *accessoryIcon;
+@property (nonatomic, retain) MKImage *accessoryImage;
 
 ///---------------------------------------------------------------------------------------
 /// @name Referencing
@@ -240,21 +241,8 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 /** A reference to the secondary label of all MKTableCell Subclasses that have two labels. */
 @property (nonatomic, retain) IBOutlet UILabel *smallLabel;
 
-/** The image displayed on cell that suport image views */
-@property (nonatomic, retain) IBOutlet UIImage *icon;
-
-/** 
- An imaged to be masked. The masking is completed by the MKView (IconView) catagory. The
- default gradient for the mask is a dark gray top moving to a lighter bottom.
- 
- The masks gradient can be set by accessing the icon of the cell.
- 
-    [(MKView *)cell.cellview viewForTag:kIconViewTag].gradient = someGradient;
- 
- @see MKView
- @see MKGraphicStructures
- */
-@property (nonatomic, retain) UIImage *iconMask;
+/** An image to use as the cells icon. */
+@property (nonatomic, retain) MKImage *image;
 
 /** 
  A bagde that is displayed on the left hand side of the cell. A badge can
@@ -303,7 +291,7 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
  view style pass `MKTableCellMiddle` for all cells.
  
  @param trim the width to trim the accent view down to.
- */
+*/
 - (void)accentPrimaryViewForCellAtPosition:(MKTableCellPosition)position trim:(CGFloat)trim;
 
 /** The width of the accent view. */
@@ -336,11 +324,6 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 ///--------------------------------------------------------------------------------------
 
 /** 
- @warning *This method has been deprecated. Use `validtedWithType:` instead.*
-*/
-- (void)validateWithType:(MKValidationType)aType MK_DEPRECATED_0_8;
-
-/** 
  Tells the validator to valiate the input using the specified type. If you set a `validationType`
  other than `MKValidationNone` you will not need to call this method directly. 
  
@@ -370,7 +353,8 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 /// @name Storyboard Prototype
 ///---------------------------------------------------------------------------------------
 
-/** Set to `YES` if you are using MKTableCell as a prototype cell. If you are using the 
+/** 
+ Set to `YES` if you are using MKTableCell as a prototype cell. If you are using the 
  cell for a prototype and do not set this property to yes, some elements may not function
  propery. Default is `NO`.
 */
@@ -399,11 +383,35 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 */
 @property (assign) id<MKInputValidation> validator;
 
+///------------------------------------------------------------------------------------------
+/// @name Deprecations
+///------------------------------------------------------------------------------------------
+
+/** 
+ @warning *Deprecated Method v0.8* Use validtedWithType: instead. 
+*/
+- (void)validateWithType:(MKValidationType)aType;// MK_DEPRECATED_0_8;
+
+/** 
+ @warning *Deprecated v0.9* Use image property instead. 
+*/
+@property (nonatomic, retain) UIImage *icon;// MK_DEPRECATED_0_9;
+
+/** 
+ @warning *Deprecated v0.9* Use image property instead. 
+*/
+@property (nonatomic, retain) UIImage *iconMask;// MK_DEPRECATED_0_9;
+
+/** 
+ @warning *Deprecated v0.9* Use image property instead.
+*/
+@property (nonatomic, retain) UIImage *accessoryIcon;// MK_DEPRECATED_0_9;
+
 @end
 
 /**--------------------------------------------------------------------------
  This catagory of MKView provides a standard layout for MKTableCell objects.
- ---------------------------------------------------------------------------*/
+---------------------------------------------------------------------------*/
 
 @interface MKView (MKTableCell)
 

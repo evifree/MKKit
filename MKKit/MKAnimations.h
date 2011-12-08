@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 1/14/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010-2011 Matt King. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -11,9 +11,11 @@
 #import <QuartzCore/QuartzCore.h>
 #import <UIKit/UIKit.h>
 
+#import <MKKit/MKKit/MKMacros.h>
+
 @protocol MKAnimationsDelegate;
 
-@interface MKAnimations : NSObject {
+MK_DEPRECATED_0_9 @interface MKAnimations : NSObject {
 	id delegate;
 	BOOL repeat;
 }
@@ -40,7 +42,7 @@
 
 //** MKAnimation Delegate Protocal **//
 
-@protocol MKAnimationsDelegate <NSObject> 
+MK_DEPRECATED_0_9 @protocol MKAnimationsDelegate <NSObject> 
 
 @optional
 

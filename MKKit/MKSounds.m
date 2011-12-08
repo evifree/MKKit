@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 2/16/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010-2011 Matt King. All rights reserved.
 //
 
 #import "MKSounds.h"

@@ -16,7 +16,7 @@
 
 @synthesize x, y, width, height, gradient=mGradient, controller=mController, delegate=mDelegate;
 
-#pragma mark - Initalizer
+#pragma mark - Creating
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -98,6 +98,7 @@
         drawGlossAndLinearGradient(context, rect, topColor, bottomColor);
         CGContextSaveGState(context);
     }
+    /* DEPRECATIED V_0_9 /////////////////////////////////////////////////////
     if (MKViewFlags.isIconMask) {
         CGColorRef bottomColor = MK_COLOR_HSB(354.0, 1.0, 99.0, 1.0).CGColor;
         CGColorRef topColor = MK_COLOR_HSB(354.0, 1.0, 99.0, 1.0).CGColor;
@@ -114,6 +115,7 @@
         drawLinearGradient(context, rect, topColor, bottomColor);
         CGContextRestoreGState(context);
     }
+    */
 }
 
 #pragma mark - Showing the View
@@ -250,6 +252,9 @@
         [mGradient release];
     }
     
+    self.controller = nil;
+    self.gradient = nil;
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MKViewShouldRemoveNotification object:nil];
     
 	[super dealloc];
@@ -323,7 +328,7 @@ UILabel *mTitleLabel;
 
 @end
 
-static const char *ImageTag = "imageTag";
+///// DEPRECATED CATAGORY ////// 
 
 @implementation MKView (IconMask) 
 
@@ -332,6 +337,7 @@ static const char *ImageTag = "imageTag";
 #pragma mark - Initalizer
 
 - (id)initWithImage:(UIImage *)image gradient:(MKGraphicsStructures *)aGradient {
+    /*
     self = [super initWithFrame:CGRectMake(0.0, 0.0, image.size.width, image.size.height)];
     if (self) {
         self.backgroundColor = CLEAR;
@@ -346,26 +352,26 @@ static const char *ImageTag = "imageTag";
         mShouldRemoveView = NO;
         MKViewFlags.isIconMask = YES;
     }
-    return self;
+    */
+    return nil;
 }
 
 #pragma mark - Accessor Methods
 #pragma mark setters
 - (void)setImage:(UIImage *)image {
+    /*
     objc_setAssociatedObject(self, ImageTag, image, OBJC_ASSOCIATION_RETAIN);
     [self setNeedsDisplay];
+    */
 }
 
 #pragma mark getters
 
 - (UIImage *)image {
+    /*
     return objc_getAssociatedObject(self, ImageTag);
-}
-
-#pragma mark - Memory Managment
-
-- (void)didRelease {
-    objc_removeAssociatedObjects(self);
+    */
+    return nil;
 }
 
 @end

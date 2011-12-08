@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 1/17/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010-2011 MKObject. All rights reserved.
 //
 
 #import "MKRandoms.h"

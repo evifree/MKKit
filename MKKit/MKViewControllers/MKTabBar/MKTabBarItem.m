@@ -11,6 +11,7 @@
 
 @implementation MKTabBarItem
 
+/*
 @synthesize icon=_icon, label=_label, glow=_glow;
 
 - (id)initWithFrame:(CGRect)frame {
@@ -48,5 +49,5 @@
     [super dealloc];
 	
 }
-
+*/
 @end

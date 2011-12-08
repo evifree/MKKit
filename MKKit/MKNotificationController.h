@@ -3,11 +3,13 @@
 //  MKKit
 //
 //  Created by Matthew King on 12/17/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010-2011 Matt King. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+
+#import "MKObject.h"
 
 /**-------------------------------------------------------------------------------------------------
  The MKNotiificationContoller sets local notifications for you. All you have to do is provide some basic
@@ -21,7 +23,7 @@
  A local notification is now set.
 ----------------------------------------------------------------------------------------------------*/
 
-@interface MKNotificationController : NSObject {
+@interface MKNotificationController : MKObject {
 	NSDate *_noticeDate;
 	NSString *_messgaeString;
 	NSString *_actionButton;

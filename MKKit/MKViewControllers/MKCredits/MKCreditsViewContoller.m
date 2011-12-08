@@ -8,18 +8,20 @@
 
 #import "MKCreditsViewContoller.h"
 
+/*
 @interface MKCreditsViewContoller ()
 
 - (void)buildEmail:(id)sender;
 
 @end
+*/
 
 #pragma mark -
 #pragma mark MKCreditsViewContoller
 
 @implementation MKCreditsViewContoller
 
-@synthesize footerView=_footerView, activeTitle=_activeTitle, creditsArray=_creditsArray;
+@synthesize /*footerView=_footerView*/ activeTitle=_activeTitle, creditsArray=_creditsArray;
 
 @synthesize popViewTitle;
 
@@ -43,7 +45,7 @@
 	selectedTopic = 0; 
 	
 	NSDictionary *firstCredit = (NSDictionary *)[self.creditsArray objectAtIndex:0];
-	
+	/*
 	_footerView = [[MKCreditsFooterView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 280.0)];
 	_footerView.titleLabel.text = [firstCredit objectForKey:@"Title"];
 	_footerView.descriptionText.text =  [firstCredit objectForKey:@"Credit"];
@@ -52,7 +54,7 @@
 	
 	self.tableView.tableFooterView = _footerView;
 	[_footerView release];
-	
+	*/
 	self.tableView.scrollEnabled = NO;
 	
 	self.title = @"About";
@@ -138,6 +140,7 @@
 		[tableArray addObject:[credit objectForKey:@"Title"]];
 	}
 	
+    /*
 	MKPopOverView *popView = [[MKPopOverView alloc] initWithFrame:CGRectMake(0.0, 0.0, 285.0, 410.0)];
 	popView.controller = self;
 	popView.clipsToBounds = YES;
@@ -148,6 +151,7 @@
 	[popView showWithAnimationType:MKViewAnimationTypeFadeIn];
 	
 	[popView release];
+    */
 	[tableArray release];
 }
 
@@ -161,9 +165,9 @@
 	NSDictionary *credit = (NSDictionary *)[self.creditsArray objectAtIndex:index];
 	
 	self.activeTitle = [credit objectForKey:@"Title"]; 
-	self.footerView.titleLabel.text = [credit objectForKey:@"Title"];
-	self.footerView.descriptionText.text =  [credit objectForKey:@"Credit"];
-	[self.footerView removeButton];
+	//self.footerView.titleLabel.text = [credit objectForKey:@"Title"];
+	//self.footerView.descriptionText.text =  [credit objectForKey:@"Credit"];
+	//[self.footerView removeButton];
 	selectedTopic = index;
 		 
 	[self.tableView reloadData];

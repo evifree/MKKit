@@ -3,10 +3,11 @@
 //  MKKit
 //
 //  Created by Matthew King on 1/28/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010-2011 Matt King. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import "MKObject.h"
 
 @protocol MKClockDelegate;
 
@@ -17,7 +18,7 @@
  is called.
 --------------------------------------------------------------------------------------------*/
 
-@interface MKClock : NSObject {
+@interface MKClock : MKObject {
 	NSTimer *timer;
 	id delegate;
 	

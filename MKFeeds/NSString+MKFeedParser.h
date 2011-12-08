@@ -36,6 +36,14 @@
 */
 - (NSString *)stringByDecodingHTMLEntities;
 
+/**
+ Removes any HTML tags from a string and returns the 
+ resulting text.
+ 
+ @return NSString
+*/
+-(NSString *) stringByStrippingHTML;
+
 ///---------------------------------------
 /// @name Finding Code
 ///---------------------------------------

@@ -9,31 +9,31 @@
 #import <UIKit/UIKit.h>
 #import "MKTabBarItem.h"
 
+#import <MKKit/MKKit/MKMacros.h>
+
 @protocol MKTabBarDelegate;
 
-@interface MKTabBar : UIView {
+MK_DEPRECATED_0_9 @interface MKTabBar : UIView {
 	id delegate;
 	NSArray *items;
 }
-
+/*
 @property (nonatomic, retain) id<MKTabBarDelegate> delegate;
 @property (nonatomic, retain) NSArray *items;
 
-//** Sets the item icon on the TabBar
+Sets the item icon on the TabBar
 - (void)setIcon:(UIImage *)icon forIndex:(NSInteger)index;
 
 - (void)highlightItem:(MKTabBarItem *)item atIndex:(NSInteger)index;
 
+*/
 @end
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////
-///***                              MKTabBarDelegate                                             ***///
-
-@protocol MKTabBarDelegate <NSObject>
+MK_DEPRECATED_0_9 @protocol MKTabBarDelegate <NSObject>
 
 //** REQUIRED **//
 
 //** Called when the user touches one of the TabBar items
-- (void)touchedItemAtIndex:(NSInteger)index;
+//- (void)touchedItemAtIndex:(NSInteger)index;
 
 @end

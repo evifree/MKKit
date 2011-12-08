@@ -3,11 +3,13 @@
 //  MKKit
 //
 //  Created by Matthew King on 2/18/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010-2011 Matt King. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+
+#import "MKMacros.h"
 
 typedef enum  {
 	MKAlertTypeNotify,								//Alert View with one OK button (no owner needed)
@@ -34,15 +36,17 @@ typedef enum  {
 	[alert release];
 -------------------------------------------------------------------------------------------------------------*/
 
-@interface MKAlerts : UIAlertView {
+MK_DEPRECATED_0_9 @interface MKAlerts : UIAlertView {
 }
 
 /** Returns an intialized MKAlerts object.
  
  @param type An MKAlertType that tells what kind of alert show.
+ 
  @param owner The owner is used to set the delegate of the UIAlertyView.
+ 
  @param message The message to display on the alert view.
 */
-- (id)initWithType:(MKAlertType)type owner:(id)owner message:(NSString*)message; 
+- (id)initWithType:(MKAlertType)type owner:(id)owner message:(NSString*)message MK_DEPRECATED_0_9; 
 
 @end

@@ -40,11 +40,10 @@
         self.frame = CGRectMake(0.0, 0.0, icon.size.width, icon.size.height);
         
         mType = MKBarButtonItemIcon;
-        mImageMask = [icon retain];
         
         MKBarButtonItemFlags.requiresDrawing = NO;
         
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:mImageMask];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:icon];
         imageView.frame = self.frame;
         
         [self addSubview:imageView];
@@ -119,10 +118,6 @@
 #pragma mark - Memory Managment
 
 - (void)dealloc {
-    if (mImageMask) {
-        [mImageMask release];
-    }
-    
     [super dealloc];
 }
 

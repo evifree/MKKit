@@ -39,7 +39,6 @@ typedef enum {
 
 @interface MKBarButtonItem : MKControl {
     MKBarButtonItemType mType;
-    MKImage *mImageMask;
     
 @private
     struct {

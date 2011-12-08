@@ -12,7 +12,7 @@
 #define MK_KIT_CURRENT_VERSION              09
 
 #define MK_DEPRECATED_0_8                   __attribute__((deprecated))
-#define MK_DEPRECATED_0_9                   __attribute--((deprecated))
+#define MK_DEPRECATED_0_9                   __attribute__((deprecated))
 
 #define MK_VISIBLE_ATTRIBUTE                __attribute__((visibility ("default")))
 

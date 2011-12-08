@@ -3,17 +3,18 @@
 //  MKKit
 //
 //  Created by Matthew King on 1/17/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010-2011 Matt King. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import "MKObject.h"
 
 /**---------------------------------------------------------------------------------------
  The MKRandoms object preforms methods that return random values.  It can work with arrays 
  or just integes to get random values.
 ----------------------------------------------------------------------------------------*/
 
-@interface MKRandoms : NSObject {
+@interface MKRandoms : MKObject {
 
 }
 

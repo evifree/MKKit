@@ -36,7 +36,17 @@
 				<div class="section section-overview">
 					<h2 class="subtitle subtitle-overview">Overview</h2>
 					
-<p> MKGraphicStructures controls the way graphics in MKKit are drawn. </p>
+<p> <strong> Overview </strong></p>
+
+<p> <a href="MKGraphicsStructures.html">MKGraphicsStructures</a> stores graphic elements to help with uniformity across an application. </p>
+
+<p> <strong> Usage </strong></p>
+
+<p> MKKit class that use the <a href="MKGraphicsStructures.html">MKGraphicsStructures</a> class will refereance an instance when preforming drawing operations. </p>
+
+<p> <strong> Required Classes </strong> <ul><li> <a href="MKObject.html">MKObject</a></li></ul></p>
+
+<p> <strong> Required Frameworks </strong> <ul><li> Foundation </li><li> UIKit </li><li> Core Graphics </li></ul></p>
 
 				</div>
 				
@@ -46,13 +56,31 @@
 				<div class="section section-tasks">
 					<h2 class="subtitle subtitle-tasks">Tasks</h2>
 					
-					
-<h3 class="subsubtitle task-title">LinearGradient Methods</h3>
+					<h3 class="subsubtitle task-title">Creating</h3>
+
 					<ul class="task-list">
 						<li>
 	<span class="tooltip">
+		<code><a href="#//api/name/graphicsStructure">+ graphicsStructure</a></code>
+		<span class="tooltip"> Creates an autoreleasing empty instance. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/linearGradientWithTopColor:bottomColor:">+ linearGradientWithTopColor:bottomColor:</a></code>
 		<span class="tooltip"> An instance of MKGraphisStructures that sets the colors for a linear gradient. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Assigning Structures</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/assignGradientTopColor:bottomColor:">- assignGradientTopColor:bottomColor:</a></code>
+		<span class="tooltip"> Assings colors for a linear gradient </span>
 	</span>
 	
 </li><li>
@@ -80,6 +108,47 @@
 					<h2 class="subtitle subtitle-methods">Class Methods</h2>
 					
 					<div class="section-method">
+	<a name="//api/name/graphicsStructure" title="graphicsStructure"></a>
+	<h3 class="subsubtitle method-title">graphicsStructure</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Creates an autoreleasing empty instance. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (id)graphicsStructure</code></div>
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		
+		<p> Creates an autoreleasing empty instance. </p>
+		
+		<p> return MKGraphicsStructure instace </p>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKGraphicsStructures.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
 	<a name="//api/name/linearGradientWithTopColor:bottomColor:" title="linearGradientWithTopColor:bottomColor:"></a>
 	<h3 class="subsubtitle method-title">linearGradientWithTopColor:bottomColor:</h3>
 	
@@ -91,6 +160,65 @@
 	
 	
 	<div class="method-subsection method-declaration"><code>+ (id)linearGradientWithTopColor:(UIColor *)<em>topColor</em> bottomColor:(UIColor *)<em>bottomColor</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>topColor</em></dt>
+			<dd> the color on the <a href="#//api/name/top">top</a> of the gradient. </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>bottomColor</em></dt>
+			<dd> the color on the <a href="#//api/name/bottom">bottom</a> of the gradient. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p> MKGraphicsStructure instance </p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKGraphicsStructures.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/assignGradientTopColor:bottomColor:" title="assignGradientTopColor:bottomColor:"></a>
+	<h3 class="subsubtitle method-title">assignGradientTopColor:bottomColor:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Assings colors for a linear gradient </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)assignGradientTopColor:(UIColor *)<em>topColor</em> bottomColor:(UIColor *)<em>bottomColor</em></code></div>
 	
 	
 	<div class="method-subsection arguments-section parameters">
@@ -127,8 +255,6 @@
 </div>
 					
 				</div>
-				
-				
 				
 				
 				
@@ -212,7 +338,7 @@
 			<div id="footer">
 				<hr />
 				<div class="footer-copyright">
-					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-09-20)</span><br />
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-12-08)</span><br />
 					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
 				</div>
 			</div>

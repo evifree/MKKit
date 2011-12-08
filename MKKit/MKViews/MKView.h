@@ -9,7 +9,6 @@
 #import <MKKit/MKKit/MKDeffinitions.h>
 #import <MKKit/MKKit/MKMacros.h>
 #import <UIKit/UIKit.h>
-#import <objc/runtime.h>
 
 #import <MKKit/MKKit/MKGraphics/MKGraphics.h>
 
@@ -27,9 +26,11 @@ typedef enum {
     MKTableHeaderTypePlain,
 } MKTableHeaderType;
 
-@protocol MKViewDelegate;
+@protocol MKViewDelegate, MKImage;
 
 /**-------------------------------------------------------------------------------------------------------
+ *Overview*
+ 
  The MKView class is a super class for specialty views. MKView adopts the MKViewDelegate protocol. When the 
  showWithAnimationType: method is used, views are add to the application's keyWindow. 
  
@@ -43,6 +44,22 @@ typedef enum {
  @warning *Note* When the showWithAnitmationType: method is used, views are added to the application's 
  key window. Some subclass of MKView handel removing themselfs. You should check the documentation of the
  given class for removal options.
+ 
+ *Required Frameworks*
+ 
+ * UIKit
+ * Foundation
+ * Core Graphics
+ 
+ *Required Classes*
+ 
+ * MKGraphics
+ * MKGraphicStructures
+ * MKMacros
+ 
+ *Required Protocols
+ 
+ * MKViewDelegate
 -------------------------------------------------------------------------------------------------------*/
 
 @interface MKView : UIView {
@@ -57,7 +74,6 @@ typedef enum {
         bool isHeaderView;
         bool isHeaderGrouped;
         bool isHeaderPlain;
-        bool isIconMask;
         bool usesGradient;
     } MKViewFlags;
 }
@@ -181,38 +197,23 @@ typedef enum {
 @end
 
 /**-----------------------------------------------------------------------
- This catagory of MKView draws the image onto a CoreGraphics context and colors
- it with the provied gradient.
+ *Deprecated Catagory v0.9. Use MKImage methods instead.*
  -----------------------------------------------------------------------*/
 @interface MKView (IconMask)
 
 ///---------------------------------------------
-/// @name Creating
+/// @name Depreciations
 ///---------------------------------------------
 
 /**
- Returns an instance of MKView that draws the image on to a CoreGraphics context
- and colors it with the gradient.
- 
- @param image the image to draw.
- 
- @param gradient the gradient to color the image with. Use the method
- + [(id) MKGraphicStructures linearGradientWithTopColor:bottomColor:] to 
- make a gradient. Pass the same color for the top and bottom for a solid 
- colored drawing.
- 
- Default is solid white.
- 
- @return MKView instance
+ @warning *Deprecated Method v0.9* Use MKImage methods instead.
 */
-- (id)initWithImage:(UIImage *)image gradient:(MKGraphicsStructures *)gradient;
+- (id)initWithImage:(UIImage *)image gradient:(MKGraphicsStructures *)gradient MK_DEPRECATED_0_9;
 
-///---------------------------------------------
-/// @name Elements
-///---------------------------------------------
-
-/** The image that is drawn onto the context */
-@property (nonatomic, retain) UIImage *image;
+/** 
+ @warning *Deprecated Property v0.9* 
+*/
+@property (nonatomic, retain) UIImage *image MK_DEPRECATED_0_9;
 
 @end
 

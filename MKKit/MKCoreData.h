@@ -10,6 +10,8 @@
 #import <CoreData/CoreData.h>
 #import <MKKit/MKKit/MKErrorContol/MKErrorHandeling.h>
 
+#import "MKObject.h"
+
 typedef void (^MKFetchCompletionBlock)(NSMutableArray *results, NSError *error);
 
 /**---------------------------------------------------------------------------------------------
@@ -21,7 +23,7 @@ typedef void (^MKFetchCompletionBlock)(NSMutableArray *results, NSError *error);
 	[MKCoreData sharedDataWithContext:myContext];
 -----------------------------------------------------------------------------------------------*/
 
-@interface MKCoreData : NSObject {
+@interface MKCoreData : MKObject {
 	MKFetchCompletionBlock mFetchCompletionBlock;
 }
 

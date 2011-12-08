@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by Matthew King on 10/9/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010-2011 Matt King. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -12,7 +12,7 @@
 
 @class MKView;
 
-@interface MKPopOverView : MKView <UITableViewDelegate, UITableViewDataSource> {	
+MK_DEPRECATED_0_9 @interface MKPopOverView : MKView <UITableViewDelegate, UITableViewDataSource> {	
 	UITableView *_theTableView;
 	NSArray *_tableArray;
 	UILabel *_title;

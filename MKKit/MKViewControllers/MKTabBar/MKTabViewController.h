@@ -11,14 +11,14 @@
 
 @class MKTabBar;
 
-@interface MKTabViewController : UIViewController <MKTabBarDelegate> {
-	MKTabBar *_tabBar;
+MK_DEPRECATED_0_9 @interface MKTabViewController : UIViewController {
+	//MKTabBar *_tabBar;
 	UIView *_displayView;
 	NSArray *viewControllers;
 	
 	UIViewController *mainViewController;
 }
-
+/*
 @property (nonatomic, retain) MKTabBar *tabBar;
 @property (nonatomic, retain) UIView *displayView;
 @property (nonatomic, copy) NSArray *viewControllers;
@@ -33,5 +33,5 @@
 - (void)setViewControllers;
 - (void)setItemTitles;
 - (void)setItemIcons:(NSArray *)icons;
-
+*/
 @end

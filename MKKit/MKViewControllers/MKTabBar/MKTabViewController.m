@@ -11,8 +11,9 @@
 
 @implementation MKTabViewController
 
-@synthesize tabBar=_tabBar, displayView=_displayView, viewControllers, activeView, mainViewController;
- 
+//@synthesize tabBar=_tabBar, displayView=_displayView, viewControllers, activeView, mainViewController;
+
+/*
 #pragma mark -
 #pragma mark Initalizers
 
@@ -105,14 +106,12 @@
 	}
 }
 
-/*
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-*/
-
+ 
 #pragma mark -
 #pragma mark Delegates
 
@@ -165,6 +164,6 @@
 	[mainViewController release];
 	[viewControllers release];
 }
-
+*/
 
 @end

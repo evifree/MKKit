@@ -10,8 +10,8 @@
 
 @interface MKImage () 
 
-- (id)initWithName:(NSString *)name color:(UIColor *)color;
-- (MKImage *)maskFromImage:(UIImage *)image color:(UIColor *)color;
+- (id)initWithName:(NSString *)name graphicStruct:(MKGraphicsStructures *)graphicStruct;
+- (MKImage *)maskFromImage:(UIImage *)image graphicStruct:(MKGraphicsStructures *)graphicStruct;
 
 @end
 
@@ -19,22 +19,23 @@
 
 #pragma mark - Creation
 
-+ (id)imagedNamed:(NSString *)imageName maskedColor:(UIColor *)color {
-    return [[[self alloc] initWithName:imageName color:color] autorelease];
++ (id)imagedNamed:(NSString *)imageName graphicStruct:(MKGraphicsStructures *)graphicStruct {
+    return [[[self alloc] initWithName:imageName graphicStruct:graphicStruct] autorelease];
 }
 
-- (id)initWithName:(NSString *)name color:(UIColor *)color {
+- (id)initWithName:(NSString *)name graphicStruct:(MKGraphicsStructures *)graphicStruct {
     self = [super init];
     if (self) {
-        self = [self maskFromImage:[UIImage imageNamed:name] color:color];
+        self = [self maskFromImage:[UIImage imageNamed:name] graphicStruct:graphicStruct];
+        [self retain];
     }
     return self;
 }
 
-- (id)initWithContentsOfFile:(NSString *)path maskedColor:(UIColor *)color {
+- (id)initWithContentsOfFile:(NSString *)path graphicStruct:(MKGraphicsStructures *)graphicStruct {
     self = [super initWithContentsOfFile:path];
     if (self) {
-        self = [self maskFromImage:self color:color];
+        self = [self maskFromImage:self graphicStruct:graphicStruct];
     }
     return self;
 }
@@ -47,28 +48,28 @@
 
 #pragma mark - Masking
 
-- (MKImage *)maskFromImage:(UIImage *)image color:(UIColor *)color {
-    CGContextRef context = createBitmapContext(image.size.width, image.size.height);
+- (MKImage *)maskFromImage:(UIImage *)image graphicStruct:(MKGraphicsStructures *)graphicStruct {
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(image.size.width, image.size.height), NO, 2.0);
+    CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetAllowsAntialiasing(context, YES);
     
     CGRect imageRect = CGRectMake(0.0, 0.0, image.size.width, image.size.height);
     CGImageRef imageRef = image.CGImage;
-    CGColorRef imageColor = color.CGColor;
     
-    CGContextSaveGState(context);
-    CGContextSetFillColorWithColor(context, imageColor);
-    CGContextClipToMask(context, imageRect, imageRef);
+    CGColorRef topColor = graphicStruct.top.CGColor;
+    CGColorRef bottomColor = graphicStruct.bottom.CGColor;
+    
     CGContextTranslateCTM(context, 0.0, image.size.height);
 	CGContextScaleCTM(context, 1.0, -1.0);
-    CGContextFillRect(context, imageRect);
-    CGContextSaveGState(context);
-
-    CGImageRef maskedImage = CGBitmapContextCreateImage(context);
-    CGContextRelease(context);
     
-    MKImage *rtnImage = (MKImage *)[UIImage imageWithCGImage:maskedImage];
-    CGImageRelease(maskedImage);
+    CGContextClipToMask(context, imageRect, imageRef);
+    drawLinearGradient(context, imageRect, topColor, bottomColor);
     
+    UIImage *maskedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+       
+    MKImage *rtnImage = (MKImage *)maskedImage;
+        
     return rtnImage;
 }
 

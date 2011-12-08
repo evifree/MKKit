@@ -79,8 +79,17 @@ static NSString *MKFeedItemPubDate = @"MKFeedItemPubDate";
     if ([element isEqualToString:MKFeedRSSFeedTitle] || [element isEqualToString:MKFeedAtomTitle]) {
         mItemTitle = [(NSString *)value copy];
     }
-    else if ([element isEqualToString:MKFeedRSSFeedDescription] || [element isEqualToString:MKFeedAtomSummary]) {
-        mItemContent = [[(NSString *)value stringByDecodingHTMLEntities] copy];
+    else if ([element isEqualToString:MKFeedRSSFeedDescription] || [element isEqualToString:MKFeedAtomSummary] || [element isEqualToString:MKFeedAtomContent]) {
+        mItemContent = [(NSString *)value stringByStrippingHTML];
+        mItemContent = [mItemContent stringByDecodingHTMLEntities]; 
+        mItemContent = [mItemContent stringByRemovingNewLinesAndWhitespace];
+        
+        if ([mItemContent length] > 499) {
+            mItemContent = [mItemContent substringToIndex:500];
+            mItemContent = [mItemContent stringByAppendingString:@"..."];
+        }
+        
+        [mItemContent copy];
     }
     else if ([element isEqualToString:MKFeedRSSFeedLink] || [element isEqualToString:MKFeedAtomLink]) {
         mItemLinkURL = [(NSString *)value copy];

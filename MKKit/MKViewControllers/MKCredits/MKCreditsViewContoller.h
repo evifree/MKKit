@@ -12,7 +12,7 @@
 #import <MKKit/MKKit/MKViews/MKViewHeader.h>
 #import <MKKit/MKKit/MKErrorContol/MKErrorHandeling.h>
 
-@class MKCreditsFooterView;
+//@class MKCreditsFooterView;
 
 /**-------------------------------------------------------------------------------------------------------------
  The MKCreditsViewController class provides a view controller for displaying credits for the app. This class
@@ -20,8 +20,8 @@
  MKCreditsViewController looks for for two keys, `Title` and `Credit`.
  ---------------------------------------------------------------------------------------------------------------*/
 
-@interface MKCreditsViewContoller : UITableViewController <MKViewDelegate, MFMailComposeViewControllerDelegate> {
-	MKCreditsFooterView *_footerView;
+MK_DEPRECATED_0_9 @interface MKCreditsViewContoller : UITableViewController <MKViewDelegate, MFMailComposeViewControllerDelegate> {
+	//MKCreditsFooterView *_footerView;
 	NSString *_activeTitle;
 	NSMutableArray *_creditsArray;
 	
@@ -34,7 +34,7 @@
 ///----------------------------------------------------------
 
 /**The footer view of the controllers TableView*/
-@property (nonatomic, retain) MKCreditsFooterView *footerView;
+//@property (nonatomic, retain) MKCreditsFooterView *footerView;
 
 /**The title of the credit that is currenty being displayed*/
 @property (nonatomic, retain) NSString *activeTitle;
@@ -65,7 +65,7 @@
  this directly.
 ---------------------------------------------------------------------------------------------------------------*/
 
-@interface MKCreditsFooterView : UIView {
+MK_DEPRECATED_0_9 @interface MKCreditsFooterView : UIView {
 	UILabel *_titleLabel;
 	UITextView *_descriptionText;
 	UIButton *_actionButton;
