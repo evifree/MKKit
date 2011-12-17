@@ -34,6 +34,7 @@ typedef enum {
     UIView *mView;
     
     CGColorRef mTintColor;
+    CGFloat mArrowPosition;
 }
 
 ///------------------------------------------------------
@@ -57,6 +58,9 @@ typedef enum {
 
 /** The tint color of the popout view. Default is black. */
 @property (nonatomic, assign) CGColorRef tintColor;
+
+/** The tip of the arrow position on the x-axis. */
+@property (nonatomic, assign) CGFloat arrowPosition;
 
 ///--------------------------------------------------------
 /// @name Types

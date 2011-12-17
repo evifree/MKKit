@@ -70,7 +70,6 @@ typedef enum {
 	NSMutableData *requestData;
     NSURLConnection *theConnection;
 	NSXMLParser *theParser;
-	NSMutableDictionary *feed;
 	NSMutableArray *items;
 	NSMutableString *currentString;
     NSString *currentElement;
@@ -168,7 +167,7 @@ NSString *MKFeedRSSFeedItem MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedAtomFeedStart MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedAtomFeedEntry MK_VISIBLE_ATTRIBUTE;
 
-/// RSS Feed Dictonary Keys
+/// RSS Feed Elements
 NSString *MKFeedRSSFeedTitle MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedRSSFeedDescription MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedRSSFeedDescriptionHTML MK_VISIBLE_ATTRIBUTE;
@@ -178,7 +177,7 @@ NSString *MKFeedRSSFeedPublicationDate MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedRSSFeedGUID MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedRSSFeedCreator MK_VISIBLE_ATTRIBUTE;
 
-/// ATOM Feed Dictornary Keys
+/// ATOM Feed Elements
 NSString *MKFeedAtomTitle MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedAtomLink MK_VISIBLE_ATTRIBUTE;
 NSString *MKFeedAtomID MK_VISIBLE_ATTRIBUTE;

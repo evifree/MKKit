@@ -356,8 +356,11 @@ void drawPlasticButton(CGContextRef context, CGRect rect, CGColorRef tint, bool 
 void drawRoundRectButton(CGContextRef context, CGRect rect, CGColorRef tint,  bool highlighted) {
     CGFloat margin = 2.0;
     CGRect buttonRect = CGRectInset(rect, margin, margin);
+    CGRect innerRect = CGRectInset(buttonRect, 1.0, 1.0);
+    CGRect onePixRect = rectFor1pxStroke(innerRect);
     
     CGMutablePathRef rrectPath = createRoundedRectForRect(buttonRect, 10.0);
+    CGMutablePathRef innerRectPath = createRoundedRectForRect(onePixRect, 10.0);
     
     const CGFloat* components = CGColorGetComponents(tint);
     
@@ -377,7 +380,12 @@ void drawRoundRectButton(CGContextRef context, CGRect rect, CGColorRef tint,  bo
     CGContextSaveGState(context);
     CGContextAddPath(context, rrectPath);
     CGContextClip(context);
-    drawGlossAndLinearGradient(context, buttonRect, topColor, tint);
+    if (highlighted) {
+        drawGlossAndLinearGradient(context, buttonRect, tint, tint);
+    }
+    else {
+        drawGlossAndLinearGradient(context, buttonRect, topColor, tint);
+    }
     CGContextRestoreGState(context);
     
     CGContextSaveGState(context);
@@ -386,16 +394,13 @@ void drawRoundRectButton(CGContextRef context, CGRect rect, CGColorRef tint,  bo
     CGContextStrokePath(context);
     CGContextRestoreGState(context);
     
-    if (highlighted) {
-        CGColorRef shadowColor = MK_COLOR_RGB(51.0, 51.0, 51.0, 0.9).CGColor;
-        
-        CGContextSaveGState(context);
-        CGContextSetFillColorWithColor(context, shadowColor);
-        CGContextAddPath(context, rrectPath);
-        CGContextFillPath(context);
-        CGContextRestoreGState(context); 
-    }
+    CGContextSaveGState(context);
+    CGContextSetStrokeColorWithColor(context, tint);
+    CGContextAddPath(context, innerRectPath);
+    CGContextStrokePath(context);
+    CGContextSaveGState(context);
     
+    CFRelease(innerRectPath);
     CFRelease(rrectPath);
 }
 

@@ -180,6 +180,8 @@ typedef enum {
 NSString *MKHTMLExtractorNILURLExecption MK_VISIBLE_ATTRIBUTE;
 NSString *MKHTMLExtractorNILHTMLStringException MK_VISIBLE_ATTRIBUTE;
 
+NSString *MKHTMLExtractorNoResultsFoundError MK_VISIBLE_ATTRIBUTE;
+
 @interface MKHTMLAttribueValue : NSObject 
 
 - (id)initWithAttribute:(NSString *)attrib value:(NSString *)val;

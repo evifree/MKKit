@@ -76,6 +76,14 @@
 	return [[[MKHTMLNode alloc] initWithNode:(xmlNode*)htmlDoc] autorelease];
 }
 
+- (MKHTMLNode *)head {
+    if (htmlDoc == NULL) {
+        return NULL;
+    }
+    
+    return [[self root] childNodeNamed:@"head"];
+}
+
 - (MKHTMLNode *)body {
     if (htmlDoc == NULL) {
         return NULL;

@@ -128,8 +128,8 @@
 - (void)setOptimizeOutputForiPhone:(BOOL)optomize {
     MKHTMLExtractorFlags.usesCustomStyle = optomize;
     if (optomize) {
-        if ([self.delegate respondsToSelector:@selector(extratorHTMLHeaderPath:)]) {
-            mHTMLHeaderString = [[NSString alloc] initWithContentsOfFile:[self.delegate extratorHTMLHeaderPath:self] encoding:NSUTF8StringEncoding error:nil];
+        if ([self.delegate respondsToSelector:@selector(extractorHTMLHeaderPath:)]) {
+            mHTMLHeaderString = [[NSString alloc] initWithContentsOfFile:[self.delegate extractorHTMLHeaderPath:self] encoding:NSUTF8StringEncoding error:nil];
         }
         else {
             mHTMLHeaderString = [[NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"initial-scale = 1.0, user-scalable = no, width = 320\"/><style type=\"text/css\">.title { font-size: 16pt; font-weight: bold;} .artical { font-size: 12pt; } </style><head><body>"] retain];
@@ -242,8 +242,8 @@
                         }
                     }
                     
-                    if ([self.delegate respondsToSelector:@selector(extactor:didFindPage:content:)]) {
-                        [self.delegate extactor:self didFindPage:[page integerValue] content:text];
+                    if ([self.delegate respondsToSelector:@selector(extractor:didFindPage:content:)]) {
+                        [self.delegate extractor:self didFindPage:[page integerValue] content:text];
                     }
                     
                     MKHTMLExtractorFlags.numberOfPages = (MKHTMLExtractorFlags.numberOfPages + 1);
@@ -295,6 +295,17 @@
         }
         @catch (NSException *exception) {
             attemptsLeft = NO;
+            
+            MKHTMLExtractorNoResultsFoundError = @"MKHTMLExtractorNoResultsFoundError";
+            NSError *error = [NSError errorWithDomain:MKHTMLExtractorNoResultsFoundError code:3001 userInfo:nil];
+            
+            if (self.requestHandler) {
+                self.requestHandler(nil, error);
+            }
+            
+            if ([self.delegate respondsToSelector:@selector(extractor:didError:)]) {
+                [self.delegate extractor:self didError:error];
+            }
         }
         @finally {
         }

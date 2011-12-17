@@ -12,7 +12,7 @@
 
 #pragma mark - Initalizer
 
-@synthesize type=mType, tintColor;
+@synthesize type=mType, arrowPosition=mArrowPosition, tintColor;
 
 - (id)initWithView:(UIView *)view type:(MKPopOutViewType)type {
     self = [super initWithFrame:CGRectMake(0.0, 0.0, (kPopOutViewWidth + 5.0), (view.frame.size.height + 30.0))];
@@ -24,6 +24,10 @@
         self.alpha = 0.0;
         self.backgroundColor = CLEAR;
         self.opaque = YES;
+        
+        if (type == MKPopOutBelow) {
+            view.frame = CGRectMake(0.0, 30.0, view.frame.size.width, view.frame.size.height);
+        }
         
         [self addSubview:mView];
         [mView release];
@@ -71,7 +75,15 @@
     CGContextRestoreGState(context);
     
     if (mAutoType == MKPopOutBelow) {
-        CGRect pointerRect = CGRectMake((CGRectGetMaxX(drawRect) - 70.0), (CGRectGetMinY(drawRect) - 20.0), 35.0, 20.0);
+        CGRect pointerRect = CGRectZero;
+        
+        if (mArrowPosition != 0.0) {
+            pointerRect = CGRectMake((self.arrowPosition - 30.0), (CGRectGetMinY(drawRect) - 20.0), 35.0, 20.0);
+        }
+        else {
+            pointerRect = CGRectMake((CGRectGetMaxX(drawRect) - 70.0), (CGRectGetMinY(drawRect) - 20.0), 35.0, 20.0);
+        }
+        
         CGMutablePathRef pointerPath = createPathForUpPointer(pointerRect);
         
         CGContextSaveGState(context);
@@ -103,6 +115,11 @@
 
 - (void)setTintColor:(CGColorRef)tint {
     mTintColor = tint;
+    [self setNeedsDisplay];
+}
+
+- (void)setArrowPosition:(CGFloat)position {
+    mArrowPosition = position;
     [self setNeedsDisplay];
 }
 

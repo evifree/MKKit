@@ -19,4 +19,5 @@
 #import "MKPrompts/MKPromptView.h"
 #import "MKPrompts/MKInputPrompt.h"
 
+#import "MKPopOutView+MKBarButtonItem.h"
 #import "MKView+MKTitleView.h"

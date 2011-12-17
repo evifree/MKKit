@@ -92,6 +92,8 @@
 		AA1D506913919384009DD3B6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1D506813919384009DD3B6 /* StoreKit.framework */; };
 		AA24B49312DEC3000076A44B /* MKWarningIcon.h in Headers */ = {isa = PBXBuildFile; fileRef = AA24B49112DEC3000076A44B /* MKWarningIcon.h */; };
 		AA24B49412DEC3000076A44B /* MKWarningIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = AA24B49212DEC3000076A44B /* MKWarningIcon.m */; };
+		AA24FDFF149D1B240015D03A /* MKPopOutView+MKBarButtonItem.h in Headers */ = {isa = PBXBuildFile; fileRef = AA24FDFD149D1B240015D03A /* MKPopOutView+MKBarButtonItem.h */; };
+		AA24FE00149D1B240015D03A /* MKPopOutView+MKBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AA24FDFE149D1B240015D03A /* MKPopOutView+MKBarButtonItem.m */; };
 		AA2CE708138200680088C9B2 /* MKReflectedImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA2CE706138200680088C9B2 /* MKReflectedImageView.h */; };
 		AA2CE709138200680088C9B2 /* MKReflectedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2CE707138200680088C9B2 /* MKReflectedImageView.m */; };
 		AA2FBE4513444550002441C2 /* MKMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = AA2FBE4413444550002441C2 /* MKMacros.h */; };
@@ -285,6 +287,8 @@
 		AA1D506813919384009DD3B6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		AA24B49112DEC3000076A44B /* MKWarningIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKWarningIcon.h; sourceTree = "<group>"; };
 		AA24B49212DEC3000076A44B /* MKWarningIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKWarningIcon.m; sourceTree = "<group>"; };
+		AA24FDFD149D1B240015D03A /* MKPopOutView+MKBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKPopOutView+MKBarButtonItem.h"; sourceTree = "<group>"; };
+		AA24FDFE149D1B240015D03A /* MKPopOutView+MKBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKPopOutView+MKBarButtonItem.m"; sourceTree = "<group>"; };
 		AA2CE706138200680088C9B2 /* MKReflectedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKReflectedImageView.h; sourceTree = "<group>"; };
 		AA2CE707138200680088C9B2 /* MKReflectedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKReflectedImageView.m; sourceTree = "<group>"; };
 		AA2FBE4413444550002441C2 /* MKMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMacros.h; sourceTree = "<group>"; };
@@ -593,6 +597,8 @@
 				AA2CE707138200680088C9B2 /* MKReflectedImageView.m */,
 				AAB4D1E313E884400061A6BD /* MKTitleView.h */,
 				AAB4D1E413E884400061A6BD /* MKTitleView.m */,
+				AA24FDFD149D1B240015D03A /* MKPopOutView+MKBarButtonItem.h */,
+				AA24FDFE149D1B240015D03A /* MKPopOutView+MKBarButtonItem.m */,
 				AA7E1FF9148DA30E00F029EA /* MKView+MKTitleView.h */,
 				AA7E1FFA148DA30E00F029EA /* MKView+MKTitleView.m */,
 			);
@@ -704,10 +710,10 @@
 			children = (
 				AA3297BC144FD7CE00982DCE /* MKFeed.h */,
 				AA3297C7144FD9A300982DCE /* MKFeedsAvailability.h */,
-				AA3297B2144FD0B600982DCE /* MKFeedParser.h */,
-				AA3297B3144FD0B600982DCE /* MKFeedParser.m */,
 				AA3BFC241481485D003C59A9 /* MKFeedItem.h */,
 				AA3BFC251481485E003C59A9 /* MKFeedItem.m */,
+				AA3297B2144FD0B600982DCE /* MKFeedParser.h */,
+				AA3297B3144FD0B600982DCE /* MKFeedParser.m */,
 				AAF37FE614703885001AE209 /* NSString+MKFeedParser.h */,
 				AAF37FE714703885001AE209 /* NSString+MKFeedParser.m */,
 				AA2662091454EF6D009696D0 /* MKHTML */,
@@ -991,6 +997,7 @@
 				AAAE8712148A688C003E2060 /* MKImage.h in Headers */,
 				AAAE8716148BC657003E2060 /* MKPaging.h in Headers */,
 				AA7E1FFB148DA30E00F029EA /* MKView+MKTitleView.h in Headers */,
+				AA24FDFF149D1B240015D03A /* MKPopOutView+MKBarButtonItem.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1178,6 +1185,7 @@
 				AAAE8713148A688C003E2060 /* MKImage.m in Sources */,
 				AAAE8717148BC657003E2060 /* MKPaging.m in Sources */,
 				AA7E1FFC148DA30E00F029EA /* MKView+MKTitleView.m in Sources */,
+				AA24FE00149D1B240015D03A /* MKPopOutView+MKBarButtonItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

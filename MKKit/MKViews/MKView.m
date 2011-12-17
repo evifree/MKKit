@@ -98,7 +98,8 @@
         drawGlossAndLinearGradient(context, rect, topColor, bottomColor);
         CGContextSaveGState(context);
     }
-    /* DEPRECATIED V_0_9 /////////////////////////////////////////////////////
+    /*
+    //DEPRECATIED V_0_9 /////////////////////////////////////////////////////
     if (MKViewFlags.isIconMask) {
         CGColorRef bottomColor = MK_COLOR_HSB(354.0, 1.0, 99.0, 1.0).CGColor;
         CGColorRef topColor = MK_COLOR_HSB(354.0, 1.0, 99.0, 1.0).CGColor;

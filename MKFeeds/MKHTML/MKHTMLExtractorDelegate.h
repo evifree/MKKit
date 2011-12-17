@@ -27,7 +27,7 @@
  
  @param the extacted contents of the page
 */
-- (void)extactor:(MKHTMLExtractor *)extactor didFindPage:(NSInteger)page content:(NSString *)htmlString;
+- (void)extractor:(MKHTMLExtractor *)extactor didFindPage:(NSInteger)page content:(NSString *)htmlString;
 
 /**
  Called when the optimizedOutputForiPhone property is set to `YES`.
@@ -44,6 +44,15 @@
  
  @return NSString The path to an HTML file containg <head> tag information.
 */
-- (NSString *)extratorHTMLHeaderPath:(MKHTMLExtractor *)extractor;
+- (NSString *)extractorHTMLHeaderPath:(MKHTMLExtractor *)extractor;
+
+/**
+ Called if an extractor errors
+ 
+ @param extractor the extractor instance that encountered an error.
+ 
+ @param error the error that was encountered.
+*/
+- (void)extractor:(MKHTMLExtractor *)extractor didError:(NSError *)error;
 
 @end

@@ -60,6 +60,13 @@
 - (MKHTMLNode *)root;
 
 /**
+ Returns the MKHTMLNode that contains the <head> tag of the document
+ 
+ @return MKHTMLNode instance
+*/
+- (MKHTMLNode *)head;
+
+/**
  Returns the an MKHTMLNode with the <body> tag at the top of the 
  tree.
  
