@@ -16,6 +16,8 @@
 
 @implementation MKGraphicsStructures
 
+@synthesize fill;
+
 @dynamic top, bottom;
 
 #pragma mark - Creation
@@ -42,6 +44,7 @@
 - (void)dealloc {
     self.top = nil;
     self.bottom = nil;
+    self.fill = nil;
     
     [mTopColor release];
     [mBottomColor release];

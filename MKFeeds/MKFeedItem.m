@@ -16,7 +16,7 @@
 static NSString *MKFeedItemTitle = @"MKFeedItemTitle";
 static NSString *MKFeedItemContent = @"MKFeedItemContent";
 static NSString *MKFeedItemLinkURL = @"MKFeedItemLinkURL";
-static NSString *MKFeedItemOriginalLinkURL = @"MKFeedItemLinkURL";
+static NSString *MKFeedItemOriginalLinkURL = @"MKFeedItemLinkOriginalURL";
 static NSString *MKFeedItemAuthor = @"MKFeedItemAuthor";
 static NSString *MKFeedItemGUID = @"MKFeedItemGUID";
 static NSString *MKFeedItemPubDate = @"MKFeedItemPubDate";

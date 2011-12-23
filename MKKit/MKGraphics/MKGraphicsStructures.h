@@ -80,4 +80,6 @@
 /** the bottom color of the gradient */
 @property (nonatomic, retain) UIColor *bottom;
 
+@property (nonatomic, retain) UIColor *fill;
+
 @end

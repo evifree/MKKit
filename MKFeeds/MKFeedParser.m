@@ -14,7 +14,7 @@
 
 @synthesize url=mUrl, delegate, requestCompleteBlock=mRequestCompleteBlock;
 
-@dynamic sourceType, contentType; 
+@dynamic sourceType, contentType;
 
 - (id)initWithURL:(NSString *)aURL delegate:(id<MKFeedParserDelegate>)theDelegate {
 	if (self = [super init]) {
@@ -62,6 +62,12 @@
 }
 
 #pragma mark - Accessor Methods
+#pragma mark Setters
+
+- (void)setSourceType:(MKFeedSourceType)type {
+    mSourceType = type;
+}
+
 #pragma mark Getters
 
 - (MKFeedContentType)contentType {
@@ -121,14 +127,19 @@
     // UNCOMMENT THESE LINES TO POST THE FEED DATA IN THE LOG //
     ////////////////////////////////////////////////////////////
     
-	//NSString *data = [[NSString alloc] initWithData:requestData encoding:NSUTF8StringEncoding];
-	//NSLog(@"%@", data);
+	NSString *data = [[NSString alloc] initWithData:requestData encoding:NSUTF8StringEncoding];
+	NSLog(@"%@", data);
 	
-	theParser = [[NSXMLParser alloc] initWithData:requestData];
-    [theParser setShouldProcessNamespaces:YES];
-	[theParser setDelegate:self];
-	[theParser parse];
-	
+    if (mSourceType == MKFeedSourceTypeJSON) {
+        
+    }
+    else {
+        theParser = [[NSXMLParser alloc] initWithData:requestData];
+        [theParser setShouldProcessNamespaces:YES];
+        [theParser setDelegate:self];
+        [theParser parse];
+	}
+    
 	[theConnection release];
 	[requestData release];
     

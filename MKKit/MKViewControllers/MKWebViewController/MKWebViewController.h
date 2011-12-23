@@ -54,6 +54,15 @@
     MKWebViewLoadingBar *mLoadingBar;
     UIWebView *mWebView;
     UIToolbar *bottomBar;
+    
+    MKBarButtonItem *backItem;
+    MKBarButtonItem *forwardItem;
+    
+@private 
+    struct {
+        int pageCount;
+        int backPageCount;
+    } MKWebViewFlags;
 }
 
 ///-----------------------------------------------

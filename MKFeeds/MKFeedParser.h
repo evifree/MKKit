@@ -21,6 +21,7 @@ typedef enum {
 typedef enum {
     MKFeedSourceRSS,
     MKFeedSourceAtom,
+    MKFeedSourceTypeJSON,
     MKFeedSourceTypeUnknown,
 } MKFeedSourceType;
 
@@ -140,7 +141,7 @@ typedef enum {
  * `MKSourceTypeRSS` : The feed source is in a RSS format.
  * `MKSourceTypeAtom` : The feed source is in an Atom format.
 */
-@property (nonatomic, readonly) MKFeedSourceType sourceType;
+@property (nonatomic, assign) MKFeedSourceType sourceType;
 
 ///-----------------------------------------------
 /// @name Delegate

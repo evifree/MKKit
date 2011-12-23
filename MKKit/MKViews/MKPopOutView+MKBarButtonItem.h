@@ -23,6 +23,10 @@
 ----------------------------------------------------------------------*/
 @interface MKPopOutView (MKBarButtonItem) 
 
+///-------------------------------
+/// @name Displaying
+///-------------------------------
+
 /**
  Shows an MKPopOverView with the arrow pointing at a MKBarButtonItem.
  

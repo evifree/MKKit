@@ -40,6 +40,10 @@
 
 <p> <a href="MKButton.html">MKButton</a> provides specalty buttons for various use. There are currently four types of buttons: <ul><li> <code>MKButtonTypeHelp</code>: a small round button with a question mark </li><li> <code>MKButtonTypeDisclosure</code>: a blue and white button that resembles iOS discloser button </li><li> `MKButtonTypeDropDownIndicator : a small button with down arrow on it. </li><li> <code>MKButtonTypeIAP</code>: a InApp Purchase button, mimics the purchase buttons from the appstore. </li><li> <code>MKButtonTypePlastic</code>: a button with a rounded shine, giving it a plasic look. Default tint is black. </li><li> <code>MKButtonTypeRoundedRect</code>: a rounded rect button that can be assigned a color. Default tint is blue. </li></ul></p>
 
+<p> <strong> Graphic Display </strong></p>
+
+<p> Some <a href="MKButton.html">MKButton</a> types support graphics from the MKGraphicStructures class. Diffent types look for different parts of a graphic structure. If no graphics stucture is provide the buttons will default to a soild blue color. <ul><li> <code>MKButtonTypePlastic</code>: looks for the <strong> fill </strong> property of MKGraphicsStructures. </li><li> <code>MKButtonTypeRoundedRect</code>: looks for the <strong> top </strong> and <strong> bottom </strong> properties of MKGraphicisStructures. </li></ul></p>
+
 <p> <strong> Required Frameworks </strong> <ul><li> Foundation </li><li> UIKit </li><li> Quartz Core </li></ul></p>
 
 <p> <strong> Required Classes </strong> <ul><li> <a href="MKControl.html">MKControl</a></li></ul></p>
@@ -69,7 +73,13 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithType:title:tint:">- initWithType:title:tint:</a></code>
+		<code><a href="#//api/name/initWithType:title:tint:MK_DEPRECATED_0_9:">- initWithType:title:tint:MK_DEPRECATED_0_9:</a></code>
+		<span class="tooltip"> METHOD DEPRECATED* </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithType:title:graphicsStructure:">- initWithType:title:graphicsStructure:</a></code>
 		<span class="tooltip"> Returns and instance of <a href="MKButton.html">MKButton</a></span>
 	</span>
 	
@@ -99,8 +109,8 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/tintColor"> tintColor</a></code>
-		<span class="tooltip"> The tint color of a MKButtonTypeRoundedRect </span>
+		<code><a href="#//api/name/MK_DEPRECATED_0_9"> MK_DEPRECATED_0_9</a></code>
+		<span class="tooltip"> <strong> DEPRECIATED </strong></span>
 	</span>
 	
 </li><li>
@@ -224,8 +234,8 @@
 </div>
 					
 					<div class="section-method">
-	<a name="//api/name/initWithType:title:tint:" title="initWithType:title:tint:"></a>
-	<h3 class="subsubtitle method-title">initWithType:title:tint:</h3>
+	<a name="//api/name/initWithType:title:graphicsStructure:" title="initWithType:title:graphicsStructure:"></a>
+	<h3 class="subsubtitle method-title">initWithType:title:graphicsStructure:</h3>
 	
 	
 	
@@ -234,7 +244,7 @@
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (id)initWithType:(MKButtonType)<em>type</em> title:(NSString *)<em>title</em> tint:(UIColor *)<em>tint</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithType:(MKButtonType)<em>type</em> title:(NSString *)<em>title</em> graphicsStructure:(MKGraphicsStructures *)<em>graphics</em></code></div>
 	
 	
 	<div class="method-subsection arguments-section parameters">
@@ -251,11 +261,43 @@
 		</dl>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>tint</em></dt>
-			<dd> the tint color of the button </dd>
+			<dt><em>graphics</em></dt>
+			<dd> the graphics structure to use when drawing this button. </dd>
 		</dl>
 		
 	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKButton.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/initWithType:title:tint:MK_DEPRECATED_0_9:" title="initWithType:title:tint:MK_DEPRECATED_0_9:"></a>
+	<h3 class="subsubtitle method-title">initWithType:title:tint:MK_DEPRECATED_0_9:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> METHOD DEPRECATED* </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithType:(MKButtonType)<em>type</em> title:(NSString *)<em>title</em> tint:(UIColor *)<em>tint</em> MK_DEPRECATED_0_9</code></div>
+	
 	
 	
 	
@@ -281,6 +323,38 @@
 				
 				<div class="section section-methods">
 					<h2 class="subtitle subtitle-methods">Properties</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/MK_DEPRECATED_0_9" title="MK_DEPRECATED_0_9"></a>
+	<h3 class="subsubtitle method-title">MK_DEPRECATED_0_9</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> <strong> DEPRECIATED </strong></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UIColor *tintColor MK_DEPRECATED_0_9</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKButton.h</code><br />
+	</div>				
+	
+	
+</div>
 					
 					<div class="section-method">
 	<a name="//api/name/buttonText" title="buttonText"></a>
@@ -379,38 +453,6 @@
 </div>
 					
 					<div class="section-method">
-	<a name="//api/name/tintColor" title="tintColor"></a>
-	<h3 class="subsubtitle method-title">tintColor</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p> The tint color of a MKButtonTypeRoundedRect </p>
-	</div>		
-	
-	
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UIColor *tintColor</code></div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">MKButton.h</code><br />
-	</div>				
-	
-	
-</div>
-					
-					<div class="section-method">
 	<a name="//api/name/type" title="type"></a>
 	<h3 class="subsubtitle method-title">type</h3>
 	
@@ -455,7 +497,7 @@
 			<div id="footer">
 				<hr />
 				<div class="footer-copyright">
-					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-12-04)</span><br />
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-12-22)</span><br />
 					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
 				</div>
 			</div>

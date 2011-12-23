@@ -166,6 +166,8 @@
 		AAAE8713148A688C003E2060 /* MKImage.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAE8711148A688C003E2060 /* MKImage.m */; };
 		AAAE8716148BC657003E2060 /* MKPaging.h in Headers */ = {isa = PBXBuildFile; fileRef = AAAE8714148BC656003E2060 /* MKPaging.h */; };
 		AAAE8717148BC657003E2060 /* MKPaging.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAE8715148BC656003E2060 /* MKPaging.m */; };
+		AAB38D3514A3FC90003DD91F /* MKJSONParser.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB38D3314A3FC90003DD91F /* MKJSONParser.h */; };
+		AAB38D3614A3FC90003DD91F /* MKJSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB38D3414A3FC90003DD91F /* MKJSONParser.m */; };
 		AAB4D1E113E86A720061A6BD /* MKPopOutView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB4D1DF13E86A700061A6BD /* MKPopOutView.h */; };
 		AAB4D1E213E86A720061A6BD /* MKPopOutView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB4D1E013E86A700061A6BD /* MKPopOutView.m */; };
 		AAB4D1E513E884410061A6BD /* MKTitleView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB4D1E313E884400061A6BD /* MKTitleView.h */; };
@@ -368,6 +370,8 @@
 		AAAE8711148A688C003E2060 /* MKImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKImage.m; sourceTree = "<group>"; };
 		AAAE8714148BC656003E2060 /* MKPaging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPaging.h; sourceTree = "<group>"; };
 		AAAE8715148BC656003E2060 /* MKPaging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPaging.m; sourceTree = "<group>"; };
+		AAB38D3314A3FC90003DD91F /* MKJSONParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKJSONParser.h; sourceTree = "<group>"; };
+		AAB38D3414A3FC90003DD91F /* MKJSONParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKJSONParser.m; sourceTree = "<group>"; };
 		AAB4D1DF13E86A700061A6BD /* MKPopOutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPopOutView.h; sourceTree = "<group>"; };
 		AAB4D1E013E86A700061A6BD /* MKPopOutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPopOutView.m; sourceTree = "<group>"; };
 		AAB4D1E313E884400061A6BD /* MKTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTitleView.h; sourceTree = "<group>"; };
@@ -717,6 +721,7 @@
 				AAF37FE614703885001AE209 /* NSString+MKFeedParser.h */,
 				AAF37FE714703885001AE209 /* NSString+MKFeedParser.m */,
 				AA2662091454EF6D009696D0 /* MKHTML */,
+				AAB38D3214A3FC39003DD91F /* MKJSON */,
 				AA3297AA144FD03A00982DCE /* Supporting Files */,
 			);
 			path = MKFeeds;
@@ -844,6 +849,15 @@
 			path = MKTabbedViewController;
 			sourceTree = "<group>";
 		};
+		AAB38D3214A3FC39003DD91F /* MKJSON */ = {
+			isa = PBXGroup;
+			children = (
+				AAB38D3314A3FC90003DD91F /* MKJSONParser.h */,
+				AAB38D3414A3FC90003DD91F /* MKJSONParser.m */,
+			);
+			path = MKJSON;
+			sourceTree = "<group>";
+		};
 		AABE3D541376CFB800ECC539 /* MKLoginViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -907,6 +921,7 @@
 				AABD97BF146E260D004F1AA1 /* MKHTMLExtractorDelegate.h in Headers */,
 				AAF37FE814703885001AE209 /* NSString+MKFeedParser.h in Headers */,
 				AA3BFC261481485E003C59A9 /* MKFeedItem.h in Headers */,
+				AAB38D3514A3FC90003DD91F /* MKJSONParser.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1113,6 +1128,7 @@
 				AA86F5661457B0BA00A7D4FC /* MKHTMLParser.m in Sources */,
 				AAF37FE914703885001AE209 /* NSString+MKFeedParser.m in Sources */,
 				AA3BFC271481485E003C59A9 /* MKFeedItem.m in Sources */,
+				AAB38D3614A3FC90003DD91F /* MKJSONParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1253,7 +1269,7 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = (
 					/usr/include/libxml2,
 					"$(MKKIT)",
@@ -1274,7 +1290,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MKFeeds/MKFeeds-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = (
 					/usr/include/libxml2,
 					"$(MKKIT)",

@@ -14,11 +14,26 @@
 
 @dynamic location;
 
+#pragma mark - Creation 
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        MKControlFlags.isEnabled = YES;
+    }
+    return self;
+}
+
 #pragma mark - Accessor Methods
 #pragma makr Setters
 
 - (void)setLocation:(CGPoint)location {
     self.frame = CGRectMake(location.x, location.y, self.frame.size.width, self.frame.size.height);
+}
+
+- (void)setEnabled:(BOOL)enabled {
+    MKControlFlags.isEnabled = enabled;
+    [self setNeedsDisplay];
 }
 
 #pragma mark Getters
@@ -73,11 +88,15 @@
 #pragma mark - Touches
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self processAction:MKActionTouchDown];
+    if (MKControlFlags.isEnabled) {
+        [self processAction:MKActionTouchDown];
+    }
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self processAction:MKActionTouchUp];
+    if (MKControlFlags.isEnabled) {
+        [self processAction:MKActionTouchUp];
+    }
 }
 
 #pragma mark - Memory Management

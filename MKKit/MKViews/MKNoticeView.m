@@ -18,7 +18,9 @@
 - (id)initWithMessage:(NSString *)message {
     self = [super initWithFrame:CGRectMake(CENTER_VIEW_HORIZONTALLY(320.0, 200.0), 360.0, 200.0, 31.0)];
     if (self) {
-        self.backgroundColor = BLACK;
+        self.backgroundColor = CLEAR;
+        self.opaque = NO;
+        self.alpha = 0.0;
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(5.0, 5.0, 190.0, 21.0)];
         label.font = VERDANA_BOLD(14.0);
@@ -62,6 +64,24 @@
 
 - (void)setDuration:(NSTimeInterval)duration {
     [self performSelector:@selector(removeView) withObject:nil afterDelay:duration];
+}
+
+#pragma mark - Drawing
+
+- (void)drawRect:(CGRect)rect {
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetAllowsAntialiasing(context, YES);
+    
+    CGMutablePathRef roundRect = createRoundedRectForRect(rect, 5.0);
+    CGColorRef fillColor = MK_COLOR_RGB(1.0, 1.0, 1.0, 0.85).CGColor;
+    
+    CGContextSaveGState(context);
+    CGContextSetFillColorWithColor(context, fillColor);
+    CGContextAddPath(context, roundRect);
+    CGContextFillPath(context);
+    CGContextRestoreGState(context);
+    
+    CFRelease(roundRect);
 }
 
 #pragma mark - Memory Management

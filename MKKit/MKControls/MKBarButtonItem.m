@@ -56,8 +56,6 @@
 #pragma mark - Drawing
 
 - (void)drawRect:(CGRect)rect {
-    [super drawRect:rect];
-    
     if (MKBarButtonItemFlags.requiresDrawing) {
         CGContextRef context = UIGraphicsGetCurrentContext();
         CGContextSetAllowsAntialiasing(context, YES);
@@ -65,52 +63,40 @@
         CGFloat outerMargin = 2.0;
         CGRect viewRect = CGRectInset(self.bounds, outerMargin, outerMargin);
         
-        CGColorRef inner = MK_COLOR_HSB(345.0, 1.0, 99.0, 1.0).CGColor;;
+        CGColorRef fillColor = nil;
+        
+        if (MKControlFlags.isEnabled) {
+            fillColor = MK_COLOR_HSB(345.0, 1.0, 99.0, 1.0).CGColor;
+        }
+        else {
+            fillColor = MK_COLOR_HSB(345.0, 1.0, 99.0, 0.25).CGColor;;
+        }
+    
         CGColorRef shadowColor = BLACK.CGColor;
         
         if (mType == MKBarButtonItemBackArrow) {
-            CGPoint p1 = CGPointMake(CGRectGetMinX(viewRect), CGRectGetMidY(viewRect));
-            CGPoint p2 = CGPointMake(CGRectGetMaxX(viewRect), CGRectGetMinY(viewRect));
-            CGPoint p3 = CGPointMake(CGRectGetMaxX(viewRect), CGRectGetMaxY(viewRect));
-            
-            CGMutablePathRef path = CGPathCreateMutable();
-            
-            CGPathMoveToPoint(path, NULL, p1.x, p1.y);
-            CGPathAddLineToPoint(path, NULL, p2.x, p2.y);
-            CGPathAddLineToPoint(path, NULL, p3.x, p3.y);
-            CGPathAddLineToPoint(path, NULL, p1.x, p1.y);
-            CGPathCloseSubpath(path);
+            CGMutablePathRef arrowPath = createPathForLeftArrow(viewRect);
             
             CGContextSaveGState(context);
-            CGContextSetShadowWithColor(context, CGSizeMake(0, -1), 1.0, shadowColor);
-            CGContextSetFillColorWithColor(context, inner);
-            CGContextAddPath(context, path);
+            CGContextSetShadowWithColor(context, CGSizeMake(0, -1), 0.0, shadowColor);
+            CGContextSetFillColorWithColor(context, fillColor);
+            CGContextAddPath(context, arrowPath);
             CGContextFillPath(context);
             CGContextRestoreGState(context);
             
-            CFRelease(path);
+            CFRelease(arrowPath);
         }
         else if (mType == MKBarButtonItemForwardArrow) {
-            CGPoint p1 = CGPointMake(CGRectGetMinX(viewRect), CGRectGetMinY(viewRect));
-            CGPoint p2 = CGPointMake(CGRectGetMaxX(viewRect), CGRectGetMidY(viewRect));
-            CGPoint p3 = CGPointMake(CGRectGetMinX(viewRect), CGRectGetMaxY(viewRect));
-            
-            CGMutablePathRef path = CGPathCreateMutable();
-            
-            CGPathMoveToPoint(path, NULL, p1.x, p1.y);
-            CGPathAddLineToPoint(path, NULL, p2.x, p2.y);
-            CGPathAddLineToPoint(path, NULL, p3.x, p3.y);
-            CGPathAddLineToPoint(path, NULL, p1.x, p1.y);
-            CGPathCloseSubpath(path);
+            CGMutablePathRef arrowPath = createPathForRightArrow(viewRect);
             
             CGContextSaveGState(context);
-            CGContextSetShadowWithColor(context, CGSizeMake(0, -1), 2.0, shadowColor);
-            CGContextSetFillColorWithColor(context, inner);
-            CGContextAddPath(context, path);
+            CGContextSetShadowWithColor(context, CGSizeMake(0, -1), 0.0, shadowColor);
+            CGContextSetFillColorWithColor(context, fillColor);
+            CGContextAddPath(context, arrowPath);
             CGContextFillPath(context);
             CGContextRestoreGState(context);
             
-            CFRelease(path);
+            CFRelease(arrowPath);
         }
     }
 }

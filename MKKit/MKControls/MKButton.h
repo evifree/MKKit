@@ -38,6 +38,15 @@ static const float kButtonTextPadding           = 10.0;
  * `MKButtonTypePlastic` : a button with a rounded shine, giving it a plasic look. Default tint is black.
  * `MKButtonTypeRoundedRect` : a rounded rect button that can be assigned a color. Default tint is blue.
  
+ *Graphic Display*
+ 
+ Some MKButton types support graphics from the MKGraphicStructures class. Diffent types look
+ for different parts of a graphic structure. If no graphics stucture is provide the buttons
+ will default to a soild blue color.
+ 
+ * `MKButtonTypePlastic` : looks for the *fill* property of MKGraphicsStructures.
+ * `MKButtonTypeRoundedRect` : looks for the *top* and *bottom* properties of MKGraphicisStructures.
+ 
  *Required Frameworks*
  
  * Foundation
@@ -52,9 +61,11 @@ static const float kButtonTextPadding           = 10.0;
 @interface MKButton : MKControl {
     MKButtonType mType;
     NSString *mButtonText;
+    MKGraphicsStructures *mGraphics;
 
 @private
     UILabel *mButtonLabel;
+    
     struct {
         bool isWorking;
         bool isHighlighted;
@@ -86,15 +97,20 @@ static const float kButtonTextPadding           = 10.0;
 - (id)initWithType:(MKButtonType)type title:(NSString *)title;
 
 /**
+ *METHOD DEPRECATED*
+*/
+- (id)initWithType:(MKButtonType)type title:(NSString *)title tint:(UIColor *)tint MK_DEPRECATED_0_9;
+
+/**
  Returns and instance of MKButton
  
  @param type the type of button to use
  
  @param title the text of the button
  
- @param tint the tint color of the button
+ @param graphics the graphics structure to use when drawing this button. 
 */
-- (id)initWithType:(MKButtonType)type title:(NSString *)title tint:(UIColor *)tint;
+- (id)initWithType:(MKButtonType)type title:(NSString *)title graphicsStructure:(MKGraphicsStructures *)graphics;
 
 
 ///---------------------------------------------------------
@@ -111,8 +127,8 @@ static const float kButtonTextPadding           = 10.0;
 /** Type the Button Type */
 @property (nonatomic, assign) MKButtonType type;
 
-/** The tint color of a MKButtonTypeRoundedRect */ 
-@property (nonatomic, retain) UIColor *tintColor;
+/** *DEPRECIATED* */ 
+@property (nonatomic, retain) UIColor *tintColor MK_DEPRECATED_0_9;
 
 /** The size of the font on the button */
 @property (nonatomic, assign) CGFloat fontSize;

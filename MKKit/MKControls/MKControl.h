@@ -14,7 +14,9 @@
 #import "MKControlDelegate.h"
 
 typedef void (^MKActionBlock)(MKAction action);
- 
+
+@class MKGraphicsStructures;
+
 @protocol MKControlDelegate;
 
 /**---------------------------------------------------------------------------------------------
@@ -62,6 +64,7 @@ typedef void (^MKActionBlock)(MKAction action);
     struct {
         bool blockUsage;
         bool targetUsage;
+        bool isEnabled;
     } MKControlFlags;
 }
 
