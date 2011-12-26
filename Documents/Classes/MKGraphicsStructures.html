@@ -44,6 +44,18 @@
 
 <p> MKKit class that use the <a href="MKGraphicsStructures.html">MKGraphicsStructures</a> class will refereance an instance when preforming drawing operations. </p>
 
+<p> <strong> Using a Graphic Dictionary </strong></p>
+
+<p> MKGraphicsStructure has support the loading of grapics information from a plits file. For example if you want to use the same background drawing for a set of views, you define a color patern in a property list an MKGraphicsStructure will will convert it to an instance for your view to use. </p>
+
+<p> Using a graphics dictionary works off of a singleton instance of MKGraphicStructures. To set the sigleton call the <a href="#//api/name/sharedGraphicsWithFile:">sharedGraphicsWithFile:</a> method and give the path to your graphics dictionary property list. <p class="warning"> <strong> Note </strong> The MKGraphicsSigleton instance is designed specifically for use with graphics dictionary property list. An exception will be thrown if there is an attempt to access the sigleton instance before plist file has been designated. </p></p>
+
+<p> After a plist file has been assigned you can create instances by calling the <a href="#//api/name/graphicsWithName:">graphicsWithName:</a> method. Or by calling the MKGraphicsFactory method initWithGraphicsName: for classes that conform to the MKGraphicsFactory protocol. </p>
+
+<p> Check the documentation of the class you are using to see MKGraphicsSturctures and/or MKGraphicsFactory is supported, and what graphic properties are expected for the class. </p>
+
+<p> The Following Classes currently support the use of a graphics dictionary: <ul><li> <a href="MKImage.html">MKImage</a></li><li> <a href="MKView.html">MKView</a></li></ul></p>
+
 <p> <strong> Required Classes </strong> <ul><li> <a href="MKObject.html">MKObject</a></li></ul></p>
 
 <p> <strong> Required Frameworks </strong> <ul><li> Foundation </li><li> UIKit </li><li> Core Graphics </li></ul></p>
@@ -56,6 +68,30 @@
 				<div class="section section-tasks">
 					<h2 class="subtitle subtitle-tasks">Tasks</h2>
 					
+					<h3 class="subsubtitle task-title">Singleton</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sharedGraphics">+ sharedGraphics</a></code>
+		<span class="tooltip"> Returns the single instance of <a href="MKGraphicsStructures.html">MKGraphicsStructures</a> <p class="warning"> <strong> Note </strong> A dictionary must be set to create a sigleton instance call <a href="#//api/name/sharedGraphicsWithFile:">sharedGraphicsWithFile:</a> to set the dictionary. </p></span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sharedGraphicsWithFile:">+ sharedGraphicsWithFile:</a></code>
+		<span class="tooltip"> Creates the singleton instance of MKGraphicsStructure and set the dictionary contantained in the property list at the given path. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/removeSharedGraphics">+ removeSharedGraphics</a></code>
+		<span class="tooltip"> Releases the singleton instance. </span>
+	</span>
+	
+</li>
+					</ul>
+					
 					<h3 class="subsubtitle task-title">Creating</h3>
 
 					<ul class="task-list">
@@ -67,8 +103,26 @@
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/graphicsWithName:">+ graphicsWithName:</a></code>
+		<span class="tooltip"> Creates and autoreleaseing instance of <a href="MKGraphicsStructures.html">MKGraphicsStructures</a> from the give name. The name should corispond with on of the keys from you graphics dictionary. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/linearGradientWithTopColor:bottomColor:">+ linearGradientWithTopColor:bottomColor:</a></code>
 		<span class="tooltip"> An instance of MKGraphisStructures that sets the colors for a linear gradient. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Aceessing Graphics</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/graphicsDictionary"> graphicsDictionary</a></code>
+		<span class="tooltip"> The graphics dictionary that will be used for your app. Set this property using the <a href="#//api/name/sharedGraphicsWithFile:">sharedGraphicsWithFile:</a> method. </span>
 	</span>
 	
 </li>
@@ -80,7 +134,7 @@
 						<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/assignGradientTopColor:bottomColor:">- assignGradientTopColor:bottomColor:</a></code>
-		<span class="tooltip"> Assings colors for a linear gradient </span>
+		<span class="tooltip"> Assigns colors for a linear gradient </span>
 	</span>
 	
 </li><li>
@@ -93,6 +147,18 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/bottom"> bottom</a></code>
 		<span class="tooltip"> the <a href="#//api/name/bottom">bottom</a> color of the gradient </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/fill"> fill</a></code>
+		<span class="tooltip"> the <a href="#//api/name/fill">fill</a> color of an UI object. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/useLinerShine"> useLinerShine</a></code>
+		<span class="tooltip"> <code>YES</code> if a liner shine should be used on view drawing. </span>
 	</span>
 	
 </li>
@@ -130,9 +196,46 @@
 		
 		<p> Creates an autoreleasing empty instance. </p>
 		
-		<p> return MKGraphicsStructure instace </p>
+		<p> return MKGraphicsStructure instance </p>
 		
 	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKGraphicsStructures.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/graphicsWithName:" title="graphicsWithName:"></a>
+	<h3 class="subsubtitle method-title">graphicsWithName:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Creates and autoreleaseing instance of <a href="MKGraphicsStructures.html">MKGraphicsStructures</a> from the give name. The name should corispond with on of the keys from you graphics dictionary. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (id)graphicsWithName:(NSString *)<em>name</em></code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p> MKGraphicsStructure instance. </p>
+	</div>
+	
+	
 	
 	
 	
@@ -200,6 +303,122 @@
 	
 </div>
 					
+					<div class="section-method">
+	<a name="//api/name/removeSharedGraphics" title="removeSharedGraphics"></a>
+	<h3 class="subsubtitle method-title">removeSharedGraphics</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Releases the singleton instance. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)removeSharedGraphics</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKGraphicsStructures.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/sharedGraphics" title="sharedGraphics"></a>
+	<h3 class="subsubtitle method-title">sharedGraphics</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Returns the single instance of <a href="MKGraphicsStructures.html">MKGraphicsStructures</a> <p class="warning"> <strong> Note </strong> A dictionary must be set to create a sigleton instance call <a href="#//api/name/sharedGraphicsWithFile:">sharedGraphicsWithFile:</a> to set the dictionary. </p></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (id)sharedGraphics</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p> singlton </p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection arguments-section exceptions">
+		<h4 class="method-subtitle exception-title">Exceptions</h4>
+		
+		<dl class="argument-def exception-def">
+			<dt><em>MKGraphicsNoSharedInstanceDictionaryException</em></dt>
+			<dd> Thrown if this method is called and no dictionary has been set. </dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKGraphicsStructures.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/sharedGraphicsWithFile:" title="sharedGraphicsWithFile:"></a>
+	<h3 class="subsubtitle method-title">sharedGraphicsWithFile:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Creates the singleton instance of MKGraphicsStructure and set the dictionary contantained in the property list at the given path. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (id)sharedGraphicsWithFile:(NSString *)<em>path</em></code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p> singleton </p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKGraphicsStructures.h</code><br />
+	</div>				
+	
+	
+</div>
+					
 				</div>
 				
 				
@@ -214,7 +433,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p> Assings colors for a linear gradient </p>
+		<p> Assigns colors for a linear gradient </p>
 	</div>		
 	
 	
@@ -294,6 +513,70 @@
 </div>
 					
 					<div class="section-method">
+	<a name="//api/name/fill" title="fill"></a>
+	<h3 class="subsubtitle method-title">fill</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> the <a href="#//api/name/fill">fill</a> color of an UI object. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UIColor *fill</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKGraphicsStructures.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/graphicsDictionary" title="graphicsDictionary"></a>
+	<h3 class="subsubtitle method-title">graphicsDictionary</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The graphics dictionary that will be used for your app. Set this property using the <a href="#//api/name/sharedGraphicsWithFile:">sharedGraphicsWithFile:</a> method. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSDictionary *graphicsDictionary</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKGraphicsStructures.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
 	<a name="//api/name/top" title="top"></a>
 	<h3 class="subsubtitle method-title">top</h3>
 	
@@ -305,6 +588,38 @@
 	
 	
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UIColor *top</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKGraphicsStructures.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/useLinerShine" title="useLinerShine"></a>
+	<h3 class="subsubtitle method-title">useLinerShine</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> <code>YES</code> if a liner shine should be used on view drawing. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL useLinerShine</code></div>
 	
 	
 	
@@ -338,7 +653,7 @@
 			<div id="footer">
 				<hr />
 				<div class="footer-copyright">
-					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-12-22)</span><br />
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-12-26)</span><br />
 					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
 				</div>
 			</div>

@@ -108,7 +108,7 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
  cell in the Storyboard editor and make the conections to the needed elements. Ensure that the you set class 
  the MKTableCell in the inspector so the elements are visable make conections.
  
- @warning *Note* The MKTableCell catigory of MKView is not used for prototype cells. The layout and 
+ @warning *Note* The MKTableCell category of MKView is not used for prototype cells. The layout and 
  resizing of the cells contect is up to you to handle.
  
  *Validating User Input*

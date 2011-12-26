@@ -56,14 +56,11 @@
     CGRect imageRect = CGRectMake(0.0, 0.0, image.size.width, image.size.height);
     CGImageRef imageRef = image.CGImage;
     
-    CGColorRef topColor = graphicStruct.top.CGColor;
-    CGColorRef bottomColor = graphicStruct.bottom.CGColor;
-    
     CGContextTranslateCTM(context, 0.0, image.size.height);
 	CGContextScaleCTM(context, 1.0, -1.0);
     
     CGContextClipToMask(context, imageRect, imageRef);
-    drawLinearGradient(context, imageRect, topColor, bottomColor);
+    drawWithGraphicsStructure(context, imageRect, graphicStruct);
     
     UIImage *maskedImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();

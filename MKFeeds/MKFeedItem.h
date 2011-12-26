@@ -16,6 +16,11 @@
  the data of one feed item. This is default class for accessing data from a 
  MKFeedParser instace.  It can also be used independently.
  
+ *Key Value Coding*
+ 
+ MKFeedItem instance are Key Value Coded for the itemTitle, itemContent, and 
+ itemAuthor properties to support seaches with NSPredicate instances. 
+ 
  *Required Frameworks*
  
  * Foundation
@@ -81,10 +86,10 @@
 */
 @property (nonatomic, readonly) MKFeedSourceType contentType;
 
-/** The tilte of the feed item. */
+/** The tilte of the feed item. This property is KVC compatible. */
 @property (nonatomic, readonly) NSString *itemTitle;
 
-/** The content of the feed item. */
+/** The content of the feed item. This property is KVC compatible. */
 @property (nonatomic, readonly) NSString *itemContent;
 
 /** The URL link of the feed item. */
@@ -93,7 +98,7 @@
 /** The original URL link of the feed item. */
 @property (nonatomic, readonly) NSString *itemOriginalLinkURL;
 
-/** The author of the feed item. */
+/** The author of the feed item. This property is KVC compatible. */
 @property (nonatomic, readonly) NSString *itemAuthor;
 
 /** The GUID of the feed item. */

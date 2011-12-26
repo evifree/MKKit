@@ -9,34 +9,50 @@
 #import "MKView.h"
 #import "MKPopOverView.h"
 
-#pragma mark -
-#pragma mark MKView
+@interface MKView ()
+
+- (void)setUpView;
+
+@end
 
 @implementation MKView
 
-@synthesize x, y, width, height, gradient=mGradient, controller=mController, delegate=mDelegate;
+@synthesize x, y, width, height, gradient, controller=mController, delegate=mDelegate;
+
+@dynamic graphicsStructure;
 
 #pragma mark - Creating
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.userInteractionEnabled = YES;
-        self.autoresizesSubviews = YES;
-        
-        mShouldRemoveView = YES;
-        
-        self.x = frame.origin.x;
-        self.y = frame.origin.y;
-        self.width = frame.size.width;
-        self.height = frame.size.height;
-        
-        MKViewShouldRemoveNotification = @"MKViewShouldRemoveNotification";
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeView) name:MKViewShouldRemoveNotification object:nil];
-        
-        MKViewFlags.isHeaderView = NO;
+        [self setUpView];
     }
     return self;
+}
+
+#pragma mark Graphics Factory
+
+- (id)initWithGraphicsNamed:(NSString *)structureName {
+    self = [super init];
+    if (self) {
+        [self setUpView];
+        
+        self.graphicsStructure = [MKGraphicsStructures graphicsWithName:structureName];
+    }
+    return self;
+}
+
+- (void)setUpView {
+    self.userInteractionEnabled = YES;
+    self.autoresizesSubviews = YES;
+    
+    mShouldRemoveView = YES;
+    
+    MKViewShouldRemoveNotification = @"MKViewShouldRemoveNotification";
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeView) name:MKViewShouldRemoveNotification object:nil];
+    
+    MKViewFlags.isHeaderView = NO;
 }
 
 #pragma mark - Accessor methods
@@ -59,9 +75,10 @@
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, lHeight);
 }
 
-- (void)setGradient:(MKGraphicsStructures *)grade {
-    mGradient = [grade retain];
-    MKViewFlags.usesGradient = YES;
+- (void)setGraphicsStructure:(MKGraphicsStructures *)_graphicsStructure {
+    MKViewFlags.usesBackGroundFill = YES;
+    
+    mGraphics = [_graphicsStructure retain];
     [self setNeedsDisplay];
 }
 
@@ -83,12 +100,20 @@
     return self.frame.size.height;
 }
 
+- (MKGraphicsStructures *)graphicsStructure {
+    return mGraphics;
+}
+
 #pragma mark - Drawing
 
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetAllowsAntialiasing(context, YES);
+    
+    if (MKViewFlags.usesBackGroundFill) {
+        drawWithGraphicsStructure(context, rect, self.graphicsStructure);
+    }
 
     if (MKViewFlags.isHeaderView && MKViewFlags.isHeaderPlain) {
         CGColorRef topColor = MK_COLOR_HSB(345.0, 2.0, 99.0, 1.0).CGColor;
@@ -249,12 +274,8 @@
     
     mController = nil;
     
-    if (mGradient) {
-        [mGradient release];
-    }
-    
     self.controller = nil;
-    self.gradient = nil;
+    self.graphicsStructure = nil;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MKViewShouldRemoveNotification object:nil];
     

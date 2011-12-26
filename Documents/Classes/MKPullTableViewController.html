@@ -1,0 +1,396 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>MKPullTableViewController Class Reference</title>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+		<meta name="generator" content="appledoc 2.0b3" />
+	</head>
+	<body>
+		<article>
+			<div class="main-navigation navigation-top">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="header">
+				<div class="section-header">
+					<h1 class="title title-header">MKPullTableViewController Class Reference</h1>
+				</div>		
+			</div>
+			<div id="container">	
+				
+				<div class="section section-specification"><table cellspacing="0"><tbody>
+					<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">UITableViewController</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">MKPullTableViewController.h</td>
+</tr>
+					</tbody></table></div>
+				
+				
+				
+				<div class="section section-overview">
+					<h2 class="subtitle subtitle-overview">Overview</h2>
+					
+<p> <strong> Overview </strong></p>
+
+<p> <a href="MKPullTableViewController.html">MKPullTableViewController</a> is a subclass of UITableViewController that allows for pull down actions. This class does not provide any specific action for a pull down such as pull to refresh. Instead it gives the ablitlty to specify a pull down view of any type, and methods for observing pull and release actions. It is upto you to preform any refresh or reloading actions for the table views data. </p>
+
+<p> <strong> Observing Actions </strong></p>
+
+<p> The observation of action are built right into the class; your subclass can access them directry without the use of delegate or notifications. You can observe the view being pulled down, pushed back up, released, and when the operations are complete. <p class="warning"> <strong> Note </strong> You need to forward the observation method to the super class for this view controller to function properly. </p></p>
+
+<p> <strong> Required Frameworks </strong> <ul><li> Foundation </li><li> UIKit </li></ul></p>
+
+				</div>
+				
+				
+				
+				
+				<div class="section section-tasks">
+					<h2 class="subtitle subtitle-tasks">Tasks</h2>
+					
+					<h3 class="subsubtitle task-title">Pull Down View</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pullDownView"> pullDownView</a></code>
+		<span class="tooltip"> The view that will be shown when the table view is pulled Down. This view can be any height, MKPullDownTableViewController will adjust accordingly to fit the height of the view. <p class="warning"> <strong> Note </strong> If the <a href="#//api/name/pullDownView">pullDownView</a> has a height that is grater than the available display area, the pull down control will not function properly. </p></span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Observing Pull Down Actions</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/working"> working</a></code>
+		<span class="tooltip"> Is set to <code>YES</code> when a <a href="#//api/name/pullDownView">pullDownView</a> is fully pulled down and release. Will return to <code>NO</code> when the <a href="#//api/name/shouldReturnPullDownView">shouldReturnPullDownView</a> method is called. Default is <code>NO</code>. <p class="warning"> <strong> Note </strong> When <a href="#//api/name/working">working</a> is set to <code>YES</code>, no pull or push actions will be called. </p></span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/didPullDownPullDownView">- didPullDownPullDownView</a></code>
+		<span class="tooltip"> Called when the pull down view full pulled onto the screen <p class="warning"> <strong> Note </strong> This method is called from the scroll view delegate, it may be called several time in a row. </p></span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/didPushUpPullDownView">- didPushUpPullDownView</a></code>
+		<span class="tooltip"> Called when the pull down is pushed back up before being released. <p class="warning"> <strong> Note </strong> This methoe is called from the scroll view delegate, it may be called several times in a row </p></span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/didReleasePullDownView">- didReleasePullDownView</a></code>
+		<span class="tooltip"> Called when the pull down view is pulled and complete and then the user lifts their finger from the screen. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pullDownOperationsCompleted">- pullDownOperationsCompleted</a></code>
+		<span class="tooltip"> Called after the pull down view is progamatically moved of the top of the screen. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Notifications</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/shouldReturnPullDownView">- shouldReturnPullDownView</a></code>
+		<span class="tooltip"> Subclasses should call this method when they have completed the operations preformed in the <a href="#//api/name/didReleasePullDownView">didReleasePullDownView</a> method. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/didPullDownPullDownView" title="didPullDownPullDownView"></a>
+	<h3 class="subsubtitle method-title">didPullDownPullDownView</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Called when the pull down view full pulled onto the screen <p class="warning"> <strong> Note </strong> This method is called from the scroll view delegate, it may be called several time in a row. </p></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)didPullDownPullDownView</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKPullTableViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/didPushUpPullDownView" title="didPushUpPullDownView"></a>
+	<h3 class="subsubtitle method-title">didPushUpPullDownView</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Called when the pull down is pushed back up before being released. <p class="warning"> <strong> Note </strong> This methoe is called from the scroll view delegate, it may be called several times in a row </p></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)didPushUpPullDownView</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKPullTableViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/didReleasePullDownView" title="didReleasePullDownView"></a>
+	<h3 class="subsubtitle method-title">didReleasePullDownView</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Called when the pull down view is pulled and complete and then the user lifts their finger from the screen. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)didReleasePullDownView</code></div>
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		
+		<p> Called when the pull down view is pulled and complete and then the user lifts their finger from the screen. </p>
+		
+		<p> Use this method to pefrom any operations that pulling down the table view will cause. (i.e., refresh data sources). <p class="warning"> <strong> Note </strong> It is required that subclasses call <code>[surer didReleasePullDownView]</code> in this method. The pull down view will not function properly if this is not done. </p></p>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKPullTableViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/pullDownOperationsCompleted" title="pullDownOperationsCompleted"></a>
+	<h3 class="subsubtitle method-title">pullDownOperationsCompleted</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Called after the pull down view is progamatically moved of the top of the screen. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)pullDownOperationsCompleted</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKPullTableViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/shouldReturnPullDownView" title="shouldReturnPullDownView"></a>
+	<h3 class="subsubtitle method-title">shouldReturnPullDownView</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Subclasses should call this method when they have completed the operations preformed in the <a href="#//api/name/didReleasePullDownView">didReleasePullDownView</a> method. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)shouldReturnPullDownView</code></div>
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		
+		<p> Subclasses should call this method when they have completed the operations preformed in the <a href="#//api/name/didReleasePullDownView">didReleasePullDownView</a> method. </p>
+		
+		<p> Calling this method will move the pull down view back of the top of the view and call the pullDownOpertaionsCompleted method. </p>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKPullTableViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+				
+				<div class="section section-methods">
+					<h2 class="subtitle subtitle-methods">Properties</h2>
+					
+					<div class="section-method">
+	<a name="//api/name/pullDownView" title="pullDownView"></a>
+	<h3 class="subsubtitle method-title">pullDownView</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The view that will be shown when the table view is pulled Down. This view can be any height, MKPullDownTableViewController will adjust accordingly to fit the height of the view. <p class="warning"> <strong> Note </strong> If the <a href="#//api/name/pullDownView">pullDownView</a> has a height that is grater than the available display area, the pull down control will not function properly. </p></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UIView *pullDownView</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKPullTableViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/working" title="working"></a>
+	<h3 class="subsubtitle method-title">working</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Is set to <code>YES</code> when a <a href="#//api/name/pullDownView">pullDownView</a> is fully pulled down and release. Will return to <code>NO</code> when the <a href="#//api/name/shouldReturnPullDownView">shouldReturnPullDownView</a> method is called. Default is <code>NO</code>. <p class="warning"> <strong> Note </strong> When <a href="#//api/name/working">working</a> is set to <code>YES</code>, no pull or push actions will be called. </p></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL working</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKPullTableViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+				</div>
+				
+				
+			</div>
+			<div class="main-navigation navigation-bottom">
+				<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+			</div>
+			<div id="footer">
+				<hr />
+				<div class="footer-copyright">
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-12-26)</span><br />
+					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
+				</div>
+			</div>
+		</article>
+	</body>
+</html>

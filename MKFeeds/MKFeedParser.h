@@ -21,7 +21,7 @@ typedef enum {
 typedef enum {
     MKFeedSourceRSS,
     MKFeedSourceAtom,
-    MKFeedSourceTypeJSON,
+    MKFeedSourceTypeGoogleFeedAPIJSON,
     MKFeedSourceTypeUnknown,
 } MKFeedSourceType;
 
@@ -32,15 +32,16 @@ typedef enum {
  *Overview*
  
  MKFeedParser requests RSS/ATOM feeds from the internet and pases them into an array for 
- use by your app. MKFeedParser will automaically detect what type of feed it is parsing.
- You can acess the type of feed using the sourceType property. This property will return
- one of two values:
+ use by your app. MKFeedParser will automaically detect what type of feed it is parsing, 
+ or you can set the type of feed if it is know. If MKFeedParser detects that the feed type
+ is set incorrectly, it will change it. You can access the type of feed using the sourceType 
+ property. This property will return one of two values:
  
- * `MKFeedSourceRSS` : Returned if the feed is in RSS format.
- * `MKFeedSourceAtom` : Returned if the feed is in an Atom format.
+ * `MKFeedSourceRSS` : Used if the feed is in RSS format.
+ * `MKFeedSourceAtom` : Used if the feed is in an Atom format.
+ * `MKFeedSourceGoogleFeedAPIJSON` : Used if the feed is from the Google Feed API. 
  
- It is important to know what type of feed is being parsed in order to retrive the 
- data from it.
+ All feeds are parsed into an Array of MKFeedItem objects.
  
  *Using Returned Data*
  

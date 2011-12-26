@@ -10,9 +10,13 @@
 
 #import <MKKit/MKKit/MKImage.h>
 
+void drawButtonBorder(CGContextRef context, CGRect rect);
+
 @implementation MKBarButtonItem
 
 @synthesize type=mType;
+
+@dynamic bordered;
 
 #pragma mark - Initalizer
 
@@ -53,13 +57,23 @@
     return self;
 }
 
+#pragma mark - Memory
+
+- (void)dealloc {
+    [super dealloc];
+}
+
 #pragma mark - Drawing
 
 - (void)drawRect:(CGRect)rect {
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetAllowsAntialiasing(context, YES);
+    
+    if (MKBarButtonItemFlags.isBordered) {
+        drawButtonBorder(context, rect);
+    }
+    
     if (MKBarButtonItemFlags.requiresDrawing) {
-        CGContextRef context = UIGraphicsGetCurrentContext();
-        CGContextSetAllowsAntialiasing(context, YES);
-        
         CGFloat outerMargin = 2.0;
         CGRect viewRect = CGRectInset(self.bounds, outerMargin, outerMargin);
         
@@ -101,10 +115,39 @@
     }
 }
 
-#pragma mark - Memory Managment
+#pragma mark Helpers
 
-- (void)dealloc {
-    [super dealloc];
+void drawButtonBorder(CGContextRef context, CGRect rect) {
+    CGColorRef borderColor = BLACK.CGColor;
+    
+    CGMutablePathRef roundedRect = createRoundedRectForRect(rect, 5.0);
+    
+    CGContextSaveGState(context);
+    CGContextAddPath(context, roundedRect);
+    CGContextClip(context);
+    drawLinearGloss(context, rect);
+    CGContextRestoreGState(context);
+    
+    CGContextSaveGState(context);
+    CGContextSetStrokeColorWithColor(context, borderColor);
+    CGContextSetLineWidth(context, 2.0);
+    CGContextAddPath(context, roundedRect);
+    CGContextStrokePath(context);
+    CGContextRestoreGState(context);
+}
+
+#pragma mark - Accessors
+#pragma mark Setters
+
+- (void)setBordered:(BOOL)_bordered {
+    MKBarButtonItemFlags.isBordered = YES;
+    [self setNeedsDisplay];
+}
+
+#pragma mark Getters
+
+- (BOOL)bordered {
+    return MKBarButtonItemFlags.isBordered;
 }
 
 @end

@@ -26,6 +26,9 @@
 	<td class="specification-title">Inherits from</td>
 	<td class="specification-value">UIView</td>
 </tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value"><a href="../Protocols/MKGraphicFactory.html">MKGraphicFactory</a></td>
+</tr><tr>
 	<td class="specification-title">Declared in</td>
 	<td class="specification-value">MKView.h</td>
 </tr>
@@ -41,6 +44,10 @@
 <p> The <a href="MKView.html">MKView</a> class is a super class for specialty views. <a href="MKView.html">MKView</a> adopts the <a href="../Protocols/MKViewDelegate.html">MKViewDelegate</a> protocol. When the <a href="#//api/name/showWithAnimationType:">showWithAnimationType:</a> method is used, views are add to the application&apos;s keyWindow. </p>
 
 <p> The folling <code>MKViewAnimationType</code> (s) are avialible: <ul><li> <code>MKViewAnimationTypeNone</code>: No animations are preformed. View will just appear on the screen. </li><li> <code>MKViewAnimationTypeFadeIn</code>: The View will Fade onto the screen. </li><li> <code>MKViewAnimationTypeMoveInFromTop</code>: The View will slide onto the screen from the top. </li><li> <code>MKViewAnimationTypeAppearAboveToolbar</code>: The View will above so it is placed just above a toolbar. </li></ul> <p class="warning"> <strong> Note </strong> When the showWithAnitmationType: method is used, views are added to the application&apos;s key window. Some subclass of <a href="MKView.html">MKView</a> handel removing themselfs. You should check the documentation of the given class for removal options. </p></p>
+
+<p> <strong> Drawing of Views </strong></p>
+
+<p> <a href="MKView.html">MKView</a> supports the use of <a href="MKGraphicsStructures.html">MKGraphicsStructures</a> and conforms to the MKGraphicsFactory protocol. If you are not using a graphics dictionay you set a MKGraphicsInstance using the graphicsStructure property. <strong> Note. Setting the graphicsStucture property will cause the view to redraw itself. </strong> <a href="MKView.html">MKView</a> will look for following graphics properties: <ul><li> <code>fill</code>: if a fill propery is set, it will be used to color the view. If the fill property is nil, instance will look for top an bottom properties to create a gradiant fill. </li><li> <code>top</code>: this will be the top half of the views background fill. </li><li> <code>bottom</code>: this will be the bottom half of the view background fill. </li><li> <code>usesLinerShine</code>: tells if the backgound will have a liner shine added or not. </li></ul></p>
 
 <p> <strong> Required Frameworks </strong> <ul><li> UIKit </li><li> Foundation </li><li> Core Graphics </li></ul></p>
 
@@ -116,7 +123,7 @@
 						<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/gradient"> gradient</a></code>
-		<span class="tooltip"> Sets a <a href="#//api/name/gradient">gradient</a> to be used for any drawings of the view. </span>
+		<span class="tooltip"> <strong> DEPRECATED v0.9 </strong> use graphicStructure instead. </span>
 	</span>
 	
 </li>
@@ -177,30 +184,6 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/MK_DEPRECATED_0_9"> MK_DEPRECATED_0_9</a></code>
 		<span class="tooltip"> <p class="warning"> <strong> Deprecated Property v0.9 </strong></p></span>
-	</span>
-	
-</li>
-					</ul>
-					
-					<h3 class="subsubtitle task-title">MKTableHeader Methods</h3>
-
-					<ul class="task-list">
-						<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/initWithTitle:type:">- initWithTitle:type:</a></code>
-		<span class="tooltip"> Returns an instace of <a href="MKView.html">MKView</a> sized for a grouped table header. </span>
-	</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/headerViewWithTitle:type:">+ headerViewWithTitle:type:</a></code>
-		<span class="tooltip"> Returns an instace of <a href="MKView.html">MKView</a> sized for a grouped table header. </span>
-	</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/titleLabel"> titleLabel</a></code>
-		<span class="tooltip"> The UILabel instance that is displayed on the view </span>
 	</span>
 	
 </li>
@@ -267,6 +250,30 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/addDetailElement:">- addDetailElement:</a></code>
 		<span class="tooltip"> Adds a view under the primary and seconday views. The primay and secondary views adjust to fit the new element. If the cell has an icon view assigned, the detail element is moved to right to fit the icon. </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">MKTableHeader Methods</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithTitle:type:">- initWithTitle:type:</a></code>
+		<span class="tooltip"> Returns an instace of <a href="MKView.html">MKView</a> sized for a grouped table header. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/headerViewWithTitle:type:">+ headerViewWithTitle:type:</a></code>
+		<span class="tooltip"> Returns an instace of <a href="MKView.html">MKView</a> sized for a grouped table header. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/titleLabel"> titleLabel</a></code>
+		<span class="tooltip"> The UILabel instance that is displayed on the view </span>
 	</span>
 	
 </li>
@@ -1100,7 +1107,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p> Sets a <a href="#//api/name/gradient">gradient</a> to be used for any drawings of the view. </p>
+		<p> <strong> DEPRECATED v0.9 </strong> use graphicStructure instead. </p>
 	</div>		
 	
 	
@@ -1110,17 +1117,6 @@
 	
 	
 	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		
-		<p> Sets a <a href="#//api/name/gradient">gradient</a> to be used for any drawings of the view. </p>
-		
-		<p> Use the method + [(id) MKGraphicStructures linearGradientWithTopColor:bottomColor:] to make a MKLinearGradient. </p>
-		
-		<p> Default is a soild white gradient. </p>
-		
-	</div>
 	
 	
 	
@@ -1373,7 +1369,7 @@
 			<div id="footer">
 				<hr />
 				<div class="footer-copyright">
-					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-12-08)</span><br />
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-12-26)</span><br />
 					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
 				</div>
 			</div>

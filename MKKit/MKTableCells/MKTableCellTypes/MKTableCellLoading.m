@@ -8,34 +8,70 @@
 
 #import "MKTableCellLoading.h"
 
-
 @implementation MKTableCellLoading
 
 @synthesize activityIndicator=mActivityIndicator;
 
+@dynamic working;
+
+#pragma mark - Creation
+
 - (id)initWithType:(MKTableCellType)cellType reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithType:MKTableCellTypeNone reuseIdentifier:reuseIdentifier];
     if (self) {
-        mTheLabel = [[UILabel alloc] initWithFrame:CGRectMake(109.0, 11.0, 82.0, 21.0)];
+        mCellView = [[MKView alloc] initWithCell:self];
+        
+        mTheLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         mTheLabel.backgroundColor = CLEAR;
-        mTheLabel.textAlignment = UITextAlignmentLeft;
+        mTheLabel.textAlignment = UITextAlignmentCenter;
         mTheLabel.text = @"Loading";
         
-        [self.contentView addSubview:mTheLabel];
+        [mCellView addPrimaryElement:mTheLabel];
         [mTheLabel release];
         
-        mActivityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(182.0, 12.0, 20.0, 20.0)];
+        mActivityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectZero];
         mActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
-        [mActivityIndicator startAnimating];
+        mActivityIndicator.hidesWhenStopped = YES;
+        self.working = YES;
         
-        [self.contentView addSubview:mActivityIndicator];
+        [mCellView addSubview:mActivityIndicator];
         [mActivityIndicator release];
+        
+        [self.contentView addSubview:mCellView];
+        [mCellView release];
     }
     return self;
 }
 
+#pragma mark - Mememory Management
+
 - (void)dealloc {
+    self.activityIndicator = nil;
+    
     [super dealloc];
+}
+
+#pragma mark - Accessor Methods
+#pragma mark Setters
+
+- (void)setWorking:(BOOL)_working {
+    MKTableCellLoadingFlags.isWorking = _working;
+    
+    if (_working) {
+        CGFloat legthOfText = MK_TEXT_WIDTH(mTheLabel.text, mTheLabel.font);
+        CGFloat centerOfText = mTheLabel.center.x;
+        CGRect activityIndicorRect = CGRectMake((centerOfText + (legthOfText / 2.0) + 15.0), 12.0, 20.0, 20.0);
+        
+        mActivityIndicator.frame = activityIndicorRect;
+        [mActivityIndicator startAnimating];
+    }
+    else {
+        [mActivityIndicator stopAnimating];
+    }
+}
+
+- (BOOL)working {
+    return MKTableCellLoadingFlags.isWorking;
 }
 
 @end

@@ -10,6 +10,14 @@
 #import "NSString+MKFeedParser.h"
 #import "MKFeedItem.h"
 
+#define GOOGLE_API_PATH     @"/ajax/services/feed/load"
+
+@interface MKFeedParser () 
+
+- (void)parseJSON:(NSData *)jsonData;
+
+@end
+
 @implementation MKFeedParser
 
 @synthesize url=mUrl, delegate, requestCompleteBlock=mRequestCompleteBlock;
@@ -82,13 +90,17 @@
 
 - (void)request {
 	request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:mUrl] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60.0];
-	
+    
 	theConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 	
 	if (theConnection) {
 		requestData = [[NSMutableData data] retain];
-	} else{
-	}
+	} 
+    
+    if ([[[NSURL URLWithString:mUrl] path] isEqualToString:GOOGLE_API_PATH]) {
+        mSourceType = MKFeedSourceTypeGoogleFeedAPIJSON;
+    }
+    
 	[mUrl release];
 }
 
@@ -96,6 +108,40 @@
     self.requestCompleteBlock = block;
     MKRSSFeedTags.usesCompletionBlock = YES;
     [self request];
+}
+
+#pragma mark - JSON
+
+- (void)parseJSON:(NSData *)jsonData {
+    NSError *error;
+    NSDictionary *dataDict = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
+    
+    NSDictionary *responseDict = [dataDict objectForKey:@"responseData"];
+    NSDictionary *feedDict = [responseDict objectForKey:@"feed"];
+    
+    NSMutableArray *rtnItems = [[NSMutableArray alloc] initWithCapacity:0];
+    
+    NSArray *entrys = [feedDict objectForKey:@"entries"];
+    
+    for (NSDictionary *dict in entrys) {
+        MKFeedItem *feedItem = [[MKFeedItem alloc] initWithType:MKFeedSourceTypeGoogleFeedAPIJSON];
+        [feedItem addValue:[dict objectForKey:@"title"] forElement:MKFeedAtomTitle];
+        [feedItem addValue:[dict objectForKey:@"link"] forElement:MKFeedAtomLink];
+        [feedItem addValue:[dict objectForKey:@"contentSnippet"] forElement:MKFeedAtomSummary];
+        [feedItem addValue:[dict objectForKey:@"author"] forElement:MKFeedAtomAuthorName];
+        
+        [rtnItems addObject:feedItem];
+        [feedItem release];
+    }
+    
+    if (MKRSSFeedTags.usesCompletionBlock) {
+        self.requestCompleteBlock(rtnItems, nil);
+    }
+    else {
+        [delegate feed:self didReturnData:rtnItems];
+    }
+    
+    [rtnItems release];
 }
 
 #pragma mark -
@@ -127,11 +173,11 @@
     // UNCOMMENT THESE LINES TO POST THE FEED DATA IN THE LOG //
     ////////////////////////////////////////////////////////////
     
-	NSString *data = [[NSString alloc] initWithData:requestData encoding:NSUTF8StringEncoding];
-	NSLog(@"%@", data);
+	//NSString *data = [[NSString alloc] initWithData:requestData encoding:NSUTF8StringEncoding];
+	//NSLog(@"%@", data);
 	
-    if (mSourceType == MKFeedSourceTypeJSON) {
-        
+    if (mSourceType == MKFeedSourceTypeGoogleFeedAPIJSON) {
+        [self parseJSON:requestData];
     }
     else {
         theParser = [[NSXMLParser alloc] initWithData:requestData];
@@ -150,7 +196,7 @@
 #pragma mark parser
 
 - (void)parserDidStartDocument:(NSXMLParser *)parser {
-	items = [[[NSMutableArray alloc] initWithCapacity:15] retain];
+	items = [[NSMutableArray alloc] initWithCapacity:15];
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {

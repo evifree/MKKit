@@ -214,3 +214,28 @@ void drawGlossAndLinearGradient(CGContextRef conext, CGRect rect, CGColorRef sta
     
     drawLinearGradient(conext, topHalf, gloss1color.CGColor, gloss2color.CGColor);
 }
+
+void drawWithGraphicsStructure(CGContextRef context, CGRect rect, MKGraphicsStructures *graphics) {
+    CGColorRef top;
+    CGColorRef bottom;
+    
+    if (graphics.fill) {
+        top = graphics.fill.CGColor;
+        bottom = graphics.fill.CGColor;
+    }
+    else {
+        top = graphics.top.CGColor;
+        bottom = graphics.bottom.CGColor;
+    }
+    
+    CGContextSaveGState(context);
+    
+    if (graphics.useLinerShine) {
+        drawGlossAndLinearGradient(context, rect, top, bottom);
+    }
+    else {
+        drawLinearGradient(context, rect, top, bottom);
+    }
+    
+    CGContextRestoreGState(context);
+}

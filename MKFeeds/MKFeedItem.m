@@ -146,4 +146,34 @@ static NSString *MKFeedItemPubDate = @"MKFeedItemPubDate";
     return date;
 }
 
+#pragma mark - KVC
+#pragma mark Setters
+
+- (void)setValue:(id)value forKey:(NSString *)key {
+    if ([key isEqualToString:@"itemTitle"]) {
+        mItemTitle = [(NSString *)value copy];
+    }
+    if ([key isEqualToString:@"itemContent"]) {
+        mItemContent = [(NSString *)value copy];
+    }
+    if ([key isEqualToString:@"itemAuthor"]) {
+        mItemAuthor = [(NSString *)value copy];
+    }
+}
+
+#pragma mark Getters
+
+- (id)valueForKey:(NSString *)key {
+    if ([key isEqualToString:@"itemTitle"]) {
+        return mItemTitle;
+    }
+    if ([key isEqualToString:@"itemContent"]) {
+        return mItemContent;
+    }
+    if ([key isEqualToString:@"itemAuthor"]) {
+        return mItemAuthor;
+    }
+    return nil;
+}
+
 @end

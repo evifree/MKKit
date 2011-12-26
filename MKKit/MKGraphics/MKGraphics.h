@@ -33,3 +33,5 @@ void drawLinearGloss(CGContextRef context, CGRect rect);
 
 void drawLinearGradient(CGContextRef context, CGRect rect, CGColorRef startColor, CGColorRef endColor);
 void drawGlossAndLinearGradient(CGContextRef conext, CGRect rect, CGColorRef startColor, CGColorRef endColor);
+
+void drawWithGraphicsStructure(CGContextRef context, CGRect rect, MKGraphicsStructures *graphics);

@@ -43,6 +43,7 @@ typedef enum {
 @private
     struct {
         BOOL requiresDrawing;
+        BOOL isBordered;
     } MKBarButtonItemFlags;
 }
 
@@ -74,6 +75,13 @@ typedef enum {
  @return MKBarButtonItem instance
 */
 - (id)initWithIcon:(MKImage *)icon;
+
+///------------------------------------------
+/// @name Behaviors
+///------------------------------------------
+
+/** Set to `YES` to have border drawn around the button */
+@property (nonatomic, assign) BOOL bordered;
 
 ///------------------------------------------
 /// @name Types

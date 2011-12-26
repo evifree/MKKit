@@ -26,7 +26,9 @@ typedef enum {
     MKTableHeaderTypePlain,
 } MKTableHeaderType;
 
-@protocol MKViewDelegate, MKImage;
+@protocol MKViewDelegate;
+
+@class MKImage;
 
 /**-------------------------------------------------------------------------------------------------------
  *Overview*
@@ -45,6 +47,19 @@ typedef enum {
  key window. Some subclass of MKView handel removing themselfs. You should check the documentation of the
  given class for removal options.
  
+ *Drawing of Views*
+ 
+ MKView supports the use of MKGraphicsStructures and conforms to the MKGraphicsFactory protocol. If you
+ are not using a graphics dictionay you set a MKGraphicsInstance using the graphicsStructure property. 
+ *Note. Setting the graphicsStucture property will cause the view to redraw itself.* MKView will look for 
+ following graphics properties:
+ 
+ * `fill` : if a fill propery is set, it will be used to color the view. If the fill property is nil, 
+ instance will look for top an bottom properties to create a gradiant fill.
+ * `top` : this will be the top half of the views background fill.
+ * `bottom` : this will be the bottom half of the view background fill.
+ * `usesLinerShine` : tells if the backgound will have a liner shine added or not.
+ 
  *Required Frameworks*
  
  * UIKit
@@ -62,19 +77,19 @@ typedef enum {
  * MKViewDelegate
 -------------------------------------------------------------------------------------------------------*/
 
-@interface MKView : UIView {
+@interface MKView : UIView <MKGraphicFactory> {
     id mDelegate;
     UIViewController *mController;
     BOOL mShouldRemoveView;
     MKViewAnimationType mAnimationType;
-    MKGraphicsStructures *mGradient;
+    MKGraphicsStructures *mGraphics;
     
 @private
     struct {
         bool isHeaderView;
         bool isHeaderGrouped;
         bool isHeaderPlain;
-        bool usesGradient;
+        bool usesBackGroundFill;
     } MKViewFlags;
 }
 
@@ -121,15 +136,8 @@ typedef enum {
 /// @name Graphics Settings
 ///----------------------------------------------------
 
-/** 
- Sets a gradient to be used for any drawings of the view. 
- 
- Use the method + [(id) MKGraphicStructures linearGradientWithTopColor:bottomColor:] 
- to make  a MKLinearGradient.
- 
- Default is a soild white gradient.
- */
-@property (nonatomic, retain) MKGraphicsStructures *gradient;
+/** *DEPRECATED v0.9* use graphicStructure instead.*/
+@property (nonatomic, retain) MKGraphicsStructures *gradient;// MK_DEPRECATED_0_9;
 
 ///-----------------------------------------------------
 /// @name Ownership
