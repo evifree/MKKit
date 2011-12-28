@@ -61,7 +61,7 @@ static const float kButtonTextPadding           = 10.0;
 @interface MKButton : MKControl {
     MKButtonType mType;
     NSString *mButtonText;
-    MKGraphicsStructures *mGraphics;
+    //MKGraphicsStructures *mGraphics;
 
 @private
     UILabel *mButtonLabel;

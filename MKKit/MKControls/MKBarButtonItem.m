@@ -10,37 +10,23 @@
 
 #import <MKKit/MKKit/MKImage.h>
 
-void drawButtonBorder(CGContextRef context, CGRect rect);
+void drawButtonWithGraphics(CGContextRef context, CGRect rect, MKGraphicsStructures *graphics, MKBarButtonItemType buttonType, MKControlState state);
 
 @implementation MKBarButtonItem
 
-@synthesize type=mType;
-
-@dynamic bordered;
+@dynamic type;
 
 #pragma mark - Initalizer
 
 - (id)initWithType:(MKBarButtonItemType)type {
-    self = [super init];
-    if (self) {
-        self.opaque = NO;
-        self.backgroundColor = CLEAR;
-        mType = type;
-        
-        MKBarButtonItemFlags.requiresDrawing = YES;
-        
-        if (type == MKBarButtonItemBackArrow || type == MKBarButtonItemForwardArrow) {
-            self.frame = CGRectMake(0.0, 0.0, 20.0, 20.0);
-        }
-    }
-    return self;
+    //////  DEPRECIATED v0.9 /////
+    return nil;
 }
 
 - (id)initWithIcon:(MKImage *)icon {
     self = [super init];
     if (self) {
-        self.opaque = NO;
-        self.backgroundColor = CLEAR;
+        [self setUpControl];
         self.frame = CGRectMake(0.0, 0.0, icon.size.width, icon.size.height);
         
         mType = MKBarButtonItemIcon;
@@ -57,6 +43,34 @@ void drawButtonBorder(CGContextRef context, CGRect rect);
     return self;
 }
 
+- (id)initWithType:(MKBarButtonItemType)type graphicNamed:(NSString *)name {
+    self = [super initWithGraphicsNamed:name]; 
+    if (self) {
+        [self setUpControl];
+        
+        if (name) {
+            self.graphicsStructure = [MKGraphicsStructures graphicsWithName:name];
+        }
+        else {
+            self.graphicsStructure = [self defaultGraphics];
+        }
+            
+        mType = type;
+        
+        MKBarButtonItemFlags.requiresDrawing = YES;
+        
+        if (type == MKBarButtonItemBackArrow || type == MKBarButtonItemForwardArrow) {
+            self.frame = CGRectMake(0.0, 0.0, 20.0, 20.0);
+        }
+    }
+    return self;
+}
+
+- (void)setUpControl {
+    self.opaque = NO;
+    self.backgroundColor = CLEAR;
+}
+
 #pragma mark - Memory
 
 - (void)dealloc {
@@ -66,88 +80,83 @@ void drawButtonBorder(CGContextRef context, CGRect rect);
 #pragma mark - Drawing
 
 - (void)drawRect:(CGRect)rect {
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetAllowsAntialiasing(context, YES);
-    
-    if (MKBarButtonItemFlags.isBordered) {
-        drawButtonBorder(context, rect);
-    }
-    
     if (MKBarButtonItemFlags.requiresDrawing) {
-        CGFloat outerMargin = 2.0;
-        CGRect viewRect = CGRectInset(self.bounds, outerMargin, outerMargin);
-        
-        CGColorRef fillColor = nil;
-        
-        if (MKControlFlags.isEnabled) {
-            fillColor = MK_COLOR_HSB(345.0, 1.0, 99.0, 1.0).CGColor;
-        }
-        else {
-            fillColor = MK_COLOR_HSB(345.0, 1.0, 99.0, 0.25).CGColor;;
-        }
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        CGContextSetAllowsAntialiasing(context, YES);
     
-        CGColorRef shadowColor = BLACK.CGColor;
-        
-        if (mType == MKBarButtonItemBackArrow) {
-            CGMutablePathRef arrowPath = createPathForLeftArrow(viewRect);
-            
-            CGContextSaveGState(context);
-            CGContextSetShadowWithColor(context, CGSizeMake(0, -1), 0.0, shadowColor);
-            CGContextSetFillColorWithColor(context, fillColor);
-            CGContextAddPath(context, arrowPath);
-            CGContextFillPath(context);
-            CGContextRestoreGState(context);
-            
-            CFRelease(arrowPath);
-        }
-        else if (mType == MKBarButtonItemForwardArrow) {
-            CGMutablePathRef arrowPath = createPathForRightArrow(viewRect);
-            
-            CGContextSaveGState(context);
-            CGContextSetShadowWithColor(context, CGSizeMake(0, -1), 0.0, shadowColor);
-            CGContextSetFillColorWithColor(context, fillColor);
-            CGContextAddPath(context, arrowPath);
-            CGContextFillPath(context);
-            CGContextRestoreGState(context);
-            
-            CFRelease(arrowPath);
-        }
+        drawButtonWithGraphics(context, self.bounds, mGraphics, self.type, self.controlState);
     }
 }
 
-#pragma mark Helpers
+void drawButtonWithGraphics(CGContextRef context, CGRect rect, MKGraphicsStructures *graphics, MKBarButtonItemType buttonType, MKControlState state) {
+    CGColorRef top = topColorForControlState(state, graphics);
+    CGColorRef bottom = bottomColorForControlState(state, graphics);
+    CGColorRef shadowColor = [UIColor blackColor].CGColor;
+    
+    CGMutablePathRef buttonPath = nil;
 
-void drawButtonBorder(CGContextRef context, CGRect rect) {
-    CGColorRef borderColor = BLACK.CGColor;
+    CGRect arrowButtonRect = CGRectInset(rect, 2.0, 2.0);
     
-    CGMutablePathRef roundedRect = createRoundedRectForRect(rect, 5.0);
+    switch (buttonType) {
+        case MKBarButtonItemBackArrow:
+            buttonPath = createPathForLeftArrow(arrowButtonRect);
+            break;
+        case MKBarButtonItemForwardArrow:
+            buttonPath = createPathForRightArrow(arrowButtonRect);
+            break;
+        default:
+            break;
+    }
     
     CGContextSaveGState(context);
-    CGContextAddPath(context, roundedRect);
+    CGContextAddPath(context, buttonPath);
     CGContextClip(context);
-    drawLinearGloss(context, rect);
+    
+    if (graphics.useLinerShine) {
+        drawGlossAndLinearGradient(context, arrowButtonRect, top, bottom);
+    }
+    else {
+        drawLinearGradient(context, arrowButtonRect, top, bottom);
+    }
+    
     CGContextRestoreGState(context);
     
-    CGContextSaveGState(context);
-    CGContextSetStrokeColorWithColor(context, borderColor);
-    CGContextSetLineWidth(context, 2.0);
-    CGContextAddPath(context, roundedRect);
-    CGContextStrokePath(context);
-    CGContextRestoreGState(context);
+    CGContextAddRect(context, arrowButtonRect);
+    CGContextAddPath(context, buttonPath);
+    CGContextEOClip(context);
+    CGContextAddPath(context, buttonPath);
+    CGContextSetShadowWithColor(context, CGSizeMake(0.0, -1.0), 0.0, shadowColor);
+    CGContextFillPath(context);
+    
+    CFRelease(buttonPath);
+    
+    if (graphics.bordered) {
+        CGColorRef borderColor = graphics.border.CGColor;
+        CGFloat borderWidth = graphics.borderWidth;
+        CGMutablePathRef roundedRect = createRoundedRectForRect(rect, 5.0);
+        
+        CGContextSaveGState(context);
+        CGContextSetLineWidth(context, borderWidth);
+        CGContextSetStrokeColorWithColor(context, borderColor);
+        CGContextAddPath(context, roundedRect);
+        CGContextStrokePath(context);
+        CGContextRestoreGState(context);
+        
+        CFRelease(roundedRect);
+    }
 }
 
 #pragma mark - Accessors
 #pragma mark Setters
 
-- (void)setBordered:(BOOL)_bordered {
-    MKBarButtonItemFlags.isBordered = YES;
-    [self setNeedsDisplay];
+- (void)setType:(MKBarButtonItemType)_type {
+    mType = _type;
 }
 
 #pragma mark Getters
 
-- (BOOL)bordered {
-    return MKBarButtonItemFlags.isBordered;
+- (MKBarButtonItemType)type {
+    return mType;
 }
 
 @end

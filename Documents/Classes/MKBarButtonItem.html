@@ -36,7 +36,13 @@
 				<div class="section section-overview">
 					<h2 class="subtitle subtitle-overview">Overview</h2>
 					
+<p> <strong> Overview </strong></p>
+
 <p> <a href="MKBarButtonItem.html">MKBarButtonItem</a> creates buttons for use on a tab bar. The button that will be displayed depends on the MKBarButtonItemType that is set. Currently There are three types: <ul><li> <code>MKBarButtonItemIcon</code>: a button created from an image. Use initWithIcon method to for this type. </li><li> <code>MKBarButtonItemBackArrow</code>: a triangle pointing to the left. </li><li> <code>MKBarButtonItemForwardArrow</code>: a triangle pointing to the right. </li></ul></p>
+
+<p> <strong> MKGraphics support </strong></p>
+
+<p> MKGraphicsSturctures are supported by <a href="MKBarButtonItem.html">MKBarButtonItem</a> instances. Use the initWithType:graphics method to set a <a href="MKGraphicsStructures.html">MKGraphicsStructures</a> instance from your gaphics dictionary. If you are not using a graphics dicionary your can pass <code>nil</code> for the graphics name and a default graphic structure will be created, or create you own and set it to the graphicStructure property. Instaces will look for the following properties of MKGraphicsSturctures: <ul><li> top : <code>default nil</code></li><li> bottom : <code>default nil</code></li><li> fill : <code>default white</code></li><li> disabled : <code>default white with 0.5 alpha</code></li><li> touch : <code>default white</code></li><li> border : <code>default nil</code></li><li> usesLinerShine : <code>default NO</code></li><li> boarderd : <code>default NO</code></li><li> boarderWidth : <code>default 0.0</code></li></ul> <p class="warning"> <strong> Note </strong> When using an image for the button any graphic support is not used. Assign the graphic to the <a href="MKImage.html">MKImage</a> instance is you would like to use it. </p></p>
 
 <p> <strong> Required Frameworks </strong> <ul><li> Foundation </li><li> UIKit </li><li> Quartz Core </li></ul></p>
 
@@ -55,26 +61,20 @@
 					<ul class="task-list">
 						<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithType:">- initWithType:</a></code>
-		<span class="tooltip"> Returns an intialized instance of <a href="MKBarButtonItem.html">MKBarButtonItem</a> and sets the MKBarButtonItemType. </span>
+		<code><a href="#//api/name/initWithType:MK_DEPRECATED_0_9:">- initWithType:MK_DEPRECATED_0_9:</a></code>
+		<span class="tooltip"> <strong> DEPRECATED v0.9 </strong></span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithType:graphicNamed:">- initWithType:graphicNamed:</a></code>
+		<span class="tooltip"> Returns an intialized instance of MKBarButtonItem, sets the MKBarButtonItemType, and creates the required <a href="MKGraphicsStructures.html">MKGraphicsStructures</a> instance. </span>
 	</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/initWithIcon:">- initWithIcon:</a></code>
 		<span class="tooltip"> Creates an instace of <a href="MKBarButtonItem.html">MKBarButtonItem</a> from an image. </span>
-	</span>
-	
-</li>
-					</ul>
-					
-					<h3 class="subsubtitle task-title">Behaviors</h3>
-
-					<ul class="task-list">
-						<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/bordered"> bordered</a></code>
-		<span class="tooltip"> Set to <code>YES</code> to have border drawn around the button </span>
 	</span>
 	
 </li>
@@ -151,17 +151,49 @@
 </div>
 					
 					<div class="section-method">
-	<a name="//api/name/initWithType:" title="initWithType:"></a>
-	<h3 class="subsubtitle method-title">initWithType:</h3>
+	<a name="//api/name/initWithType:MK_DEPRECATED_0_9:" title="initWithType:MK_DEPRECATED_0_9:"></a>
+	<h3 class="subsubtitle method-title">initWithType:MK_DEPRECATED_0_9:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p> Returns an intialized instance of <a href="MKBarButtonItem.html">MKBarButtonItem</a> and sets the MKBarButtonItemType. </p>
+		<p> <strong> DEPRECATED v0.9 </strong></p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (id)initWithType:(MKBarButtonItemType)<em>type</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithType:(MKBarButtonItemType)<em>type</em> MK_DEPRECATED_0_9</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKBarButtonItem.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/initWithType:graphicNamed:" title="initWithType:graphicNamed:"></a>
+	<h3 class="subsubtitle method-title">initWithType:graphicNamed:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Returns an intialized instance of MKBarButtonItem, sets the MKBarButtonItemType, and creates the required <a href="MKGraphicsStructures.html">MKGraphicsStructures</a> instance. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithType:(MKBarButtonItemType)<em>type</em> graphicNamed:(NSString *)<em>name</em></code></div>
 	
 	
 	<div class="method-subsection arguments-section parameters">
@@ -170,6 +202,11 @@
 		<dl class="argument-def parameter-def">
 			<dt><em>type</em></dt>
 			<dd> the <a href="#//api/name/type">type</a> of button to be displayed </dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd> the name of the graphic sturcture from your graphics dictionary or <code>nil</code> for the default graphic settings (see above in class overview). </dd>
 		</dl>
 		
 	</div>
@@ -186,9 +223,9 @@
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		
-		<p> Returns an intialized instance of <a href="MKBarButtonItem.html">MKBarButtonItem</a> and sets the MKBarButtonItemType. </p>
+		<p> Returns an intialized instance of MKBarButtonItem, sets the MKBarButtonItemType, and creates the required <a href="MKGraphicsStructures.html">MKGraphicsStructures</a> instance. </p>
 		
-		<p> Currently There are three types: <ul><li> <code>MKBarButtonItemIcon</code>: a button created from an image. Use initWithIcon method to for this type. </li><li> <code>MKBarButtonItemBackArrow</code>: a triangle pointing to the left. </li><li> <code>MKBarButtonItemForwardArrow</code>: a triangle pointing to the right. </li></ul></p>
+		<p> This parameter takes one of two types: <ul><li> <code>MKBarButtonItemBackArrow</code>: a triangle pointing to the left. </li><li> <code>MKBarButtonItemForwardArrow</code>: a triangle pointing to the right. </li></ul></p>
 		
 	</div>
 	
@@ -212,38 +249,6 @@
 				
 				<div class="section section-methods">
 					<h2 class="subtitle subtitle-methods">Properties</h2>
-					
-					<div class="section-method">
-	<a name="//api/name/bordered" title="bordered"></a>
-	<h3 class="subsubtitle method-title">bordered</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p> Set to <code>YES</code> to have border drawn around the button </p>
-	</div>		
-	
-	
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL bordered</code></div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">MKBarButtonItem.h</code><br />
-	</div>				
-	
-	
-</div>
 					
 					<div class="section-method">
 	<a name="//api/name/type" title="type"></a>
@@ -290,7 +295,7 @@
 			<div id="footer">
 				<hr />
 				<div class="footer-copyright">
-					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-12-26)</span><br />
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-12-27)</span><br />
 					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
 				</div>
 			</div>

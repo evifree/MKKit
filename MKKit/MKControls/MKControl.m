@@ -7,12 +7,57 @@
 //
 
 #import "MKControl.h"
+#import "MKControl+Internal.h"
+
+#pragma mark - Drawing Helpers
+
+CGColorRef topColorForControlState(MKControlState state, MKGraphicsStructures *graphics) {
+    CGColorRef color = nil;
+    
+    if (state == MKControlStateDisabled) {
+        color = graphics.disabled.CGColor;
+    }
+    else if (state == MKControlStateHighlighted) {
+        color = graphics.touched.CGColor;
+    }
+    else if (state == MKControlStateNormal) {
+        if (graphics.fill) {
+            color = graphics.fill.CGColor;
+        }
+        else {
+            color = graphics.top.CGColor;
+        }
+    }
+    
+    return color;
+}
+
+CGColorRef bottomColorForControlState(MKControlState state, MKGraphicsStructures *graphics) {
+    CGColorRef color = nil;
+    
+    if (state == MKControlStateDisabled) {
+        color = graphics.disabled.CGColor;
+    }
+    else if (state == MKControlStateHighlighted) {
+        color = graphics.touched.CGColor;
+    }
+    else if (state == MKControlStateNormal) {
+        if (graphics.fill) {
+            color = graphics.fill.CGColor;
+        }
+        else {
+            color = graphics.bottom.CGColor;
+        }
+    }
+    
+    return color;
+}
 
 @implementation MKControl
 
-@synthesize delegate=mDelegate, working=mWorking, action;
+@synthesize delegate=mDelegate, working=mWorking, action, graphicsStructure=mGraphics;
 
-@dynamic location;
+@dynamic location, controlState;
 
 #pragma mark - Creation 
 
@@ -24,6 +69,14 @@
     return self;
 }
 
+- (id)initWithGraphicsNamed:(NSString *)structureName {
+    self = [super init];
+    if (self) {
+        mGraphics = [[MKGraphicsStructures graphicsWithName:structureName] retain];
+    }
+    return self;
+}
+
 #pragma mark - Accessor Methods
 #pragma makr Setters
 
@@ -31,8 +84,23 @@
     self.frame = CGRectMake(location.x, location.y, self.frame.size.width, self.frame.size.height);
 }
 
+- (void)setControlState:(MKControlState)_controlState {
+    mControlState = _controlState;
+    [self setNeedsDisplay];
+}
+
 - (void)setEnabled:(BOOL)enabled {
     MKControlFlags.isEnabled = enabled;
+    [self setNeedsDisplay];
+}
+
+- (void)setHighlighted:(BOOL)_highlighted {
+    MKControlFlags.isHighlighted = _highlighted;
+    [self setNeedsDisplay];
+}
+
+- (void)setGraphicsStructure:(MKGraphicsStructures *)_graphicsStructure {
+    mGraphics = [_graphicsStructure retain];
     [self setNeedsDisplay];
 }
 
@@ -40,6 +108,14 @@
 
 - (CGPoint)location {
     return CGPointMake(self.frame.origin.x, self.frame.origin.y);
+}
+
+- (MKControlState)controlState {
+    return mControlState;
+}
+
+- (MKGraphicsStructures *)graphicsStructure {
+    return mGraphics;
 }
 
 #pragma mark - Action Responders
@@ -88,13 +164,13 @@
 #pragma mark - Touches
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    if (MKControlFlags.isEnabled) {
+    if (self.controlState != MKControlStateDisabled) {
         [self processAction:MKActionTouchDown];
     }
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    if (MKControlFlags.isEnabled) {
+    if (self.controlState != MKControlStateDisabled) {
         [self processAction:MKActionTouchUp];
     }
 }
@@ -109,6 +185,7 @@
     [self didRelease];
     
     self.action = nil;
+    self.graphicsStructure = nil;
         
     if (MKControlFlags.targetUsage) {
         [mTargets release];

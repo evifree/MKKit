@@ -48,13 +48,27 @@
 
 <p> MKGraphicsStructure has support the loading of grapics information from a plits file. For example if you want to use the same background drawing for a set of views, you define a color patern in a property list an MKGraphicsStructure will will convert it to an instance for your view to use. </p>
 
-<p> Using a graphics dictionary works off of a singleton instance of MKGraphicStructures. To set the sigleton call the <a href="#//api/name/sharedGraphicsWithFile:">sharedGraphicsWithFile:</a> method and give the path to your graphics dictionary property list. <p class="warning"> <strong> Note </strong> The MKGraphicsSigleton instance is designed specifically for use with graphics dictionary property list. An exception will be thrown if there is an attempt to access the sigleton instance before plist file has been designated. </p></p>
+<p> To use a graphics dictionary you need to register a property list file. This only needs to be done once. You can register a propert list by calling resgisterGraphicsFile: method. Pass on the path to you property list. </p>
 
-<p> After a plist file has been assigned you can create instances by calling the <a href="#//api/name/graphicsWithName:">graphicsWithName:</a> method. Or by calling the MKGraphicsFactory method initWithGraphicsName: for classes that conform to the MKGraphicsFactory protocol. </p>
+<p> After a plist file has been registered you can create instances by calling the <a href="#//api/name/graphicsWithName:">graphicsWithName:</a> method. Or by calling the MKGraphicsFactory method initWithGraphicsName: for classes that conform to the MKGraphicsFactory protocol. </p>
 
-<p> Check the documentation of the class you are using to see MKGraphicsSturctures and/or MKGraphicsFactory is supported, and what graphic properties are expected for the class. </p>
+<p> Check the documentation of the class you are using to see MKGraphicsSturctures and/or MKGraphicsFactory is supported, and what graphic properties are expected for the class. <p class="warning"> <strong> Note </strong> the initWithGraphicsName: method is primarlly used by super classes. Check the documentation of classes you are using for creation methods that suport the use of MKGraphicStrutures. </p></p>
 
-<p> The Following Classes currently support the use of a graphics dictionary: <ul><li> <a href="MKImage.html">MKImage</a></li><li> <a href="MKView.html">MKView</a></li></ul></p>
+<p> The Following Classes currently support the use of a graphics dictionary: <ul><li> <a href="MKBarButtonItem.html">MKBarButtonItem</a></li><li> <a href="MKImage.html">MKImage</a></li><li> <a href="MKView.html">MKView</a></li></ul></p>
+
+<p> <strong> Creating a Graphics Dictionary </strong></p>
+
+<p> An graphics dictionary is created with a property list file. The property list needs have an NSDictionary object as the main level. From there it should contain a NSDictionary object for each graphic structure you want to use in your app. The keys for these dictionary(s) are up to you. </p>
+
+<p> For example if you wanted a graphics structure for icons displayed on your navigation bar the key may be MyNavIcon. This dictionary should contain a series of NSString and NSDictionary objects that corrispond the apropreate vaules and keys. The following is list of expected keys and values: </p>
+
+<p> Colors <ul><li> key : <code>MKGraphicsFillColor</code> value : <code>NSDictionary</code></li><li> key : <code>MKGraphicsTopColor</code> value : <code>NSDictionary</code></li><li> key : <code>MKGrpahicsBottomColor</code> value : <code>NSDictionary</code></li><li> key : <code>MKGraphicsBorderColor</code> value : <code>NSDictionary</code></li><li> key : <code>MKGraphicsDisabledColor</code> value : <code>NSDictionary</code></li><li> key : <code>MKGraphicsTouchedColor</code> value : <code>NSDictionary</code></li></ul></p>
+
+<p> All color dictionaries should have the following structure: <ul><li> MKGraphicsFillColor, MKGraphicsTopColor, or MKGraphicsBottomColor Dictionary key : <code>MKGraphicsColorHSBA</code> or <code>MKGrapicsColorRGBA</code> value : <code>NSDictionary</code></li><li> MKGraphicsColorHSBA keys : <code>h, s, b, a</code>: value <code>NSString</code> to represent the hue, saturation, brightness, and alpha values of a color, given in raw values. </li><li> MKGraphicsColorRGBA keys : <code>r, g, b, a</code>: value <code>NSString</code> to respresent the red, green, blue, and alpha values of a color, given in raw values. </li></ul> <p class="warning"> <strong> Note </strong> If a <a href="#//api/name/fill">fill</a> color used a <a href="#//api/name/top">top</a> color and <a href="#//api/name/bottom">bottom</a> color does not need to be used and vise versa. </p></p>
+
+<p> Bools <ul><li> key : <code>MKGraphicsUseLinerShine</code> value : <code>NSString</code> <strong> YES </strong> to use a shine <strong> NO </strong> (or omit) to not. </li><li> key : <code>MKGraphicsBordered</code> value : <code>NSString</code> <strong> YES </strong> to draw a <a href="#//api/name/border">border</a> <strong> NO </strong> (or omit) to not. <strong> This key does not need to be assigned in your graphics dictionary, assigning a <a href="#//api/name/border">border</a> color will automatically set the value of this key to YES </strong> . </li></ul></p>
+
+<p> Floats <ul><li> key : <code>MKGraphicsBorderWidth</code> value : <code>NSString</code> the string representaion of a float value default is <strong> 2.0 </strong> . </li></ul> <p class="warning"> An example of an graphic dictonary property list is available from the downloads section of the MKKit github project. </p></p>
 
 <p> <strong> Required Classes </strong> <ul><li> <a href="MKObject.html">MKObject</a></li></ul></p>
 
@@ -67,30 +81,6 @@
 				
 				<div class="section section-tasks">
 					<h2 class="subtitle subtitle-tasks">Tasks</h2>
-					
-					<h3 class="subsubtitle task-title">Singleton</h3>
-
-					<ul class="task-list">
-						<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/sharedGraphics">+ sharedGraphics</a></code>
-		<span class="tooltip"> Returns the single instance of <a href="MKGraphicsStructures.html">MKGraphicsStructures</a> <p class="warning"> <strong> Note </strong> A dictionary must be set to create a sigleton instance call <a href="#//api/name/sharedGraphicsWithFile:">sharedGraphicsWithFile:</a> to set the dictionary. </p></span>
-	</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/sharedGraphicsWithFile:">+ sharedGraphicsWithFile:</a></code>
-		<span class="tooltip"> Creates the singleton instance of MKGraphicsStructure and set the dictionary contantained in the property list at the given path. </span>
-	</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/removeSharedGraphics">+ removeSharedGraphics</a></code>
-		<span class="tooltip"> Releases the singleton instance. </span>
-	</span>
-	
-</li>
-					</ul>
 					
 					<h3 class="subsubtitle task-title">Creating</h3>
 
@@ -116,13 +106,13 @@
 </li>
 					</ul>
 					
-					<h3 class="subsubtitle task-title">Aceessing Graphics</h3>
+					<h3 class="subsubtitle task-title">Graphics Dictonary</h3>
 
 					<ul class="task-list">
 						<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/graphicsDictionary"> graphicsDictionary</a></code>
-		<span class="tooltip"> The graphics dictionary that will be used for your app. Set this property using the <a href="#//api/name/sharedGraphicsWithFile:">sharedGraphicsWithFile:</a> method. </span>
+		<code><a href="#//api/name/registerGraphicsFile:">+ registerGraphicsFile:</a></code>
+		<span class="tooltip"> Registers a property list file that used to build <a href="MKGraphicsStructures.html">MKGraphicsStructures</a> instances for use in your app. </span>
 	</span>
 	
 </li>
@@ -137,7 +127,13 @@
 		<span class="tooltip"> Assigns colors for a linear gradient </span>
 	</span>
 	
-</li><li>
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Coloring</h3>
+
+					<ul class="task-list">
+						<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/top"> top</a></code>
 		<span class="tooltip"> the <a href="#//api/name/top">top</a> color of the gradient </span>
@@ -155,10 +151,52 @@
 		<span class="tooltip"> the <a href="#//api/name/fill">fill</a> color of an UI object. </span>
 	</span>
 	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Contol Colors</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/border"> border</a></code>
+		<span class="tooltip"> the <a href="#//api/name/border">border</a> color for an object </span>
+	</span>
+	
 </li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/disabled"> disabled</a></code>
+		<span class="tooltip"> the color of a <a href="#//api/name/disabled">disabled</a> object </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/touched"> touched</a></code>
+		<span class="tooltip"> the color of a <a href="#//api/name/touched">touched</a> object </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Styling</h3>
+
+					<ul class="task-list">
+						<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/useLinerShine"> useLinerShine</a></code>
 		<span class="tooltip"> <code>YES</code> if a liner shine should be used on view drawing. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/bordered"> bordered</a></code>
+		<span class="tooltip"> <code>YES</code> if an object should have a <a href="#//api/name/border">border</a> drawn for it. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/borderWidth"> borderWidth</a></code>
+		<span class="tooltip"> The width of a <a href="#//api/name/border">border</a> if any. Default is <code>2.0</code>. </span>
 	</span>
 	
 </li>
@@ -304,106 +342,31 @@
 </div>
 					
 					<div class="section-method">
-	<a name="//api/name/removeSharedGraphics" title="removeSharedGraphics"></a>
-	<h3 class="subsubtitle method-title">removeSharedGraphics</h3>
+	<a name="//api/name/registerGraphicsFile:" title="registerGraphicsFile:"></a>
+	<h3 class="subsubtitle method-title">registerGraphicsFile:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p> Releases the singleton instance. </p>
+		<p> Registers a property list file that used to build <a href="MKGraphicsStructures.html">MKGraphicsStructures</a> instances for use in your app. </p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>+ (void)removeSharedGraphics</code></div>
+	<div class="method-subsection method-declaration"><code>+ (void)registerGraphicsFile:(NSString *)<em>path</em></code></div>
 	
 	
 	
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">MKGraphicsStructures.h</code><br />
-	</div>				
-	
-	
-</div>
-					
-					<div class="section-method">
-	<a name="//api/name/sharedGraphics" title="sharedGraphics"></a>
-	<h3 class="subsubtitle method-title">sharedGraphics</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p> Returns the single instance of <a href="MKGraphicsStructures.html">MKGraphicsStructures</a> <p class="warning"> <strong> Note </strong> A dictionary must be set to create a sigleton instance call <a href="#//api/name/sharedGraphicsWithFile:">sharedGraphicsWithFile:</a> to set the dictionary. </p></p>
-	</div>		
-	
-	
-	<div class="method-subsection method-declaration"><code>+ (id)sharedGraphics</code></div>
-	
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p> singlton </p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection arguments-section exceptions">
-		<h4 class="method-subtitle exception-title">Exceptions</h4>
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
 		
-		<dl class="argument-def exception-def">
-			<dt><em>MKGraphicsNoSharedInstanceDictionaryException</em></dt>
-			<dd> Thrown if this method is called and no dictionary has been set. </dd>
-		</dl>
+		<p> Registers a property list file that used to build <a href="MKGraphicsStructures.html">MKGraphicsStructures</a> instances for use in your app. </p>
+		
+		<p> After a file is registered you can use <a href="#//api/name/graphicsWithName:">graphicsWithName:</a> method to retrive the instance for the specified graphic. </p>
 		
 	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">MKGraphicsStructures.h</code><br />
-	</div>				
-	
-	
-</div>
-					
-					<div class="section-method">
-	<a name="//api/name/sharedGraphicsWithFile:" title="sharedGraphicsWithFile:"></a>
-	<h3 class="subsubtitle method-title">sharedGraphicsWithFile:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p> Creates the singleton instance of MKGraphicsStructure and set the dictionary contantained in the property list at the given path. </p>
-	</div>		
-	
-	
-	<div class="method-subsection method-declaration"><code>+ (id)sharedGraphicsWithFile:(NSString *)<em>path</em></code></div>
-	
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p> singleton </p>
-	</div>
-	
-	
 	
 	
 	
@@ -481,6 +444,102 @@
 					<h2 class="subtitle subtitle-methods">Properties</h2>
 					
 					<div class="section-method">
+	<a name="//api/name/border" title="border"></a>
+	<h3 class="subsubtitle method-title">border</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> the <a href="#//api/name/border">border</a> color for an object </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UIColor *border</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKGraphicsStructures.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/borderWidth" title="borderWidth"></a>
+	<h3 class="subsubtitle method-title">borderWidth</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The width of a <a href="#//api/name/border">border</a> if any. Default is <code>2.0</code>. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) float borderWidth</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKGraphicsStructures.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/bordered" title="bordered"></a>
+	<h3 class="subsubtitle method-title">bordered</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> <code>YES</code> if an object should have a <a href="#//api/name/border">border</a> drawn for it. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL bordered</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKGraphicsStructures.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
 	<a name="//api/name/bottom" title="bottom"></a>
 	<h3 class="subsubtitle method-title">bottom</h3>
 	
@@ -492,6 +551,38 @@
 	
 	
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UIColor *bottom</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKGraphicsStructures.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/disabled" title="disabled"></a>
+	<h3 class="subsubtitle method-title">disabled</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> the color of a <a href="#//api/name/disabled">disabled</a> object </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UIColor *disabled</code></div>
 	
 	
 	
@@ -545,17 +636,17 @@
 </div>
 					
 					<div class="section-method">
-	<a name="//api/name/graphicsDictionary" title="graphicsDictionary"></a>
-	<h3 class="subsubtitle method-title">graphicsDictionary</h3>
+	<a name="//api/name/top" title="top"></a>
+	<h3 class="subsubtitle method-title">top</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p> The graphics dictionary that will be used for your app. Set this property using the <a href="#//api/name/sharedGraphicsWithFile:">sharedGraphicsWithFile:</a> method. </p>
+		<p> the <a href="#//api/name/top">top</a> color of the gradient </p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSDictionary *graphicsDictionary</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UIColor *top</code></div>
 	
 	
 	
@@ -577,17 +668,17 @@
 </div>
 					
 					<div class="section-method">
-	<a name="//api/name/top" title="top"></a>
-	<h3 class="subsubtitle method-title">top</h3>
+	<a name="//api/name/touched" title="touched"></a>
+	<h3 class="subsubtitle method-title">touched</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p> the <a href="#//api/name/top">top</a> color of the gradient </p>
+		<p> the color of a <a href="#//api/name/touched">touched</a> object </p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UIColor *top</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UIColor *touched</code></div>
 	
 	
 	
@@ -653,7 +744,7 @@
 			<div id="footer">
 				<hr />
 				<div class="footer-copyright">
-					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-12-26)</span><br />
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-12-27)</span><br />
 					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
 				</div>
 			</div>

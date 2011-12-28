@@ -10,6 +10,8 @@
 #import <objc/runtime.h>
 
 #import <MKKit/MKKit/MKObject.h>
+#import <MKKit/MKKit/MKObject+Internal.h>
+
 #import "MKGraphicFactory.h"
 #import "UIColor+MKGraphics.h"
 
@@ -31,25 +33,73 @@
  views, you define a color patern in a property list an MKGraphicsStructure will 
  will convert it to an instance for your view to use.
  
- Using a graphics dictionary works off of a singleton instance of MKGraphicStructures.
- To set the sigleton call the sharedGraphicsWithFile: method and give the path to
- your graphics dictionary property list. 
+ To use a graphics dictionary you need to register a property list file. This only
+ needs to be done once. You can register a propert list by calling resgisterGraphicsFile:
+ method. Pass on the path to you property list.
  
- @warning *Note* The MKGraphicsSigleton instance is designed specifically for use
- with graphics dictionary property list. An exception will be thrown if there is
- an attempt to access the sigleton instance before plist file has been designated.
- 
- After a plist file has been assigned you can create instances by calling the
+ After a plist file has been registered you can create instances by calling the
  graphicsWithName: method. Or by calling the MKGraphicsFactory method initWithGraphicsName:
  for classes that conform to the MKGraphicsFactory protocol.
  
  Check the documentation of the class you are using to see MKGraphicsSturctures and/or 
  MKGraphicsFactory is supported, and what graphic properties are expected for the class.
  
+ @warning *Note* the initWithGraphicsName: method is primarlly used by super classes. Check
+ the documentation of classes you are using for creation methods that suport the use of
+ MKGraphicStrutures.
+ 
  The Following Classes currently support the use of a graphics dictionary:
  
+ * MKBarButtonItem
  * MKImage
  * MKView
+ 
+ *Creating a Graphics Dictionary*
+ 
+ An graphics dictionary is created with a property list file. The property list 
+ needs have an NSDictionary object as the main level. From there it should contain
+ a NSDictionary object for each graphic structure you want to use in your app. The 
+ keys for these dictionary(s) are up to you.
+ 
+ For example if you wanted a graphics structure for icons displayed on your navigation
+ bar the key may be MyNavIcon. This dictionary should contain a series of NSString and 
+ NSDictionary objects that corrispond the apropreate vaules and keys. The following is 
+ list of expected keys and values:
+ 
+ Colors
+ 
+ * key : `MKGraphicsFillColor` value : `NSDictionary`
+ * key : `MKGraphicsTopColor` value : `NSDictionary`
+ * key : `MKGrpahicsBottomColor` value : `NSDictionary`
+ * key : `MKGraphicsBorderColor` value : `NSDictionary`
+ * key : `MKGraphicsDisabledColor` value : `NSDictionary`
+ * key : `MKGraphicsTouchedColor` value : `NSDictionary`
+ 
+ All color dictionaries should have the following structure:
+ 
+ * MKGraphicsFillColor, MKGraphicsTopColor, or MKGraphicsBottomColor Dictionary key : `MKGraphicsColorHSBA` or 
+ `MKGrapicsColorRGBA` value : `NSDictionary`
+ * MKGraphicsColorHSBA keys : `h, s, b, a` : value `NSString` to represent the hue, saturation, brightness, and
+ alpha values of a color, given in raw values.
+ * MKGraphicsColorRGBA keys : `r, g, b, a` : value `NSString` to respresent the red, green, blue, and alpha
+ values of a color, given in raw values.
+ 
+ @warning *Note* If a fill color used a top color and bottom color does not need to be used and vise
+ versa.
+
+ Bools
+ 
+ * key : `MKGraphicsUseLinerShine` value : `NSString` *YES* to use a shine *NO* (or omit) to not.
+ * key : `MKGraphicsBordered` value : `NSString` *YES* to draw a border *NO* (or omit) to not. *This key does not
+ need to be assigned in your graphics dictionary, assigning a border color will automatically set the value of 
+ this key to YES*.
+ 
+ Floats
+ 
+ * key : `MKGraphicsBorderWidth` value : `NSString` the string representaion of a float value default is *2.0*.
+ 
+ @warning An example of an graphic dictonary property list is available from the downloads section of the 
+ MKKit github project.
  
  *Required Classes*
  
@@ -66,36 +116,6 @@
 @private
     NSDictionary *mGraphicsDictionary;
 }
-
-///-----------------------------------------
-/// @name Singleton
-///-----------------------------------------
-
-/**
- Returns the single instance of MKGraphicsStructures
- 
- @warning *Note* A dictionary must be set to create a sigleton instance
- call sharedGraphicsWithFile: to set the dictionary.
- 
- @exception MKGraphicsNoSharedInstanceDictionaryException Thrown if this
- method is called and no dictionary has been set.
- 
- @return singlton
-*/
-+ (id)sharedGraphics;
-
-/**
- Creates the singleton instance of MKGraphicsStructure and set the 
- dictionary contantained in the property list at the given path.
- 
- @return singleton
-*/
-+ (id)sharedGraphicsWithFile:(NSString *)path;
-
-/**
- Releases the singleton instance.
-*/
-+ (void)removeSharedGraphics;
 
 ///-----------------------------------------
 /// @name Creating
@@ -128,6 +148,19 @@
 + (id)linearGradientWithTopColor:(UIColor *)topColor bottomColor:(UIColor *)bottomColor;
 
 ///-----------------------------------------
+/// @name Graphics Dictonary
+///-----------------------------------------
+
+/**
+ Registers a property list file that used to build MKGraphicsStructures instances for
+ use in your app.
+ 
+ After a file is registered you can use graphicsWithName: method to retrive the 
+ instance for the specified graphic.
+*/
++ (void)registerGraphicsFile:(NSString *)path;
+
+///-----------------------------------------
 /// @name Aceessing Graphics
 ///-----------------------------------------
 
@@ -135,7 +168,7 @@
  The graphics dictionary that will be used for your app. Set this property using
  the sharedGraphicsWithFile: method.
 */
-@property (nonatomic, readonly) NSDictionary *graphicsDictionary;
+//@property (nonatomic, readonly) NSDictionary *graphicsDictionary;
 
 ///------------------------------------------
 /// @name Assigning Structures
@@ -150,6 +183,10 @@
 */
 - (void)assignGradientTopColor:(UIColor *)topColor bottomColor:(UIColor *)bottomColor;
 
+///-------------------------------------------
+/// @name Coloring
+///-------------------------------------------
+
 /** the top color of the gradient */
 @property (nonatomic, retain) UIColor *top;
 
@@ -159,19 +196,47 @@
 /** the fill color of an UI object. */
 @property (nonatomic, retain) UIColor *fill;
 
+///-------------------------------------------
+/// @name Contol Colors
+///-------------------------------------------
+
+/** the border color for an object */
+@property (nonatomic, retain) UIColor *border;
+
+/** the color of a disabled object */
+@property (nonatomic, retain) UIColor *disabled;
+
+/** the color of a touched object */
+@property (nonatomic, retain) UIColor *touched;
+
+///--------------------------------------------
+/// @name Styling
+///--------------------------------------------
+
 /** `YES` if a liner shine should be used on view drawing. */
 @property (nonatomic, assign) BOOL useLinerShine;
 
-@end 
+/** `YES` if an object should have a border drawn for it. */
+@property (nonatomic, assign) BOOL bordered;
 
-// Exceptions
-NSString *MKGraphicsNoSharedInstanceDictionaryException MK_VISIBLE_ATTRIBUTE;
+/** The width of a border if any. Default is `2.0`. */
+@property (nonatomic, assign) float borderWidth;
+
+@end 
 
 // KVC and Shared Graphics Dictionary Keys
 NSString *MKGraphicsTopColor MK_VISIBLE_ATTRIBUTE;
 NSString *MKGraphicsBottomColor MK_VISIBLE_ATTRIBUTE;
 NSString *MKGraphicsFillColor MK_VISIBLE_ATTRIBUTE;
+NSString *MKGraphicsBorderColor MK_VISIBLE_ATTRIBUTE;
+NSString *MKGraphicsDisabledColor MK_VISIBLE_ATTRIBUTE;
+NSString *MKGraphicsTouchedColor MK_VISIBLE_ATTRIBUTE;
 NSString *MKGraphicsUseLinerShine MK_VISIBLE_ATTRIBUTE;
+NSString *MKGraphicsBordered MK_VISIBLE_ATTRIBUTE;
+NSString *MKGraphicsBorderWidth MK_VISIBLE_ATTRIBUTE;
 
 NSString *MKGraphicsColorHSBA MK_VISIBLE_ATTRIBUTE;
 NSString *MKGraphicsColorRGBA MK_VISIBLE_ATTRIBUTE;
+
+/// User Default Keys
+NSString *MKGraphicsPropertyListName MK_VISIBLE_ATTRIBUTE;

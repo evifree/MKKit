@@ -93,6 +93,10 @@
 		AA21BA9614A7F17600556B06 /* MKGraphicFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = AA21BA9514A7F17600556B06 /* MKGraphicFactory.h */; };
 		AA21BA9C14A8AF4B00556B06 /* UIColor+MKGraphics.h in Headers */ = {isa = PBXBuildFile; fileRef = AA21BA9A14A8AF4B00556B06 /* UIColor+MKGraphics.h */; };
 		AA21BA9D14A8AF4B00556B06 /* UIColor+MKGraphics.m in Sources */ = {isa = PBXBuildFile; fileRef = AA21BA9B14A8AF4B00556B06 /* UIColor+MKGraphics.m */; };
+		AA21BAA014A914B500556B06 /* MKControl+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = AA21BA9E14A914B400556B06 /* MKControl+Internal.h */; };
+		AA21BAA114A914B500556B06 /* MKControl+Internal.m in Sources */ = {isa = PBXBuildFile; fileRef = AA21BA9F14A914B500556B06 /* MKControl+Internal.m */; };
+		AA21BAA414A9364E00556B06 /* MKObject+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = AA21BAA214A9364E00556B06 /* MKObject+Internal.h */; };
+		AA21BAA514A9364E00556B06 /* MKObject+Internal.m in Sources */ = {isa = PBXBuildFile; fileRef = AA21BAA314A9364E00556B06 /* MKObject+Internal.m */; };
 		AA24B49312DEC3000076A44B /* MKWarningIcon.h in Headers */ = {isa = PBXBuildFile; fileRef = AA24B49112DEC3000076A44B /* MKWarningIcon.h */; };
 		AA24B49412DEC3000076A44B /* MKWarningIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = AA24B49212DEC3000076A44B /* MKWarningIcon.m */; };
 		AA24FDFF149D1B240015D03A /* MKPopOutView+MKBarButtonItem.h in Headers */ = {isa = PBXBuildFile; fileRef = AA24FDFD149D1B240015D03A /* MKPopOutView+MKBarButtonItem.h */; };
@@ -293,6 +297,10 @@
 		AA21BA9514A7F17600556B06 /* MKGraphicFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKGraphicFactory.h; sourceTree = "<group>"; };
 		AA21BA9A14A8AF4B00556B06 /* UIColor+MKGraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+MKGraphics.h"; sourceTree = "<group>"; };
 		AA21BA9B14A8AF4B00556B06 /* UIColor+MKGraphics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+MKGraphics.m"; sourceTree = "<group>"; };
+		AA21BA9E14A914B400556B06 /* MKControl+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKControl+Internal.h"; sourceTree = "<group>"; };
+		AA21BA9F14A914B500556B06 /* MKControl+Internal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKControl+Internal.m"; sourceTree = "<group>"; };
+		AA21BAA214A9364E00556B06 /* MKObject+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKObject+Internal.h"; sourceTree = "<group>"; };
+		AA21BAA314A9364E00556B06 /* MKObject+Internal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKObject+Internal.m"; sourceTree = "<group>"; };
 		AA24B49112DEC3000076A44B /* MKWarningIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKWarningIcon.h; sourceTree = "<group>"; };
 		AA24B49212DEC3000076A44B /* MKWarningIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKWarningIcon.m; sourceTree = "<group>"; };
 		AA24FDFD149D1B240015D03A /* MKPopOutView+MKBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKPopOutView+MKBarButtonItem.h"; sourceTree = "<group>"; };
@@ -602,6 +610,8 @@
 				AA02E12012DAFAFA003B3560 /* MKSlider.m */,
 				AA02E1AD12DB0899003B3560 /* MKTextField.h */,
 				AA02E1AE12DB0899003B3560 /* MKTextField.m */,
+				AA21BA9E14A914B400556B06 /* MKControl+Internal.h */,
+				AA21BA9F14A914B500556B06 /* MKControl+Internal.m */,
 			);
 			path = MKControls;
 			sourceTree = "<group>";
@@ -702,6 +712,8 @@
 				AA02DDEC12DAE2B7003B3560 /* MKSounds.m */,
 				AA02DDED12DAE2B7003B3560 /* MKStrings.h */,
 				AA02DDEE12DAE2B7003B3560 /* MKStrings.m */,
+				AA21BAA214A9364E00556B06 /* MKObject+Internal.h */,
+				AA21BAA314A9364E00556B06 /* MKObject+Internal.m */,
 			);
 			name = MKCore;
 			sourceTree = "<group>";
@@ -1040,6 +1052,8 @@
 				AA3FF65A14A542F9000E2263 /* MKPullTableViewController.h in Headers */,
 				AA21BA9614A7F17600556B06 /* MKGraphicFactory.h in Headers */,
 				AA21BA9C14A8AF4B00556B06 /* UIColor+MKGraphics.h in Headers */,
+				AA21BAA014A914B500556B06 /* MKControl+Internal.h in Headers */,
+				AA21BAA414A9364E00556B06 /* MKObject+Internal.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1230,6 +1244,8 @@
 				AA24FE00149D1B240015D03A /* MKPopOutView+MKBarButtonItem.m in Sources */,
 				AA3FF65B14A542F9000E2263 /* MKPullTableViewController.m in Sources */,
 				AA21BA9D14A8AF4B00556B06 /* UIColor+MKGraphics.m in Sources */,
+				AA21BAA114A914B500556B06 /* MKControl+Internal.m in Sources */,
+				AA21BAA514A9364E00556B06 /* MKObject+Internal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -138,16 +138,16 @@
         [self addSubview:topBar];
         [topBar release];
         
-        backItem = [[MKBarButtonItem alloc] initWithType:MKBarButtonItemBackArrow];
-        backItem.enabled = NO;
+        backItem = [[MKBarButtonItem alloc] initWithType:MKBarButtonItemBackArrow graphicNamed:nil];
+        backItem.controlState = MKControlStateDisabled;
         [backItem completedAction: ^ (MKAction action) {
             if (action == MKActionTouchUp) {
                 [self back:backItem];
             }
         }];
         
-        forwardItem = [[MKBarButtonItem alloc] initWithType:MKBarButtonItemForwardArrow];
-        forwardItem.enabled = NO;
+        forwardItem = [[MKBarButtonItem alloc] initWithType:MKBarButtonItemForwardArrow graphicNamed:nil];
+        forwardItem.controlState = MKControlStateDisabled;
         [forwardItem completedAction: ^ (MKAction action) {
             if (action == MKActionTouchUp) {
                 [self forward:forwardItem];
@@ -199,10 +199,10 @@
     MKWebViewFlags.backPageCount = (MKWebViewFlags.backPageCount + 1);
     
     if (MKWebViewFlags.pageCount == 0) {
-        backItem.enabled = NO;
+        backItem.controlState = MKControlStateDisabled;
     }
     if (MKWebViewFlags.backPageCount > 0) {
-        forwardItem.enabled = YES;
+        forwardItem.controlState = MKControlStateNormal;
     }
 }
 
@@ -213,16 +213,16 @@
     MKWebViewFlags.backPageCount = (MKWebViewFlags.backPageCount - 1);
     
     if (MKWebViewFlags.pageCount == 0) {
-        backItem.enabled = NO;
+        backItem.controlState = MKControlStateDisabled;
     }
     if (MKWebViewFlags.pageCount > 0) {
-        backItem.enabled = YES;
+        backItem.controlState = MKControlStateNormal;
     }
     if (MKWebViewFlags.backPageCount > 0) {
-        forwardItem.enabled = YES;
+        forwardItem.controlState = MKControlStateNormal;
     }
     if (MKWebViewFlags.backPageCount == 0) {
-        forwardItem.enabled = NO;
+        forwardItem.controlState = MKControlStateDisabled;
     }
 }
 
@@ -246,7 +246,7 @@
     }
     
     if (MKWebViewFlags.pageCount > 0) {
-        backItem.enabled = YES;
+        backItem.controlState = MKControlStateNormal;
     }
     
     return YES;

@@ -390,17 +390,17 @@ MKTableCellAccent MKTableCellAccentMake(MKTableCellAccentType type, MKTableCellP
 /** 
  @warning *Deprecated Method v0.8* Use validtedWithType: instead. 
 */
-- (void)validateWithType:(MKValidationType)aType;// MK_DEPRECATED_0_8;
+- (void)validateWithType:(MKValidationType)aType MK_DEPRECATED_0_8;
 
 /** 
  @warning *Deprecated v0.9* Use image property instead. 
 */
-@property (nonatomic, retain) UIImage *icon;// MK_DEPRECATED_0_9;
+@property (nonatomic, retain) UIImage *icon; //MK_DEPRECATED_0_9;
 
 /** 
  @warning *Deprecated v0.9* Use image property instead. 
 */
-@property (nonatomic, retain) UIImage *iconMask;// MK_DEPRECATED_0_9;
+@property (nonatomic, retain) UIImage *iconMask; //MK_DEPRECATED_0_9;
 
 /** 
  @warning *Deprecated v0.9* Use image property instead.

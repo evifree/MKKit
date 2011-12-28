@@ -11,9 +11,20 @@
 
 #import <MKKit/MKKit/MKMacros.h>
 #import <MKKit/MKKit/MKGraphics/MKGraphics.h>
+
 #import "MKControlDelegate.h"
 
 typedef void (^MKActionBlock)(MKAction action);
+
+typedef enum {
+    MKControlStateNormal        = 1,
+    MKControlStateHighlighted   = 2,
+    MKControlStateDisabled      = 3,
+    MKControlStateWorking       = 4,
+} MKControlState;
+
+CGColorRef topColorForControlState(MKControlState state, MKGraphicsStructures *graphics);
+CGColorRef bottomColorForControlState(MKControlState state, MKGraphicsStructures *graphics);
 
 @class MKGraphicsStructures;
 
@@ -39,6 +50,22 @@ typedef void (^MKActionBlock)(MKAction action);
  @warning *Note* Not all controls dispatch every action. Check the documention of the control
  you are using to see what events it will dispatch.
  
+ *Changing/Observing Control States*
+ 
+ Contols states can be observed or changed with use of the controlState property. This property
+ will be on of four values:
+ 
+ * `MKControlStateNormal` : A control the is enabled and can receive actions
+ * `MKControlStateHighlighted` : A control that is being touched
+ * `MKControlStateDisabled` : A control that is disabled and cannot recive actions
+ * `MKControlStateWorking` : A contol the procecessing an action. Control will be disabled while 
+ in a working state.
+ 
+ *MKGraphics Support*
+ 
+ MKControl conforms to the MKGraphicsFactory protocol. Check subclass documentation for specifics
+ on what graphic properties are expected.
+ 
  *Required Frameworks*
  
  * Foundation
@@ -56,15 +83,18 @@ typedef void (^MKActionBlock)(MKAction action);
  * MKControlDelegate
 -----------------------------------------------------------------------------------------------*/
 
-@interface MKControl : UIControl {
+@interface MKControl : UIControl <MKGraphicFactory> {
     id mDelegate;
     BOOL mWorking;
     NSMutableSet *mTargets;
+    MKGraphicsStructures *mGraphics;
+    MKControlState mControlState;
     
     struct {
         bool blockUsage;
         bool targetUsage;
         bool isEnabled;
+        bool isHighlighted;
     } MKControlFlags;
 }
 
@@ -113,6 +143,16 @@ typedef void (^MKActionBlock)(MKAction action);
 
 /** tells if the controll is in working state. Default is `NO`. */
 @property (nonatomic, assign) BOOL working;
+
+/** The state of a control object. Possible Values are:
+ 
+ * `MKControlStateNormal` : A control the is enabled and can receive actions
+ * `MKControlStateHighlighted` : A control that is being touched
+ * `MKControlStateDisabled` : A control that is disabled and cannot recive actions
+ * `MKControlStateWorking` : A contol the procecessing an action. Control will be disabled while 
+ in a working state.
+*/
+@property (nonatomic, assign) MKControlState controlState;
 
 ///---------------------------------------------------------
 /// @name Delegates

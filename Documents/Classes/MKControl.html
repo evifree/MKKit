@@ -26,6 +26,9 @@
 	<td class="specification-title">Inherits from</td>
 	<td class="specification-value">UIControl</td>
 </tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value"><a href="../Protocols/MKGraphicFactory.html">MKGraphicFactory</a></td>
+</tr><tr>
 	<td class="specification-title">Declared in</td>
 	<td class="specification-value">MKControl.h</td>
 </tr>
@@ -43,6 +46,14 @@
 <p> <strong> Observing Actions </strong></p>
 
 <p> <a href="MKControl.html">MKControl</a> objects dispatch events in three ways, <a href="#//api/name/delegate">delegate</a> methods, blocks, and by assigning targets and selectors. Each one sends actions according to one or more of the MKAction types. You should be looking for one of the following <a href="#//api/name/action">action</a> types: <ul><li> <code>MKActionTouchDown</code>: a touch down action. </li><li> <code>MKActionTouchUp</code>: a touch up action. </li><li> <code>MKActionValueChanged</code>: a change of value action. </li><li> <code>MKActionValueIncreased</code>: a increase of a controls value. </li><li> <code>MKActionValueDecreased</code>: a decrease of a controls value. </li></ul> <p class="warning"> <strong> Note </strong> Not all controls dispatch every action. Check the documention of the control you are using to see what events it will dispatch. </p></p>
+
+<p> <strong> Changing/Observing Control States </strong></p>
+
+<p> Contols states can be observed or changed with use of the <a href="#//api/name/controlState">controlState</a> property. This property will be on of four values: <ul><li> <code>MKControlStateNormal</code>: A control the is enabled and can receive actions </li><li> <code>MKControlStateHighlighted</code>: A control that is being touched </li><li> <code>MKControlStateDisabled</code>: A control that is disabled and cannot recive actions </li><li> <code>MKControlStateWorking</code>: A contol the procecessing an action. Control will be disabled while in a <a href="#//api/name/working">working</a> state. </li></ul></p>
+
+<p> <strong> MKGraphics Support </strong></p>
+
+<p> <a href="MKControl.html">MKControl</a> conforms to the MKGraphicsFactory protocol. Check subclass documentation for specifics on what graphic properties are expected. </p>
 
 <p> <strong> Required Frameworks </strong> <ul><li> Foundation </li><li> UIKit </li><li> Quartz Core </li><li> Core Graphics </li></ul></p>
 
@@ -95,6 +106,12 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/working"> working</a></code>
 		<span class="tooltip"> tells if the controll is in <a href="#//api/name/working">working</a> state. Default is <code>NO</code>. </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/controlState"> controlState</a></code>
+		<span class="tooltip"> The state of a control object. Possible Values are: <ul><li> <code>MKControlStateNormal</code>: A control the is enabled and can receive actions </li><li> <code>MKControlStateHighlighted</code>: A control that is being touched </li><li> <code>MKControlStateDisabled</code>: A control that is disabled and cannot recive actions </li><li> <code>MKControlStateWorking</code>: A contol the procecessing an action. Control will be disabled while in a <a href="#//api/name/working">working</a> state. </li></ul></span>
 	</span>
 	
 </li>
@@ -167,6 +184,24 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/viewType"> viewType</a></code>
 		<span class="tooltip"> Reference to the MKTableCellAccessoryViewType </span>
+	</span>
+	
+</li>
+					</ul>
+					
+					<h3 class="subsubtitle task-title">Internal Methods</h3>
+
+					<ul class="task-list">
+						<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setUpControl">- setUpControl</a></code>
+		<span class="tooltip"> Standard method to set basic control parameters </span>
+	</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/defaultGraphics">- defaultGraphics</a></code>
+		<span class="tooltip"> Return default graphics for contols. </span>
 	</span>
 	
 </li>
@@ -281,6 +316,38 @@
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
 		<code class="declared-in-ref">MKControl.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/defaultGraphics" title="defaultGraphics"></a>
+	<h3 class="subsubtitle method-title">defaultGraphics</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Return default graphics for contols. </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (MKGraphicsStructures *)defaultGraphics</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKControl+Internal.h</code><br />
 	</div>				
 	
 	
@@ -454,6 +521,38 @@
 	
 </div>
 					
+					<div class="section-method">
+	<a name="//api/name/setUpControl" title="setUpControl"></a>
+	<h3 class="subsubtitle method-title">setUpControl</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> Standard method to set basic control parameters </p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)setUpControl</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKControl+Internal.h</code><br />
+	</div>				
+	
+	
+</div>
+					
 				</div>
 				
 				
@@ -473,6 +572,38 @@
 	
 	
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) MKActionBlock action</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MKControl.h</code><br />
+	</div>				
+	
+	
+</div>
+					
+					<div class="section-method">
+	<a name="//api/name/controlState" title="controlState"></a>
+	<h3 class="subsubtitle method-title">controlState</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p> The state of a control object. Possible Values are: <ul><li> <code>MKControlStateNormal</code>: A control the is enabled and can receive actions </li><li> <code>MKControlStateHighlighted</code>: A control that is being touched </li><li> <code>MKControlStateDisabled</code>: A control that is disabled and cannot recive actions </li><li> <code>MKControlStateWorking</code>: A contol the procecessing an action. Control will be disabled while in a <a href="#//api/name/working">working</a> state. </li></ul></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) MKControlState controlState</code></div>
 	
 	
 	
@@ -634,7 +765,7 @@
 			<div id="footer">
 				<hr />
 				<div class="footer-copyright">
-					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-12-22)</span><br />
+					<p><span class="copyright">&copy; 2011 Matt King. All rights reserved. (Last updated: 2011-12-27)</span><br />
 					<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0b3</a>.</span></p>
 				</div>
 			</div>
